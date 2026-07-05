@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmaPrática — A plataforma completa para o farmacêutico comunitário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0f3d2e;
+    --green-700:#137a4c;
+    --green-600:#16a34a;
+    --green-500:#1fae5c;
+    --green-100:#e6f6ec;
+    --green-50:#f2faf5;
+    --ink:#12201c;
+    --gray-900:#1f2937;
+    --gray-700:#4b5563;
+    --gray-500:#6b7280;
+    --gray-300:#d1d5db;
+    --gray-200:#e5e7eb;
+    --gray-100:#f3f4f6;
+    --gray-50:#f9fafb;
+    --blue-100:#dbeafe;
+    --blue-600:#2563eb;
+    --purple-100:#ede9fe;
+    --purple-600:#7c3aed;
+    --teal-100:#ccfbf1;
+    --teal-600:#0d9488;
+    --orange-100:#ffedd5;
+    --orange-600:#ea580c;
+    --pink-100:#fce7f3;
+    --pink-600:#db2777;
+    --lime-100:#ecfccb;
+    --lime-600:#65a30d;
+    --skyblue-100:#dbeafe;
+    --skyblue-600:#0284c7;
+    --white:#ffffff;
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:16px;
+    --shadow-sm:0 1px 2px rgba(16,24,17,0.05);
+    --shadow-md:0 2px 8px rgba(16,24,17,0.06);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    background:var(--gray-50);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;}
+
+  .app{
+    display:grid;
+    grid-template-columns:272px 1fr;
+    min-height:100vh;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    background:var(--white);
+    border-right:1px solid var(--gray-200);
+    padding:24px 16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .brand{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:0 8px 24px 8px;
+  }
+  .brand-icon{
+    width:38px;height:38px;flex:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--green-500),var(--green-700));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-name{
+    font-size:19px;font-weight:800;color:var(--green-900);
+    letter-spacing:-0.02em;
+    line-height:1.15;
+  }
+  .brand-tag{
+    font-size:11.5px;color:var(--gray-500);
+    line-height:1.35;margin-top:2px;
+    max-width:170px;
+  }
+  nav.primary-nav{display:flex;flex-direction:column;gap:2px;}
+  .nav-item{
+    display:flex;align-items:center;gap:12px;
+    padding:10px 12px;border-radius:var(--radius-sm);
+    font-size:14.5px;font-weight:500;color:var(--gray-700);
+    cursor:pointer;
+  }
+  .nav-item:hover{background:var(--gray-100);}
+  .nav-item.active{
+    background:var(--green-100);
+    color:var(--green-700);
+    font-weight:600;
+  }
+  .nav-item svg{flex:none;width:19px;height:19px;}
+  .nav-divider{height:1px;background:var(--gray-200);margin:16px 4px;}
+  .sidebar-bottom{display:flex;flex-direction:column;gap:2px;}
+
+  /* ---------- TOPBAR ---------- */
+  .main{display:flex;flex-direction:column;min-height:100vh;}
+  .topbar{
+    display:flex;align-items:center;gap:20px;
+    padding:16px 32px;
+    background:var(--white);
+    border-bottom:1px solid var(--gray-200);
+    position:sticky;top:0;z-index:5;
+  }
+  .search-box{
+    flex:1;
+    display:flex;align-items:center;gap:10px;
+    background:var(--gray-50);
+    border:1px solid var(--gray-200);
+    border-radius:10px;
+    padding:10px 14px;
+    color:var(--gray-500);
+    max-width:640px;
+  }
+  .search-box svg{flex:none;color:var(--gray-500);}
+  .search-box input{
+    border:none;background:transparent;outline:none;
+    font-size:14px;color:var(--ink);flex:1;
+    font-family:inherit;
+  }
+  .kbd{
+    font-size:11.5px;color:var(--gray-500);
+    background:var(--white);
+    border:1px solid var(--gray-300);
+    border-radius:6px;padding:2px 7px;
+    font-family:inherit;
+  }
+  .topbar-actions{
+    display:flex;align-items:center;gap:24px;
+    margin-left:auto;
+  }
+  .topbar-link{
+    display:flex;align-items:center;gap:7px;
+    font-size:14px;font-weight:500;color:var(--gray-700);
+    white-space:nowrap;cursor:pointer;
+  }
+  .topbar-link svg{width:18px;height:18px;}
+  .avatar{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--green-600);color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;
+  }
+  .avatar-wrap{display:flex;align-items:center;gap:6px;cursor:pointer;}
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    display:grid;
+    grid-template-columns:1fr 320px;
+    gap:28px;
+    padding:28px 32px 48px;
+  }
+  .content-main{min-width:0;}
+  h1.page-title{
+    font-size:26px;font-weight:800;margin:0 0 4px;color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  p.page-sub{
+    font-size:15px;color:var(--gray-500);margin:0 0 22px;
+  }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .feature-card{
+    background:var(--white);
+    border:1px solid var(--gray-200);
+    border-radius:var(--radius-lg);
+    padding:22px;
+    display:flex;flex-direction:column;
+    box-shadow:var(--shadow-sm);
+    transition:box-shadow .15s ease,transform .15s ease;
+    cursor:pointer;
+  }
+  .feature-card:hover{
+    box-shadow:var(--shadow-md);
+    transform:translateY(-1px);
+    border-color:var(--gray-300);
+  }
+  .icon-badge{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;
+  }
+  .icon-badge svg{width:26px;height:26px;}
+  .feature-card h3{
+    font-size:16.5px;font-weight:700;margin:0 0 8px;color:var(--ink);
+    line-height:1.3;
+  }
+  .feature-card p{
+    font-size:13.5px;color:var(--gray-500);line-height:1.55;
+    margin:0 0 16px;flex:1;
+  }
+  .card-arrow{
+    color:var(--green-600);display:flex;
+  }
+  .card-arrow svg{width:19px;height:19px;}
+
+  .bg-green{background:var(--green-100);color:var(--green-700);}
+  .bg-teal{background:var(--teal-100);color:var(--teal-600);}
+  .bg-purple{background:var(--purple-100);color:var(--purple-600);}
+  .bg-blue{background:var(--blue-100);color:var(--blue-600);}
+  .bg-orange{background:var(--orange-100);color:var(--orange-600);}
+  .bg-pink{background:var(--pink-100);color:var(--pink-600);}
+  .bg-lime{background:var(--lime-100);color:var(--lime-600);}
+  .bg-skyblue{background:var(--skyblue-100);color:var(--skyblue-600);}
+
+  /* banner */
+  .promo-banner{
+    margin-top:22px;
+    background:linear-gradient(120deg,var(--green-50),#eaf7ef);
+    border:1px solid var(--green-100);
+    border-radius:var(--radius-lg);
+    padding:26px 30px;
+    display:flex;align-items:center;gap:26px;
+  }
+  .promo-icon{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--green-600);color:var(--white);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .promo-icon svg{width:24px;height:24px;}
+  .promo-text h3{font-size:17px;font-weight:700;margin:0 0 4px;}
+  .promo-text p{font-size:13.5px;color:var(--gray-600);margin:0;max-width:420px;}
+  .promo-checks{
+    margin-left:auto;display:flex;flex-direction:column;gap:8px;
+    font-size:13.5px;color:var(--ink);font-weight:500;
+  }
+  .promo-checks div{display:flex;align-items:center;gap:8px;}
+  .promo-checks svg{width:16px;height:16px;color:var(--green-600);flex:none;}
+  .promo-illustration{
+    flex:none;width:130px;height:88px;
+    background:var(--white);
+    border-radius:10px;
+    border:1px solid var(--green-100);
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ---------- SIDE PANEL ---------- */
+  .side-panel{display:flex;flex-direction:column;gap:20px;}
+  .panel-card{
+    background:var(--white);
+    border:1px solid var(--gray-200);
+    border-radius:var(--radius-lg);
+    padding:18px 20px;
+  }
+  .panel-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .panel-head h4{font-size:15.5px;font-weight:700;margin:0;color:var(--ink);}
+  .panel-head a{font-size:12.5px;color:var(--green-600);font-weight:600;cursor:pointer;}
+  .tool-list{display:flex;flex-direction:column;gap:3px;}
+  .tool-item{
+    display:flex;align-items:center;gap:10px;
+    padding:8px 6px;border-radius:8px;
+    font-size:13.5px;color:var(--gray-700);font-weight:500;
+    cursor:pointer;
+  }
+  .tool-item:hover{background:var(--gray-50);}
+  .tool-item svg{width:17px;height:17px;color:var(--green-600);flex:none;}
+
+  .update-item{padding:10px 0;border-top:1px solid var(--gray-100);}
+  .update-item:first-child{border-top:none;padding-top:0;}
+  .update-tag{
+    font-size:10.5px;font-weight:700;letter-spacing:.02em;
+    padding:2px 8px;border-radius:5px;display:inline-block;
+    margin-bottom:6px;
+  }
+  .tag-new{background:#dcfce7;color:#16803c;}
+  .tag-update{background:#dbeafe;color:#1d4ed8;}
+  .tag-alert{background:#fef3c7;color:#b45309;}
+  .update-text{font-size:13.5px;color:var(--ink);line-height:1.4;margin:0 0 4px;}
+  .update-time{font-size:12px;color:var(--gray-500);margin:0;}
+
+  .fav-item{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:9px 2px;border-top:1px solid var(--gray-100);
+    font-size:13.5px;color:var(--ink);font-weight:500;
+  }
+  .fav-item:first-child{border-top:none;}
+  .fav-item svg{width:16px;height:16px;color:var(--gray-300);cursor:pointer;}
+  .fav-item svg:hover{color:#f59e0b;}
+
+  footer.app-footer{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 32px 24px;
+    font-size:12.5px;color:var(--gray-500);
+    border-top:1px solid var(--gray-200);
+  }
+  footer.app-footer .footer-links{display:flex;gap:18px;}
+  footer.app-footer a:hover{color:var(--green-700);}
+
+  @media (max-width:1200px){
+    .content{grid-template-columns:1fr;}
+    .side-panel{order:-1;}
+  }
+  @media (max-width:900px){
+    .app{grid-template-columns:1fr;}
+    .sidebar{display:none;}
+    .card-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .card-grid{grid-template-columns:1fr;}
+    .topbar{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M10.5 20.5L20.5 10.5C22.5 8.5 22.5 5.5 20.5 3.5C18.5 1.5 15.5 1.5 13.5 3.5L3.5 13.5C1.5 15.5 1.5 18.5 3.5 20.5C5.5 22.5 8.5 22.5 10.5 20.5Z" stroke="white" stroke-width="1.8"/><path d="M8 9L15 16" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="brand-name">FarmaPrática</div>
+          <div class="brand-tag">A plataforma completa para o farmacêutico comunitário</div>
+        </div>
+      </div>
+
+      <nav class="primary-nav">
+        <div class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7"/><path d="M5 9v11h14V9"/></svg>
+          Início
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Consulta Rápida
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="8" rx="3" transform="rotate(-45 12 12)"/><path d="M9 15l6-6" stroke-width="2"/></svg>
+          Medicamentos
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/></svg>
+          Atendimento Farmacêutico
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12l1.8 1.8L15 10" /></svg>
+          Prescrições
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/></svg>
+          Exames Laboratoriais
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+          Calculadoras Clínicas
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2Z"/><path d="M5 16l.8 2.2L8 19l-2.2.8L5 22l-.8-2.2L2 19l2.2-.8L5 16Z"/></svg>
+          Serviços Farmacêuticos
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.2-2.7 0-6 3-6.8C8.4 4.6 11 6 12 8c1-2 3.6-3.4 6-2.8 3 .8 4.2 4.1 3 6.8-2 4.5-9 9-9 9Z"/></svg>
+          Fitoterapia e Suplementos
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5c3-1.2 6-1.2 8 0v14c-2-1.2-5-1.2-8 0V5Z"/><path d="M20 5c-3-1.2-6-1.2-8 0v14c2-1.2 5-1.2 8 0V5Z"/></svg>
+          Referências Farmacêuticas
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
+          Assistente Farmacêutico (IA)
+        </div>
+      </nav>
+    </div>
+
+    <div>
+      <div class="nav-divider"></div>
+      <div class="sidebar-bottom">
+        <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg>Favoritos</div>
+        <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M4 10a8 8 0 0 1 14.6-4.6M20 14a8 8 0 0 1-14.6 4.6"/></svg>Atualizações</div>
+        <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Configurações</div>
+        <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 4.6 2.4c-.7.5-1.7 1.1-1.7 2.1"/><path d="M12 17h.01"/></svg>Ajuda e Suporte</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="search-box">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Pesquisar medicamentos, princípios ativos, sintomas, exames e muito mais...">
+        <span class="kbd">Ctrl + K</span>
+      </div>
+      <div class="topbar-actions">
+        <div class="topbar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 4-2 5-2 7h16c0-2-2-3-2-7Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+          Notificações
+        </div>
+        <div class="topbar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Histórico
+        </div>
+        <div class="avatar-wrap">
+          <div class="avatar">FS</div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <!-- MAIN COLUMN -->
+      <main class="content-main">
+        <h1 class="page-title">Olá, Farmacêutico!</h1>
+        <p class="page-sub">Como podemos te ajudar hoje?</p>
+
+        <section class="card-grid">
+
+          <div class="feature-card">
+            <div class="icon-badge bg-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="8" rx="4" transform="rotate(-25 12 13)"/><path d="M9 14l4-4" stroke-width="1.8"/></svg>
+            </div>
+            <h3>Medicamentos</h3>
+            <p>Bulários, interações, administração, conservação, classes, equivalências e muito mais.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/><path d="M17 3l1.3 1.3M18.3 3L17 4.3"/></svg>
+            </div>
+            <h3>Atendimento Farmacêutico</h3>
+            <p>Indicações, protocolos, MIPs, fluxogramas, sinais de alerta e encaminhamento.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12.5l1.8 1.8L15 10"/></svg>
+            </div>
+            <h3>Prescrições</h3>
+            <p>Validação de receitas, receitas digitais, controle especial, legislação e regras de dispensação.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2h6M10 2v6.5L4.8 17a2 2 0 0 0 1.7 3h10.9a2 2 0 0 0 1.8-3L14 8.5V2"/><path d="M8 14h8"/></svg>
+            </div>
+            <h3>Exames Laboratoriais</h3>
+            <p>Interpretação, valores de referência, interferências, exames por patologia e muito mais.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7.5h8M8 12h2.2M13.5 12h2.5M8 16h2.2M13.5 16h2.5"/></svg>
+            </div>
+            <h3>Calculadoras Clínicas</h3>
+            <p>Pediatria, IMC, clearance, conversores, diluições e outras ferramentas.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l1 5 4-2-1 5 5 1-3 4 3 4-5 1 1 5-4-2-1 5-1-5-4 2 1-5-5-1 3-4-3-4 5-1-1-5 4 2 1-5Z" opacity="0"/><path d="M14.5 3.5l-6 6M9 6.5L15 12M6 15l6 6"/><circle cx="17" cy="5" r="2"/><circle cx="6" cy="15.5" r="2"/></svg>
+            </div>
+            <h3>Serviços Farmacêuticos</h3>
+            <p>Vacinas, injetáveis, aferições, consultório farmacêutico e farmacovigilância.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-lime">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9-9c-1.1-2.7 0-6 3-6.8C8.4 4.6 11 6 12 8c1-2 3.6-3.4 6-2.8 3 .8 4.1 4.1 3 6.8-2 4.5-9 9-9 9Z"/></svg>
+            </div>
+            <h3>Fitoterapia e Suplementos</h3>
+            <p>Fitoterápicos, vitaminas, minerais, suplementos, interações e evidências.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c3-1.2 6-1.2 8 0v14c-2-1.2-5-1.2-8 0V5Z"/><path d="M20 5c-3-1.2-6-1.2-8 0v14c2-1.2 5-1.2 8 0V5Z"/></svg>
+            </div>
+            <h3>Referências Farmacêuticas</h3>
+            <p>Dicionário, siglas, formas farmacêuticas, abreviações e termos farmacológicos.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon-badge bg-skyblue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <h3>Assistente Farmacêutico (IA)</h3>
+            <p>Tire dúvidas, analise casos, verifique interações e receba orientações com IA.</p>
+            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+
+        </section>
+
+        <div class="promo-banner">
+          <div class="promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg>
+          </div>
+          <div class="promo-text">
+            <h3>Seu aliado diário na prática farmacêutica</h3>
+            <p>Informação confiável, atualizada e prática para apoiar suas decisões e cuidar melhor de cada paciente.</p>
+          </div>
+          <div class="promo-illustration">
+            <svg width="60" height="46" viewBox="0 0 24 24" fill="none" stroke="#137a4c" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/><path d="M7 10l2.5 2.5L14 8"/></svg>
+          </div>
+          <div class="promo-checks">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Conteúdo atualizado diariamente</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Base científica e legislação vigente</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Desenvolvido para farmacêuticos</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- SIDE PANEL -->
+      <aside class="side-panel">
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Ferramentas rápidas</h4></div>
+          <div class="tool-list">
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Interações medicamentosas</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Bulário de A a Z</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/></svg>Calculadora pediátrica</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Conversor de unidades</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendário vacinal</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.1-2.7 0-6 3-6.8C8.4 4.6 11 6 12 8c1-2 3.6-3.4 6-2.8 3 .8 4.1 4.1 3 6.8-2 4.5-9 9-9 9Z"/></svg>Exames por patologia</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/></svg>MIPs por sintoma</div>
+            <div class="tool-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12.5l1.8 1.8L15 10"/></svg>Verificar receita</div>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Atualizações importantes</h4><a>Ver todas</a></div>
+          <div class="update-item">
+            <span class="update-tag tag-new">NOVO</span>
+            <p class="update-text">Protocolo atualizado: Dor de garganta</p>
+            <p class="update-time">Hoje</p>
+          </div>
+          <div class="update-item">
+            <span class="update-tag tag-update">ATUALIZAÇÃO</span>
+            <p class="update-text">Interações: novos dados adicionados</p>
+            <p class="update-time">Ontem</p>
+          </div>
+          <div class="update-item">
+            <span class="update-tag tag-alert">ALERTA</span>
+            <p class="update-text">Desabastecimento: Amoxicilina 500mg</p>
+            <p class="update-time">2 dias atrás</p>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-head"><h4>Favoritos</h4><a>Ver todos</a></div>
+          <div class="fav-item">Losartana <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
+          <div class="fav-item">Amoxicilina <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
+          <div class="fav-item">Ibuprofeno <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
+          <div class="fav-item">Omeprazol <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer class="app-footer">
+      <span>FarmaPrática © 2024 · Todos os direitos reservados · Versão 1.0.0</span>
+      <div class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
