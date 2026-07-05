@@ -303,6 +303,78 @@
   .fav-item svg{width:16px;height:16px;color:var(--gray-300);cursor:pointer;}
   .fav-item svg:hover{color:#f59e0b;}
 
+  /* ---------- MENU MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(15,25,20,0.45);
+    display:none;
+    align-items:flex-start;justify-content:center;
+    padding:8vh 20px;
+    z-index:50;
+  }
+  .modal-overlay.open{display:flex;}
+  .menu-modal{
+    background:var(--white);
+    border-radius:var(--radius-lg);
+    width:100%;max-width:460px;
+    box-shadow:0 20px 50px rgba(15,25,20,0.25);
+    overflow:hidden;
+    animation:menuIn .15s ease;
+  }
+  @keyframes menuIn{
+    from{opacity:0;transform:translateY(-6px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .menu-modal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid var(--gray-200);
+  }
+  .menu-modal-head h4{margin:0;font-size:16px;font-weight:700;color:var(--ink);}
+  .menu-close{
+    width:28px;height:28px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--gray-100);color:var(--gray-500);
+    border:none;cursor:pointer;flex:none;
+  }
+  .menu-close:hover{background:var(--gray-200);}
+  .menu-list{
+    max-height:60vh;overflow-y:auto;
+    padding:8px 0;
+  }
+  .menu-row{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 20px;
+  }
+  .menu-row-link{
+    flex:1;min-width:0;
+    display:flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:500;
+    border-radius:8px;padding:4px 6px;margin:-4px -6px;
+  }
+  .menu-row.available .menu-row-link{color:var(--ink);cursor:pointer;}
+  .menu-row.available .menu-row-link:hover{background:var(--green-50);}
+  .menu-row.soon .menu-row-link{color:#9ca3af;cursor:default;}
+  .status-pill{
+    font-size:10.5px;font-weight:700;letter-spacing:.02em;
+    padding:3px 9px;border-radius:20px;flex:none;white-space:nowrap;
+  }
+  .status-pill.available{background:var(--green-100);color:var(--green-700);}
+  .status-pill.soon{background:var(--gray-100);color:var(--gray-500);}
+  .star-btn{
+    flex:none;width:26px;height:26px;border:none;background:none;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;color:var(--gray-300);border-radius:6px;
+  }
+  .star-btn:hover{background:var(--gray-100);}
+  .star-btn svg{width:17px;height:17px;}
+  .star-btn.faved{color:#f59e0b;}
+  .star-btn.faved svg{fill:#f59e0b;}
+  .row-title{font-size:13.5px;font-weight:600;line-height:1.3;}
+  .row-desc{font-size:11.5px;color:var(--gray-500);line-height:1.4;margin-top:2px;}
+  .menu-row.soon .row-title{color:#9ca3af;}
+  .fav-empty{font-size:13px;color:var(--gray-500);padding:6px 2px;}
+
   footer.app-footer{
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 32px 24px;
@@ -435,7 +507,7 @@
 
         <section class="card-grid">
 
-          <div class="feature-card">
+          <div class="feature-card" onclick="openMenu('menu-medicamentos')">
             <div class="icon-badge bg-green">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="8" rx="4" transform="rotate(-25 12 13)"/><path d="M9 14l4-4" stroke-width="1.8"/></svg>
             </div>
@@ -444,7 +516,7 @@
             <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card" onclick="openMenu('menu-atendimento')">
             <div class="icon-badge bg-teal">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/><path d="M17 3l1.3 1.3M18.3 3L17 4.3"/></svg>
             </div>
@@ -471,7 +543,7 @@
             <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card" onclick="openMenu('menu-calculadoras')">
             <div class="icon-badge bg-orange">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7.5h8M8 12h2.2M13.5 12h2.5M8 16h2.2M13.5 16h2.5"/></svg>
             </div>
@@ -555,6 +627,13 @@
         </div>
 
         <div class="panel-card">
+          <div class="panel-head"><h4>Favoritos</h4><a>Ver todos</a></div>
+          <div id="favoritos-list">
+            <!-- preenchido via JS (localStorage) -->
+          </div>
+        </div>
+
+        <div class="panel-card">
           <div class="panel-head"><h4>Atualizações importantes</h4><a>Ver todas</a></div>
           <div class="update-item">
             <span class="update-tag tag-new">NOVO</span>
@@ -573,14 +652,6 @@
           </div>
         </div>
 
-        <div class="panel-card">
-          <div class="panel-head"><h4>Favoritos</h4><a>Ver todos</a></div>
-          <div class="fav-item">Losartana <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
-          <div class="fav-item">Amoxicilina <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
-          <div class="fav-item">Ibuprofeno <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
-          <div class="fav-item">Omeprazol <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></div>
-        </div>
-
       </aside>
     </div>
 
@@ -593,5 +664,372 @@
     </footer>
   </div>
 </div>
+
+<!-- ===================== MENU MODAIS ===================== -->
+
+<!-- MEDICAMENTOS -->
+<div class="modal-overlay" id="menu-medicamentos" onclick="if(event.target===this)closeMenu('menu-medicamentos')">
+  <div class="menu-modal">
+    <div class="menu-modal-head">
+      <h4>Medicamentos</h4>
+      <button class="menu-close" onclick="closeMenu('menu-medicamentos')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="menu-list">
+
+      <div class="menu-row soon" data-key="med-bulario">
+        <div class="menu-row-link">
+          <div class="row-title">Bulário Completo</div>
+          <div class="row-desc">Posologia, indicações, contraindicações, ajuste renal/hepático, gravidez, lactação</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-bulario','Bulário Completo')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row available" data-key="med-intercambiaveis">
+        <a class="menu-row-link" href="https://betofs1.github.io/medinter/" target="_blank" rel="noopener">
+          <div class="row-title">Medicamentos Intercambiáveis</div>
+        </a>
+        <span class="status-pill available">Disponível</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-intercambiaveis','Medicamentos Intercambiáveis')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-interacoes">
+        <div class="menu-row-link">
+          <div class="row-title">Interações Medicamentosas e Alimentos</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-interacoes','Interações Medicamentosas e Alimentos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-administracao">
+        <div class="menu-row-link">
+          <div class="row-title">Guia de Administração</div>
+          <div class="row-desc">Com alimento, jejum, pode triturar, sonda, reconstituição</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-administracao','Guia de Administração')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-conservacao">
+        <div class="menu-row-link">
+          <div class="row-title">Conservação e Estabilidade</div>
+          <div class="row-desc">Temperatura, validade após aberto/reconstituição, transporte</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-conservacao','Conservação e Estabilidade')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-fotossensibilidade">
+        <div class="menu-row-link">
+          <div class="row-title">Fotossensibilidade</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-fotossensibilidade','Fotossensibilidade')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-fracionamento">
+        <div class="menu-row-link">
+          <div class="row-title">Fracionamento de Medicamentos</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-fracionamento','Fracionamento de Medicamentos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-disponibilidade">
+        <div class="menu-row-link">
+          <div class="row-title">Disponibilidade Comercial</div>
+          <div class="row-desc">Desabastecimento, alternativas terapêuticas, descontinuação</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-disponibilidade','Disponibilidade Comercial')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-receita">
+        <div class="menu-row-link">
+          <div class="row-title">Medicamentos que Exigem Receita</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-receita','Medicamentos que Exigem Receita')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-classes">
+        <div class="menu-row-link">
+          <div class="row-title">Classes Terapêuticas</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-classes','Classes Terapêuticas')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-equivalencia">
+        <div class="menu-row-link">
+          <div class="row-title">Equivalência Terapêutica</div>
+          <div class="row-desc">Corticoides, IBPs e outros</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-equivalencia','Equivalência Terapêutica')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-antimicrobianos">
+        <div class="menu-row-link">
+          <div class="row-title">Antimicrobianos</div>
+          <div class="row-desc">Espectro, ajustes, interações</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-antimicrobianos','Antimicrobianos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="med-gravidez">
+        <div class="menu-row-link">
+          <div class="row-title">Gravidez e Lactação</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'med-gravidez','Gravidez e Lactação')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ATENDIMENTO FARMACÊUTICO -->
+<div class="modal-overlay" id="menu-atendimento" onclick="if(event.target===this)closeMenu('menu-atendimento')">
+  <div class="menu-modal">
+    <div class="menu-modal-head">
+      <h4>Atendimento Farmacêutico</h4>
+      <button class="menu-close" onclick="closeMenu('menu-atendimento')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="menu-list">
+
+      <div class="menu-row available" data-key="at-indicacoes">
+        <a class="menu-row-link" href="https://betofs1.github.io/farmadesk/" target="_blank" rel="noopener">
+          <div class="row-title">Indicações Farmacêuticas</div>
+        </a>
+        <span class="status-pill available">Disponível</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-indicacoes','Indicações Farmacêuticas')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-inteligente">
+        <div class="menu-row-link"><div class="row-title">Atendimento Inteligente</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-inteligente','Atendimento Inteligente')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-fluxogramas">
+        <div class="menu-row-link"><div class="row-title">Fluxogramas Clínicos</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-fluxogramas','Fluxogramas Clínicos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-protocolos">
+        <div class="menu-row-link"><div class="row-title">Protocolos de Balcão</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-protocolos','Protocolos de Balcão')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-mips">
+        <div class="menu-row-link"><div class="row-title">MIPs por Sintoma</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-mips','MIPs por Sintoma')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-redflags">
+        <div class="menu-row-link"><div class="row-title">Sinais de Alerta (Red Flags)</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-redflags','Sinais de Alerta (Red Flags)')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-naofarmacologicas">
+        <div class="menu-row-link"><div class="row-title">Orientações Não Farmacológicas</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-naofarmacologicas','Orientações Não Farmacológicas')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="at-encaminhamento">
+        <div class="menu-row-link"><div class="row-title">Critérios de Encaminhamento</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'at-encaminhamento','Critérios de Encaminhamento')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CALCULADORAS CLÍNICAS -->
+<div class="modal-overlay" id="menu-calculadoras" onclick="if(event.target===this)closeMenu('menu-calculadoras')">
+  <div class="menu-modal">
+    <div class="menu-modal-head">
+      <h4>Calculadoras Clínicas</h4>
+      <button class="menu-close" onclick="closeMenu('menu-calculadoras')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="menu-list">
+
+      <div class="menu-row available" data-key="calc-pediatrica">
+        <a class="menu-row-link" href="https://betofs1.github.io/dosespediatricas/" target="_blank" rel="noopener">
+          <div class="row-title">Calculadora Pediátrica</div>
+        </a>
+        <span class="status-pill available">Disponível</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-pediatrica','Calculadora Pediátrica')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-imc">
+        <div class="menu-row-link"><div class="row-title">IMC</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-imc','IMC')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-cockcroft">
+        <div class="menu-row-link"><div class="row-title">Cockcroft-Gault</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-cockcroft','Cockcroft-Gault')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-egfr">
+        <div class="menu-row-link"><div class="row-title">eGFR</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-egfr','eGFR')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-mgml">
+        <div class="menu-row-link"><div class="row-title">Conversor mg ↔ mL</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-mgml','Conversor mg ↔ mL')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-gotasml">
+        <div class="menu-row-link"><div class="row-title">Conversor Gotas ↔ mL</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-gotasml','Conversor Gotas ↔ mL')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-uiml">
+        <div class="menu-row-link"><div class="row-title">Conversor UI ↔ mL (Insulinas)</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-uiml','Conversor UI ↔ mL (Insulinas)')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-unidades">
+        <div class="menu-row-link">
+          <div class="row-title">Conversor de Unidades</div>
+          <div class="row-desc">mcg, mg, g, UI, mEq, mmol</div>
+        </div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-unidades','Conversor de Unidades')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+      <div class="menu-row soon" data-key="calc-temperatura">
+        <div class="menu-row-link"><div class="row-title">Conversor de Temperatura</div></div>
+        <span class="status-pill soon">Em breve</span>
+        <button class="star-btn" onclick="toggleFavorite(event,'calc-temperatura','Conversor de Temperatura')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- FAVORITOS ----------
+  var FAV_KEY = 'farmapratica_favoritos';
+
+  var DEFAULT_FAVORITES = [
+    {key:'default-losartana', label:'Losartana'},
+    {key:'default-amoxicilina', label:'Amoxicilina'},
+    {key:'default-ibuprofeno', label:'Ibuprofeno'},
+    {key:'default-omeprazol', label:'Omeprazol'}
+  ];
+
+  function loadFavorites(){
+    try{
+      var raw = localStorage.getItem(FAV_KEY);
+      if(raw === null){
+        localStorage.setItem(FAV_KEY, JSON.stringify(DEFAULT_FAVORITES));
+        return DEFAULT_FAVORITES.slice();
+      }
+      return JSON.parse(raw);
+    }catch(e){
+      return DEFAULT_FAVORITES.slice();
+    }
+  }
+
+  function saveFavorites(arr){
+    try{ localStorage.setItem(FAV_KEY, JSON.stringify(arr)); }catch(e){}
+  }
+
+  function isFavorited(key){
+    return loadFavorites().some(function(f){ return f.key === key; });
+  }
+
+  function renderFavorites(){
+    var list = loadFavorites();
+    var container = document.getElementById('favoritos-list');
+    if(!list.length){
+      container.innerHTML = '<div class="fav-empty">Nenhum favorito ainda. Toque na estrela de qualquer item para adicioná-lo aqui.</div>';
+      return;
+    }
+    container.innerHTML = list.map(function(f){
+      return '<div class="fav-item" data-fav-key="'+f.key+'">'+f.label+
+        '<svg class="fav-remove" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" style="cursor:pointer" onclick="removeFavoriteFromPanel(\''+f.key+'\')"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg>'+
+      '</div>';
+    }).join('');
+  }
+
+  function removeFavoriteFromPanel(key){
+    var list = loadFavorites().filter(function(f){ return f.key !== key; });
+    saveFavorites(list);
+    renderFavorites();
+    syncAllStars();
+  }
+
+  function toggleFavorite(evt, key, label){
+    evt.stopPropagation();
+    var list = loadFavorites();
+    var idx = list.findIndex(function(f){ return f.key === key; });
+    if(idx >= 0){
+      list.splice(idx,1);
+    }else{
+      list.push({key:key, label:label});
+    }
+    saveFavorites(list);
+    renderFavorites();
+    syncAllStars();
+  }
+
+  function syncAllStars(){
+    document.querySelectorAll('.star-btn').forEach(function(btn){
+      var row = btn.closest('.menu-row');
+      if(!row) return;
+      var key = row.getAttribute('data-key');
+      btn.classList.toggle('faved', isFavorited(key));
+    });
+  }
+
+  // ---------- MENUS ----------
+  function openMenu(id){
+    document.getElementById(id).classList.add('open');
+    syncAllStars();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu(id){
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m){
+        closeMenu(m.id);
+      });
+    }
+  });
+
+  renderFavorites();
+  syncAllStars();
+</script>
+
 </body>
 </html>
