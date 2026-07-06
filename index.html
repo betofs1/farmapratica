@@ -44,6 +44,50 @@
     --shadow-md:0 2px 8px rgba(16,24,17,0.06);
   }
 
+  /* ---------- DARK THEME OVERRIDES ---------- */
+  body.dark{
+    --green-900:#eafff0;
+    --green-700:#4ade80;
+    --green-600:#22c55e;
+    --green-500:#34d399;
+    --green-100:#173828;
+    --green-50:#122019;
+    --ink:#eef4f0;
+    --gray-900:#eef4f0;
+    --gray-700:#c7d0cb;
+    --gray-500:#8a968f;
+    --gray-300:#3a4a42;
+    --gray-200:#2a3830;
+    --gray-100:#202b25;
+    --gray-50:#161f1a;
+    --blue-100:#1e3a5f;
+    --blue-600:#60a5fa;
+    --purple-100:#3b2e5c;
+    --purple-600:#c4b5fd;
+    --teal-100:#164e45;
+    --teal-600:#5eead4;
+    --orange-100:#4a2e12;
+    --orange-600:#fb923c;
+    --pink-100:#4a1d38;
+    --pink-600:#f472b6;
+    --lime-100:#2c3a14;
+    --lime-600:#a3e635;
+    --skyblue-100:#173347;
+    --skyblue-600:#38bdf8;
+    --white:#1c2622;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 4px 14px rgba(0,0,0,0.35);
+  }
+  body.dark{background:#0f1512;}
+  body.dark .promo-banner{background:linear-gradient(120deg,var(--green-50),#16241c);border-color:var(--green-100);}
+  body.dark .modal-overlay{background:rgba(0,0,0,0.6);}
+  body.dark .tag-new{background:#123d24;color:#4ade80;}
+  body.dark .tag-update{background:#1e3a5f;color:#60a5fa;}
+  body.dark .tag-alert{background:#4a2e12;color:#fbbf24;}
+  body.dark .kbd{background:var(--gray-100);border-color:var(--gray-300);}
+  body.dark .star-btn.faved{color:#fbbf24;}
+  body.dark .star-btn.faved svg{fill:#fbbf24;}
+
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -51,6 +95,7 @@
     background:var(--gray-50);
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
+    transition:background-color .2s ease, color .2s ease;
   }
   a{text-decoration:none;color:inherit;}
   button{font-family:inherit;}
@@ -161,6 +206,18 @@
     font-size:13px;font-weight:700;
   }
   .avatar-wrap{display:flex;align-items:center;gap:6px;cursor:pointer;}
+  .theme-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;border-radius:10px;
+    border:1px solid var(--gray-200);background:var(--white);
+    color:var(--gray-700);cursor:pointer;flex:none;
+    transition:background-color .15s ease,border-color .15s ease;
+  }
+  .theme-toggle:hover{background:var(--gray-100);}
+  .theme-toggle svg{width:18px;height:18px;}
+  .theme-toggle .icon-moon{display:none;}
+  body.dark .theme-toggle .icon-sun{display:none;}
+  body.dark .theme-toggle .icon-moon{display:block;}
 
   /* ---------- CONTENT ---------- */
   .content{
@@ -496,6 +553,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           Histórico
         </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
         <div class="avatar-wrap">
           <div class="avatar">FS</div>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -1033,6 +1094,12 @@
       });
     }
   });
+
+  // ---------- TEMA ----------
+  // Padrão inicial sempre claro; a escolha vale apenas para a sessão atual.
+  function toggleTheme(){
+    document.body.classList.toggle('dark');
+  }
 
   renderFavorites();
   syncAllStars();
