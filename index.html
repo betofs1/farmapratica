@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FarmaPrática </title>
+<title>FarmaPrática — A plataforma completa para o farmacêutico comunitário</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -44,7 +44,7 @@
     --shadow-md:0 2px 8px rgba(16,24,17,0.06);
   }
 
-  /* ---------- DARK THEME OVERRIDES ---------- */
+  /* ---------- DARK THEME OVERRIDES (padrão inicial) ---------- */
   body.dark{
     --green-900:#eafff0;
     --green-700:#4ade80;
@@ -80,13 +80,14 @@
   }
   body.dark{background:#0f1512;}
   body.dark .promo-banner{background:linear-gradient(120deg,var(--green-50),#16241c);border-color:var(--green-100);}
-  body.dark .modal-overlay{background:rgba(0,0,0,0.6);}
+  body.dark .flyout-backdrop{background:transparent;}
   body.dark .tag-new{background:#123d24;color:#4ade80;}
   body.dark .tag-update{background:#1e3a5f;color:#60a5fa;}
   body.dark .tag-alert{background:#4a2e12;color:#fbbf24;}
   body.dark .kbd{background:var(--gray-100);border-color:var(--gray-300);}
   body.dark .star-btn.faved{color:#fbbf24;}
   body.dark .star-btn.faved svg{fill:#fbbf24;}
+  body.dark .shortcut-card.unavailable{background:var(--gray-50);}
 
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -153,6 +154,7 @@
     color:var(--green-700);
     font-weight:600;
   }
+  .nav-item.open-flyout{background:var(--green-100);color:var(--green-700);font-weight:600;}
   .nav-item svg{flex:none;width:19px;height:19px;}
   .nav-divider{height:1px;background:var(--gray-200);margin:16px 4px;}
   .sidebar-bottom{display:flex;flex-direction:column;gap:2px;}
@@ -240,7 +242,7 @@
     grid-template-columns:repeat(3,1fr);
     gap:18px;
   }
-  .feature-card{
+  .shortcut-card{
     background:var(--white);
     border:1px solid var(--gray-200);
     border-radius:var(--radius-lg);
@@ -249,23 +251,34 @@
     box-shadow:var(--shadow-sm);
     transition:box-shadow .15s ease,transform .15s ease;
     cursor:pointer;
+    position:relative;
   }
-  .feature-card:hover{
+  .shortcut-card:hover{
     box-shadow:var(--shadow-md);
     transform:translateY(-1px);
     border-color:var(--gray-300);
   }
+  .shortcut-card.unavailable{cursor:default;}
+  .shortcut-card.unavailable:hover{
+    box-shadow:var(--shadow-sm);transform:none;border-color:var(--gray-200);
+  }
+  .shortcut-card.unavailable .icon-badge{opacity:.65;}
+  .shortcut-card.unavailable h3{color:var(--gray-500);}
+  .shortcut-top{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    margin-bottom:14px;
+  }
   .icon-badge{
     width:52px;height:52px;border-radius:14px;
     display:flex;align-items:center;justify-content:center;
-    margin-bottom:14px;
+    flex:none;
   }
   .icon-badge svg{width:26px;height:26px;}
-  .feature-card h3{
+  .shortcut-card h3{
     font-size:16.5px;font-weight:700;margin:0 0 8px;color:var(--ink);
     line-height:1.3;
   }
-  .feature-card p{
+  .shortcut-card p{
     font-size:13.5px;color:var(--gray-500);line-height:1.55;
     margin:0 0 16px;flex:1;
   }
@@ -363,62 +376,71 @@
   .fav-label:hover{color:var(--green-700);background:var(--green-50);}
   .fav-label-disabled{color:var(--gray-500);cursor:default;}
   .fav-label-disabled:hover{color:var(--gray-500);background:none;}
+  .fav-empty{font-size:13px;color:var(--gray-500);padding:6px 2px;}
 
-  /* ---------- MENU MODAL ---------- */
-  .modal-overlay{
+  /* ---------- FLYOUT (menu lateral) ---------- */
+  .flyout-backdrop{
     position:fixed;inset:0;
-    background:rgba(15,25,20,0.45);
+    background:transparent;
     display:none;
-    align-items:flex-start;justify-content:center;
-    padding:8vh 20px;
-    z-index:50;
+    z-index:45;
   }
-  .modal-overlay.open{display:flex;}
-  .menu-modal{
+  .flyout-backdrop.open{display:block;}
+  .flyout{
+    position:fixed;
+    width:390px;
+    max-width:calc(100vw - 32px);
     background:var(--white);
+    border:1px solid var(--gray-200);
     border-radius:var(--radius-lg);
-    width:100%;max-width:460px;
-    box-shadow:0 20px 50px rgba(15,25,20,0.25);
+    box-shadow:0 24px 55px rgba(0,0,0,0.28);
+    z-index:50;
+    opacity:0;
+    transform:translateX(-10px);
+    pointer-events:none;
+    transition:opacity .16s ease, transform .16s ease;
     overflow:hidden;
-    animation:menuIn .15s ease;
+    display:flex;flex-direction:column;
   }
-  @keyframes menuIn{
-    from{opacity:0;transform:translateY(-6px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .menu-modal-head{
+  .flyout.open{opacity:1;transform:translateX(0);pointer-events:auto;}
+  .flyout-head{
     display:flex;align-items:center;justify-content:space-between;
-    padding:18px 20px;
+    padding:16px 18px;
     border-bottom:1px solid var(--gray-200);
+    flex:none;
   }
-  .menu-modal-head h4{margin:0;font-size:16px;font-weight:700;color:var(--ink);}
-  .menu-close{
-    width:28px;height:28px;border-radius:50%;
+  .flyout-head h4{margin:0;font-size:15.5px;font-weight:700;color:var(--ink);}
+  .flyout-close{
+    width:26px;height:26px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     background:var(--gray-100);color:var(--gray-500);
     border:none;cursor:pointer;flex:none;
   }
-  .menu-close:hover{background:var(--gray-200);}
-  .menu-list{
-    max-height:60vh;overflow-y:auto;
-    padding:8px 0;
+  .flyout-close:hover{background:var(--gray-200);}
+  .flyout-list{
+    overflow-y:auto;
+    padding:6px 0;
+  }
+  .flyout-info{
+    padding:18px 20px;
+    font-size:13.5px;color:var(--gray-700);line-height:1.65;
   }
   .menu-row{
-    display:flex;align-items:center;gap:10px;
-    padding:11px 20px;
+    display:flex;align-items:center;gap:8px;
+    padding:10px 18px;
   }
   .menu-row-link{
     flex:1;min-width:0;
     display:flex;align-items:center;gap:10px;
-    font-size:14px;font-weight:500;
+    font-size:13.5px;font-weight:500;
     border-radius:8px;padding:4px 6px;margin:-4px -6px;
   }
   .menu-row.available .menu-row-link{color:var(--ink);cursor:pointer;}
   .menu-row.available .menu-row-link:hover{background:var(--green-50);}
   .menu-row.soon .menu-row-link{color:#9ca3af;cursor:default;}
   .status-pill{
-    font-size:10.5px;font-weight:700;letter-spacing:.02em;
-    padding:3px 9px;border-radius:20px;flex:none;white-space:nowrap;
+    font-size:10px;font-weight:700;letter-spacing:.02em;
+    padding:3px 8px;border-radius:20px;flex:none;white-space:nowrap;
   }
   .status-pill.available{background:var(--green-100);color:var(--green-700);}
   .status-pill.soon{background:var(--gray-100);color:var(--gray-500);}
@@ -428,13 +450,12 @@
     cursor:pointer;color:var(--gray-300);border-radius:6px;
   }
   .star-btn:hover{background:var(--gray-100);}
-  .star-btn svg{width:17px;height:17px;}
+  .star-btn svg{width:16px;height:16px;}
   .star-btn.faved{color:#f59e0b;}
   .star-btn.faved svg{fill:#f59e0b;}
   .row-title{font-size:13.5px;font-weight:600;line-height:1.3;}
-  .row-desc{font-size:11.5px;color:var(--gray-500);line-height:1.4;margin-top:2px;}
+  .row-desc{font-size:11px;color:var(--gray-500);line-height:1.4;margin-top:2px;}
   .menu-row.soon .row-title{color:#9ca3af;}
-  .fav-empty{font-size:13px;color:var(--gray-500);padding:6px 2px;}
 
   footer.app-footer{
     display:flex;align-items:center;justify-content:space-between;
@@ -457,10 +478,11 @@
   @media (max-width:600px){
     .card-grid{grid-template-columns:1fr;}
     .topbar{flex-wrap:wrap;}
+    .flyout{left:16px !important;right:16px;width:auto;}
   }
 </style>
 </head>
-<body>
+<body class="dark">
 <div class="app">
 
   <!-- ===================== SIDEBAR ===================== -->
@@ -476,48 +498,48 @@
         </div>
       </div>
 
-      <nav class="primary-nav">
+      <nav class="primary-nav" id="primary-nav">
         <div class="nav-item active">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7"/><path d="M5 9v11h14V9"/></svg>
           Início
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="consulta-rapida" onclick="openCategoryMenu('consulta-rapida', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
           Consulta Rápida
         </div>
-        <div class="nav-item" onclick="openMenu('menu-medicamentos')">
+        <div class="nav-item" data-menu="medicamentos" onclick="openCategoryMenu('medicamentos', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="8" rx="3" transform="rotate(-45 12 12)"/><path d="M9 15l6-6" stroke-width="2"/></svg>
           Medicamentos
         </div>
-        <div class="nav-item" onclick="openMenu('menu-atendimento')">
+        <div class="nav-item" data-menu="atendimento" onclick="openCategoryMenu('atendimento', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/></svg>
           Atendimento Farmacêutico
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="prescricoes" onclick="openCategoryMenu('prescricoes', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12l1.8 1.8L15 10" /></svg>
-          Prescrições
+          Prescrições e Rotina
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="exames" onclick="openCategoryMenu('exames', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/></svg>
           Exames Laboratoriais
         </div>
-        <div class="nav-item" onclick="openMenu('menu-calculadoras')">
+        <div class="nav-item" data-menu="calculadoras" onclick="openCategoryMenu('calculadoras', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
           Calculadoras Clínicas
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="servicos" onclick="openCategoryMenu('servicos', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2Z"/><path d="M5 16l.8 2.2L8 19l-2.2.8L5 22l-.8-2.2L2 19l2.2-.8L5 16Z"/></svg>
           Serviços Farmacêuticos
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="fitoterapia" onclick="openCategoryMenu('fitoterapia', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.2-2.7 0-6 3-6.8C8.4 4.6 11 6 12 8c1-2 3.6-3.4 6-2.8 3 .8 4.2 4.1 3 6.8-2 4.5-9 9-9 9Z"/></svg>
           Fitoterapia e Suplementos
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="referencias" onclick="openCategoryMenu('referencias', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5c3-1.2 6-1.2 8 0v14c-2-1.2-5-1.2-8 0V5Z"/><path d="M20 5c-3-1.2-6-1.2-8 0v14c2-1.2 5-1.2 8 0V5Z"/></svg>
           Referências Farmacêuticas
         </div>
-        <div class="nav-item">
+        <div class="nav-item" data-menu="assistente-ia" onclick="openCategoryMenu('assistente-ia', this)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
           Assistente Farmacêutico (IA)
         </div>
@@ -570,89 +592,8 @@
         <h1 class="page-title">Olá, Farmacêutico!</h1>
         <p class="page-sub">Como podemos te ajudar hoje?</p>
 
-        <section class="card-grid">
-
-          <div class="feature-card" onclick="openMenu('menu-medicamentos')">
-            <div class="icon-badge bg-green">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="8" rx="4" transform="rotate(-25 12 13)"/><path d="M9 14l4-4" stroke-width="1.8"/></svg>
-            </div>
-            <h3>Medicamentos</h3>
-            <p>Bulários, interações, administração, conservação, classes, equivalências e muito mais.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card" onclick="openMenu('menu-atendimento')">
-            <div class="icon-badge bg-teal">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/><path d="M17 3l1.3 1.3M18.3 3L17 4.3"/></svg>
-            </div>
-            <h3>Atendimento Farmacêutico</h3>
-            <p>Indicações, protocolos, MIPs, fluxogramas, sinais de alerta e encaminhamento.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-purple">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12.5l1.8 1.8L15 10"/></svg>
-            </div>
-            <h3>Prescrições</h3>
-            <p>Validação de receitas, receitas digitais, controle especial, legislação e regras de dispensação.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-blue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 2h6M10 2v6.5L4.8 17a2 2 0 0 0 1.7 3h10.9a2 2 0 0 0 1.8-3L14 8.5V2"/><path d="M8 14h8"/></svg>
-            </div>
-            <h3>Exames Laboratoriais</h3>
-            <p>Interpretação, valores de referência, interferências, exames por patologia e muito mais.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card" onclick="openMenu('menu-calculadoras')">
-            <div class="icon-badge bg-orange">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7.5h8M8 12h2.2M13.5 12h2.5M8 16h2.2M13.5 16h2.5"/></svg>
-            </div>
-            <h3>Calculadoras Clínicas</h3>
-            <p>Pediatria, IMC, clearance, conversores, diluições e outras ferramentas.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-pink">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l1 5 4-2-1 5 5 1-3 4 3 4-5 1 1 5-4-2-1 5-1-5-4 2 1-5-5-1 3-4-3-4 5-1-1-5 4 2 1-5Z" opacity="0"/><path d="M14.5 3.5l-6 6M9 6.5L15 12M6 15l6 6"/><circle cx="17" cy="5" r="2"/><circle cx="6" cy="15.5" r="2"/></svg>
-            </div>
-            <h3>Serviços Farmacêuticos</h3>
-            <p>Vacinas, injetáveis, aferições, consultório farmacêutico e farmacovigilância.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-lime">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9-9c-1.1-2.7 0-6 3-6.8C8.4 4.6 11 6 12 8c1-2 3.6-3.4 6-2.8 3 .8 4.1 4.1 3 6.8-2 4.5-9 9-9 9Z"/></svg>
-            </div>
-            <h3>Fitoterapia e Suplementos</h3>
-            <p>Fitoterápicos, vitaminas, minerais, suplementos, interações e evidências.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-blue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c3-1.2 6-1.2 8 0v14c-2-1.2-5-1.2-8 0V5Z"/><path d="M20 5c-3-1.2-6-1.2-8 0v14c2-1.2 5-1.2 8 0V5Z"/></svg>
-            </div>
-            <h3>Referências Farmacêuticas</h3>
-            <p>Dicionário, siglas, formas farmacêuticas, abreviações e termos farmacológicos.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
-          <div class="feature-card">
-            <div class="icon-badge bg-skyblue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <h3>Assistente Farmacêutico (IA)</h3>
-            <p>Tire dúvidas, analise casos, verifique interações e receba orientações com IA.</p>
-            <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          </div>
-
+        <section class="card-grid" id="shortcut-grid">
+          <!-- gerado via JS a partir de SHORTCUTS -->
         </section>
 
         <div class="promo-banner">
@@ -730,273 +671,214 @@
   </div>
 </div>
 
-<!-- ===================== MENU MODAIS ===================== -->
-
-<!-- MEDICAMENTOS -->
-<div class="modal-overlay" id="menu-medicamentos" onclick="if(event.target===this)closeMenu('menu-medicamentos')">
-  <div class="menu-modal">
-    <div class="menu-modal-head">
-      <h4>Medicamentos</h4>
-      <button class="menu-close" onclick="closeMenu('menu-medicamentos')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="menu-list">
-
-      <div class="menu-row soon" data-key="med-bulario">
-        <div class="menu-row-link">
-          <div class="row-title">Bulário Completo</div>
-          <div class="row-desc">Posologia, indicações, contraindicações, ajuste renal/hepático, gravidez, lactação</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-bulario','Bulário Completo','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row available" data-key="med-intercambiaveis">
-        <a class="menu-row-link" href="https://betofs1.github.io/medinter/" target="_blank" rel="noopener">
-          <div class="row-title">Medicamentos Intercambiáveis</div>
-        </a>
-        <span class="status-pill available">Disponível</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-intercambiaveis','Medicamentos Intercambiáveis','https://betofs1.github.io/medinter/')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-interacoes">
-        <div class="menu-row-link">
-          <div class="row-title">Interações Medicamentosas e Alimentos</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-interacoes','Interações Medicamentosas e Alimentos','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-administracao">
-        <div class="menu-row-link">
-          <div class="row-title">Guia de Administração</div>
-          <div class="row-desc">Com alimento, jejum, pode triturar, sonda, reconstituição</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-administracao','Guia de Administração','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-conservacao">
-        <div class="menu-row-link">
-          <div class="row-title">Conservação e Estabilidade</div>
-          <div class="row-desc">Temperatura, validade após aberto/reconstituição, transporte</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-conservacao','Conservação e Estabilidade','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-fotossensibilidade">
-        <div class="menu-row-link">
-          <div class="row-title">Fotossensibilidade</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-fotossensibilidade','Fotossensibilidade','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-fracionamento">
-        <div class="menu-row-link">
-          <div class="row-title">Fracionamento de Medicamentos</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-fracionamento','Fracionamento de Medicamentos','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-disponibilidade">
-        <div class="menu-row-link">
-          <div class="row-title">Disponibilidade Comercial</div>
-          <div class="row-desc">Desabastecimento, alternativas terapêuticas, descontinuação</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-disponibilidade','Disponibilidade Comercial','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-receita">
-        <div class="menu-row-link">
-          <div class="row-title">Medicamentos que Exigem Receita</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-receita','Medicamentos que Exigem Receita','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-classes">
-        <div class="menu-row-link">
-          <div class="row-title">Classes Terapêuticas</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-classes','Classes Terapêuticas','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-equivalencia">
-        <div class="menu-row-link">
-          <div class="row-title">Equivalência Terapêutica</div>
-          <div class="row-desc">Corticoides, IBPs e outros</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-equivalencia','Equivalência Terapêutica','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-antimicrobianos">
-        <div class="menu-row-link">
-          <div class="row-title">Antimicrobianos</div>
-          <div class="row-desc">Espectro, ajustes, interações</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-antimicrobianos','Antimicrobianos','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="med-gravidez">
-        <div class="menu-row-link">
-          <div class="row-title">Gravidez e Lactação</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'med-gravidez','Gravidez e Lactação','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-    </div>
+<!-- ===================== FLYOUT (menu lateral) ===================== -->
+<div class="flyout-backdrop" id="flyout-backdrop" onclick="closeFlyout()"></div>
+<div class="flyout" id="flyout">
+  <div class="flyout-head">
+    <h4 id="flyout-title"></h4>
+    <button class="flyout-close" onclick="closeFlyout()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
   </div>
-</div>
-
-<!-- ATENDIMENTO FARMACÊUTICO -->
-<div class="modal-overlay" id="menu-atendimento" onclick="if(event.target===this)closeMenu('menu-atendimento')">
-  <div class="menu-modal">
-    <div class="menu-modal-head">
-      <h4>Atendimento Farmacêutico</h4>
-      <button class="menu-close" onclick="closeMenu('menu-atendimento')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="menu-list">
-
-      <div class="menu-row available" data-key="at-indicacoes">
-        <a class="menu-row-link" href="https://betofs1.github.io/farmadesk/" target="_blank" rel="noopener">
-          <div class="row-title">Indicações Farmacêuticas</div>
-        </a>
-        <span class="status-pill available">Disponível</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-indicacoes','Indicações Farmacêuticas','https://betofs1.github.io/farmadesk/')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-inteligente">
-        <div class="menu-row-link"><div class="row-title">Atendimento Inteligente</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-inteligente','Atendimento Inteligente','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-fluxogramas">
-        <div class="menu-row-link"><div class="row-title">Fluxogramas Clínicos</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-fluxogramas','Fluxogramas Clínicos','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-protocolos">
-        <div class="menu-row-link"><div class="row-title">Protocolos de Balcão</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-protocolos','Protocolos de Balcão','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-mips">
-        <div class="menu-row-link"><div class="row-title">MIPs por Sintoma</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-mips','MIPs por Sintoma','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-redflags">
-        <div class="menu-row-link"><div class="row-title">Sinais de Alerta (Red Flags)</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-redflags','Sinais de Alerta (Red Flags)','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-naofarmacologicas">
-        <div class="menu-row-link"><div class="row-title">Orientações Não Farmacológicas</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-naofarmacologicas','Orientações Não Farmacológicas','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="at-encaminhamento">
-        <div class="menu-row-link"><div class="row-title">Critérios de Encaminhamento</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'at-encaminhamento','Critérios de Encaminhamento','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- CALCULADORAS CLÍNICAS -->
-<div class="modal-overlay" id="menu-calculadoras" onclick="if(event.target===this)closeMenu('menu-calculadoras')">
-  <div class="menu-modal">
-    <div class="menu-modal-head">
-      <h4>Calculadoras Clínicas</h4>
-      <button class="menu-close" onclick="closeMenu('menu-calculadoras')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="menu-list">
-
-      <div class="menu-row available" data-key="calc-pediatrica">
-        <a class="menu-row-link" href="https://betofs1.github.io/dosespediatricas/" target="_blank" rel="noopener">
-          <div class="row-title">Calculadora Pediátrica</div>
-        </a>
-        <span class="status-pill available">Disponível</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-pediatrica','Calculadora Pediátrica','https://betofs1.github.io/dosespediatricas/')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-imc">
-        <div class="menu-row-link"><div class="row-title">IMC</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-imc','IMC','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-cockcroft">
-        <div class="menu-row-link"><div class="row-title">Cockcroft-Gault</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-cockcroft','Cockcroft-Gault','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-egfr">
-        <div class="menu-row-link"><div class="row-title">eGFR</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-egfr','eGFR','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-mgml">
-        <div class="menu-row-link"><div class="row-title">Conversor mg ↔ mL</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-mgml','Conversor mg ↔ mL','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-gotasml">
-        <div class="menu-row-link"><div class="row-title">Conversor Gotas ↔ mL</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-gotasml','Conversor Gotas ↔ mL','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-uiml">
-        <div class="menu-row-link"><div class="row-title">Conversor UI ↔ mL (Insulinas)</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-uiml','Conversor UI ↔ mL (Insulinas)','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-unidades">
-        <div class="menu-row-link">
-          <div class="row-title">Conversor de Unidades</div>
-          <div class="row-desc">mcg, mg, g, UI, mEq, mmol</div>
-        </div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-unidades','Conversor de Unidades','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-      <div class="menu-row soon" data-key="calc-temperatura">
-        <div class="menu-row-link"><div class="row-title">Conversor de Temperatura</div></div>
-        <span class="status-pill soon">Em breve</span>
-        <button class="star-btn" onclick="toggleFavorite(event,'calc-temperatura','Conversor de Temperatura','')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></button>
-      </div>
-
-    </div>
-  </div>
+  <div id="flyout-content"></div>
 </div>
 
 <script>
+  var STAR_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg>';
+
+  // ---------- DADOS DOS MENUS (sidebar / flyout) ----------
+  var MENUS = {
+    'consulta-rapida': {
+      title: 'Consulta Rápida',
+      type: 'info',
+      text: 'Hub central da plataforma. Pesquisa unificada por medicamento, princípio ativo, sintoma ou patologia, reunindo em uma única tela: bulário, intercambiáveis, interações, classe terapêutica, tipo de receita, conservação, administração, ajuste renal/hepático, gravidez, lactação, apresentações comerciais, exames relacionados, calculadoras e links para todos os demais módulos.'
+    },
+    medicamentos: {
+      title: 'Medicamentos',
+      type: 'list',
+      items: [
+        {key:'med-bulario', label:'Bulário Completo', desc:'Posologia, indicações, contraindicações, ajuste renal/hepático, gravidez, lactação'},
+        {key:'med-intercambiaveis', label:'Medicamentos Intercambiáveis', href:'https://betofs1.github.io/medinter/'},
+        {key:'med-interacoes', label:'Interações Medicamentosas e Alimentos'},
+        {key:'med-administracao', label:'Guia de Administração', desc:'Com alimento, jejum, pode triturar, sonda, reconstituição'},
+        {key:'med-conservacao', label:'Conservação e Estabilidade', desc:'Temperatura, validade após aberto/reconstituição, transporte'},
+        {key:'med-fotossensibilidade', label:'Fotossensibilidade'},
+        {key:'med-fracionamento', label:'Fracionamento de Medicamentos'},
+        {key:'med-disponibilidade', label:'Disponibilidade Comercial', desc:'Desabastecimento, alternativas terapêuticas, descontinuação'},
+        {key:'med-receita', label:'Medicamentos que Exigem Receita'},
+        {key:'med-classes', label:'Classes Terapêuticas'},
+        {key:'med-equivalencia', label:'Equivalência Terapêutica', desc:'Corticoides, IBPs e outros'},
+        {key:'med-antimicrobianos', label:'Antimicrobianos', desc:'Espectro, ajustes, interações'},
+        {key:'med-gravidez', label:'Gravidez e Lactação'}
+      ]
+    },
+    atendimento: {
+      title: 'Atendimento Farmacêutico',
+      type: 'list',
+      items: [
+        {key:'at-indicacoes', label:'Indicações Farmacêuticas', href:'https://betofs1.github.io/farmadesk/'},
+        {key:'at-inteligente', label:'Atendimento Inteligente'},
+        {key:'at-fluxogramas', label:'Fluxogramas Clínicos'},
+        {key:'at-protocolos', label:'Protocolos de Balcão'},
+        {key:'at-mips', label:'MIPs por Sintoma'},
+        {key:'at-redflags', label:'Sinais de Alerta (Red Flags)'},
+        {key:'at-naofarmacologicas', label:'Orientações Não Farmacológicas'},
+        {key:'at-encaminhamento', label:'Critérios de Encaminhamento'}
+      ]
+    },
+    prescricoes: {
+      title: 'Prescrições e Rotina',
+      type: 'list',
+      items: [
+        {key:'presc-validador', label:'Validador de Receitas', desc:'Simulação realista'},
+        {key:'presc-digitais', label:'Receitas Digitais', desc:'ICP-Brasil, Gov.br, QR Code'},
+        {key:'presc-controle', label:'Receitas de Controle Especial'},
+        {key:'presc-consulta', label:'Consulta por Medicamento', desc:'Tipo de receita, validade, retenção, quantidade máxima'},
+        {key:'presc-antimicrobianos', label:'Antimicrobianos', desc:'Regras de dispensação'},
+        {key:'presc-legislacao', label:'Legislação Sanitária'},
+        {key:'presc-checklist', label:'Checklist de Rotina em Drogarias/Farmácias'}
+      ]
+    },
+    exames: {
+      title: 'Exames Laboratoriais',
+      type: 'list',
+      items: [
+        {key:'exam-interpretacao', label:'Interpretação de Exames'},
+        {key:'exam-referencia', label:'Valores de Referência'},
+        {key:'exam-patologia', label:'Exames por Patologia'},
+        {key:'exam-interferencia', label:'Interferência Medicamento × Exame'},
+        {key:'exam-acompanhamento', label:'Exames Relacionados ao Acompanhamento Farmacoterapêutico'}
+      ]
+    },
+    calculadoras: {
+      title: 'Calculadoras Clínicas',
+      type: 'list',
+      items: [
+        {key:'calc-pediatrica', label:'Calculadora Pediátrica', href:'https://betofs1.github.io/dosespediatricas/'},
+        {key:'calc-imc', label:'IMC'},
+        {key:'calc-cockcroft', label:'Cockcroft-Gault'},
+        {key:'calc-egfr', label:'eGFR'},
+        {key:'calc-mgml', label:'Conversor mg ↔ mL'},
+        {key:'calc-gotasml', label:'Conversor Gotas ↔ mL'},
+        {key:'calc-uiml', label:'Conversor UI ↔ mL (Insulinas)'},
+        {key:'calc-unidades', label:'Conversor de Unidades', desc:'mcg, mg, g, UI, mEq, mmol'},
+        {key:'calc-temperatura', label:'Conversor de Temperatura'}
+      ]
+    },
+    servicos: {
+      title: 'Serviços Farmacêuticos',
+      type: 'list',
+      items: [
+        {key:'serv-vacinacao', label:'Vacinação'},
+        {key:'serv-injetaveis', label:'Aplicação de Injetáveis'},
+        {key:'serv-afericoes', label:'Aferições', desc:'PA, glicemia, saturação, temperatura etc.'},
+        {key:'serv-consultorio', label:'Consultório Farmacêutico'},
+        {key:'serv-farmacovigilancia', label:'Farmacovigilância'}
+      ]
+    },
+    fitoterapia: {
+      title: 'Fitoterapia e Suplementos',
+      type: 'list',
+      items: [
+        {key:'fito-fitoterapicos', label:'Fitoterápicos'},
+        {key:'fito-vitaminas', label:'Vitaminas'},
+        {key:'fito-minerais', label:'Minerais'},
+        {key:'fito-suplementos', label:'Suplementos Alimentares'},
+        {key:'fito-interacoes', label:'Interações Fitoterápico × Medicamento'},
+        {key:'fito-evidencias', label:'Evidências Científicas'}
+      ]
+    },
+    referencias: {
+      title: 'Referências Farmacêuticas',
+      type: 'list',
+      items: [
+        {key:'ref-dicionario', label:'Dicionário Farmacêutico'},
+        {key:'ref-siglas', label:'Siglas Médicas e Laboratoriais'},
+        {key:'ref-formas', label:'Formas Farmacêuticas'},
+        {key:'ref-abreviacoes', label:'Abreviações em Prescrições'},
+        {key:'ref-glossario', label:'Glossário de Termos Farmacológicos'}
+      ]
+    },
+    'assistente-ia': {
+      title: 'Assistente Farmacêutico (IA)',
+      type: 'info',
+      text: 'Assistente especializado em Farmácia Comunitária. Responde dúvidas utilizando exclusivamente a base de conhecimento da plataforma. Auxilia na indicação farmacêutica, interpretação de receitas, análise de interações, atendimento de pacientes, protocolos clínicos, MIPs, exames laboratoriais, cálculos farmacêuticos, serviços farmacêuticos e legislação sanitária, sempre apresentando a fundamentação utilizada.'
+    }
+  };
+
+  // ---------- DADOS DOS 9 ATALHOS CENTRAIS ----------
+  var SHORTCUTS = [
+    {
+      label:'Medicamentos Intercambiáveis', color:'green', href:'https://betofs1.github.io/medinter/',
+      desc:'Consulta rápida de equivalência terapêutica e comercial, com base na tabela CMED/ANVISA.',
+      icon:'<rect x="3" y="9" width="18" height="8" rx="4" transform="rotate(-25 12 13)"/><path d="M9 14l4-4" stroke-width="1.8"/>'
+    },
+    {
+      label:'Indicação Farmacêutica', color:'teal', href:'https://betofs1.github.io/farmadesk/',
+      desc:'Guia de dispensação para MIPs, com condições, sinais de alerta e encaminhamento.',
+      icon:'<circle cx="12" cy="8" r="3.3"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/><path d="M17 3l1.3 1.3M18.3 3L17 4.3"/>'
+    },
+    {
+      label:'Calculadora Pediátrica', color:'orange', href:'https://betofs1.github.io/dosespediatricas/',
+      desc:'Cálculo de doses pediátricas por peso e idade, com múltiplas formulações.',
+      icon:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7.5h8M8 12h2.2M13.5 12h2.5M8 16h2.2M13.5 16h2.5"/>'
+    },
+    {
+      label:'Bulário', color:'blue', construction:true,
+      desc:'Posologia, indicações, contraindicações, ajuste renal/hepático, gravidez e lactação.',
+      icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>'
+    },
+    {
+      label:'Validador de Receitas', color:'purple', construction:true,
+      desc:'Simulação realista de validação de receituário: tipo, validade, retenção e mais.',
+      icon:'<path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M9 12.5l1.8 1.8L15 10"/>'
+    },
+    {
+      label:'Consulta por Medicamento', color:'pink', construction:true,
+      desc:'Tipo de receita, validade, retenção, quantidade máxima e controle especial.',
+      icon:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'
+    },
+    {
+      label:'Assistente Farmacêutico (IA)', color:'skyblue', construction:true,
+      desc:'Tire dúvidas com base exclusiva no conteúdo científico da plataforma.',
+      icon:'<rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.1" fill="currentColor" stroke="none"/>'
+    },
+    {
+      label:'Guia de Administração', color:'lime', construction:true,
+      desc:'Com alimento, jejum, pode triturar, sonda, reconstituição.',
+      icon:'<path d="M9 2h6M10 2v6.5L4.8 17a2 2 0 0 0 1.7 3h10.9a2 2 0 0 0 1.8-3L14 8.5V2"/><path d="M8 14h8"/>'
+    },
+    {
+      label:'Checklist de Rotina', color:'teal', construction:true,
+      desc:'Rotina de conferência em drogarias e farmácias comunitárias.',
+      icon:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8l2 2 4-4" stroke-width="1.8"/><path d="M8 15h8"/>'
+    }
+  ];
+
+  var ARROW_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  function renderShortcuts(){
+    var grid = document.getElementById('shortcut-grid');
+    grid.innerHTML = SHORTCUTS.map(function(s){
+      var available = !s.construction;
+      var cls = 'shortcut-card' + (available ? '' : ' unavailable');
+      var attrs = available ? ' onclick="window.open(\''+s.href+'\',\'_blank\')"' : '';
+      var pill = available
+        ? '<span class="status-pill available">Disponível</span>'
+        : '<span class="status-pill soon">Em construção</span>';
+      var arrow = available ? '<div class="card-arrow">'+ARROW_SVG+'</div>' : '';
+      return '<div class="'+cls+'"'+attrs+'>'+
+        '<div class="shortcut-top">'+
+          '<div class="icon-badge bg-'+s.color+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+s.icon+'</svg></div>'+
+          pill+
+        '</div>'+
+        '<h3>'+s.label+'</h3>'+
+        '<p>'+s.desc+'</p>'+
+        arrow+
+      '</div>';
+    }).join('');
+  }
+
   // ---------- FAVORITOS ----------
   var FAV_KEY = 'farmapratica_favoritos';
 
@@ -1075,32 +957,103 @@
     });
   }
 
-  // ---------- MENUS ----------
-  function openMenu(id){
-    document.getElementById(id).classList.add('open');
-    syncAllStars();
-    document.body.style.overflow = 'hidden';
+  // ---------- FLYOUT (menu lateral, ao lado do item clicado) ----------
+  var currentNavEl = null;
+
+  function renderFlyoutContent(data){
+    document.getElementById('flyout-title').textContent = data.title;
+    var body = document.getElementById('flyout-content');
+    if(data.type === 'info'){
+      body.innerHTML = '<div class="flyout-info">'+data.text+'</div>';
+      return;
+    }
+    body.className = 'flyout-list';
+    body.innerHTML = data.items.map(function(item){
+      var available = !!item.href;
+      var rowCls = 'menu-row ' + (available ? 'available' : 'soon');
+      var linkOpen = available
+        ? '<a class="menu-row-link" href="'+item.href+'" target="_blank" rel="noopener">'
+        : '<div class="menu-row-link">';
+      var linkClose = available ? '</a>' : '</div>';
+      var descHtml = item.desc ? '<div class="row-desc">'+item.desc+'</div>' : '';
+      var pill = available
+        ? '<span class="status-pill available">Disponível</span>'
+        : '<span class="status-pill soon">Em breve</span>';
+      return '<div class="'+rowCls+'" data-key="'+item.key+'">'+
+        linkOpen+'<div class="row-title">'+item.label+'</div>'+descHtml+linkClose+
+        pill+
+        '<button class="star-btn" onclick="toggleFavorite(event,\''+item.key+'\',\''+item.label.replace(/'/g,"\\'")+'\',\''+(item.href||'')+'\')">'+STAR_SVG+'</button>'+
+      '</div>';
+    }).join('');
   }
 
-  function closeMenu(id){
-    document.getElementById(id).classList.remove('open');
-    document.body.style.overflow = '';
+  function positionFlyout(navEl){
+    var flyout = document.getElementById('flyout');
+    var rect = navEl.getBoundingClientRect();
+    var gap = 10;
+    var left = rect.right + gap;
+    flyout.style.left = left + 'px';
+    flyout.style.right = 'auto';
+
+    // mede altura após render, então ajusta top para não estourar a viewport
+    requestAnimationFrame(function(){
+      var flyoutHeight = flyout.offsetHeight;
+      var maxTop = window.innerHeight - flyoutHeight - 16;
+      var top = Math.min(rect.top, Math.max(16, maxTop));
+      if(maxTop < 16){ top = 16; }
+      flyout.style.top = top + 'px';
+
+      var list = flyout.querySelector('.flyout-list');
+      if(list){
+        var headHeight = flyout.querySelector('.flyout-head').offsetHeight;
+        var available = window.innerHeight - top - headHeight - 16;
+        list.style.maxHeight = Math.max(160, available) + 'px';
+      }
+    });
   }
+
+  function openCategoryMenu(key, navEl){
+    var data = MENUS[key];
+    if(!data) return;
+
+    document.querySelectorAll('.nav-item.open-flyout').forEach(function(el){
+      el.classList.remove('open-flyout');
+    });
+    navEl.classList.add('open-flyout');
+    currentNavEl = navEl;
+
+    renderFlyoutContent(data);
+    syncAllStars();
+
+    document.getElementById('flyout-backdrop').classList.add('open');
+    document.getElementById('flyout').classList.add('open');
+    positionFlyout(navEl);
+  }
+
+  function closeFlyout(){
+    document.getElementById('flyout-backdrop').classList.remove('open');
+    document.getElementById('flyout').classList.remove('open');
+    if(currentNavEl){
+      currentNavEl.classList.remove('open-flyout');
+      currentNavEl = null;
+    }
+  }
+
+  window.addEventListener('resize', function(){
+    if(currentNavEl){ positionFlyout(currentNavEl); }
+  });
 
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-      document.querySelectorAll('.modal-overlay.open').forEach(function(m){
-        closeMenu(m.id);
-      });
-    }
+    if(e.key === 'Escape'){ closeFlyout(); }
   });
 
   // ---------- TEMA ----------
-  // Padrão inicial sempre claro; a escolha vale apenas para a sessão atual.
+  // Padrão inicial sempre escuro; a escolha vale apenas para a sessão atual.
   function toggleTheme(){
     document.body.classList.toggle('dark');
   }
 
+  renderShortcuts();
   renderFavorites();
   syncAllStars();
 </script>
