@@ -422,6 +422,18 @@
   }
   .tool-icon svg{width:24px;height:24px;}
 
+  /* Overlay de transição rápida ao entrar em uma ferramenta */
+  .page-transition{
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at 50% 50%, var(--red-glow), var(--bg) 72%);
+    opacity:0;
+    pointer-events:none;
+    z-index:200;
+    transition:opacity .16s ease;
+  }
+  .page-transition.active{opacity:1;}
+
   /* Cor de destaque única (vermelho da marca) para todos os ícones de ferramenta */
   .tool-icon.c-red{
     background:linear-gradient(160deg, rgba(228,23,44,.20), rgba(228,23,44,.05));
@@ -708,6 +720,8 @@
 
 <footer>© 2026 FarmaPrática. Todos os direitos reservados.</footer>
 
+<div class="page-transition" id="page-transition"></div>
+
 <script>
   // ---------- TEMA ----------
   function toggleTheme(){
@@ -757,6 +771,22 @@
     el.style.boxShadow = '0 0 0 2px var(--red)';
     setTimeout(function(){ el.style.boxShadow = ''; }, 1200);
   }
+
+  // ---------- TRANSIÇÃO RÁPIDA AO ENTRAR EM UMA FERRAMENTA ----------
+  var transitionOverlay = document.getElementById('page-transition');
+  document.querySelectorAll('a.tool-card').forEach(function(link){
+    link.addEventListener('click', function(e){
+      // Ctrl/Cmd/Shift/clique do meio: respeita o comportamento padrão (nova aba, etc.)
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      var href = link.getAttribute('href');
+      if(!href || href === '#') return;
+      e.preventDefault();
+      transitionOverlay.classList.add('active');
+      setTimeout(function(){
+        window.location.href = href;
+      }, 180);
+    });
+  });
 
   // ---------- GRADIENTE MÓVEL (spotlight) — sempre automático ----------
   var panelLeft = document.querySelector('.panel-left');
