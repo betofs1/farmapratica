@@ -436,6 +436,37 @@
   .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
   .stats-footer .hero-divider{margin-bottom:18px;}
 
+  /* Layout lado a lado: Ferramentas Mais Usadas (menor) + Notícias Farmacêuticas */
+  .footer-row{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch;}
+  .footer-row .stats-footer{padding:16px 18px 18px;}
+  .footer-row .stats-footer h3{font-size:13.5px;margin-bottom:10px;}
+  .footer-row .stats-footer .hero-divider{margin-bottom:14px;}
+  .footer-row .usage-donut{width:64px;height:64px;}
+  .footer-row .usage-donut::after{inset:11px;}
+  @media (max-width:640px){
+    .footer-row{grid-template-columns:1fr;}
+  }
+
+  .news-card{
+    position:relative;
+    border-radius:16px;
+    padding:16px 18px 18px;
+    box-shadow:inset 0 0 0 1px var(--card-border);
+    background:var(--bg-panel);
+    display:flex;
+    flex-direction:column;
+  }
+  .news-card h3{font-size:13.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .news-card p{font-size:12.5px;color:var(--text-gray);line-height:1.5;margin:0 0 14px;flex:1;}
+  .news-card .news-link{
+    display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    padding:9px 14px;border-radius:10px;
+    background:var(--red);color:#fff;font-size:12.5px;font-weight:600;
+    text-decoration:none;transition:filter .15s ease;
+  }
+  .news-card .news-link:hover{filter:brightness(1.08);}
+  .news-card .news-link svg{width:14px;height:14px;flex:none;}
+
   /* Layout compacto: Favoritos e Notas lado a lado dentro do card de estatísticas */
   .fav-notes-grid{align-items:start;}
   .fav-notes-grid .stat-block .fav-list,
@@ -470,16 +501,23 @@
   .section-icon{width:15px;height:15px;flex:none;color:var(--red);}
 
   /* Gráfico "Ferramentas Mais Usadas" — rosca com múltiplos segmentos */
-  .usage-bars{display:flex;flex-direction:column;gap:13px;}
-  .usage-bar-row{display:flex;flex-direction:column;gap:6px;}
-  .usage-bar-row-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:12.5px;}
-  .usage-bar-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-white);font-weight:600;}
-  .usage-bar-value{flex:none;color:var(--text-gray-dim);font-variant-numeric:tabular-nums;}
-  .usage-bar-track{
-    height:9px;border-radius:5px;background:var(--card-border);
-    overflow:hidden;
+  .usage-donut-row{display:flex;align-items:center;gap:16px;}
+  .usage-donut{width:76px;height:76px;border-radius:50%;flex:none;position:relative;}
+  .usage-donut::after{
+    content:"";position:absolute;inset:13px;border-radius:50%;
+    background:var(--card-bg);
   }
-  .usage-bar-fill{height:100%;border-radius:5px;background:var(--red);transition:width .5s ease;}
+  .usage-legend{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--text-gray);flex:1;min-width:0;}
+  .usage-legend .usage-row{display:flex;flex-direction:column;gap:4px;}
+  .usage-legend .usage-row-top{display:flex;align-items:center;gap:7px;}
+  .usage-legend .usage-dot{width:8px;height:8px;border-radius:50%;flex:none;}
+  .usage-legend .usage-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .usage-legend .usage-name strong{color:var(--text-white);font-weight:700;}
+  .usage-bar-track{
+    height:4px;border-radius:3px;background:var(--card-border);
+    overflow:hidden;margin-left:15px;
+  }
+  .usage-bar-fill{height:100%;border-radius:3px;transition:width .4s ease;}
   .welcome-box{
     border:1px solid var(--card-border);
     border-radius:12px;
@@ -1029,11 +1067,21 @@
         </div>
       </div>
 
-      <div class="stats-footer">
-        <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>Ferramentas Mais Usadas</h3>
-        <div class="hero-divider"></div>
-        <div id="usage-donut-wrap">
-          <!-- preenchido via JS a partir dos favoritos -->
+      <div class="footer-row">
+        <div class="stats-footer">
+          <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>Ferramentas Mais Usadas</h3>
+          <div class="hero-divider"></div>
+          <div id="usage-donut-wrap">
+            <!-- preenchido via JS a partir dos favoritos -->
+          </div>
+        </div>
+        <div class="news-card">
+          <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Notícias Farmacêuticas</h3>
+          <p>Acompanhe atualizações, lançamentos e tendências do setor farmacêutico no Brasil.</p>
+          <a class="news-link" href="https://panoramafarmaceutico.com.br/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            Ver notícias
+          </a>
         </div>
       </div>
     </section>
@@ -1350,9 +1398,7 @@
 
   // ---------- FERRAMENTAS MAIS USADAS (calculado a partir dos favoritos) ----------
 
-  // Ramp sequencial (um unico tom, mais uso = mais opaco/escuro) — ferramenta
-  // mais usada em destaque, as demais esmaecendo em ordem, nunca cor por categoria.
-  var USAGE_OPACITY = [1, .78, .6, .45, .32, .22];
+  var USAGE_COLORS = ['#e4172c', '#f59e0b', '#22c55e', '#3b82f6', '#a855f7', '#94a3b8'];
 
   function renderUsageBreakdown(){
     var list = loadFavorites();
@@ -1370,19 +1416,33 @@
     entries.sort(function(a,b){ return b.count - a.count; });
 
     var total = list.length;
-    var rowsHtml = entries.map(function(entry, i){
+    var cumulative = 0;
+    var gradientParts = [];
+    var legendHtml = '';
+    entries.forEach(function(entry, i){
+      var color = USAGE_COLORS[i % USAGE_COLORS.length];
       var pct = Math.round((entry.count / total) * 100);
-      var opacity = USAGE_OPACITY[Math.min(i, USAGE_OPACITY.length - 1)];
-      return '<div class="usage-bar-row">'+
-        '<div class="usage-bar-row-top">'+
-          '<span class="usage-bar-label">'+entry.label+'</span>'+
-          '<span class="usage-bar-value">'+pct+'%</span>'+
-        '</div>'+
-        '<div class="usage-bar-track"><div class="usage-bar-fill" style="width:'+pct+'%;opacity:'+opacity+';"></div></div>'+
-      '</div>';
-    }).join('');
+      var start = cumulative;
+      cumulative += pct;
+      gradientParts.push(color + ' ' + start + '% ' + cumulative + '%');
+      legendHtml +=
+        '<div class="usage-row">'+
+          '<div class="usage-row-top">'+
+            '<span class="usage-dot" style="background:'+color+';"></span>'+
+            '<span class="usage-name">'+entry.label+' <strong>('+pct+'%)</strong></span>'+
+          '</div>'+
+          '<div class="usage-bar-track"><div class="usage-bar-fill" style="width:'+pct+'%;background:'+color+';"></div></div>'+
+        '</div>';
+    });
+    if(cumulative < 100 && gradientParts.length){
+      gradientParts[gradientParts.length - 1] = gradientParts[gradientParts.length - 1].replace(/\d+%$/, '100%');
+    }
 
-    wrap.innerHTML = '<div class="usage-bars">'+rowsHtml+'</div>';
+    wrap.innerHTML =
+      '<div class="usage-donut-row">'+
+        '<div class="usage-donut" style="background:conic-gradient('+gradientParts.join(', ')+');"></div>'+
+        '<div class="usage-legend">'+legendHtml+'</div>'+
+      '</div>';
   }
 
   // ---------- NOTAS DE ROTINA ----------
