@@ -81,6 +81,7 @@
     overflow-x:hidden;
     transition:background-color .2s ease, color .2s ease;
     padding-left:64px;
+    zoom:.9;
   }
 
   /* SIDEBAR */
@@ -100,7 +101,7 @@
   }
   .sidebar:hover,
   .sidebar.pinned{
-    width:250px;
+    width:300px;
   }
   .sidebar-top{
     display:flex;
@@ -527,12 +528,12 @@
   @property --glow-x{
     syntax:'<percentage>';
     inherits:false;
-    initial-value:12%;
+    initial-value:50%;
   }
   @property --glow-y{
     syntax:'<percentage>';
     inherits:false;
-    initial-value:10%;
+    initial-value:50%;
   }
   .hero-band{
     display:flex;
@@ -541,7 +542,7 @@
     justify-content:space-between;
     gap:28px;
     background:
-      radial-gradient(130% 160% at var(--glow-x,12%) var(--glow-y,10%), rgba(228,23,44,.20), transparent 55%),
+      radial-gradient(90% 120% at var(--glow-x,50%) var(--glow-y,50%), rgba(228,23,44,.24), transparent 60%),
       radial-gradient(110% 140% at 100% 100%, rgba(228,23,44,.10), transparent 60%),
       linear-gradient(165deg,#241213,#150a0a);
     border-color:var(--card-border);
@@ -551,13 +552,14 @@
   }
   body.light .hero-band{
     background:
-      radial-gradient(130% 160% at var(--glow-x,12%) var(--glow-y,10%), rgba(212,21,42,.10), transparent 55%),
+      radial-gradient(90% 120% at var(--glow-x,50%) var(--glow-y,50%), rgba(212,21,42,.12), transparent 60%),
       radial-gradient(110% 140% at 100% 100%, rgba(212,21,42,.06), transparent 60%),
       linear-gradient(165deg,#fdf1f1,#fff);
   }
   @keyframes heroGlowDrift{
-    0%{ --glow-x:8%; --glow-y:6%; }
-    100%{ --glow-x:38%; --glow-y:34%; }
+    0%{ --glow-x:38%; --glow-y:35%; }
+    50%{ --glow-x:62%; --glow-y:58%; }
+    100%{ --glow-x:38%; --glow-y:35%; }
   }
   @property --neon-angle{
     syntax:'<angle>';
