@@ -423,6 +423,28 @@
     overflow-y:auto;
     padding-right:2px;
   }
+  .fav-notes-grid .stat-block .fav-list,
+  .fav-notes-grid .stat-block .notes-list{
+    scrollbar-width:thin;
+    scrollbar-color:var(--red) transparent;
+  }
+  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar,
+  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar{
+    width:6px;
+  }
+  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-track,
+  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-track{
+    background:transparent;
+  }
+  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-thumb,
+  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg, var(--red), var(--red-dark));
+    border-radius:10px;
+  }
+  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-thumb:hover,
+  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-thumb:hover{
+    background:var(--red);
+  }
   .fav-notes-grid .stats-card-head h4{font-size:13.5px;font-weight:700;}
 
   /* Gráfico "Ferramentas Mais Usadas" — rosca com múltiplos segmentos */
