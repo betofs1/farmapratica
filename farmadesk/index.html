@@ -1735,6 +1735,24 @@ function getFavs(){
 }
 function saveFavs(favs){ localStorage.setItem(FAV_KEY, JSON.stringify(favs)); }
 
+// Sincroniza favoritos do Guia com a pagina inicial (hub), que le a mesma origem
+const HUB_FAV_KEY = 'fp_favoritos_hub';
+function syncFavToHub(id, title, added){
+  try{
+    var raw = localStorage.getItem(HUB_FAV_KEY);
+    var list = raw ? JSON.parse(raw) : [];
+    var hubId = 'farmadesk-' + id;
+    if(added){
+      if(!list.some(function(f){ return f.id === hubId; })){
+        list.push({id: hubId, label: title, source: 'guia', sourceLabel: 'Guia de Dispensação', href: 'farmadesk/'});
+      }
+    } else {
+      list = list.filter(function(f){ return f.id !== hubId; });
+    }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+
 function toggleFav(btn){
   const id = btn.dataset.id;
   const cond = allConditions.find(c => c.id === id) || {};
@@ -1746,6 +1764,7 @@ function toggleFav(btn){
     favs.push({id, title, system});
     btn.classList.add('starred');
     saveFavs(favs);
+    syncFavToHub(id, title, true);
     renderFavs();
     // Rolar suavemente até o menu de favoritos
     const favSidebar = document.querySelector('.fav-sidebar');
@@ -1766,6 +1785,7 @@ function toggleFav(btn){
     favs.splice(idx,1);
     btn.classList.remove('starred');
     saveFavs(favs);
+    syncFavToHub(id, null, false);
     renderFavs();
   }
 }
@@ -1798,6 +1818,7 @@ function renderFavs(){
 function removeFav(id){
   let favs = getFavs().filter(f => f.id !== id);
   saveFavs(favs);
+  syncFavToHub(id, null, false);
   renderFavs();
   const btn = document.querySelector(`.star-btn[data-id="${id}"]`);
   if(btn) btn.classList.remove('starred');
@@ -1806,6 +1827,7 @@ function removeFav(id){
 function clearFavs(){
   if(!getFavs().length) return;
   if(!confirm('Remover todos os favoritos?')) return;
+  getFavs().forEach(f => syncFavToHub(f.id, null, false));
   saveFavs([]);
   renderFavs();
 }

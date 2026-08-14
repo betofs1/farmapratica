@@ -1237,19 +1237,19 @@
 
   // ---------- FAVORITOS (alimentados pelas demais ferramentas) ----------
   var FAV_KEY = 'fp_favoritos_hub';
-  var FAV_SEED = [
-    {id:'seed-tosse-seca', label:'Tosse Seca', source:'guia', sourceLabel:'Guia de Dispensação', href:'farmadesk/'},
-    {id:'seed-dipirona', label:'Dipirona', source:'guia', sourceLabel:'Indicações Pediátricas', href:'farmadesk/'}
-  ];
+  var FAV_SEED = [];
 
   function loadFavorites(){
     try{
       var raw = localStorage.getItem(FAV_KEY);
-      if(raw === null){
-        localStorage.setItem(FAV_KEY, JSON.stringify(FAV_SEED));
-        return FAV_SEED.slice();
+      var list = (raw === null) ? FAV_SEED.slice() : JSON.parse(raw);
+      // Remove favoritos de demonstração antigos (Tosse Seca / Dipirona) se ainda estiverem salvos
+      var DEMO_IDS = ['seed-tosse-seca', 'seed-dipirona'];
+      var filtered = list.filter(function(f){ return DEMO_IDS.indexOf(f.id) === -1; });
+      if(filtered.length !== list.length || raw === null){
+        localStorage.setItem(FAV_KEY, JSON.stringify(filtered));
       }
-      return JSON.parse(raw);
+      return filtered;
     }catch(e){ return []; }
   }
   function saveFavorites(list){
