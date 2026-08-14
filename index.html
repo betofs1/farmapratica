@@ -387,11 +387,27 @@
     margin-bottom:22px;
   }
   .stats-card-head h2{font-size:16px;font-weight:700;}
-  .stats-charts{
+  /* Painel em 2x2: Favoritos | Notas de Rotina / Ferramentas Mais Usadas | Noticias,
+     com uma linha vermelha "em cruz" separando os 4 quadrantes (gap colorido do grid). */
+  .quad-panel{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
-    margin-bottom:28px;
+    gap:3px;
+    background:var(--red);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .quad-panel > .stat-block{
+    background:var(--card-bg);
+    padding:22px 24px 26px;
+    margin:0;
+  }
+  .quad-panel > .stats-footer,
+  .quad-panel > .news-card{
+    border-radius:0;
+  }
+  @media (max-width:640px){
+    .quad-panel{grid-template-columns:1fr;}
   }
   .stat-block h4{font-size:13.5px;font-weight:700;margin-bottom:2px;}
   .stat-block .stat-sub{font-size:11.5px;color:var(--text-gray-dim);display:block;margin-bottom:14px;}
@@ -414,16 +430,13 @@
 
   .stats-footer{
     position:relative;
-    border-radius:16px;
-    padding:20px 22px 22px;
+    padding:22px 24px 26px;
     overflow:hidden;
-    box-shadow:inset 0 0 0 1px var(--card-border);
     background:
       linear-gradient(165deg, rgba(10,4,5,.18), rgba(8,4,4,.45)),
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
   }
   body.light .stats-footer{
-    box-shadow:inset 0 0 0 1px var(--card-border);
     background:
       linear-gradient(165deg, rgba(255,255,255,.93), rgba(255,255,255,.97)),
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
@@ -432,42 +445,19 @@
   .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
   .stats-footer .hero-divider{margin-bottom:18px;}
 
-  /* Layout lado a lado: Ferramentas Mais Usadas (menor) + Notícias Farmacêuticas */
-  .footer-row{display:flex;flex-wrap:nowrap;gap:14px;align-items:stretch;}
-  .footer-row .stats-footer{flex:1.15 1 0;min-width:0;padding:16px 18px 18px;}
-  .footer-row .stats-footer h3{font-size:13.5px;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .footer-row .stats-footer .hero-divider{margin-bottom:14px;}
-  .footer-row .usage-donut{width:64px;height:64px;}
-  .footer-row .usage-donut::after{inset:11px;}
-  .footer-row .news-card{flex:.85 1 0;min-width:0;padding:14px 14px 14px;}
-  .footer-row .news-card h3{font-size:12.5px;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .footer-row .news-card p{font-size:11.5px;margin-bottom:10px;}
-  .footer-row .news-card .news-link{padding:8px 10px;font-size:11.5px;width:100%;}
-  @media (max-width:480px){
-    .footer-row{gap:8px;}
-    .footer-row .stats-footer,
-    .footer-row .news-card{padding:12px 12px 12px;}
-    .footer-row .news-card p{display:none;}
-    .footer-row .usage-donut{width:48px;height:48px;}
-    .footer-row .usage-donut::after{inset:8px;}
-    .footer-row .usage-legend{font-size:10.5px;gap:6px;}
-  }
-
   .news-card{
     position:relative;
-    border-radius:16px;
-    padding:16px 18px 18px;
-    box-shadow:inset 0 0 0 1px var(--card-border);
+    padding:22px 24px 26px;
     background:var(--bg-panel);
     display:flex;
     flex-direction:column;
   }
-  .news-card h3{font-size:13.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-  .news-card p{font-size:12.5px;color:var(--text-gray);line-height:1.5;margin:0 0 14px;flex:1;}
+  .news-card h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .news-card p{font-size:13px;color:var(--text-gray);line-height:1.55;margin:0 0 16px;flex:1;}
   .news-card .news-link{
     display:inline-flex;align-items:center;justify-content:center;gap:7px;
-    padding:9px 14px;border-radius:10px;
-    background:var(--red);color:#fff;font-size:12.5px;font-weight:600;
+    padding:10px 16px;border-radius:10px;
+    background:var(--red);color:#fff;font-size:13px;font-weight:600;
     text-decoration:none;transition:filter .15s ease;
     margin-top:auto;
   }
@@ -475,36 +465,35 @@
   .news-card .news-link svg{width:14px;height:14px;flex:none;}
 
   /* Layout compacto: Favoritos e Notas lado a lado dentro do card de estatísticas */
-  .fav-notes-grid{align-items:start;}
-  .fav-notes-grid .stat-block .fav-list,
-  .fav-notes-grid .stat-block .notes-list{
+  .quad-panel .stat-block .fav-list,
+  .quad-panel .stat-block .notes-list{
     max-height:280px;
     overflow-y:auto;
     padding-right:2px;
   }
-  .fav-notes-grid .stat-block .fav-list,
-  .fav-notes-grid .stat-block .notes-list{
+  .quad-panel .stat-block .fav-list,
+  .quad-panel .stat-block .notes-list{
     scrollbar-width:thin;
     scrollbar-color:var(--red) transparent;
   }
-  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar,
-  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar{
+  .quad-panel .stat-block .fav-list::-webkit-scrollbar,
+  .quad-panel .stat-block .notes-list::-webkit-scrollbar{
     width:6px;
   }
-  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-track,
-  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-track{
+  .quad-panel .stat-block .fav-list::-webkit-scrollbar-track,
+  .quad-panel .stat-block .notes-list::-webkit-scrollbar-track{
     background:transparent;
   }
-  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-thumb,
-  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-thumb{
+  .quad-panel .stat-block .fav-list::-webkit-scrollbar-thumb,
+  .quad-panel .stat-block .notes-list::-webkit-scrollbar-thumb{
     background:linear-gradient(180deg, var(--red), var(--red-dark));
     border-radius:10px;
   }
-  .fav-notes-grid .stat-block .fav-list::-webkit-scrollbar-thumb:hover,
-  .fav-notes-grid .stat-block .notes-list::-webkit-scrollbar-thumb:hover{
+  .quad-panel .stat-block .fav-list::-webkit-scrollbar-thumb:hover,
+  .quad-panel .stat-block .notes-list::-webkit-scrollbar-thumb:hover{
     background:var(--red);
   }
-  .fav-notes-grid .stats-card-head h4{font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
+  .quad-panel .stats-card-head h4{font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
   .section-icon{width:15px;height:15px;flex:none;color:var(--red);}
 
   /* Gráfico "Ferramentas Mais Usadas" — rosca com múltiplos segmentos */
@@ -1028,7 +1017,7 @@
 
     <!-- Coluna A: Estatísticas + Resumo Profissional -->
     <section class="card stats-card">
-      <div class="stats-charts fav-notes-grid">
+      <div class="quad-panel">
         <div class="stat-block">
           <div class="stats-card-head" style="margin-bottom:12px;">
             <h4><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Favoritos</h4>
@@ -1072,9 +1061,7 @@
             <!-- preenchido via JS -->
           </div>
         </div>
-      </div>
 
-      <div class="footer-row">
         <div class="stats-footer">
           <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>Ferramentas Mais Usadas</h3>
           <div class="hero-divider"></div>
@@ -1082,6 +1069,7 @@
             <!-- preenchido via JS a partir dos favoritos -->
           </div>
         </div>
+
         <div class="news-card">
           <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Notícias Farmacêuticas</h3>
           <p>Acompanhe atualizações, lançamentos e tendências do setor farmacêutico no Brasil.</p>
