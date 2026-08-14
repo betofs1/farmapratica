@@ -188,7 +188,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 40px;
+    padding:22px 40px;
     border-bottom:1px solid #1c1c1c;
     position:relative;
     z-index:2;
@@ -199,11 +199,11 @@
     gap:14px;
   }
   .brand img{
-    width:34px;
-    height:34px;
+    width:44px;
+    height:44px;
   }
   .brand-text h1{
-    font-size:18px;
+    font-size:22px;
     font-weight:800;
     letter-spacing:-0.3px;
     line-height:1.1;
@@ -221,7 +221,7 @@
     display:flex;
     flex-direction:column;
     align-items:flex-end;
-    gap:3px;
+    gap:6px;
   }
   .header-actions{
     display:flex;
@@ -311,13 +311,13 @@
   /* ---------- DASHBOARD ---------- */
   main{
     flex:1;
-    padding:18px 40px 16px;
+    padding:40px 40px 56px;
     position:relative;
     z-index:1;
   }
-  .dashboard-head{margin-bottom:14px;}
+  .dashboard-head{margin-bottom:26px;}
   .dashboard-head h1{
-    font-size:20px;
+    font-size:27px;
     font-weight:800;
     letter-spacing:-0.4px;
     text-shadow:var(--heading-shadow);
@@ -326,7 +326,7 @@
     background:var(--card-bg);
     border:1px solid var(--card-border);
     border-radius:16px;
-    padding:18px;
+    padding:26px;
   }
   .card-eyebrow{
     font-size:12px;
@@ -362,13 +362,13 @@
   .dashboard-grid{
     display:grid;
     grid-template-columns:2.36fr 1.3fr;
-    gap:14px;
+    gap:22px;
     align-items:start;
   }
   .dashboard-col-left{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:22px;
   }
 
   /* Coluna A — Estatísticas */
@@ -391,13 +391,13 @@
   .quad-panel{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
+    gap:20px;
   }
   .quad-panel > .stat-block{
     background:var(--bg-panel);
     border:1px solid var(--card-border);
     border-radius:16px;
-    padding:12px 16px 14px;
+    padding:22px 24px 26px;
     margin:0;
   }
   .quad-panel > .stats-footer,
@@ -429,7 +429,7 @@
 
   .stats-footer{
     position:relative;
-    padding:12px 16px 14px;
+    padding:22px 24px 26px;
     overflow:hidden;
     background:
       linear-gradient(165deg, rgba(10,4,5,.18), rgba(8,4,4,.45)),
@@ -441,18 +441,18 @@
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
   }
   .stats-footer > *{position:relative;z-index:1;}
-  .stats-footer h3{font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
-  .stats-footer .hero-divider{margin-bottom:8px;}
+  .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .stats-footer .hero-divider{margin-bottom:18px;}
 
   .news-card{
     position:relative;
-    padding:12px 16px 14px;
+    padding:22px 24px 26px;
     background:var(--bg-panel);
     display:flex;
     flex-direction:column;
   }
-  .news-card h3{font-size:13px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
-  .news-card p{font-size:12px;color:var(--text-gray);line-height:1.42;margin:0 0 8px;flex:1;}
+  .news-card h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .news-card p{font-size:13px;color:var(--text-gray);line-height:1.55;margin:0 0 16px;flex:1;}
   .news-card .news-link{
     display:inline-flex;align-items:center;justify-content:center;gap:7px;
     padding:10px 16px;border-radius:10px;
@@ -539,7 +539,7 @@
     flex-wrap:wrap;
     align-items:center;
     justify-content:space-between;
-    gap:18px;
+    gap:28px;
     background:
       radial-gradient(130% 160% at var(--glow-x,12%) var(--glow-y,10%), rgba(228,23,44,.20), transparent 55%),
       radial-gradient(110% 140% at 100% 100%, rgba(228,23,44,.10), transparent 60%),
@@ -591,17 +591,17 @@
   .hero-band > *{position:relative;z-index:1;}
   .hero-band-brand{display:flex;align-items:center;gap:16px;}
   .hero-band-brand img{width:46px;height:46px;flex:none;}
-  .hero-band-brand h3{font-size:19px;font-weight:800;letter-spacing:-0.4px;margin-bottom:3px;}
+  .hero-band-brand h3{font-size:24px;font-weight:800;letter-spacing:-0.4px;margin-bottom:4px;}
   .hero-band-brand h3 span{color:var(--red);}
   .hero-band-brand p{font-size:12.5px;color:var(--text-gray);line-height:1.5;max-width:280px;}
-  .hero-band-access{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .hero-band-access{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
   .hero-band-access .access-profile{margin-bottom:0;}
 
   /* Coluna B — Status de Acesso + card de marca */
   .access-card .card-eyebrow{margin-bottom:16px;display:block;}
   .access-profile{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
   .avatar-circle{
-    width:38px;height:38px;border-radius:50%;flex:none;
+    width:46px;height:46px;border-radius:50%;flex:none;
     background:linear-gradient(160deg, rgba(228,23,44,.22), rgba(228,23,44,.06));
     color:var(--red);
     display:flex;align-items:center;justify-content:center;
@@ -622,8 +622,8 @@
 
   /* Coluna C — Ferramentas Essenciais */
   .tools-col h2{
-    font-size:12px;font-weight:700;letter-spacing:1.2px;
-    color:var(--text-gray);margin-bottom:8px;
+    font-size:13px;font-weight:700;letter-spacing:1.2px;
+    color:var(--text-gray);margin-bottom:16px;
     display:flex;align-items:center;gap:8px;
   }
 
@@ -639,16 +639,16 @@
   .tool-list{
     display:flex;
     flex-direction:column;
-    gap:5px;
+    gap:14px;
   }
   .tool-card{
     display:flex;
     align-items:center;
-    gap:11px;
-    padding:7px 11px;
+    gap:18px;
+    padding:20px;
     background:var(--card-bg);
     border:1px solid var(--card-border);
-    border-radius:11px;
+    border-radius:14px;
     text-decoration:none;
     color:inherit;
     cursor:pointer;
@@ -660,17 +660,17 @@
     background:var(--card-hover-bg);
   }
   .tool-icon{
-    width:34px;
-    height:34px;
+    width:52px;
+    height:52px;
     flex-shrink:0;
-    border-radius:9px;
+    border-radius:12px;
     background:linear-gradient(160deg,#241213,#180d0d);
     display:flex;
     align-items:center;
     justify-content:center;
     color:var(--red);
   }
-  .tool-icon svg{width:16px;height:16px;}
+  .tool-icon svg{width:24px;height:24px;}
 
   /* Overlay de transição rápida ao entrar em uma ferramenta */
   .page-transition{
@@ -729,16 +729,16 @@
   .about-socials a svg{width:20px;height:20px;}
 
   /* ---------- CARD FAVORITOS ---------- */
-  .fav-list{display:flex;flex-direction:column;gap:6px;}
+  .fav-list{display:flex;flex-direction:column;gap:10px;}
   .fav-item{
-    display:flex;align-items:center;gap:9px;
+    display:flex;align-items:center;gap:12px;
     background:var(--bg-panel);
     border:1px solid var(--card-border);
-    border-radius:10px;
-    padding:7px 10px;
+    border-radius:11px;
+    padding:11px 13px;
   }
   .fav-source-icon{
-    width:26px;height:26px;border-radius:7px;flex:none;
+    width:34px;height:34px;border-radius:9px;flex:none;
     display:flex;align-items:center;justify-content:center;
     background:linear-gradient(160deg, rgba(228,23,44,.18), rgba(228,23,44,.05));
     color:var(--red);
@@ -855,14 +855,14 @@
   body.light .tool-icon.c-red svg{filter:drop-shadow(0 0 4px rgba(212,21,42,.6));}
   .tool-info{flex:1;}
   .tool-info h3{
-    font-size:13.5px;
+    font-size:16px;
     font-weight:700;
-    margin-bottom:1px;
+    margin-bottom:4px;
   }
   .tool-info p{
-    font-size:11.5px;
+    font-size:13.5px;
     color:var(--text-gray);
-    line-height:1.3;
+    line-height:1.4;
   }
   .tool-chevron{
     color:#555;
@@ -902,8 +902,8 @@
 
   footer{
     text-align:center;
-    padding:10px;
-    font-size:11.5px;
+    padding:18px;
+    font-size:12.5px;
     color:var(--text-gray-dim);
     border-top:1px solid #1c1c1c;
     position:relative;
@@ -1041,7 +1041,7 @@
     <section class="card stats-card">
       <div class="quad-panel">
         <div class="stat-block">
-          <div class="stats-card-head" style="margin-bottom:8px;">
+          <div class="stats-card-head" style="margin-bottom:12px;">
             <h4><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Favoritos</h4>
           </div>
           <div class="fav-list" id="fav-list">
@@ -1050,7 +1050,7 @@
         </div>
 
         <div class="stat-block">
-          <div class="stats-card-head" style="margin-bottom:8px;">
+          <div class="stats-card-head" style="margin-bottom:12px;">
             <h4><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Notas de Rotina</h4>
           </div>
           <button class="notes-add-btn" onclick="toggleNoteForm()">
