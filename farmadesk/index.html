@@ -1744,7 +1744,7 @@ function syncFavToHub(id, title, added){
     var hubId = 'farmadesk-' + id;
     if(added){
       if(!list.some(function(f){ return f.id === hubId; })){
-        list.push({id: hubId, label: title, source: 'guia', sourceLabel: 'Guia de Dispensação', href: 'farmadesk/'});
+        list.push({id: hubId, label: title, source: 'guia', sourceLabel: 'Guia de Dispensação', href: 'farmadesk/?cond=' + encodeURIComponent(id)});
       }
     } else {
       list = list.filter(function(f){ return f.id !== hubId; });
@@ -2666,6 +2666,10 @@ backToTopBtn.addEventListener('click', () => {
   allConditions = APP_DATA.conditions || [];
   activeSystem = null;
   render('');
+  var __deepCond = new URLSearchParams(location.search).get('cond');
+  if(__deepCond){
+    setTimeout(function(){ openFav(__deepCond); }, 60);
+  }
 })();
 </script>
 

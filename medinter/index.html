@@ -431,6 +431,19 @@ async function carregarDB() {
     DB_META.total = DB.length;
     dbReady = true;
     updateDBUI("online");
+    var __deepMed = new URLSearchParams(location.search).get("med");
+    if (__deepMed) {
+      var __nome = decodeURIComponent(__deepMed).split("||")[0];
+      document.getElementById("searchInput").value = __nome;
+      doSearch();
+      setTimeout(function () {
+        var alvo = document.querySelector('.card-resumida[data-fav-id="' + encodeURIComponent(decodeURIComponent(__deepMed)) + '"]');
+        if (alvo) {
+          toggleExpand(alvo);
+          alvo.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 150);
+    }
   } catch(e) {
     dbReady = false;
     updateDBUI("offline");
@@ -968,7 +981,7 @@ function syncFavToHubMedinter(id, label, added){
     var hubId = 'medinter-' + id;
     if(added){
       if(!list.some(function(f){ return f.id === hubId; })){
-        list.push({id: hubId, label: label, source: 'medinter', sourceLabel: 'Medicamentos Intercambiáveis', href: 'medinter/'});
+        list.push({id: hubId, label: label, source: 'medinter', sourceLabel: 'Medicamentos Intercambiáveis', href: 'medinter/?med=' + encodeURIComponent(id)});
       }
     } else {
       list = list.filter(function(f){ return f.id !== hubId; });
@@ -1062,7 +1075,7 @@ function cardResumidoHTML(m, msExact) {
   const msBadge = msExact
     ? `<span style="font-size:10px;font-weight:800;background:#2563eb;color:#fff;padding:2px 8px;border-radius:4px;letter-spacing:0.5px;margin-left:6px;vertical-align:middle">MS</span>`
     : "";
-  return `<div class="card-resumida ${rc[m.tipo]||"ro"}${ctrlCls ? " ctrl-"+ctrlCls : ""}" onclick="toggleExpand(this)" style="cursor:pointer;${msStyle}">
+  return `<div class="card-resumida ${rc[m.tipo]||"ro"}${ctrlCls ? " ctrl-"+ctrlCls : ""}" data-fav-id="${encodeURIComponent(_favId)}" onclick="toggleExpand(this)" style="cursor:pointer;${msStyle}">
     <span class="res-nome">${m.nome}${ctrlBadgeHTML(m.principio)}${msBadge}</span>
     <span class="res-badge"><span class="tipo-badge ${bc[m.tipo]||"bo"}">${tl[m.tipo]||"Outro"}</span></span>
     <span class="res-princ">${princ}${m.apresentacoes && m.apresentacoes.length > 1 ? `<span style="font-size:11px;color:var(--gray-light);margin-left:6px">(${m.apresentacoes.length} apres.)</span>` : ""}</span>
