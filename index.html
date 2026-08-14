@@ -499,7 +499,7 @@
   .quad-panel .stat-block .notes-list::-webkit-scrollbar-thumb:hover{
     background:var(--accent2-dark);
   }
-  .quad-panel .stats-card-head h4{font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
+  .quad-panel .stats-card-head h4{font-size:15.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
   .section-icon{width:15px;height:15px;flex:none;color:var(--accent2);}
 
   /* Titulos de secao: Favoritos, Notas de Rotina, Ferramentas Mais Usadas, Noticias Farmaceuticas */
@@ -517,22 +517,15 @@
 
   /* Gráfico "Ferramentas Mais Usadas" — rosca com múltiplos segmentos */
   .usage-donut-row{display:flex;align-items:center;gap:16px;}
-  .usage-donut{width:76px;height:76px;border-radius:50%;flex:none;position:relative;}
-  .usage-donut::after{
-    content:"";position:absolute;inset:13px;border-radius:50%;
-    background:var(--card-bg);
+  .usage-donut{
+    width:76px;height:76px;border-radius:50%;flex:none;
+    box-shadow:0 0 0 1px var(--card-border);
   }
-  .usage-legend{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--text-gray);flex:1;min-width:0;}
-  .usage-legend .usage-row{display:flex;flex-direction:column;gap:4px;}
+  .usage-legend{display:flex;flex-direction:column;gap:9px;font-size:12px;color:var(--text-gray);flex:1;min-width:0;}
   .usage-legend .usage-row-top{display:flex;align-items:center;gap:7px;}
   .usage-legend .usage-dot{width:8px;height:8px;border-radius:50%;flex:none;}
   .usage-legend .usage-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .usage-legend .usage-name strong{color:var(--text-white);font-weight:700;}
-  .usage-bar-track{
-    height:4px;border-radius:3px;background:var(--card-border);
-    overflow:hidden;margin-left:15px;
-  }
-  .usage-bar-fill{height:100%;border-radius:3px;transition:width .4s ease;}
   .welcome-box{
     border:1px solid var(--card-border);
     border-radius:12px;
@@ -1464,12 +1457,9 @@
       cumulative += pct;
       gradientParts.push(color + ' ' + start + '% ' + cumulative + '%');
       legendHtml +=
-        '<div class="usage-row">'+
-          '<div class="usage-row-top">'+
-            '<span class="usage-dot" style="background:'+color+';"></span>'+
-            '<span class="usage-name">'+entry.label+' <strong>('+pct+'%)</strong></span>'+
-          '</div>'+
-          '<div class="usage-bar-track"><div class="usage-bar-fill" style="width:'+pct+'%;background:'+color+';"></div></div>'+
+        '<div class="usage-row-top">'+
+          '<span class="usage-dot" style="background:'+color+';"></span>'+
+          '<span class="usage-name">'+entry.label+' <strong>('+pct+'%)</strong></span>'+
         '</div>';
     });
     if(cumulative < 100 && gradientParts.length){
