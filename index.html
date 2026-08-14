@@ -437,15 +437,13 @@
   .stats-footer .hero-divider{margin-bottom:18px;}
 
   /* Layout lado a lado: Ferramentas Mais Usadas (menor) + Notícias Farmacêuticas */
-  .footer-row{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch;}
-  .footer-row .stats-footer{padding:16px 18px 18px;}
+  .footer-row{display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;}
+  .footer-row .stats-footer{flex:1 1 260px;min-width:0;padding:16px 18px 18px;}
   .footer-row .stats-footer h3{font-size:13.5px;margin-bottom:10px;}
   .footer-row .stats-footer .hero-divider{margin-bottom:14px;}
   .footer-row .usage-donut{width:64px;height:64px;}
   .footer-row .usage-donut::after{inset:11px;}
-  @media (max-width:640px){
-    .footer-row{grid-template-columns:1fr;}
-  }
+  .footer-row .news-card{flex:1 1 200px;min-width:0;}
 
   .news-card{
     position:relative;
