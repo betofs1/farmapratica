@@ -1,0 +1,2621 @@
+{
+  "categorias": [
+    "Analgésicos / Antitérmicos",
+    "AINEs",
+    "Antibióticos",
+    "Anti-histamínicos",
+    "Antitussivos / Mucolíticos",
+    "Gastrointestinal",
+    "Antifúngicos",
+    "Antiparasitários",
+    "Outros",
+    "Respiratório / Broncodilatadores",
+    "Oftalmológicos",
+    "Otológicos"
+  ],
+  "farmacos": [
+    {
+      "id": "paracetamol",
+      "nome": "Paracetamol (Acetaminofeno)",
+      "categoria": "Analgésicos / Antitérmicos",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 10,
+          "max": 15
+        },
+        "vezesDia": 5,
+        "doseMaximaDoseMg": 750,
+        "doseMaximaDiaMg": 3000
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 200 mg/mL (10 mg/gota)",
+          "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
+          "mgPorGota": 10,
+          "apresentacaoTexto": "frasco gotejador com 15 ou 20 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral (xarope) 160 mg/5 mL (32 mg/mL)",
+          "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
+          "concentracaoMgMl": 32,
+          "apresentacaoTexto": "frasco com 100 ou 150 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg",
+          "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela com 20 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Em neonatos e lactentes < 3 meses, individualizar dose e intervalo com avaliação clínica."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "dipirona",
+      "nome": "Dipirona (Metamizol sódico)",
+      "categoria": "Analgésicos / Antitérmicos",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 10,
+          "max": 15
+        },
+        "vezesDia": 4,
+        "doseMaximaDoseMg": 500,
+        "doseMaximaDiaMg": 2000
+      },
+      "idadeMinimaMeses": 3,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 500 mg/mL (25 mg/gota)",
+          "viaTexto": "via oral a cada 6 horas se dor ou febre",
+          "mgPorGota": 25,
+          "apresentacaoTexto": "frasco gotejador com 10 ou 20 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Solução oral (xarope) 50 mg/mL",
+          "viaTexto": "via oral a cada 6 horas se dor ou febre",
+          "concentracaoMgMl": 50,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "injetavel",
+          "rotulo": "Solução injetável 500 mg/mL",
+          "viaTexto": "intramuscular ou endovenoso, a cada 6 horas se dor ou febre",
+          "concentracaoMgMl": 500,
+          "doseMaximaPorDoseMg": 500,
+          "apresentacaoTexto": "ampola com 2 mL",
+          "diluicaoTexto": "para uso endovenoso, diluir em Soro Fisiológico 0,9% e infundir lentamente",
+          "restricoes": [
+            "Uso intramuscular e endovenoso reservado a ambiente com suporte para monitorização; individualizar em lactentes pequenos."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Uso não recomendado em menores de 3 meses ou peso inferior a 5 kg, conforme bula."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "ibuprofeno",
+      "nome": "Ibuprofeno",
+      "categoria": "AINEs",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 5,
+          "max": 10
+        },
+        "vezesDia": 4,
+        "doseMaximaDoseMg": 400,
+        "doseMaximaDiaMg": 1200
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 50 mg/mL (2,5 mg/gota)",
+          "viaTexto": "via oral a cada 6-8 horas se dor ou febre",
+          "mgPorGota": 2.5,
+          "apresentacaoTexto": "frasco gotejador com 20 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 100 mg/5 mL (20 mg/mL)",
+          "viaTexto": "via oral a cada 6-8 horas se dor ou febre",
+          "concentracaoMgMl": 20,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 400 mg",
+          "viaTexto": "via oral a cada 6-8 horas se dor ou febre",
+          "mgPorComprimido": 400,
+          "apresentacaoTexto": "cartela com 20 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Evitar em desidratação, varicela e suspeita de dengue, pelo risco de sangramento."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "naproxeno",
+      "nome": "Naproxeno",
+      "categoria": "AINEs",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 5,
+          "max": 7
+        },
+        "vezesDia": 2,
+        "doseMaximaDoseMg": 500,
+        "doseMaximaDiaMg": 1000
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 25 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 25,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 250 mg",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 250,
+          "apresentacaoTexto": "cartela com 10 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Uso pediátrico geralmente reservado a indicação reumatológica; confirmar protocolo."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "amoxicilina",
+      "nome": "Amoxicilina",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 20,
+          "max": 50
+        },
+        "fracionamento": 3,
+        "doseMaximaDiaMg": 1750
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 250 mg/5 mL (50 mg/mL)",
+          "viaTexto": "via oral a cada 8 horas",
+          "concentracaoMgMl": 50,
+          "apresentacaoTexto": "frasco com 150 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 400 mg/5 mL (80 mg/mL)",
+          "viaTexto": "via oral a cada 8 horas",
+          "concentracaoMgMl": 80,
+          "apresentacaoTexto": "frasco com 75 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 500 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela com 21 cápsulas"
+        }
+      ],
+      "observacoesExtras": [
+        "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "amoxi_clav",
+      "nome": "Amoxicilina + Clavulanato",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 25,
+          "max": 45
+        },
+        "fracionamento": 2,
+        "doseMaximaDiaMg": 1750
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão BD 400 mg/5 mL (80 mg/mL, base amoxicilina)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 80,
+          "apresentacaoTexto": "frasco com 75 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg + 125 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela com 21 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose calculada com base no componente amoxicilina; observar dose máxima de clavulanato na bula."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "azitromicina",
+      "nome": "Azitromicina",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 10,
+          "max": 10
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 500
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 200 mg/5 mL (40 mg/mL)",
+          "viaTexto": "via oral, 1x/dia",
+          "concentracaoMgMl": 40,
+          "apresentacaoTexto": "frasco com 15 ou 22,5 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela com 3 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Esquema clássico: 10 mg/kg no 1º dia, 5 mg/kg do 2º ao 5º dia (1x/dia). Cálculo refere-se ao 1º dia."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "cefalexina",
+      "nome": "Cefalexina",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 25,
+          "max": 50
+        },
+        "fracionamento": 4,
+        "doseMaximaDiaMg": 4000
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 250 mg/5 mL (50 mg/mL)",
+          "viaTexto": "via oral a cada 6 horas",
+          "concentracaoMgMl": 50,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 500 mg",
+          "viaTexto": "via oral a cada 6 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela com 8 cápsulas"
+        }
+      ],
+      "observacoesExtras": [
+        "Em infecções graves, doses de até 100 mg/kg/dia podem ser usadas — confirmar protocolo."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "smx_tmp",
+      "nome": "Sulfametoxazol + Trimetoprima",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 8,
+          "max": 10
+        },
+        "fracionamento": 2,
+        "doseMaximaDiaMg": 320
+      },
+      "idadeMinimaMeses": 2,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 200 mg + 40 mg / 5 mL (8 mg/mL de TMP)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 8,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 400 mg + 80 mg",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 80,
+          "apresentacaoTexto": "cartela com 20 comprimidos (dose em mg de TMP)"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose calculada com base no componente trimetoprima (TMP). Contraindicado abaixo de 2 meses."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "loratadina",
+      "nome": "Loratadina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixas": [
+          {
+            "pesoMaxKg": 30,
+            "doseMg": 5,
+            "descricao": "Peso < 30 kg"
+          },
+          {
+            "pesoMaxKg": 999,
+            "doseMg": 10,
+            "descricao": "Peso ≥ 30 kg"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 1 mg/mL",
+          "viaTexto": "via oral, 1x/dia",
+          "concentracaoMgMl": 1,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 10 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 10,
+          "apresentacaoTexto": "cartela com 12 comprimidos"
+        }
+      ],
+      "observacoesExtras": [],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "cetirizina",
+      "nome": "Cetirizina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixas": [
+          {
+            "pesoMaxKg": 999,
+            "doseMg": 5,
+            "descricao": "2-6 anos: 2,5-5 mg/dia | ≥6 anos: 5-10 mg/dia (ajustar pela idade)"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 10 mg/mL (0,5 mg/gota)",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": 0.5,
+          "apresentacaoTexto": "frasco gotejador com 20 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 1 mg/mL",
+          "viaTexto": "via oral, 1x/dia",
+          "concentracaoMgMl": 1,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 10 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 10,
+          "apresentacaoTexto": "cartela com 10 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose fixa por faixa etária, não por peso — confirmar faixa exata na bula antes de dispensar."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "dexclorfeniramina",
+      "nome": "Dexclorfeniramina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 0.15,
+          "max": 0.3
+        },
+        "fracionamento": 3,
+        "doseMaximaDiaMg": 12
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 2 mg/5 mL (0,4 mg/mL)",
+          "viaTexto": "via oral a cada 8-12 horas",
+          "concentracaoMgMl": 0.4,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 2 mg",
+          "viaTexto": "via oral a cada 8-12 horas",
+          "mgPorComprimido": 2,
+          "apresentacaoTexto": "cartela com 10 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Efeito sedativo (anti-histamínico de 1ª geração) — orientar sobre sonolência."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "hidroxizina",
+      "nome": "Hidroxizina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 1,
+          "max": 2
+        },
+        "fracionamento": 3,
+        "doseMaximaDiaMg": 100
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 2 mg/mL",
+          "viaTexto": "via oral a cada 8 horas",
+          "concentracaoMgMl": 2,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 25 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 25,
+          "apresentacaoTexto": "cartela com 20 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Sedativo — cautela em associação com outros depressores do SNC."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "ambroxol",
+      "nome": "Ambroxol",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 1.2,
+          "max": 1.6
+        },
+        "fracionamento": 2,
+        "doseMaximaDiaMg": 90
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope infantil 3 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 3,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope adulto 6 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 6,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 30 mg",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 30,
+          "apresentacaoTexto": "cartela com 20 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Atentar para apresentação infantil vs. adulto (concentrações diferentes)."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "bromexina",
+      "nome": "Bromexina",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixas": [
+          {
+            "pesoMaxKg": 20,
+            "doseMg": 2,
+            "descricao": "2-6 anos (até ~20 kg)"
+          },
+          {
+            "pesoMaxKg": 999,
+            "doseMg": 4,
+            "descricao": "6-12 anos"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 4 mg/5 mL (0,8 mg/mL)",
+          "viaTexto": "via oral, 3x/dia",
+          "concentracaoMgMl": 0.8,
+          "apresentacaoTexto": "frasco com 120 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 8 mg",
+          "viaTexto": "via oral, 3x/dia",
+          "mgPorComprimido": 8,
+          "apresentacaoTexto": "cartela com 20 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose orientativa por faixa etária; confirmar na bula."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "domperidona",
+      "nome": "Domperidona",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 0.25,
+          "max": 0.5
+        },
+        "vezesDia": 3,
+        "doseMaximaDoseMg": 10,
+        "doseMaximaDiaMg": 30
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 1 mg/mL",
+          "viaTexto": "via oral, até 3x/dia",
+          "concentracaoMgMl": 1,
+          "apresentacaoTexto": "frasco com 100 mL",
+          "restricoes": [
+            "ALERTA ANVISA: risco de arritmia (prolongamento de QT) — avaliar criteriosamente em menores de 35 kg."
+          ]
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 10 mg",
+          "viaTexto": "via oral, até 3x/dia",
+          "mgPorComprimido": 10,
+          "apresentacaoTexto": "cartela com 30 comprimidos",
+          "restricoes": [
+            "Uso pediátrico geralmente reservado a crianças maiores/adolescentes com avaliação individualizada."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Confirmar indicação e restrições vigentes na bula atual antes de recomendar."
+      ],
+      "fonte": "Bula ANVISA (com nota de segurança) / SBP"
+    },
+    {
+      "id": "ondansetrona",
+      "nome": "Ondansetrona",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 0.15,
+          "max": 0.15
+        },
+        "vezesDia": 1,
+        "doseMaximaDoseMg": 8,
+        "doseMaximaDiaMg": 24
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 4 mg/5 mL (0,8 mg/mL)",
+          "viaTexto": "via oral, dose única ou a cada 8h conforme protocolo",
+          "concentracaoMgMl": 0.8,
+          "apresentacaoTexto": "frasco com 30 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 4 mg",
+          "viaTexto": "via oral, dose única ou a cada 8h",
+          "mgPorComprimido": 4,
+          "apresentacaoTexto": "cartela com 10 comprimidos"
+        },
+        {
+          "tipo": "injetavel",
+          "rotulo": "Solução injetável 2 mg/mL",
+          "viaTexto": "endovenoso lento, dose única conforme protocolo",
+          "concentracaoMgMl": 2,
+          "doseMaximaPorDoseMg": 8,
+          "apresentacaoTexto": "ampola com 2 ou 4 mL",
+          "diluicaoTexto": "Administrar diluído, em infusão lenta, conforme protocolo institucional.",
+          "restricoes": [
+            "Uso predominantemente hospitalar/pronto atendimento."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Uso mais comum em ambiente hospitalar/pronto atendimento para vômitos; confirmar protocolo institucional."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "simeticona",
+      "nome": "Simeticona",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixas": [
+          {
+            "pesoMaxKg": 999,
+            "doseMg": null,
+            "descricao": "1-2 gotas/kg/dose, até 4x/dia"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 75 mg/mL",
+          "viaTexto": "via oral, até 4x/dia (1-2 gotas/kg/dose)",
+          "mgPorGota": 3.75,
+          "apresentacaoTexto": "frasco gotejador com 15 mL",
+          "calculoEspecial": "gotas_por_kg"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 40 mg",
+          "viaTexto": "via oral, até 4x/dia",
+          "mgPorComprimido": 40,
+          "apresentacaoTexto": "cartela com 12 cápsulas"
+        }
+      ],
+      "observacoesExtras": [
+        "Sem toxicidade sistêmica relevante; dose orientativa em gotas/kg, não em mg/kg fixo."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "nistatina",
+      "nome": "Nistatina (suspensão oral)",
+      "categoria": "Antifúngicos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixas": [
+          {
+            "pesoMaxKg": 999,
+            "doseMg": null,
+            "descricao": "100.000 a 400.000 UI, 4x/dia, aplicado na mucosa oral"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 100.000 UI/mL",
+          "viaTexto": "aplicação tópica oral, 4x/dia",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "frasco com 50 mL",
+          "restricoes": [
+            "Dose em Unidades Internacionais (UI), não em mg — cálculo automático de volume não se aplica."
+          ]
+        }
+      ],
+      "observacoesExtras": [],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "fluconazol",
+      "nome": "Fluconazol",
+      "categoria": "Antifúngicos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 3,
+          "max": 6
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 400
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 10 mg/mL",
+          "viaTexto": "via oral, 1x/dia",
+          "concentracaoMgMl": 10,
+          "apresentacaoTexto": "frasco com 35 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 150 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 150,
+          "apresentacaoTexto": "cartela com 1 cápsula"
+        }
+      ],
+      "observacoesExtras": [
+        "Em candidíase sistêmica, dose de ataque de 6 mg/kg no 1º dia pode ser indicada — confirmar protocolo."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "albendazol",
+      "nome": "Albendazol",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 24,
+            "doseMg": 200,
+            "descricao": "< 2 anos"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 400,
+            "descricao": "≥ 2 anos"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 40 mg/mL",
+          "viaTexto": "via oral, dose única",
+          "concentracaoMgMl": 40,
+          "apresentacaoTexto": "frasco com 10 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 400 mg",
+          "viaTexto": "via oral, dose única",
+          "mgPorComprimido": 400,
+          "apresentacaoTexto": "comprimido mastigável unitário"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose única, independente do peso; baseada apenas na idade."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "mebendazol",
+      "nome": "Mebendazol",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 100,
+            "descricao": "≥ 2 anos, 2x/dia por 3 dias"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 20 mg/mL",
+          "viaTexto": "via oral, 2x/dia por 3 dias",
+          "concentracaoMgMl": 20,
+          "apresentacaoTexto": "frasco com 30 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 100 mg",
+          "viaTexto": "via oral, 2x/dia por 3 dias",
+          "mgPorComprimido": 100,
+          "apresentacaoTexto": "cartela com 6 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose fixa, não depende do peso corporal."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "secnidazol",
+      "nome": "Secnidazol",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 30,
+          "max": 30
+        },
+        "vezesDia": 1,
+        "doseMaximaDoseMg": 2000,
+        "doseMaximaDiaMg": 2000
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 30 mg/mL",
+          "viaTexto": "via oral, dose única após refeição",
+          "concentracaoMgMl": 30,
+          "apresentacaoTexto": "frasco com 15 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 1 g",
+          "viaTexto": "via oral, dose única após refeição",
+          "mgPorComprimido": 1000,
+          "apresentacaoTexto": "comprimido unitário"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose única — administrar preferencialmente após refeição."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "prednisolona",
+      "nome": "Prednisolona",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 1,
+          "max": 2
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 60
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Solução oral 3 mg/mL",
+          "viaTexto": "via oral, 1x/dia (dose única matinal)",
+          "concentracaoMgMl": 3,
+          "apresentacaoTexto": "frasco com 60 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 20 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 20,
+          "apresentacaoTexto": "cartela com 10 comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Curso curto (crise asmática/laringite): 3-5 dias, geralmente sem necessidade de desmame."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "sulfato_ferroso",
+      "nome": "Sulfato Ferroso",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 3,
+          "max": 6
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 60
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 25 mg/mL de ferro elementar (1,25 mg/gota)",
+          "viaTexto": "via oral, 1x/dia, longe das refeições",
+          "mgPorGota": 1.25,
+          "apresentacaoTexto": "frasco gotejador com 30 mL"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose calculada em ferro elementar. Profilático: 1-2 mg/kg/dia | Terapêutico: 3-6 mg/kg/dia."
+      ],
+      "fonte": "Bula ANVISA / SBP"
+    },
+    {
+      "id": "acetilcisteina",
+      "nome": "Acetilcisteína",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 9,
+          "max": 15
+        },
+        "fracionamento": 3,
+        "doseMaximaDiaMg": 600
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope pediátrico 20 mg/mL",
+          "viaTexto": "via oral a cada 8 horas",
+          "concentracaoMgMl": 20,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Envelope/sachê 200 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 200,
+          "apresentacaoTexto": "envelope de 200 mg (uso ≥ 2 anos)"
+        }
+      ],
+      "observacoesExtras": [
+        "Aprovação de bula para ≥ 2 anos considera dose fixa de 200 mg a cada 8 horas (600 mg/dia); a critério médico pode ser dobrada.",
+        "Não associar com antitussígenos — a redução do reflexo da tosse pode causar acúmulo de secreções.",
+        "Contém sorbitol — cautela em diabéticos e intolerância hereditária à frutose."
+      ],
+      "fonte": "Bula ANVISA (Eurofarma/EMS/Geolab)"
+    },
+    {
+      "id": "acebrofilina",
+      "nome": "Acebrofilina",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 36,
+            "mgPorKg": 2,
+            "fracionamento": 2,
+            "descricao": "2 a 3 anos"
+          },
+          {
+            "idadeMaxMeses": 72,
+            "doseMg": 50,
+            "fracionamento": 2,
+            "descricao": "3 a 6 anos (dose fixa ~50 mg/dia)"
+          },
+          {
+            "idadeMaxMeses": 144,
+            "doseMg": 100,
+            "fracionamento": 2,
+            "descricao": "6 a 12 anos (dose fixa ~100 mg/dia)"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 200,
+            "fracionamento": 2,
+            "descricao": "≥ 12 anos / adultos (dose fixa ~200 mg/dia)"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope pediátrico 5 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 5,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador (uso até ~12 anos)"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope adulto 10 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 10,
+          "apresentacaoTexto": "frasco com 120 mL (uso ≥ 12 anos)"
+        }
+      ],
+      "observacoesExtras": [
+        "Sem dose máxima estabelecida pelo fabricante para as faixas etárias descritas.",
+        "Dose de 2 a 3 anos calculada por peso (2 mg/kg/dia); demais faixas seguem dose fixa por idade, conforme bula."
+      ],
+      "fonte": "Bula ANVISA (Ache/Eurofarma/Cimed/Geolab)"
+    },
+    {
+      "id": "levodropropizina",
+      "nome": "Levodropropizina",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 1,
+          "max": 1
+        },
+        "vezesDia": 3,
+        "doseMaximaDiaMg": 180
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 30 mg/5 mL (6 mg/mL)",
+          "viaTexto": "via oral, até 3x/dia (intervalo mínimo de 6h)",
+          "concentracaoMgMl": 6,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador"
+        },
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 30 mg/mL (1,5 mg/gota)",
+          "viaTexto": "via oral, até 3x/dia (intervalo mínimo de 6h)",
+          "mgPorGota": 1.5,
+          "apresentacaoTexto": "frasco gotejador"
+        }
+      ],
+      "observacoesExtras": [
+        "Contraindicado para menores de 2 anos.",
+        "Dose máxima diária não deve ultrapassar 30 mL de xarope (equivalente a ~180 mg)."
+      ],
+      "fonte": "Bula ANVISA (Aché/EMS)"
+    },
+    {
+      "id": "dropropizina",
+      "nome": "Dropropizina",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 36,
+            "doseMg": {
+              "min": 3.75,
+              "max": 7.5
+            },
+            "fracionamento": 1,
+            "descricao": "2 a 3 anos (2,5–5 mL do xarope 1,5 mg/mL)"
+          },
+          {
+            "idadeMaxMeses": 144,
+            "doseMg": 15,
+            "fracionamento": 1,
+            "descricao": "acima de 3 anos (10 mL do xarope 1,5 mg/mL)"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 30,
+            "fracionamento": 1,
+            "descricao": "≥ 12 anos / adultos (10 mL do xarope adulto 3 mg/mL)"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope pediátrico 1,5 mg/mL",
+          "viaTexto": "via oral, 4x/dia",
+          "concentracaoMgMl": 1.5,
+          "apresentacaoTexto": "frasco com 120 mL + seringa dosadora (uso até ~12 anos)"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope adulto 3 mg/mL",
+          "viaTexto": "via oral, 4x/dia",
+          "concentracaoMgMl": 3,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador (uso ≥ 12 anos)"
+        }
+      ],
+      "observacoesExtras": [
+        "Contraindicado em tosse produtiva (com catarro), insuficiência respiratória grave e asma.",
+        "Cada administração é feita 4 vezes ao dia — dose exibida refere-se a cada tomada."
+      ],
+      "fonte": "Bula ANVISA (Biosintética/Prati-Donaduzzi)"
+    },
+    {
+      "id": "betametasona",
+      "nome": "Betametasona",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 0.017,
+          "max": 0.25
+        },
+        "fracionamento": 1
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 0,5 mg/mL (26 gotas/mL · ~0,0192 mg/gota)",
+          "viaTexto": "via oral, dose única preferencialmente pela manhã",
+          "mgPorGota": 0.0192,
+          "apresentacaoTexto": "frasco com 15 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 0,5 mg",
+          "viaTexto": "via oral, dose única preferencialmente pela manhã",
+          "mgPorComprimido": 0.5,
+          "apresentacaoTexto": "cartela de comprimidos"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 2 mg",
+          "viaTexto": "via oral, dose única preferencialmente pela manhã",
+          "mgPorComprimido": 2,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Bula cita, a título ilustrativo, dose máxima diária de 5 mg para uma criança de 20 kg (equivale a ~0,25 mg/kg/dia).",
+        "Corticoterapia sistêmica: reduzir gradualmente ao final do tratamento; evitar suspensão abrupta em cursos prolongados."
+      ],
+      "fonte": "Bula ANVISA (Celestone/EMS)"
+    },
+    {
+      "id": "dexclor_betametasona",
+      "nome": "Dexclorfeniramina + Betametasona",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 2 mg + 0,25 mg / 5 mL (0,4 + 0,05 mg/mL)",
+          "viaTexto": "via oral, conforme faixa etária",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador",
+          "faixasTexto": [
+            {
+              "idadeMaxMeses": 72,
+              "texto": "1,25–2,5 mL, 3x/dia (máx. 10 mL/dia)"
+            },
+            {
+              "idadeMaxMeses": 144,
+              "texto": "2,5 mL, 3x/dia (máx. 20 mL/dia)"
+            },
+            {
+              "idadeMaxMeses": 9999,
+              "texto": "5–10 mL, 3–4x/dia (máx. 40 mL/dia)"
+            }
+          ],
+          "restricoes": [
+            "Dose não é calculada pelo peso — ajustar conforme gravidade clínica e resposta terapêutica, respeitando o teto máximo diário."
+          ]
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 2 mg + 0,25 mg",
+          "viaTexto": "via oral, 3x/dia",
+          "mgPorComprimido": null,
+          "apresentacaoTexto": "cartela de comprimidos",
+          "textoDoseFixo": "1 comprimido, 3x/dia (máx. 4 comprimidos/dia)",
+          "restricoes": [
+            "Contraindicado para menores de 12 anos."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Associação de anti-histamínico (dexclorfeniramina) com corticoide (betametasona) — a dose deve ser individualizada pela gravidade clínica, não apenas pelo peso.",
+        "Xarope/gotas contraindicados para menores de 2 anos; comprimidos contraindicados para menores de 12 anos."
+      ],
+      "fonte": "Bula ANVISA (Cifarma/Cristália/Pharlab/Prati-Donaduzzi)"
+    },
+    {
+      "id": "fexofenadina",
+      "nome": "Fexofenadina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 24,
+            "doseMg": 15,
+            "descricao": "6 a 23 meses (apenas urticária)"
+          },
+          {
+            "idadeMaxMeses": 144,
+            "doseMg": 30,
+            "descricao": "2 a 11 anos"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 60,
+            "descricao": "≥ 12 anos / adultos"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 6 mg/mL",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 6,
+          "apresentacaoTexto": "frasco com 60 ou 150 mL + seringa dosadora"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 60 mg (uso ≥ 12 anos)",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 60,
+          "apresentacaoTexto": "cartela de comprimidos",
+          "restricoes": [
+            "Comprimidos destinados a adultos e crianças ≥ 12 anos; para menores, usar a suspensão oral."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Faixa de 6 a 23 meses aprovada apenas para urticária idiopática crônica; rinite alérgica aprovada a partir de 2 anos.",
+        "Dose não é calculada por mg/kg — é fixa por faixa etária."
+      ],
+      "fonte": "Bula ANVISA (Allegra/genéricos)"
+    },
+    {
+      "id": "claritromicina",
+      "nome": "Claritromicina",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 7.5,
+          "max": 7.5
+        },
+        "vezesDia": 2,
+        "doseMaximaDoseMg": 500
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 25 mg/mL (125 mg/5 mL)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 25,
+          "apresentacaoTexto": "frasco para reconstituição, 60 ou 100 mL"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 50 mg/mL (250 mg/5 mL)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 50,
+          "apresentacaoTexto": "frasco para reconstituição, 60 ou 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg (uso ≥ 12 anos)",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Crianças com menos de 12 anos devem usar a suspensão pediátrica, não o comprimido."
+      ],
+      "fonte": "Bula ANVISA (Klaricid/EMS)"
+    },
+    {
+      "id": "penicilina_benzatina",
+      "nome": "Penicilina G Benzatina",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "injetavel",
+          "rotulo": "Suspensão injetável 300.000 UI/mL (uso intramuscular exclusivo)",
+          "viaTexto": "intramuscular profunda, dose única",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "ampola de 600.000 UI/2 mL ou 1.200.000 UI/4 mL",
+          "faixasTextoPeso": [
+            {
+              "pesoMaxKg": 27,
+              "texto": "600.000 UI IM, dose única (faringoamigdalite estreptocócica)"
+            },
+            {
+              "pesoMaxKg": 9999,
+              "texto": "1.200.000 UI IM, dose única"
+            }
+          ],
+          "restricoes": [
+            "NUNCA administrar por via intravenosa (risco de embolia/óbito) — uso exclusivamente intramuscular.",
+            "Profilaxia de febre reumática: < 30 kg → 600.000 UI a cada 21 dias; ≥ 30 kg → 1.200.000 UI a cada 21 dias."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Dose expressa em Unidades Internacionais (UI), não em mg — cálculo automático de volume não se aplica.",
+        "Investigar histórico de alergia a penicilinas antes da administração."
+      ],
+      "fonte": "Bula ANVISA (Benzetacil/Eurofarma)"
+    },
+    {
+      "id": "nitrofurantoina",
+      "nome": "Nitrofurantoína",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 5,
+          "max": 7
+        },
+        "fracionamento": 4,
+        "doseMaximaDiaMg": 400
+      },
+      "idadeMinimaMeses": 1,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 5 mg/mL (25 mg/5 mL)",
+          "viaTexto": "via oral a cada 6 horas, com alimentos",
+          "concentracaoMgMl": 5,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 100 mg",
+          "viaTexto": "via oral a cada 6 horas, com alimentos",
+          "mgPorComprimido": 100,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Contraindicado em neonatos com menos de 1 mês (risco de anemia hemolítica por imaturidade enzimática).",
+        "Indicado para infecção urinária baixa; não atinge níveis terapêuticos adequados em pielonefrite."
+      ],
+      "fonte": "Bula ANVISA (Macrodantina/genéricos)"
+    },
+    {
+      "id": "cefadroxila",
+      "nome": "Cefadroxila",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 30,
+          "max": 30
+        },
+        "fracionamento": 2,
+        "doseMaximaDiaMg": 2000
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 50 mg/mL (250 mg/5 mL)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 50,
+          "apresentacaoTexto": "frasco para reconstituição, 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 500 mg",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela de cápsulas"
+        }
+      ],
+      "observacoesExtras": [
+        "Cefalosporina de 1ª geração; boa opção para impetigo e infecções de pele/partes moles sensíveis."
+      ],
+      "fonte": "Bula ANVISA (genéricos)"
+    },
+    {
+      "id": "eritromicina",
+      "nome": "Eritromicina (estolato/estearato)",
+      "categoria": "Antibióticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 30,
+          "max": 50
+        },
+        "fracionamento": 4,
+        "doseMaximaDiaMg": 2000
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 25 mg/mL",
+          "viaTexto": "via oral a cada 6 horas",
+          "concentracaoMgMl": 25,
+          "apresentacaoTexto": "frasco com 100 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg",
+          "viaTexto": "via oral a cada 6 horas",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Alternativa em alergia a betalactâmicos; associada a estenose hipertrófica do piloro em uso neonatal precoce — cautela em < 2 semanas de vida."
+      ],
+      "fonte": "Bula ANVISA (genéricos)"
+    },
+    {
+      "id": "nimesulida",
+      "nome": "Nimesulida",
+      "categoria": "AINEs",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 5,
+          "max": 5
+        },
+        "fracionamento": 2,
+        "doseMaximaDiaMg": 200
+      },
+      "idadeMinimaMeses": 144,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 10 mg/mL (50 mg/5 mL)",
+          "viaTexto": "via oral a cada 12 horas",
+          "concentracaoMgMl": 10,
+          "apresentacaoTexto": "frasco com 20 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 100 mg",
+          "viaTexto": "via oral a cada 12 horas",
+          "mgPorComprimido": 100,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "USO PEDIÁTRICO CONTRAINDICADO PARA MENORES DE 12 ANOS no Brasil, por determinação da ANVISA, devido ao risco de hepatotoxicidade grave — cálculo mostrado apenas como referência para ≥ 12 anos."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "guaifenesina",
+      "nome": "Guaifenesina",
+      "categoria": "Antitussivos / Mucolíticos",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 8,
+          "max": 12
+        },
+        "fracionamento": 4,
+        "doseMaximaDiaMg": 1200
+      },
+      "idadeMinimaMeses": 24,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 20 mg/mL (100 mg/5 mL)",
+          "viaTexto": "via oral a cada 6 horas",
+          "concentracaoMgMl": 20,
+          "apresentacaoTexto": "frasco com 100 ou 120 mL"
+        }
+      ],
+      "observacoesExtras": [
+        "Valores de referência geral (expectorante); confirmar posologia exata na bula do produto específico dispensado, pois pode variar entre fabricantes."
+      ],
+      "fonte": "Bula de fabricante (referência geral) — confirmar produto específico"
+    },
+    {
+      "id": "omeprazol",
+      "nome": "Omeprazol",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 0.7,
+          "max": 3.3
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 40
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 10 mg",
+          "viaTexto": "via oral, 1x/dia, em jejum",
+          "mgPorComprimido": 10,
+          "apresentacaoTexto": "cartela de cápsulas"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Cápsula 20 mg",
+          "viaTexto": "via oral, 1x/dia, em jejum",
+          "mgPorComprimido": 20,
+          "apresentacaoTexto": "cartela de cápsulas"
+        }
+      ],
+      "observacoesExtras": [
+        "Cápsulas não devem ser mastigadas; em crianças pequenas pode ser necessário abrir a cápsula e dispersar os grânulos (confirmar orientação com o prescritor).",
+        "Faixa de dose ampla (0,7–3,3 mg/kg/dia) conforme indicação (DRGE, esofagite); iniciar pela menor dose eficaz."
+      ],
+      "fonte": "Bula ANVISA / literatura pediátrica de referência"
+    },
+    {
+      "id": "racecadotrila",
+      "nome": "Racecadotrila",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "vezesDia": 3,
+        "doseMaximaDoseMg": 100
+      },
+      "idadeMinimaMeses": 3,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Sachê/comprimido pediátrico 10 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 10,
+          "apresentacaoTexto": "caixa com sachês de 10 mg"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido adulto 100 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 100,
+          "apresentacaoTexto": "cartela de comprimidos (uso ≥ 12 anos)"
+        }
+      ],
+      "observacoesExtras": [
+        "Contraindicado para menores de 3 meses.",
+        "Manter a hidratação oral (soro de reidratação) durante todo o tratamento — a racecadotrila não substitui a reposição de líquidos.",
+        "Uso limitado a, no máximo, 7 dias."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "peg3350",
+      "nome": "Polietilenoglicol 3350 (macrogol, sem eletrólitos)",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 400,
+          "max": 800
+        },
+        "fracionamento": 1
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Sachê 8,6 g (dissolver em água)",
+          "viaTexto": "via oral, 1x/dia (pode dividir em 2 tomadas)",
+          "mgPorComprimido": 8600,
+          "apresentacaoTexto": "caixa com sachês de 8,6 g",
+          "unidadeComprimido": "sachê"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose de manutenção para constipação funcional (0,4–0,8 g/kg/dia). Dose de desimpactação fecal é maior e deve ser individualizada pelo médico.",
+        "Titular a dose conforme resposta clínica (frequência e consistência das evacuações)."
+      ],
+      "fonte": "Bula ANVISA (Muvinlax/genéricos) / referências de constipação funcional pediátrica"
+    },
+    {
+      "id": "loperamida",
+      "nome": "Loperamida",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 72,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 2 mg (uso ≥ 6 anos)",
+          "viaTexto": "via oral, conforme evacuações",
+          "mgPorComprimido": null,
+          "apresentacaoTexto": "cartela de comprimidos",
+          "textoDoseFixo": "2 mg após a 1ª evacuação líquida, depois 1 mg a cada evacuação líquida subsequente (respeitar dose máxima diária por idade/peso)",
+          "restricoes": [
+            "Uso não recomendado para menores de 6 anos, conforme bula brasileira.",
+            "Não usar em diarreia com sangue/muco ou febre alta (suspeita de diarreia invasiva/disenteria)."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Dose não é calculada por peso — é orientada por evento (a cada evacuação líquida), respeitando o teto máximo diário.",
+        "Manter hidratação oral; loperamida não substitui a reposição de líquidos."
+      ],
+      "fonte": "Bula ANVISA"
+    },
+    {
+      "id": "miconazol_oral",
+      "nome": "Miconazol (gel oral)",
+      "categoria": "Antifúngicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 4,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Gel oral 20 mg/g (2%)",
+          "viaTexto": "aplicar na mucosa oral após as refeições",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "bisnaga com 40 g",
+          "faixasTexto": [
+            {
+              "idadeMaxMeses": 24,
+              "texto": "1,25 mL (¼ colher-medida), 2x/dia"
+            },
+            {
+              "idadeMaxMeses": 72,
+              "texto": "2,5 mL (½ colher-medida), 2x/dia"
+            },
+            {
+              "idadeMaxMeses": 9999,
+              "texto": "2,5 mL, 4x/dia"
+            }
+          ],
+          "restricoes": [
+            "Contraindicado para menores de 4 meses — risco de engasgo/aspiração.",
+            "Aplicar em pequenas quantidades diretamente na mucosa, evitando o fundo da garganta."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Manter o gel em contato com a mucosa o maior tempo possível antes de engolir; tratar por, no mínimo, 7 dias após o desaparecimento dos sintomas."
+      ],
+      "fonte": "Bula ANVISA (Daktarin Oral Gel/genéricos)"
+    },
+    {
+      "id": "metronidazol",
+      "nome": "Metronidazol (giardíase)",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 15,
+          "max": 22.5
+        },
+        "fracionamento": 3,
+        "doseMaximaDiaMg": 750
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão pediátrica 25 mg/mL (equivalente a metronidazol; benzoilmetronidazol 40 mg/mL)",
+          "viaTexto": "via oral a cada 8 horas, por 5 a 7 dias",
+          "concentracaoMgMl": 25,
+          "apresentacaoTexto": "frasco com 100 mL + copo dosador"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 250 mg",
+          "viaTexto": "via oral a cada 8 horas",
+          "mgPorComprimido": 250,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose de referência para giardíase; a amebíase usa esquema posológico diferente (mais prolongado/dose maior) — confirmar na bula conforme indicação."
+      ],
+      "fonte": "Bula ANVISA (Flagyl Pediátrico)"
+    },
+    {
+      "id": "ivermectina",
+      "nome": "Ivermectina",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 0.2,
+          "max": 0.2
+        },
+        "vezesDia": 1
+      },
+      "idadeMinimaMeses": 60,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 6 mg",
+          "viaTexto": "via oral, dose única, em jejum",
+          "mgPorComprimido": 6,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Não utilizar em crianças com menos de 15 kg ou menores de 5 anos, conforme bula.",
+        "Para escabiose/pediculose, pode repetir dose única após 7 a 14 dias conforme resposta clínica."
+      ],
+      "fonte": "Bula ANVISA (Revectina/genéricos)"
+    },
+    {
+      "id": "praziquantel",
+      "nome": "Praziquantel",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 40,
+          "max": 60
+        },
+        "vezesDia": 1
+      },
+      "idadeMinimaMeses": 48,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 600 mg",
+          "viaTexto": "via oral, dose única (esquistossomose)",
+          "mgPorComprimido": 600,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Segurança em menores de 4 anos não bem estabelecida — confirmar indicação e faixa etária na bula do produto e diretriz vigente.",
+        "Para teníase, a dose usual é menor (10–25 mg/kg dose única) — confirmar indicação antes de calcular."
+      ],
+      "fonte": "Bula ANVISA / referências de esquistossomose"
+    },
+    {
+      "id": "nitazoxanida",
+      "nome": "Nitazoxanida",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 48,
+            "doseMg": 100,
+            "descricao": "1 a 3 anos"
+          },
+          {
+            "idadeMaxMeses": 144,
+            "doseMg": 200,
+            "descricao": "4 a 11 anos"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 500,
+            "descricao": "≥ 12 anos / adultos"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 20 mg/mL (100 mg/5 mL)",
+          "viaTexto": "via oral a cada 12 horas, por 3 dias",
+          "concentracaoMgMl": 20,
+          "apresentacaoTexto": "frasco com 60 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 500 mg (uso ≥ 12 anos)",
+          "viaTexto": "via oral a cada 12 horas, por 3 dias",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Antiparasitário de amplo espectro (protozoários e helmintos); dose fixa por idade, não por peso."
+      ],
+      "fonte": "Bula ANVISA (Annita/genéricos)"
+    },
+    {
+      "id": "vitamina_d3",
+      "nome": "Vitamina D3 (Colecalciferol)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) — concentração usual 200 UI/gota",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador (concentração pode variar por fabricante)",
+          "faixasTexto": [
+            {
+              "idadeMaxMeses": 12,
+              "texto": "400 UI/dia (≈ 2 gotas) — profilaxia de rotina"
+            },
+            {
+              "idadeMaxMeses": 216,
+              "texto": "600 UI/dia (≈ 3 gotas) — profilaxia de rotina"
+            }
+          ],
+          "restricoes": [
+            "Dose expressa em Unidades Internacionais (UI), não em mg — cálculo automático de volume não se aplica.",
+            "Doses de tratamento de hipovitaminose D confirmada são maiores e devem ser individualizadas pelo médico."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Profilaxia de rotina recomendada pela SBP para lactentes e crianças, independente da exposição solar."
+      ],
+      "fonte": "SBP (Manual de Orientação para Suplementação de Vitaminas e Minerais) / Bula ANVISA"
+    },
+    {
+      "id": "zinco",
+      "nome": "Zinco (Sulfato de Zinco)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 6,
+            "doseMg": 10,
+            "descricao": "< 6 meses"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 20,
+            "descricao": "≥ 6 meses"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 2 mg/mL (10 mg/5 mL)",
+          "viaTexto": "via oral, 1x/dia, por 10 a 14 dias",
+          "concentracaoMgMl": 2,
+          "apresentacaoTexto": "frasco com 100 mL"
+        }
+      ],
+      "observacoesExtras": [
+        "Recomendação da OMS/UNICEF como adjuvante no tratamento da diarreia aguda em crianças, reduzindo duração e gravidade dos episódios."
+      ],
+      "fonte": "OMS/UNICEF / Bula ANVISA"
+    },
+    {
+      "id": "acido_folico",
+      "nome": "Ácido Fólico",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": {
+              "min": 1,
+              "max": 5
+            },
+            "descricao": "suplementação/tratamento de anemia carencial"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 5 mg",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 5,
+          "apresentacaoTexto": "cartela de comprimidos (disponível na rede pública/SUS)"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose varia conforme indicação (profilática vs. tratamento de anemia megaloblástica) — confirmar com o prescritor.",
+        "Fracionamento do comprimido pode ser impreciso; considerar formulação manipulada em lactentes se necessário."
+      ],
+      "fonte": "Referência geral / Bula ANVISA"
+    },
+    {
+      "id": "vitamina_a",
+      "nome": "Vitamina A (Retinol)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (megadose) — uso em programas de suplementação",
+          "viaTexto": "via oral, conforme calendário do programa",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco/ampola conforme protocolo do Ministério da Saúde",
+          "faixasTexto": [
+            {
+              "idadeMaxMeses": 11,
+              "texto": "100.000 UI, dose única"
+            },
+            {
+              "idadeMaxMeses": 59,
+              "texto": "200.000 UI, a cada 6 meses (até os 59 meses)"
+            }
+          ],
+          "restricoes": [
+            "Dose expressa em Unidades Internacionais (UI) — cálculo automático de volume não se aplica."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Esquema de megadose do Programa Nacional de Suplementação de Vitamina A (Ministério da Saúde/OMS), indicado principalmente em áreas de risco de carência — não é suplementação diária de rotina.",
+        "Superdosagem de vitamina A é tóxica (hipervitaminose A); respeitar rigorosamente o intervalo entre doses do programa."
+      ],
+      "fonte": "Ministério da Saúde / OMS (Programa Nacional de Suplementação de Vitamina A)"
+    },
+    {
+      "id": "vitamina_a_d",
+      "nome": "Vitamina A + D (associação)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) — associação Vitamina A + D3",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador (composição de UI por gota varia por fabricante)",
+          "textoDoseFixo": "Verificar posologia exata na bula do produto dispensado — composição de UI de vitamina A e D por gota varia significativamente entre fabricantes.",
+          "restricoes": [
+            "Dose expressa em Unidades Internacionais (UI) — cálculo automático de volume não se aplica."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "A associação rotineira de vitamina A com D caiu em desuso: a SBP recomenda atualmente a suplementação isolada de vitamina D para a maioria das crianças, reservando vitamina A para os esquemas específicos do Programa Nacional.",
+        "Confirmar se a indicação clínica realmente exige a associação, e não apenas vitamina D isolada."
+      ],
+      "fonte": "Bula de fabricante (referência genérica) / orientação SBP"
+    },
+    {
+      "id": "vitamina_c",
+      "nome": "Vitamina C (Ácido Ascórbico)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 10,
+          "max": 10
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 500
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 200 mg/mL (10 mg/gota)",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": 10,
+          "apresentacaoTexto": "frasco gotejador com 20 mL"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido efervescente 500 mg (uso adulto e pediátrico maior)",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 500,
+          "apresentacaoTexto": "tubo com comprimidos efervescentes"
+        }
+      ],
+      "observacoesExtras": [
+        "Esquema usual de suplementação (\"1 gota/kg/dia\", equivalente a ~10 mg/kg/dia); doses terapêuticas para deficiência franca (escorbuto) são maiores e devem ser individualizadas.",
+        "Concentração por gota varia entre fabricantes (ex.: 10 mg/gota vs. 8,33 mg/gota) — confirmar na bula do produto dispensado antes de orientar."
+      ],
+      "fonte": "Bula ANVISA (Redoxon/genéricos) / SBP (Departamento de Nutrologia)"
+    },
+    {
+      "id": "complexo_b",
+      "nome": "Complexo B",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) — associação de vitaminas do complexo B",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador (composição varia por fabricante)",
+          "textoDoseFixo": "Posologia usual de 5 a 10 gotas, 1x/dia — confirmar dose exata e composição (B1, B2, B6, B12 etc.) na bula do produto específico dispensado."
+        }
+      ],
+      "observacoesExtras": [
+        "\"Complexo B\" reúne formulações muito heterogêneas entre fabricantes (variam as vitaminas incluídas e as concentrações) — não existe uma dose de referência única aplicável a todos os produtos."
+      ],
+      "fonte": "Referência geral / bula do fabricante específico"
+    },
+    {
+      "id": "vitamina_e",
+      "nome": "Vitamina E (Tocoferol)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 48,
+            "doseMg": 5,
+            "descricao": "menores de 4 anos (dose usual de suplementação)"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 7,
+            "descricao": "4 anos ou mais (dose usual de suplementação)"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas)",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador (concentração por gota varia por fabricante)",
+          "restricoes": [
+            "Concentração de UI/mg por gota varia entre fabricantes — confirmar na bula do produto dispensado antes de orientar."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Valores de referência aproximados para suplementação nutricional geral; doses terapêuticas para deficiência confirmada devem ser individualizadas pelo médico."
+      ],
+      "fonte": "Referência geral / bula do fabricante específico"
+    },
+    {
+      "id": "polivitaminico",
+      "nome": "Polivitamínico (A, C, D, E e Complexo B)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) — polivitamínico multi-componente",
+          "viaTexto": "via oral, conforme bula",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador (composição e concentração variam por fabricante)",
+          "textoDoseFixo": "Dose variável conforme a formulação e a marca do produto — seguir estritamente a posologia da bula específica do polivitamínico dispensado."
+        }
+      ],
+      "observacoesExtras": [
+        "Polivitamínicos reúnem combinações muito heterogêneas de vitaminas (A, C, D, E, complexo B) em concentrações que variam amplamente entre fabricantes — não existe fórmula de cálculo única.",
+        "Para a maioria das crianças com alimentação variada e equilibrada, a suplementação rotineira com polivitamínico não é necessária (SBP); avaliar a real indicação clínica antes de recomendar."
+      ],
+      "fonte": "Referência geral / bula do fabricante específico / orientação SBP"
+    },
+    {
+      "id": "ferro_polimaltosado",
+      "nome": "Ferro Polimaltosado (Complexo Férrico)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "mgkg_dia",
+        "doseMgKg": {
+          "min": 3,
+          "max": 6
+        },
+        "fracionamento": 1,
+        "doseMaximaDiaMg": 60
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas) 50 mg/mL de ferro elementar",
+          "viaTexto": "via oral, 1x/dia",
+          "apresentacaoTexto": "frasco gotejador com 30 mL",
+          "mgPorGota": 2.5
+        }
+      ],
+      "observacoesExtras": [
+        "Dose calculada em ferro elementar. Profilático: 1–2 mg/kg/dia | Terapêutico: 3–6 mg/kg/dia (mesma faixa terapêutica de referência do sulfato ferroso).",
+        "Frequentemente melhor tolerado no trato gastrointestinal do que o sulfato ferroso, sendo uma alternativa comum em caso de intolerância."
+      ],
+      "fonte": "Bula ANVISA (referência genérica de complexo férrico polimaltosado)"
+    },
+    {
+      "id": "salbutamol",
+      "nome": "Salbutamol",
+      "categoria": "Respiratório / Broncodilatadores",
+      "doseBase": {
+        "tipo": "mgkg_dose",
+        "doseMgKg": {
+          "min": 0.1,
+          "max": 0.15
+        },
+        "vezesDia": 4,
+        "doseMaximaDoseMg": 4
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 2 mg/5 mL (0,4 mg/mL)",
+          "viaTexto": "via oral a cada 6-8 horas",
+          "concentracaoMgMl": 0.4,
+          "apresentacaoTexto": "frasco com 120 mL + copo dosador"
+        },
+        {
+          "tipo": "spray",
+          "rotulo": "Aerossol dosimetrado (MDI) 100 mcg/dose",
+          "viaTexto": "via inalatória, conforme crise",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco com espaçador e máscara (uso preferencial em crianças < 5 anos)",
+          "textoDoseFixo": "1-2 jatos (100-200 mcg), a cada 4-6 horas, com espaçador e máscara facial",
+          "restricoes": [
+            "Via inalatória (spray/nebulização) é preferível à via oral para o tratamento de crises agudas, por início de ação mais rápido e menos efeitos adversos."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "A via oral (xarope) não é recomendada para crises agudas, devido ao início de ação lento (cerca de 30 min) e maior incidência de tremores/taquicardia; é mais usada em manutenção quando a via inalatória não está disponível.",
+        "Efeitos adversos comuns: taquicardia, tremores, hipocalemia em doses altas."
+      ],
+      "fonte": "Bula ANVISA (Aerolin/genéricos) / Neoped / PedBook"
+    },
+    {
+      "id": "budesonida_nebulizacao",
+      "nome": "Budesonida (suspensão para nebulização)",
+      "categoria": "Respiratório / Broncodilatadores",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 6,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "spray",
+          "rotulo": "Suspensão para nebulização 0,25 mg/mL ou 0,5 mg/mL",
+          "viaTexto": "via inalatória (nebulização)",
+          "mgPorGota": null,
+          "apresentacaoTexto": "ampola/frasco de 2 mL",
+          "textoDoseFixo": "Manutenção: 0,25-1 mg/dia (dose única ou dividida 12/12h) | Crise aguda/crupe: 2 mg em dose única, podendo repetir conforme orientação médica",
+          "restricoes": [
+            "Dose fixa, não calculada por peso — conforme bula ANVISA (Pulmicort/genéricos)."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Indicado para manutenção de asma (anti-inflamatório inalatório) e crupe (laringotraqueobronquite viral) em bebês e crianças.",
+        "Uso prolongado em altas doses pode associar-se a candidíase orofaríngea — orientar higiene oral/lavagem da face após uso."
+      ],
+      "fonte": "Bula ANVISA (Pulmicort/Busonid) / Neoped"
+    },
+    {
+      "id": "saccharomyces_boulardii",
+      "nome": "Saccharomyces boulardii",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 1,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Sachê ou cápsula 200 mg",
+          "viaTexto": "via oral, em jejum ou 30 min antes das refeições",
+          "mgPorComprimido": null,
+          "apresentacaoTexto": "caixa com sachês/cápsulas de 200 mg",
+          "textoDoseFixo": "1 sachê ou cápsula (200 mg), 1-2x/dia (200-400 mg/dia)",
+          "restricoes": [
+            "Para lactentes/crianças pequenas, abrir a cápsula ou dissolver o sachê em líquido ou alimento não quente (< 60°C)."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Probiótico usado como adjuvante em diarreia aguda e diarreia associada a antibióticos.",
+        "Se em uso concomitante com antibióticos, administrar a distância (antes ou entre as doses do antibiótico) para preservar a viabilidade do probiótico."
+      ],
+      "fonte": "Bula ANVISA (Floratil/Repoflor)"
+    },
+    {
+      "id": "desloratadina",
+      "nome": "Desloratadina",
+      "categoria": "Anti-histamínicos",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 11,
+            "doseMg": 1,
+            "descricao": "6 a 11 meses"
+          },
+          {
+            "idadeMaxMeses": 71,
+            "doseMg": 1.25,
+            "descricao": "1 a 5 anos"
+          },
+          {
+            "idadeMaxMeses": 143,
+            "doseMg": 2.5,
+            "descricao": "6 a 11 anos"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": 5,
+            "descricao": "≥ 12 anos / adultos"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 6,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Xarope 0,5 mg/mL",
+          "viaTexto": "via oral, 1x/dia",
+          "concentracaoMgMl": 0.5,
+          "apresentacaoTexto": "frasco com 60 ou 100 mL + seringa dosadora"
+        },
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido 5 mg (uso ≥ 12 anos)",
+          "viaTexto": "via oral, 1x/dia",
+          "mgPorComprimido": 5,
+          "apresentacaoTexto": "cartela de comprimidos"
+        }
+      ],
+      "observacoesExtras": [
+        "Dose fixa por faixa etária, não calculada por peso.",
+        "Cautela em pacientes com histórico pessoal ou familiar de convulsões."
+      ],
+      "fonte": "Bula ANVISA (Desalex/genéricos)"
+    },
+    {
+      "id": "permetrina",
+      "nome": "Permetrina (loção/creme 5%)",
+      "categoria": "Antiparasitários",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 2,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Loção/creme 50 mg/g (5%)",
+          "viaTexto": "aplicação tópica única, repetir se necessário",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "bisnaga ou frasco de 30-60 g/mL",
+          "textoDoseFixo": "Aplicar em todo o corpo (couro cabeludo à planta dos pés; em crianças, incluir face e couro cabeludo), deixar agir 8-14h e lavar. Repetir em 7 dias se necessário.",
+          "restricoes": [
+            "Primeira linha para escabiose a partir de 2 meses de idade.",
+            "Para menores de 2 meses, a primeira escolha costuma ser enxofre tópico 5-10% — permetrina não é recomendada nessa faixa."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Também usada como adjuvante no tratamento da pediculose (capilar) em produtos específicos ≥ 2 anos.",
+        "Evitar contato com olhos e mucosas."
+      ],
+      "fonte": "Bula ANVISA / Portal Afya (Dermatologia Pediátrica)"
+    },
+    {
+      "id": "hidrocortisona_creme",
+      "nome": "Hidrocortisona (creme/pomada 1%)",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "ocultarPeso": true,
+      "ocultarIdade": true,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Creme/pomada dermatológica 10 mg/g (1%)",
+          "viaTexto": "aplicação tópica",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "bisnaga de 15-30 g",
+          "textoDoseFixo": "Aplicar camada fina na área afetada, 1-2x/dia, por até 7 dias (reavaliar se sem melhora em 4 semanas)",
+          "restricoes": [
+            "Crianças e lactentes absorvem proporcionalmente mais corticosteroide tópico que adultos (maior razão superfície/peso corporal) — usar a menor quantidade eficaz.",
+            "Evitar uso oclusivo prolongado sob fraldas (a fralda já atua como curativo oclusivo)."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Corticoide tópico de baixa potência; comum em dermatite de fraldas e eczema leve.",
+        "Interromper e reavaliar caso surjam sinais de infecção na área tratada."
+      ],
+      "fonte": "Bula ANVISA (genéricos)"
+    },
+    {
+      "id": "sro",
+      "nome": "Sais de Reidratação Oral (SRO)",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "liquido",
+          "rotulo": "Solução reidratante (fórmula OMS, já preparada)",
+          "viaTexto": "via oral, fracionado em pequenos volumes",
+          "concentracaoMgMl": null,
+          "apresentacaoTexto": "envelope para diluir em 1 litro de água filtrada/fervida",
+          "textoDoseFixo": "Plano A (prevenção, em casa): ≈10 mL/kg por episódio de vômito/diarreia (< 1 ano: 50-100 mL; 1-10 anos: 100-200 mL; > 10 anos: à vontade) | Plano B (unidade de saúde): 50-100 mL/kg em 4-6 horas, fracionado a cada 10-15 min",
+          "restricoes": [
+            "Oferecer em pequenas porções e com frequência para melhorar a aceitação e reduzir vômitos.",
+            "Manter aleitamento materno e alimentação habitual durante o tratamento."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Diluir sempre em 1 litro de água — soluções mais concentradas que o recomendado podem ser perigosas (hipernatremia).",
+        "Sinais de desidratação grave (letargia, olhos fundos, sinal da prega positivo, incapacidade de ingerir líquidos) exigem avaliação médica imediata para hidratação venosa (Plano C)."
+      ],
+      "fonte": "Ministério da Saúde / OMS / SBP (Guia de Diarreia Aguda)"
+    },
+    {
+      "id": "bromoprida",
+      "nome": "Bromoprida",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 12,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oral (gotas pediátricas) 4 mg/mL (24 gotas/mL ≈ 0,17 mg/gota)",
+          "viaTexto": "via oral, 3x/dia",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador com 20 mL",
+          "calculoEspecial": "gotas_por_kg",
+          "restricoes": [
+            "Contraindicado para menores de 1 ano de idade, pelo risco aumentado de agitação, irritabilidade e convulsões."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Dose máxima diária usual: 60 mg/dia (adultos); em crianças, respeitar o cálculo por peso.",
+        "Cautela em pacientes epilépticos ou em uso de outras drogas com potencial de reações extrapiramidais."
+      ],
+      "fonte": "Bula ANVISA (EMS/Teuto)"
+    },
+    {
+      "id": "diosmectita",
+      "nome": "Diosmectita",
+      "categoria": "Gastrointestinal",
+      "doseBase": {
+        "tipo": "faixa_fixa",
+        "faixasPorIdade": true,
+        "faixas": [
+          {
+            "idadeMaxMeses": 11,
+            "doseMg": 3000,
+            "descricao": "< 1 ano: 1 sachê/dia"
+          },
+          {
+            "idadeMaxMeses": 23,
+            "doseMg": 6000,
+            "descricao": "1 a 2 anos: 2 sachês/dia"
+          },
+          {
+            "idadeMaxMeses": 9999,
+            "doseMg": {
+              "min": 6000,
+              "max": 9000
+            },
+            "descricao": "acima de 2 anos: 2 a 3 sachês/dia"
+          }
+        ]
+      },
+      "idadeMinimaMeses": 0,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Sachê 3 g (pó para suspensão oral)",
+          "viaTexto": "dissolver em água ou alimento semilíquido, entre as refeições",
+          "mgPorComprimido": 3000,
+          "apresentacaoTexto": "caixa com sachês de 3 g",
+          "unidadeComprimido": "sachê"
+        }
+      ],
+      "observacoesExtras": [
+        "Esquema de fase aguda: dose inicial pode ser dobrada nos primeiros dias, conforme orientação médica, depois reduzida.",
+        "Referência baseada em bula internacional (Smecta); confirmar a posologia exata do produto comercializado no Brasil antes de orientar."
+      ],
+      "fonte": "Bula de referência internacional (Smecta) — confirmar produto nacional"
+    },
+    {
+      "id": "melatonina",
+      "nome": "Melatonina",
+      "categoria": "Outros",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 36,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "comprimido",
+          "rotulo": "Comprimido/solução oral (manipulado)",
+          "viaTexto": "via oral, 30-90 min antes de dormir",
+          "mgPorComprimido": null,
+          "apresentacaoTexto": "formulação manipulada conforme prescrição médica",
+          "textoDoseFixo": "Dose inicial usual: 0,5-1 mg; pode-se titular até 5 mg conforme resposta clínica e orientação médica"
+        }
+      ],
+      "observacoesExtras": [
+        "ALERTA REGULATÓRIO: a ANVISA não autoriza melatonina como suplemento alimentar para menores de 19 anos (autorização restrita a ≥ 19 anos, dose máxima de 0,21 mg/dia). Em pediatria, o uso é off-label, exclusivamente sob prescrição médica, geralmente via farmácia de manipulação.",
+        "Não deve substituir medidas comportamentais de higiene do sono, que são a primeira linha de tratamento."
+      ],
+      "fonte": "AAP (2024) / SBP / nota regulatória ANVISA"
+    },
+    {
+      "id": "cloranfenicol_colirio",
+      "nome": "Cloranfenicol (colírio)",
+      "categoria": "Oftalmológicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "ocultarPeso": true,
+      "ocultarIdade": true,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oftálmica",
+          "viaTexto": "via oftálmica tópica",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador",
+          "textoDoseFixo": "1-2 gotas no(s) olho(s) afetado(s), a cada 1-2 horas na fase aguda, reduzindo a frequência conforme melhora"
+        }
+      ],
+      "observacoesExtras": [
+        "Uso oftálmico tópico tem absorção sistêmica mínima; discrasias sanguíneas graves associadas ao cloranfenicol são descritas principalmente com uso sistêmico (oral/IV), não com o colírio.",
+        "Não usar por período prolongado sem reavaliação."
+      ],
+      "fonte": "Bula ANVISA / Pediamécum (AEP)"
+    },
+    {
+      "id": "tobramicina_colirio",
+      "nome": "Tobramicina (colírio)",
+      "categoria": "Oftalmológicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 2,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução oftálmica 3 mg/mL (30 gotas/mL ≈ 0,1 mg/gota)",
+          "viaTexto": "via oftálmica tópica",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador com 5 mL",
+          "textoDoseFixo": "Leve a moderada: 1-2 gotas no olho afetado a cada 4 horas | Grave: 2 gotas a cada 1 hora até melhora, depois reduzir",
+          "restricoes": [
+            "Contraindicado para menores de 2 meses de idade."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Antibiótico aminoglicosídeo tópico para infecções bacterianas externas do olho.",
+        "Se usar mais de um colírio, aguardar intervalo mínimo de 10 minutos entre eles."
+      ],
+      "fonte": "Bula ANVISA (Tobrex/genéricos)"
+    },
+    {
+      "id": "ciprofloxacino_otologico",
+      "nome": "Ciprofloxacino (solução otológica)",
+      "categoria": "Otológicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 12,
+      "ocultarPeso": true,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução otológica 3 mg/mL (0,3%)",
+          "viaTexto": "via otológica tópica",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador com 5 mL",
+          "textoDoseFixo": "4 gotas no ouvido afetado, 2x/dia, por 7 dias",
+          "restricoes": [
+            "Indicado para otite externa; confirmar idade mínima na bula do produto específico dispensado."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Antibiótico tópico de amplo espectro para otite externa aguda; opção sem associação a corticoide."
+      ],
+      "fonte": "Bula ANVISA (Ciloxan Otológico/genéricos)"
+    },
+    {
+      "id": "neo_poli_fluo_otologico",
+      "nome": "Neomicina + Polimixina B + Fluocinolona (otológico)",
+      "categoria": "Otológicos",
+      "doseBase": {
+        "tipo": "individualizado"
+      },
+      "idadeMinimaMeses": 0,
+      "ocultarPeso": true,
+      "ocultarIdade": true,
+      "formulacoes": [
+        {
+          "tipo": "gotas",
+          "rotulo": "Solução otológica (24 gotas/mL)",
+          "viaTexto": "via otológica tópica",
+          "mgPorGota": null,
+          "apresentacaoTexto": "frasco gotejador com 5 ou 10 mL",
+          "textoDoseFixo": "3-4 gotas no ouvido afetado, 2 a 4x/dia",
+          "restricoes": [
+            "Contém corticoide (fluocinolona) — uso prolongado pode causar atrofia local; não usar por período superior ao orientado.",
+            "Contém neomicina — ototoxicidade relatada com uso tópico; evitar se houver suspeita de perfuração timpânica.",
+            "Contém lidocaína (anestésico local) na formulação."
+          ]
+        }
+      ],
+      "observacoesExtras": [
+        "Associação com corticoide, indicada para otite externa com componente inflamatório importante (dor, prurido)."
+      ],
+      "fonte": "Bula ANVISA (Otosynalar/genéricos)"
+    }
+  ]
+}

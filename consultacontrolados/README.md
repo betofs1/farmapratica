@@ -1,0 +1,193 @@
+# Módulo Controlados — FarmaPrática
+
+Consulta de medicamentos controlados e antimicrobianos (tipo de receita, vias,
+validade, retenção, classe terapêutica e busca por nome comercial). Este
+documento explica como manter os dados atualizados.
+
+## As três fontes de dados
+
+| O quê | Fonte | O que ela cobre |
+|---|---|---|
+| Substâncias controladas (A1, A2, A3, B1, B2, C1, C2, C3, C5) | **Portaria SVS/MS 344/98**, Anexo I | Entorpecentes, psicotrópicos, retinoides, imunossupressores, anabolizantes |
+| Antimicrobianos | **Instrução Normativa nº 360/2025** | Antibióticos e afins sujeitos a receita com retenção de 2ª via |
+| Nomes comerciais (marca → substância) | **CMED/ANVISA** (mesmo banco usado no módulo Equivalentes) | Cruza os 25 mil+ medicamentos registrados com as 607 substâncias rastreadas acima |
+
+A Portaria 344/98 é a norma "mãe" de controlados desde 1998, atualizada
+periodicamente por RDCs. Os antimicrobianos mudaram de casa ao longo do tempo:
+eram um anexo dentro da RDC 20/2011; essa RDC foi revogada pela RDC 471/2021,
+e a lista de substâncias passou a viver numa Instrução Normativa separada
+(hoje a 360/2025, que substituiu a antiga IN 244/2023). O CMED não é uma
+norma de controle, é só a base de preços/registros que já alimenta o módulo
+Equivalentes — reaproveitada aqui só para descobrir qual nome comercial
+corresponde a qual substância rastreada.
+
+## Arquivos do módulo
+
+Mantenha estes 8 arquivos na mesma pasta:
+
+```
+atualiza_controlados.py       → busca a Portaria 344/98
+atualiza_antimicrobianos.py   → busca a IN 360/2025
+estrutura_controlados.py      → junta as fontes num só JSON
+gerar_detalhes.py              → gera classe/indicação/mecanismo (curadoria manual)
+gerar_marcas.py                → cruza o CMED com as substâncias rastreadas
+template_consulta.html         → molde visual da página
+gerar_pagina.py                → gera o index.html final
+README.md                      → este guia
+```
+
+Arquivos gerados pelo processo (não editar manualmente):
+
+```
+controlados_ultimo.json       → última captura bruta da Portaria 344/98
+controlados_YYYYMMDD.json     → histórico de capturas, uma por data
+antimicrobianos.json          → captura estruturada da IN 360/2025
+detalhes_farmacologicos.json  → classe/indicações/mecanismo curados manualmente
+marcas.json                   → nome comercial → substância, gerado do CMED
+controlados.json              → dado final, tudo mesclado (exceto marcas)
+index.html                    → página pronta, sobe pro site
+```
+
+## Como funciona a atualização, passo a passo
+
+O ciclo completo, sempre que quiser atualizar:
+
+```
+python3 atualiza_controlados.py
+python3 atualiza_antimicrobianos.py
+python3 estrutura_controlados.py
+python3 gerar_marcas.py
+python3 gerar_pagina.py
+```
+
+**O que cada um faz:**
+
+1. `atualiza_controlados.py` baixa o texto da Portaria 344/98 e salva
+   `controlados_ultimo.json` (bruto, com as 9 listas de controle especial)
+2. `atualiza_antimicrobianos.py` baixa o texto da IN 360/2025 e salva
+   `antimicrobianos.json` (já estruturado)
+3. `estrutura_controlados.py` lê os arquivos acima, separa a Portaria item
+   por item, mescla os antimicrobianos e mescla o `detalhes_farmacologicos.json`
+   (se existir) — gera o `controlados.json` final, com as 10 categorias
+4. `gerar_marcas.py` lê o `medicamentos.json` do CMED (o mesmo arquivo do
+   módulo Equivalentes — copie a versão mais recente pra esta pasta antes de
+   rodar) e o `controlados.json`, e cruza os dois pra gerar `marcas.json`
+5. `gerar_pagina.py` injeta `controlados.json` e `marcas.json` dentro do
+   `template_consulta.html` e gera o `index.html` final — esse é o arquivo
+   que você sobe pro site
+
+Os passos 2, 4 e o `detalhes_farmacologicos.json` do passo 3 são opcionais:
+se algum arquivo não existir, o script correspondente avisa no terminal e
+segue sem quebrar — só fica sem aquela parte da informação naquela geração.
+
+## Quando rodar isso
+
+- **`atualiza_controlados.py`** (Portaria 344/98) — tem aviso automático
+  embutido: quando detecta mudança desde a última captura, imprime
+  **"⚠️ MUDANÇA DETECTADA"**. Rotina sugerida: 1x por mês.
+- **`atualiza_antimicrobianos.py`** (IN 360/2025) — sem esse aviso ainda, mas
+  é rápido de rodar. Sugestão: junto com o anterior, no mesmo dia do mês.
+- **`gerar_marcas.py`** (CMED) — só precisa rodar de novo quando você
+  atualizar o `medicamentos.json` no módulo Equivalentes (nova base CMED
+  mensal, por exemplo). Copie o arquivo atualizado pra esta pasta antes.
+- **`gerar_detalhes.py`** — só quando você quiser expandir a curadoria de
+  classe/indicação/mecanismo (ver seção abaixo). Não faz parte do ciclo
+  mensal automático.
+
+Se nada mudou nas duas primeiras fontes, não precisa rodar os passos
+seguintes — só regenera a página quando algo realmente mudou.
+
+### Agendando a checagem mensal
+
+**Windows** — Agendador de Tarefas → criar tarefa nova → rodar
+`atualiza_controlados.py` e `atualiza_antimicrobianos.py` uma vez por mês.
+
+**Mac/Linux** — `crontab -e` e adicionar:
+```
+0 9 1 * * cd /caminho/da/pasta && python3 atualiza_controlados.py && python3 atualiza_antimicrobianos.py
+```
+
+## Antes de publicar uma atualização
+
+1. Abre o `controlados.json` recém-gerado
+2. Compara com a versão anterior — o que mudou?
+3. Confirma contra o texto oficial antes de sobrescrever o site:
+   - Portaria 344/98:
+     `https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/controlados/lista-substancias`
+   - IN 360/2025 (ou a que vier substituí-la): busque no Datalegis da ANVISA
+     por "Instrução Normativa antimicrobianos ANVISA"
+
+**Guarde também o `controlados.json` de cada captura** (não só o `_ultimo`) —
+histórico versionado de "o que a lista dizia em cada mês".
+
+## Se a IN 360/2025 for revogada
+
+1. Abra o `atualiza_antimicrobianos.py`
+2. Troque a variável `URL_IN_ANTIMICROBIANOS` (número da IN e ano) pela norma
+   nova, mantendo o resto da URL igual
+3. Rode de novo pra confirmar que a extração funciona com o novo texto
+
+## Classe terapêutica, indicações e mecanismo de ação
+
+Esse campo **não é gerado automaticamente** — é curadoria manual, guardada em
+`detalhes_farmacologicos.json` e escrita/mantida em `gerar_detalhes.py`.
+
+**Cobertura atual: 201 de 607 substâncias (~33%)**:
+- 100% dos 131 antimicrobianos (agrupados por classe farmacológica — todas
+  as penicilinas compartilham a mesma descrição de mecanismo, por exemplo,
+  o que reduz risco de erro por repetição de fato bem estabelecido)
+- ~70 substâncias controladas de uso clínico comum (opioides analgésicos,
+  benzodiazepínicos, anfetamínicos de TDAH, retinoides, anabolizantes etc.)
+
+As substâncias sem curadoria (a maioria das listas A1, B1 e C1 — muitas são
+variantes químicas raras, sem uso clínico corrente ou produto registrado no
+Brasil) aparecem na página como "não documentado", com link direto pra bula,
+em vez de arriscar uma informação clínica incorreta.
+
+**Para expandir a cobertura:** edite `gerar_detalhes.py`, adicione novas
+chamadas à função `add()` seguindo o padrão existente, rode o script e depois
+o `estrutura_controlados.py` de novo. Sempre baseie o conteúdo em fonte
+farmacológica confiável (bula, Micromedex, UpToDate, literatura padrão) —
+nunca preencha por suposição.
+
+## Busca por nome comercial
+
+O `gerar_marcas.py` cruza o CMED (`medicamentos.json`) com as 607 substâncias
+rastreadas, gerando `marcas.json`. Cobertura atual: **1.111 marcas comerciais,
+cobrindo 216 substâncias** (as demais 391 substâncias sem marca associada são,
+majoritariamente, variantes químicas sem produto registrado no Brasil).
+
+**Como o cruzamento funciona:** para cada medicamento do CMED, verifica se o
+campo "princípio ativo" contém uma das substâncias rastreadas (aceitando
+formas com sal químico, ex.: "sulfato de morfina" reconhece "morfina").
+Marcas cujo nome já é igual ao princípio ativo (genéricos "puros") não
+entram, só nomes comerciais de fato.
+
+**Limitação conhecida:** o cruzamento é por correspondência textual, não por
+uma base de sinônimos farmacológicos completa. Nomes com grafia muito
+diferente do princípio ativo oficial podem não ser encontrados. Se notar uma
+marca comum faltando, verifique o campo `principio` dela no
+`medicamentos.json` e, se necessário, ajuste a função `gerar_candidatos()` em
+`gerar_marcas.py`.
+
+## Escopo dos dados
+
+A consulta cobre as listas A1, A2, A3, B1, B2, C1, C2, C3 e C5 da Portaria
+344/98 (medicamento efetivamente dispensável em farmácia com receita) mais os
+antimicrobianos da IN 360/2025. As listas D1, D2, E e F da Portaria
+(precursores químicos, insumos de síntese, plantas/fungos proscritos e
+substâncias de uso proscrito) ficam de fora da consulta — não correspondem a
+medicamento registrado que se dispensa com receita — mas permanecem na
+captura bruta (`controlados_ultimo.json`) para referência futura.
+
+O campo "quantidade máxima por receita" não está incluído: não é fixa por
+lista, varia por substância específica, sem valor genérico confiável.
+
+## Fontes oficiais
+
+- Portaria SVS/MS 344/98, Anexo I — versão vigente com alterações
+  incorporadas, consultada via Datalegis (ANVISA)
+- Instrução Normativa nº 360/2025 — lista de substâncias antimicrobianas de
+  que trata a RDC nº 471/2021, consultada via Datalegis (ANVISA)
+- CMED/ANVISA — Câmara de Regulação do Mercado de Medicamentos, mesma base
+  usada no módulo Equivalentes do FarmaPrática
