@@ -309,6 +309,20 @@
     border-radius: 20px;
     margin-top:8px;
   }
+  .btn-fav-calc{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;padding:0;
+    border:1px solid var(--red-bright);
+    color:var(--red-bright);
+    background:transparent;
+    border-radius:50%;
+    cursor:pointer;
+    transition:all .15s;
+    flex-shrink:0;
+  }
+  .btn-fav-calc svg{width:16px;height:16px;display:block;}
+  .btn-fav-calc:hover{background:rgba(200,19,40,.12);}
+  .btn-fav-calc.starred{background:var(--red-bright);color:#fff;}
   .btn-bula{
     display:inline-flex;
     align-items:center;
@@ -844,10 +858,57 @@ let idadeUnidade = 'anos'; // 'anos' | 'meses'
 
 fetch('dados.json')
   .then(r => r.json())
-  .then(data => { DB = data; renderSidebar(); })
+  .then(data => {
+    DB = data;
+    renderSidebar();
+    const deepId = new URLSearchParams(location.search).get('farmaco');
+    if(deepId){ selecionarFarmaco(deepId); }
+  })
   .catch(() => {
     document.getElementById('lista-farmacos').innerHTML = '<div class="empty-state">Erro ao carregar dados.json</div>';
   });
+
+// ---------- FAVORITOS (sincronizados com a pagina inicial) ----------
+const CALC_FAV_KEY = 'dosespediatricas_favs_v1';
+function getFavsCalc(){
+  try{ return JSON.parse(localStorage.getItem(CALC_FAV_KEY) || '[]'); }
+  catch(e){ return []; }
+}
+function saveFavsCalc(favs){
+  try{ localStorage.setItem(CALC_FAV_KEY, JSON.stringify(favs)); }catch(e){}
+}
+function syncFavToHubCalc(id, label, added){
+  try{
+    const HUB_FAV_KEY = 'fp_favoritos_hub';
+    const raw = localStorage.getItem(HUB_FAV_KEY);
+    let list = raw ? JSON.parse(raw) : [];
+    const hubId = 'calc-' + id;
+    if(added){
+      if(!list.some(f => f.id === hubId)){
+        list.push({id: hubId, label: label, source: 'calc', sourceLabel: 'Calculadora Pediátrica', href: 'dosespediatricas/?farmaco=' + encodeURIComponent(id)});
+      }
+    } else {
+      list = list.filter(f => f.id !== hubId);
+    }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+function toggleFavCalc(){
+  if(!farmacoAtual) return;
+  const id = farmacoAtual.id;
+  let favs = getFavsCalc();
+  const idx = favs.findIndex(f => f.id === id);
+  if(idx === -1){
+    favs.push({id, nome: farmacoAtual.nome});
+    saveFavsCalc(favs);
+    syncFavToHubCalc(id, farmacoAtual.nome, true);
+  } else {
+    favs.splice(idx, 1);
+    saveFavsCalc(favs);
+    syncFavToHubCalc(id, null, false);
+  }
+  renderConteudo();
+}
 
 function renderSidebar(filtro=''){
   const lista = document.getElementById('lista-farmacos');
@@ -897,13 +958,19 @@ function renderConteudo(){
   const f = farmacoAtual;
   const bulaUrl = 'https://consultas.anvisa.gov.br/#/bulario/?nomeProduto=' + encodeURIComponent(f.nome.split('(')[0].trim());
 
+  const _isFavCalc = getFavsCalc().some(fv => fv.id === f.id);
   el.innerHTML = `
     <div class="main-header">
       <div>
         <h2>${f.nome}</h2>
         <div class="cat-tag">${f.categoria}</div>
       </div>
-      <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
+      </div>
     </div>
 
     <div class="peso-bar">

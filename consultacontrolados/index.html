@@ -322,6 +322,20 @@
     padding: 2px 8px; border-radius: 20px; margin-left: 4px; letter-spacing:0;
   }
 
+  .btn-fav-ctrl{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;padding:0;
+    border:1px solid var(--red-bright, var(--vermelho, #c81328));
+    color:var(--red-bright, var(--vermelho, #c81328));
+    background:transparent;
+    border-radius:50%;
+    cursor:pointer;
+    transition:all .15s;
+    flex-shrink:0;
+  }
+  .btn-fav-ctrl svg{width:16px;height:16px;display:block;}
+  .btn-fav-ctrl:hover{background:rgba(200,19,40,.12);}
+  .btn-fav-ctrl.starred{background:var(--red-bright, var(--vermelho, #c81328));color:#fff;}
   .btn-bula{
     display:inline-flex; align-items:center; gap:6px; border: 1px solid var(--red-bright); color: var(--red-bright);
     background: transparent; padding: 8px 18px; border-radius: 20px; font-size:.8rem; font-weight:700;
@@ -7848,13 +7862,19 @@ function renderConteudo(){
     </div>
   `;
 
+  const _isFavCtrl = getFavsCtrl().some(fv => fv.id === item.nome);
   el.innerHTML = `
     <div class="main-header">
       <div>
         <h2>${item.nome}</h2>
         <div class="cat-tag">Lista ${item.codigo} · ${LABEL_COR[item.cor]}${excecao ? ' <span class="cat-tag-exc">⚠️ regra de exceção aplicada</span>' : ''}</div>
       </div>
-      <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="btn-fav-ctrl${_isFavCtrl ? ' starred' : ''}" onclick="toggleFavCtrl()" title="Favoritar (aparece na página inicial)">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
+      </div>
     </div>
 
     ${blocoExcecao}
@@ -7892,7 +7912,55 @@ function renderConteudo(){
   `;
 }
 
+// ---------- FAVORITOS (sincronizados com a pagina inicial) ----------
+const CTRL_FAV_KEY = 'consultacontrolados_favs_v1';
+function getFavsCtrl(){
+  try{ return JSON.parse(localStorage.getItem(CTRL_FAV_KEY) || '[]'); }
+  catch(e){ return []; }
+}
+function saveFavsCtrl(favs){
+  try{ localStorage.setItem(CTRL_FAV_KEY, JSON.stringify(favs)); }catch(e){}
+}
+function syncFavToHubCtrl(id, label, added){
+  try{
+    const HUB_FAV_KEY = 'fp_favoritos_hub';
+    const raw = localStorage.getItem(HUB_FAV_KEY);
+    let list = raw ? JSON.parse(raw) : [];
+    const hubId = 'consulta-' + id;
+    if(added){
+      if(!list.some(f => f.id === hubId)){
+        list.push({id: hubId, label: label, source: 'consulta', sourceLabel: 'Consulta por Controle Especial', href: 'consultacontrolados/?substancia=' + encodeURIComponent(id)});
+      }
+    } else {
+      list = list.filter(f => f.id !== hubId);
+    }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+function toggleFavCtrl(){
+  if(!substanciaAtual) return;
+  const id = substanciaAtual.nome;
+  let favs = getFavsCtrl();
+  const idx = favs.findIndex(f => f.id === id);
+  if(idx === -1){
+    favs.push({id, nome: substanciaAtual.nome});
+    saveFavsCtrl(favs);
+    syncFavToHubCtrl(id, substanciaAtual.nome, true);
+  } else {
+    favs.splice(idx, 1);
+    saveFavsCtrl(favs);
+    syncFavToHubCtrl(id, null, false);
+  }
+  renderConteudo();
+}
+
 renderSidebar();
+
+const __deepSubstancia = new URLSearchParams(location.search).get('substancia');
+if(__deepSubstancia){
+  const __alvo = indice.find(i => i.nome === decodeURIComponent(__deepSubstancia));
+  if(__alvo){ selecionarSubstancia(__alvo); }
+}
 </script>
 
 </body>
