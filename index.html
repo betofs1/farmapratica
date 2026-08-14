@@ -530,12 +530,20 @@
     align-items:center;
     justify-content:space-between;
     gap:28px;
-    background:linear-gradient(165deg,#241213,#150a0a);
+    background:
+      radial-gradient(130% 160% at 12% 10%, rgba(228,23,44,.20), transparent 55%),
+      radial-gradient(110% 140% at 100% 100%, rgba(228,23,44,.10), transparent 60%),
+      linear-gradient(165deg,#241213,#150a0a);
     border-color:var(--card-border);
     position:relative;
     overflow:hidden;
   }
-  body.light .hero-band{background:linear-gradient(165deg,#fdf1f1,#fff);}
+  body.light .hero-band{
+    background:
+      radial-gradient(130% 160% at 12% 10%, rgba(212,21,42,.10), transparent 55%),
+      radial-gradient(110% 140% at 100% 100%, rgba(212,21,42,.06), transparent 60%),
+      linear-gradient(165deg,#fdf1f1,#fff);
+  }
   @property --neon-angle{
     syntax:'<angle>';
     inherits:false;
@@ -558,7 +566,7 @@
     -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite:xor;
     mask-composite:exclude;
-    animation:neonOrbit 4s linear infinite;
+    animation:neonOrbit 6s linear infinite;
     pointer-events:none;
     z-index:1;
   }
