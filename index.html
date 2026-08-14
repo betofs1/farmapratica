@@ -502,6 +502,24 @@
   .quad-panel .stats-card-head h4{font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;}
   .section-icon{width:15px;height:15px;flex:none;color:var(--accent2);}
 
+  /* Titulos em destaque: Favoritos, Notas de Rotina, Ferramentas Mais Usadas, Noticias Farmaceuticas */
+  .stats-card-head h4,
+  .stats-footer h3,
+  .news-card h3{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    color:var(--text-white);
+    text-shadow:var(--heading-shadow);
+    letter-spacing:.2px;
+  }
+  .stats-card-head h4 .section-icon,
+  .stats-footer h3 .section-icon,
+  .news-card h3 .section-icon{
+    color:var(--text-white);
+    filter:drop-shadow(0 0 6px var(--accent2-glow));
+  }
+
   /* Gráfico "Ferramentas Mais Usadas" — rosca com múltiplos segmentos */
   .usage-donut-row{display:flex;align-items:center;gap:16px;}
   .usage-donut{width:76px;height:76px;border-radius:50%;flex:none;position:relative;}
@@ -1137,9 +1155,9 @@
 
     </div>
 
-    <!-- Coluna C: Ferramentas Essenciais -->
+    <!-- Coluna C: Ferramentas Farmacêuticas -->
     <section class="tools-col">
-      <h2><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>FERRAMENTAS ESSENCIAIS</h2>
+      <h2><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>FERRAMENTAS FARMACÊUTICAS</h2>
       <div class="tool-list">
 
         <!-- 1. Guia de Dispensação -->
