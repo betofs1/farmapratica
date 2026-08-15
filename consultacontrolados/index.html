@@ -39,19 +39,19 @@
   }
 
   body.light{
-    --bg: #ede6e1;
-    --panel: #fbf7f4;
-    --sidebar: #f6efea;
+    --bg: #e8e4e1;
+    --panel: #f7f5f4;
+    --sidebar: #f2efec;
     --card: #ffffff;
-    --card-hover: #fbeeec;
-    --border: #ddd0ca;
+    --card-hover: #f7eeed;
+    --border: #dcd7d5;
     --red-dark: #a10f1f;
     --red: #a10f1f;
     --red-bright: #d4152a;
     --red-glow: rgba(212,21,42,0.12);
-    --text: #2a211d;
-    --text-dim: #8c7a74;
-    --text-gray: #5f4f49;
+    --text: #201d1e;
+    --text-dim: #7a7378;
+    --text-gray: #5c5559;
     --amber: #b8790a;
     --pill-bg: #fbe9ea;
     --pill-text: #a10f1f;
@@ -126,6 +126,40 @@
   .theme-toggle svg{ width:18px; height:18px; }
   .theme-toggle .icon-moon{ display:none; }
   @media (max-width: 800px){ .theme-toggle{ right:14px; } }
+  .detail-mode-toggle{
+    position:absolute;
+    right:72px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    height:38px;
+    padding:0 13px;
+    border-radius:9px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text-dim);
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .detail-mode-toggle:hover{ background: var(--hover-tint); color: var(--text); }
+  .detail-mode-toggle svg{ width:16px; height:16px; flex-shrink:0; }
+  .detail-mode-toggle.active{
+    background: rgba(232,184,75,.14);
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ right:64px; padding:0 9px; } }
+  @media (max-width: 800px){ .detail-mode-toggle{ right:58px; } }
+  .cat-header.classe-grupo{ border-left-color: var(--amber); }
+  .cat-header.classe-grupo.aberto{ color: var(--amber); }
+  .cat-header.classe-grupo .cat-count{ color: var(--amber); }
   .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 24px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
   .brand{ display:flex; align-items:center; gap:14px; }
@@ -134,7 +168,7 @@
   .brand-text h1 span{ color:var(--red-bright); }
   .brand-text p{ font-size:11.5px; color:var(--text-gray); font-weight:400; margin:2px 0 0; }
   .topbar-app .titulo-central{ grid-column:2; display:flex; flex-direction:column; align-items:center; text-align:center; }
-  .topbar-app .titulo-principal{ font-size: 1.1rem; font-weight:800; white-space:nowrap; letter-spacing:.6px; }
+  .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:520px; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
   @media (max-width: 800px){
     .topbar-app{ grid-template-columns: 1fr; padding: 8px 14px; }
@@ -460,9 +494,13 @@
     </a>
   </div>
   <div class="titulo-central">
-    <div class="titulo-principal">CONSULTA DE CONTROLADOS</div>
+    <div class="titulo-principal">Consulta por Medicamentos de Controle Especial</div>
     <div class="titulo-descricao">Tipo de receita, vias, validade e retenção conforme a legislação vigente</div>
   </div>
+  <button id="detailModeBtn" class="detail-mode-toggle" onclick="toggleModoDetalhado()" title="Agrupar medicamentos por classe farmacológica" aria-label="Alternar modo detalhado">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+    <span class="dm-label">Modo Detalhado</span>
+  </button>
   <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
@@ -7678,12 +7716,14 @@ CODIGOS_ORDEM.forEach(codigo => {
 
 let substanciaAtual = null;
 let filtroTarja = 'todos';
+let modoDetalhado = false;
 
 function normaliza(str){
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
 let categoriasAbertas = {};
+let categoriasAbertasDetalhado = {};
 
 function chevronSVG(){
   return `<svg class="cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`;
@@ -7691,6 +7731,23 @@ function chevronSVG(){
 
 function toggleCategoria(codigo){
   categoriasAbertas[codigo] = !categoriasAbertas[codigo];
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function toggleCategoriaDetalhado(nomeClasse){
+  categoriasAbertasDetalhado[nomeClasse] = !categoriasAbertasDetalhado[nomeClasse];
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function classeDoItem(item){
+  const det = (dadosBrutos.detalhes || {})[item.nome.toLowerCase()];
+  return (det && det.classe) ? det.classe : (CAT_LABEL[item.codigo] || item.codigo);
+}
+
+function toggleModoDetalhado(){
+  modoDetalhado = !modoDetalhado;
+  const btn = document.getElementById('detailModeBtn');
+  if(btn) btn.classList.toggle('active', modoDetalhado);
   renderSidebar(document.getElementById('busca').value);
 }
 
@@ -7729,44 +7786,86 @@ function renderSidebar(filtro=''){
     }
   }
 
-  CODIGOS_ORDEM.forEach(codigo => {
-    if(!listas[codigo]) return;
-    const itensCat = indice.filter(item =>
-      item.codigo === codigo &&
+  if(modoDetalhado){
+    const itensFiltrados = indice.filter(item =>
       (!termo || normaliza(item.nome).includes(termo)) &&
       (filtroTarja === 'todos' || item.cor === filtroTarja)
     );
-    if(itensCat.length === 0) return;
-    algumaEncontrada = true;
+    const porClasse = {};
+    itensFiltrados.forEach(item => {
+      const nomeClasse = classeDoItem(item);
+      (porClasse[nomeClasse] = porClasse[nomeClasse] || []).push(item);
+    });
+    const classesOrdenadas = Object.keys(porClasse).sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-    // Durante busca ou filtro ativo, a categoria fica sempre expandida
-    // (senão os resultados ficariam escondidos). Sem busca, respeita o
-    // estado que o usuário escolheu (clique no cabeçalho).
-    const aberta = buscando || filtroTarja !== 'todos' || !!categoriasAbertas[codigo];
+    classesOrdenadas.forEach(nomeClasse => {
+      const itensCat = porClasse[nomeClasse].slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+      algumaEncontrada = true;
 
-    const corCat = REGRAS_COR[codigo];
-    const header = document.createElement('button');
-    header.className = 'cat-header ' + corCat + (aberta ? ' aberto' : '');
-    header.innerHTML = `${chevronSVG()}<span class="cat-nome">${CAT_LABEL[codigo] || codigo}</span><span class="cat-count">${itensCat.length}</span>`;
-    header.onclick = () => toggleCategoria(codigo);
-    lista.appendChild(header);
+      const aberta = buscando || filtroTarja !== 'todos' || !!categoriasAbertasDetalhado[nomeClasse];
 
-    const grupo = document.createElement('div');
-    grupo.className = 'cat-grupo';
-    if(aberta){
-      const itensWrap = document.createElement('div');
-      itensWrap.className = 'cat-grupo-itens';
-      itensCat.forEach(item => {
-        const btn = document.createElement('button');
-        btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-        btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
-        btn.onclick = () => selecionarSubstancia(item);
-        itensWrap.appendChild(btn);
-      });
-      grupo.appendChild(itensWrap);
-    }
-    lista.appendChild(grupo);
-  });
+      const header = document.createElement('button');
+      header.className = 'cat-header classe-grupo' + (aberta ? ' aberto' : '');
+      header.innerHTML = `${chevronSVG()}<span class="cat-nome">${nomeClasse}</span><span class="cat-count">${itensCat.length}</span>`;
+      header.onclick = () => toggleCategoriaDetalhado(nomeClasse);
+      lista.appendChild(header);
+
+      const grupo = document.createElement('div');
+      grupo.className = 'cat-grupo';
+      if(aberta){
+        const itensWrap = document.createElement('div');
+        itensWrap.className = 'cat-grupo-itens';
+        itensCat.forEach(item => {
+          const btn = document.createElement('button');
+          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
+          btn.onclick = () => selecionarSubstancia(item);
+          itensWrap.appendChild(btn);
+        });
+        grupo.appendChild(itensWrap);
+      }
+      lista.appendChild(grupo);
+    });
+  } else {
+    CODIGOS_ORDEM.forEach(codigo => {
+      if(!listas[codigo]) return;
+      const itensCat = indice.filter(item =>
+        item.codigo === codigo &&
+        (!termo || normaliza(item.nome).includes(termo)) &&
+        (filtroTarja === 'todos' || item.cor === filtroTarja)
+      );
+      if(itensCat.length === 0) return;
+      algumaEncontrada = true;
+
+      // Durante busca ou filtro ativo, a categoria fica sempre expandida
+      // (senão os resultados ficariam escondidos). Sem busca, respeita o
+      // estado que o usuário escolheu (clique no cabeçalho).
+      const aberta = buscando || filtroTarja !== 'todos' || !!categoriasAbertas[codigo];
+
+      const corCat = REGRAS_COR[codigo];
+      const header = document.createElement('button');
+      header.className = 'cat-header ' + corCat + (aberta ? ' aberto' : '');
+      header.innerHTML = `${chevronSVG()}<span class="cat-nome">${CAT_LABEL[codigo] || codigo}</span><span class="cat-count">${itensCat.length}</span>`;
+      header.onclick = () => toggleCategoria(codigo);
+      lista.appendChild(header);
+
+      const grupo = document.createElement('div');
+      grupo.className = 'cat-grupo';
+      if(aberta){
+        const itensWrap = document.createElement('div');
+        itensWrap.className = 'cat-grupo-itens';
+        itensCat.forEach(item => {
+          const btn = document.createElement('button');
+          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
+          btn.onclick = () => selecionarSubstancia(item);
+          itensWrap.appendChild(btn);
+        });
+        grupo.appendChild(itensWrap);
+      }
+      lista.appendChild(grupo);
+    });
+  }
 
   if(!algumaEncontrada){
     lista.innerHTML = '<div class="sem-resultado">Nenhuma substância encontrada.</div>';
@@ -7800,6 +7899,7 @@ document.getElementById('filtro-tarjas').addEventListener('click', (e) => {
 function selecionarSubstancia(item){
   substanciaAtual = item;
   categoriasAbertas[item.codigo] = true;
+  categoriasAbertasDetalhado[classeDoItem(item)] = true;
   renderSidebar(document.getElementById('busca').value);
   renderConteudo();
 }
