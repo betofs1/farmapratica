@@ -156,6 +156,7 @@
     color: var(--amber);
   }
   .theme-toggle{ flex-shrink:0; }
+  body.modo-detalhado-ativo{ --sidebar-w: 430px; }
   @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ padding:0 9px; } .topbar-actions{ padding-right:14px; gap:6px; } }
   .cat-header.classe-grupo{ border-left-color: var(--amber); justify-content:space-between; }
   .cat-header.classe-grupo .cat-nome{ flex:1; }
@@ -197,12 +198,9 @@
   .classe-flyout-close svg{ width:12px; height:12px; }
   .classe-flyout-itens{ padding: 6px 10px 16px; }
 
-  .drug-item .item-sem-comercial{
-    margin-left:5px; color: var(--text-dim); font-weight:800; font-size:.85em;
-  }
-  .legenda-comercial{
-    font-size:.66rem; color: var(--text-dim); margin-top:8px; line-height:1.4;
-  }
+  .drug-item.sem-comercial{ color: var(--text-dim); }
+  .drug-item.sem-comercial .item-dot{ opacity:.4; }
+  .drug-item.sem-comercial:hover{ color: var(--text-gray); }
   .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 24px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
   .brand{ display:flex; align-items:center; gap:14px; }
@@ -298,6 +296,10 @@
   .cat-header:hover{ background: var(--card-hover); box-shadow: 0 2px 10px rgba(0,0,0,.14); }
   .cat-header:first-child{ margin-top: 2px; }
   .cat-header .cat-nome{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .cat-header.classe-grupo{ align-items:flex-start; }
+  .cat-header.classe-grupo .cat-nome{ white-space:normal; overflow:visible; text-overflow:unset; line-height:1.35; }
+  .cat-header.classe-grupo .cat-count{ margin-top:1px; }
+  .cat-header.classe-grupo .cat-abre{ margin-top:2px; }
   .cat-header .cat-count{
     font-size:.66rem; font-weight:700; background: var(--hover-tint); color: var(--text-dim);
     padding: 2px 8px; border-radius: 20px; flex-shrink:0;
@@ -568,7 +570,6 @@
         <span class="tarja-chip" data-filtro="branca"><span class="chip-dot"></span>Contr. Especial</span>
         <span class="tarja-chip" data-filtro="verde"><span class="chip-dot"></span>Antimicrobianos</span>
       </div>
-      <div class="legenda-comercial">* substância sem apresentação comercial encontrada em farmácias/drogarias (CMED/ANVISA)</div>
     </div>
     <div class="sidebar-list" id="lista-substancias"></div>
   </div>
@@ -7807,8 +7808,27 @@ function temMarca(item){
   return substanciasComMarca.has(normaliza(item.nome));
 }
 
-function marcadorComercialHTML(item){
-  return temMarca(item) ? '' : '<span class="item-sem-comercial" title="Sem apresentação comercial encontrada em farmácias/drogarias (CMED/ANVISA)">*</span>';
+// Ordena priorizando visualmente as substâncias com apresentação comercial
+// em farmácias/drogarias; dentro de cada grupo, ordem alfabética.
+function ordenarPorDisponibilidade(itens){
+  return itens.slice().sort((a, b) => {
+    const difComercial = (temMarca(b) ? 1 : 0) - (temMarca(a) ? 1 : 0);
+    if(difComercial !== 0) return difComercial;
+    return a.nome.localeCompare(b.nome, 'pt-BR');
+  });
+}
+
+function criarDrugItemBtn(item){
+  const btn = document.createElement('button');
+  const semComercial = !temMarca(item);
+  btn.className = 'drug-item ' + item.cor + (semComercial ? ' sem-comercial' : '') +
+    (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+  btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
+  if(semComercial){
+    btn.title = 'Substância sem apresentação comercial encontrada em farmácias/drogarias (CMED/ANVISA)';
+  }
+  btn.onclick = () => selecionarSubstancia(item);
+  return btn;
 }
 
 function toggleModoDetalhado(){
@@ -7816,6 +7836,7 @@ function toggleModoDetalhado(){
   classeAtiva = null;
   const btn = document.getElementById('detailModeBtn');
   if(btn) btn.classList.toggle('active', modoDetalhado);
+  document.body.classList.toggle('modo-detalhado-ativo', modoDetalhado);
   renderSidebar(document.getElementById('busca').value);
 }
 
@@ -7846,12 +7867,8 @@ function renderClasseFlyout(porClasse){
   flyout.classList.add('aberto');
   titulo.textContent = classeAtiva;
   itensEl.innerHTML = '';
-  itensClasse.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).forEach(item => {
-    const btn = document.createElement('button');
-    btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-    btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
-    btn.onclick = () => selecionarSubstancia(item);
-    itensEl.appendChild(btn);
+  ordenarPorDisponibilidade(itensClasse).forEach(item => {
+    itensEl.appendChild(criarDrugItemBtn(item));
   });
 }
 
@@ -7907,12 +7924,8 @@ function renderSidebar(filtro=''){
       // durante a busca, mostra os resultados de todas as classes numa lista única
       if(itensFiltrados.length > 0){
         algumaEncontrada = true;
-        itensFiltrados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).forEach(item => {
-          const btn = document.createElement('button');
-          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
-          btn.onclick = () => selecionarSubstancia(item);
-          lista.appendChild(btn);
+        ordenarPorDisponibilidade(itensFiltrados).forEach(item => {
+          lista.appendChild(criarDrugItemBtn(item));
         });
       }
     } else {
@@ -7957,12 +7970,8 @@ function renderSidebar(filtro=''){
       if(aberta){
         const itensWrap = document.createElement('div');
         itensWrap.className = 'cat-grupo-itens';
-        itensCat.forEach(item => {
-          const btn = document.createElement('button');
-          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
-          btn.onclick = () => selecionarSubstancia(item);
-          itensWrap.appendChild(btn);
+        ordenarPorDisponibilidade(itensCat).forEach(item => {
+          itensWrap.appendChild(criarDrugItemBtn(item));
         });
         grupo.appendChild(itensWrap);
       }
