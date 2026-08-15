@@ -18,12 +18,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#17181b;
-    --bg-panel:#1c1d20;
-    --card-bg:#212226;
-    --card-border:#34353a;
-    --card-hover-bg:#26272b;
-    --placeholder-border:#3a3b40;
+    --bg:#232427;
+    --bg-panel:#28292c;
+    --card-bg:#2d2e32;
+    --card-border:#404146;
+    --card-hover-bg:#323337;
+    --placeholder-border:#46474c;
     --red:#e4172c;
     --red-dark:#a10f1f;
     --red-glow:rgba(228,23,44,0.18);
@@ -33,9 +33,9 @@
     --text-white:#f2f2f0;
     --text-gray:#c2c2c8;
     --text-gray-dim:#a3a3aa;
-    --sidebar-bg:#1c1d20;
-    --sidebar-border:#2c2d31;
-    --sidebar-hover:#26272b;
+    --sidebar-bg:#28292c;
+    --sidebar-border:#38393d;
+    --sidebar-hover:#323337;
     --sidebar-text:#c2c2c8;
     --heading-shadow:0 2px 16px rgba(0,0,0,.5);
     --body-text-shadow:0 1px 8px rgba(0,0,0,.35);
@@ -436,7 +436,7 @@
 
   .stats-footer{
     position:relative;
-    padding:22px 24px 26px;
+    padding:17px 24px 20px;
     overflow:hidden;
     background:
       linear-gradient(165deg, rgba(10,4,5,.18), rgba(8,4,4,.45)),
@@ -448,8 +448,10 @@
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
   }
   .stats-footer > *{position:relative;z-index:1;}
-  .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-  .stats-footer .hero-divider{margin-bottom:18px;}
+  .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .stats-footer .hero-divider{margin-bottom:14px;}
+  .stats-footer-wide{grid-column:1 / -1;}
+  .stats-footer-wide .usage-donut-row{gap:24px;}
 
   .news-card{
     position:relative;
@@ -1098,21 +1100,12 @@
           </div>
         </div>
 
-        <div class="stats-footer">
+        <div class="stats-footer stats-footer-wide">
           <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>Ferramentas Mais Usadas</h3>
           <div class="hero-divider"></div>
           <div id="usage-donut-wrap">
             <!-- preenchido via JS a partir dos favoritos -->
           </div>
-        </div>
-
-        <div class="news-card">
-          <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>Notícias Farmacêuticas</h3>
-          <p>Acompanhe atualizações, lançamentos e tendências do setor farmacêutico no Brasil.</p>
-          <a class="news-link" href="https://panoramafarmaceutico.com.br/" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            Ver notícias
-          </a>
         </div>
       </div>
     </section>
