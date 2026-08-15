@@ -94,7 +94,7 @@
   .topbar-app{
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     display:grid;
-    grid-template-columns: var(--sidebar-w) 1fr;
+    grid-template-columns: var(--sidebar-w) 1fr auto;
     align-items:center;
     min-height: 64px;
     flex-shrink:0;
@@ -106,10 +106,6 @@
     z-index: 3;
   }
   .theme-toggle{
-    position:absolute;
-    right:24px;
-    top:50%;
-    transform:translateY(-50%);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -125,12 +121,15 @@
   .theme-toggle:hover{ background: var(--hover-tint); }
   .theme-toggle svg{ width:18px; height:18px; }
   .theme-toggle .icon-moon{ display:none; }
-  @media (max-width: 800px){ .theme-toggle{ right:14px; } }
+  .topbar-actions{
+    grid-column:3;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+    padding-right:24px;
+  }
   .detail-mode-toggle{
-    position:absolute;
-    right:72px;
-    top:50%;
-    transform:translateY(-50%);
     display:flex;
     align-items:center;
     gap:7px;
@@ -146,6 +145,7 @@
     letter-spacing:.5px;
     cursor:pointer;
     white-space:nowrap;
+    flex-shrink:0;
     transition: background-color .15s ease, border-color .15s ease, color .15s ease;
   }
   .detail-mode-toggle:hover{ background: var(--hover-tint); color: var(--text); }
@@ -155,11 +155,36 @@
     border-color: var(--amber);
     color: var(--amber);
   }
-  @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ right:64px; padding:0 9px; } }
-  @media (max-width: 800px){ .detail-mode-toggle{ right:58px; } }
-  .cat-header.classe-grupo{ border-left-color: var(--amber); }
-  .cat-header.classe-grupo.aberto{ color: var(--amber); }
-  .cat-header.classe-grupo .cat-count{ color: var(--amber); }
+  .theme-toggle{ flex-shrink:0; }
+  @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ padding:0 9px; } .topbar-actions{ padding-right:14px; gap:6px; } }
+  .classe-tabs{
+    display:none;
+    flex-wrap:nowrap;
+    gap:6px;
+    overflow-x:auto;
+    padding: 2px 2px 8px;
+    margin-top:8px;
+    scrollbar-width:thin;
+    scrollbar-color: var(--amber) transparent;
+  }
+  .classe-tabs::-webkit-scrollbar{ height:5px; }
+  .classe-tabs::-webkit-scrollbar-thumb{ background: var(--amber); border-radius:10px; }
+  .classe-tab{
+    display:flex; align-items:center; gap:6px; flex-shrink:0;
+    background: var(--panel); border:1px solid var(--border); border-radius:20px;
+    padding: 6px 12px; font-size:.7rem; font-weight:700; letter-spacing:.2px;
+    color: var(--text-dim); cursor:pointer; white-space:nowrap;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .classe-tab:hover{ background: var(--hover-tint); color: var(--text); }
+  .classe-tab .classe-tab-count{
+    font-size:.62rem; font-weight:700; background: var(--hover-tint); color: var(--text-dim);
+    padding: 1px 7px; border-radius: 20px;
+  }
+  .classe-tab.active{
+    background: rgba(232,184,75,.14); border-color: var(--amber); color: var(--amber);
+  }
+  .classe-tab.active .classe-tab-count{ background: rgba(232,184,75,.22); color: var(--amber); }
   .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 24px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
   .brand{ display:flex; align-items:center; gap:14px; }
@@ -167,13 +192,14 @@
   .brand-text h1{ font-size:19px; font-weight:800; letter-spacing:-0.3px; line-height:1.1; margin:0; color: var(--text); }
   .brand-text h1 span{ color:var(--red-bright); }
   .brand-text p{ font-size:11.5px; color:var(--text-gray); font-weight:400; margin:2px 0 0; }
-  .topbar-app .titulo-central{ grid-column:2; display:flex; flex-direction:column; align-items:center; text-align:center; }
-  .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:520px; line-height:1.25; }
+  .topbar-app .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
+  .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:100%; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
   @media (max-width: 800px){
-    .topbar-app{ grid-template-columns: 1fr; padding: 8px 14px; }
+    .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto; padding: 8px 14px; }
     .topbar-app .logo-wrap{ padding-left:0; justify-content:center; margin-bottom:6px; }
-    .topbar-app .titulo-central{ grid-column:1; }
+    .topbar-app .titulo-central{ grid-column:1; padding:0; }
+    .topbar-actions{ grid-column:1; justify-content:center; padding-right:0; margin-top:8px; }
   }
 
   .app-body{ display:flex; flex:1; min-height:0; }
@@ -497,14 +523,16 @@
     <div class="titulo-principal">Consulta por Medicamentos de Controle Especial</div>
     <div class="titulo-descricao">Tipo de receita, vias, validade e retenção conforme a legislação vigente</div>
   </div>
-  <button id="detailModeBtn" class="detail-mode-toggle" onclick="toggleModoDetalhado()" title="Agrupar medicamentos por classe farmacológica" aria-label="Alternar modo detalhado">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
-    <span class="dm-label">Modo Detalhado</span>
-  </button>
-  <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-  </button>
+  <div class="topbar-actions">
+    <button id="detailModeBtn" class="detail-mode-toggle" onclick="toggleModoDetalhado()" title="Agrupar medicamentos por classe farmacológica" aria-label="Alternar modo detalhado">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+      <span class="dm-label">Modo Detalhado</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </div>
 </div>
 
 <div class="app-body">
@@ -522,6 +550,7 @@
         <span class="tarja-chip" data-filtro="branca"><span class="chip-dot"></span>Contr. Especial</span>
         <span class="tarja-chip" data-filtro="verde"><span class="chip-dot"></span>Antimicrobianos</span>
       </div>
+      <div class="classe-tabs" id="classe-tabs" style="display:none;"></div>
     </div>
     <div class="sidebar-list" id="lista-substancias"></div>
   </div>
@@ -7723,7 +7752,7 @@ function normaliza(str){
 }
 
 let categoriasAbertas = {};
-let categoriasAbertasDetalhado = {};
+let classeAtiva = null;
 
 function chevronSVG(){
   return `<svg class="cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`;
@@ -7734,11 +7763,6 @@ function toggleCategoria(codigo){
   renderSidebar(document.getElementById('busca').value);
 }
 
-function toggleCategoriaDetalhado(nomeClasse){
-  categoriasAbertasDetalhado[nomeClasse] = !categoriasAbertasDetalhado[nomeClasse];
-  renderSidebar(document.getElementById('busca').value);
-}
-
 function classeDoItem(item){
   const det = (dadosBrutos.detalhes || {})[item.nome.toLowerCase()];
   return (det && det.classe) ? det.classe : (CAT_LABEL[item.codigo] || item.codigo);
@@ -7746,9 +7770,29 @@ function classeDoItem(item){
 
 function toggleModoDetalhado(){
   modoDetalhado = !modoDetalhado;
+  classeAtiva = null;
   const btn = document.getElementById('detailModeBtn');
   if(btn) btn.classList.toggle('active', modoDetalhado);
   renderSidebar(document.getElementById('busca').value);
+}
+
+function renderClasseTabs(classesOrdenadas, porClasse){
+  const tabsEl = document.getElementById('classe-tabs');
+  if(!tabsEl) return;
+  if(!modoDetalhado || classesOrdenadas.length === 0){
+    tabsEl.style.display = 'none';
+    tabsEl.innerHTML = '';
+    return;
+  }
+  tabsEl.style.display = 'flex';
+  tabsEl.innerHTML = '';
+  classesOrdenadas.forEach(nomeClasse => {
+    const tab = document.createElement('button');
+    tab.className = 'classe-tab' + (nomeClasse === classeAtiva ? ' active' : '');
+    tab.innerHTML = `<span class="classe-tab-nome">${nomeClasse}</span><span class="classe-tab-count">${porClasse[nomeClasse].length}</span>`;
+    tab.onclick = () => { classeAtiva = nomeClasse; renderSidebar(document.getElementById('busca').value); };
+    tabsEl.appendChild(tab);
+  });
 }
 
 function renderSidebar(filtro=''){
@@ -7798,35 +7842,30 @@ function renderSidebar(filtro=''){
     });
     const classesOrdenadas = Object.keys(porClasse).sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-    classesOrdenadas.forEach(nomeClasse => {
-      const itensCat = porClasse[nomeClasse].slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+    // garante que sempre haja uma aba de classe válida selecionada
+    if(!classeAtiva || !porClasse[classeAtiva]){
+      classeAtiva = classesOrdenadas[0] || null;
+    }
+
+    renderClasseTabs(classesOrdenadas, porClasse);
+
+    // durante a busca, mostra os resultados de todas as classes (não só da aba ativa)
+    const itensParaExibir = (buscando ? itensFiltrados : (porClasse[classeAtiva] || []))
+      .slice()
+      .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+
+    if(itensParaExibir.length > 0){
       algumaEncontrada = true;
-
-      const aberta = buscando || filtroTarja !== 'todos' || !!categoriasAbertasDetalhado[nomeClasse];
-
-      const header = document.createElement('button');
-      header.className = 'cat-header classe-grupo' + (aberta ? ' aberto' : '');
-      header.innerHTML = `${chevronSVG()}<span class="cat-nome">${nomeClasse}</span><span class="cat-count">${itensCat.length}</span>`;
-      header.onclick = () => toggleCategoriaDetalhado(nomeClasse);
-      lista.appendChild(header);
-
-      const grupo = document.createElement('div');
-      grupo.className = 'cat-grupo';
-      if(aberta){
-        const itensWrap = document.createElement('div');
-        itensWrap.className = 'cat-grupo-itens';
-        itensCat.forEach(item => {
-          const btn = document.createElement('button');
-          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
-          btn.onclick = () => selecionarSubstancia(item);
-          itensWrap.appendChild(btn);
-        });
-        grupo.appendChild(itensWrap);
-      }
-      lista.appendChild(grupo);
-    });
+      itensParaExibir.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+        btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
+        btn.onclick = () => selecionarSubstancia(item);
+        lista.appendChild(btn);
+      });
+    }
   } else {
+    renderClasseTabs([], {});
     CODIGOS_ORDEM.forEach(codigo => {
       if(!listas[codigo]) return;
       const itensCat = indice.filter(item =>
@@ -7899,7 +7938,7 @@ document.getElementById('filtro-tarjas').addEventListener('click', (e) => {
 function selecionarSubstancia(item){
   substanciaAtual = item;
   categoriasAbertas[item.codigo] = true;
-  categoriasAbertasDetalhado[classeDoItem(item)] = true;
+  classeAtiva = classeDoItem(item);
   renderSidebar(document.getElementById('busca').value);
   renderConteudo();
 }
