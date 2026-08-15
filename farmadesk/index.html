@@ -26,12 +26,15 @@
   }
   body.light{
     --ink:#201d1e;
-    --paper:#e8e4e1;
+    --paper:#ddd7d3;
     --paper-dim:#f7f5f4;
     --card:#ffffff;
-    --rule:#d9d3d0;
-    --muted:#6c6569;
+    --rule:#cdc6c2;
+    --muted:#655e62;
   }
+  body.light .card{background:#f2eeec;}
+  body.light h2.cond-title,
+  body.light .system-tag{text-shadow:0 1px 6px rgba(0,0,0,.14);}
   body{transition:background-color .2s ease, color .2s ease;}
   body.light header.top{
     background:linear-gradient(135deg,#f7f5f4 0%,#efece9 55%,#e2dbd8 160%);
@@ -94,14 +97,14 @@
   }
   .brand-text h1{
     font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
-    font-size:19px;
+    font-size:22px;
     font-weight:800;
     letter-spacing:-0.3px;
     line-height:1.1;
     color:#ffffff;
     margin:0;
   }
-  .brand-text h1 span{color:var(--red-bright);}
+  .brand-text h1 span{color:var(--red);}
   .brand-text p{
     font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
     font-size:12.5px;
