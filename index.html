@@ -394,6 +394,7 @@
     margin-bottom:22px;
   }
   .stats-card-head h2{font-size:16px;font-weight:700;}
+  .stats-card-head h2 .section-icon{color:var(--red);}
   /* Painel em 2x2: Favoritos | Notas de Rotina / Ferramentas Mais Usadas | Noticias */
   .quad-panel{
     display:grid;
@@ -647,9 +648,16 @@
     .dashboard-grid{grid-template-columns:1fr;}
   }
   @media (max-width: 760px){
+    body{zoom:1;}
     .stats-charts{grid-template-columns:1fr;}
     main{padding:26px 20px 40px;}
     .hero-band{padding:22px;}
+    .quad-panel{gap:16px;}
+    .dashboard-head h1{font-size:22px;}
+    .usage-legend .usage-name{white-space:normal;overflow:visible;text-overflow:unset;}
+  }
+  @media (max-width: 480px){
+    .usage-donut-row{flex-wrap:wrap;}
   }
 
   .tool-list{
@@ -1102,7 +1110,6 @@
 
         <div class="stats-footer stats-footer-wide">
           <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>Ferramentas Mais Usadas</h3>
-          <div class="hero-divider"></div>
           <div id="usage-donut-wrap">
             <!-- preenchido via JS a partir dos favoritos -->
           </div>
