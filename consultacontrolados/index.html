@@ -157,34 +157,52 @@
   }
   .theme-toggle{ flex-shrink:0; }
   @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ padding:0 9px; } .topbar-actions{ padding-right:14px; gap:6px; } }
-  .classe-tabs{
-    display:none;
-    flex-wrap:nowrap;
-    gap:6px;
-    overflow-x:auto;
-    padding: 2px 2px 8px;
-    margin-top:8px;
-    scrollbar-width:thin;
-    scrollbar-color: var(--amber) transparent;
+  .cat-header.classe-grupo{ border-left-color: var(--amber); justify-content:space-between; }
+  .cat-header.classe-grupo .cat-nome{ flex:1; }
+  .cat-header.classe-grupo .cat-abre{
+    flex-shrink:0; width:14px; height:14px; opacity:.7; transition: transform .15s ease;
   }
-  .classe-tabs::-webkit-scrollbar{ height:5px; }
-  .classe-tabs::-webkit-scrollbar-thumb{ background: var(--amber); border-radius:10px; }
-  .classe-tab{
-    display:flex; align-items:center; gap:6px; flex-shrink:0;
-    background: var(--panel); border:1px solid var(--border); border-radius:20px;
-    padding: 6px 12px; font-size:.7rem; font-weight:700; letter-spacing:.2px;
-    color: var(--text-dim); cursor:pointer; white-space:nowrap;
-    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
-  }
-  .classe-tab:hover{ background: var(--hover-tint); color: var(--text); }
-  .classe-tab .classe-tab-count{
-    font-size:.62rem; font-weight:700; background: var(--hover-tint); color: var(--text-dim);
-    padding: 1px 7px; border-radius: 20px;
-  }
-  .classe-tab.active{
+  .cat-header.classe-grupo.aberto{
     background: rgba(232,184,75,.14); border-color: var(--amber); color: var(--amber);
   }
-  .classe-tab.active .classe-tab-count{ background: rgba(232,184,75,.22); color: var(--amber); }
+  .cat-header.classe-grupo.aberto .cat-count{ background: rgba(232,184,75,.22); color: var(--amber); }
+  .cat-header.classe-grupo.aberto .cat-abre{ transform: translateX(2px); color: var(--amber); }
+
+  /* ---------- Flyout de classe (modo detalhado) ---------- */
+  .classe-flyout{
+    display:none;
+    flex-direction:column;
+    width: 260px;
+    flex-shrink:0;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y:auto;
+  }
+  .classe-flyout.aberto{ display:flex; }
+  .classe-flyout-head{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:8px;
+    padding: 14px 14px 10px; border-bottom:1px solid var(--border);
+    position:sticky; top:0; background: var(--panel); z-index:1;
+  }
+  .classe-flyout-head h3{
+    margin:0; font-size:.78rem; font-weight:800; text-transform:uppercase;
+    letter-spacing:.4px; color: var(--amber); line-height:1.3;
+  }
+  .classe-flyout-close{
+    flex-shrink:0; width:22px; height:22px; border-radius:6px; border:1px solid var(--border);
+    background:transparent; color: var(--text-dim); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .classe-flyout-close:hover{ background: var(--hover-tint); color: var(--text); }
+  .classe-flyout-close svg{ width:12px; height:12px; }
+  .classe-flyout-itens{ padding: 6px 10px 16px; }
+
+  .drug-item .item-sem-comercial{
+    margin-left:5px; color: var(--text-dim); font-weight:800; font-size:.85em;
+  }
+  .legenda-comercial{
+    font-size:.66rem; color: var(--text-dim); margin-top:8px; line-height:1.4;
+  }
   .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 24px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
   .brand{ display:flex; align-items:center; gap:14px; }
@@ -550,9 +568,19 @@
         <span class="tarja-chip" data-filtro="branca"><span class="chip-dot"></span>Contr. Especial</span>
         <span class="tarja-chip" data-filtro="verde"><span class="chip-dot"></span>Antimicrobianos</span>
       </div>
-      <div class="classe-tabs" id="classe-tabs" style="display:none;"></div>
+      <div class="legenda-comercial">* substância sem apresentação comercial encontrada em farmácias/drogarias (CMED/ANVISA)</div>
     </div>
     <div class="sidebar-list" id="lista-substancias"></div>
+  </div>
+
+  <div class="classe-flyout" id="classe-flyout">
+    <div class="classe-flyout-head">
+      <h3 id="classe-flyout-titulo"></h3>
+      <button class="classe-flyout-close" onclick="fecharClasseFlyout()" title="Fechar" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="classe-flyout-itens" id="classe-flyout-itens"></div>
   </div>
 
   <div class="main">
@@ -7732,6 +7760,13 @@ const dadosMarcas = JSON.parse(document.getElementById('dados-marcas').textConte
 const marcas = dadosMarcas.marcas || {};
 const excecoes = dadosBrutos.excecoes || {};
 
+// Substâncias com pelo menos uma marca comercial rastreada (CMED/ANVISA) —
+// usado para sinalizar, na lista, quais moléculas efetivamente têm
+// apresentação comercial em farmácias/drogarias.
+const substanciasComMarca = new Set(
+  Object.values(marcas).map(m => normaliza(m.substancia))
+);
+
 let indice = [];
 CODIGOS_ORDEM.forEach(codigo => {
   if(!listas[codigo]) return;
@@ -7768,6 +7803,14 @@ function classeDoItem(item){
   return (det && det.classe) ? det.classe : (CAT_LABEL[item.codigo] || item.codigo);
 }
 
+function temMarca(item){
+  return substanciasComMarca.has(normaliza(item.nome));
+}
+
+function marcadorComercialHTML(item){
+  return temMarca(item) ? '' : '<span class="item-sem-comercial" title="Sem apresentação comercial encontrada em farmácias/drogarias (CMED/ANVISA)">*</span>';
+}
+
 function toggleModoDetalhado(){
   modoDetalhado = !modoDetalhado;
   classeAtiva = null;
@@ -7776,22 +7819,39 @@ function toggleModoDetalhado(){
   renderSidebar(document.getElementById('busca').value);
 }
 
-function renderClasseTabs(classesOrdenadas, porClasse){
-  const tabsEl = document.getElementById('classe-tabs');
-  if(!tabsEl) return;
-  if(!modoDetalhado || classesOrdenadas.length === 0){
-    tabsEl.style.display = 'none';
-    tabsEl.innerHTML = '';
+function fecharClasseFlyout(){
+  classeAtiva = null;
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function abrirClasseFlyout(nomeClasse){
+  classeAtiva = (classeAtiva === nomeClasse) ? null : nomeClasse;
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function renderClasseFlyout(porClasse){
+  const flyout = document.getElementById('classe-flyout');
+  const titulo = document.getElementById('classe-flyout-titulo');
+  const itensEl = document.getElementById('classe-flyout-itens');
+  if(!flyout) return;
+
+  const itensClasse = classeAtiva ? (porClasse[classeAtiva] || []) : [];
+  if(!modoDetalhado || !classeAtiva || itensClasse.length === 0){
+    flyout.classList.remove('aberto');
+    titulo.textContent = '';
+    itensEl.innerHTML = '';
     return;
   }
-  tabsEl.style.display = 'flex';
-  tabsEl.innerHTML = '';
-  classesOrdenadas.forEach(nomeClasse => {
-    const tab = document.createElement('button');
-    tab.className = 'classe-tab' + (nomeClasse === classeAtiva ? ' active' : '');
-    tab.innerHTML = `<span class="classe-tab-nome">${nomeClasse}</span><span class="classe-tab-count">${porClasse[nomeClasse].length}</span>`;
-    tab.onclick = () => { classeAtiva = nomeClasse; renderSidebar(document.getElementById('busca').value); };
-    tabsEl.appendChild(tab);
+
+  flyout.classList.add('aberto');
+  titulo.textContent = classeAtiva;
+  itensEl.innerHTML = '';
+  itensClasse.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+    btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
+    btn.onclick = () => selecionarSubstancia(item);
+    itensEl.appendChild(btn);
   });
 }
 
@@ -7830,42 +7890,46 @@ function renderSidebar(filtro=''){
     }
   }
 
+  let porClasseAtual = {};
+
   if(modoDetalhado){
     const itensFiltrados = indice.filter(item =>
       (!termo || normaliza(item.nome).includes(termo)) &&
       (filtroTarja === 'todos' || item.cor === filtroTarja)
     );
-    const porClasse = {};
     itensFiltrados.forEach(item => {
       const nomeClasse = classeDoItem(item);
-      (porClasse[nomeClasse] = porClasse[nomeClasse] || []).push(item);
+      (porClasseAtual[nomeClasse] = porClasseAtual[nomeClasse] || []).push(item);
     });
-    const classesOrdenadas = Object.keys(porClasse).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    const classesOrdenadas = Object.keys(porClasseAtual).sort((a, b) => a.localeCompare(b, 'pt-BR'));
 
-    // garante que sempre haja uma aba de classe válida selecionada
-    if(!classeAtiva || !porClasse[classeAtiva]){
-      classeAtiva = classesOrdenadas[0] || null;
-    }
+    if(buscando){
+      // durante a busca, mostra os resultados de todas as classes numa lista única
+      if(itensFiltrados.length > 0){
+        algumaEncontrada = true;
+        itensFiltrados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).forEach(item => {
+          const btn = document.createElement('button');
+          btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
+          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
+          btn.onclick = () => selecionarSubstancia(item);
+          lista.appendChild(btn);
+        });
+      }
+    } else {
+      if(classeAtiva && !porClasseAtual[classeAtiva]) classeAtiva = null;
+      classesOrdenadas.forEach(nomeClasse => {
+        const itensCat = porClasseAtual[nomeClasse];
+        algumaEncontrada = true;
 
-    renderClasseTabs(classesOrdenadas, porClasse);
-
-    // durante a busca, mostra os resultados de todas as classes (não só da aba ativa)
-    const itensParaExibir = (buscando ? itensFiltrados : (porClasse[classeAtiva] || []))
-      .slice()
-      .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
-
-    if(itensParaExibir.length > 0){
-      algumaEncontrada = true;
-      itensParaExibir.forEach(item => {
-        const btn = document.createElement('button');
-        btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-        btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
-        btn.onclick = () => selecionarSubstancia(item);
-        lista.appendChild(btn);
+        const aberta = nomeClasse === classeAtiva;
+        const header = document.createElement('button');
+        header.className = 'cat-header classe-grupo' + (aberta ? ' aberto' : '');
+        header.innerHTML = `<span class="cat-nome">${nomeClasse}</span><span class="cat-count">${itensCat.length}</span><svg class="cat-abre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`;
+        header.onclick = () => abrirClasseFlyout(nomeClasse);
+        lista.appendChild(header);
       });
     }
   } else {
-    renderClasseTabs([], {});
     CODIGOS_ORDEM.forEach(codigo => {
       if(!listas[codigo]) return;
       const itensCat = indice.filter(item =>
@@ -7896,7 +7960,7 @@ function renderSidebar(filtro=''){
         itensCat.forEach(item => {
           const btn = document.createElement('button');
           btn.className = 'drug-item ' + item.cor + (substanciaAtual && substanciaAtual.nome === item.nome && substanciaAtual.codigo === item.codigo ? ' active' : '');
-          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>`;
+          btn.innerHTML = `<span class="item-dot"></span><span>${item.nome}</span>${marcadorComercialHTML(item)}`;
           btn.onclick = () => selecionarSubstancia(item);
           itensWrap.appendChild(btn);
         });
@@ -7905,6 +7969,8 @@ function renderSidebar(filtro=''){
       lista.appendChild(grupo);
     });
   }
+
+  renderClasseFlyout(porClasseAtual);
 
   if(!algumaEncontrada){
     lista.innerHTML = '<div class="sem-resultado">Nenhuma substância encontrada.</div>';
