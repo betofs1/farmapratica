@@ -326,11 +326,11 @@
 
   /* LAYOUT */
   .layout{
-    max-width:1180px;
+    max-width:1240px;
     margin:26px auto 80px;
     padding:0 20px;
     display:grid;
-    grid-template-columns:220px 1fr 200px;
+    grid-template-columns:280px 1fr 200px;
     gap:26px;
   }
   aside.sidebar{
@@ -369,7 +369,7 @@
     position:relative;
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     width:100%;
     text-align:left;
     background:none;
@@ -384,9 +384,9 @@
     overflow:hidden;
     transition:background .2s ease, color .2s ease, padding-left .2s ease, box-shadow .2s ease;
   }
-  .sys-btn-left{display:flex; align-items:center; gap:10px; min-width:0;}
-  .sys-btn-left span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .sys-icon{flex-shrink:0; opacity:.6; transition:opacity .2s ease;}
+  .sys-btn-left{display:flex; align-items:flex-start; gap:10px; min-width:0;}
+  .sys-btn-left span{overflow:visible; text-overflow:unset; white-space:normal; line-height:1.3;}
+  .sys-icon{flex-shrink:0; opacity:.6; margin-top:2px; transition:opacity .2s ease;}
   .sys-btn:hover .sys-icon, .sys-btn.active .sys-icon{opacity:1;}
   .sys-btn::before{
     content:'';
@@ -420,6 +420,8 @@
     background:var(--paper-dim);
     padding:1px 7px;
     border-radius:999px;
+    flex-shrink:0;
+    margin-top:2px;
     transition:background .2s ease, color .2s ease;
   }
   .sys-btn.active .count{background:rgba(255,255,255,0.25);color:#fff;}
