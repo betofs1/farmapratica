@@ -469,10 +469,10 @@
     font-size: 1.05rem;
     flex-shrink:0;
   }
-  .formulacao .form-icon.tipo-gotas{ background: rgba(127,168,201,.15); }
-  .formulacao .form-icon.tipo-liquido{ background: rgba(74,180,150,.15); }
-  .formulacao .form-icon.tipo-comprimido{ background: rgba(180,130,220,.15); }
-  .formulacao .form-icon.tipo-injetavel{ background: rgba(239,45,64,.15); }
+  .formulacao .form-icon.tipo-gotas{ background: rgba(127,168,201,.15); color:#7fa8c9; }
+  .formulacao .form-icon.tipo-liquido{ background: rgba(74,180,150,.15); color:#4ab496; }
+  .formulacao .form-icon.tipo-comprimido{ background: rgba(180,130,220,.15); color:#b482dc; }
+  .formulacao .form-icon.tipo-injetavel{ background: rgba(239,45,64,.15); color: var(--red-bright); }
   .formulacao h3{
     font-size: .95rem;
     margin: 0;
@@ -720,6 +720,145 @@
     .main-inner{ max-width:100%; }
     .peso-bar{ flex-wrap:wrap; gap:14px; }
   }
+
+  /* ---------- Ícones SVG utilitários ---------- */
+  .icon{ width:1em; height:1em; display:inline-block; vertical-align:-0.14em; flex-shrink:0; }
+  .icon svg{ width:100%; height:100%; display:block; }
+  .search-box .icon{ width:15px; height:15px; color: var(--text-dim); }
+  .field-icon .icon{ width:17px; height:17px; color: var(--red-bright); }
+  .empty-icon .icon{ width:32px; height:32px; color: var(--red-bright); }
+  .form-icon .icon{ width:18px; height:18px; }
+  .aviso-titulo .icon{ width:16px; height:16px; }
+  .obs-item .icon{ width:13px; height:13px; }
+  .cat-chevron{ width:13px; height:13px; transition: transform .15s ease; flex-shrink:0; }
+  .cat-header.colapsado .cat-chevron{ transform: rotate(-90deg); }
+
+  /* ---------- Destaque de busca ---------- */
+  mark{
+    background: rgba(242,184,75,.35);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 1px;
+  }
+
+  /* ---------- Cabeçalho de categoria (accordion) ---------- */
+  .cat-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    cursor:pointer;
+    user-select:none;
+    border-radius:6px;
+    padding: 6px 8px 6px 10px !important;
+  }
+  .cat-header:hover{ background: var(--hover-tint); }
+  .cat-group.colapsado .drug-item{ display:none; }
+
+  /* ---------- Favoritos na sidebar ---------- */
+  .fav-header{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.66rem;
+    text-transform:uppercase;
+    letter-spacing:1.1px;
+    color: var(--amber);
+    font-weight:800;
+    margin: 6px 10px 8px;
+  }
+  .fav-header .icon{ width:12px; height:12px; }
+  .fav-group{ margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--border); }
+  .drug-item .fav-dot{ margin-left:auto; color: var(--amber); width:12px; height:12px; flex-shrink:0; }
+
+  /* ---------- Skeleton de carregamento ---------- */
+  .skeleton-item{
+    height: 14px;
+    border-radius: 6px;
+    margin: 10px 12px;
+    background: linear-gradient(90deg, var(--card) 25%, var(--card-hover) 50%, var(--card) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.3s ease-in-out infinite;
+  }
+  @keyframes skeleton-pulse{
+    0%{ background-position: 200% 0; }
+    100%{ background-position: -200% 0; }
+  }
+
+  /* ---------- Botões de ação (copiar/imprimir/compartilhar) ---------- */
+  .btn-icon-action{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    padding:0;
+    border:1px solid var(--border);
+    color: var(--text-dim);
+    background: transparent;
+    border-radius:50%;
+    cursor:pointer;
+    transition: all .15s;
+    flex-shrink:0;
+  }
+  .btn-icon-action .icon{ width:16px; height:16px; }
+  .btn-icon-action:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); }
+  .btn-icon-action.feito{ color:#3fae6d; border-color:#3fae6d; }
+  .btn-copiar-dose{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:transparent;
+    border:1px solid var(--border);
+    color: var(--text-dim);
+    font-size:.68rem;
+    font-weight:700;
+    padding: 4px 9px;
+    border-radius: 20px;
+    cursor:pointer;
+    margin-left:auto;
+    transition: all .15s;
+    white-space:nowrap;
+  }
+  .btn-copiar-dose .icon{ width:11px; height:11px; }
+  .btn-copiar-dose:hover{ background: var(--hover-tint); color: var(--text); }
+  .btn-copiar-dose.feito{ color:#3fae6d; border-color:#3fae6d; }
+
+  /* ---------- Badge de verificação de dados ---------- */
+  .verificado-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:.7rem;
+    color: var(--text-dim);
+    background: var(--panel);
+    border:1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left:8px;
+  }
+  .verificado-badge .icon{ width:11px; height:11px; color:#3fae6d; }
+
+  /* ---------- Transição de conteúdo ---------- */
+  #conteudo{ animation: fade-in .18s ease; }
+  @keyframes fade-in{ from{ opacity:0; transform: translateY(3px); } to{ opacity:1; transform:none; } }
+
+  /* ---------- Impressão ---------- */
+  .print-only{ display:none; }
+  @media print{
+    body.light, body{ background: #fff !important; color:#000 !important; }
+    .gate-overlay, .topbar-app, .sidebar, .theme-toggle, .btn-fav-calc, .btn-bula,
+    .btn-icon-action, .btn-copiar-dose, .peso-bar .unidade-toggle, .aviso-responsabilidade,
+    .no-print{ display:none !important; }
+    .print-only{ display:block !important; }
+    .app-body{ display:block !important; }
+    .main{ padding:0 !important; overflow:visible !important; height:auto !important; }
+    .main-inner{ max-width:100% !important; }
+    .formulacao, .observacoes{ box-shadow:none !important; border:1px solid #999 !important; break-inside: avoid; }
+    .valor-pill{ background:#f2b84b !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-only{ font-size:.72rem; color:#444; line-height:1.5; margin-top:18px; padding-top:12px; border-top:1px solid #ccc; }
+    a[href]:after{ content:""; }
+  }
 </style>
 </head>
 <body class="gate-aberto light">
@@ -769,30 +908,36 @@
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="search-box">
-        <span>🔍</span>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
         <input type="text" id="busca" placeholder="Buscar fármaco...">
       </div>
     </div>
-    <div class="sidebar-list" id="lista-farmacos"></div>
+    <div class="sidebar-list" id="lista-farmacos">
+      <div class="skeleton-item" style="width:60%"></div>
+      <div class="skeleton-item" style="width:85%"></div>
+      <div class="skeleton-item" style="width:70%"></div>
+      <div class="skeleton-item" style="width:80%"></div>
+      <div class="skeleton-item" style="width:55%"></div>
+    </div>
   </div>
 
   <div class="main">
     <div class="main-inner">
       <div id="conteudo">
         <div class="empty-state">
-          <div class="empty-icon">💊</div>
+          <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
           <div class="empty-title">Nenhum fármaco selecionado</div>
           <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose pediátrica por peso ou idade.</div>
         </div>
       </div>
 
       <div class="aviso-responsabilidade">
-        <div class="aviso-titulo">⚠️ Aviso de Responsabilidade</div>
+        <div class="aviso-titulo"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9L1.9 18a1.8 1.8 0 001.5 2.7h17.2a1.8 1.8 0 001.5-2.7L13.7 3.9a1.8 1.8 0 00-3.4 0z"/></svg></span> Aviso de Responsabilidade</div>
 
         <h4>Natureza da ferramenta</h4>
         <p>Esta calculadora é um <strong>instrumento de apoio à decisão clínica</strong>, destinado exclusivamente a profissionais de saúde habilitados (farmacêuticos, médicos, enfermeiros). Ela não substitui o julgamento clínico individualizado, a avaliação do paciente nem a consulta à bula oficial vigente do medicamento.</p>
 
-        <h4>Fontes e atualização</h4>
+        <h4>Fontes e atualização <span class="verificado-badge"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Base revisada em <span id="data-verificacao"></span></span></h4>
         <p>Os valores de dose, concentração e apresentação foram compilados com base em bulas registradas na ANVISA e diretrizes de sociedades médicas (SBP, entre outras) na data de elaboração desta ferramenta. Bulas podem ser atualizadas, descontinuadas ou substituídas por novas formulações a qualquer momento: <strong>sempre confirme a informação na bula vigente do produto efetivamente dispensado</strong> antes de orientar ou administrar qualquer medicamento.</p>
 
         <h4>Limitações do cálculo</h4>
@@ -828,11 +973,56 @@ function toggleTheme(){
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
 
-// ---------- Gate legal (exibido sempre ao carregar a página) ----------
+// ---------- Ícones SVG reutilizados no JS ----------
+const ICONS = {
+  peso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M5 6h14l1.5 9a2 2 0 01-2 2.3H5.5a2 2 0 01-2-2.3L5 6z"/><path d="M9 6a3 3 0 016 0"/></svg>',
+  idade: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  livro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 16.5v-12z"/><path d="M4 16.5A2.5 2.5 0 006.5 19H20"/></svg>',
+  imprimir: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="6" y="13" width="12" height="8"/><path d="M4 9h16a1 1 0 011 1v6a1 1 0 01-1 1h-2M6 17H4a1 1 0 01-1-1v-6a1 1 0 011-1h2"/></svg>',
+  copiar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>',
+  link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l2-2a5 5 0 00-7.07-7.07l-1 1"/><path d="M14 11a5 5 0 00-7.07 0l-2 2a5 5 0 007.07 7.07l1-1"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  estrelaMini: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  observacao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
+  gotas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6.5 7.6 6.5 12.4a6.5 6.5 0 01-13 0C5.5 10.1 12 2.5 12 2.5z"/></svg>',
+  liquido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4.5l3.6 8.1A3 3 0 0115.8 19H8.2a3 3 0 01-2.8-4.4L9 6.5V2z"/><path d="M8 15h8"/></svg>',
+  comprimido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9" width="19" height="6" rx="3" transform="rotate(-45 12 12)"/><path d="M9.5 9.5l5 5"/></svg>',
+  injetavel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5l3 3M17 4l-11 11-3 6 6-3L20 7"/><path d="M12.5 8.5l3 3M9.5 11.5l3 3"/></svg>'
+};
+
+// Data de referência da última revisão geral da base (ajustar manualmente quando os dados forem revisados)
+const DADOS_VERIFICADOS_EM = 'agosto/2026';
+document.getElementById('data-verificacao').textContent = DADOS_VERIFICADOS_EM;
+
+// ---------- Gate legal ----------
+// O aceite é persistido (com versão e validade) para não interromper o uso repetido
+// no mesmo plantão, mas volta a ser exibido se o texto legal for alterado (GATE_VERSAO)
+// ou após o prazo de validade abaixo.
+const GATE_VERSAO = 1;
+const GATE_VALIDADE_HORAS = 24;
+const GATE_KEY = 'farmapratica_gate_aceite';
+
+function gateJaAceito(){
+  try{
+    const raw = localStorage.getItem(GATE_KEY);
+    if(!raw) return false;
+    const info = JSON.parse(raw);
+    if(info.versao !== GATE_VERSAO) return false;
+    const horasPassadas = (Date.now() - info.timestamp) / 3600000;
+    return horasPassadas < GATE_VALIDADE_HORAS;
+  }catch(e){ return false; }
+}
+
 (function(){
   const overlay = document.getElementById('gate-overlay');
   const checkbox = document.getElementById('gate-checkbox');
   const btn = document.getElementById('gate-btn');
+
+  if(gateJaAceito()){
+    overlay.style.display = 'none';
+    document.body.classList.remove('gate-aberto');
+  }
 
   checkbox.addEventListener('change', () => {
     if(checkbox.checked){
@@ -846,6 +1036,9 @@ function toggleTheme(){
 
   btn.addEventListener('click', () => {
     if(!checkbox.checked) return;
+    try{
+      localStorage.setItem(GATE_KEY, JSON.stringify({ versao: GATE_VERSAO, timestamp: Date.now() }));
+    }catch(e){}
     overlay.style.display = 'none';
     document.body.classList.remove('gate-aberto');
   });
@@ -856,6 +1049,7 @@ let farmacoAtual = null;
 let pesoAtual = 0;
 let idadeAtual = 0;
 let idadeUnidade = 'anos'; // 'anos' | 'meses'
+const categoriasColapsadas = new Set();
 
 fetch('dados.json')
   .then(r => r.json())
@@ -866,7 +1060,7 @@ fetch('dados.json')
     if(deepId){ selecionarFarmaco(deepId); }
   })
   .catch(() => {
-    document.getElementById('lista-farmacos').innerHTML = '<div class="empty-state">Erro ao carregar dados.json</div>';
+    document.getElementById('lista-farmacos').innerHTML = '<div class="empty-state"><div class="empty-title">Erro ao carregar dados.json</div><div class="empty-sub">Verifique a conexão e recarregue a página.</div></div>';
   });
 
 // ---------- FAVORITOS (sincronizados com a pagina inicial) ----------
@@ -909,6 +1103,32 @@ function toggleFavCalc(){
     syncFavToHubCalc(id, null, false);
   }
   renderConteudo();
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function destacarTermo(nome, termo){
+  if(!termo) return escapeHtml(nome);
+  const idx = nome.toLowerCase().indexOf(termo);
+  if(idx === -1) return escapeHtml(nome);
+  return escapeHtml(nome.slice(0, idx)) + '<mark>' + escapeHtml(nome.slice(idx, idx + termo.length)) + '</mark>' + escapeHtml(nome.slice(idx + termo.length));
+}
+
+function toggleCategoria(cat){
+  if(categoriasColapsadas.has(cat)) categoriasColapsadas.delete(cat);
+  else categoriasColapsadas.add(cat);
+  renderSidebar(document.getElementById('busca').value);
+}
+
+function criarBotaoFarmaco(f, termo){
+  const btn = document.createElement('button');
+  btn.className = 'drug-item' + (farmacoAtual && farmacoAtual.id === f.id ? ' active' : '');
+  btn.innerHTML = destacarTermo(f.nome, termo);
+  btn.onclick = () => selecionarFarmaco(f.id);
+  return btn;
 }
 
 function renderSidebar(filtro=''){
@@ -916,23 +1136,41 @@ function renderSidebar(filtro=''){
   lista.innerHTML = '';
   const termo = filtro.trim().toLowerCase();
 
+  // ----- seção de favoritos (fixa no topo, só aparece com filtro vazio) -----
+  if(!termo){
+    const favs = getFavsCalc();
+    const favsValidos = favs
+      .map(fv => DB.farmacos.find(f => f.id === fv.id))
+      .filter(Boolean);
+    if(favsValidos.length){
+      const favGroup = document.createElement('div');
+      favGroup.className = 'fav-group';
+      const favHeader = document.createElement('div');
+      favHeader.className = 'fav-header';
+      favHeader.innerHTML = '<span class="icon">' + ICONS.estrelaMini + '</span> Favoritos';
+      favGroup.appendChild(favHeader);
+      favsValidos.forEach(f => favGroup.appendChild(criarBotaoFarmaco(f, termo)));
+      lista.appendChild(favGroup);
+    }
+  }
+
   DB.categorias.forEach(cat => {
     const farmacosCat = DB.farmacos.filter(f => f.categoria === cat &&
       (!termo || f.nome.toLowerCase().includes(termo)));
     if(farmacosCat.length === 0) return;
 
-    const header = document.createElement('div');
-    header.className = 'cat-header';
-    header.textContent = cat;
-    lista.appendChild(header);
+    const colapsada = !termo && categoriasColapsadas.has(cat);
+    const group = document.createElement('div');
+    group.className = 'cat-group' + (colapsada ? ' colapsado' : '');
 
-    farmacosCat.forEach(f => {
-      const btn = document.createElement('button');
-      btn.className = 'drug-item' + (farmacoAtual && farmacoAtual.id === f.id ? ' active' : '');
-      btn.textContent = f.nome;
-      btn.onclick = () => selecionarFarmaco(f.id);
-      lista.appendChild(btn);
-    });
+    const header = document.createElement('div');
+    header.className = 'cat-header' + (colapsada ? ' colapsado' : '');
+    header.innerHTML = '<span>' + escapeHtml(cat) + '</span><span class="icon cat-chevron">' + ICONS.chevron + '</span>';
+    header.onclick = () => toggleCategoria(cat);
+    group.appendChild(header);
+
+    farmacosCat.forEach(f => group.appendChild(criarBotaoFarmaco(f, termo)));
+    lista.appendChild(group);
   });
 }
 
@@ -949,7 +1187,7 @@ function renderConteudo(){
   if(!farmacoAtual){
     el.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">💊</div>
+        <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
         <div class="empty-title">Nenhum fármaco selecionado</div>
         <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose pediátrica por peso ou idade.</div>
       </div>
@@ -966,9 +1204,15 @@ function renderConteudo(){
         <h2>${f.nome}</h2>
         <div class="cat-tag">${f.categoria}</div>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)">
+      <div style="display:flex;align-items:center;gap:8px;" class="no-print">
+        <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)" aria-label="${_isFavCalc ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}" aria-pressed="${_isFavCalc}">
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <button class="btn-icon-action" id="btn-copiar-link" title="Copiar link direto deste fármaco" aria-label="Copiar link direto deste fármaco">
+          <span class="icon">${ICONS.link}</span>
+        </button>
+        <button class="btn-icon-action" id="btn-imprimir" title="Imprimir / exportar em PDF" aria-label="Imprimir ou exportar em PDF">
+          <span class="icon">${ICONS.imprimir}</span>
         </button>
         <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
       </div>
@@ -976,21 +1220,21 @@ function renderConteudo(){
 
     <div class="peso-bar">
       <div class="peso-field">
-        <div class="field-icon">⚖️</div>
+        <div class="field-icon"><span class="icon">${ICONS.peso}</span></div>
         <div class="field-inputs">
           <label>Peso</label>
           <div class="field-row">
-            <input type="number" id="peso" min="0" step="0.1" placeholder="0" value="${pesoAtual || ''}">
+            <input type="number" id="peso" min="0" step="0.1" placeholder="0" value="${pesoAtual || ''}" aria-label="Peso em quilogramas">
             <span>kg</span>
           </div>
         </div>
       </div>
       <div class="peso-field">
-        <div class="field-icon">🎂</div>
+        <div class="field-icon"><span class="icon">${ICONS.idade}</span></div>
         <div class="field-inputs">
           <label>Idade</label>
           <div class="field-row">
-            <input type="number" id="idade" min="0" step="${idadeUnidade === 'meses' ? '1' : '0.1'}" placeholder="0" value="${idadeAtual || ''}">
+            <input type="number" id="idade" min="0" step="${idadeUnidade === 'meses' ? '1' : '0.1'}" placeholder="0" value="${idadeAtual || ''}" aria-label="Idade">
             <div class="unidade-toggle">
               <button type="button" id="btn-meses" class="${idadeUnidade === 'meses' ? 'active' : ''}">Meses</button>
               <button type="button" id="btn-anos" class="${idadeUnidade === 'anos' ? 'active' : ''}">Anos</button>
@@ -1000,10 +1244,19 @@ function renderConteudo(){
       </div>
     </div>
 
-    <div class="formulacoes-grid" id="formulacoes"></div>
-    <div id="observacoes-container"></div>
-    <div class="fonte-tag">📚 Fonte: <b>${f.fonte}</b></div>
+    <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
+    <div id="observacoes-container" aria-live="polite"></div>
+    <div class="fonte-tag"><span class="icon">${ICONS.livro}</span> Fonte: <b>${f.fonte}</b></div>
+    <div class="print-only">
+      Gerado pela Calculadora Pediátrica — FarmaPrática · Base revisada em ${DADOS_VERIFICADOS_EM}. Ferramenta de apoio à decisão clínica; não substitui a avaliação individualizada do paciente nem a bula vigente do medicamento efetivamente dispensado. A responsabilidade pela prescrição, dispensação e administração é do profissional de saúde habilitado.
+    </div>
   `;
+
+  document.getElementById('btn-copiar-link').addEventListener('click', (e) => {
+    const url = location.origin + location.pathname + '?farmaco=' + encodeURIComponent(f.id);
+    copiarTexto(url, e.currentTarget);
+  });
+  document.getElementById('btn-imprimir').addEventListener('click', () => window.print());
 
   document.getElementById('peso').addEventListener('input', e => {
     pesoAtual = parseFloat(e.target.value) || 0;
@@ -1031,6 +1284,43 @@ function trocarUnidadeIdade(novaUnidade){
 
 function seg(fixo, variavel){
   return `<span class="f-fixo">${fixo}</span> <span class="f-var">${variavel}</span>`;
+}
+
+// ---------- Copiar texto para a área de transferência ----------
+function copiarTexto(texto, btnEl){
+  const marcarFeito = () => {
+    if(!btnEl) return;
+    const iconEl = btnEl.querySelector('.icon');
+    const original = iconEl ? iconEl.innerHTML : null;
+    btnEl.classList.add('feito');
+    if(iconEl) iconEl.innerHTML = ICONS.check;
+    setTimeout(() => {
+      btnEl.classList.remove('feito');
+      if(iconEl && original !== null) iconEl.innerHTML = original;
+    }, 1600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(marcarFeito).catch(() => fallbackCopiar(texto, marcarFeito));
+  } else {
+    fallbackCopiar(texto, marcarFeito);
+  }
+}
+function fallbackCopiar(texto, cb){
+  try{
+    const ta = document.createElement('textarea');
+    ta.value = texto;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if(cb) cb();
+  }catch(e){}
+}
+
+function textoPlano(html){
+  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
 
 function calcularEExibir(){
@@ -1199,19 +1489,24 @@ function calcularEExibir(){
       subItens.push({tipo:'formula', texto: `<span class="f-fixo">Fórmula:</span> ${formulaCompleta}`});
     }
 
-    const iconesPorTipo = { gotas: '💧', liquido: '🧴', comprimido: '💊', injetavel: '💉' };
-    const icone = iconesPorTipo[form.tipo] || '💊';
+    const icone = ICONS[form.tipo] || ICONS.comprimido;
+    const temValorCalculado = valorTexto && !['informe o peso', 'informe a idade', '00'].includes(valorTexto);
 
     card.innerHTML = `
       <div class="form-head">
-        <div class="form-icon tipo-${form.tipo}">${icone}</div>
+        <div class="form-icon tipo-${form.tipo}"><span class="icon">${icone}</span></div>
         <h3>${form.rotulo}</h3>
+        ${temValorCalculado ? `<button class="btn-copiar-dose no-print" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button>` : ''}
       </div>
       <div class="linha-principal"><span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>
       <ul class="sub-lista">
         ${subItens.map(i => `<li class="${i.tipo}">${i.texto}</li>`).join('')}
       </ul>
     `;
+    if(temValorCalculado){
+      const textoCopia = `${f.nome} — ${form.rotulo}: ${textoPlano(valorTexto)}${form.viaTexto ? ' ' + textoPlano(form.viaTexto) : ''} (peso ${peso} kg${idadeAtual > 0 ? ', idade ' + idadeAtual + ' ' + idadeUnidade : ''})`;
+      card.querySelector('.btn-copiar-dose').addEventListener('click', (e) => copiarTexto(textoCopia, e.currentTarget));
+    }
     formDiv.appendChild(card);
   });
 
@@ -1240,8 +1535,8 @@ function calcularEExibir(){
   if(obsItens.length){
     obsDiv.innerHTML = `
       <div class="observacoes">
-        <h3>⚠️ Observações</h3>
-        ${obsItens.map(o => `<div class="obs-item"><span class="icon">⊘</span><span>${o}</span></div>`).join('')}
+        <h3><span class="icon">${ICONS.observacao}</span> Observações</h3>
+        ${obsItens.map(o => `<div class="obs-item"><span class="icon">${ICONS.observacao}</span><span>${o}</span></div>`).join('')}
       </div>
     `;
   }
