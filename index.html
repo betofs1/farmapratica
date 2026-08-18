@@ -47,6 +47,10 @@
     --c-green:#22c55e; --c-green-dark:#16a34a; --c-green-glow:rgba(34,197,94,0.18);
     --sidebar-width:256px;
     --sidebar-width-collapsed:64px;
+    --shadow-card:0 14px 32px -10px rgba(0,0,0,.55), 0 4px 10px -4px rgba(0,0,0,.4);
+    --shadow-card-hover:0 20px 44px -12px rgba(0,0,0,.65), 0 6px 14px -4px rgba(0,0,0,.5);
+    --shadow-btn:0 8px 18px -6px rgba(0,0,0,.5), 0 2px 6px -2px rgba(0,0,0,.4);
+    --shadow-btn-hover:0 12px 26px -8px rgba(0,0,0,.6), 0 4px 10px -2px rgba(0,0,0,.45);
   }
 
   /* ---------- LIGHT THEME ---------- */
@@ -71,6 +75,10 @@
     --sidebar-hover:#f1f3f2;
     --sidebar-text:#5c5c62;
     --heading-shadow:0 1px 8px rgba(0,0,0,.12);
+    --shadow-card:0 14px 30px -12px rgba(60,50,48,.22), 0 4px 10px -4px rgba(60,50,48,.14);
+    --shadow-card-hover:0 20px 40px -14px rgba(60,50,48,.28), 0 6px 14px -4px rgba(60,50,48,.16);
+    --shadow-btn:0 8px 16px -6px rgba(60,50,48,.28), 0 2px 6px -2px rgba(60,50,48,.16);
+    --shadow-btn-hover:0 12px 22px -8px rgba(60,50,48,.32), 0 4px 10px -2px rgba(60,50,48,.18);
     --body-text-shadow:0 1px 4px rgba(0,0,0,.08);
   }
   body.light header{border-bottom-color:#dcd7d5;}
@@ -118,8 +126,9 @@
     flex-direction:column;
     justify-content:space-between;
     overflow:hidden;
-    transition:width .25s ease, background-color .2s ease, border-color .2s ease;
+    transition:width .25s ease, background-color .2s ease, border-color .2s ease, box-shadow .25s ease;
     z-index:100;
+    box-shadow:4px 0 24px -8px rgba(0,0,0,.35);
   }
   .sidebar:hover, .sidebar.pinned{
     width:var(--sidebar-width);
@@ -267,7 +276,7 @@
     padding:24px 40px;
     background:linear-gradient(180deg, #171a26 0%, #12141e 100%);
     border-bottom:1px solid rgba(255,255,255,.06);
-    box-shadow:0 4px 24px -8px rgba(0,0,0,.4);
+    box-shadow:0 10px 32px -10px rgba(0,0,0,.55);
     position:relative;
     z-index:2;
     transition:background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -331,14 +340,16 @@
     text-decoration:none;
     color:inherit;
   }
-  .btn:hover{opacity:.88; transform:translateY(-1px);}
+  .btn:hover{opacity:.88; transform:translateY(-3px); box-shadow:var(--shadow-btn-hover);}
   .btn-primary{
     background:var(--red);
     color:#fff;
+    box-shadow:0 10px 22px -8px rgba(228,23,44,.55), 0 3px 8px -3px rgba(0,0,0,.4);
   }
   .btn-outline{
     background:transparent;
     border-color:#3a3a3a;
+    box-shadow:var(--shadow-btn);
     color:var(--text-white);
   }
   .btn svg{width:16px;height:16px;flex-shrink:0;}
@@ -422,8 +433,10 @@
     width:40px;height:40px;border-radius:9px;
     border:1px solid #3a3a3a;background:transparent;
     color:var(--text-white);cursor:pointer;flex:none;
-    transition:background-color .15s ease, border-color .15s ease;
+    transition:background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+    box-shadow:var(--shadow-btn);
   }
+  .theme-toggle:hover{transform:translateY(-2px);box-shadow:var(--shadow-btn-hover);}
   body.light .theme-toggle{border-color:#d8d4d3;}
   .theme-toggle:hover{background:rgba(255,255,255,0.06);}
   body.light .theme-toggle:hover{background:rgba(0,0,0,0.04);}
@@ -456,6 +469,7 @@
     border-radius:18px;
     padding:28px 32px;
     border:1px solid rgba(0,0,0,.55);
+    box-shadow:var(--shadow-card);
     background:
       linear-gradient(100deg, #11131b 0%, #11131b 40%, rgba(17,19,27,.72) 62%, rgba(17,19,27,.5) 100%),
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
@@ -522,6 +536,7 @@
     border:1px solid var(--card-border);
     border-radius:16px;
     padding:26px;
+    box-shadow:var(--shadow-card);
   }
   .card-eyebrow{
     font-size:12px;
@@ -598,6 +613,7 @@
     margin:0;
     transition:box-shadow .35s ease;
     display:flex;flex-direction:column;
+    box-shadow:var(--shadow-card);
   }
   #panel-favoritos .fav-list{flex:1;}
   .panel-highlight-flash{
@@ -660,6 +676,7 @@
     flex:1;min-width:180px;
     background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;
     padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:3px;
+    box-shadow:var(--shadow-card);
   }
   .time-saved-eyebrow{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--text-gray-dim);}
   .time-saved-value{font-size:25px;font-weight:800;color:var(--red);text-shadow:0 0 14px var(--red-glow);margin-top:2px;display:inline-flex;align-items:center;gap:7px;}
@@ -740,9 +757,10 @@
     background:var(--card-bg);border:1px solid var(--card-border);
     border-left:3px solid var(--chip-color, var(--accent2));
     border-radius:9px;padding:9px 10px;cursor:pointer;
-    transition:background-color .12s ease, transform .12s ease;
+    transition:background-color .12s ease, transform .12s ease, box-shadow .12s ease;
+    box-shadow:var(--shadow-btn);
   }
-  .note-category-chip:hover{background:var(--card-hover-bg);transform:translateY(-1px);}
+  .note-category-chip:hover{background:var(--card-hover-bg);transform:translateY(-2px);box-shadow:var(--shadow-btn-hover);}
   .note-category-chip .chip-title{font-size:12px;font-weight:700;color:var(--text-white);}
   .note-category-chip .chip-desc{font-size:10.5px;color:var(--text-gray-dim);line-height:1.3;}
   @media (max-width:640px){
@@ -804,6 +822,7 @@
     border-color:var(--card-border);
     padding:36px 40px;
     animation:heroGlowDrift 11s ease-in-out infinite alternate;
+    box-shadow:var(--shadow-card);
   }
   body.light .institutional-banner{
     background:
@@ -996,12 +1015,14 @@
     text-decoration:none;
     color:inherit;
     cursor:pointer;
-    transition:border-color .15s ease, transform .15s ease, background .15s ease;
+    transition:border-color .15s ease, transform .15s ease, background .15s ease, box-shadow .15s ease;
+    box-shadow:var(--shadow-card);
   }
   .tool-card:hover{
     border-color:var(--red-dark);
-    transform:translateY(-2px);
+    transform:translateY(-4px);
     background:var(--card-hover-bg);
+    box-shadow:var(--shadow-card-hover);
   }
   .tool-icon{
     width:52px;
@@ -1080,6 +1101,7 @@
     border:1px solid var(--card-border);
     border-radius:11px;
     padding:11px 13px;
+    box-shadow:var(--shadow-btn);
   }
   .fav-source-icon{
     width:34px;height:34px;border-radius:9px;flex:none;
