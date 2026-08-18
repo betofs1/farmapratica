@@ -1,0 +1,412 @@
+{
+ "itens": [
+  {
+   "texto": "Temperatura da geladeira de medicamentos aferida e registrada (2–8 °C)",
+   "categoria": "Temperatura e Umidade"
+  },
+  {
+   "texto": "Temperatura ambiente da área de armazenamento dentro do especificado em bula",
+   "categoria": "Temperatura e Umidade"
+  },
+  {
+   "texto": "Umidade relativa do ambiente de armazenamento verificada",
+   "categoria": "Temperatura e Umidade"
+  },
+  {
+   "texto": "Equipamento de refrigeração funcionando corretamente (sem excesso de gelo, borracha de vedação íntegra)",
+   "categoria": "Temperatura e Umidade"
+  },
+  {
+   "texto": "Plano de contingência para falha de refrigeração conhecido pela equipe",
+   "categoria": "Temperatura e Umidade"
+  },
+  {
+   "texto": "Medicamentos vencidos identificados e retirados do estoque ativo",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Medicamentos próximos ao vencimento sinalizados para giro prioritário (FEFO)",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Produtos com embalagem avariada, violada ou sem identificação isolados",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Medicamentos fracionados/reembalados identificados com lote e validade",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Medicamentos termolábeis conferidos quanto ao armazenamento correto (geladeira x prateleira)",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Cumpre a proibição de comercializar medicamentos em embalagem hospitalar ao consumidor final",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Fracionamento de medicamentos (quando realizado) segue a regulamentação específica",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Cumpre a proibição de captar receitas magistrais/oficinais para manipulação (drogarias sem manipulação)",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Lista de medicamentos genéricos disponível para consulta dos usuários",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Aquisição de medicamentos restrita a fornecedores/distribuidores qualificados e regularizados",
+   "categoria": "Medicamentos e Validades"
+  },
+  {
+   "texto": "Receitas de medicamentos sob controle especial conferidas quanto à validade do prazo",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Legibilidade e completude da prescrição (medicamento, concentração, posologia, quantidade e identificação do prescritor)",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Retenção da via exigida de Notificação de Receita, quando aplicável",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Orientação verbal sobre posologia, forma de uso e conservação registrada",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Prescrição digital validada (assinatura eletrônica íntegra e ausência de reuso indevido)",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Notificações amarelas (Listas A1/A2) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 30 dias, 1 medicamento por notificação",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Notificações azuis (Lista B1) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 60 dias, 1 medicamento por notificação",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Receitas carbonadas (Lista C1) aviadas dentro do prazo (30 dias), com quantidade para até 60 dias e no máximo 3 medicamentos por receita (exceto antiparkinsonianos/anticonvulsivantes, até 6 meses)",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Dispensação de esteroides anabolizantes (Lista C5) mediante receita carbonada completa, com receita arquivada por 5 anos",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Retinoides sistêmicos (Lista C2) dispensados com receita válida por 30 dias; para mulheres em idade fértil, validade de 7 dias com revalidação mensal",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Sibutramina (Notificação B2) dispensada apenas até 15 mg/dia, por no máximo 30 dias, com Termo de Responsabilidade do Prescritor anexado",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Antimicrobianos dispensados apenas com receita legível, sem rasuras, dentro de 10 dias da emissão, com registro de data, quantidade, lote e rubrica do farmacêutico no verso das duas vias",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Medicamentos isentos de prescrição em autosserviço organizados por Denominação Comum Brasileira (DCB), separados de outros produtos, com cartaz de alerta contra automedicação visível",
+   "categoria": "Receituário e Dispensação"
+  },
+  {
+   "texto": "Armário/cofre de controlados mantido fechado, com chaves sob responsabilidade do RT ou substituto",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Escrituração (SNGPC eletrônico ou Livro de Registro Específico) atualizada com as entradas e saídas do dia",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Balanço físico do estoque de controlados compatível com o escriturado",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Notificações de Receita arquivadas em ordem e dentro do prazo de guarda",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Transmissão dos arquivos ao SNGPC realizada dentro do prazo vigente",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Medicamentos antimicrobianos controlados por sistema aceito pela vigilância sanitária",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Nas ausências do farmacêutico responsável técnico sem substituto, a transmissão da escrituração ao SNGPC permanece bloqueada no período",
+   "categoria": "Medicamentos Controlados"
+  },
+  {
+   "texto": "Balcões de atendimento e áreas de manipulação higienizados",
+   "categoria": "Limpeza e Biossegurança"
+  },
+  {
+   "texto": "Piso e áreas comuns limpos e sem obstrução",
+   "categoria": "Limpeza e Biossegurança"
+  },
+  {
+   "texto": "Descarte de perfurocortantes em coletor adequado (quando há serviços/testes farmacêuticos)",
+   "categoria": "Limpeza e Biossegurança"
+  },
+  {
+   "texto": "Resíduos segregados conforme classificação (grupos A, B, D e E)",
+   "categoria": "Limpeza e Biossegurança"
+  },
+  {
+   "texto": "Lixeiras identificadas por cor/símbolo conforme classificação de resíduos",
+   "categoria": "Limpeza e Biossegurança"
+  },
+  {
+   "texto": "Estoque organizado seguindo FEFO (primeiro que vence, primeiro que sai)",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Produtos não armazenados diretamente no chão (uso de estrados/prateleiras)",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Distância mínima das paredes respeitada para ventilação e limpeza",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Lotes recebidos conferidos frente à nota fiscal e ao prazo de validade",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Inventário parcial/rotativo do estoque realizado",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Prateleiras e gôndolas limpas e sem produtos vencidos misturados aos válidos",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Fornecedores/distribuidores qualificados com documentação sanitária atualizada (AFE, CRT e alvará)",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "No recebimento, verificados o estado de conservação, a legibilidade do lote/validade e indícios de falsificação ou violação da embalagem",
+   "categoria": "Estoque e Organização"
+  },
+  {
+   "texto": "Sala/espaço de serviços farmacêuticos organizado e com privacidade adequada",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Equipamentos (esfigmomanômetro, glicosímetro) calibrados/aferidos dentro do prazo",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Materiais de uso único e antissépticos dentro da validade",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Registro dos serviços prestados preenchido (aferição de PA, glicemia, testes, etc.)",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Descarte de materiais perfurocortantes do serviço farmacêutico conforme PGRSS",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Farmacêutico que aplica vacinas possui habilitação averbada junto ao CRF, com certificado exposto",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Uso de EPIs (Equipamentos de Proteção Individual) pela equipe durante os serviços farmacêuticos",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Aplicação de injetáveis realizada por farmacêutico ou profissional habilitado sob sua supervisão",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Caso realize Exames de Análises Clínicas (EAC), o estabelecimento está inscrito no CNES",
+   "categoria": "Serviços Farmacêuticos"
+  },
+  {
+   "texto": "Licença Sanitária vigente e exposta em local visível",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Autorização de Funcionamento de Empresa (AFE/AE) da Anvisa vigente e atualizada com o nome do RT",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Comprovante de Responsabilidade Técnica (RT) do farmacêutico exposto e CRF regularizado",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "POPs (Procedimentos Operacionais Padrão) revisados e atualizados",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Manual de Boas Práticas Farmacêuticas disponível e atualizado",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Plano de Gerenciamento de Resíduos de Serviços de Saúde (PGRSS) revisado",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Ponto de recebimento de logística reversa de medicamentos implementado, conforme cronograma vigente",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "PCMSO (Programa de Controle Médico de Saúde Ocupacional) elaborado e atualizado",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Farmacêutico possui acesso ao NOTIVISA para notificação de problemas relacionados a medicamentos (farmacovigilância)",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Cartaz informativo completo afixado (razão social, CNPJ, AFE, nome do(s) farmacêutico(s) e CRF, horários de trabalho, telefones do CRF e da vigilância sanitária)",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Autoinspeção periódica realizada pelo próprio estabelecimento, com cronograma de adequação das não conformidades encontradas",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Quando credenciado ao Programa Farmácia Popular do Brasil, a documentação do credenciamento está regularizada",
+   "categoria": "Documentação e Licenças"
+  },
+  {
+   "texto": "Estrutura física compatível com as atividades desenvolvidas (dimensionamento dos ambientes)",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Acesso independente, sem comunicação direta com residências ou outros estabelecimentos",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Piso, parede e teto lisos, impermeáveis, sem rachaduras e de fácil higienização",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Sanitário de fácil acesso, com pia, água corrente, sabão líquido e lixeira, em boas condições de limpeza",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Local para guarda de pertences dos funcionários, separado da área de vendas",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Materiais de limpeza de uso regularizados na Anvisa e armazenados em local designado",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Equipamentos de combate a incêndio (extintores) dentro da validade e em locais de fácil acesso",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Programa de controle de pragas e vetores atualizado, incluindo limpeza de caixa d\\u2019água",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Abastecimento de água potável e, quando houver caixa d\\u2019água própria, proteção contra entrada de animais/sujidades com procedimento escrito de limpeza",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Projeto arquitetônico do estabelecimento aprovado pela vigilância sanitária e compatível com o que foi efetivamente executado",
+   "categoria": "Estrutura Física e Instalações"
+  },
+  {
+   "texto": "Farmacêutico responsável técnico presente durante todo o horário de funcionamento",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Certidão de Regularidade Técnica (CR) atualizada e exposta em local visível",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Farmacêutico identificado com uniforme diferenciado e crachá",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Demais funcionários identificados e/ou uniformizados",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Registros de capacitação periódica da equipe disponíveis",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Farmacêutico exerce autonomia técnico-científica e recebe/avalia as prescrições recebidas",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Senhas de sistemas (SNGPC, Notivisa etc.) utilizadas são pessoais e intransferíveis",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Atestados de Saúde Ocupacional (ASO) de todos os funcionários atualizados",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Cartões de vacina dos funcionários atualizados (Hepatite B, dT/dupla adulto, covid-19 e influenza)",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Toda a equipe, inclusive limpeza e manutenção, recebe capacitação sobre biossegurança, higiene pessoal e descarte de EPIs conforme o PGRSS",
+   "categoria": "Responsabilidade Técnica e Equipe"
+  },
+  {
+   "texto": "Serviço de EAC realizado exclusivamente por profissional legalmente habilitado, com estabelecimento inscrito no CNES",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Sala de execução do EAC dotada de lavatório, bancada, refrigeração exclusiva com termômetro e recipiente para perfurocortantes/resíduos biológicos",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Cadastro do paciente e do exame completos (identificação, data, exame solicitado, profissional responsável) e laudo com todos os campos exigidos",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Controle Interno (CIQ) e Externo (CEQ) da Qualidade realizados e documentados para os exames executados",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Quando aplicável, contrato de supervisão com serviço Tipo III vigente, definindo responsabilidades e fluxo de rastreabilidade",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Política de proteção e acesso aos dados dos pacientes do EAC conforme a LGPD",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Resultados que indiquem suspeita de doença de notificação compulsória são notificados às autoridades sanitárias",
+   "categoria": "Exames de Análises Clínicas (EAC)"
+  },
+  {
+   "texto": "Farmacêutico que aplica vacinas com habilitação averbada no CRF e Calendário Nacional de Vacinação do SUS fixado em local visível",
+   "categoria": "Serviço de Vacinação"
+  },
+  {
+   "texto": "Sala de vacinação com pia, bancada, cadeira, caixa térmica, refrigerador exclusivo regularizado na Anvisa e termômetro de máxima/mínima",
+   "categoria": "Serviço de Vacinação"
+  },
+  {
+   "texto": "Temperatura do refrigerador de vacinas registrada diariamente, com contingência definida para falta de energia",
+   "categoria": "Serviço de Vacinação"
+  },
+  {
+   "texto": "Vacinas aplicadas registradas no cartão do usuário e no sistema de informação do Ministério da Saúde (SI-PNI), com prontuário individual mantido",
+   "categoria": "Serviço de Vacinação"
+  },
+  {
+   "texto": "Documentos que comprovem a origem das vacinas utilizadas mantidos e acessíveis à fiscalização",
+   "categoria": "Serviço de Vacinação"
+  },
+  {
+   "texto": "Eventos adversos pós-vacinação (EAPV) e erros de vacinação notificados conforme determinações do Ministério da Saúde/Anvisa",
+   "categoria": "Serviço de Vacinação"
+  }
+ ]
+}

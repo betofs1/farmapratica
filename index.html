@@ -46,6 +46,7 @@
     --c-amber:#f59e0b; --c-amber-dark:#c9790a; --c-amber-glow:rgba(245,158,11,0.18);
     --c-green:#22c55e; --c-green-dark:#16a34a; --c-green-glow:rgba(34,197,94,0.18);
     --sidebar-width:256px;
+    --sidebar-width-collapsed:64px;
   }
 
   /* ---------- LIGHT THEME ---------- */
@@ -93,24 +94,53 @@
     position:relative;
     overflow-x:hidden;
     transition:background-color .2s ease, color .2s ease;
-    padding-left:var(--sidebar-width);
+    padding-left:var(--sidebar-width-collapsed);
     zoom:.9;
   }
 
-  /* SIDEBAR — sempre visível, com rótulos, largura fixa (colapsa apenas no mobile) */
+  /* SIDEBAR — oculta por padrão (apenas ícones), expande ao passar o mouse ou quando fixada (.pinned) */
   .sidebar{
     position:fixed;
     top:0;left:0;
     height:100vh;
-    width:var(--sidebar-width);
+    width:var(--sidebar-width-collapsed);
     background:var(--sidebar-bg);
     border-right:1px solid var(--sidebar-border);
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    transition:background-color .2s ease, border-color .2s ease;
+    overflow:hidden;
+    transition:width .25s ease, background-color .2s ease, border-color .2s ease;
     z-index:100;
   }
+  .sidebar:hover, .sidebar.pinned{
+    width:var(--sidebar-width);
+    box-shadow:4px 0 32px -8px rgba(0,0,0,.5);
+  }
+  .sidebar-item span,
+  .sidebar-subheading,
+  .sidebar-profile-info,
+  .sidebar-bottom .btn span{
+    opacity:0;
+    transition:opacity .16s ease;
+    white-space:nowrap;
+  }
+  .sidebar:hover .sidebar-item span,
+  .sidebar.pinned .sidebar-item span,
+  .sidebar:hover .sidebar-subheading,
+  .sidebar.pinned .sidebar-subheading,
+  .sidebar:hover .sidebar-profile-info,
+  .sidebar.pinned .sidebar-profile-info,
+  .sidebar:hover .sidebar-bottom .btn span,
+  .sidebar.pinned .sidebar-bottom .btn span{
+    opacity:1;
+    transition:opacity .22s ease .08s;
+  }
+  .sidebar-profile-actions{display:none;}
+  .sidebar:hover .sidebar-profile-actions,
+  .sidebar.pinned .sidebar-profile-actions{display:flex;}
+  .sidebar-item{justify-content:flex-start;}
+  .sidebar-item svg{margin-left:1px;}
   .sidebar-top{
     display:flex;
     flex-direction:column;
@@ -160,6 +190,12 @@
     height:1px;background:var(--sidebar-border);
     margin:10px 10px;flex:none;
   }
+  .sidebar-item.tool-shortcut{padding:8px 12px;}
+  .sidebar-item.tool-shortcut svg{width:16px;height:16px;color:var(--ts-color, var(--sidebar-text));opacity:.85;}
+  .sidebar-item.tool-shortcut span{font-size:12.5px;font-weight:500;color:var(--text-gray);}
+  .sidebar-item.tool-shortcut:hover{background:var(--sidebar-hover);}
+  .sidebar-item.tool-shortcut:hover svg{opacity:1;}
+  .sidebar-item.tool-shortcut:hover span{color:var(--text-white);}
   .sidebar-bottom{
     padding:12px 12px 16px;
     display:flex;flex-direction:column;gap:8px;
@@ -185,12 +221,18 @@
   @media (max-width: 900px){
     .sidebar{
       width:264px;
+      overflow:visible;
       transform:translateX(-100%);
       transition:transform .22s ease;
       box-shadow:0 0 40px rgba(0,0,0,.4);
     }
     .sidebar.mobile-open{transform:translateX(0);}
     body{padding-left:0;}
+    .sidebar-item span,
+    .sidebar-subheading,
+    .sidebar-profile-info,
+    .sidebar-bottom .btn span{opacity:1;}
+    .sidebar-profile-actions{display:flex;}
   }
   .sidebar-backdrop{
     display:none;
@@ -214,10 +256,15 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:22px 40px;
+    padding:24px 40px;
+    background:#18181a;
     border-bottom:1px solid #1c1c1c;
     position:relative;
     z-index:2;
+    transition:background-color .2s ease;
+  }
+  body.light header{
+    background:color-mix(in srgb, var(--bg) 88%, #000 6%);
   }
   .brand{
     display:flex;
@@ -225,11 +272,11 @@
     gap:14px;
   }
   .brand img{
-    width:44px;
-    height:44px;
+    width:50px;
+    height:50px;
   }
   .brand-text h1{
-    font-size:22px;
+    font-size:25px;
     font-weight:800;
     letter-spacing:-0.3px;
     line-height:1.1;
@@ -286,9 +333,14 @@
   .btn svg{width:16px;height:16px;flex-shrink:0;}
 
   /* SEARCH BOX */
-  .search-box{
+  .search-wrap{
+    position:relative;
     flex:1;
     max-width:420px;
+    margin:0 24px;
+  }
+  .search-box{
+    flex:1;
     display:flex;
     align-items:center;
     gap:10px;
@@ -297,8 +349,47 @@
     border-radius:10px;
     padding:10px 14px;
     color:var(--text-gray);
-    margin:0 24px;
   }
+  /* ---------- RESULTADOS DE BUSCA (dropdown) ---------- */
+  .search-results{
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;right:0;
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:12px;
+    box-shadow:0 18px 40px -12px rgba(0,0,0,.5);
+    max-height:420px;
+    overflow-y:auto;
+    z-index:150;
+    display:none;
+    padding:8px;
+  }
+  .search-results.open{display:block;}
+  .search-results-loading, .search-results-empty{
+    padding:16px 10px;text-align:center;font-size:13px;color:var(--text-gray-dim);
+  }
+  .search-group{margin-bottom:6px;}
+  .search-group:last-child{margin-bottom:0;}
+  .search-group-label{
+    display:flex;align-items:center;gap:7px;
+    font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--text-gray-dim);
+    padding:8px 8px 4px;
+  }
+  .search-group-dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--sg-color,#94a3b8);box-shadow:0 0 6px var(--sg-color,#94a3b8);}
+  .search-result-item{
+    display:flex;flex-direction:column;gap:1px;
+    padding:8px 10px;border-radius:8px;cursor:pointer;
+    text-decoration:none;color:inherit;
+  }
+  .search-result-item:hover, .search-result-item.active{background:var(--sidebar-hover);}
+  .search-result-name{font-size:13px;font-weight:600;color:var(--text-white);}
+  .search-result-meta{font-size:11px;color:var(--text-gray-dim);}
+  .search-results-more{
+    padding:8px 10px;font-size:11.5px;color:var(--text-gray-dim);text-align:center;
+  }
+  body.light .search-results{box-shadow:0 18px 40px -14px rgba(0,0,0,.18);}
   .search-box svg{flex:none;width:17px;height:17px;color:var(--text-gray);}
   .search-box input{
     border:none;background:transparent;outline:none;
@@ -341,7 +432,7 @@
     position:relative;
     z-index:1;
   }
-  .dashboard-head{margin-bottom:26px;}
+  .dashboard-head{margin-bottom:0;}
   .dashboard-head h1{
     font-size:27px;
     font-weight:800;
@@ -395,6 +486,49 @@
     0%{ --greet-x:22%; --greet-y:12%; }
     50%{ --greet-x:68%; --greet-y:48%; }
     100%{ --greet-x:22%; --greet-y:12%; }
+  }
+  /* "Fumaça" animada: 3 blobs radiais grandes e desfocados, cada um com trajetória/duração
+     independente, para uma sensação orgânica de fumaça curvando-se lentamente. */
+  .greeting-smoke{position:absolute;inset:-20%;pointer-events:none;z-index:0;overflow:hidden;}
+  .greeting-smoke span{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(48px);
+    opacity:.5;
+    mix-blend-mode:screen;
+  }
+  .greeting-smoke span:nth-child(1){
+    width:46%;height:80%;left:-8%;top:-10%;
+    background:radial-gradient(circle, rgba(228,23,44,.5), transparent 70%);
+    animation:smokeDrift1 19s ease-in-out infinite;
+  }
+  .greeting-smoke span:nth-child(2){
+    width:38%;height:70%;right:-6%;top:20%;
+    background:radial-gradient(circle, rgba(120,120,128,.4), transparent 70%);
+    animation:smokeDrift2 26s ease-in-out infinite;
+  }
+  .greeting-smoke span:nth-child(3){
+    width:34%;height:60%;left:35%;bottom:-18%;
+    background:radial-gradient(circle, rgba(228,23,44,.32), transparent 72%);
+    animation:smokeDrift3 22s ease-in-out infinite;
+  }
+  body.light .greeting-smoke span{opacity:.22;mix-blend-mode:normal;}
+  @keyframes smokeDrift1{
+    0%{transform:translate(0,0) scale(1);}
+    33%{transform:translate(14%,10%) scale(1.12);}
+    66%{transform:translate(6%,-8%) scale(0.94);}
+    100%{transform:translate(0,0) scale(1);}
+  }
+  @keyframes smokeDrift2{
+    0%{transform:translate(0,0) scale(1);}
+    40%{transform:translate(-16%,-14%) scale(1.08);}
+    70%{transform:translate(-6%,10%) scale(0.96);}
+    100%{transform:translate(0,0) scale(1);}
+  }
+  @keyframes smokeDrift3{
+    0%{transform:translate(0,0) rotate(0deg) scale(1);}
+    50%{transform:translate(10%,-12%) rotate(8deg) scale(1.15);}
+    100%{transform:translate(0,0) rotate(0deg) scale(1);}
   }
   .greeting-banner-text{position:relative;z-index:1;}
   .greeting-banner-text h1{font-size:26px;font-weight:800;letter-spacing:-.4px;text-shadow:var(--heading-shadow);margin-bottom:8px;}
@@ -477,6 +611,16 @@
     border-radius:16px;
     padding:22px 24px 26px;
     margin:0;
+    transition:box-shadow .35s ease;
+  }
+  .panel-highlight-flash{
+    box-shadow:0 0 0 2px var(--red), 0 0 28px 6px var(--red-glow) !important;
+    animation:panelFlashPulse 1.8s ease-out;
+  }
+  @keyframes panelFlashPulse{
+    0%{box-shadow:0 0 0 2px var(--red), 0 0 40px 10px var(--red-glow);}
+    60%{box-shadow:0 0 0 2px var(--red), 0 0 28px 6px var(--red-glow);}
+    100%{box-shadow:0 0 0 0 transparent, 0 0 0 0 transparent;}
   }
   .quad-panel > .stats-footer,
   .quad-panel > .news-card{
@@ -705,16 +849,16 @@
   .institutional-banner-visual{
     position:absolute;inset:0;left:auto;width:48%;z-index:1;
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23e4172c' stroke-opacity='0.35' stroke-width='2'%3E%3Cpath d='M22 12v20M12 22h20'/%3E%3Ccircle cx='48' cy='48' r='9'/%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23e4172c' stroke-opacity='0.35' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
       linear-gradient(90deg, rgba(20,20,22,0) 0%, rgba(16,17,19,.68) 55%, rgba(12,13,14,.94) 100%);
     background-repeat:repeat, no-repeat;
-    background-size:64px 64px, cover;
+    background-size:84px 84px, cover;
     -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 32%);
     mask-image:linear-gradient(90deg, transparent 0%, #000 32%);
   }
   body.light .institutional-banner-visual{
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4152a' stroke-opacity='0.28' stroke-width='2'%3E%3Cpath d='M22 12v20M12 22h20'/%3E%3Ccircle cx='48' cy='48' r='9'/%3E%3C/g%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23d4152a' stroke-opacity='0.28' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
       linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.78) 55%, rgba(255,255,255,.97) 100%);
   }
   @media (max-width:760px){
@@ -757,31 +901,31 @@
 
   /* Cores de destaque por ferramenta */
   /* Acentos "neon": borda tingida em repouso + brilho mais saturado no ícone, intensificando no hover */
-  .tool-card.accent-blue{border-color:rgba(59,130,246,.4);}
+  .tool-card.accent-blue{border-color:rgba(59,130,246,.4);background:linear-gradient(165deg, color-mix(in srgb, var(--c-blue) 11%, var(--card-bg)) 0%, var(--card-bg) 58%);}
   .tool-icon.c-blue{background:radial-gradient(circle at 30% 25%, rgba(59,130,246,.42), rgba(59,130,246,.08));color:var(--c-blue);box-shadow:inset 0 0 0 1px rgba(59,130,246,.4), 0 0 16px -4px rgba(59,130,246,.6);}
   .tool-icon.c-blue svg{filter:drop-shadow(0 0 5px rgba(59,130,246,.8));}
   .tool-card.accent-blue:hover{border-color:var(--c-blue);box-shadow:0 0 24px -6px rgba(59,130,246,.4);}
   .tool-card:hover .tool-icon.c-blue{box-shadow:inset 0 0 0 1px rgba(59,130,246,.55), 0 0 28px -2px rgba(59,130,246,.8);}
 
-  .tool-card.accent-cyan{border-color:rgba(6,182,212,.4);}
+  .tool-card.accent-cyan{border-color:rgba(6,182,212,.4);background:linear-gradient(165deg, color-mix(in srgb, var(--c-cyan) 11%, var(--card-bg)) 0%, var(--card-bg) 58%);}
   .tool-icon.c-cyan{background:radial-gradient(circle at 30% 25%, rgba(6,182,212,.42), rgba(6,182,212,.08));color:var(--c-cyan);box-shadow:inset 0 0 0 1px rgba(6,182,212,.4), 0 0 16px -4px rgba(6,182,212,.6);}
   .tool-icon.c-cyan svg{filter:drop-shadow(0 0 5px rgba(6,182,212,.8));}
   .tool-card.accent-cyan:hover{border-color:var(--c-cyan);box-shadow:0 0 24px -6px rgba(6,182,212,.4);}
   .tool-card:hover .tool-icon.c-cyan{box-shadow:inset 0 0 0 1px rgba(6,182,212,.55), 0 0 28px -2px rgba(6,182,212,.8);}
 
-  .tool-card.accent-purple{border-color:rgba(168,85,247,.4);}
+  .tool-card.accent-purple{border-color:rgba(168,85,247,.4);background:linear-gradient(165deg, color-mix(in srgb, var(--c-purple) 11%, var(--card-bg)) 0%, var(--card-bg) 58%);}
   .tool-icon.c-purple{background:radial-gradient(circle at 30% 25%, rgba(168,85,247,.42), rgba(168,85,247,.08));color:var(--c-purple);box-shadow:inset 0 0 0 1px rgba(168,85,247,.4), 0 0 16px -4px rgba(168,85,247,.6);}
   .tool-icon.c-purple svg{filter:drop-shadow(0 0 5px rgba(168,85,247,.8));}
   .tool-card.accent-purple:hover{border-color:var(--c-purple);box-shadow:0 0 24px -6px rgba(168,85,247,.4);}
   .tool-card:hover .tool-icon.c-purple{box-shadow:inset 0 0 0 1px rgba(168,85,247,.55), 0 0 28px -2px rgba(168,85,247,.8);}
 
-  .tool-card.accent-amber{border-color:rgba(245,158,11,.42);}
+  .tool-card.accent-amber{border-color:rgba(245,158,11,.42);background:linear-gradient(165deg, color-mix(in srgb, var(--c-amber) 11%, var(--card-bg)) 0%, var(--card-bg) 58%);}
   .tool-icon.c-amber{background:radial-gradient(circle at 30% 25%, rgba(245,158,11,.45), rgba(245,158,11,.08));color:var(--c-amber);box-shadow:inset 0 0 0 1px rgba(245,158,11,.42), 0 0 16px -4px rgba(245,158,11,.62);}
   .tool-icon.c-amber svg{filter:drop-shadow(0 0 5px rgba(245,158,11,.8));}
   .tool-card.accent-amber:hover{border-color:var(--c-amber);box-shadow:0 0 24px -6px rgba(245,158,11,.42);}
   .tool-card:hover .tool-icon.c-amber{box-shadow:inset 0 0 0 1px rgba(245,158,11,.58), 0 0 28px -2px rgba(245,158,11,.82);}
 
-  .tool-card.accent-green{border-color:rgba(34,197,94,.4);}
+  .tool-card.accent-green{border-color:rgba(34,197,94,.4);background:linear-gradient(165deg, color-mix(in srgb, var(--c-green) 11%, var(--card-bg)) 0%, var(--card-bg) 58%);}
   .tool-icon.c-green{background:radial-gradient(circle at 30% 25%, rgba(34,197,94,.42), rgba(34,197,94,.08));color:var(--c-green);box-shadow:inset 0 0 0 1px rgba(34,197,94,.4), 0 0 16px -4px rgba(34,197,94,.6);}
   .tool-icon.c-green svg{filter:drop-shadow(0 0 5px rgba(34,197,94,.8));}
   .tool-card.accent-green:hover{border-color:var(--c-green);box-shadow:0 0 24px -6px rgba(34,197,94,.4);}
@@ -791,6 +935,7 @@
   .tool-card.flagship{
     border-color:rgba(228,23,44,.35);
     box-shadow:0 0 0 1px rgba(228,23,44,.1), 0 0 26px 0 rgba(228,23,44,.08);
+    background:linear-gradient(165deg, color-mix(in srgb, var(--red) 12%, var(--card-bg)) 0%, var(--card-bg) 58%);
   }
   .tool-card.flagship .tool-icon{width:60px;height:60px;}
   .tool-card.flagship .tool-icon svg{width:28px;height:28px;}
@@ -920,9 +1065,9 @@
   .fav-source-icon{
     width:34px;height:34px;border-radius:9px;flex:none;
     display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(160deg, rgba(228,23,44,.18), rgba(228,23,44,.05));
-    color:var(--red);
-    box-shadow:inset 0 0 0 1px rgba(228,23,44,.22);
+    background:radial-gradient(circle at 30% 25%, var(--fav-accent-glow, rgba(228,23,44,.32)), var(--fav-accent-fade, rgba(228,23,44,.05)));
+    color:var(--fav-accent, var(--red));
+    box-shadow:inset 0 0 0 1px var(--fav-accent-ring, rgba(228,23,44,.22)), 0 0 10px -3px var(--fav-accent-glow, rgba(228,23,44,.5));
   }
   .fav-source-icon svg{width:17px;height:17px;}
   .fav-info{flex:1;min-width:0;}
@@ -1179,6 +1324,33 @@
       <span>Mais</span>
     </a>
 
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-subheading">Ferramentas</div>
+    <a href="farmadesk/" class="sidebar-item tool-shortcut" style="--ts-color:var(--red);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span>Guia</span>
+    </a>
+    <a href="medinter/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-blue);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+      <span>Med. Equivalentes</span>
+    </a>
+    <a href="dosespediatricas/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-green);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8.01" y2="10"/><line x1="12" y1="10" x2="12.01" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/></svg>
+      <span>Calculadora</span>
+    </a>
+    <a href="receitas/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-purple);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+      <span>Receitas</span>
+    </a>
+    <a href="consultacontrolados/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-amber);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/></svg>
+      <span>Med. controle</span>
+    </a>
+    <a href="checklist/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-cyan);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>Checklist</span>
+    </a>
+
     <div class="sidebar-subheading">Em breve</div>
     <div class="sidebar-item disabled" title="Em breve" aria-disabled="true" role="button" tabindex="-1">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/></svg>
@@ -1234,10 +1406,13 @@
       <p>Plataforma para Rotina, Gestão e Cuidado Farmacêutico</p>
     </div>
   </div>
-  <div class="search-box">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-    <input type="text" id="global-search" placeholder="Busque no FarmaPrática">
-    <span class="kbd">Ctrl + K</span>
+  <div class="search-wrap" id="search-wrap">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="global-search" placeholder="Busque no FarmaPrática" autocomplete="off">
+      <span class="kbd">Ctrl + K</span>
+    </div>
+    <div class="search-results" id="search-results"></div>
   </div>
   <div class="header-actions-wrap">
     <div class="header-actions">
@@ -1262,19 +1437,20 @@
 </header>
 
 <main>
-  <div class="dashboard-head" id="panel-inicio">
-    <div class="greeting-banner">
-      <div class="greeting-banner-text">
-        <h1>Olá, Valberto! 👋</h1>
-        <p>Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
-      </div>
-    </div>
-  </div>
 
-<div class="dashboard-grid">
+<div class="dashboard-grid" id="panel-inicio">
 
     <div class="dashboard-col-left">
 
+    <div class="dashboard-head">
+      <div class="greeting-banner">
+        <div class="greeting-smoke" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="greeting-banner-text">
+          <h1>Olá, Valberto! 👋</h1>
+          <p>Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
+        </div>
+      </div>
+    </div>
 
     <!-- Coluna A: Estatísticas + Resumo Profissional -->
     <section class="card stats-card">
@@ -1413,8 +1589,8 @@
         </a>
 
         <!-- 3. Calculadora Pediátrica -->
-        <a href="dosespediatricas/" class="tool-card accent-cyan" id="tool-calc">
-          <div class="tool-icon c-cyan">
+        <a href="dosespediatricas/" class="tool-card accent-green" id="tool-calc">
+          <div class="tool-icon c-green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><rect x="8" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="18" width="8" height="2" fill="currentColor" stroke="none"/></svg>
           </div>
           <div class="tool-info">
@@ -1455,8 +1631,8 @@
         </a>
 
         <!-- 6. Checklist de Rotina em Drogarias/Farmácias -->
-        <a href="checklist/" class="tool-card accent-green" id="tool-checklist">
-          <div class="tool-icon c-green">
+        <a href="checklist/" class="tool-card accent-cyan" id="tool-checklist">
+          <div class="tool-icon c-cyan">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
           <div class="tool-info">
@@ -1508,12 +1684,29 @@
 
   // ---------- SIDEBAR ----------
   // Marca o item clicado como ativo e rola até a seção correspondente (navegação de página única).
+  var panelFlashTimeouts = {};
+  function flashPanel(el){
+    if(!el) return;
+    if(panelFlashTimeouts[el.id]){ clearTimeout(panelFlashTimeouts[el.id]); }
+    el.classList.remove('panel-highlight-flash');
+    // força reflow para permitir reiniciar a animação/transição mesmo se já estiver marcada
+    void el.offsetWidth;
+    el.classList.add('panel-highlight-flash');
+    panelFlashTimeouts[el.id] = setTimeout(function(){
+      el.classList.remove('panel-highlight-flash');
+    }, 1800);
+  }
   function sidebarNav(item, targetId){
     document.querySelectorAll('.sidebar-item').forEach(function(el){ el.classList.remove('active'); });
     item.classList.add('active');
     if(targetId){
       var el = document.getElementById(targetId);
-      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      if(el){
+        el.scrollIntoView({behavior:'smooth', block:'center'});
+        if(targetId === 'panel-notas' || targetId === 'panel-favoritos'){
+          setTimeout(function(){ flashPanel(el); }, 350);
+        }
+      }
     }else{
       window.scrollTo({top:0, behavior:'smooth'});
     }
@@ -1530,7 +1723,7 @@
     document.getElementById('sidebar-backdrop').classList.remove('mobile-open');
   }
 
-  // ---------- BUSCA ----------
+  // ---------- BUSCA GLOBAL (cross-tool) ----------
   function focusSearch(){
     document.getElementById('global-search').focus();
   }
@@ -1540,12 +1733,230 @@
       focusSearch();
     }
   });
-  document.getElementById('global-search').addEventListener('input', function(e){
-    var term = e.target.value.trim().toLowerCase();
-    document.querySelectorAll('.tool-card').forEach(function(card){
-      var text = card.textContent.toLowerCase();
-      card.style.display = (term === '' || text.includes(term)) ? '' : 'none';
+
+  // Fontes de busca: origem -> {label, color, load(): Promise<Array<{nome, meta, href}>>}
+  var SEARCH_CACHE = null; // cache module-level do resultado de todas as fontes já carregadas/parseadas
+  var SEARCH_LOAD_PROMISE = null;
+
+  function normalizeStr(s){
+    return (s || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  }
+
+  function safeFetchJson(url){
+    return fetch(url).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); }).catch(function(err){
+      console.warn('[busca] falha ao buscar', url, err);
+      return null;
     });
+  }
+  function safeFetchText(url){
+    return fetch(url).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); }).catch(function(err){
+      console.warn('[busca] falha ao buscar', url, err);
+      return null;
+    });
+  }
+
+  var SEARCH_SOURCES_META = {
+    guia:      {label:'Guia de Dispensação',   color:'#e4172c'},
+    medinter:  {label:'Medicamentos Intercambiáveis', color:'#3b82f6'},
+    calc:      {label:'Calculadora Pediátrica', color:'#22c55e'},
+    consulta:  {label:'Consulta Controlados',  color:'#f59e0b'},
+    checklist: {label:'Checklist de Rotina',   color:'#06b6d4'}
+  };
+
+  function loadSearchData(){
+    if(SEARCH_LOAD_PROMISE) return SEARCH_LOAD_PROMISE;
+    SEARCH_LOAD_PROMISE = Promise.all([
+
+      // farmadesk — condições do guia de dispensação
+      safeFetchJson('farmadesk/dados.json').then(function(d){
+        if(!d || !d.conditions) return [];
+        var sysLabel = {};
+        (d.systems || []).forEach(function(s){ sysLabel[s.slug] = s.label; });
+        return d.conditions.map(function(c){
+          return {
+            source:'guia',
+            nome:c.title,
+            meta: sysLabel[c.systemSlug] || '',
+            href:'farmadesk/?cond=' + encodeURIComponent(c.id)
+          };
+        });
+      }),
+
+      // medinter — medicamentos (lazy, ~9.6MB — só é buscado na primeira interação real)
+      safeFetchJson('medinter/medicamentos.json').then(function(d){
+        var arr = d && d.medicamentos;
+        if(!arr) return [];
+        return arr.map(function(m){
+          return { source:'medinter', nome:m.nome, meta:m.principio || '', href:'medinter/' };
+        });
+      }),
+
+      // dosespediatricas — fármacos
+      safeFetchJson('dosespediatricas/dados.json').then(function(d){
+        var arr = d && d.farmacos;
+        if(!arr) return [];
+        return arr.map(function(f){
+          return { source:'calc', nome:f.nome, meta:f.categoria || '', href:'dosespediatricas/' };
+        });
+      }),
+
+      // consultacontrolados — extrai os 2 blocos JSON embutidos no HTML
+      safeFetchText('consultacontrolados/index.html').then(function(html){
+        if(!html) return [];
+        try{
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var out = [];
+          var elCtrl = doc.getElementById('dados-controlados');
+          if(elCtrl){
+            var dCtrl = JSON.parse(elCtrl.textContent);
+            var listas = dCtrl.listas || {};
+            Object.keys(listas).forEach(function(catKey){
+              var lista = listas[catKey];
+              (lista.substancias || []).forEach(function(sub){
+                out.push({ source:'consulta', nome:sub, meta:lista.titulo || catKey, href:'consultacontrolados/' });
+              });
+            });
+          }
+          var elMarcas = doc.getElementById('dados-marcas');
+          if(elMarcas){
+            var dMarcas = JSON.parse(elMarcas.textContent);
+            var marcas = dMarcas.marcas || {};
+            Object.keys(marcas).forEach(function(nomeMarca){
+              var info = marcas[nomeMarca];
+              out.push({ source:'consulta', nome:nomeMarca, meta:(info && info.substancia) || '', href:'consultacontrolados/' });
+            });
+          }
+          return out;
+        }catch(err){
+          console.warn('[busca] falha ao processar consultacontrolados', err);
+          return [];
+        }
+      }),
+
+      // checklist — arquivo dedicado, extraído do DATA interno do checklist
+      safeFetchJson('checklist/dados-busca.json').then(function(d){
+        var arr = d && d.itens;
+        if(!arr) return [];
+        return arr.map(function(it){
+          return { source:'checklist', nome:it.texto, meta:it.categoria || '', href:'checklist/' };
+        });
+      })
+
+    ]).then(function(results){
+      var flat = [];
+      results.forEach(function(list){ if(list) flat = flat.concat(list); });
+      SEARCH_CACHE = flat;
+      return flat;
+    }).catch(function(err){
+      console.warn('[busca] erro geral ao carregar fontes de busca', err);
+      SEARCH_CACHE = SEARCH_CACHE || [];
+      return SEARCH_CACHE;
+    });
+    return SEARCH_LOAD_PROMISE;
+  }
+
+  var PER_GROUP_CAP = 6;
+  var TOTAL_CAP = 20;
+
+  function runSearch(rawTerm, items){
+    var term = normalizeStr(rawTerm);
+    var grouped = {}; // source -> array
+    var totalMatched = 0;
+    items.forEach(function(it){
+      var nome = normalizeStr(it.nome);
+      var meta = normalizeStr(it.meta);
+      var primary = nome.indexOf(term) !== -1;
+      var secondary = !primary && meta.indexOf(term) !== -1;
+      if(!primary && !secondary) return;
+      totalMatched++;
+      grouped[it.source] = grouped[it.source] || [];
+      grouped[it.source].push({item:it, primary:primary});
+    });
+    // ordena: matches no nome primeiro, depois no campo secundário
+    Object.keys(grouped).forEach(function(src){
+      grouped[src].sort(function(a,b){ return (b.primary?1:0) - (a.primary?1:0); });
+    });
+    return {grouped: grouped, totalMatched: totalMatched};
+  }
+
+  function renderSearchResults(rawTerm, grouped, totalMatched){
+    var box = document.getElementById('search-results');
+    var order = ['guia','medinter','calc','consulta','checklist'];
+    var html = '';
+    var shown = 0;
+    order.forEach(function(src){
+      var list = grouped[src];
+      if(!list || !list.length) return;
+      var meta = SEARCH_SOURCES_META[src];
+      var take = list.slice(0, PER_GROUP_CAP);
+      html += '<div class="search-group">';
+      html += '<div class="search-group-label" style="--sg-color:'+meta.color+'"><span class="search-group-dot"></span>'+meta.label+'</div>';
+      take.forEach(function(entry){
+        if(shown >= TOTAL_CAP) return;
+        var it = entry.item;
+        html += '<a class="search-result-item" href="'+it.href+'">'+
+          '<span class="search-result-name">'+escapeHtml(it.nome)+'</span>'+
+          (it.meta ? '<span class="search-result-meta">'+escapeHtml(it.meta)+'</span>' : '')+
+          '</a>';
+        shown++;
+      });
+      html += '</div>';
+    });
+    if(!shown){
+      html = '<div class="search-results-empty">Nenhum resultado para "'+escapeHtml(rawTerm)+'".</div>';
+    }else if(totalMatched > shown){
+      html += '<div class="search-results-more">+'+(totalMatched - shown)+' resultados</div>';
+    }
+    box.innerHTML = html;
+    box.classList.add('open');
+  }
+
+  function escapeHtml(s){
+    return (s || '').toString().replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function showSearchLoading(){
+    var box = document.getElementById('search-results');
+    box.innerHTML = '<div class="search-results-loading">Buscando…</div>';
+    box.classList.add('open');
+  }
+  function closeSearchResults(){
+    document.getElementById('search-results').classList.remove('open');
+  }
+
+  var searchDebounceTimer = null;
+  document.getElementById('global-search').addEventListener('input', function(e){
+    var raw = e.target.value;
+    var term = raw.trim();
+    if(searchDebounceTimer) clearTimeout(searchDebounceTimer);
+    if(term.length < 2){
+      closeSearchResults();
+      return;
+    }
+    searchDebounceTimer = setTimeout(function(){
+      if(!SEARCH_CACHE){
+        showSearchLoading();
+        loadSearchData().then(function(items){
+          // só renderiza se o termo ainda for o mesmo (evita corrida entre digitação e fetch)
+          if(document.getElementById('global-search').value.trim() === term){
+            var res = runSearch(term, items);
+            renderSearchResults(term, res.grouped, res.totalMatched);
+          }
+        });
+      }else{
+        var res = runSearch(term, SEARCH_CACHE);
+        renderSearchResults(term, res.grouped, res.totalMatched);
+      }
+    }, 180);
+  });
+  document.addEventListener('click', function(e){
+    var wrap = document.getElementById('search-wrap');
+    if(wrap && !wrap.contains(e.target)){ closeSearchResults(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeSearchResults(); }
   });
 
   // ---------- NAVEGAÇÃO DO MENU ATÉ O CARD ----------
@@ -1614,6 +2025,23 @@
     outro:     {label:'Outra ferramenta',       icon:'<path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/>'}
   };
 
+  // Cor de destaque de cada ferramenta de origem (mesma cor usada no card da ferramenta
+  // na coluna direita — após a troca de cores calc/checklist do item #2).
+  var FAV_ACCENT = {
+    guia:      '#e4172c', // vermelho (farmadesk)
+    medinter:  '#3b82f6', // azul
+    calc:      '#22c55e', // verde (era ciano antes da troca)
+    validador: '#a855f7', // roxo
+    consulta:  '#f59e0b', // âmbar
+    checklist: '#06b6d4', // ciano (era verde antes da troca)
+    outro:     '#94a3b8'  // cinza neutro
+  };
+  function hexToRgba(hex, alpha){
+    var h = hex.replace('#','');
+    var r = parseInt(h.substring(0,2),16), g = parseInt(h.substring(2,4),16), b = parseInt(h.substring(4,6),16);
+    return 'rgba('+r+','+g+','+b+','+alpha+')';
+  }
+
   // ---------- FAVORITOS (alimentados pelas demais ferramentas) ----------
   var FAV_KEY = 'fp_favoritos_hub';
   var FAV_SEED = [];
@@ -1661,11 +2089,13 @@
     }
     container.innerHTML = list.map(function(f){
       var src = FAV_SOURCES[f.source] || FAV_SOURCES.outro;
+      var accent = FAV_ACCENT[f.source] || FAV_ACCENT.outro;
+      var accentStyle = 'style="--fav-accent:'+accent+'; --fav-accent-glow:'+hexToRgba(accent,.38)+'; --fav-accent-fade:'+hexToRgba(accent,.06)+'; --fav-accent-ring:'+hexToRgba(accent,.28)+';"';
       var labelHtml = f.href
         ? '<a href="'+f.href+'" target="_blank" rel="noopener" class="fav-label" style="text-decoration:none;">'+f.label+'</a>'
         : '<span class="fav-label">'+f.label+'</span>';
       return '<div class="fav-item">'+
-        '<div class="fav-source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+src.icon+'</svg></div>'+
+        '<div class="fav-source-icon" '+accentStyle+'><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+src.icon+'</svg></div>'+
         '<div class="fav-info">'+labelHtml+'<div class="fav-source">'+(f.sourceLabel || src.label)+'</div></div>'+
         '<span class="fav-star" title="Favorito"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/></svg></span>'+
         '<button class="fav-remove" onclick="removeFavorite(\''+f.id+'\')" title="Remover favorito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>'+
