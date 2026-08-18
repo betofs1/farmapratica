@@ -27,9 +27,9 @@
     --red:#e4172c;
     --red-dark:#a10f1f;
     --red-glow:rgba(228,23,44,0.18);
-    --accent2:#2f9b86;
-    --accent2-dark:#1f6f5f;
-    --accent2-glow:rgba(47,155,134,0.18);
+    --accent2:#2e9b6f;
+    --accent2-dark:#1f6f4d;
+    --accent2-glow:rgba(46,155,111,0.18);
     --text-white:#f2f2f0;
     --text-gray:#c2c2c8;
     --text-gray-dim:#a3a3aa;
@@ -60,9 +60,9 @@
     --red:#d4152a;
     --red-dark:#a10f1f;
     --red-glow:rgba(212,21,42,0.12);
-    --accent2:#227c69;
-    --accent2-dark:#175a4c;
-    --accent2-glow:rgba(34,124,105,0.12);
+    --accent2:#217a56;
+    --accent2-dark:#175a3d;
+    --accent2-glow:rgba(33,122,86,0.12);
     --text-white:#1a1a1a;
     --text-gray:#5c5c62;
     --text-gray-dim:#7a7a80;
@@ -97,6 +97,14 @@
     padding-left:var(--sidebar-width-collapsed);
     zoom:.9;
   }
+  /* Textura de ruído sutil sobre todo o fundo — evita leitura "flat" nas áreas escuras */
+  body::after{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body.light::after{opacity:.015;}
 
   /* SIDEBAR — oculta por padrão (apenas ícones), expande ao passar o mouse ou quando fixada (.pinned) */
   .sidebar{
@@ -449,18 +457,16 @@
     padding:28px 32px;
     border:1px solid var(--card-border);
     background:
-      radial-gradient(120% 180% at 12% -20%, rgba(228,23,44,.14), transparent 55%),
-      radial-gradient(100% 160% at 100% 120%, rgba(228,23,44,.08), transparent 60%),
-      linear-gradient(100deg, rgba(15,17,24,.82) 0%, rgba(15,17,24,.42) 45%, rgba(15,17,24,.18) 100%),
+      linear-gradient(100deg, #11131b 0%, #11131b 40%, rgba(17,19,27,.45) 62%, rgba(17,19,27,.15) 100%),
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
   }
   body.light .greeting-banner{
+    border:1px solid var(--card-border);
     background:
-      radial-gradient(120% 180% at 12% -20%, rgba(212,21,42,.08), transparent 55%),
-      radial-gradient(100% 160% at 100% 120%, rgba(212,21,42,.05), transparent 60%),
-      linear-gradient(100deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.28) 100%),
+      linear-gradient(100deg, #ffffff 0%, #ffffff 40%, rgba(255,255,255,.45) 62%, rgba(255,255,255,.15) 100%),
       url('assets/ferramentas-usadas-bg.jpg') center/cover no-repeat;
   }
+  .greeting-banner .greeting-smoke{display:none;}
   /* Glow ambiente em movimento: 2 blobs grandes, muito desfocados e suaves,
      que derivam lentamente em trajetória circular/figura-8 — sensação de
      gradiente dinâmico elegante, sem textura ou bordas duras. */
@@ -538,8 +544,9 @@
     display:grid;
     grid-template-columns:2.36fr 1.3fr;
     gap:22px;
-    align-items:start;
+    align-items:stretch;
   }
+  .tools-col{display:flex;flex-direction:column;}
   .dashboard-col-left{
     display:flex;
     flex-direction:column;
@@ -576,7 +583,9 @@
     padding:22px 24px 26px;
     margin:0;
     transition:box-shadow .35s ease;
+    display:flex;flex-direction:column;
   }
+  #panel-favoritos .fav-list{flex:1;}
   .panel-highlight-flash{
     box-shadow:0 0 0 2px var(--red), 0 0 28px 6px var(--red-glow) !important;
     animation:panelFlashPulse 1.8s ease-out;
@@ -784,8 +793,8 @@
   }
   body.light .institutional-banner{
     background:
-      radial-gradient(90% 120% at var(--glow-x,50%) var(--glow-y,50%), rgba(212,21,42,.09), transparent 60%),
-      radial-gradient(110% 140% at 100% 100%, rgba(212,21,42,.05), transparent 60%),
+      radial-gradient(90% 120% at var(--glow-x,50%) var(--glow-y,50%), rgba(212,21,42,.022), transparent 60%),
+      radial-gradient(110% 140% at 100% 100%, rgba(212,21,42,.01), transparent 60%),
       linear-gradient(165deg,#ffffff,#f3f0ef);
   }
   @keyframes heroGlowDrift{
@@ -830,8 +839,8 @@
   }
   body.light .institutional-banner-visual{
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23d4152a' stroke-opacity='0.28' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
-      linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.78) 55%, rgba(255,255,255,.97) 100%);
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23d4152a' stroke-opacity='0.10' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
+      linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 55%, rgba(255,255,255,.98) 100%);
   }
   @media (max-width:760px){
     .institutional-banner{flex-direction:column;align-items:flex-start;padding:26px;gap:18px;}
@@ -906,9 +915,15 @@
 
   /* Cartão principal (flagship): Guia de Dispensação, em destaque visual */
   .tool-card.flagship{
+    position:relative;
     border-color:rgba(228,23,44,.35);
     box-shadow:0 0 0 1px rgba(228,23,44,.1), 0 0 26px 0 rgba(228,23,44,.08);
     background:linear-gradient(165deg, color-mix(in srgb, var(--red) 12%, var(--card-bg)) 0%, var(--card-bg) 58%);
+  }
+  .tool-card.flagship::before{
+    content:"";position:absolute;top:0;left:14px;right:14px;height:2px;border-radius:0 0 2px 2px;
+    background:linear-gradient(90deg, transparent, var(--red) 50%, transparent);
+    opacity:.75;
   }
   .tool-card.flagship .tool-icon{width:60px;height:60px;}
   .tool-card.flagship .tool-icon svg{width:28px;height:28px;}
@@ -938,6 +953,23 @@
     display:flex;
     flex-direction:column;
     gap:14px;
+    flex:1;
+  }
+  .tools-tip-card{
+    margin-top:auto;
+    display:flex;align-items:flex-start;gap:12px;
+    padding:16px 18px;border-radius:14px;
+    border:1px dashed var(--card-border);
+    background:var(--bg-panel);
+    font-size:12.5px;line-height:1.55;color:var(--text-gray-dim);
+  }
+  .tools-tip-card svg{flex:none;width:18px;height:18px;color:var(--text-gray-dim);opacity:.7;margin-top:1px;}
+  .tools-tip-card strong{color:var(--text-gray);}
+  .tools-tip-card kbd{
+    display:inline-block;font:inherit;font-size:11px;font-weight:700;
+    padding:1.5px 6px;border-radius:5px;
+    background:var(--card-bg);border:1px solid var(--card-border);
+    color:var(--text-gray);
   }
   .tool-card{
     display:flex;
@@ -1060,17 +1092,22 @@
     text-align:center;padding:18px 10px;
     border:1px dashed var(--card-border);border-radius:11px;
   }
+  .fav-list:has(.fav-empty){display:flex;height:100%;min-height:150px;}
+  .fav-list .fav-empty{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  }
+  .fav-list .fav-empty svg{width:26px;height:26px;color:var(--text-gray-dim);opacity:.6;}
 
   /* ---------- CARD NOTAS DE ROTINA ---------- */
   .notes-add-btn{
     display:flex;align-items:center;gap:8px;
-    font-size:13px;font-weight:600;color:var(--red);
-    background:none;border:1px dashed rgba(228,23,44,.45);
+    font-size:13px;font-weight:600;color:var(--text-gray);
+    background:none;border:1px dashed var(--card-border);
     border-radius:10px;padding:10px 14px;
     cursor:pointer;width:100%;justify-content:center;
-    margin-bottom:14px;transition:background-color .12s ease;
+    margin-bottom:14px;transition:background-color .12s ease,border-color .12s ease,color .12s ease;
   }
-  .notes-add-btn:hover{background:rgba(228,23,44,.08);}
+  .notes-add-btn:hover{background:rgba(228,23,44,.08);border-color:rgba(228,23,44,.45);color:var(--red);}
   .notes-add-btn svg{width:15px;height:15px;}
   .note-form{
     background:var(--bg-panel);border:1px solid var(--card-border);
@@ -1596,6 +1633,14 @@
           </div>
         </a>
 
+        <!-- Card de dica: preenche o espaço remanescente da coluna e reforça a busca cruzada -->
+        <div class="tools-tip-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div>
+            <strong>Dica:</strong> use <kbd>Ctrl</kbd> + <kbd>K</kbd> para buscar por qualquer medicamento ou condição em todas as ferramentas do FarmaPrática, sem sair da página inicial.
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -2036,7 +2081,7 @@
     var list = loadFavorites();
     var container = document.getElementById('fav-list');
     if(!list.length){
-      container.innerHTML = '<div class="fav-empty">Nenhum favorito ainda. Favorite itens nas ferramentas para vê-los aqui.</div>';
+      container.innerHTML = '<div class="fav-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Nenhum favorito ainda. Favorite itens nas ferramentas para vê-los aqui.</div>';
       return;
     }
     container.innerHTML = list.map(function(f){
