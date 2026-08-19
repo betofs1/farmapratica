@@ -470,8 +470,8 @@
   /* ---------- FAIXA DE SAUDAÇÃO ---------- */
   .greeting-banner{
     position:relative;overflow:hidden;
-    border-radius:18px;
-    padding:28px 32px;
+    border-radius:16px;
+    padding:18px 28px;
     box-shadow:var(--shadow-card-hover), 0 2px 0 0 rgba(0,0,0,.4);
     background:linear-gradient(135deg, #12131a 0%, #171522 50%, #12131a 100%);
   }
@@ -538,8 +538,8 @@
     100%{transform:translate(8%,-6%) scale(0.9);}
   }
   .greeting-banner-text{position:relative;z-index:1;}
-  .greeting-banner-text h1{font-size:26px;font-weight:800;letter-spacing:-.4px;text-shadow:var(--heading-shadow);margin-bottom:8px;}
-  .greeting-banner-text p{font-size:14px;color:var(--text-gray);max-width:560px;line-height:1.5;text-shadow:var(--body-text-shadow);}
+  .greeting-banner-text h1{font-size:22px;font-weight:800;letter-spacing:-.4px;text-shadow:var(--heading-shadow);margin-bottom:4px;}
+  .greeting-banner-text p{font-size:13.5px;color:var(--text-gray);max-width:560px;line-height:1.5;text-shadow:var(--body-text-shadow);}
   .card{
     background:var(--card-bg);
     border:1px solid var(--card-border);
@@ -1442,8 +1442,8 @@
       <div class="greeting-banner">
         <div class="greeting-smoke" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="greeting-banner-text">
-          <h1>Olá, Valberto! 👋</h1>
-          <p>Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
+          <h1 id="greeting-h1">Olá, Valberto! 👋</h1>
+          <p id="greeting-p">Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
         </div>
       </div>
     </div>
@@ -2046,6 +2046,33 @@
     return 'rgba('+r+','+g+','+b+','+alpha+')';
   }
 
+  // ---------- SAUDAÇÃO DINÂMICA ----------
+  // Ajusta o cumprimento pelo horário e troca o subtítulo por um resumo
+  // contextual (favoritos/notas salvos) quando houver algo relevante.
+  function updateGreeting(){
+    var h1 = document.getElementById('greeting-h1');
+    var p = document.getElementById('greeting-p');
+    if(!h1 || !p) return;
+    var hour = new Date().getHours();
+    var saudacao = hour < 12 ? 'Bom dia' : (hour < 18 ? 'Boa tarde' : 'Boa noite');
+    var emoji = hour < 12 ? '☀️' : (hour < 18 ? '👋' : '🌙');
+    h1.textContent = saudacao + ', Valberto! ' + emoji;
+
+    var favCount = loadFavorites().length;
+    var notesCount = loadNotes().length;
+    var msg;
+    if(favCount > 0 && notesCount > 0){
+      msg = 'Você tem ' + favCount + ' ferramenta' + (favCount>1?'s':'') + ' favoritada' + (favCount>1?'s':'') + ' e ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' salva' + (notesCount>1?'s':'') + '.';
+    } else if(favCount > 0){
+      msg = 'Você tem ' + favCount + ' ferramenta' + (favCount>1?'s':'') + ' favoritada' + (favCount>1?'s':'') + ' para acesso rápido.';
+    } else if(notesCount > 0){
+      msg = 'Você tem ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' de rotina salva' + (notesCount>1?'s':'') + '.';
+    } else {
+      msg = 'Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.';
+    }
+    p.textContent = msg;
+  }
+
   // ---------- FAVORITOS (alimentados pelas demais ferramentas) ----------
   var FAV_KEY = 'fp_favoritos_hub';
   var FAV_SEED = [];
@@ -2085,6 +2112,7 @@
   };
 
   function renderFavorites(){
+    updateGreeting();
     var list = loadFavorites();
     var container = document.getElementById('fav-list');
     if(!list.length){
@@ -2336,6 +2364,7 @@
   }
 
   function renderNotes(){
+    updateGreeting();
     var list = loadNotes();
     list.sort(function(a,b){
       if(a.pinned !== b.pinned) return a.pinned ? -1 : 1;
