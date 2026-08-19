@@ -994,19 +994,20 @@
     .institutional-cta{margin-left:20px;}
   }
   .institutional-banner-visual{
-    position:absolute;inset:0;left:auto;width:48%;z-index:1;
+    position:absolute;inset:0;left:auto;width:58%;z-index:1;
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23e4172c' stroke-opacity='0.3' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
-      linear-gradient(90deg, rgba(74,78,85,0) 0%, rgba(61,65,71,.68) 55%, rgba(48,51,56,.94) 100%);
-    background-repeat:repeat, no-repeat;
-    background-size:84px 84px, cover;
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 32%);
-    mask-image:linear-gradient(90deg, transparent 0%, #000 32%);
+      linear-gradient(90deg, rgba(74,78,85,.15) 0%, rgba(61,65,71,.55) 45%, rgba(48,51,56,.88) 100%),
+      url("images/banner-farmapratica.png");
+    background-repeat:no-repeat, no-repeat;
+    background-position:center, center;
+    background-size:cover, cover;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 38%);
+    mask-image:linear-gradient(90deg, transparent 0%, #000 38%);
   }
   body.light .institutional-banner-visual{
     background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23d4152a' stroke-opacity='0.14' stroke-width='2'%3E%3Crect x='10' y='16' width='34' height='14' rx='7' transform='rotate(-24 27 23)'/%3E%3Cline x1='19.5' y1='16.6' x2='34.5' y2='29.4' transform='rotate(-24 27 23)'/%3E%3Crect x='46' y='52' width='30' height='13' rx='6.5' transform='rotate(18 61 58.5)'/%3E%3Cline x1='54.5' y1='52.6' x2='67.5' y2='64.4' transform='rotate(18 61 58.5)'/%3E%3C/g%3E%3C/svg%3E"),
-      linear-gradient(90deg, rgba(246,247,249,0) 0%, rgba(241,242,245,.75) 55%, rgba(233,235,239,.96) 100%);
+      linear-gradient(90deg, rgba(246,247,249,.25) 0%, rgba(241,242,245,.6) 45%, rgba(233,235,239,.85) 100%),
+      url("images/banner-farmapratica.png");
   }
   @media (max-width:760px){
     .institutional-banner{flex-direction:column;align-items:flex-start;padding:26px;gap:18px;}
