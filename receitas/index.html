@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Paleta grafite — igual ao tema padrão da página inicial (INDEX) */
+    /* Paleta grafite — EXATAMENTE igual ao tema padrão da página inicial (INDEX) */
     --navy:#a10f1f;
-    --navy-dark:#6e0a15;
+    --navy-dark:#7a0c17;
     --navy-light:#e4172c;
     --bg:#5a5f66;
     --card:#4f545c;
@@ -21,25 +21,25 @@
     --text:#f5f5f4;
     --muted:#a7abb1;
     --brand-red:#e4172c;
-    --hover-tint:rgba(255,255,255,.06);
-    --ok:#4ade80;
-    --ok-bg:#123321;
-    --warn:#fbbf24;
-    --warn-bg:#3a2a0d;
-    --danger:#f87171;
-    --danger-bg:#3a1414;
+    --hover-tint:#585d65;
+    --ok:#2e9b6f;
+    --ok-bg:rgba(46,155,111,.18);
+    --warn:#f59e0b;
+    --warn-bg:rgba(245,158,11,.18);
+    --danger:#e4172c;
+    --danger-bg:rgba(228,23,44,.18);
     --radius-lg:16px;
     --radius:12px;
     --radius-sm:9px;
-    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
-    --shadow-md:0 8px 24px rgba(0,0,0,.35);
+    --shadow-sm:0 8px 18px -6px rgba(0,0,0,.35), 0 2px 6px -2px rgba(0,0,0,.28);
+    --shadow-md:0 14px 32px -10px rgba(0,0,0,.4), 0 4px 10px -4px rgba(0,0,0,.3);
     --font-display:'Sora',-apple-system,BlinkMacSystemFont,sans-serif;
     --heading-shadow:0 2px 12px rgba(0,0,0,.3);
   }
   body.light{
-    /* Variante clara da mesma paleta grafite (igual à INDEX) */
+    /* Variante clara — EXATAMENTE igual à página inicial (INDEX) */
     --navy:#a10f1f;
-    --navy-dark:#7a0d18;
+    --navy-dark:#7a0c17;
     --navy-light:#d4152a;
     --bg:#eceef1;
     --card:#ffffff;
@@ -48,15 +48,15 @@
     --text:#22262c;
     --muted:#767c84;
     --brand-red:#d4152a;
-    --hover-tint:rgba(34,38,44,.05);
-    --ok:#15803d;
-    --ok-bg:#eefbf2;
-    --warn:#b45309;
-    --warn-bg:#fef8ec;
-    --danger:#b91c1c;
-    --danger-bg:#fdeeee;
-    --shadow-sm:0 1px 2px rgba(20,30,50,.06);
-    --shadow-md:0 12px 28px rgba(20,30,50,.10);
+    --hover-tint:#eceef1;
+    --ok:#1f8a5f;
+    --ok-bg:rgba(31,138,95,.14);
+    --warn:#c9790a;
+    --warn-bg:rgba(245,158,11,.14);
+    --danger:#d4152a;
+    --danger-bg:rgba(212,21,42,.14);
+    --shadow-sm:0 6px 14px -6px rgba(35,40,48,.14), 0 2px 5px -2px rgba(35,40,48,.08);
+    --shadow-md:0 10px 26px -12px rgba(35,40,48,.14), 0 3px 8px -3px rgba(35,40,48,.08);
     --heading-shadow:none;
   }
   *{box-sizing:border-box;}
@@ -756,25 +756,21 @@
           <div class="a4-note">1ª via: retenção pela farmácia · 2ª via: paciente.</div>
         </div>
 
-        <div class="a4-sheet" style="flex:1 1 300px;">
-          <div class="a4-section" style="border-top:none;">
-            <div class="a4-section-title" style="text-align:center;">Verso — produtos dispensados</div>
+        <div class="stamp-box" style="flex:1 1 300px;" aria-label="Carimbo de registro da dispensação, verso da receita de controle especial">
+          <div class="stamp-title">✎ Verso — registro da dispensação</div>
+          <div class="stamp-field">
+            <label>Medicamento dispensado (item 1)</label>
+            <input type="text" id="medicamento1CE" class="busca-medicamento" placeholder="Clique para buscar (CMED/ANVISA)" readonly>
+            <div id="medicamento1CEHint" style="font-size:10.5px;margin-top:3px;font-weight:700;"></div>
           </div>
-          <div class="a4-section">
-            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Medicamento (item 1):</span><input type="text" id="medicamento1CE" class="busca-medicamento" placeholder="Clique para buscar (CMED/ANVISA)" readonly></div></div>
-            <div class="a4-row">
-              <div class="a4-field-inline"><span class="a4-label">Lote:</span><input type="text" id="lote1CE"><button type="button" class="regen-btn" id="regenLote1CE" title="Gerar novo lote">↻</button></div>
-              <div class="a4-field-inline"><span class="a4-label">Qtde. caixas:</span><input type="text" id="qtdCaixas1CE"></div>
-            </div>
-            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Registro receituário <span class="opt" style="font-weight:400;">(se manipulado)</span>:</span><input type="text" id="registro1CE"></div></div>
-          </div>
-          <div class="a4-section">
-            <div class="a4-section-title">Identificação do estabelecimento dispensador</div>
-            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Nome:</span><input type="text" id="nomeEstabelecimentoCE"></div></div>
-            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">CNPJ/CNES:</span><input type="text" id="cnpjCnesCE"></div></div>
-            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Responsável:</span><input type="text" id="responsavelDispensacaoCE"></div></div>
-            <div class="a4-row"><div class="a4-field-inline"><span class="a4-label">Data:</span><input type="date" id="dataDispensacaoCE"></div></div>
-          </div>
+          <div class="stamp-field"><label>Lote <button type="button" class="regen-btn" id="regenLote1CE" title="Gerar novo lote">↻</button></label><input type="text" id="lote1CE"></div>
+          <div class="stamp-field"><label>Quantidade de caixas vendida</label><input type="text" id="qtdCaixas1CE"><div id="qtdCaixas1CEHint" style="font-size:10.5px;color:#6b7280;margin-top:3px;"></div></div>
+          <div class="stamp-field"><label>Registro receituário <span style="font-weight:400;text-transform:none;">(se manipulado)</span></label><input type="text" id="registro1CE"></div>
+          <div class="stamp-field"><label>Nome do estabelecimento dispensador</label><input type="text" id="nomeEstabelecimentoCE"></div>
+          <div class="stamp-field"><label>CNPJ/CNES</label><input type="text" id="cnpjCnesCE"></div>
+          <div class="stamp-field"><label>Responsável pela dispensação</label><input type="text" id="responsavelDispensacaoCE"></div>
+          <div class="stamp-field"><label>Data da dispensação</label><input type="date" id="dataDispensacaoCE"></div>
+          <div class="stamp-note">carimbo do farmacêutico responsável</div>
         </div>
       </div>
     </section>
@@ -1331,10 +1327,33 @@ function selecionarDoModal(item){
     dispararInput('quantidadeCE'); dispararInput('unidadeCE');
     montarResumoPosologiaCE();
   } else if(modalContexto === 'controle1'){
-    document.getElementById('medicamento1CE').value = item.apresentacao ? `${item.nome} — ${item.apresentacao}` : item.nome;
     const el1 = document.getElementById('medicamento1CE');
+    el1.value = item.apresentacao ? `${item.nome} — ${item.apresentacao}` : item.nome;
+    el1.dataset.dirty = '1';
+    el1.dataset.principio = item.principio || '';
+    el1.dataset.laboratorio = item.laboratorio || '';
+    el1.dataset.concentracao = parsed.concentracao || '';
+    el1.dataset.forma = parsed.forma || '';
     el1.dataset.unidadesPorEmbalagem = parsed.unidadesPorEmbalagem != null ? parsed.unidadesPorEmbalagem : '';
     el1.dataset.unidadeEmbalagem = parsed.unidadeEmbalagem || '';
+
+    // Mesma lógica da Notificação A: a partir do momento que uma apresentação
+    // específica é escolhida, "Quantidade de caixas vendida" passa a significar
+    // CAIXAS de verdade — sugere o nº de caixas que fecha a quantidade prescrita.
+    const qv1 = document.getElementById('qtdCaixas1CE');
+    const unidEmb1 = parseFloat(el1.dataset.unidadesPorEmbalagem);
+    const semUnidadeContinua1 = !el1.dataset.unidadeEmbalagem;
+    if(!isNaN(unidEmb1) && unidEmb1 > 0 && semUnidadeContinua1){
+      const qp1 = extrairNumero(getVal('quantidadeCE'));
+      const sugestao1 = (!isNaN(qp1) && qp1 % unidEmb1 === 0) ? (qp1 / unidEmb1) : 1;
+      qv1.value = String(sugestao1);
+    } else {
+      qv1.value = '1';
+    }
+    qv1.dataset.dirty = '1';
+    qv1.dataset.caixasReais = '1';
+    atualizarDicaQtdCaixas1CE();
+    atualizarCompatibilidadeVersoMedicamentoCE();
   }
   fecharModalMedicamentos();
 }
@@ -1567,6 +1586,69 @@ function verificarCompatibilidadePrincipio(){
 function atualizarCompatibilidadeVersoMedicamento(){
   const hint = document.getElementById('versoMedicamentoHint');
   const resultado = verificarCompatibilidadePrincipio();
+  hint.classList.remove('hint-ok','hint-warn','hint-danger');
+  if(!resultado){ hint.textContent = ''; return; }
+  if(resultado.status === 'compativel'){ hint.classList.add('hint-ok'); hint.textContent = '✓ ' + resultado.mensagem; }
+  else if(resultado.status === 'incompativel'){ hint.classList.add('hint-danger'); hint.textContent = '✖ ' + resultado.mensagem; }
+  else { hint.classList.add('hint-warn'); hint.textContent = '⚠ ' + resultado.mensagem; }
+}
+
+/* =========================================================
+   Mesma lógica acima, replicada para o verso do Controle
+   Especial (medicamento prescrito × medicamento dispensado)
+   ========================================================= */
+function atualizarDicaQtdCaixas1CE(){
+  const vm = document.getElementById('medicamento1CE');
+  const hint = document.getElementById('qtdCaixas1CEHint');
+  const unidEmb = parseFloat(vm.dataset.unidadesPorEmbalagem);
+  const semUnidadeContinua = vm.dataset.unidadesPorEmbalagem && !vm.dataset.unidadeEmbalagem;
+  const caixas = extrairNumero(getVal('qtdCaixas1CE'));
+  if(semUnidadeContinua && !isNaN(unidEmb) && !isNaN(caixas)){
+    const formaPlural = vm.dataset.forma ? pluralizarPrimeiraPalavra(vm.dataset.forma) : 'unidade(s)';
+    const caixaLabel = caixas === 1 ? 'caixa' : 'caixas';
+    const total = caixas * unidEmb;
+    hint.textContent = caixas === 1
+      ? `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural}`
+      : `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural} (= ${total} ${formaPlural} no total)`;
+  } else {
+    hint.textContent = '';
+  }
+}
+
+function verificarCompatibilidadePrincipioCE(){
+  const medEl = document.getElementById('medicamentoCE');
+  const principioPrescrito = medEl.dataset.principio || '';
+  const concPrescrita = getVal('concentracaoCE');
+  const formaPrescrita = getVal('formaFarmaceuticaCE');
+
+  const medVendido = document.getElementById('medicamento1CE');
+  const principioVendido = medVendido.dataset.principio || '';
+  const concVendida = medVendido.dataset.concentracao || '';
+  const formaVendida = medVendido.dataset.forma || '';
+  const nomeVendido = medVendido.value.trim();
+
+  if(!nomeVendido) return null; // nada dispensado ainda, nada a checar
+  if(!principioPrescrito || !medsCarregados){
+    return {status:'indefinido', mensagem:'Não foi possível confirmar automaticamente a intercambiabilidade (base de medicamentos indisponível ou medicamento prescrito não identificado na base) — confirme manualmente princípio ativo, forma farmacêutica e concentração.'};
+  }
+  if(!principioVendido){
+    return {status:'indefinido', mensagem:`Medicamento dispensado ("${nomeVendido}") não identificado na base CMED/ANVISA — confirme manualmente se princípio ativo, forma farmacêutica e concentração são os mesmos do prescrito (${principioPrescrito} · ${formaPrescrita || '—'} · ${concPrescrita || '—'}).`};
+  }
+  if(normalizar(principioVendido) !== normalizar(principioPrescrito)){
+    return {status:'incompativel', mensagem:`"${nomeVendido}" NÃO é intercambiável com o medicamento prescrito — princípios ativos diferentes (dispensado: ${principioVendido} ≠ prescrito: ${principioPrescrito}).`};
+  }
+  if(formaPrescrita && formaVendida && normalizar(formaVendida) !== normalizar(formaPrescrita)){
+    return {status:'incompativel', mensagem:`"${nomeVendido}" tem forma farmacêutica diferente da prescrita (dispensado: ${formaVendida} ≠ prescrito: ${formaPrescrita}) — formas de liberação diferentes (ex.: liberação prolongada × liberação normal) NÃO são intercambiáveis.`};
+  }
+  if(concPrescrita && concVendida && normalizar(concVendida) !== normalizar(concPrescrita)){
+    return {status:'incompativel', mensagem:`"${nomeVendido}" tem concentração diferente da prescrita (dispensado: ${concVendida} ≠ prescrito: ${concPrescrita}).`};
+  }
+  return {status:'compativel', mensagem:`Mesmo princípio ativo, forma farmacêutica e concentração do prescrito (${principioPrescrito} · ${formaPrescrita || '—'} · ${concPrescrita || '—'}).`};
+}
+
+function atualizarCompatibilidadeVersoMedicamentoCE(){
+  const hint = document.getElementById('medicamento1CEHint');
+  const resultado = verificarCompatibilidadePrincipioCE();
   hint.classList.remove('hint-ok','hint-warn','hint-danger');
   if(!resultado){ hint.textContent = ''; return; }
   if(resultado.status === 'compativel'){ hint.classList.add('hint-ok'); hint.textContent = '✓ ' + resultado.mensagem; }
@@ -1927,6 +2009,7 @@ function atualizarAssinaturaCE(){
 }
 document.getElementById('nomeEmitenteCE').addEventListener('input', atualizarAssinaturaCE);
 document.getElementById('regenLote1CE').addEventListener('click', ()=>{ setVal('lote1CE', fakeLote()); });
+document.getElementById('qtdCaixas1CE').addEventListener('input', atualizarDicaQtdCaixas1CE);
 
 document.getElementById('validarControle').addEventListener('click', function(){
   const checks = [];
@@ -1977,17 +2060,74 @@ document.getElementById('validarControle').addEventListener('click', function(){
     });
   }
 
+  // Conferência cruzada: prescrição × verso (mesma regra da Notificação A).
+  // Pode dispensar MENOS que o prescrito (dispensação parcial, permitida),
+  // nunca MAIS. Quando uma apresentação específica foi escolhida no verso, o
+  // campo de caixas já significa nº de caixas de verdade (ver selecionarDoModal),
+  // caso contrário o número digitado é lido diretamente.
+  let quantidadeExcedenteCE = false;
+  if(getVal('quantidadeCE') && getVal('qtdCaixas1CE')){
+    const qpCE2 = extrairNumero(getVal('quantidadeCE'));
+    const el1CE = document.getElementById('medicamento1CE');
+    const unidadesPorEmbalagemCE = parseFloat(el1CE.dataset.unidadesPorEmbalagem);
+    const unidadeEmbalagemCE = el1CE.dataset.unidadeEmbalagem || '';
+    const temApresentacaoEscolhidaCE = el1CE.dataset.unidadesPorEmbalagem && !isNaN(unidadesPorEmbalagemCE) && !unidadeEmbalagemCE;
+    const qvBrutoCE = extrairNumero(getVal('qtdCaixas1CE'));
+
+    const totalCalculadoCE = temApresentacaoEscolhidaCE && !isNaN(qvBrutoCE) ? qvBrutoCE * unidadesPorEmbalagemCE : qvBrutoCE;
+    const descricaoCalculoCE = temApresentacaoEscolhidaCE
+      ? `${qvBrutoCE} caixa(s) × ${unidadesPorEmbalagemCE} = ${totalCalculadoCE}`
+      : `${totalCalculadoCE}`;
+
+    if(isNaN(qpCE2) || isNaN(totalCalculadoCE)){
+      checks.push({label:`Confirme se a quantidade de caixas vendida (${getVal('qtdCaixas1CE')}) corresponde à quantidade prescrita (${getVal('quantidadeCE')}) — regra geral: nunca dispensar mais do que o prescrito`, ok:true, level:'warnitem', divergente:true});
+    } else if(totalCalculadoCE === qpCE2){
+      checks.push({label:`${descricaoCalculoCE} — confere exatamente com a quantidade prescrita (${qpCE2})`, ok:true, level:'pass'});
+    } else if(totalCalculadoCE < qpCE2){
+      checks.push({label:`Dispensação parcial: ${descricaoCalculoCE} de ${qpCE2} prescritos — permitido, mas informe o paciente sobre o saldo restante (${qpCE2 - totalCalculadoCE})`, ok:true, level:'warnitem'});
+    } else {
+      quantidadeExcedenteCE = true;
+      checks.push({label:`Quantidade dispensada (${descricaoCalculoCE}) é MAIOR que a prescrita (${qpCE2}) — NÃO é permitido vender mais do que a receita autoriza`, ok:false, level:'fail'});
+    }
+  }
+
+  // Conferência de intercambiabilidade: princípio ativo prescrito × dispensado
+  let incompatibilidadeCriticaCE = false;
+  const compatCE = verificarCompatibilidadePrincipioCE();
+  if(compatCE){
+    if(compatCE.status === 'compativel'){
+      checks.push({label:`Medicamento dispensado intercambiável com o prescrito — ${compatCE.mensagem}`, ok:true, level:'pass'});
+    } else if(compatCE.status === 'incompativel'){
+      incompatibilidadeCriticaCE = true;
+      checks.push({label:compatCE.mensagem, ok:false, level:'fail'});
+    } else {
+      checks.push({label:compatCE.mensagem, ok:true, level:'warnitem', divergente:true});
+    }
+  }
+
   checks.push({label:'Lembrete: 1ª via retida pela farmácia, 2ª via entregue ao paciente', ok:true, level:'warnitem'});
   checks.push({label:'Impressão dos dados do comprador é opcional — pode ser suprida por carimbo no verso (Portaria 6/99, art. 85, "c")', ok:true, level:'warnitem'});
 
+  const falhasCriticasCE = [];
+  if(incompatibilidadeCriticaCE) falhasCriticasCE.push('Medicamento dispensado NÃO é intercambiável com o prescrito');
+  if(quantidadeExcedenteCE) falhasCriticasCE.push('Quantidade dispensada maior que a prescrita');
+
   renderChecklist('checklistControle', checks);
-  renderStatus('statusBoxControle', allFilled, dataFutura || !dentroDoPrazo);
+  renderStatus('statusBoxControle', allFilled, dataFutura || !dentroDoPrazo, falhasCriticasCE.length ? falhasCriticasCE.join(' — ') + ' — não dispensar' : null);
   atualizarAlertaDivergencia('alertaControle', checks);
 });
 
 function reiniciarControle(){
   ['medicamento1CE','lote1CE','qtdCaixas1CE','registro1CE','medicamento2CE','lote2CE','qtdCaixas2CE','medicamento3CE','lote3CE','qtdCaixas3CE'].forEach(id=> setVal(id,''));
   ['nomeEstabelecimentoCE','cnpjCnesCE','responsavelDispensacaoCE','dataDispensacaoCE'].forEach(id=> setVal(id,''));
+
+  const el1CEreset = document.getElementById('medicamento1CE');
+  delete el1CEreset.dataset.dirty; delete el1CEreset.dataset.principio; delete el1CEreset.dataset.laboratorio;
+  delete el1CEreset.dataset.concentracao; delete el1CEreset.dataset.forma;
+  delete el1CEreset.dataset.unidadesPorEmbalagem; delete el1CEreset.dataset.unidadeEmbalagem; delete el1CEreset.dataset.caixasReais;
+  document.getElementById('medicamento1CEHint').textContent = '';
+  document.getElementById('medicamento1CEHint').classList.remove('hint-ok','hint-warn','hint-danger');
+  document.getElementById('qtdCaixas1CEHint').textContent = '';
 
   const medCE = document.getElementById('medicamentoCE');
   medCE.value = ''; delete medCE.dataset.principio; delete medCE.dataset.laboratorio;
