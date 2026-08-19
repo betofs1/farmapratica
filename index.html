@@ -1571,7 +1571,7 @@
         <div class="greeting-smoke" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="greeting-banner-text">
           <h1 id="greeting-h1">Olá, Valberto! 👋</h1>
-          <p id="greeting-p">Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
+          <p id="greeting-p">Em que posso te ajudar hoje?</p>
         </div>
         <div class="greeting-clock" id="greeting-clock" aria-hidden="true">
           <span class="greeting-clock-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
@@ -2204,24 +2204,7 @@
     var emoji = hour < 12 ? '☀️' : (hour < 18 ? '👋' : '🌙');
     h1.textContent = saudacao + ', Valberto! ' + emoji;
 
-    var favs = loadFavorites();
-    var favCount = favs.length;
-    var notesCount = loadNotes().length;
-    var lastFav = favCount > 0 ? favs[favCount - 1] : null;
-    var lastFavTool = lastFav ? (FAV_SOURCES[lastFav.source] || FAV_SOURCES.outro).label : '';
-    var msg;
-    if(favCount > 0 && notesCount > 0){
-      msg = '"' + lastFav.label + '" (' + lastFavTool + ') é seu favorito mais recente — você também tem ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' de rotina salva' + (notesCount>1?'s':'') + '.';
-    } else if(favCount === 1){
-      msg = '"' + lastFav.label + '" está nos seus favoritos, direto de ' + lastFavTool + ' para acesso rápido.';
-    } else if(favCount > 1){
-      msg = '"' + lastFav.label + '" é seu favorito mais recente, entre ' + favCount + ' ferramentas salvas para acesso rápido.';
-    } else if(notesCount > 0){
-      msg = 'Você tem ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' de rotina salva' + (notesCount>1?'s':'') + '.';
-    } else {
-      msg = 'Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.';
-    }
-    p.textContent = msg;
+    p.textContent = 'Em que posso te ajudar hoje?';
   }
 
   // Relógio ao vivo no quadro de saudação — texto explicativo ("São 22:00h") + data por extenso
