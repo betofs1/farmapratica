@@ -54,6 +54,7 @@
     --tool-card-bevel:inset 0 1px 0 0 rgba(255,255,255,.07), inset 0 -3px 7px 0 rgba(0,0,0,.4);
     --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.1), inset 0 -3px 8px 0 rgba(0,0,0,.45);
     --font-display:'Sora',-apple-system,BlinkMacSystemFont,sans-serif;
+    --badge-neutral-fg:#a6adb8;
   }
 
   /* ---------- LIGHT THEME ---------- */
@@ -86,6 +87,7 @@
     --body-text-shadow:0 1px 4px rgba(0,0,0,.08);
     --tool-card-bevel:inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -3px 7px 0 rgba(42,46,52,.14);
     --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -3px 8px 0 rgba(42,46,52,.17);
+    --badge-neutral-fg:#495057;
   }
   body.light header{border-bottom-color:#d6dade;}
   body.light footer{border-top-color:#d6dade;}
@@ -688,7 +690,7 @@
 
   .stats-footer{
     position:relative;
-    padding:10px 20px 11px;
+    padding:16px 20px 10px;
     overflow:hidden;
     background:
       radial-gradient(140% 160% at 100% 0%, rgba(228,23,44,.10), transparent 55%),
@@ -846,9 +848,18 @@
     background:radial-gradient(circle at 30% 25%, rgba(46,155,111,.35), rgba(46,155,111,.06));
     --badge-ring:rgba(46,155,111,.32); --badge-glow:rgba(46,155,111,.4); --badge-fg:var(--accent2);
   }
+  /* Tom neutro/grafite, usado para padronizar Favoritos, Notas de Rotina e Ferramentas mais usadas — menos poluído que 3 cores distintas */
+  .stat-icon-badge.badge-neutral{
+    background:radial-gradient(circle at 30% 25%, rgba(148,163,184,.24), rgba(148,163,184,.05));
+    --badge-ring:rgba(148,163,184,.26); --badge-glow:rgba(148,163,184,.28); --badge-fg:var(--badge-neutral-fg);
+  }
+  body.light .stat-icon-badge.badge-neutral{
+    background:radial-gradient(circle at 30% 25%, rgba(71,85,105,.14), rgba(71,85,105,.04));
+    --badge-ring:rgba(71,85,105,.2); --badge-glow:rgba(71,85,105,.16);
+  }
   .stats-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;}
   .ver-todas-btn{
-    font-size:11.5px;font-weight:700;color:var(--accent2);
+    font-size:11.5px;font-weight:700;color:var(--badge-neutral-fg);
     background:none;border:none;cursor:pointer;padding:4px 6px;border-radius:6px;
     white-space:nowrap;
   }
@@ -892,20 +903,31 @@
   }
 
   /* Gráfico "Suas ferramentas mais utilizadas" — rosca com múltiplos segmentos */
-  .usage-donut-row{display:flex;align-items:center;gap:12px;}
+  .usage-donut-row{display:flex;align-items:center;gap:16px;}
+  /* Gráfico de pizza com efeito 3D: disco inclinado (rotateX) + sombras empilhadas
+     simulando a borda/espessura, e um brilho de vidro por cima (::before). */
   .usage-donut{
     position:relative;
-    width:48px;height:48px;border-radius:50%;flex:none;
-    box-shadow:0 0 0 1px var(--card-border);
+    width:68px;height:68px;border-radius:50%;flex:none;
+    transform:perspective(480px) rotateX(46deg);
+    transform-style:preserve-3d;
+    box-shadow:
+      0 1px 0 0 rgba(0,0,0,.3),
+      0 9px 0 -3px rgba(0,0,0,.4),
+      0 13px 16px -6px rgba(0,0,0,.5);
   }
-  .usage-donut::after{
+  .usage-donut::before{
     content:"";
-    position:absolute;
-    top:50%;left:50%;
-    width:58%;height:58%;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    background:var(--card-bg);
+    position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 32% 26%, rgba(255,255,255,.4), transparent 55%);
+    mix-blend-mode:overlay;
+    pointer-events:none;
+  }
+  body.light .usage-donut{
+    box-shadow:
+      0 1px 0 0 rgba(42,46,52,.18),
+      0 9px 0 -3px rgba(42,46,52,.22),
+      0 13px 16px -6px rgba(42,46,52,.3);
   }
   .usage-legend{display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--text-gray);flex:1;min-width:0;}
   .usage-legend .usage-row-top{display:flex;align-items:center;gap:7px;}
@@ -1562,7 +1584,7 @@
       <div class="quad-panel">
         <div class="stat-block" id="panel-favoritos">
           <div class="stats-card-head" style="margin-bottom:16px;">
-            <h4><span class="stat-icon-badge badge-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>Favoritos</h4>
+            <h4><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>Favoritos</h4>
           </div>
           <div class="fav-list" id="fav-list">
             <!-- preenchido via JS -->
@@ -1571,7 +1593,7 @@
 
         <div class="stat-block" id="panel-notas">
           <div class="stats-card-head" style="margin-bottom:16px;">
-            <h4><span class="stat-icon-badge badge-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>Notas de Rotina</h4>
+            <h4><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>Notas de Rotina</h4>
             <button type="button" class="ver-todas-btn" onclick="document.getElementById('notes-list').scrollIntoView({behavior:'smooth',block:'center'});" title="Ver todas as notas">Ver todas</button>
           </div>
           <!-- Chips de categoria: preenchem o título ao criar uma nova nota (atalhos, não uma segunda fonte de dados) -->
@@ -1621,7 +1643,7 @@
         </div>
 
         <div class="stats-footer stats-footer-wide">
-          <h3><span class="stat-icon-badge badge-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg></span>Suas ferramentas mais utilizadas</h3>
+          <h3><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg></span>Suas ferramentas mais utilizadas</h3>
           <div class="stats-footer-inner">
             <div id="usage-donut-wrap">
               <!-- preenchido via JS a partir dos favoritos (ou distribuição ilustrativa quando vazio) -->
