@@ -546,25 +546,27 @@
   .greeting-banner-text{position:relative;z-index:1;flex:1;min-width:220px;}
   .greeting-banner-text h1{font-size:22px;font-weight:800;letter-spacing:-.4px;text-shadow:var(--heading-shadow);margin-bottom:4px;}
   .greeting-banner-text p{font-size:13.5px;color:var(--text-gray);max-width:560px;line-height:1.5;text-shadow:var(--body-text-shadow);}
-  /* Relógio ao vivo — badge de ícone + hora/data empilhadas, no mesmo idioma visual dos demais cartões */
+  /* Relógio ao vivo — layout elegante: hora grande em peso leve + divisor fino + data discreta */
   .greeting-clock{
     position:relative;z-index:1;flex:none;
-    display:flex;align-items:center;gap:13px;
-    padding:10px 20px 10px 14px;border-radius:14px;
+    display:flex;align-items:center;gap:16px;
+    padding:9px 22px;border-radius:14px;
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(6px);
   }
   .greeting-clock-icon{
-    width:36px;height:36px;border-radius:10px;flex:none;
+    width:30px;height:30px;border-radius:9px;flex:none;
     display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(circle at 30% 25%, rgba(228,23,44,.38), rgba(228,23,44,.07));
-    box-shadow:inset 0 0 0 1px rgba(228,23,44,.34), 0 2px 8px -2px rgba(228,23,44,.5);
+    background:radial-gradient(circle at 30% 25%, rgba(228,23,44,.3), rgba(228,23,44,.06));
+    box-shadow:inset 0 0 0 1px rgba(228,23,44,.28), 0 2px 6px -2px rgba(228,23,44,.4);
   }
-  .greeting-clock-icon svg{width:17px;height:17px;color:var(--red);}
-  .greeting-clock-info{display:flex;flex-direction:column;gap:1px;text-align:left;}
-  .greeting-clock span{font-family:var(--font-display);font-size:16px;font-weight:700;letter-spacing:.2px;font-variant-numeric:tabular-nums;color:var(--text-white);line-height:1.2;}
-  .greeting-clock-date{font-size:10.5px;color:var(--text-gray-dim);letter-spacing:.2px;}
+  .greeting-clock-icon svg{width:15px;height:15px;color:var(--red);}
+  .greeting-clock-info{display:flex;align-items:center;gap:14px;text-align:left;}
+  .greeting-clock-divider{width:1px;align-self:stretch;background:rgba(255,255,255,.14);flex:none;}
+  body.light .greeting-clock-divider{background:rgba(35,40,48,.14);}
+  #greeting-clock-time{font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:.3px;font-variant-numeric:tabular-nums;color:var(--text-white);line-height:1;}
+  .greeting-clock-date{display:block;font-size:11.5px;font-weight:400;color:var(--text-gray-dim);letter-spacing:.2px;line-height:1.3;white-space:nowrap;}
   body.light .greeting-clock{background:rgba(35,40,48,.035);border:1px solid rgba(35,40,48,.1);}
   @media (max-width:640px){ .greeting-clock{width:100%;} }
   .card{
@@ -1573,7 +1575,8 @@
         <div class="greeting-clock" id="greeting-clock" aria-hidden="true">
           <span class="greeting-clock-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
           <div class="greeting-clock-info">
-            <span id="greeting-clock-time">São --:--h</span>
+            <span id="greeting-clock-time">--:--</span>
+            <span class="greeting-clock-divider"></span>
             <span class="greeting-clock-date" id="greeting-clock-date"></span>
           </div>
         </div>
@@ -2225,8 +2228,7 @@
     var now = new Date();
     var hh = String(now.getHours()).padStart(2,'0');
     var mm = String(now.getMinutes()).padStart(2,'0');
-    var prefixo = now.getHours() === 1 ? 'É' : 'São';
-    timeEl.textContent = prefixo + ' ' + hh + ':' + mm + 'h';
+    timeEl.textContent = hh + ':' + mm;
     if(dateEl){
       var diaSemana = DIAS_SEMANA[now.getDay()];
       diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
