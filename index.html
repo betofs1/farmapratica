@@ -2204,13 +2204,18 @@
     var emoji = hour < 12 ? '☀️' : (hour < 18 ? '👋' : '🌙');
     h1.textContent = saudacao + ', Valberto! ' + emoji;
 
-    var favCount = loadFavorites().length;
+    var favs = loadFavorites();
+    var favCount = favs.length;
     var notesCount = loadNotes().length;
+    var lastFav = favCount > 0 ? favs[favCount - 1] : null;
+    var lastFavTool = lastFav ? (FAV_SOURCES[lastFav.source] || FAV_SOURCES.outro).label : '';
     var msg;
     if(favCount > 0 && notesCount > 0){
-      msg = 'Você tem ' + favCount + ' ferramenta' + (favCount>1?'s':'') + ' favoritada' + (favCount>1?'s':'') + ' e ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' salva' + (notesCount>1?'s':'') + '.';
-    } else if(favCount > 0){
-      msg = 'Você tem ' + favCount + ' ferramenta' + (favCount>1?'s':'') + ' favoritada' + (favCount>1?'s':'') + ' para acesso rápido.';
+      msg = '"' + lastFav.label + '" (' + lastFavTool + ') é seu favorito mais recente — você também tem ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' de rotina salva' + (notesCount>1?'s':'') + '.';
+    } else if(favCount === 1){
+      msg = '"' + lastFav.label + '" está nos seus favoritos, direto de ' + lastFavTool + ' para acesso rápido.';
+    } else if(favCount > 1){
+      msg = '"' + lastFav.label + '" é seu favorito mais recente, entre ' + favCount + ' ferramentas salvas para acesso rápido.';
     } else if(notesCount > 0){
       msg = 'Você tem ' + notesCount + ' nota' + (notesCount>1?'s':'') + ' de rotina salva' + (notesCount>1?'s':'') + '.';
     } else {
