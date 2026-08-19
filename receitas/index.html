@@ -7,19 +7,20 @@
 <title>FarmaPrática | Conferidor de Receitas de Controle Especial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1c2f4d;
-    --navy-dark:#12213a;
-    --navy-light:#2d4a75;
-    --bg:#14161c;
-    --card:#1c1e26;
-    --header-bg:#181a22;
-    --border:#31333f;
-    --text:#f2f3f6;
-    --muted:#9a9dab;
-    --brand-red:#ef2d40;
+    /* Paleta grafite — igual ao tema padrão da página inicial (INDEX) */
+    --navy:#a10f1f;
+    --navy-dark:#6e0a15;
+    --navy-light:#e4172c;
+    --bg:#5a5f66;
+    --card:#4f545c;
+    --header-bg:#454951;
+    --border:#63686f;
+    --text:#f5f5f4;
+    --muted:#a7abb1;
+    --brand-red:#e4172c;
     --hover-tint:rgba(255,255,255,.06);
     --ok:#4ade80;
     --ok-bg:#123321;
@@ -32,19 +33,22 @@
     --radius-sm:9px;
     --shadow-sm:0 1px 2px rgba(0,0,0,.3);
     --shadow-md:0 8px 24px rgba(0,0,0,.35);
+    --font-display:'Sora',-apple-system,BlinkMacSystemFont,sans-serif;
+    --heading-shadow:0 2px 12px rgba(0,0,0,.3);
   }
   body.light{
-    --navy:#1c2f4d;
-    --navy-dark:#12213a;
-    --navy-light:#33538a;
-    --bg:#f2f4f8;
+    /* Variante clara da mesma paleta grafite (igual à INDEX) */
+    --navy:#a10f1f;
+    --navy-dark:#7a0d18;
+    --navy-light:#d4152a;
+    --bg:#eceef1;
     --card:#ffffff;
-    --header-bg:#ffffff;
-    --border:#e4e8f0;
-    --text:#1c2333;
-    --muted:#6b7280;
+    --header-bg:#e2e5e9;
+    --border:#d7dade;
+    --text:#22262c;
+    --muted:#767c84;
     --brand-red:#d4152a;
-    --hover-tint:rgba(28,47,77,.05);
+    --hover-tint:rgba(34,38,44,.05);
     --ok:#15803d;
     --ok-bg:#eefbf2;
     --warn:#b45309;
@@ -53,11 +57,12 @@
     --danger-bg:#fdeeee;
     --shadow-sm:0 1px 2px rgba(20,30,50,.06);
     --shadow-md:0 12px 28px rgba(20,30,50,.10);
+    --heading-shadow:none;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.5;
@@ -82,7 +87,7 @@
   .topbar-app .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
   .brand{display:flex;align-items:center;gap:13px;}
   .brand img{width:40px;height:40px;flex-shrink:0;}
-  .brand-text h1{font-family:'Inter',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.4px;line-height:1.1;margin:0;color:var(--text);}
+  .brand-text h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;letter-spacing:-.4px;line-height:1.1;margin:0;color:var(--text);}
   .brand-text h1 span{color:var(--brand-red);}
   .brand-text p{font-size:10.5px;color:var(--muted);font-weight:500;margin:3px 0 0;letter-spacing:.1px;}
   .topbar-app .titulo-central{
@@ -90,7 +95,7 @@
     display:flex;flex-direction:column;align-items:center;text-align:center;
     max-width:52%;pointer-events:none;
   }
-  .topbar-app .titulo-principal{font-size:1.08rem;font-weight:800;letter-spacing:.5px;color:var(--text);white-space:nowrap;text-transform:uppercase;}
+  .topbar-app .titulo-principal{font-family:var(--font-display);font-size:1.08rem;font-weight:800;letter-spacing:.5px;color:var(--text);white-space:nowrap;text-transform:uppercase;text-shadow:var(--heading-shadow);}
   .topbar-app .titulo-descricao{font-size:.74rem;color:var(--muted);margin-top:2px;white-space:nowrap;}
   .header-right{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0;}
   .theme-toggle{
@@ -199,7 +204,7 @@
   .ac-item:last-child{border-bottom:none;}
   .ac-item:hover{background:#f4f6f9;}
   .ac-item .ac-nome{font-weight:700;flex-shrink:0;}
-  .ac-item .ac-detail{color:#64748b;font-size:10.5px;flex:1;}
+  .ac-item .ac-detail{color:var(--muted);font-size:10.5px;flex:1;}
   .ac-badge{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:10px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;}
   .ac-badge.generico{background:#dcfce7;color:#15803d;}
   .ac-badge.similar{background:#fef3c7;color:#92400e;}
@@ -209,9 +214,9 @@
   .ac-compat{font-size:8.5px;font-weight:800;padding:2px 7px;border-radius:10px;white-space:nowrap;flex-shrink:0;}
   .ac-compat-ok{background:#dcfce7;color:#15803d;}
   .ac-compat-warn{background:#fee2e2;color:#b91c1c;}
-  .ac-empty{padding:8px 10px;font-size:11px;color:#8a8fa3;font-family:'Segoe UI',sans-serif;}
+  .ac-empty{padding:8px 10px;font-size:11px;color:var(--muted);font-family:'Segoe UI',sans-serif;}
   .btn-intercambio{
-    font-family:'Segoe UI',sans-serif;font-size:10px;background:none;border:none;color:#3d3a8c;
+    font-family:'Segoe UI',sans-serif;font-size:10px;background:none;border:none;color:var(--brand-red);
     text-decoration:underline;cursor:pointer;padding:4px 0 0;text-align:left;
   }
   .painel-intercambio{
@@ -229,7 +234,7 @@
   .modal-box{
     background:var(--card);color:var(--text);border-radius:var(--radius-lg);width:min(680px,100%);max-height:82vh;
     display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow-md);
-    font-family:'Inter',sans-serif;
+    font-family:'Plus Jakarta Sans',sans-serif;
   }
   .modal-header{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;}
   .modal-header input{
@@ -279,6 +284,8 @@
   }
   .a4-field-inline textarea{flex:1;border:none;border-bottom:1px solid #000;background:transparent;font-family:inherit;font-size:11.5px;color:#111;resize:vertical;min-height:20px;padding:0 2px;}
   .a4-field-inline input:focus, .a4-field-inline select:focus, .a4-field-inline textarea:focus{outline:none;border-bottom:2px solid #000;background:rgba(0,0,0,.04);}
+  .a4-inline-ctrl{border:none;border-bottom:1px solid #000;background:transparent;font-family:inherit;font-size:11.5px;color:#111;padding:0 2px;}
+  .a4-inline-ctrl:focus{outline:none;border-bottom:2px solid #000;background:rgba(0,0,0,.04);}
   .a4-note{grid-column:1/-1;font-size:9.5px;color:#333;text-align:left;padding:8px 14px;border-top:2px solid #000;}
   .a4-mini-check{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;margin-bottom:8px;}
   @media (max-width:820px){
@@ -319,7 +326,7 @@
   .info-box{display:flex;gap:12px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--navy-light);border-radius:var(--radius);padding:16px 18px;font-size:13px;color:var(--text);box-shadow:var(--shadow-sm);}
   .info-box b{color:var(--text);}
 
-  footer{background:var(--navy-dark);color:#a8b6d1;font-size:11.5px;padding:18px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:2px solid var(--brand-red);}
+  footer{background:var(--header-bg);color:var(--muted);font-size:11.5px;padding:18px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:2px solid var(--brand-red);}
 
   @media (max-width:820px){
     .receipt-mock{grid-template-columns:1fr;}
@@ -329,7 +336,7 @@
   }
 </style>
 </head>
-<body class="light">
+<body>
 
 <header class="topbar-app">
   <div class="logo-wrap">
@@ -675,7 +682,58 @@
 
           <div class="a4-section">
             <div class="a4-section-title">Prescrição</div>
-            <div style="min-height:56px;border:1px dashed #999;margin-bottom:10px;"></div>
+            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Medicamento:</span><div class="ac-wrap" style="flex:1;min-width:0;"><input type="text" id="medicamentoCE" class="busca-medicamento" placeholder="Clique para buscar (CMED/ANVISA)" readonly style="width:100%;"></div></div></div>
+            <div class="a4-row">
+              <div class="a4-field-inline"><span class="a4-label">Concentração:</span><input type="text" id="concentracaoCE" placeholder="Ex: 10 mg"></div>
+              <div class="a4-field-inline"><span class="a4-label">Forma farmacêutica:</span><input type="text" id="formaFarmaceuticaCE" placeholder="Ex: Comprimido"></div>
+            </div>
+            <div class="a4-row">
+              <div class="a4-field-inline"><span class="a4-label">Quantidade:</span><input type="text" id="quantidadeCE" placeholder="Ex: 30" style="flex:0 0 60px;min-width:0;"><select id="unidadeCE" style="flex:1;min-width:0;">
+                <option value="comprimidos">comprimidos</option>
+                <option value="capsulas">cápsulas</option>
+                <option value="caixas">caixa(s)</option>
+                <option value="ampolas">ampolas/frascos-ampola</option>
+                <option value="ml">mL</option>
+                <option value="gotas">gotas</option>
+                <option value="frascos">frascos</option>
+                <option value="outros">outra unidade</option>
+              </select></div>
+            </div>
+            <div class="a4-row">
+              <div class="a4-field-inline" style="flex:1 1 100%;flex-wrap:wrap;row-gap:4px;">
+                <span class="a4-label">Posologia:</span>
+                <span style="font-size:11px;">Tomar</span>
+                <input type="number" id="posologiaQtdCE" min="0.25" step="0.25" value="1" style="flex:0 0 46px;min-width:0;">
+                <select id="posologiaUnidadeCE" style="flex:0 0 130px;min-width:0;">
+                  <option value="comprimidos">comprimido(s)</option>
+                  <option value="capsulas">cápsula(s)</option>
+                  <option value="ml">mL</option>
+                  <option value="gotas">gota(s)</option>
+                  <option value="ampolas">ampola(s)</option>
+                  <option value="frascos">frasco(s)</option>
+                  <option value="outros">unidade(s)</option>
+                </select>
+                <select id="posologiaFrequenciaCE" style="flex:0 0 150px;min-width:0;">
+                  <option value="1x">1x ao dia</option>
+                  <option value="2x">2x ao dia</option>
+                  <option value="3x">3x ao dia</option>
+                  <option value="4x">4x ao dia</option>
+                  <option value="6h">a cada 6 horas</option>
+                  <option value="8h">a cada 8 horas</option>
+                  <option value="12h">a cada 12 horas</option>
+                  <option value="24h">a cada 24 horas</option>
+                  <option value="alt">em dias alternados</option>
+                  <option value="sos">se necessário (S.O.S.)</option>
+                </select>
+              </div>
+            </div>
+            <div class="a4-row" style="align-items:center;">
+              <label class="a4-mini-check" style="margin-bottom:0;"><input type="checkbox" id="posologiaContinuaCE" style="width:auto;"> uso contínuo / sem prazo definido</label>
+              <span id="posologiaPorDiasWrapCE" style="font-size:11px;">por <input type="number" id="posologiaDiasCE" min="1" step="1" class="a4-inline-ctrl" style="width:40px;display:inline-block;"> dia(s)</span>
+            </div>
+            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Instruções:</span><input type="text" id="posologiaObsCE" placeholder="Instruções adicionais (opcional)"></div></div>
+            <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Resumo:</span><span class="rm-static" id="posologiaResumoCE" style="flex:1;font-style:italic;">—</span></div></div>
+            <input type="hidden" id="posologiaCE">
             <div class="a4-row">
               <div class="a4-field-inline"><span class="a4-label">Data:</span><input type="date" id="dataCE"></div>
               <div class="a4-field-inline" style="flex:2 1 220px;"><span class="a4-label">Assinatura do prescritor:</span><span class="rm-assinatura" id="mock-assinaturaCE" style="font-size:14px;">—</span></div>
@@ -769,8 +827,8 @@
    ========================================================= */
 (function(){
   const salvo = localStorage.getItem('farmapratica-theme');
-  if(salvo === 'dark'){
-    document.body.classList.remove('light');
+  if(salvo === 'light'){
+    document.body.classList.add('light');
   }
 })();
 function toggleTheme(){
@@ -979,6 +1037,15 @@ function obterPrincipioPrescrito(){
   return achados.length ? achados[0].principio : null;
 }
 
+function obterPrincipioPrescritoCE(){
+  const el = document.getElementById('medicamentoCE');
+  if(el.dataset.principio) return el.dataset.principio;
+  const val = el.value.trim();
+  if(!val || !medsCarregados) return null;
+  const achados = buscarMedicamentos(val, 1);
+  return achados.length ? achados[0].principio : null;
+}
+
 function abrirModalMedicamentos(contexto){
   modalContexto = contexto;
   const overlay = document.getElementById('modalOverlay');
@@ -1005,6 +1072,14 @@ function renderModalInicial(){
     if(principio){
       const refPrescrita = { principio, concentracao: getVal('concentracao'), forma: getVal('formaFarmaceutica') };
       renderModalGrupos(buscarPorPrincipio(principio), `Opções disponíveis para "${principio}" (mesmo princípio ativo) — dose prescrita: ${refPrescrita.concentracao || '—'} · ${refPrescrita.forma || '—'}`, refPrescrita);
+      return;
+    }
+  }
+  if(modalContexto === 'controle1'){
+    const principioCE = obterPrincipioPrescritoCE();
+    if(principioCE){
+      const refPrescritaCE = { principio: principioCE, concentracao: getVal('concentracaoCE'), forma: getVal('formaFarmaceuticaCE') };
+      renderModalGrupos(buscarPorPrincipio(principioCE), `Opções disponíveis para "${principioCE}" (mesmo princípio ativo) — dose prescrita: ${refPrescritaCE.concentracao || '—'} · ${refPrescritaCE.forma || '—'}`, refPrescritaCE);
       return;
     }
   }
@@ -1056,6 +1131,8 @@ function renderModalBusca(query){
   const itens = buscarMedicamentos(query, 40);
   const refPrescrita = (modalContexto === 'carimbo')
     ? { principio: obterPrincipioPrescrito(), concentracao: getVal('concentracao'), forma: getVal('formaFarmaceutica') }
+    : (modalContexto === 'controle1')
+    ? { principio: obterPrincipioPrescritoCE(), concentracao: getVal('concentracaoCE'), forma: getVal('formaFarmaceuticaCE') }
     : null;
   if(!itens.length){
     resultsEl.innerHTML = `<div class="ac-empty">Nenhum resultado na base CMED/ANVISA para "${query}".</div>
@@ -1135,6 +1212,49 @@ document.getElementById('posologiaContinua').addEventListener('change', function
   montarResumoPosologia();
 });
 
+function montarResumoPosologiaCE(){
+  const qtd = parseFloat((getVal('posologiaQtdCE')||'').replace(',','.'));
+  const unidadeKey = getVal('posologiaUnidadeCE');
+  const unidadeLabel = POSOLOGIA_UNIDADE_LABEL[unidadeKey] || 'unidade(s)';
+  const freqKey = getVal('posologiaFrequenciaCE');
+  const freq = FREQUENCIA_OPCOES[freqKey];
+  const continua = document.getElementById('posologiaContinuaCE').checked;
+  const dias = parseInt(getVal('posologiaDiasCE'), 10);
+  const obs = getVal('posologiaObsCE');
+
+  document.getElementById('posologiaPorDiasWrapCE').style.display = continua ? 'none' : 'inline';
+
+  let frase = '—';
+  let total = null;
+  if(!isNaN(qtd) && qtd > 0 && freq){
+    frase = `Tomar ${formatarNumeroPosologia(qtd)} ${unidadeLabel}, ${freq.label}`;
+    if(freq.multiplicador != null){
+      if(!continua && !isNaN(dias) && dias > 0){
+        total = qtd * freq.multiplicador * dias;
+        frase += `, por ${dias} dia(s)`;
+      } else {
+        frase += ' — uso contínuo (sem prazo definido)';
+      }
+    }
+    if(obs) frase += `. ${obs}`;
+    if(total != null) frase += ` · total calculado: ${formatarNumeroPosologia(total)} ${unidadeLabel}`;
+  }
+
+  document.getElementById('posologiaResumoCE').textContent = frase;
+  document.getElementById('posologiaCE').value = frase === '—' ? '' : frase;
+  dispararInput('posologiaCE');
+  return {total, unidadeKey};
+}
+
+['posologiaQtdCE','posologiaUnidadeCE','posologiaFrequenciaCE','posologiaDiasCE','posologiaObsCE'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', montarResumoPosologiaCE);
+  document.getElementById(id).addEventListener('change', montarResumoPosologiaCE);
+});
+document.getElementById('posologiaContinuaCE').addEventListener('change', function(){
+  document.getElementById('posologiaDiasCE').disabled = this.checked;
+  montarResumoPosologiaCE();
+});
+
 function formaParaUnidadeSelect(forma){
   const f = normalizar(forma);
   if(f.includes('gotas')) return 'gotas';
@@ -1193,6 +1313,23 @@ function selecionarDoModal(item){
     qv.dataset.caixasReais = '1'; // marca que este valor agora é nº de caixas, não texto espelhado
     atualizarDicaQtdVendida();
     atualizarCompatibilidadeVersoMedicamento();
+  } else if(modalContexto === 'prescricaoCE'){
+    const elCE = document.getElementById('medicamentoCE');
+    elCE.value = item.nome;
+    elCE.dataset.principio = item.principio || '';
+    elCE.dataset.laboratorio = item.laboratorio || '';
+    if(parsed.concentracao) document.getElementById('concentracaoCE').value = parsed.concentracao;
+    if(parsed.forma) document.getElementById('formaFarmaceuticaCE').value = parsed.forma;
+    const unidPosologiaCE = formaParaUnidadeSelect(parsed.forma);
+    if(unidPosologiaCE) document.getElementById('posologiaUnidadeCE').value = unidPosologiaCE;
+    if(parsed.unidadesPorEmbalagem != null && !parsed.unidadeEmbalagem){
+      document.getElementById('quantidadeCE').value = String(parsed.unidadesPorEmbalagem);
+      const unidCE = formaParaUnidadeSelect(parsed.forma);
+      if(unidCE) document.getElementById('unidadeCE').value = unidCE;
+    }
+    dispararInput('medicamentoCE'); dispararInput('concentracaoCE'); dispararInput('formaFarmaceuticaCE');
+    dispararInput('quantidadeCE'); dispararInput('unidadeCE');
+    montarResumoPosologiaCE();
   } else if(modalContexto === 'controle1'){
     document.getElementById('medicamento1CE').value = item.apresentacao ? `${item.nome} — ${item.apresentacao}` : item.nome;
     const el1 = document.getElementById('medicamento1CE');
@@ -1205,6 +1342,7 @@ function selecionarDoModal(item){
 function ligarModalMedicamentos(){
   document.getElementById('medicamento').addEventListener('click', ()=> abrirModalMedicamentos('prescricao'));
   document.getElementById('versoMedicamento').addEventListener('click', ()=> abrirModalMedicamentos('carimbo'));
+  document.getElementById('medicamentoCE').addEventListener('click', ()=> abrirModalMedicamentos('prescricaoCE'));
   document.getElementById('medicamento1CE').addEventListener('click', ()=> abrirModalMedicamentos('controle1'));
 
   document.getElementById('modalSearchInput').addEventListener('input', function(){
@@ -1794,7 +1932,10 @@ document.getElementById('validarControle').addEventListener('click', function(){
   const checks = [];
   const required = [
     ['nomeEmitenteCE','Nome do prescritor/instituição'],['inscricaoCE','Nº de inscrição no conselho e UF'],
-    ['nomePacienteCE','Nome do paciente'],['docPacienteCE','CPF/passaporte do paciente'],['dataCE','Data da prescrição'],
+    ['nomePacienteCE','Nome do paciente'],['docPacienteCE','CPF/passaporte do paciente'],
+    ['medicamentoCE','Nome do medicamento prescrito'],['concentracaoCE','Concentração'],['formaFarmaceuticaCE','Forma farmacêutica'],
+    ['quantidadeCE','Quantidade prescrita'],['posologiaCE','Posologia'],
+    ['dataCE','Data da prescrição'],
     ['nomeCompradorCE','Nome do comprador'],['docCompradorCE','CPF/passaporte do comprador'],
     ['enderecoCompradorCE','Endereço do comprador'],['cidadeCompradorCE','Cidade do comprador'],['ufCompradorCE','UF do comprador'],
     ['medicamento1CE','Item 1 — medicamento e apresentação'],['lote1CE','Item 1 — lote'],['qtdCaixas1CE','Item 1 — quantidade de caixas'],
@@ -1806,6 +1947,22 @@ document.getElementById('validarControle').addEventListener('click', function(){
     if(!filled) allFilled = false;
     checks.push({label:`${label} preenchido`, ok: filled, level: filled?'pass':'fail'});
   });
+
+  // Conferência: total calculado pela posologia × quantidade prescrita
+  const resultadoPosologiaCE = montarResumoPosologiaCE();
+  if(resultadoPosologiaCE.total != null && getVal('quantidadeCE')){
+    const qpCE = extrairNumero(getVal('quantidadeCE'));
+    const unidadeQtdCE = document.getElementById('unidadeCE').value;
+    if(resultadoPosologiaCE.unidadeKey !== unidadeQtdCE){
+      checks.push({label:`Não foi possível conferir automaticamente o total da posologia (${formatarNumeroPosologia(resultadoPosologiaCE.total)} ${POSOLOGIA_UNIDADE_LABEL[resultadoPosologiaCE.unidadeKey]}) contra a quantidade prescrita, pois as unidades são diferentes — confira manualmente`, ok:true, level:'warnitem'});
+    } else if(!isNaN(qpCE)){
+      if(Math.abs(resultadoPosologiaCE.total - qpCE) < 0.01){
+        checks.push({label:`Total calculado pela posologia (${formatarNumeroPosologia(resultadoPosologiaCE.total)}) confere com a quantidade prescrita (${qpCE})`, ok:true, level:'pass'});
+      } else {
+        checks.push({label:`Total calculado pela posologia (${formatarNumeroPosologia(resultadoPosologiaCE.total)}) NÃO bate com a quantidade prescrita (${qpCE}) — confirme com o prescritor antes de dispensar`, ok:true, level:'warnitem', divergente:true});
+      }
+    }
+  }
 
   const dataStr = getVal('dataCE');
   let dentroDoPrazo=false, dataFutura=false;
@@ -1831,6 +1988,19 @@ document.getElementById('validarControle').addEventListener('click', function(){
 function reiniciarControle(){
   ['medicamento1CE','lote1CE','qtdCaixas1CE','registro1CE','medicamento2CE','lote2CE','qtdCaixas2CE','medicamento3CE','lote3CE','qtdCaixas3CE'].forEach(id=> setVal(id,''));
   ['nomeEstabelecimentoCE','cnpjCnesCE','responsavelDispensacaoCE','dataDispensacaoCE'].forEach(id=> setVal(id,''));
+
+  const medCE = document.getElementById('medicamentoCE');
+  medCE.value = ''; delete medCE.dataset.principio; delete medCE.dataset.laboratorio;
+  ['concentracaoCE','formaFarmaceuticaCE','quantidadeCE'].forEach(id=> setVal(id,''));
+  document.getElementById('unidadeCE').value = 'comprimidos';
+  setVal('posologiaQtdCE','1');
+  document.getElementById('posologiaUnidadeCE').value = 'comprimidos';
+  document.getElementById('posologiaFrequenciaCE').value = '1x';
+  document.getElementById('posologiaContinuaCE').checked = false;
+  document.getElementById('posologiaDiasCE').disabled = false;
+  setVal('posologiaDiasCE','');
+  setVal('posologiaObsCE','');
+  montarResumoPosologiaCE();
 
   gerarDadosControle();
 
@@ -1879,6 +2049,7 @@ document.addEventListener('DOMContentLoaded', function(){
   sincronizarDispensacaoTal();
 
   gerarDadosControle();
+  montarResumoPosologiaCE();
 
   ligarModalMedicamentos();
   carregarMedicamentos();
