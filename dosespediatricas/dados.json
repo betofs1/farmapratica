@@ -50,12 +50,27 @@
           "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
           "mgPorComprimido": 500,
           "apresentacaoTexto": "cartela com 20 comprimidos"
+        },
+        {
+          "tipo": "liquido",
+          "rotulo": "Suspensão oral 100 mg/mL",
+          "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
+          "concentracaoMgMl": 100
         }
       ],
       "observacoesExtras": [
         "Em neonatos e lactentes < 3 meses, individualizar dose e intervalo com avaliação clínica."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Tylenol",
+        "Sonridor",
+        "Tylemax",
+        "Vick Pyrena",
+        "Tylalgin",
+        "Pratium",
+        "Cimegripe Dor e Febre"
+      ]
     },
     {
       "id": "dipirona",
@@ -98,12 +113,28 @@
           "restricoes": [
             "Uso intramuscular e endovenoso reservado a ambiente com suporte para monitorização; individualizar em lactentes pequenos."
           ]
+        },
+        {
+          "tipo": "supositorio",
+          "rotulo": "Supositório 300 mg",
+          "viaTexto": "via retal a cada 6 horas se dor ou febre",
+          "mgPorSupositorio": 300,
+          "apresentacaoTexto": "caixa com 5 supositórios"
         }
       ],
       "observacoesExtras": [
         "Uso não recomendado em menores de 3 meses ou peso inferior a 5 kg, conforme bula."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Novalgina",
+        "Anador",
+        "Baralgin M",
+        "Conmel",
+        "Magnopyrol",
+        "Dorflex Uno",
+        "Termopirona"
+      ]
     },
     {
       "id": "ibuprofeno",
@@ -146,7 +177,16 @@
       "observacoesExtras": [
         "Evitar em desidratação, varicela e suspeita de dengue, pelo risco de sangramento."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Advil",
+        "Alivium",
+        "Buscofem",
+        "Artril",
+        "Ibupril",
+        "Ibufran",
+        "Nurofen"
+      ]
     },
     {
       "id": "naproxeno",
@@ -182,7 +222,13 @@
       "observacoesExtras": [
         "Uso pediátrico geralmente reservado a indicação reumatológica; confirmar protocolo."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Flanax",
+        "Naprosyn",
+        "Naxotec",
+        "Naprox"
+      ]
     },
     {
       "id": "amoxicilina",
@@ -224,7 +270,16 @@
       "observacoesExtras": [
         "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Amoxil",
+        "Novocilin",
+        "Amoxadene",
+        "Velamox",
+        "Duzimicin",
+        "Uni Amox",
+        "Axepen"
+      ]
     },
     {
       "id": "amoxi_clav",
@@ -259,7 +314,16 @@
       "observacoesExtras": [
         "Dose calculada com base no componente amoxicilina; observar dose máxima de clavulanato na bula."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Clavulin",
+        "Clavulin BD",
+        "Novamox 2x",
+        "Sinot Clav",
+        "Atak Clav",
+        "Sigma-Clav BD",
+        "Lânico"
+      ]
     },
     {
       "id": "azitromicina",
@@ -294,7 +358,14 @@
       "observacoesExtras": [
         "Esquema clássico: 10 mg/kg no 1º dia, 5 mg/kg do 2º ao 5º dia (1x/dia). Cálculo refere-se ao 1º dia."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Zitromax",
+        "Astro",
+        "Zirk",
+        "Azitromed",
+        "Azi"
+      ]
     },
     {
       "id": "cefalexina",
@@ -329,7 +400,16 @@
       "observacoesExtras": [
         "Em infecções graves, doses de até 100 mg/kg/dia podem ser usadas — confirmar protocolo."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Keflex",
+        "Keforal",
+        "Keflaxina",
+        "Lexin",
+        "Cellexina",
+        "Neoceflex",
+        "Cefanid"
+      ]
     },
     {
       "id": "smx_tmp",
@@ -364,7 +444,16 @@
       "observacoesExtras": [
         "Dose calculada com base no componente trimetoprima (TMP). Contraindicado abaixo de 2 meses."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Bactrim",
+        "Bactrim F",
+        "Subtrax",
+        "Bacteracin",
+        "Benectrin",
+        "Espectroprima",
+        "Medtrim"
+      ]
     },
     {
       "id": "loratadina",
@@ -403,7 +492,14 @@
         }
       ],
       "observacoesExtras": [],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Claritin",
+        "Histadin",
+        "Loratamed",
+        "Loritil",
+        "Cloratadd"
+      ]
     },
     {
       "id": "cetirizina",
@@ -446,7 +542,15 @@
       "observacoesExtras": [
         "Dose fixa por faixa etária, não por peso — confirmar faixa exata na bula antes de dispensar."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Zyrtec",
+        "Reactine",
+        "Aletir",
+        "Cetihexal",
+        "Cetirtec",
+        "Zetalerg"
+      ]
     },
     {
       "id": "dexclorfeniramina",
@@ -481,7 +585,14 @@
       "observacoesExtras": [
         "Efeito sedativo (anti-histamínico de 1ª geração) — orientar sobre sonolência."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Polaramine",
+        "Histamin",
+        "Hystin",
+        "Alergomine",
+        "Hislor"
+      ]
     },
     {
       "id": "hidroxizina",
@@ -516,7 +627,14 @@
       "observacoesExtras": [
         "Sedativo — cautela em associação com outros depressores do SNC."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Hixizine",
+        "Drotizin",
+        "Droxy",
+        "Hidroalerg",
+        "Hidroxine"
+      ]
     },
     {
       "id": "ambroxol",
@@ -558,7 +676,15 @@
       "observacoesExtras": [
         "Atentar para apresentação infantil vs. adulto (concentrações diferentes)."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Mucosolvan",
+        "Fluibron",
+        "Sedavan",
+        "Ambrol",
+        "Bronxol",
+        "Expectuss"
+      ]
     },
     {
       "id": "bromexina",
@@ -599,7 +725,15 @@
       "observacoesExtras": [
         "Dose orientativa por faixa etária; confirmar na bula."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Bisolvon",
+        "Broncatar",
+        "Bisuran",
+        "Bequidex",
+        "Bromexpec",
+        "Bronxina"
+      ]
     },
     {
       "id": "domperidona",
@@ -641,7 +775,11 @@
       "observacoesExtras": [
         "Confirmar indicação e restrições vigentes na bula atual antes de recomendar."
       ],
-      "fonte": "Bula ANVISA (com nota de segurança) / SBP"
+      "fonte": "Bula ANVISA (com nota de segurança) / SBP",
+      "nomesComerciais": [
+        "Peridal",
+        "Motilium"
+      ]
     },
     {
       "id": "ondansetrona",
@@ -689,7 +827,12 @@
       "observacoesExtras": [
         "Uso mais comum em ambiente hospitalar/pronto atendimento para vômitos; confirmar protocolo institucional."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Vonau",
+        "Nausedron",
+        "Zofran"
+      ]
     },
     {
       "id": "simeticona",
@@ -726,7 +869,12 @@
       "observacoesExtras": [
         "Sem toxicidade sistêmica relevante; dose orientativa em gotas/kg, não em mg/kg fixo."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Luftal",
+        "Flagass",
+        "Antigases"
+      ]
     },
     {
       "id": "nistatina",
@@ -756,7 +904,16 @@
         }
       ],
       "observacoesExtras": [],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Micostatin",
+        "Nistatina FURP",
+        "Albistin",
+        "Canditrat",
+        "Micostalab",
+        "Vagistatin",
+        "Nistax"
+      ]
     },
     {
       "id": "fluconazol",
@@ -791,7 +948,15 @@
       "observacoesExtras": [
         "Em candidíase sistêmica, dose de ataque de 6 mg/kg no 1º dia pode ser indicada — confirmar protocolo."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Triazol",
+        "Zoltec",
+        "Flucanil",
+        "Zelix",
+        "Pronazol",
+        "Flucovil"
+      ]
     },
     {
       "id": "albendazol",
@@ -833,7 +998,15 @@
       "observacoesExtras": [
         "Dose única, independente do peso; baseada apenas na idade."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Zentel",
+        "Albel",
+        "Vermital",
+        "Parasin",
+        "Beltazin",
+        "Zolben"
+      ]
     },
     {
       "id": "mebendazol",
@@ -870,7 +1043,15 @@
       "observacoesExtras": [
         "Dose fixa, não depende do peso corporal."
       ],
-      "fonte": "Bula ANVISA / SBP"
+      "fonte": "Bula ANVISA / SBP",
+      "nomesComerciais": [
+        "Pantelmin",
+        "Vermiben",
+        "Necamin",
+        "Neo Mebend",
+        "Belmirax",
+        "Helmilab"
+      ]
     },
     {
       "id": "secnidazol",
@@ -906,7 +1087,15 @@
       "observacoesExtras": [
         "Dose única — administrar preferencialmente após refeição."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Secnidal",
+        "Unigyn",
+        "Secnimax",
+        "Secfar",
+        "Sectil",
+        "Neodazol"
+      ]
     },
     {
       "id": "prednisolona",
@@ -1006,7 +1195,15 @@
         "Não associar com antitussígenos — a redução do reflexo da tosse pode causar acúmulo de secreções.",
         "Contém sorbitol — cautela em diabéticos e intolerância hereditária à frutose."
       ],
-      "fonte": "Bula ANVISA (Eurofarma/EMS/Geolab)"
+      "fonte": "Bula ANVISA (Eurofarma/EMS/Geolab)",
+      "nomesComerciais": [
+        "Fluimucil",
+        "Flucistein",
+        "Fluiteína",
+        "Cisteil",
+        "Pneumucil",
+        "Mucos Expec"
+      ]
     },
     {
       "id": "acebrofilina",
@@ -1063,7 +1260,12 @@
         "Sem dose máxima estabelecida pelo fabricante para as faixas etárias descritas.",
         "Dose de 2 a 3 anos calculada por peso (2 mg/kg/dia); demais faixas seguem dose fixa por idade, conforme bula."
       ],
-      "fonte": "Bula ANVISA (Ache/Eurofarma/Cimed/Geolab)"
+      "fonte": "Bula ANVISA (Ache/Eurofarma/Cimed/Geolab)",
+      "nomesComerciais": [
+        "Brondilat",
+        "Filinar",
+        "Melysse"
+      ]
     },
     {
       "id": "levodropropizina",
@@ -1099,7 +1301,12 @@
         "Contraindicado para menores de 2 anos.",
         "Dose máxima diária não deve ultrapassar 30 mL de xarope (equivalente a ~180 mg)."
       ],
-      "fonte": "Bula ANVISA (Aché/EMS)"
+      "fonte": "Bula ANVISA (Aché/EMS)",
+      "nomesComerciais": [
+        "Antux",
+        "Percof",
+        "Zyplo"
+      ]
     },
     {
       "id": "dropropizina",
@@ -1153,7 +1360,14 @@
         "Contraindicado em tosse produtiva (com catarro), insuficiência respiratória grave e asma.",
         "Cada administração é feita 4 vezes ao dia — dose exibida refere-se a cada tomada."
       ],
-      "fonte": "Bula ANVISA (Biosintética/Prati-Donaduzzi)"
+      "fonte": "Bula ANVISA (Biosintética/Prati-Donaduzzi)",
+      "nomesComerciais": [
+        "Vibral",
+        "Neotoss",
+        "Flextoss",
+        "Vibrazin",
+        "Atossion"
+      ]
     },
     {
       "id": "betametasona",
@@ -1246,7 +1460,15 @@
         "Associação de anti-histamínico (dexclorfeniramina) com corticoide (betametasona) — a dose deve ser individualizada pela gravidade clínica, não apenas pelo peso.",
         "Xarope/gotas contraindicados para menores de 2 anos; comprimidos contraindicados para menores de 12 anos."
       ],
-      "fonte": "Bula ANVISA (Cifarma/Cristália/Pharlab/Prati-Donaduzzi)"
+      "fonte": "Bula ANVISA (Cifarma/Cristália/Pharlab/Prati-Donaduzzi)",
+      "nomesComerciais": [
+        "Celestamine",
+        "Celergin",
+        "Celestrat",
+        "Kóide D",
+        "Dextaflam",
+        "Lestamil"
+      ]
     },
     {
       "id": "fexofenadina",
@@ -1297,7 +1519,15 @@
         "Faixa de 6 a 23 meses aprovada apenas para urticária idiopática crônica; rinite alérgica aprovada a partir de 2 anos.",
         "Dose não é calculada por mg/kg — é fixa por faixa etária."
       ],
-      "fonte": "Bula ANVISA (Allegra/genéricos)"
+      "fonte": "Bula ANVISA (Allegra/genéricos)",
+      "nomesComerciais": [
+        "Allegra",
+        "Allexofedrin",
+        "Altiva",
+        "Desrinite",
+        "Fexodane",
+        "Fexoliv"
+      ]
     },
     {
       "id": "claritromicina",
@@ -1339,7 +1569,14 @@
       "observacoesExtras": [
         "Crianças com menos de 12 anos devem usar a suspensão pediátrica, não o comprimido."
       ],
-      "fonte": "Bula ANVISA (Klaricid/EMS)"
+      "fonte": "Bula ANVISA (Klaricid/EMS)",
+      "nomesComerciais": [
+        "Klaricid",
+        "Klaricid UD",
+        "Clabat",
+        "Clarilib",
+        "Bulansi"
+      ]
     },
     {
       "id": "penicilina_benzatina",
@@ -1376,7 +1613,14 @@
         "Dose expressa em Unidades Internacionais (UI), não em mg — cálculo automático de volume não se aplica.",
         "Investigar histórico de alergia a penicilinas antes da administração."
       ],
-      "fonte": "Bula ANVISA (Benzetacil/Eurofarma)"
+      "fonte": "Bula ANVISA (Benzetacil/Eurofarma)",
+      "nomesComerciais": [
+        "Benzetacil",
+        "Bepeben",
+        "Biozatin",
+        "Benzatron",
+        "Benzilpen"
+      ]
     },
     {
       "id": "nitrofurantoina",
@@ -1412,7 +1656,13 @@
         "Contraindicado em neonatos com menos de 1 mês (risco de anemia hemolítica por imaturidade enzimática).",
         "Indicado para infecção urinária baixa; não atinge níveis terapêuticos adequados em pielonefrite."
       ],
-      "fonte": "Bula ANVISA (Macrodantina/genéricos)"
+      "fonte": "Bula ANVISA (Macrodantina/genéricos)",
+      "nomesComerciais": [
+        "Macrodantina",
+        "Nitrofen",
+        "Trofurim",
+        "Hantina"
+      ]
     },
     {
       "id": "cefadroxila",
@@ -1447,7 +1697,16 @@
       "observacoesExtras": [
         "Cefalosporina de 1ª geração; boa opção para impetigo e infecções de pele/partes moles sensíveis."
       ],
-      "fonte": "Bula ANVISA (genéricos)"
+      "fonte": "Bula ANVISA (genéricos)",
+      "nomesComerciais": [
+        "Cefamox",
+        "Cedroxil",
+        "Cefanaxil",
+        "Neo Cefadril",
+        "Certara",
+        "Dacefa",
+        "Osadrox"
+      ]
     },
     {
       "id": "eritromicina",
@@ -1482,7 +1741,13 @@
       "observacoesExtras": [
         "Alternativa em alergia a betalactâmicos; associada a estenose hipertrófica do piloro em uso neonatal precoce — cautela em < 2 semanas de vida."
       ],
-      "fonte": "Bula ANVISA (genéricos)"
+      "fonte": "Bula ANVISA (genéricos)",
+      "nomesComerciais": [
+        "Ilosone",
+        "Eritrex",
+        "Rubromicin",
+        "Tromaxil"
+      ]
     },
     {
       "id": "nimesulida",
@@ -1517,7 +1782,16 @@
       "observacoesExtras": [
         "USO PEDIÁTRICO CONTRAINDICADO PARA MENORES DE 12 ANOS no Brasil, por determinação da ANVISA, devido ao risco de hepatotoxicidade grave — cálculo mostrado apenas como referência para ≥ 12 anos."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Nisulid",
+        "Scaflam",
+        "Nimesulix",
+        "Flogilid",
+        "Cimelid",
+        "Nimed",
+        "Nilsagen"
+      ]
     },
     {
       "id": "guaifenesina",
@@ -1545,7 +1819,15 @@
       "observacoesExtras": [
         "Valores de referência geral (expectorante); confirmar posologia exata na bula do produto específico dispensado, pois pode variar entre fabricantes."
       ],
-      "fonte": "Bula de fabricante (referência geral) — confirmar produto específico"
+      "fonte": "Bula de fabricante (referência geral) — confirmar produto específico",
+      "nomesComerciais": [
+        "Transpulmin",
+        "Frenotosse",
+        "Glyteol",
+        "Expectovic",
+        "Cimetosse",
+        "Expecvem"
+      ]
     },
     {
       "id": "omeprazol",
@@ -1581,7 +1863,12 @@
         "Cápsulas não devem ser mastigadas; em crianças pequenas pode ser necessário abrir a cápsula e dispersar os grânulos (confirmar orientação com o prescritor).",
         "Faixa de dose ampla (0,7–3,3 mg/kg/dia) conforme indicação (DRGE, esofagite); iniciar pela menor dose eficaz."
       ],
-      "fonte": "Bula ANVISA / literatura pediátrica de referência"
+      "fonte": "Bula ANVISA / literatura pediátrica de referência",
+      "nomesComerciais": [
+        "Losec",
+        "Gastrium",
+        "Peprazol"
+      ]
     },
     {
       "id": "racecadotrila",
@@ -1618,7 +1905,10 @@
         "Manter a hidratação oral (soro de reidratação) durante todo o tratamento — a racecadotrila não substitui a reposição de líquidos.",
         "Uso limitado a, no máximo, 7 dias."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Tiorfan"
+      ]
     },
     {
       "id": "peg3350",
@@ -1647,7 +1937,10 @@
         "Dose de manutenção para constipação funcional (0,4–0,8 g/kg/dia). Dose de desimpactação fecal é maior e deve ser individualizada pelo médico.",
         "Titular a dose conforme resposta clínica (frequência e consistência das evacuações)."
       ],
-      "fonte": "Bula ANVISA (Muvinlax/genéricos) / referências de constipação funcional pediátrica"
+      "fonte": "Bula ANVISA (Muvinlax/genéricos) / referências de constipação funcional pediátrica",
+      "nomesComerciais": [
+        "Peg-Lax"
+      ]
     },
     {
       "id": "loperamida",
@@ -1675,7 +1968,10 @@
         "Dose não é calculada por peso — é orientada por evento (a cada evacuação líquida), respeitando o teto máximo diário.",
         "Manter hidratação oral; loperamida não substitui a reposição de líquidos."
       ],
-      "fonte": "Bula ANVISA"
+      "fonte": "Bula ANVISA",
+      "nomesComerciais": [
+        "Imosec"
+      ]
     },
     {
       "id": "miconazol_oral",
@@ -1715,7 +2011,10 @@
       "observacoesExtras": [
         "Manter o gel em contato com a mucosa o maior tempo possível antes de engolir; tratar por, no mínimo, 7 dias após o desaparecimento dos sintomas."
       ],
-      "fonte": "Bula ANVISA (Daktarin Oral Gel/genéricos)"
+      "fonte": "Bula ANVISA (Daktarin Oral Gel/genéricos)",
+      "nomesComerciais": [
+        "Daktarin"
+      ]
     },
     {
       "id": "metronidazol",
@@ -1750,7 +2049,15 @@
       "observacoesExtras": [
         "Dose de referência para giardíase; a amebíase usa esquema posológico diferente (mais prolongado/dose maior) — confirmar na bula conforme indicação."
       ],
-      "fonte": "Bula ANVISA (Flagyl Pediátrico)"
+      "fonte": "Bula ANVISA (Flagyl Pediátrico)",
+      "nomesComerciais": [
+        "Flagyl",
+        "Helmizol",
+        "Metroniflex",
+        "Neo Metrodazol",
+        "Nidazofarma",
+        "Trinodazol"
+      ]
     },
     {
       "id": "ivermectina",
@@ -1778,7 +2085,15 @@
         "Não utilizar em crianças com menos de 15 kg ou menores de 5 anos, conforme bula.",
         "Para escabiose/pediculose, pode repetir dose única após 7 a 14 dias conforme resposta clínica."
       ],
-      "fonte": "Bula ANVISA (Revectina/genéricos)"
+      "fonte": "Bula ANVISA (Revectina/genéricos)",
+      "nomesComerciais": [
+        "Revectina",
+        "Ivermec",
+        "Vermectil",
+        "Leverctin",
+        "Iverneo",
+        "Plurimec"
+      ]
     },
     {
       "id": "praziquantel",
@@ -1806,7 +2121,12 @@
         "Segurança em menores de 4 anos não bem estabelecida — confirmar indicação e faixa etária na bula do produto e diretriz vigente.",
         "Para teníase, a dose usual é menor (10–25 mg/kg dose única) — confirmar indicação antes de calcular."
       ],
-      "fonte": "Bula ANVISA / referências de esquistossomose"
+      "fonte": "Bula ANVISA / referências de esquistossomose",
+      "nomesComerciais": [
+        "Cestox",
+        "Cisticid",
+        "Praziquantel Farmanguinhos"
+      ]
     },
     {
       "id": "nitazoxanida",
@@ -1853,7 +2173,15 @@
       "observacoesExtras": [
         "Antiparasitário de amplo espectro (protozoários e helmintos); dose fixa por idade, não por peso."
       ],
-      "fonte": "Bula ANVISA (Annita/genéricos)"
+      "fonte": "Bula ANVISA (Annita/genéricos)",
+      "nomesComerciais": [
+        "Annita",
+        "Azox",
+        "Naxxagran",
+        "Nydda",
+        "Zoxylab",
+        "Trinida"
+      ]
     },
     {
       "id": "vitamina_d3",
@@ -2211,7 +2539,14 @@
         "A via oral (xarope) não é recomendada para crises agudas, devido ao início de ação lento (cerca de 30 min) e maior incidência de tremores/taquicardia; é mais usada em manutenção quando a via inalatória não está disponível.",
         "Efeitos adversos comuns: taquicardia, tremores, hipocalemia em doses altas."
       ],
-      "fonte": "Bula ANVISA (Aerolin/genéricos) / Neoped / PedBook"
+      "fonte": "Bula ANVISA (Aerolin/genéricos) / Neoped / PedBook",
+      "nomesComerciais": [
+        "Aerolin",
+        "Aerojet",
+        "Neutoss",
+        "Aerodini",
+        "Butalab"
+      ]
     },
     {
       "id": "budesonida_nebulizacao",
@@ -2239,7 +2574,10 @@
         "Indicado para manutenção de asma (anti-inflamatório inalatório) e crupe (laringotraqueobronquite viral) em bebês e crianças.",
         "Uso prolongado em altas doses pode associar-se a candidíase orofaríngea — orientar higiene oral/lavagem da face após uso."
       ],
-      "fonte": "Bula ANVISA (Pulmicort/Busonid) / Neoped"
+      "fonte": "Bula ANVISA (Pulmicort/Busonid) / Neoped",
+      "nomesComerciais": [
+        "Pulmicort"
+      ]
     },
     {
       "id": "saccharomyces_boulardii",
@@ -2267,7 +2605,11 @@
         "Probiótico usado como adjuvante em diarreia aguda e diarreia associada a antibióticos.",
         "Se em uso concomitante com antibióticos, administrar a distância (antes ou entre as doses do antibiótico) para preservar a viabilidade do probiótico."
       ],
-      "fonte": "Bula ANVISA (Floratil/Repoflor)"
+      "fonte": "Bula ANVISA (Floratil/Repoflor)",
+      "nomesComerciais": [
+        "Floratil",
+        "Repoflor"
+      ]
     },
     {
       "id": "desloratadina",
@@ -2320,7 +2662,15 @@
         "Dose fixa por faixa etária, não calculada por peso.",
         "Cautela em pacientes com histórico pessoal ou familiar de convulsões."
       ],
-      "fonte": "Bula ANVISA (Desalex/genéricos)"
+      "fonte": "Bula ANVISA (Desalex/genéricos)",
+      "nomesComerciais": [
+        "Desalex",
+        "Esalerg",
+        "Allof",
+        "Leg",
+        "Aviant",
+        "Deslin"
+      ]
     },
     {
       "id": "permetrina",
@@ -2349,7 +2699,13 @@
         "Também usada como adjuvante no tratamento da pediculose (capilar) em produtos específicos ≥ 2 anos.",
         "Evitar contato com olhos e mucosas."
       ],
-      "fonte": "Bula ANVISA / Portal Afya (Dermatologia Pediátrica)"
+      "fonte": "Bula ANVISA / Portal Afya (Dermatologia Pediátrica)",
+      "nomesComerciais": [
+        "Permenati",
+        "Kaodine",
+        "Keltrina Plus",
+        "Pioletal Plus"
+      ]
     },
     {
       "id": "hidrocortisona_creme",
@@ -2407,7 +2763,12 @@
         "Diluir sempre em 1 litro de água — soluções mais concentradas que o recomendado podem ser perigosas (hipernatremia).",
         "Sinais de desidratação grave (letargia, olhos fundos, sinal da prega positivo, incapacidade de ingerir líquidos) exigem avaliação médica imediata para hidratação venosa (Plano C)."
       ],
-      "fonte": "Ministério da Saúde / OMS / SBP (Guia de Diarreia Aguda)"
+      "fonte": "Ministério da Saúde / OMS / SBP (Guia de Diarreia Aguda)",
+      "nomesComerciais": [
+        "Hidraplex",
+        "Oraldrat",
+        "Rehidrat"
+      ]
     },
     {
       "id": "bromoprida",
@@ -2434,7 +2795,11 @@
         "Dose máxima diária usual: 60 mg/dia (adultos); em crianças, respeitar o cálculo por peso.",
         "Cautela em pacientes epilépticos ou em uso de outras drogas com potencial de reações extrapiramidais."
       ],
-      "fonte": "Bula ANVISA (EMS/Teuto)"
+      "fonte": "Bula ANVISA (EMS/Teuto)",
+      "nomesComerciais": [
+        "Digesan",
+        "Plamet"
+      ]
     },
     {
       "id": "diosmectita",
@@ -2558,7 +2923,11 @@
         "Antibiótico aminoglicosídeo tópico para infecções bacterianas externas do olho.",
         "Se usar mais de um colírio, aguardar intervalo mínimo de 10 minutos entre eles."
       ],
-      "fonte": "Bula ANVISA (Tobrex/genéricos)"
+      "fonte": "Bula ANVISA (Tobrex/genéricos)",
+      "nomesComerciais": [
+        "Tobrex",
+        "Tobracin"
+      ]
     },
     {
       "id": "ciprofloxacino_otologico",
@@ -2585,7 +2954,11 @@
       "observacoesExtras": [
         "Antibiótico tópico de amplo espectro para otite externa aguda; opção sem associação a corticoide."
       ],
-      "fonte": "Bula ANVISA (Ciloxan Otológico/genéricos)"
+      "fonte": "Bula ANVISA (Ciloxan Otológico/genéricos)",
+      "nomesComerciais": [
+        "Ciloxan Otológico",
+        "Otofoxin"
+      ]
     },
     {
       "id": "neo_poli_fluo_otologico",

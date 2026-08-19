@@ -10,41 +10,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0f1115;
-    --panel: #181b21;
-    --sidebar: #14161b;
-    --card: #20232b;
-    --card-hover: #272b34;
-    --border: #2e323c;
+    --header: #202126;
+    --bg: #2a2a2e;
+    --panel: #313136;
+    --sidebar: #26262b;
+    --card: #2f2f34;
+    --card-hover: #38383e;
+    --border: #43434a;
     --red-dark: #b4192a;
     --red: #b4192a;
     --red-bright: #ef2d40;
     --red-glow: rgba(239,45,64,0.18);
-    --text: #f4f5f7;
-    --text-dim: #8b8f9a;
-    --text-gray: #c5c8d0;
+    --text: #f2f2f3;
+    --text-dim: #96969b;
+    --text-gray: #c9c9cd;
     --amber: #f2b84b;
     --pill-bg: #33232a;
     --pill-text: #f6cf74;
-    --sidebar-w: 260px;
+    --sidebar-w: 292px;
     --hover-tint: rgba(255,255,255,.06);
   }
 
   /* ---------- Tema claro ---------- */
   body.light{
-    --bg: #e7eaef;
-    --panel: #f0f2f5;
-    --sidebar: #f5f6f9;
+    --header: #eceef0;
+    --bg: #e3e4e7;
+    --panel: #f6f7f8;
+    --sidebar: #eaebee;
     --card: #ffffff;
-    --card-hover: #faf1f1;
-    --border: #d5d9e0;
+    --card-hover: #f4f4f5;
+    --border: #d2d3d7;
     --red-dark: #a10f1f;
     --red: #a10f1f;
     --red-bright: #c81328;
     --red-glow: rgba(200,19,40,0.12);
-    --text: #171a20;
-    --text-dim: #6b7180;
-    --text-gray: #454a55;
+    --text: #1c1c1e;
+    --text-dim: #6c6c70;
+    --text-gray: #47474b;
     --amber: #a86a06;
     --pill-bg: #fbe9ea;
     --pill-text: #8f0f1f;
@@ -57,21 +59,13 @@
   body.light .theme-toggle .icon-moon{ display:block; }
   body.light .formulacao{ box-shadow: 0 2px 10px rgba(23,26,32,.06); }
   body.light .sidebar{ box-shadow: 2px 0 16px rgba(23,26,32,.05); }
-  body.light{
-    background:
-      radial-gradient(900px 500px at 15% -10%, rgba(161,15,31,.05), transparent 60%),
-      radial-gradient(700px 500px at 100% 0%, rgba(168,106,6,.04), transparent 55%),
-      var(--bg);
-  }
+  body.light{ background: var(--bg); }
   *{ box-sizing: border-box; }
   html,body{ height:100%; }
   body{
     margin:0;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    background:
-      radial-gradient(900px 500px at 15% -10%, rgba(239,45,64,.07), transparent 60%),
-      radial-gradient(700px 500px at 100% 0%, rgba(242,184,75,.04), transparent 55%),
-      var(--bg);
+    background: var(--bg);
     color: var(--text);
     display:flex;
     flex-direction: column;
@@ -88,12 +82,13 @@
     min-height: 64px;
     flex-shrink:0;
     padding: 10px 24px 10px 0;
-    background: var(--sidebar);
+    background: var(--header);
     border-bottom: 1px solid var(--border);
     position: relative;
     box-shadow: 0 2px 20px rgba(0,0,0,.15);
     z-index: 3;
   }
+  body.light .topbar-app{ box-shadow: 0 2px 12px rgba(0,0,0,.06); }
   .theme-toggle{
     position:absolute;
     right:24px;
@@ -109,9 +104,12 @@
     background:transparent;
     color:var(--text);
     cursor:pointer;
-    transition: background-color .15s ease, border-color .15s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,.16);
+    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
   }
-  .theme-toggle:hover{ background: var(--hover-tint); }
+  body.light .theme-toggle{ box-shadow: 0 1px 3px rgba(23,26,32,.08); }
+  .theme-toggle:hover{ background: var(--hover-tint); box-shadow: 0 3px 10px rgba(0,0,0,.22); }
+  body.light .theme-toggle:hover{ box-shadow: 0 3px 10px rgba(23,26,32,.12); }
   .theme-toggle svg{ width:18px; height:18px; }
   .theme-toggle .icon-moon{ display:none; }
   @media (max-width: 800px){
@@ -135,24 +133,28 @@
     gap:14px;
   }
   .brand img{
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
   }
   .brand-text h1{
-    font-size:19px;
+    font-size:25px;
     font-weight:800;
     letter-spacing:-0.3px;
     line-height:1.1;
     margin:0;
     color: var(--text);
+    text-shadow: 0 2px 16px rgba(0,0,0,.5);
   }
+  body.light .brand-text h1{ text-shadow: 0 1px 8px rgba(0,0,0,.12); }
   .brand-text h1 span{ color:var(--red-bright); }
   .brand-text p{
-    font-size:11.5px;
+    font-size:12.5px;
     color:var(--text-gray);
     font-weight:400;
     margin:2px 0 0;
+    text-shadow: 0 1px 8px rgba(0,0,0,.35);
   }
+  body.light .brand-text p{ text-shadow: 0 1px 4px rgba(0,0,0,.08); }
   .topbar-app .titulo-central{
     grid-column:2;
     display:flex;
@@ -161,10 +163,22 @@
     text-align:center;
   }
   .topbar-app .titulo-principal{
-    font-size: 1.1rem;
+    font-size: 1.28rem;
     font-weight:800;
     white-space:nowrap;
-    letter-spacing:.6px;
+    letter-spacing:1.2px;
+    color: var(--text);
+    text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.38);
+  }
+  .topbar-app .titulo-principal .titulo-accent{
+    color: var(--text);
+    text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.38);
+  }
+  body.light .topbar-app .titulo-principal{
+    text-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 6px rgba(23,26,32,.18);
+  }
+  body.light .topbar-app .titulo-principal .titulo-accent{
+    text-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 6px rgba(23,26,32,.18);
   }
   .topbar-app .titulo-descricao{
     font-size: .74rem;
@@ -229,6 +243,7 @@
   .sidebar-list{
     flex:1;
     overflow-y:auto;
+    overflow-x:hidden;
     padding: 6px 12px 20px;
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
@@ -240,19 +255,20 @@
     font-size:.66rem;
     text-transform:uppercase;
     letter-spacing:1.1px;
-    color: var(--red-bright);
+    color: var(--text);
     font-weight:800;
-    margin: 22px 10px 8px;
-    opacity:.9;
+    opacity:.95;
+    transition: background-color .5s ease, color .5s ease;
   }
-  .cat-header:first-child{ margin-top: 6px; }
+  .cat-group{ margin-top: 18px; }
+  .cat-group:first-child{ margin-top: 6px; }
   .drug-item{
     display:flex;
     align-items:center;
     width:100%;
     text-align:left;
-    background:none;
-    border:none;
+    background: var(--panel);
+    border: 1px solid var(--border);
     border-left: 3px solid transparent;
     color: var(--text-gray);
     font-size:.85rem;
@@ -260,13 +276,17 @@
     padding: 8px 12px 8px 11px;
     border-radius:8px;
     cursor:pointer;
-    margin-bottom: 2px;
-    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+    margin: 0 0 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.16);
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
   }
-  .drug-item:hover{ background: var(--hover-tint); color: var(--text); }
+  body.light .drug-item{ box-shadow: 0 1px 2px rgba(23,26,32,.05); }
+  .drug-item:hover{ background: var(--card-hover); color: var(--text); border-color: var(--red-bright); box-shadow: 0 4px 12px rgba(0,0,0,.26); }
+  body.light .drug-item:hover{ box-shadow: 0 4px 12px rgba(23,26,32,.1); }
   .drug-item.active{
     background: var(--red-glow);
     color: var(--red-bright);
+    border-color: var(--red-bright);
     border-left-color: var(--red-bright);
     font-weight:700;
   }
@@ -310,6 +330,47 @@
     border-radius: 20px;
     margin-top:8px;
   }
+  .breadcrumb-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+    color: var(--amber);
+    background: rgba(232,184,75,.08);
+    border: 1px solid rgba(232,184,75,.3);
+    padding: 4px 12px 4px 8px;
+    border-radius: 20px;
+    margin-bottom:10px;
+    cursor:pointer;
+    box-shadow: 0 1px 4px rgba(168,106,6,.14);
+    transition: background .15s, transform .1s, box-shadow .15s;
+  }
+  .breadcrumb-chip .icon{ width:11px; height:11px; }
+  .breadcrumb-chip:hover{ background: rgba(232,184,75,.16); transform: translateX(-2px); box-shadow: 0 3px 10px rgba(168,106,6,.22); }
+  .main-header h2{ margin-top:0; }
+  .farmaco-descricao{
+    margin: 8px 0 0;
+    font-size:.86rem;
+    line-height:1.5;
+    color: var(--text-gray);
+    max-width: 60ch;
+  }
+  .secao-titulo{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    font-weight:800;
+    color: var(--text-dim);
+    margin: 4px 0 10px;
+  }
+  .secao-titulo .icon{ width:13px; height:13px; color: var(--red-bright); }
+  .cat-header.destacado{ background: var(--red-glow); color: var(--red-bright); }
   .btn-fav-calc{
     display:inline-flex;align-items:center;justify-content:center;
     width:34px;height:34px;padding:0;
@@ -318,11 +379,12 @@
     background:transparent;
     border-radius:50%;
     cursor:pointer;
+    box-shadow: 0 2px 6px rgba(180,25,42,.18);
     transition:all .15s;
     flex-shrink:0;
   }
   .btn-fav-calc svg{width:16px;height:16px;display:block;}
-  .btn-fav-calc:hover{background:rgba(200,19,40,.12);}
+  .btn-fav-calc:hover{background:rgba(200,19,40,.12); box-shadow: 0 4px 12px rgba(180,25,42,.28); transform: translateY(-1px);}
   .btn-fav-calc.starred{background:var(--red-bright);color:#fff;}
   .btn-bula{
     display:inline-flex;
@@ -338,14 +400,111 @@
     cursor:pointer;
     text-decoration:none;
     white-space:nowrap;
-    transition: background .15s, transform .1s;
+    box-shadow: 0 2px 8px rgba(180,25,42,.16);
+    transition: background .15s, transform .1s, box-shadow .15s;
   }
-  .btn-bula:hover{ background: rgba(239,45,64,.12); transform: translateY(-1px); }
+  .btn-bula:hover{ background: rgba(239,45,64,.12); transform: translateY(-1px); box-shadow: 0 5px 14px rgba(180,25,42,.26); }
+
+  .btn-nomes-comerciais{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size:.8rem;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    transition: background .15s, color .15s, border-color .15s, box-shadow .15s, transform .1s;
+  }
+  body.light .btn-nomes-comerciais{ box-shadow: 0 1px 2px rgba(23,26,32,.06); }
+  .btn-nomes-comerciais .icon{ width:13px; height:13px; }
+  .btn-nomes-comerciais:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); box-shadow: 0 4px 12px rgba(0,0,0,.18); transform: translateY(-1px); }
+  body.light .btn-nomes-comerciais:hover{ box-shadow: 0 4px 12px rgba(23,26,32,.1); }
+
+  /* ---------- Modal de nomes comerciais ---------- */
+  .comerciais-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(3px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .comerciais-overlay.aberto{ display:flex; }
+  .comerciais-modal{
+    width:100%;
+    max-width: 440px;
+    max-height: 80vh;
+    overflow-y:auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+  }
+  .comerciais-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+    padding: 16px 18px 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comerciais-header h3{
+    margin:0;
+    font-size:1rem;
+    font-weight:800;
+    line-height:1.35;
+  }
+  .comerciais-fechar{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;
+    flex-shrink:0;
+    border:none;
+    background:transparent;
+    color:var(--text-dim);
+    cursor:pointer;
+    border-radius:50%;
+    transition: background .15s, color .15s;
+  }
+  .comerciais-fechar .icon{ width:14px; height:14px; }
+  .comerciais-fechar:hover{ background: var(--hover-tint); color:var(--text); }
+  .comerciais-body{ padding: 16px 20px 20px; }
+  .comerciais-lista{
+    list-style:none; margin:0 0 14px; padding:0;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .comerciais-lista li{
+    display:flex; align-items:center; gap:8px;
+    padding: 9px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size:.85rem;
+    font-weight:600;
+    color: var(--text);
+  }
+  .comerciais-lista li .icon{ width:13px; height:13px; color: var(--amber); flex-shrink:0; }
+  .comerciais-aviso{
+    font-size:.72rem;
+    line-height:1.55;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    padding-top:12px;
+    margin:0;
+  }
 
   .peso-bar{
     background: linear-gradient(135deg, rgba(180,25,42,.1), rgba(232,184,75,.05));
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 16px 22px;
     display:flex;
     gap: 32px;
@@ -387,7 +546,9 @@
     border:1px solid var(--border);
     border-radius:8px;
     overflow:hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
   }
+  body.light .unidade-toggle{ box-shadow: 0 1px 2px rgba(23,26,32,.06); }
   .unidade-toggle button{
     background:none;
     border:none;
@@ -448,11 +609,13 @@
   .formulacao{
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px 20px;
+    border-radius: 18px;
+    padding: 20px 22px;
     box-shadow: 0 4px 14px rgba(0,0,0,.18);
-    transition: background-color .2s ease, border-color .2s ease;
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
   }
+  .formulacao:hover{ box-shadow: 0 8px 24px rgba(0,0,0,.22); transform: translateY(-1px); }
+  body.light .formulacao:hover{ box-shadow: 0 8px 20px rgba(23,26,32,.1); }
   .formulacao .form-head{
     display:flex;
     align-items:center;
@@ -460,9 +623,9 @@
     margin-bottom: 14px;
   }
   .formulacao .form-icon{
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -473,6 +636,7 @@
   .formulacao .form-icon.tipo-liquido{ background: rgba(74,180,150,.15); color:#4ab496; }
   .formulacao .form-icon.tipo-comprimido{ background: rgba(180,130,220,.15); color:#b482dc; }
   .formulacao .form-icon.tipo-injetavel{ background: rgba(239,45,64,.15); color: var(--red-bright); }
+  .formulacao .form-icon.tipo-supositorio{ background: rgba(201,138,86,.18); color:#c98a56; }
   .formulacao h3{
     font-size: .95rem;
     margin: 0;
@@ -521,20 +685,83 @@
   .sub-lista li.restricao{
     color: #f0a5a5;
   }
-  .sub-lista li.formula{
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: .74rem;
-    line-height: 1.7;
-    margin-top: 4px;
-  }
   .f-fixo{ color: var(--text); }
   .f-var{ color: #7fa8c9; }
 
+  .instrucao-verbo{ color: var(--text-dim); font-weight:600; }
+
+  .formula-details{ margin-top: 10px; }
+  .formula-details summary{
+    list-style:none;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:.72rem;
+    font-weight:700;
+    color: var(--text-dim);
+    cursor:pointer;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    width:100%;
+  }
+  .formula-details summary::-webkit-details-marker{ display:none; }
+  .formula-details summary .icon{ width:11px; height:11px; transition: transform .15s ease; }
+  .formula-details[open] summary .icon{ transform: rotate(180deg); }
+  .formula-details summary:hover{ color: var(--text); }
+  .formula-content{
+    margin-top: 10px;
+    padding-left: 2px;
+  }
+  .formula-steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    counter-reset: passo;
+  }
+  .formula-steps li{
+    position:relative;
+    counter-increment: passo;
+    font-size:.76rem;
+    line-height:1.55;
+    color: var(--text-dim);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius:8px;
+    padding: 8px 10px 8px 32px;
+  }
+  .formula-steps li::before{
+    content: counter(passo);
+    position:absolute;
+    left:8px;
+    top:8px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background: var(--red-glow);
+    color: var(--red-bright);
+    font-size:.62rem;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+  .formula-steps .f-fixo{ font-weight:700; }
+  .formula-steps .f-var{
+    display:block;
+    margin-top:3px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size:.72rem;
+  }
+
   .observacoes{
-    margin-top: 20px;
+    margin-bottom: 20px;
     background: rgba(239,45,64,.05);
     border: 1px solid rgba(239,45,64,.2);
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 18px 20px;
   }
   .observacoes h3{
@@ -660,8 +887,9 @@
     background: linear-gradient(120deg, var(--red-bright), var(--red-dark));
     color:#fff;
     cursor:pointer;
+    box-shadow: 0 4px 16px rgba(180,25,42,.35);
   }
-  .gate-btn.ativo:hover{ filter: brightness(1.08); }
+  .gate-btn.ativo:hover{ filter: brightness(1.08); box-shadow: 0 6px 20px rgba(180,25,42,.45); }
   body.gate-aberto{ overflow:hidden; }
   body.gate-aberto .app-body{ filter: blur(2px); pointer-events:none; }
 
@@ -727,7 +955,7 @@
   .search-box .icon{ width:15px; height:15px; color: var(--text-dim); }
   .field-icon .icon{ width:17px; height:17px; color: var(--red-bright); }
   .empty-icon .icon{ width:32px; height:32px; color: var(--red-bright); }
-  .form-icon .icon{ width:18px; height:18px; }
+  .form-icon .icon{ width:23px; height:23px; }
   .aviso-titulo .icon{ width:16px; height:16px; }
   .obs-item .icon{ width:13px; height:13px; }
   .cat-chevron{ width:13px; height:13px; transition: transform .15s ease; flex-shrink:0; }
@@ -749,11 +977,19 @@
     gap:6px;
     cursor:pointer;
     user-select:none;
-    border-radius:6px;
-    padding: 6px 8px 6px 10px !important;
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    border-radius:7px;
+    padding: 7px 10px !important;
+    margin: 0 0 8px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.14);
+    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
   }
-  .cat-header:hover{ background: var(--hover-tint); }
+  body.light .cat-header{ box-shadow: 0 1px 2px rgba(23,26,32,.04); }
+  .cat-header:hover{ background: var(--hover-tint); border-color: var(--red-bright); box-shadow: 0 3px 10px rgba(0,0,0,.2); }
+  body.light .cat-header:hover{ box-shadow: 0 3px 10px rgba(23,26,32,.08); }
   .cat-group.colapsado .drug-item{ display:none; }
+  .cat-group.colapsado .cat-header{ margin-bottom: 0 !important; }
 
   /* ---------- Favoritos na sidebar ---------- */
   .fav-header{
@@ -765,10 +1001,14 @@
     letter-spacing:1.1px;
     color: var(--amber);
     font-weight:800;
-    margin: 6px 10px 8px;
+    background: var(--sidebar);
+    border: 1px solid rgba(232,184,75,.3);
+    border-radius:7px;
+    padding: 7px 10px;
+    margin: 0 0 8px;
   }
   .fav-header .icon{ width:12px; height:12px; }
-  .fav-group{ margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed var(--border); }
+  .fav-group{ margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--border); }
   .drug-item .fav-dot{ margin-left:auto; color: var(--amber); width:12px; height:12px; flex-shrink:0; }
 
   /* ---------- Skeleton de carregamento ---------- */
@@ -798,11 +1038,14 @@
     background: transparent;
     border-radius:50%;
     cursor:pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,.14);
     transition: all .15s;
     flex-shrink:0;
   }
+  body.light .btn-icon-action{ box-shadow: 0 1px 3px rgba(23,26,32,.08); }
   .btn-icon-action .icon{ width:16px; height:16px; }
-  .btn-icon-action:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); }
+  .btn-icon-action:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); box-shadow: 0 3px 10px rgba(0,0,0,.2); transform: translateY(-1px); }
+  body.light .btn-icon-action:hover{ box-shadow: 0 3px 10px rgba(23,26,32,.12); }
   .btn-icon-action.feito{ color:#3fae6d; border-color:#3fae6d; }
   .btn-copiar-dose{
     display:inline-flex;
@@ -817,11 +1060,14 @@
     border-radius: 20px;
     cursor:pointer;
     margin-left:auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
     transition: all .15s;
     white-space:nowrap;
   }
+  body.light .btn-copiar-dose{ box-shadow: 0 1px 2px rgba(23,26,32,.06); }
   .btn-copiar-dose .icon{ width:11px; height:11px; }
-  .btn-copiar-dose:hover{ background: var(--hover-tint); color: var(--text); }
+  .btn-copiar-dose:hover{ background: var(--hover-tint); color: var(--text); box-shadow: 0 3px 8px rgba(0,0,0,.16); }
+  body.light .btn-copiar-dose:hover{ box-shadow: 0 3px 8px rgba(23,26,32,.1); }
   .btn-copiar-dose.feito{ color:#3fae6d; border-color:#3fae6d; }
 
   /* ---------- Badge de verificação de dados ---------- */
@@ -849,7 +1095,7 @@
     body.light, body{ background: #fff !important; color:#000 !important; }
     .gate-overlay, .topbar-app, .sidebar, .theme-toggle, .btn-fav-calc, .btn-bula,
     .btn-icon-action, .btn-copiar-dose, .peso-bar .unidade-toggle, .aviso-responsabilidade,
-    .no-print{ display:none !important; }
+    .breadcrumb-chip, .btn-nomes-comerciais, .comerciais-overlay, .no-print{ display:none !important; }
     .print-only{ display:block !important; }
     .app-body{ display:block !important; }
     .main{ padding:0 !important; overflow:visible !important; height:auto !important; }
@@ -857,6 +1103,9 @@
     .formulacao, .observacoes{ box-shadow:none !important; border:1px solid #999 !important; break-inside: avoid; }
     .valor-pill{ background:#f2b84b !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .print-only{ font-size:.72rem; color:#444; line-height:1.5; margin-top:18px; padding-top:12px; border-top:1px solid #ccc; }
+    .formula-content{ display:block !important; color:#333 !important; }
+    .formula-steps li{ background:#f7f7f7 !important; border-color:#ccc !important; color:#333 !important; break-inside: avoid; }
+    .formula-steps li::before{ background:#eee !important; color:#a10f1f !important; }
     a[href]:after{ content:""; }
   }
 </style>
@@ -882,6 +1131,18 @@
   </div>
 </div>
 
+<div class="comerciais-overlay" id="comerciais-overlay" role="dialog" aria-modal="true" aria-labelledby="comerciais-titulo">
+  <div class="comerciais-modal">
+    <div class="comerciais-header">
+      <h3 id="comerciais-titulo">Nomes comerciais</h3>
+      <button type="button" class="comerciais-fechar" id="comerciais-fechar" aria-label="Fechar">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      </button>
+    </div>
+    <div class="comerciais-body" id="comerciais-body"></div>
+  </div>
+</div>
+
 <div class="topbar-app">
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
@@ -895,7 +1156,7 @@
     </a>
   </div>
   <div class="titulo-central">
-    <div class="titulo-principal">CALCULADORA PEDIÁTRICA</div>
+    <div class="titulo-principal">CALCULADORA <span class="titulo-accent">PEDIÁTRICA</span></div>
     <div class="titulo-descricao">Cálculo de doses pediátricas com base em bulas e diretrizes atualizadas</div>
   </div>
   <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
@@ -988,7 +1249,12 @@ const ICONS = {
   gotas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6.5 7.6 6.5 12.4a6.5 6.5 0 01-13 0C5.5 10.1 12 2.5 12 2.5z"/></svg>',
   liquido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4.5l3.6 8.1A3 3 0 0115.8 19H8.2a3 3 0 01-2.8-4.4L9 6.5V2z"/><path d="M8 15h8"/></svg>',
   comprimido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9" width="19" height="6" rx="3" transform="rotate(-45 12 12)"/><path d="M9.5 9.5l5 5"/></svg>',
-  injetavel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5l3 3M17 4l-11 11-3 6 6-3L20 7"/><path d="M12.5 8.5l3 3M9.5 11.5l3 3"/></svg>'
+  injetavel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5l3 3M17 4l-11 11-3 6 6-3L20 7"/><path d="M12.5 8.5l3 3M9.5 11.5l3 3"/></svg>',
+  supositorio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2.5 2 4 5.5 4 9.5A4 4 0 0112 16a4 4 0 01-4-4.5C8 7.5 9.5 4 12 2z"/><path d="M12 16v6"/></svg>',
+  tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.59 2H4a2 2 0 00-2 2v8.59a2 2 0 00.59 1.41l9 9a2 2 0 002.82 0l7.18-7.18a2 2 0 000-2.82l-9-9A2 2 0 0012.59 2z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>',
+  fechar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+  chevronLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
+  paciente: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg>'
 };
 
 // Data de referência da última revisão geral da base (ajustar manualmente quando os dados forem revisados)
@@ -1043,6 +1309,17 @@ function gateJaAceito(){
     document.body.classList.remove('gate-aberto');
   });
 })();
+
+// ---------- Modal de nomes comerciais: fechar por botão, backdrop ou Esc ----------
+document.getElementById('comerciais-fechar').addEventListener('click', fecharComerciais);
+document.getElementById('comerciais-overlay').addEventListener('click', (e) => {
+  if(e.target.id === 'comerciais-overlay') fecharComerciais();
+});
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && document.getElementById('comerciais-overlay').classList.contains('aberto')){
+    fecharComerciais();
+  }
+});
 
 let DB = null;
 let farmacoAtual = null;
@@ -1123,6 +1400,21 @@ function toggleCategoria(cat){
   renderSidebar(document.getElementById('busca').value);
 }
 
+function voltarParaCategoria(cat){
+  categoriasColapsadas.delete(cat);
+  document.getElementById('busca').value = '';
+  farmacoAtual = null;
+  history.replaceState(null, '', location.pathname);
+  renderConteudo();
+  renderSidebar('');
+  const alvo = Array.from(document.querySelectorAll('.cat-header')).find(h => h.firstChild && h.firstChild.textContent === cat);
+  if(alvo){
+    alvo.scrollIntoView({behavior:'smooth', block:'start'});
+    alvo.classList.add('destacado');
+    setTimeout(() => alvo.classList.remove('destacado'), 1200);
+  }
+}
+
 function criarBotaoFarmaco(f, termo){
   const btn = document.createElement('button');
   btn.className = 'drug-item' + (farmacoAtual && farmacoAtual.id === f.id ? ' active' : '');
@@ -1201,8 +1493,11 @@ function renderConteudo(){
   el.innerHTML = `
     <div class="main-header">
       <div>
+        <button type="button" class="breadcrumb-chip" onclick="voltarParaCategoria('${escapeHtml(f.categoria).replace(/'/g, "\\'")}')" title="Voltar para ${escapeHtml(f.categoria)}">
+          <span class="icon">${ICONS.chevronLeft}</span>${f.categoria}
+        </button>
         <h2>${f.nome}</h2>
-        <div class="cat-tag">${f.categoria}</div>
+        ${f.descricao ? `<p class="farmaco-descricao">${f.descricao}</p>` : ''}
       </div>
       <div style="display:flex;align-items:center;gap:8px;" class="no-print">
         <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)" aria-label="${_isFavCalc ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}" aria-pressed="${_isFavCalc}">
@@ -1214,10 +1509,14 @@ function renderConteudo(){
         <button class="btn-icon-action" id="btn-imprimir" title="Imprimir / exportar em PDF" aria-label="Imprimir ou exportar em PDF">
           <span class="icon">${ICONS.imprimir}</span>
         </button>
+        ${(f.nomesComerciais && f.nomesComerciais.length) ? `<button type="button" class="btn-nomes-comerciais" id="btn-comerciais" title="Ver nomes comerciais deste fármaco">
+          <span class="icon">${ICONS.tag}</span>Nomes comerciais
+        </button>` : ''}
         <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
       </div>
     </div>
 
+    <div class="secao-titulo"><span class="icon">${ICONS.paciente}</span>Dados do paciente</div>
     <div class="peso-bar">
       <div class="peso-field">
         <div class="field-icon"><span class="icon">${ICONS.peso}</span></div>
@@ -1244,8 +1543,8 @@ function renderConteudo(){
       </div>
     </div>
 
-    <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
     <div id="observacoes-container" aria-live="polite"></div>
+    <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
     <div class="fonte-tag"><span class="icon">${ICONS.livro}</span> Fonte: <b>${f.fonte}</b></div>
     <div class="print-only">
       Gerado pela Calculadora Pediátrica — FarmaPrática · Base revisada em ${DADOS_VERIFICADOS_EM}. Ferramenta de apoio à decisão clínica; não substitui a avaliação individualizada do paciente nem a bula vigente do medicamento efetivamente dispensado. A responsabilidade pela prescrição, dispensação e administração é do profissional de saúde habilitado.
@@ -1257,6 +1556,11 @@ function renderConteudo(){
     copiarTexto(url, e.currentTarget);
   });
   document.getElementById('btn-imprimir').addEventListener('click', () => window.print());
+
+  const btnComerciais = document.getElementById('btn-comerciais');
+  if(btnComerciais){
+    btnComerciais.addEventListener('click', () => abrirComerciais(f));
+  }
 
   document.getElementById('peso').addEventListener('input', e => {
     pesoAtual = parseFloat(e.target.value) || 0;
@@ -1282,9 +1586,39 @@ function trocarUnidadeIdade(novaUnidade){
   renderConteudo();
 }
 
+// ---------- Modal de nomes comerciais ----------
+function abrirComerciais(f){
+  const overlay = document.getElementById('comerciais-overlay');
+  document.getElementById('comerciais-titulo').textContent = 'Nomes comerciais — ' + f.nome;
+  const nomes = f.nomesComerciais || [];
+  const lista = nomes.map(n => `<li><span class="icon">${ICONS.tag}</span>${escapeHtml(n)}</li>`).join('');
+  document.getElementById('comerciais-body').innerHTML = `
+    <ul class="comerciais-lista">${lista}</ul>
+    <p class="comerciais-aviso">Levantamento de marcas de referência e éticas disponíveis no mercado brasileiro para consulta rápida. A existência, o fabricante e a apresentação de cada marca podem mudar: confirme sempre no Bulário Eletrônico da ANVISA antes de orientar, prescrever ou dispensar.</p>
+  `;
+  overlay.classList.add('aberto');
+}
+function fecharComerciais(){
+  document.getElementById('comerciais-overlay').classList.remove('aberto');
+}
+
 function seg(fixo, variavel){
   return `<span class="f-fixo">${fixo}</span> <span class="f-var">${variavel}</span>`;
 }
+
+// Ao imprimir, expande os detalhes de fórmula (normalmente recolhidos) para que
+// o cálculo completo fique documentado na versão impressa/PDF.
+let _detalhesAbertosAntesDeImprimir = [];
+window.addEventListener('beforeprint', () => {
+  _detalhesAbertosAntesDeImprimir = [];
+  document.querySelectorAll('.formula-details').forEach(d => {
+    if(!d.open){ d.open = true; _detalhesAbertosAntesDeImprimir.push(d); }
+  });
+});
+window.addEventListener('afterprint', () => {
+  _detalhesAbertosAntesDeImprimir.forEach(d => { d.open = false; });
+  _detalhesAbertosAntesDeImprimir = [];
+});
 
 // ---------- Copiar texto para a área de transferência ----------
 function copiarTexto(texto, btnEl){
@@ -1349,13 +1683,16 @@ function calcularEExibir(){
       const frac = db.fracionamento || 1;
       dose = { min: diaMin/frac, max: diaMax/frac, capApplied };
       infoMgKg = { unidade: 'dia', min: db.doseMgKg.min, max: db.doseMgKg.max };
-      dose.formulaBase = seg(
-        'Dose diária = peso × mg/kg/dia',
-        `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dia = ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg/dia${capApplied ? ' (ajustado ao teto máximo)' : ''}`
-      ) + ' · ' + seg(
-        `Dose/administração = total ÷ ${frac} tomada(s)`,
-        `→ = ${arred(dose.min)}–${arred(dose.max)} mg`
-      );
+      dose.formulaBase = [
+        seg(
+          'Calcular a dose diária total: peso × mg/kg/dia',
+          `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dia = ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg/dia${capApplied ? ' (ajustado ao teto máximo diário)' : ''}`
+        ),
+        seg(
+          `Dividir pelo número de tomadas ao dia: total ÷ ${frac} tomada(s)`,
+          `→ ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg ÷ ${frac} = ${arred(dose.min)}–${arred(dose.max)} mg por administração`
+        )
+      ];
     } else if(db.tipo === 'mgkg_dose'){
       let doseMin = db.doseMgKg.min * peso;
       let doseMax = db.doseMgKg.max * peso;
@@ -1366,10 +1703,10 @@ function calcularEExibir(){
       }
       dose = { min: doseMin, max: doseMax, capApplied };
       infoMgKg = { unidade: 'dose', min: db.doseMgKg.min, max: db.doseMgKg.max };
-      dose.formulaBase = seg(
-        'Dose por administração = peso × mg/kg/dose',
-        `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo)' : ''}`
-      );
+      dose.formulaBase = [seg(
+        'Calcular a dose por administração: peso × mg/kg/dose',
+        `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo por dose)' : ''}`
+      )];
     } else if(db.tipo === 'faixa_fixa'){
       let faixa;
       if(db.faixasPorIdade){
@@ -1381,23 +1718,23 @@ function calcularEExibir(){
         const frac = faixa.fracionamento || 1;
         const diaMg = faixa.mgPorKg * peso;
         dose = { min: diaMg/frac, max: diaMg/frac, capApplied:false };
-        dose.formulaBase = seg(
-          `Dose diária (faixa: ${faixa.descricao}) = peso × ${faixa.mgPorKg} mg/kg/dia`,
-          `→ ${peso} kg × ${faixa.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(dose.min)} mg`
-        );
+        dose.formulaBase = [seg(
+          `Enquadrar na faixa de dose (${faixa.descricao}) e calcular: peso × ${faixa.mgPorKg} mg/kg/dia`,
+          `→ ${peso} kg × ${faixa.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(dose.min)} mg por administração`
+        )];
       } else if(faixa.doseMg !== null && faixa.doseMg !== undefined){
         if(typeof faixa.doseMg === 'object'){
           dose = { min: faixa.doseMg.min, max: faixa.doseMg.max, capApplied:false };
-          dose.formulaBase = seg(
-            `Dose fixa por ${db.faixasPorIdade ? 'idade' : 'peso'} (faixa: ${faixa.descricao})`,
-            `→ ${faixa.doseMg.min}–${faixa.doseMg.max} mg`
-          );
+          dose.formulaBase = [seg(
+            `Enquadrar na faixa fixa (${faixa.descricao}) por ${db.faixasPorIdade ? 'idade' : 'peso'}`,
+            `→ dose fixa da faixa: ${faixa.doseMg.min}–${faixa.doseMg.max} mg (não calculada por mg/kg)`
+          )];
         } else {
           dose = { min: faixa.doseMg, max: faixa.doseMg, capApplied:false };
-          dose.formulaBase = seg(
-            `Dose fixa por ${db.faixasPorIdade ? 'idade' : 'peso'} (não calculada por mg/kg)`,
-            `→ ${faixa.descricao}: ${faixa.doseMg} mg`
-          );
+          dose.formulaBase = [seg(
+            `Enquadrar na faixa fixa (${faixa.descricao}) por ${db.faixasPorIdade ? 'idade' : 'peso'}`,
+            `→ dose fixa da faixa: ${faixa.doseMg} mg (não calculada por mg/kg)`
+          )];
         }
       }
     }
@@ -1440,7 +1777,7 @@ function calcularEExibir(){
       const gMin = Math.round(peso * 1);
       const gMax = Math.round(peso * 2);
       valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
-      formulaCompleta = seg('Gotas = peso × 1-2 gotas/kg', `→ ${peso} kg × 1–2 gotas/kg = ${gMin}–${gMax} gotas`);
+      formulaCompleta = [seg('Calcular o número de gotas: peso × 1–2 gotas/kg', `→ ${peso} kg × 1–2 gotas/kg = ${gMin}–${gMax} gotas`)];
     } else if(dose){
       const doseMin = form.doseMaximaPorDoseMg ? Math.min(dose.min, form.doseMaximaPorDoseMg) : dose.min;
       const doseMax = form.doseMaximaPorDoseMg ? Math.min(dose.max, form.doseMaximaPorDoseMg) : dose.max;
@@ -1449,12 +1786,12 @@ function calcularEExibir(){
         const gMin = Math.round(doseMin / form.mgPorGota);
         const gMax = Math.round(doseMax / form.mgPorGota);
         valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
-        formulaCompleta = (dose.formulaBase || '') + ' · ' + seg('Gotas = dose ÷ mg/gota', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorGota} mg/gota = ${gMin}–${gMax} gotas`);
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em gotas: dose ÷ mg por gota', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorGota} mg/gota = ${gMin}–${gMax} gotas`)];
       } else if((form.tipo === 'liquido' || form.tipo === 'injetavel') && form.concentracaoMgMl){
         const mlMin = doseMin / form.concentracaoMgMl;
         const mlMax = doseMax / form.concentracaoMgMl;
         valorTexto = (Math.abs(mlMax-mlMin) < 0.05) ? `${arred(mlMax)} mL` : `${arred(mlMin)} – ${arred(mlMax)} mL`;
-        formulaCompleta = (dose.formulaBase || '') + ' · ' + seg('Volume = dose ÷ concentração', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.concentracaoMgMl} mg/mL = ${arred(mlMin)}–${arred(mlMax)} mL`);
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em volume: dose ÷ concentração', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.concentracaoMgMl} mg/mL = ${arred(mlMin)}–${arred(mlMax)} mL`)];
       } else if(form.tipo === 'comprimido' && form.mgPorComprimido){
         let cMin = arredondarMeio(doseMin / form.mgPorComprimido);
         let cMax = arredondarMeio(doseMax / form.mgPorComprimido);
@@ -1464,7 +1801,18 @@ function calcularEExibir(){
         } else {
           valorTexto = (cMin === cMax) ? `${formatarComprimidos(cMax)}` : `${formatarComprimidos(cMin)} – ${formatarComprimidos(cMax)}`;
         }
-        formulaCompleta = (dose.formulaBase || '') + ' · ' + seg('Comprimidos = dose ÷ mg/comprimido', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorComprimido} mg = ${cMin}–${cMax} comp.`);
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em comprimidos: dose ÷ mg por comprimido', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorComprimido} mg = ${cMin}–${cMax} comp.`)];
+      } else if(form.tipo === 'supositorio' && form.mgPorSupositorio){
+        let sMin = Math.round(doseMin / form.mgPorSupositorio);
+        let sMax = Math.round(doseMax / form.mgPorSupositorio);
+        if(sMax < 1){
+          valorTexto = 'dose inferior à menor apresentação';
+          subItens.push({tipo:'restricao', texto:'Dose calculada é menor que 1 supositório desta apresentação. Reavaliar via ou apresentação adequada ao peso.'});
+        } else {
+          if(sMin < 1) sMin = 1;
+          valorTexto = (sMin === sMax) ? `${sMax} supositório${sMax > 1 ? 's' : ''}` : `${sMin} – ${sMax} supositório(s)`;
+        }
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em supositórios: dose ÷ mg por unidade', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorSupositorio} mg = ${sMin}–${sMax} unidade(s)`)];
       } else {
         valorTexto = `${arred(doseMin)} – ${arred(doseMax)} mg`;
         formulaCompleta = dose.formulaBase || null;
@@ -1485,12 +1833,10 @@ function calcularEExibir(){
       subItens.push({tipo:'info', texto: form.diluicaoTexto});
     }
     (form.restricoes||[]).forEach(r => subItens.push({tipo:'restricao', texto:r}));
-    if(formulaCompleta){
-      subItens.push({tipo:'formula', texto: `<span class="f-fixo">Fórmula:</span> ${formulaCompleta}`});
-    }
 
     const icone = ICONS[form.tipo] || ICONS.comprimido;
     const temValorCalculado = valorTexto && !['informe o peso', 'informe a idade', '00'].includes(valorTexto);
+    const prefixoInstrucao = temValorCalculado ? '<span class="instrucao-verbo">Administrar</span> ' : '';
 
     card.innerHTML = `
       <div class="form-head">
@@ -1498,10 +1844,18 @@ function calcularEExibir(){
         <h3>${form.rotulo}</h3>
         ${temValorCalculado ? `<button class="btn-copiar-dose no-print" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button>` : ''}
       </div>
-      <div class="linha-principal"><span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>
-      <ul class="sub-lista">
+      <div class="linha-principal">${prefixoInstrucao}<span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>
+      ${subItens.length ? `<ul class="sub-lista">
         ${subItens.map(i => `<li class="${i.tipo}">${i.texto}</li>`).join('')}
-      </ul>
+      </ul>` : ''}
+      ${formulaCompleta && formulaCompleta.length ? `<details class="formula-details">
+        <summary class="no-print"><span class="icon">${ICONS.chevron}</span>Ver como o cálculo foi feito, passo a passo</summary>
+        <div class="formula-content">
+          <ol class="formula-steps">
+            ${formulaCompleta.map(passo => `<li>${passo}</li>`).join('')}
+          </ol>
+        </div>
+      </details>` : ''}
     `;
     if(temValorCalculado){
       const textoCopia = `${f.nome} — ${form.rotulo}: ${textoPlano(valorTexto)}${form.viaTexto ? ' ' + textoPlano(form.viaTexto) : ''} (peso ${peso} kg${idadeAtual > 0 ? ', idade ' + idadeAtual + ' ' + idadeUnidade : ''})`;
