@@ -58,42 +58,43 @@
 
   /* ---------- LIGHT THEME ---------- */
   body.light{
-    --bg:#e8e5e3;
-    --bg-panel:#f7f5f4;
-    --card-bg:#f5f4f3;
-    --card-border:#dcd7d5;
-    --card-hover-bg:#eeecea;
-    --placeholder-border:#d6d9d8;
+    /* Paleta grafite claro/médio — superfícies neutras e frias, sem o tom bege anterior */
+    --bg:#e7e9ec;
+    --bg-panel:#f5f6f8;
+    --card-bg:#eff1f3;
+    --card-border:#d6dade;
+    --card-hover-bg:#e6e9ec;
+    --placeholder-border:#d2d6da;
     --red:#d4152a;
     --red-dark:#a10f1f;
     --red-glow:rgba(212,21,42,0.12);
     --accent2:#217a56;
     --accent2-dark:#175a3d;
     --accent2-glow:rgba(33,122,86,0.12);
-    --text-white:#1a1a1a;
-    --text-gray:#5c5c62;
-    --text-gray-dim:#7a7a80;
-    --sidebar-bg:#ffffff;
-    --sidebar-border:#dcd7d5;
-    --sidebar-hover:#f1f3f2;
-    --sidebar-text:#5c5c62;
+    --text-white:#20242a;
+    --text-gray:#575e67;
+    --text-gray-dim:#787f88;
+    --sidebar-bg:#f9fafb;
+    --sidebar-border:#d6dade;
+    --sidebar-hover:#eef0f2;
+    --sidebar-text:#575e67;
     --heading-shadow:0 1px 8px rgba(0,0,0,.12);
-    --shadow-card:0 14px 30px -12px rgba(60,50,48,.22), 0 4px 10px -4px rgba(60,50,48,.14);
-    --shadow-card-hover:0 20px 40px -14px rgba(60,50,48,.28), 0 6px 14px -4px rgba(60,50,48,.16);
-    --shadow-btn:0 8px 16px -6px rgba(60,50,48,.28), 0 2px 6px -2px rgba(60,50,48,.16);
-    --shadow-btn-hover:0 12px 22px -8px rgba(60,50,48,.32), 0 4px 10px -2px rgba(60,50,48,.18);
+    --shadow-card:0 14px 30px -12px rgba(42,46,52,.22), 0 4px 10px -4px rgba(42,46,52,.14);
+    --shadow-card-hover:0 20px 40px -14px rgba(42,46,52,.28), 0 6px 14px -4px rgba(42,46,52,.16);
+    --shadow-btn:0 8px 16px -6px rgba(42,46,52,.28), 0 2px 6px -2px rgba(42,46,52,.16);
+    --shadow-btn-hover:0 12px 22px -8px rgba(42,46,52,.32), 0 4px 10px -2px rgba(42,46,52,.18);
     --body-text-shadow:0 1px 4px rgba(0,0,0,.08);
-    --tool-card-bevel:inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -3px 7px 0 rgba(60,50,48,.14);
-    --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -3px 8px 0 rgba(60,50,48,.17);
+    --tool-card-bevel:inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -3px 7px 0 rgba(42,46,52,.14);
+    --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -3px 8px 0 rgba(42,46,52,.17);
   }
-  body.light header{border-bottom-color:#dcd7d5;}
-  body.light footer{border-top-color:#dcd7d5;}
-  body.light .btn-outline{border-color:#cfc9c7;}
+  body.light header{border-bottom-color:#d6dade;}
+  body.light footer{border-top-color:#d6dade;}
+  body.light .btn-outline{border-color:#c9ced3;}
   body.light .tool-icon{background:linear-gradient(160deg,#fbe9ea,#fdf3f3);}
-  body.light .tool-card.placeholder .tool-icon{background:#eeebe9;color:#a8a4a2;}
-  body.light .tool-card.placeholder .tool-info h3{color:#8a8681;}
-  body.light .tool-card.placeholder .tool-info p{color:#a09c9a;}
-  body.light .badge-soon{background:#eeebea;color:#8a8681;}
+  body.light .tool-card.placeholder .tool-icon{background:#e7e9ec;color:#9aa0a6;}
+  body.light .tool-card.placeholder .tool-info h3{color:#787f88;}
+  body.light .tool-card.placeholder .tool-info p{color:#9aa0a6;}
+  body.light .badge-soon{background:#e7e9ec;color:#787f88;}
   body.light .tool-chevron{color:#b8b4b2;}
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{height:100%;}
@@ -271,7 +272,7 @@
       border:1px solid #3a3a3a;background:transparent;
       color:var(--text-white);cursor:pointer;flex:none;
     }
-    body.light .mobile-menu-btn{border-color:#cfc9c7;}
+    body.light .mobile-menu-btn{border-color:#c9ced3;}
     .mobile-menu-btn svg{width:20px;height:20px;}
   }
   header{
@@ -471,14 +472,15 @@
   /* ---------- FAIXA DE SAUDAÇÃO ---------- */
   .greeting-banner{
     position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;
     border-radius:16px;
     padding:18px 28px;
     box-shadow:var(--shadow-card-hover), 0 2px 0 0 rgba(0,0,0,.4);
     background:linear-gradient(135deg, #12131a 0%, #171522 50%, #12131a 100%);
   }
   body.light .greeting-banner{
-    box-shadow:var(--shadow-card-hover), 0 2px 0 0 rgba(60,50,48,.12);
-    background:linear-gradient(135deg, #ffffff 0%, #f3f1f4 50%, #ffffff 100%);
+    box-shadow:var(--shadow-card-hover), 0 2px 0 0 rgba(42,46,52,.12);
+    background:linear-gradient(135deg, #f5f6f8 0%, #e9ebee 50%, #f5f6f8 100%);
   }
   /* Brilho móvel discreto, sensação de gradiente vivo sem ser chamativo */
   .greeting-banner::after{
@@ -487,7 +489,7 @@
     animation:greetingGlowShift 14s ease-in-out infinite alternate;
   }
   body.light .greeting-banner::after{
-    background:radial-gradient(38% 90% at var(--gg-x,20%) 50%, rgba(212,21,42,.06), transparent 70%);
+    background:radial-gradient(38% 90% at var(--gg-x,20%) 50%, rgba(90,99,112,.08), transparent 70%);
   }
   @property --gg-x{ syntax:'<percentage>'; inherits:true; initial-value:14%; }
   @keyframes greetingGlowShift{
@@ -521,6 +523,7 @@
     animation:smokeDrift3 24s ease-in-out infinite alternate;
   }
   body.light .greeting-smoke span{opacity:.19;}
+  body.light .greeting-smoke span:nth-child(1){background:radial-gradient(circle, rgba(90,99,112,.7), transparent 70%);}
   body.light .greeting-smoke span:nth-child(2){background:radial-gradient(circle, rgba(28,74,99,.7), transparent 72%);}
   body.light .greeting-smoke span:nth-child(3){background:radial-gradient(circle, rgba(33,122,86,.5), transparent 74%);}
   @keyframes smokeDrift1{
@@ -538,23 +541,25 @@
     50%{transform:translate(-10%,10%) scale(1.12);}
     100%{transform:translate(8%,-6%) scale(0.9);}
   }
-  .greeting-banner-text{position:relative;z-index:1;}
+  .greeting-banner-text{position:relative;z-index:1;flex:1;min-width:220px;}
   .greeting-banner-text h1{font-size:22px;font-weight:800;letter-spacing:-.4px;text-shadow:var(--heading-shadow);margin-bottom:4px;}
   .greeting-banner-text p{font-size:13.5px;color:var(--text-gray);max-width:560px;line-height:1.5;text-shadow:var(--body-text-shadow);}
-  /* Pequeno relógio ao vivo, ancorado no canto do quadro de saudação */
+  /* Relógio ao vivo, centralizado como um bloco próprio do quadro de saudação */
   .greeting-clock{
-    position:absolute;top:16px;right:20px;z-index:1;
-    display:flex;align-items:center;gap:7px;
-    padding:7px 13px;border-radius:20px;
+    position:relative;z-index:1;flex:none;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    padding:10px 24px;border-radius:14px;
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(6px);
-    color:var(--text-gray);
+    text-align:center;
   }
-  .greeting-clock svg{width:14px;height:14px;flex:none;color:var(--red);}
-  .greeting-clock span{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.3px;font-variant-numeric:tabular-nums;color:var(--text-white);}
+  .greeting-clock-row{display:flex;align-items:center;gap:7px;}
+  .greeting-clock svg{width:15px;height:15px;flex:none;color:var(--red);}
+  .greeting-clock span{font-family:var(--font-display);font-size:16px;font-weight:700;letter-spacing:.2px;font-variant-numeric:tabular-nums;color:var(--text-white);}
+  .greeting-clock-date{font-size:10.5px;color:var(--text-gray-dim);letter-spacing:.2px;}
   body.light .greeting-clock{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);}
-  @media (max-width:560px){ .greeting-clock{display:none;} }
+  @media (max-width:640px){ .greeting-clock{width:100%;} }
   .card{
     background:var(--card-bg);
     border:1px solid var(--card-border);
@@ -678,7 +683,7 @@
 
   .stats-footer{
     position:relative;
-    padding:15px 22px 18px;
+    padding:12px 20px 14px;
     overflow:hidden;
     background:
       radial-gradient(140% 160% at 100% 0%, rgba(228,23,44,.10), transparent 55%),
@@ -687,10 +692,10 @@
   body.light .stats-footer{
     background:
       radial-gradient(140% 160% at 100% 0%, rgba(212,21,42,.05), transparent 55%),
-      linear-gradient(155deg, #ffffff 0%, #f3f0ef 100%);
+      linear-gradient(155deg, #f5f6f8 0%, #e9ebee 100%);
   }
   .stats-footer > *{position:relative;z-index:1;}
-  .stats-footer h3{font-size:14.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .stats-footer h3{font-size:14px;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:8px;}
   .stats-footer .hero-divider{margin-bottom:14px;}
   .stats-footer-wide{grid-column:1 / -1;}
   .stats-footer-wide .usage-donut-row{gap:24px;}
@@ -734,6 +739,31 @@
   .time-saved-label{font-size:11.5px;color:var(--text-gray-dim);line-height:1.4;margin-top:3px;position:relative;z-index:1;}
   .time-saved-delta{font-size:12px;color:#34c759;font-weight:700;margin-top:9px;display:flex;align-items:center;gap:4px;position:relative;z-index:1;}
   .time-saved-delta svg{width:13px;height:13px;flex:none;}
+  .time-saved-delta.is-down{color:var(--text-gray-dim);}
+  /* Alternador Dia / Semana (D / S) — estilo pill deslizante */
+  .usage-period-toggle{
+    position:relative;flex:none;
+    display:flex;gap:2px;
+    background:var(--card-bg);border:1px solid var(--card-border);
+    border-radius:20px;padding:2px;
+  }
+  .usage-period-toggle::before{
+    content:"";position:absolute;top:2px;left:2px;
+    width:24px;height:22px;border-radius:16px;
+    background:linear-gradient(135deg, var(--accent2), var(--accent2-dark));
+    transition:transform .25s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 2px 6px -1px rgba(46,155,111,.5);
+  }
+  .usage-period-toggle[data-active="week"]::before{transform:translateX(26px);}
+  .usage-period-btn{
+    position:relative;z-index:1;
+    border:none;background:none;cursor:pointer;
+    width:24px;height:22px;border-radius:16px;
+    font-family:var(--font-display);font-size:11px;font-weight:800;
+    color:var(--text-gray-dim);
+    transition:color .2s ease;
+  }
+  .usage-period-btn.active{color:#fff;}
   @media (max-width:480px){
     .stats-footer-inner{flex-direction:column;}
   }
@@ -857,10 +887,10 @@
   }
 
   /* Gráfico "Suas ferramentas mais utilizadas" — rosca com múltiplos segmentos */
-  .usage-donut-row{display:flex;align-items:center;gap:14px;}
+  .usage-donut-row{display:flex;align-items:center;gap:12px;}
   .usage-donut{
     position:relative;
-    width:66px;height:66px;border-radius:50%;flex:none;
+    width:56px;height:56px;border-radius:50%;flex:none;
     box-shadow:0 0 0 1px var(--card-border);
   }
   .usage-donut::after{
@@ -872,7 +902,7 @@
     border-radius:50%;
     background:var(--card-bg);
   }
-  .usage-legend{display:flex;flex-direction:column;gap:9px;font-size:12px;color:var(--text-gray);flex:1;min-width:0;}
+  .usage-legend{display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--text-gray);flex:1;min-width:0;}
   .usage-legend .usage-row-top{display:flex;align-items:center;gap:7px;}
   .usage-legend .usage-dot{width:8px;height:8px;border-radius:50%;flex:none;}
   .usage-legend .usage-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -896,7 +926,7 @@
       radial-gradient(110% 140% at 100% 100%, rgba(228,23,44,.08), transparent 60%),
       linear-gradient(165deg,#1e2233,#12141e);
     border-color:var(--card-border);
-    padding:36px 40px;
+    padding:22px 40px;
     animation:heroGlowDrift 11s ease-in-out infinite alternate;
     box-shadow:var(--shadow-card);
   }
@@ -904,7 +934,7 @@
     background:
       radial-gradient(90% 120% at var(--glow-x,50%) var(--glow-y,50%), rgba(212,21,42,.022), transparent 60%),
       radial-gradient(110% 140% at 100% 100%, rgba(212,21,42,.01), transparent 60%),
-      linear-gradient(165deg,#ffffff,#f3f0ef);
+      linear-gradient(165deg,#f5f6f8,#e9ebee);
   }
   @keyframes heroGlowDrift{
     0%{ --glow-x:38%; --glow-y:35%; }
@@ -925,7 +955,7 @@
   }
   @keyframes neonOrbit{ to{ --neon-angle:360deg; } }
   .institutional-banner-text{position:relative;z-index:3;max-width:520px;}
-  .institutional-banner-text h2{font-size:23px;font-weight:800;letter-spacing:-.3px;margin-bottom:10px;text-shadow:var(--heading-shadow);}
+  .institutional-banner-text h2{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:6px;text-shadow:var(--heading-shadow);}
   .institutional-banner-text p{font-size:14px;color:var(--text-gray);line-height:1.55;margin-bottom:0;max-width:440px;text-shadow:var(--body-text-shadow);}
   .institutional-cta{
     position:relative;z-index:3;flex:none;
@@ -1513,8 +1543,11 @@
           <p id="greeting-p">Tudo o que você precisa para uma prática farmacêutica mais segura e eficiente.</p>
         </div>
         <div class="greeting-clock" id="greeting-clock" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-          <span id="greeting-clock-time">--:--</span>
+          <div class="greeting-clock-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span id="greeting-clock-time">São --:--h</span>
+          </div>
+          <span class="greeting-clock-date" id="greeting-clock-date"></span>
         </div>
       </div>
     </div>
@@ -1588,17 +1621,20 @@
             <div id="usage-donut-wrap">
               <!-- preenchido via JS a partir dos favoritos (ou distribuição ilustrativa quando vazio) -->
             </div>
-            <!-- Métrica estática ilustrativa: o app não possui rastreamento real de tempo de uso; valores fixos apenas para composição visual -->
+            <!-- Tempo de uso real, contabilizado por assets/tempo-uso.js em cada ferramenta (aba visível + em foco) -->
             <div class="time-saved-card">
               <div class="time-saved-top">
-                <span class="time-saved-eyebrow">Economia de tempo</span>
-                <span class="time-saved-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+                <span class="time-saved-eyebrow">Tempo de Uso</span>
+                <div class="usage-period-toggle" id="usage-period-toggle" data-active="day" role="group" aria-label="Período do tempo de uso">
+                  <button type="button" class="usage-period-btn active" id="usage-period-btn-day" onclick="setUsagePeriod('day')" title="Hoje">D</button>
+                  <button type="button" class="usage-period-btn" id="usage-period-btn-week" onclick="setUsagePeriod('week')" title="Esta semana">S</button>
+                </div>
               </div>
-              <span class="time-saved-value">12h45m</span>
-              <span class="time-saved-label">tempo economizado com o uso das ferramentas</span>
-              <span class="time-saved-delta">
+              <span class="time-saved-value" id="usage-time-value">0h00m</span>
+              <span class="time-saved-label" id="usage-time-label">tempo usando as ferramentas hoje</span>
+              <span class="time-saved-delta" id="usage-time-delta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                +28% em relação ao mês anterior
+                <span id="usage-time-delta-text">sem dados de ontem ainda</span>
               </span>
             </div>
           </div>
@@ -2151,14 +2187,23 @@
     p.textContent = msg;
   }
 
-  // Pequeno relógio ao vivo no quadro de saudação
+  // Relógio ao vivo no quadro de saudação — texto explicativo ("São 22:00h") + data por extenso
+  var DIAS_SEMANA = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
+  var MESES_ANO = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   function updateClock(){
-    var el = document.getElementById('greeting-clock-time');
-    if(!el) return;
+    var timeEl = document.getElementById('greeting-clock-time');
+    var dateEl = document.getElementById('greeting-clock-date');
+    if(!timeEl) return;
     var now = new Date();
     var hh = String(now.getHours()).padStart(2,'0');
     var mm = String(now.getMinutes()).padStart(2,'0');
-    el.textContent = hh + ':' + mm;
+    var prefixo = now.getHours() === 1 ? 'É' : 'São';
+    timeEl.textContent = prefixo + ' ' + hh + ':' + mm + 'h';
+    if(dateEl){
+      var diaSemana = DIAS_SEMANA[now.getDay()];
+      diaSemana = diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1);
+      dateEl.textContent = diaSemana + ', ' + now.getDate() + ' de ' + MESES_ANO[now.getMonth()];
+    }
   }
   updateClock();
   setInterval(updateClock, 15000);
@@ -2276,6 +2321,102 @@
         '<div class="usage-legend">'+legendHtml+'</div>'+
       '</div>';
   }
+
+  // ---------- TEMPO DE USO (real, contabilizado via assets/tempo-uso.js em cada ferramenta) ----------
+  // Cada ferramenta soma segundos de uso (aba visível + em foco) em localStorage,
+  // agrupados por dia: fp_tempo_uso_v1 = { "AAAA-MM-DD": { guia: seg, medinter: seg, ... } }.
+  // Aqui somamos o dia atual ou a semana atual (segunda a hoje) sob demanda — não é
+  // preciso "resetar" nada: a virada de dia/semana é automática, pois a chave do dia muda.
+  var TEMPO_USO_KEY = 'fp_tempo_uso_v1';
+  var usagePeriod = 'day';
+
+  function loadTempoUsoData(){
+    try{ return JSON.parse(localStorage.getItem(TEMPO_USO_KEY)) || {}; }catch(e){ return {}; }
+  }
+  function dateKeyFor(d){
+    return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+  function sumDaySeconds(data, key){
+    var day = data[key];
+    if(!day) return 0;
+    return Object.keys(day).reduce(function(s,k){ return s + (day[k] || 0); }, 0);
+  }
+  function mondayOf(d){
+    var wd = d.getDay(); // 0 = domingo
+    var diff = (wd === 0 ? -6 : 1 - wd);
+    var monday = new Date(d);
+    monday.setDate(d.getDate() + diff);
+    monday.setHours(0,0,0,0);
+    return monday;
+  }
+  function sumWeekSeconds(data, referenceDate){
+    var monday = mondayOf(referenceDate);
+    var total = 0;
+    for(var i=0;i<7;i++){
+      var d = new Date(monday);
+      d.setDate(monday.getDate() + i);
+      if(d > referenceDate) break;
+      total += sumDaySeconds(data, dateKeyFor(d));
+    }
+    return total;
+  }
+  function formatDuration(totalSeconds){
+    var totalMinutes = Math.round(totalSeconds / 60);
+    var h = Math.floor(totalMinutes / 60);
+    var m = totalMinutes % 60;
+    return h + 'h' + String(m).padStart(2,'0') + 'm';
+  }
+  function setUsageDelta(deltaEl, deltaTextEl, current, previous, suffix){
+    if(!deltaEl || !deltaTextEl) return;
+    if(!previous || previous < 30){
+      deltaEl.classList.add('is-down');
+      deltaTextEl.textContent = 'ainda sem histórico suficiente';
+      return;
+    }
+    deltaEl.classList.remove('is-down');
+    var pct = Math.round(((current - previous) / previous) * 100);
+    deltaTextEl.textContent = (pct >= 0 ? '+' : '') + pct + '% ' + suffix;
+  }
+
+  function setUsagePeriod(period){
+    usagePeriod = period;
+    var toggle = document.getElementById('usage-period-toggle');
+    if(toggle) toggle.setAttribute('data-active', period);
+    var btnDay = document.getElementById('usage-period-btn-day');
+    var btnWeek = document.getElementById('usage-period-btn-week');
+    if(btnDay) btnDay.classList.toggle('active', period === 'day');
+    if(btnWeek) btnWeek.classList.toggle('active', period === 'week');
+    renderUsageTimeCard();
+  }
+  window.setUsagePeriod = setUsagePeriod;
+
+  function renderUsageTimeCard(){
+    var valueEl = document.getElementById('usage-time-value');
+    var labelEl = document.getElementById('usage-time-label');
+    var deltaEl = document.getElementById('usage-time-delta');
+    var deltaTextEl = document.getElementById('usage-time-delta-text');
+    if(!valueEl) return;
+
+    var data = loadTempoUsoData();
+    var now = new Date();
+
+    if(usagePeriod === 'day'){
+      var todaySeconds = sumDaySeconds(data, dateKeyFor(now));
+      valueEl.textContent = formatDuration(todaySeconds);
+      labelEl.textContent = 'tempo usando as ferramentas hoje';
+      var yesterday = new Date(now); yesterday.setDate(now.getDate() - 1);
+      setUsageDelta(deltaEl, deltaTextEl, todaySeconds, sumDaySeconds(data, dateKeyFor(yesterday)), 'em relação a ontem');
+    }else{
+      var weekSeconds = sumWeekSeconds(data, now);
+      valueEl.textContent = formatDuration(weekSeconds);
+      labelEl.textContent = 'tempo usando as ferramentas nesta semana';
+      var lastWeekRef = new Date(now); lastWeekRef.setDate(now.getDate() - 7);
+      setUsageDelta(deltaEl, deltaTextEl, weekSeconds, sumWeekSeconds(data, lastWeekRef), 'em relação à semana passada');
+    }
+  }
+  window.addEventListener('storage', function(e){
+    if(e.key === TEMPO_USO_KEY) renderUsageTimeCard();
+  });
 
   // ---------- NOTAS DE ROTINA ----------
   var NOTES_KEY = 'fp_notas_rotina';
@@ -2496,6 +2637,8 @@
   renderFavorites();
   renderUsageBreakdown();
   renderNotes();
+  renderUsageTimeCard();
+  setInterval(renderUsageTimeCard, 30000);
 </script>
 
 </body>
