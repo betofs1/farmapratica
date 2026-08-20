@@ -64,6 +64,10 @@
     border-color:rgba(0,0,0,0.16);
   }
   body.light .theme-toggle-top:hover{background:rgba(0,0,0,0.09);}
+  html{
+    overflow-y:scroll;
+    scrollbar-gutter:stable;
+  }
   *{box-sizing:border-box;}
   body{
     margin:0;
@@ -258,10 +262,12 @@
     flex:1;
     font-size:14.5px;
     font-family:inherit;
-    color:var(--ink);
+    color:#ffffff;
     min-width:0;
   }
-  #search::placeholder{color:#6a6a7a;}
+  body.light #search{color:var(--ink);}
+  #search::placeholder{color:rgba(255,255,255,0.65);}
+  body.light #search::placeholder{color:#6a6a7a;}
   .search-shortcut-hint{
     background:var(--paper-dim);
     border:1px solid var(--rule);
