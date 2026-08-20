@@ -34,15 +34,15 @@
   }
   .topbar-app{
     display:flex;align-items:center;justify-content:space-between;position:relative;
-    min-height:64px;flex-shrink:0;padding:10px 24px;background:var(--sidebar);
+    min-height:84px;flex-shrink:0;padding:20px 40px;background:var(--sidebar);
     border-bottom:2px solid rgba(228,23,44,.35);box-shadow:0 2px 20px rgba(0,0,0,.15);z-index:3;gap:16px;
   }
   .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
   .brand{display:flex;align-items:center;gap:14px;}
-  .brand img{width:40px;height:40px;object-fit:contain;}
-  .brand-text h1{font-size:17px;font-weight:800;letter-spacing:-.3px;line-height:1.1;margin:0;color:var(--text);}
-  .brand-text h1 span{color:#ec4052;}
-  .brand-text p{font-size:11px;color:var(--text-dim);font-weight:400;margin:2px 0 0;}
+  .brand img{width:50px;height:50px;object-fit:contain;}
+  .brand-text h1{font-size:25px;font-weight:800;letter-spacing:-.3px;line-height:1.1;margin:0;color:var(--text);}
+  .brand-text h1 span{color:#ff021b;}
+  .brand-text p{font-size:12.5px;color:var(--text-dim);font-weight:400;margin:2px 0 0;}
   .titulo-central{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;}
   .titulo-principal{font-size:1.05rem;font-weight:800;letter-spacing:.5px;color:var(--text);}
   .titulo-descricao{font-size:.72rem;color:var(--text-dim);margin-top:2px;}
@@ -50,7 +50,7 @@
   .credit-text{font-size:11px;color:var(--text-dim);white-space:nowrap;}
   .credit-text strong{color:var(--text-gray);}
   .theme-toggle{
-    display:flex;align-items:center;justify-content:center;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;width:40px;height:40px;
     border-radius:9px;border:1px solid var(--border);background:transparent;
     color:var(--text);cursor:pointer;transition:background .15s;
   }
@@ -129,6 +129,10 @@
     padding:4px 12px;font-size:11px;color:var(--text-dim);cursor:pointer;transition:all .15s;
   }
   .quick-tag:hover{border-color:var(--accent);color:var(--accent-bright);}
+  body:not(.light) .search-label,
+  body:not(.light) .quick-label,
+  body:not(.light) .hist-tag,
+  body:not(.light) .quick-tag{color:var(--text);}
   .banner{
     border-radius:var(--radius);padding:11px 16px;margin-bottom:16px;
     font-size:13px;display:flex;align-items:flex-start;gap:10px;line-height:1.5;
@@ -513,7 +517,7 @@ function renderQuickTags() {
     });
     const cl = document.createElement("button");
     cl.className = "quick-tag";
-    cl.style.cssText = "color:var(--gray-light);border-color:var(--border);font-size:11px;padding:4px 10px";
+    cl.style.cssText = "border-color:var(--border);font-size:11px;padding:4px 10px";
     cl.innerHTML = "✕ Limpar histórico";
     cl.onclick = clearHist;
     wrap.appendChild(cl);

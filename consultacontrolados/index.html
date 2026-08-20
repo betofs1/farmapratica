@@ -10,24 +10,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #17181a;
-    --panel: #1e1f22;
-    --sidebar: #1b1c1e;
-    --card: #26272b;
-    --card-hover: #2e3034;
-    --border: #38393e;
-    --red-dark: #b4192a;
-    --red: #b4192a;
-    --red-bright: #ef2d40;
-    --red-glow: rgba(239,45,64,0.18);
-    --text: #f2f2f3;
-    --text-dim: #9a9ba0;
-    --text-gray: #cacbcf;
-    --amber: #f2b84b;
-    --pill-bg: #2c2225;
+    --bg: #5a5f66;
+    --panel: #4a4e55;
+    --sidebar: #454951;
+    --card: #4f545c;
+    --card-hover: #585d65;
+    --border: #63686f;
+    --red-dark: #a10f1f;
+    --red: #e4172c;
+    --red-bright: #ef5b6b;
+    --red-glow: rgba(228,23,44,.22);
+    --text: #f5f5f4;
+    --text-dim: #a7abb1;
+    --text-gray: #d2d5d9;
+    --amber: #f59e0b;
+    --pill-bg: #674a54;
     --pill-text: #f6cf74;
     --sidebar-w: 340px;
-    --hover-tint: rgba(255,255,255,.055);
+    --hover-tint: #585d65;
     --tarja-amarela: #e8b83e;
     --tarja-amarela-glow: rgba(232,184,62,.22);
     --tarja-azul: #4fa3e3;
@@ -39,23 +39,23 @@
   }
 
   body.light{
-    --bg: #e8e4e1;
-    --panel: #f7f5f4;
-    --sidebar: #f2efec;
+    --bg: #eceef1;
+    --panel: #f6f7f9;
+    --sidebar: #e2e5e9;
     --card: #ffffff;
-    --card-hover: #f7eeed;
-    --border: #dcd7d5;
+    --card-hover: #f1f2f5;
+    --border: #d7dade;
     --red-dark: #a10f1f;
-    --red: #a10f1f;
-    --red-bright: #d4152a;
-    --red-glow: rgba(212,21,42,0.12);
-    --text: #201d1e;
-    --text-dim: #7a7378;
-    --text-gray: #5c5559;
-    --amber: #b8790a;
+    --red: #d4152a;
+    --red-bright: #eb374b;
+    --red-glow: rgba(212,21,42,.14);
+    --text: #22262c;
+    --text-dim: #767c84;
+    --text-gray: #4b5057;
+    --amber: #c9790a;
     --pill-bg: #fbe9ea;
     --pill-text: #a10f1f;
-    --hover-tint: rgba(161,15,31,.05);
+    --hover-tint: #eceef1;
     --tarja-amarela: #b8860b;
     --tarja-amarela-glow: rgba(184,134,11,.15);
     --tarja-azul: #1c6dbf;
@@ -66,9 +66,9 @@
     --tarja-verde-glow: rgba(31,138,83,.15);
   }
   body.light .drug-item:hover{ color: #000; }
-  body.light .empty-icon{ background: linear-gradient(135deg, rgba(161,15,31,.12), rgba(232,184,75,.12)); }
+  body.light .empty-icon{ background: linear-gradient(135deg, rgba(161,15,31,.12), rgba(201,121,10,.12)); }
   body.light .valor-pill{ background: linear-gradient(135deg, #fdf0d8, var(--pill-bg)); border-color: rgba(161,15,31,.25); }
-  body.light .info-bar{ background: linear-gradient(135deg, rgba(161,15,31,.06), rgba(232,184,75,.05)); }
+  body.light .info-bar{ background: linear-gradient(135deg, rgba(161,15,31,.06), rgba(201,121,10,.05)); }
   body.light .theme-toggle .icon-sun{ display:none; }
   body.light .theme-toggle .icon-moon{ display:block; }
   body.light{ background: var(--bg) !important; }
@@ -79,8 +79,8 @@
     margin:0;
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     background:
-      radial-gradient(900px 500px at 15% -10%, rgba(239,45,64,.045), transparent 60%),
-      radial-gradient(700px 500px at 100% 0%, rgba(242,184,75,.025), transparent 55%),
+      radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
       var(--bg);
     color: var(--text);
     display:flex;
@@ -96,9 +96,9 @@
     display:grid;
     grid-template-columns: var(--sidebar-w) 1fr auto;
     align-items:center;
-    min-height: 64px;
+    min-height: 84px;
     flex-shrink:0;
-    padding: 10px 24px 10px 0;
+    padding: 20px 40px 20px 0;
     background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
     border-bottom: 1px solid var(--border);
     position: relative;
@@ -109,8 +109,8 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
     border-radius:9px;
     border:1px solid var(--border);
     background:transparent;
@@ -127,7 +127,7 @@
     align-items:center;
     gap:10px;
     flex-shrink:0;
-    padding-right:24px;
+    padding-right:40px;
   }
   .detail-mode-toggle{
     display:flex;
@@ -151,7 +151,7 @@
   .detail-mode-toggle:hover{ background: var(--hover-tint); color: var(--text); }
   .detail-mode-toggle svg{ width:16px; height:16px; flex-shrink:0; }
   .detail-mode-toggle.active{
-    background: rgba(232,184,75,.14);
+    background: rgba(245,158,11,.14);
     border-color: var(--amber);
     color: var(--amber);
   }
@@ -164,9 +164,9 @@
     flex-shrink:0; width:14px; height:14px; opacity:.7; transition: transform .15s ease;
   }
   .cat-header.classe-grupo.aberto{
-    background: rgba(232,184,75,.14); border-color: var(--amber); color: var(--amber);
+    background: rgba(245,158,11,.14); border-color: var(--amber); color: var(--amber);
   }
-  .cat-header.classe-grupo.aberto .cat-count{ background: rgba(232,184,75,.22); color: var(--amber); }
+  .cat-header.classe-grupo.aberto .cat-count{ background: rgba(245,158,11,.22); color: var(--amber); }
   .cat-header.classe-grupo.aberto .cat-abre{ transform: translateX(2px); color: var(--amber); }
 
   /* ---------- Flyout de classe (modo detalhado) ---------- */
@@ -201,13 +201,13 @@
   .drug-item.sem-comercial{ color: var(--text-dim); }
   .drug-item.sem-comercial .item-dot{ opacity:.4; }
   .drug-item.sem-comercial:hover{ color: var(--text-gray); }
-  .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 24px; }
+  .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 40px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
   .brand{ display:flex; align-items:center; gap:14px; }
-  .brand img{ width:40px; height:40px; }
-  .brand-text h1{ font-size:19px; font-weight:800; letter-spacing:-0.3px; line-height:1.1; margin:0; color: var(--text); }
-  .brand-text h1 span{ color:var(--red-bright); }
-  .brand-text p{ font-size:11.5px; color:var(--text-gray); font-weight:400; margin:2px 0 0; }
+  .brand img{ width:50px; height:50px; }
+  .brand-text h1{ font-size:25px; font-weight:800; letter-spacing:-0.3px; line-height:1.1; margin:0; color: var(--text); }
+  .brand-text h1 span{ color:var(--red); }
+  .brand-text p{ font-size:12.5px; color:var(--text-gray); font-weight:400; margin:2px 0 0; }
   .topbar-app .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
   .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:100%; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
@@ -386,7 +386,7 @@
   .main-header h2{ margin:0; font-size: 1.75rem; letter-spacing:-.2px; }
   .main-header .cat-tag{
     display:inline-block; font-size:.68rem; text-transform:uppercase; letter-spacing:.6px; font-weight:800;
-    color: var(--amber); background: rgba(232,184,75,.08); border: 1px solid rgba(232,184,75,.3);
+    color: var(--amber); background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.3);
     padding: 3px 10px; border-radius: 20px; margin-top:8px;
   }
   .excecao-alerta{
@@ -415,23 +415,23 @@
     flex-shrink:0;
   }
   .btn-fav-ctrl svg{width:16px;height:16px;display:block;}
-  .btn-fav-ctrl:hover{background:rgba(200,19,40,.12);}
+  .btn-fav-ctrl:hover{background:rgba(239,91,107,.12);}
   .btn-fav-ctrl.starred{background:var(--red-bright, var(--vermelho, #c81328));color:#fff;}
   .btn-bula{
     display:inline-flex; align-items:center; gap:6px; border: 1px solid var(--red-bright); color: var(--red-bright);
     background: transparent; padding: 8px 18px; border-radius: 20px; font-size:.8rem; font-weight:700;
     cursor:pointer; text-decoration:none; white-space:nowrap; transition: background .15s, transform .1s;
   }
-  .btn-bula:hover{ background: rgba(239,45,64,.12); transform: translateY(-1px); }
+  .btn-bula:hover{ background: rgba(239,91,107,.12); transform: translateY(-1px); }
 
   .info-bar{
-    background: linear-gradient(135deg, rgba(180,25,42,.1), rgba(232,184,75,.05));
+    background: linear-gradient(135deg, rgba(161,15,31,.1), rgba(245,158,11,.05));
     border: 1px solid var(--border); border-radius: 14px; padding: 16px 22px;
     display:flex; gap: 32px; align-items:center; margin-bottom: 22px; flex-wrap:wrap;
   }
   .info-field{ display:flex; align-items:center; gap:10px; }
   .info-field .field-icon{
-    width: 34px; height: 34px; border-radius: 10px; background: rgba(239,45,64,.12);
+    width: 34px; height: 34px; border-radius: 10px; background: rgba(239,91,107,.12);
     display:flex; align-items:center; justify-content:center; font-size: 1rem; flex-shrink:0;
   }
   .info-field .field-inputs{ display:flex; flex-direction:column; gap:2px; }
@@ -458,7 +458,7 @@
   }
   .empty-state .empty-icon{
     width: 72px; height: 72px; border-radius: 20px;
-    background: linear-gradient(135deg, rgba(180,25,42,.18), rgba(232,184,75,.1));
+    background: linear-gradient(135deg, rgba(161,15,31,.18), rgba(245,158,11,.1));
     border: 1px solid var(--border); display:flex; align-items:center; justify-content:center;
     font-size: 2rem; margin-bottom: 18px;
   }
@@ -482,7 +482,7 @@
   .perfil-vazio a:hover{ text-decoration: underline; }
 
   .observacoes{
-    margin-top: 20px; background: rgba(239,45,64,.05); border: 1px solid rgba(239,45,64,.2);
+    margin-top: 20px; background: rgba(239,91,107,.05); border: 1px solid rgba(239,91,107,.2);
     border-radius: 14px; padding: 18px 20px;
   }
   .observacoes h3{
@@ -540,7 +540,7 @@
     </a>
   </div>
   <div class="titulo-central">
-    <div class="titulo-principal">Consulta por Medicamentos de Controle Especial</div>
+    <div class="titulo-principal">CONSULTA POR MEDICAMENTOS DE CONTROLE ESPECIAL</div>
     <div class="titulo-descricao">Tipo de receita, vias, validade e retenção conforme a legislação vigente</div>
   </div>
   <div class="topbar-actions">
