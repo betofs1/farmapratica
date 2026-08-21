@@ -7,7 +7,7 @@
 <title>Checklist de Rotina e Autoinspeção</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Paleta grafite médio/escuro — igual à página inicial (INDEX), tema padrão */
@@ -88,7 +88,7 @@
     flex-shrink:0;
     padding: 20px 40px 20px 0;
     background: var(--sidebar);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid rgba(228,23,44,.35);
     position: relative;
     box-shadow: 0 2px 20px rgba(0,0,0,.15);
     z-index: 3;
@@ -188,7 +188,6 @@
   .brand{ display:flex; align-items:center; gap:14px; }
   .brand img{ width:50px; height:50px; }
   .brand-text h1{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:25px;
     font-weight:800;
     letter-spacing:-0.3px;
@@ -196,14 +195,12 @@
     margin:0;
     color: var(--text);
   }
-  .brand-text h1 span{ color:var(--red); }
+  .brand-text h1 span{ color:var(--red-bright); }
   .brand-text p{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:12.5px;
     color:var(--text-gray);
     font-weight:400;
     margin:2px 0 0;
-    white-space:nowrap;
   }
   .topbar-app .titulo-central{
     grid-column:2;
@@ -211,19 +208,15 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
-    padding:0 12px;
   }
   .topbar-app .titulo-principal{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight:800;
     white-space:normal;
-    letter-spacing:.4px;
-    line-height:1.25;
-    max-width: 100%;
+    letter-spacing:.5px;
+    max-width: 480px;
   }
   .topbar-app .titulo-descricao{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size: .74rem;
     color: var(--text-dim);
     margin-top:2px;
@@ -1031,6 +1024,36 @@ const NORMAS = {
     titulo: 'Consolidação das normas sobre os sistemas e os subsistemas do SUS (Lista Nacional de Notificação Compulsória)',
     contexto: 'Publicada em 2017 e atualizada pela Portaria GM/MS nº 420/2022, define quais doenças e agravos devem ser notificados às autoridades sanitárias — relevante quando um resultado de EAC realizado na farmácia indica suspeita de doença de notificação compulsória.',
     link: 'https://bvsms.saude.gov.br/bvs/saudelegis/gm/2017/prc0004_03_10_2017.html'
+  },
+  rdc1000_2025: {
+    tipo: 'RDC', numero: 'nº 1.000/2025', orgao: 'Anvisa',
+    titulo: 'Receituário de medicamentos sujeitos a controle especial (físico e eletrônico)',
+    contexto: 'Publicada em dezembro de 2025, atualiza — sem revogar — a Portaria SVS/MS nº 344/1998: institui o modelo único de Notificação B2 (versão 3, obrigatório desde 17/05/2026), exige Receita de Controle Especial obrigatória para as Listas C1 e C5 (não mais aceita em receita privativa comum), veda o uso de receita de controle especial para antimicrobianos e agonistas de GLP-1 (dispensação exclusiva em receita privativa) e valida o receituário eletrônico das Notificações A, B, B1 e B2 em todo o território nacional.',
+    link: 'https://anvisalegis.datalegis.net/action/ActionDatalegis.php?acao=abrirTextoAto&tipo=RDC&numeroAto=00001000&seqAto=000&valorAno=2025&orgao=RDC%2FDC%2FANVISA%2FMS&codTipo=&desItem=&desItemFim=&cod_menu=1696&cod_modulo=134&pesquisa=true'
+  },
+  rdc1015_2026: {
+    tipo: 'RDC', numero: 'nº 1.015/2026', orgao: 'Anvisa',
+    titulo: 'Prescrição e dispensação de produtos à base de Cannabis',
+    contexto: 'Publicada em fevereiro de 2026 em substituição à RDC nº 327/2019, com vigência a partir de 04/05/2026: define o tipo de receituário exigido conforme o teor de THC do produto, mantém a escrituração no SNGPC nos moldes da Portaria 344/1998 e desobriga a farmácia de reter fisicamente o Termo de Consentimento Livre e Esclarecido apresentado pelo paciente.',
+    link: 'https://anvisalegis.datalegis.net/action/ActionDatalegis.php?acao=abrirTextoAto&tipo=RDC&numeroAto=00001015&seqAto=000&valorAno=2026&orgao=RDC%2FDC%2FANVISA%2FMS&codTipo=&desItem=&desItemFim=&cod_menu=1696&cod_modulo=134&pesquisa=true'
+  },
+  lei13146_2015: {
+    tipo: 'Lei Federal', numero: 'nº 13.146/2015', orgao: 'Presidência da República',
+    titulo: 'Estatuto da Pessoa com Deficiência (Lei Brasileira de Inclusão)',
+    contexto: 'Sancionada em 2015, assegura o direito à acessibilidade em edificações de uso público e de uso coletivo — incluindo farmácias e drogarias —, com parâmetros técnicos detalhados pela norma ABNT NBR 9050. É item recorrente de fiscalização pela vigilância sanitária municipal e por órgãos de defesa da pessoa com deficiência.',
+    link: 'http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm'
+  },
+  lei10962_2004: {
+    tipo: 'Lei Federal', numero: 'nº 10.962/2004', orgao: 'Presidência da República',
+    titulo: 'Afixação de preços de produtos para o consumidor',
+    contexto: 'Publicada em 2004, obriga o comerciante a afixar o preço de venda em cada produto exposto ou em gôndolas/prateleiras de forma legível. É item clássico de fiscalização do Procon e da vigilância sanitária municipal em farmácias e drogarias, complementar ao Código de Defesa do Consumidor.',
+    link: 'https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.962.htm'
+  },
+  rdc885_2024: {
+    tipo: 'RDC', numero: 'nº 885/2024', orgao: 'Anvisa',
+    titulo: 'Bula digital de medicamentos (piloto)',
+    contexto: 'Publicada em julho de 2024, autoriza a disponibilização da bula em formato digital (acesso por QR Code) como projeto-piloto de implementação gradual. A dispensa da bula impressa é restrita a hipóteses específicas (ex.: amostra grátis); a via física continua devendo ser fornecida sempre que solicitada pelo paciente, pelo prescritor ou pelo próprio estabelecimento — convém acompanhar a evolução do piloto junto à Anvisa antes de tratar a bula impressa como dispensável na rotina.',
+    link: 'https://www.gov.br/anvisa/pt-br/setorregulado/regularizacao/medicamentos/bulas-rotulos-e-nome-comercial/arquivos/BulaDigitalPerguntaseRespostas_v.1site.pdf'
   }
 };
 
@@ -1066,6 +1089,7 @@ const ICON_PATHS = {
   'trending-up': '<path d="m3 17 6-6 4 4 8-8"/><path d="M15 6h6v6"/>',
   'test-tube': '<path d="M9 2.5h6"/><path d="M10 2.5v13.5a2 2 0 0 0 4 0V2.5"/><path d="M10 11h4"/>',
   syringe: '<path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 15 5l-9.5 9.5a2 2 0 0 0 0 2.8L7 19l9.5-9.5"/><path d="M8.5 13.5 5 17l-2.5 4.5L7 19l3.5-3.5"/><path d="m11 8 2 2"/><path d="m13.5 5.5 2 2"/>',
+  leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
 };
 function svg(name, cls){
   const inner = ICON_PATHS[name] || '';
@@ -1075,7 +1099,7 @@ const CAT_ICON = {
   temperatura: 'thermometer', medicamentos: 'pill', receituario: 'file-text',
   controlados: 'lock', limpeza: 'sparkles', estoque: 'package',
   servicos: 'activity', documentacao: 'clipboard', estrutura: 'building',
-  responsabilidade: 'users', eac: 'test-tube', vacinacao: 'syringe'
+  responsabilidade: 'users', eac: 'test-tube', vacinacao: 'syringe', cannabis: 'leaf'
 };
 
 // =====================================================================
@@ -1177,23 +1201,27 @@ const DATA = {
         { id:'r5', texto:'Prescrição digital validada (assinatura eletrônica íntegra e ausência de reuso indevido)', crit:'alta',
           motivo:'Prescrições eletrônicas fraudadas ou reutilizadas comprometem o controle sanitário.',
           correcao:'Validar a assinatura no verificador oficial antes de dispensar e registrar o número/hash da prescrição.',
-          normas:['rdc44_2009'] },
+          normas:['rdc44_2009','rdc1000_2025'] },
         { id:'r6', texto:'Notificações amarelas (Listas A1/A2) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 30 dias, 1 medicamento por notificação', crit:'alta',
           motivo:'Cada lista da Portaria 344/98 tem regras próprias de quantidade e validade; o descumprimento invalida a dispensação.',
           correcao:'Recusar a dispensação fora desses parâmetros e orientar o paciente a buscar nova notificação.',
-          normas:['portaria344_1998'] },
+          normas:['portaria344_1998','rdc1000_2025'] },
         { id:'r7', texto:'Notificações azuis (Lista B1) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 60 dias, 1 medicamento por notificação', crit:'alta',
           motivo:'Mesmo princípio de controle de quantidade/validade aplicado à Lista B1 (psicotrópicos).',
           correcao:'Recusar a dispensação fora desses parâmetros.',
-          normas:['portaria344_1998'] },
+          normas:['portaria344_1998','rdc1000_2025'] },
         { id:'r8', texto:'Receitas carbonadas (Lista C1) aviadas dentro do prazo (30 dias), com quantidade para até 60 dias e no máximo 3 medicamentos por receita (exceto antiparkinsonianos/anticonvulsivantes, até 6 meses)', crit:'alta',
           motivo:'Regra específica de quantidade/validade para a Lista C1 (outras substâncias sujeitas a controle).',
           correcao:'Recusar a dispensação fora desses parâmetros; verificar exceção para tratamento crônico quando aplicável.',
-          normas:['portaria344_1998'] },
+          normas:['portaria344_1998','rdc1000_2025'] },
         { id:'r9', texto:'Dispensação de esteroides anabolizantes (Lista C5) mediante receita carbonada completa, com receita arquivada por 5 anos', crit:'alta',
           motivo:'A Lista C5 exige guarda documental prolongada pelo alto potencial de desvio de uso.',
           correcao:'Regularizar o arquivamento e verificar se todas as receitas anteriores foram mantidas pelo prazo exigido.',
-          normas:['portaria344_1998'] },
+          normas:['portaria344_1998','rdc1000_2025'] },
+        { id:'r14', texto:'Listas C1 e C5 dispensadas exclusivamente mediante Receita de Controle Especial — receita privativa comum recusada para essas listas, mesmo que completa', crit:'alta',
+          motivo:'A RDC 1.000/2025 tornou obrigatório o uso da Receita de Controle Especial para as Listas C1 e C5; a receita privativa comum deixou de ser aceita para essas substâncias.',
+          correcao:'Recusar a dispensação apresentada em receita privativa comum e orientar o paciente a obter a Receita de Controle Especial correta com o prescritor.',
+          normas:['rdc1000_2025','portaria344_1998'] },
         { id:'r10', texto:'Retinoides sistêmicos (Lista C2) dispensados com receita válida por 30 dias; para mulheres em idade fértil, validade de 7 dias com revalidação mensal', crit:'alta',
           motivo:'O uso de retinoides em gestantes causa malformações graves; o prazo curto de revalidação garante triagem periódica.',
           correcao:'Recusar a dispensação fora do prazo e confirmar o Termo de Consentimento e Conhecimento de Risco arquivado.',
@@ -1201,15 +1229,27 @@ const DATA = {
         { id:'r11', texto:'Sibutramina (Notificação B2) dispensada apenas até 15 mg/dia, por no máximo 30 dias, com Termo de Responsabilidade do Prescritor anexado', crit:'alta',
           motivo:'A sibutramina tem restrições específicas de posologia e exige responsabilização formal do prescritor.',
           correcao:'Recusar a dispensação sem o Termo de Responsabilidade ou fora da posologia/prazo máximo.',
-          normas:['portaria344_1998'] },
-        { id:'r12', texto:'Antimicrobianos dispensados apenas com receita legível, sem rasuras, dentro de 10 dias da emissão, com registro de data, quantidade, lote e rubrica do farmacêutico no verso das duas vias', crit:'alta',
-          motivo:'A receita de antimicrobianos tem validade curta e exige registro específico para rastreabilidade do uso racional de antibióticos.',
-          correcao:'Recusar a dispensação fora do prazo e completar o registro no verso da receita antes da entrega.',
-          normas:['rdc471_2021'] },
+          normas:['portaria344_1998','rdc1000_2025'] },
+        { id:'r15', texto:'Talão de Notificação de Receita B2 já no modelo versão 3 (obrigatório desde 17/05/2026), com todos os campos preenchidos — inclusive endereço completo do paciente e CPF/passaporte (ou "NÃO POSSUI")', crit:'alta',
+          motivo:'A RDC 1.000/2025 unificou o modelo de Notificação B2 e passou a exigir o preenchimento integral de todos os campos como condição para a dispensação; talão incompleto ou no modelo antigo pode ser recusado.',
+          correcao:'Substituir os talões pelo modelo versão 3 e devolver ao paciente/prescritor qualquer receita com campo em branco, orientando o preenchimento correto (inclusive "NÃO POSSUI" quando o paciente não tiver CPF).',
+          normas:['rdc1000_2025'] },
+        { id:'r12', texto:'Antimicrobianos dispensados apenas com receita privativa legível, sem rasuras, dentro de 10 dias da emissão, com registro de data, quantidade, lote e rubrica do farmacêutico no verso das duas vias', crit:'alta',
+          motivo:'A receita de antimicrobianos tem validade curta e exige registro específico para rastreabilidade do uso racional de antibióticos; a RDC 1.000/2025 reforça que a Receita de Controle Especial não pode ser usada para essa finalidade.',
+          correcao:'Recusar a dispensação fora do prazo, em receita de controle especial indevida, ou sem o registro completo no verso da receita antes da entrega.',
+          normas:['rdc471_2021','rdc1000_2025'] },
+        { id:'r16', texto:'Agonistas de GLP-1 (ex.: semaglutida, liraglutida) dispensados exclusivamente com receita privativa — nunca em Receita de Controle Especial', crit:'alta',
+          motivo:'A RDC 1.000/2025 veda expressamente o uso do talão de controle especial para agonistas de GLP-1, ainda que o paciente ou o prescritor tragam a receita nesse modelo por engano.',
+          correcao:'Recusar a receita de controle especial apresentada para esses medicamentos e orientar o prescritor/paciente a emitir receita privativa comum.',
+          normas:['rdc1000_2025'] },
         { id:'r13', texto:'Medicamentos isentos de prescrição em autosserviço organizados por Denominação Comum Brasileira (DCB), separados de outros produtos, com cartaz de alerta contra automedicação visível', crit:'media',
           motivo:'A organização por DCB facilita a identificação pelo usuário e o cartaz reforça a orientação farmacêutica mesmo no autosserviço.',
           correcao:'Reorganizar a área de autosserviço e afixar o cartaz de alerta em local visível.',
-          normas:['rdc44_2009'] }
+          normas:['rdc44_2009'] },
+        { id:'r17', texto:'Bula impressa disponibilizada ao paciente sempre que solicitada, mesmo quando o estabelecimento adota bula digital (QR Code) do projeto-piloto da Anvisa', crit:'media',
+          motivo:'A bula digital ainda é um piloto de implementação gradual; a dispensa da via impressa é restrita a hipóteses específicas, e a via física deve ser fornecida quando pedida pelo paciente, pelo prescritor ou pelo estabelecimento.',
+          correcao:'Manter estoque de bulas impressas disponível e orientar a equipe a fornecê-las sempre que solicitado, independentemente do uso de QR Code.',
+          normas:['rdc885_2024'] }
       ]
     },
     {
@@ -1391,6 +1431,10 @@ const DATA = {
           motivo:'A informação completa ao público é exigência de transparência e facilita o contato em caso de dúvidas ou denúncias.',
           correcao:'Atualizar o cartaz com todos os campos exigidos e afixar em local visível ao público.',
           normas:['rdc44_2009'] },
+        { id:'d13', texto:'Preço de venda afixado de forma legível em cada produto exposto ou em gôndolas/prateleiras', crit:'media',
+          motivo:'A ausência de preço visível é infração recorrente fiscalizada pelo Procon e pela vigilância sanitária municipal, além de comprometer a transparência ao consumidor.',
+          correcao:'Afixar ou corrigir a etiqueta de preço em todos os produtos ou na gôndola correspondente antes da abertura ao público.',
+          normas:['lei10962_2004'] },
         { id:'d11', texto:'Autoinspeção periódica realizada pelo próprio estabelecimento, com cronograma de adequação das não conformidades encontradas', crit:'baixa',
           motivo:'A autoinspeção regular antecipa problemas antes de uma fiscalização externa e demonstra gestão ativa da conformidade.',
           correcao:'Definir uma periodicidade de autoinspeção (ex.: mensal) e documentar o plano de ação para os itens pendentes.',
@@ -1443,7 +1487,19 @@ const DATA = {
         { id:'ef10', texto:'Projeto arquitetônico do estabelecimento aprovado pela vigilância sanitária e compatível com o que foi efetivamente executado', crit:'media',
           motivo:'Alterações estruturais não aprovadas podem gerar autuação e comprometem a análise de risco da vigilância sanitária.',
           correcao:'Regularizar o projeto junto à vigilância sanitária local antes de qualquer nova reforma ou ampliação.',
-          normas:['rdc44_2009'] }
+          normas:['rdc44_2009'] },
+        { id:'ef11', texto:'Acesso de entrada adaptado (rampa ou desnível compatível, com inclinação dentro do parâmetro técnico) para pessoas com deficiência ou mobilidade reduzida', crit:'media',
+          motivo:'A acessibilidade em edificações de uso coletivo é direito assegurado pelo Estatuto da Pessoa com Deficiência, com parâmetros técnicos definidos pela NBR 9050.',
+          correcao:'Adequar o acesso conforme a norma técnica e, quando a estrutura do imóvel não permitir, buscar orientação da vigilância sanitária sobre soluções alternativas cabíveis.',
+          normas:['lei13146_2015'] },
+        { id:'ef12', texto:'Espaço de circulação interna, balcão de atendimento e, quando houver, sanitário compatíveis com o deslocamento de cadeira de rodas', crit:'media',
+          motivo:'A largura de corredores e a altura de balcões fora do padrão de acessibilidade impedem o atendimento adequado a pessoas com deficiência.',
+          correcao:'Reorganizar o layout e, se necessário, adaptar o mobiliário para atender aos parâmetros da NBR 9050.',
+          normas:['lei13146_2015'] },
+        { id:'ef13', texto:'Sinalização de atendimento prioritário (idosos, gestantes, pessoas com deficiência) visível e conhecida pela equipe', crit:'baixa',
+          motivo:'O atendimento prioritário é direito assegurado por lei e reduz o tempo de espera de públicos mais vulneráveis.',
+          correcao:'Afixar a sinalização e orientar a equipe sobre o fluxo de priorização no atendimento.',
+          normas:['lei13146_2015'] }
       ]
     },
     {
@@ -1551,6 +1607,35 @@ const DATA = {
           motivo:'A farmacovigilância de vacinas depende da notificação correta e tempestiva de eventos adversos.',
           correcao:'Notificar imediatamente pelo canal oficial vigente e registrar a ocorrência internamente.',
           normas:['rdc44_2009'] }
+      ]
+    },
+    {
+      id: 'cannabis', nome: 'Cannabis Medicinal', icone: '🌿', freq: 'mensal',
+      itens: [
+        { id:'cb1', texto:'Prescrição de produtos à base de Cannabis emitida por médico ou cirurgião-dentista habilitado, conferida antes da dispensação', crit:'alta',
+          motivo:'A validade da prescrição depende da habilitação do profissional prescritor, conforme a RDC 1.015/2026.',
+          correcao:'Recusar a dispensação quando o prescritor não for médico ou cirurgião-dentista, ou quando a habilitação não puder ser confirmada.',
+          normas:['rdc1015_2026'] },
+        { id:'cb2', texto:'Produtos com até 0,2% de THC dispensados mediante Receita de Controle Especial, com validade de 30 dias, contendo nome do paciente, concentração do produto e posologia', crit:'alta',
+          motivo:'A RDC 1.015/2026 define esse critério de receituário para produtos de baixo teor de THC, substituindo a RDC 327/2019.',
+          correcao:'Recusar a dispensação fora do prazo de validade ou com campos obrigatórios ausentes na receita.',
+          normas:['rdc1015_2026','portaria344_1998'] },
+        { id:'cb3', texto:'Produtos com mais de 0,2% de THC dispensados mediante Notificação de Receita A (lista amarela), acompanhada de receita comum com a posologia', crit:'alta',
+          motivo:'Produtos com maior teor de THC exigem o mesmo rigor documental dos entorpecentes da Lista A da Portaria 344/1998.',
+          correcao:'Recusar a dispensação sem a Notificação de Receita A e a receita comum de posologia que a acompanha.',
+          normas:['rdc1015_2026','portaria344_1998'] },
+        { id:'cb4', texto:'Termo de Consentimento Livre e Esclarecido apresentado pelo paciente conferido pelo farmacêutico no ato da dispensação', crit:'media',
+          motivo:'A RDC 1.015/2026 manteve a exigência do termo, mas desobrigou a farmácia de retê-lo fisicamente — a conferência no momento da dispensação continua sendo responsabilidade do farmacêutico.',
+          correcao:'Solicitar a apresentação do termo ao paciente e registrar a conferência, mesmo sem retenção física do documento.',
+          normas:['rdc1015_2026'] },
+        { id:'cb5', texto:'Movimentação de produtos à base de Cannabis escriturada no SNGPC, nos mesmos moldes dos demais medicamentos da Portaria 344/1998', crit:'alta',
+          motivo:'A escrituração garante a rastreabilidade da dispensação desses produtos, hoje controlados no mesmo sistema dos demais medicamentos sujeitos a controle especial.',
+          correcao:'Regularizar a escrituração pendente e conferir se o produto está corretamente cadastrado no sistema utilizado.',
+          normas:['rdc1015_2026','portaria344_1998','rdc22_2014'] },
+        { id:'cb6', texto:'Rotulagem do produto conferida quanto às advertências obrigatórias antes da entrega ao paciente', crit:'media',
+          motivo:'A ausência das advertências exigidas na rotulagem compromete a segurança de uso e a orientação do paciente.',
+          correcao:'Não dispensar produtos com rotulagem incompleta ou ilegível e comunicar a ocorrência ao fornecedor.',
+          normas:['rdc1015_2026'] }
       ]
     }
   ]
@@ -2109,7 +2194,7 @@ function renderDashboard(el){
       <p>Os dados marcados são armazenados <strong>apenas no navegador do dispositivo utilizado</strong> (armazenamento local), não havendo envio a servidores externos.</p>
     </div>
 
-    <div class="versao-footer">Checklist de Rotina · FarmaPrática v1.1 · ${TODOS_ITENS.length} itens em ${DATA.categorias.length} rotinas · ${Object.keys(NORMAS).length} normas na base · normas verificadas em ${NORMAS_ATUALIZADO_EM}</div>
+    <div class="versao-footer">Checklist de Rotina · FarmaPrática v1.2 · ${TODOS_ITENS.length} itens em ${DATA.categorias.length} rotinas · ${Object.keys(NORMAS).length} normas na base · normas verificadas em ${NORMAS_ATUALIZADO_EM}</div>
   `;
 
   ['estab-nome','estab-cnpj','estab-rt'].forEach(id => {

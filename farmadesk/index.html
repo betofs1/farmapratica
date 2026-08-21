@@ -41,7 +41,6 @@
   body{transition:background-color .2s ease, color .2s ease;}
   body.light header.top{
     background:linear-gradient(135deg,#f6f7f9 0%,#f1f2f5 55%,#eceef1 160%);
-    border-bottom-color:var(--rule);
     box-shadow:0 4px 18px rgba(0,0,0,0.06);
   }
   body.light .brand-text h1,
@@ -85,7 +84,7 @@
     top:0;
     z-index:50;
     box-shadow:0 4px 18px rgba(0,0,0,0.5);
-    border-bottom:1px solid rgba(228,23,44,0.25);
+    border-bottom:2px solid rgba(228,23,44,.35);
   }
   .top-row{
     max-width:1180px;
@@ -381,8 +380,8 @@
     align-items:flex-start;
     width:100%;
     text-align:left;
-    background:none;
-    border:none;
+    background:var(--card);
+    border:1px solid var(--rule);
     padding:10px 12px 10px 16px;
     font-size:13.5px;
     color:var(--ink);
@@ -391,8 +390,10 @@
     font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
     font-weight:500;
     overflow:hidden;
-    transition:background .2s ease, color .2s ease, padding-left .2s ease, box-shadow .2s ease;
+    box-shadow:0 1px 3px rgba(0,0,0,.16), inset 0 1px 0 0 rgba(255,255,255,.08), inset 0 -3px 7px 0 rgba(0,0,0,.3);
+    transition:background .2s ease, color .2s ease, padding-left .2s ease, box-shadow .2s ease, transform .15s ease;
   }
+  body.light .sys-btn{ box-shadow:0 1px 2px rgba(35,40,48,.05), inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -2px 5px 0 rgba(35,40,48,.05); }
   .sys-btn-left{display:flex; align-items:flex-start; gap:10px; min-width:0;}
   .sys-btn-left span{overflow:visible; text-overflow:unset; white-space:normal; line-height:1.3;}
   .sys-icon{flex-shrink:0; opacity:.6; margin-top:2px; transition:opacity .2s ease;}
@@ -412,15 +413,21 @@
     background:linear-gradient(90deg, rgba(228,23,44,0.13), transparent 85%);
     color:var(--red-bright);
     padding-left:20px;
+    border-color:var(--red-bright);
+    box-shadow:0 4px 12px rgba(0,0,0,.3), inset 0 1px 0 0 rgba(255,255,255,.12), inset 0 -3px 8px 0 rgba(0,0,0,.35);
+    transform:translateY(-1px);
   }
+  body.light .sys-btn:hover{ box-shadow:0 4px 12px rgba(35,40,48,.12), inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -2px 6px 0 rgba(35,40,48,.07); }
   .sys-btn:hover::before{transform:scaleY(1);}
-  .sys-btn:active{transform:scale(0.97);}
+  .sys-btn:active{transform:scale(0.97) translateY(0);}
   .sys-btn.active{
     background:linear-gradient(90deg, var(--red) 0%, var(--red-deep) 100%);
     color:#fff;
     font-weight:700;
     padding-left:20px;
-    box-shadow:0 4px 16px rgba(228,23,44,0.4);
+    border-color:var(--red-deep);
+    box-shadow:0 4px 16px rgba(228,23,44,0.4), inset 0 1px 0 0 rgba(255,255,255,.15), inset 0 -3px 7px 0 rgba(0,0,0,.25);
+    transform:none;
   }
   .sys-btn.active::before{transform:scaleY(1); background:#fff;}
   .sys-btn .count{
@@ -696,7 +703,9 @@
     margin:32px auto;
     text-align:center;
     align-items: center;
+    box-shadow:0 14px 34px rgba(0,0,0,.3), 0 4px 10px rgba(0,0,0,.2), inset 0 1px 0 0 rgba(255,255,255,.08);
   }
+  body.light .welcome-panel{ box-shadow:0 10px 26px -8px rgba(35,40,48,.16), 0 3px 8px rgba(35,40,48,.06), inset 0 1px 0 0 rgba(255,255,255,.6); }
   .welcome-logo{
     display:flex;
     justify-content:center; /* Centraliza horizontalmente */
@@ -791,10 +800,13 @@
     cursor:pointer;
     display:flex;align-items:center;justify-content:space-between;
     gap:6px;
-    transition:border-color .15s, background .15s;
+    transition:border-color .15s, background .15s, box-shadow .15s, transform .15s;
     line-height:1.3;
+    box-shadow:0 1px 3px rgba(0,0,0,.16), inset 0 1px 0 0 rgba(255,255,255,.08), inset 0 -3px 7px 0 rgba(0,0,0,.3);
   }
-  .fav-item:hover{border-color:var(--red);background:rgba(228,23,44,0.07);}
+  body.light .fav-item{ box-shadow:0 1px 2px rgba(35,40,48,.05), inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -2px 5px 0 rgba(35,40,48,.05); }
+  .fav-item:hover{border-color:var(--red);background:rgba(228,23,44,0.07);box-shadow:0 4px 12px rgba(0,0,0,.3), inset 0 1px 0 0 rgba(255,255,255,.12), inset 0 -3px 8px 0 rgba(0,0,0,.35);transform:translateY(-1px);}
+  body.light .fav-item:hover{ box-shadow:0 4px 12px rgba(35,40,48,.12), inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -2px 6px 0 rgba(35,40,48,.07); }
   .fav-item .fav-tag{font-size:10px;color:var(--muted);}
   .fav-remove{
     background:none;border:none;cursor:pointer;
@@ -807,7 +819,9 @@
     text-align:center;padding:16px 8px;
     border:1px dashed var(--rule);border-radius:8px;
     line-height:1.5;
+    box-shadow:inset 0 1px 4px rgba(0,0,0,.2);
   }
+  body.light .fav-empty{ box-shadow:inset 0 1px 4px rgba(35,40,48,.06); }
 
 
   .empty-content{
@@ -1162,10 +1176,6 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         Modo Balcão
       </button>
-      <a class="btn-top ghost" href="../medinter/" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/><path d="M13.5 4.5l6 6"/><path d="M4.5 13.5l6 6"/></svg>
-        Buscar Equivalentes
-      </a>
     </div>
   </div>
 
