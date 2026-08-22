@@ -500,6 +500,40 @@
     .search-box{display:none;}
   }
 
+  /* ---------- BUSCA MOBILE (acionada pelo botão "Buscar" do menu inferior) ---------- */
+  .mobile-search-close{
+    display:none;
+    align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:8px;flex:none;
+    border:none;background:transparent;color:var(--text-gray);cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-search-close svg{width:16px;height:16px;}
+  body.mobile-search-open .mobile-search-close{display:flex;}
+  .mobile-search-backdrop{
+    display:none;
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:240;
+  }
+  body.mobile-search-open .mobile-search-backdrop{display:block;}
+  @media (max-width: 900px){
+    body.mobile-search-open .search-wrap{
+      position:fixed;
+      top:calc(16px + env(safe-area-inset-top));
+      left:16px;right:16px;
+      max-width:none;
+      margin:0;
+      z-index:250;
+    }
+    body.mobile-search-open .search-box{
+      display:flex;
+      box-shadow:0 14px 34px -12px rgba(0,0,0,.55);
+    }
+    body.mobile-search-open .search-results{max-height:min(420px,60vh);}
+    .search-box .kbd{display:none;}
+  }
+
   /* ---------- DASHBOARD ---------- */
   main{
     flex:1;
@@ -1788,9 +1822,13 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input type="text" id="global-search" placeholder="Busque no FarmaPrática" autocomplete="off">
       <span class="kbd">Ctrl + K</span>
+      <button type="button" class="mobile-search-close" onclick="closeMobileSearch()" aria-label="Fechar busca" title="Fechar busca">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
     <div class="search-results" id="search-results"></div>
   </div>
+  <div class="mobile-search-backdrop" id="mobile-search-backdrop" onclick="closeMobileSearch()"></div>
   <div class="header-actions-wrap">
     <div class="header-actions">
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Abrir menu" aria-label="Abrir menu">
@@ -2096,11 +2134,11 @@
     </span>
     <span>Notas</span>
   </a>
-  <a href="#" class="bottom-nav-item" onclick="return false;">
+  <a href="#" class="bottom-nav-item" onclick="openMobileSearch(event);return false;">
     <span class="bottom-nav-icon-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
     </span>
-    <span>Mais</span>
+    <span>Buscar</span>
   </a>
 </nav>
 
@@ -2282,6 +2320,17 @@
   // ---------- BUSCA GLOBAL (cross-tool) ----------
   function focusSearch(){
     document.getElementById('global-search').focus();
+  }
+  function openMobileSearch(e){
+    if(e){ e.stopPropagation(); }
+    document.body.classList.add('mobile-search-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(focusSearch, 60);
+  }
+  function closeMobileSearch(){
+    document.body.classList.remove('mobile-search-open');
+    document.body.style.overflow = '';
+    closeSearchResults();
   }
   document.addEventListener('keydown', function(e){
     if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
@@ -2516,7 +2565,10 @@
     if(wrap && !wrap.contains(e.target)){ closeSearchResults(); }
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ closeSearchResults(); }
+    if(e.key === 'Escape'){
+      closeSearchResults();
+      if(document.body.classList.contains('mobile-search-open')){ closeMobileSearch(); }
+    }
   });
 
   // ---------- NAVEGAÇÃO DO MENU ATÉ O CARD ----------
