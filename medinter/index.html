@@ -261,9 +261,30 @@
     .main-content{padding:16px;}
     .search-wrap{flex-direction:column;}
     #searchBtn,#clearBtn{justify-content:center;}
-    .topbar-app{grid-template-columns:1fr;gap:8px;padding:10px 16px;}
+    .topbar-app{grid-template-columns:1fr;gap:8px;padding:10px 16px;flex-wrap:wrap;row-gap:8px;}
     .titulo-central{display:none;}
     .topbar-right .credit-text{display:none;}
+    .topbar-right{margin-left:auto;}
+    .search-section{padding:16px;}
+    /* Cards de resultado: layout empilhado (nome+badge / princípio / foto+expandir)
+       em vez do layout de linha única do desktop, que causava overflow horizontal
+       (res-nome com min-width:150px + res-badge + res-foto + btn-expandir, todos
+       flex-shrink:0, não cabiam em telas estreitas). */
+    .card-resumida{flex-wrap:wrap;align-items:flex-start;gap:6px 10px;padding:12px 14px;}
+    .res-nome{min-width:0;flex:1 1 160px;}
+    .res-princ{flex:1 1 100%;}
+    .res-foto{margin-left:0;}
+    .btn-expandir{padding:8px;margin-left:auto;}
+    .fav-star-btn{width:34px;height:34px;}
+    .foto-btn{padding:9px 12px!important;}
+    .filter-btn,.filter-apres-btn{padding:7px 14px;font-size:12.5px;}
+    .hist-tag,.quick-tag{padding:6px 13px;}
+  }
+  @media(max-width:480px){
+    /* Grid de detalhes expandidos: força 1 coluna (o auto-fill minmax(200px,1fr)
+       do desktop já colapsa para 1 coluna aqui na prática, mas fixamos explicitamente
+       para evitar 2 colunas espremidas em telas ~430-480px). */
+    .card-expand-detail{grid-template-columns:1fr;}
   }
 </style>
 </head>

@@ -217,7 +217,12 @@
     .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto; padding: 8px 14px; }
     .topbar-app .logo-wrap{ padding-left:0; justify-content:center; margin-bottom:6px; }
     .topbar-app .titulo-central{ grid-column:1; padding:0; }
-    .topbar-actions{ right:14px; }
+    /* Os botões do cabeçalho (Modo Detalhado + tema) saem da posição absoluta
+       centralizada verticalmente (que ficava sobrepondo o subtítulo da marca
+       ou o título central em telas estreitas, já que a pilha logo+título
+       ficou bem mais alta que no desktop) e passam a fluir como uma 3ª linha
+       do grid, centralizados abaixo do título. */
+    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; margin-top:10px; }
   }
 
   .app-body{ display:flex; flex:1; min-height:0; }
@@ -532,6 +537,39 @@
     .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
     .main-inner{ max-width:100%; }
     .info-bar{ flex-wrap:wrap; gap:16px; }
+
+    /* Flyout de classe farmacológica (Modo Detalhado): no desktop é uma
+       coluna lateral de 260px com altura 100% (rolagem própria dada pela
+       altura do .app-body). No mobile, como o body vira altura automática
+       (regra acima), esse mesmo CSS deixava a lista de substâncias da
+       classe (algumas com 80+ itens) esticar a página inteira sem limite
+       de altura nem rolagem própria — o cabeçalho "sticky" do flyout
+       também não colava de verdade, pois sem altura limitada o elemento
+       não tinha uma área de rolagem interna real. Aplicado o mesmo padrão
+       de "acordeão contido" já usado nesta página para a sidebar (max-height
+       + overflow-y:auto próprios), então abrir uma classe empurra a tela
+       bem menos e o usuário rola dentro de uma caixa, não a página toda. */
+    .classe-flyout{
+      width: 100%;
+      max-height: 46vh;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Áreas de toque maiores para uso em balcão/celular (itens de lista,
+       cabeçalhos de categoria e chips de filtro tinham ~26-37px de altura,
+       abaixo do mínimo recomendado de ~40-44px para toque). */
+    .cat-header{ padding: 12px 13px; }
+    .drug-item{ padding: 11px 12px 11px 13px; }
+    .tarja-chip{ padding: 8px 15px 8px 12px; }
+    .clear-btn{ width:24px; height:24px; }
+    .classe-flyout-close{ width:30px; height:30px; }
+    .classe-flyout-close svg{ width:14px; height:14px; }
+  }
+
+  @media (max-width: 360px){
+    .filtro-tarjas{ gap:6px; }
+    .tarja-chip{ font-size:.68rem; padding: 7px 12px 7px 9px; }
   }
 </style>
 </head>

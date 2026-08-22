@@ -338,6 +338,29 @@
     border-radius: 20px;
     margin-top:8px;
   }
+  .main-header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-mobile-voltar{
+    display:none;
+    align-items:center;
+    gap:6px;
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    font-size:.78rem;
+    font-weight:700;
+    padding:8px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-bottom:14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .btn-mobile-voltar .icon{ width:13px; height:13px; }
+  .btn-mobile-voltar:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); }
   .breadcrumb-chip{
     display:inline-flex;
     align-items:center;
@@ -950,13 +973,15 @@
   .aviso-responsabilidade strong{ color: var(--text); }
 
   @media (max-width: 800px){
-    body{ height:auto; overflow:visible; }
     .topbar-app{ padding: 8px 14px; }
     .topbar-app .titulo-principal{ font-size: .85rem; white-space:normal; }
     .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
-    .app-body{ flex-direction:column; min-height:auto; }
-    .sidebar{ width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); max-height: 40vh; }
-    .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
+    /* Sidebar e conteúdo agora ocupam a tela inteira, uma vista por vez (ver bloco
+       "Navegação mobile em vista única" mais abaixo), em vez de empilhar os dois
+       com a sidebar limitada a 40vh acima do conteúdo. */
+    .app-body{ flex-direction:column; min-height:0; }
+    .sidebar{ width:100%; border-right:none; border-bottom:1px solid var(--border); }
+    .main{ padding: 18px 16px 40px; }
     .main-inner{ max-width:100%; }
     .peso-bar{ flex-wrap:wrap; gap:14px; }
   }
@@ -1119,6 +1144,30 @@
   #conteudo{ animation: fade-in .18s ease; }
   @keyframes fade-in{ from{ opacity:0; transform: translateY(3px); } to{ opacity:1; transform:none; } }
 
+  /* ---------- Layout mobile — navegação em vista única + polimento de toque ----------
+     Este bloco vem depois de todas as regras base que ele sobrescreve (inclusive as
+     redefinições de .cat-header/.btn-icon-action mais acima), para não perder o empate
+     de especificidade por ordem de declaração. */
+  @media (max-width: 800px){
+    .main-header{ flex-wrap:wrap; row-gap:12px; }
+    .main-header-actions{ flex-wrap:wrap; width:100%; }
+
+    /* Vista única: lista de fármacos OU fármaco selecionado, nunca as duas ao mesmo
+       tempo. #app-body recebe a classe correspondente em selecionarFarmaco() /
+       mobileMostrarLista() / voltarParaCategoria(). Seletores com duas classes aqui
+       têm especificidade maior que as regras base de .sidebar/.main (uma classe só),
+       então a ordem no arquivo não importa para este par. */
+    .app-body.mobile-vista-farmaco .sidebar{ display:none; }
+    .app-body.mobile-vista-lista .main{ display:none; }
+    .app-body.mobile-vista-farmaco .btn-mobile-voltar{ display:inline-flex; }
+
+    /* Áreas de toque maiores, mais fáceis de operar com uma mão no balcão */
+    .btn-icon-action, .btn-fav-calc{ width:40px; height:40px; }
+    .drug-item{ padding: 11px 12px 11px 11px; }
+    .cat-header{ padding: 10px 12px !important; }
+    .aviso-titulo{ align-items:flex-start; }
+  }
+
   /* ---------- Impressão ---------- */
   .print-only{ display:none; }
   @media print{
@@ -1195,7 +1244,7 @@
   </button>
 </div>
 
-<div class="app-body">
+<div class="app-body mobile-vista-lista" id="app-body">
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="search-box">
@@ -1214,6 +1263,9 @@
 
   <div class="main">
     <div class="main-inner">
+      <button type="button" class="btn-mobile-voltar no-print" id="btn-mobile-voltar" onclick="mobileMostrarLista()">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>Lista de fármacos
+      </button>
       <div id="conteudo">
         <div class="empty-state">
           <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
@@ -1455,12 +1507,34 @@ function voltarParaCategoria(cat){
   history.replaceState(null, '', location.pathname);
   renderConteudo();
   renderSidebar('');
+  mobileMostrarLista();
   const alvo = document.querySelector('.cat-header[data-categoria="' + CSS.escape(cat) + '"]');
   if(alvo){
     alvo.scrollIntoView({behavior:'smooth', block:'start'});
     alvo.classList.add('destacado');
     setTimeout(() => alvo.classList.remove('destacado'), 1200);
   }
+}
+
+// ---------- Navegação mobile em vista única (lista de fármacos OU fármaco selecionado) ----------
+// Em telas <=800px a sidebar e o conteúdo não cabem empilhados de forma prática;
+// #app-body alterna entre as classes abaixo (ver CSS) para mostrar uma vista por vez,
+// com o botão "Lista de fármacos" (.btn-mobile-voltar) para retornar sem perder o
+// fármaco/peso/idade já preenchidos. Em telas largas (desktop) essas classes não têm
+// nenhum efeito — sidebar e conteúdo continuam lado a lado como sempre.
+function mobileMostrarFarmaco(){
+  const ab = document.getElementById('app-body');
+  if(!ab) return;
+  ab.classList.remove('mobile-vista-lista');
+  ab.classList.add('mobile-vista-farmaco');
+}
+function mobileMostrarLista(){
+  const ab = document.getElementById('app-body');
+  if(!ab) return;
+  ab.classList.remove('mobile-vista-farmaco');
+  ab.classList.add('mobile-vista-lista');
+  const listaEl = document.getElementById('lista-farmacos');
+  if(listaEl) listaEl.scrollTop = 0;
 }
 
 function criarBotaoFarmaco(f, termo){
@@ -1528,6 +1602,7 @@ function selecionarFarmaco(id){
   farmacoAtual = DB.farmacos.find(f => f.id === id);
   renderSidebar(document.getElementById('busca').value);
   renderConteudo();
+  mobileMostrarFarmaco();
 }
 
 function renderConteudo(){
@@ -1555,7 +1630,7 @@ function renderConteudo(){
         <h2>${f.nome}</h2>
         ${f.descricao ? `<p class="farmaco-descricao">${f.descricao}</p>` : ''}
       </div>
-      <div style="display:flex;align-items:center;gap:8px;" class="no-print">
+      <div class="main-header-actions no-print">
         <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)" aria-label="${_isFavCalc ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}" aria-pressed="${_isFavCalc}">
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </button>

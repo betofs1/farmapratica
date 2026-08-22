@@ -331,6 +331,39 @@
     .stamp-box{flex-basis:100%;transform:none;}
     .form-grid{grid-template-columns:1fr;}
   }
+
+  /* =========================================================
+     Responsividade mobile adicional (22/08/2026)
+     — NÃO altera a paleta dos "papéis"/fac-símiles (amarelo/azul/
+     branco A4/carimbo roxo), só reorganiza layout e toque.
+     Ordem importa: estes blocos vêm DEPOIS das regras-base
+     equivalentes no arquivo, senão são ignorados por empate de
+     especificidade em media query.
+     ========================================================= */
+  @media (max-width:760px){
+    /* Abas de tipo de receita com alvo de toque maior */
+    .type-btn{padding:14px 14px;}
+    /* Botões de gerar novo MS/lote (↻) — alvo de toque maior sem aumentar muito o ícone visual */
+    .regen-btn{padding:6px 8px;font-size:15px;min-width:28px;min-height:28px;}
+    /* Resultados do modal de busca de medicamento (CMED/ANVISA): nome+selo numa linha,
+       detalhe do princípio ativo em linha própria — evita texto espremido em coluna estreita */
+    .ac-item{flex-wrap:wrap;row-gap:4px;}
+    .ac-item .ac-nome{flex:1 1 auto;min-width:0;}
+    .ac-item .ac-detail{flex:1 1 100%;}
+  }
+  @media (max-width:640px){
+    /* Campos do modelo A4 (Controle Especial / Talidomida): rótulo empilha acima do
+       campo em vez de forçar o "papel" a ficar mais largo que a tela (nowrap do rótulo
+       era a causa raiz do overflow horizontal nessas duas abas em telas pequenas) */
+    .a4-field-inline{flex-wrap:wrap;}
+    .a4-field-inline .a4-label{flex:1 1 100%;white-space:normal;}
+  }
+  @media (max-width:420px){
+    /* Botões "Validar receita" / "Reiniciar": empilhados em telas muito estreitas,
+       onde a divisão lado a lado forçava quebra de texto em 2 linhas */
+    .btn-row-validar{flex-direction:column;}
+    .btn-row-validar .btn-validar{flex:1 1 auto !important;width:100% !important;}
+  }
 </style>
 </head>
 <body>
@@ -507,7 +540,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">O nome do medicamento no carimbo pode ser referência, similar ou genérico. Confirme que a quantidade de caixas vendida corresponde ao que foi prescrito.</p>
-          <div style="display:flex;gap:10px;">
+          <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarGenerico" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarGenerico" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
           </div>
@@ -630,7 +663,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">Confirme que a quantidade informada em "Dados sobre a dispensação" corresponde exatamente à quantidade de comprimidos prescrita no item 4.</p>
-          <div style="display:flex;gap:10px;">
+          <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarTalidomida" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarTalidomida" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
           </div>
@@ -776,7 +809,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">O item 1 do verso (medicamento, lote e quantidade de caixas) é obrigatório; os itens 2 e 3 (se houver) devem ser preenchidos diretamente na receita quando aplicável.</p>
-          <div style="display:flex;gap:10px;">
+          <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarControle" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarControle" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
           </div>

@@ -227,6 +227,11 @@
     .topbar-app{ grid-template-columns: 1fr; padding: 8px 14px; }
     .topbar-app .logo-wrap{ padding-left:0; justify-content:center; margin-bottom:6px; }
     .topbar-app .titulo-central{ grid-column:1; }
+    /* No layout empilhado (logo em cima, título embaixo) o topbar-app fica mais alto;
+       .topbar-actions é position:absolute com top:50% pensado para a barra única do
+       desktop, então passa a flutuar por cima do título. Aqui ele volta ao fluxo normal,
+       como uma linha própria, centralizada, abaixo do título. */
+    .topbar-actions{ position:static; transform:none; margin:10px auto 0; justify-content:center; }
   }
 
   .app-body{ display:flex; flex:1; min-height:0; }
@@ -279,6 +284,27 @@
   }
   .btn-fonte-dados:hover{ transform: translateY(-1px); background: linear-gradient(135deg, rgba(245,158,11,.22), rgba(161,15,31,.12)); }
   .btn-fonte-dados.active{ background: linear-gradient(135deg, var(--red-dark), var(--red)); color:#fff; border-color: transparent; border-style:solid; }
+
+  /* Acordeão de categorias — só existe/aparece no mobile (ver @media 800px);
+     no desktop a lista de categorias já fica sempre visível na sidebar. */
+  .sidebar-mobile-toggle{
+    display:none;
+    width:100%;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius:10px;
+    color: var(--text);
+    font-size:.82rem;
+    font-weight:800;
+    padding: 11px 14px;
+    cursor:pointer;
+  }
+  .sidebar-mobile-toggle .chevron-toggle{ transition: transform .2s ease; flex-shrink:0; }
+  .sidebar.mobile-aberto .sidebar-mobile-toggle .chevron-toggle{ transform: rotate(180deg); }
 
   /* ---------- Navegação em "trilha" vertical (estilo timeline) ---------- */
   .sidebar-list{ flex:1; overflow-y:auto; padding: 6px 14px 24px; }
@@ -741,9 +767,89 @@
     .topbar-app .titulo-principal{ font-size: .85rem; white-space:normal; }
     .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
     .app-body{ flex-direction:column; min-height:auto; }
-    .sidebar{ width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); max-height: 44vh; }
+
+    /* ---- Sidebar vira acordeão no mobile ----
+       Antes a sidebar inteira (busca + 13 categorias) ficava presa em max-height:44vh
+       com scroll interno, escondendo quase todas as categorias atrás de uma rolagem
+       curta e pouco óbvia dentro de uma área pequena. Agora ela fica do tamanho do
+       cabeçalho (busca + Fonte de Dados + botão "Ver categorias") e a lista de
+       categorias só aparece quando o botão é tocado — ver #btn-toggle-categorias
+       e a classe .mobile-aberto (JS: toggleCategoriasMobile/fecharCategoriasMobile). */
+    .sidebar{ width:100%; height:auto; max-height:none; border-right:none; border-bottom:1px solid var(--border); }
+    .sidebar-mobile-toggle{ display:flex; }
+    .sidebar-list{
+      flex:none;
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      padding:0 14px;
+      transition: max-height .25s ease, opacity .2s ease;
+    }
+    .sidebar.mobile-aberto .sidebar-list{
+      max-height:56vh;
+      opacity:1;
+      overflow-y:auto;
+      padding:10px 14px 20px;
+    }
+
     .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
     .main-inner{ max-width:100%; }
+
+    /* Alvo de toque maior para o checkbox do item (era 22px, abaixo do recomendado
+       para toque) e mais respiro entre os elementos da linha do item. */
+    .item-check{ width:28px; height:28px; font-size:.85rem; }
+    .item-main{ gap:14px; }
+    .item-card{ padding:16px; }
+    .crit-dot{ font-size:.85rem; }
+
+    .main-header-actions{ width:100%; }
+    .main-header-actions .btn-ghost{ flex:1; justify-content:center; }
+
+    /* ---- Tabela de Não Conformidades vira lista de cartões ----
+       Como tabela "de verdade" (4 colunas), o texto da ocorrência empurrava as
+       colunas de rotina/gravidade/status para fora da área visível: a tabela ficava
+       mais larga que o cartão e .nc-table-wrap (overflow-x:auto) cortava o conteúdo
+       sem nenhum indício visual de que dava para arrastar. Em vez de depender de
+       scroll horizontal escondido, cada <tr> passa a ser um cartão com os campos
+       empilhados (rótulo acima do valor, via atributo data-label nos <td>). */
+    table.nc-table thead{ display:none; }
+    table.nc-table, table.nc-table tbody{ display:block; width:100%; }
+    table.nc-table tr{
+      display:block;
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding: 4px 14px;
+      margin-bottom:10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    table.nc-table tr:last-child{ margin-bottom:0; }
+    table.nc-table td{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:3px;
+      padding:9px 0;
+      border-bottom:1px solid var(--border);
+    }
+    table.nc-table td:last-child{ border-bottom:none; }
+    table.nc-table td::before{
+      content: attr(data-label);
+      font-size:.64rem;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+      font-weight:800;
+      color: var(--text-dim);
+    }
+    table.nc-table td[data-label=""]::before,
+    table.nc-table td:not([data-label])::before{ content:none; }
+    table.nc-table td[colspan]{ padding:14px 0; }
+  }
+
+  @media (max-width: 380px){
+    .main-header-actions{ flex-direction:column; }
+    .estab-grid{ grid-template-columns: 1fr; }
+    .dash-resumo-global{ padding:18px 16px; }
   }
 
   /* ---------- Relatório para impressão / PDF ---------- */
@@ -855,9 +961,13 @@
         <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg></span>
         <input type="text" id="busca" placeholder="Buscar item do checklist...">
       </div>
-      <button class="btn-fonte-dados" id="btn-fonte-dados" onclick="abrirFontesDados()">
+      <button class="btn-fonte-dados" id="btn-fonte-dados" onclick="abrirFontesDados(); fecharCategoriasMobile()">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4 8 4 12 6c4-2 8-2 10-.5v13c-2-1.5-6-1.5-10 .5-4-2-8-2-10-.5Z"/><path d="M12 6v13"/></svg>
         Fonte de Dados
+      </button>
+      <button class="sidebar-mobile-toggle" id="btn-toggle-categorias" onclick="toggleCategoriasMobile()" aria-expanded="false" aria-controls="lista-categorias">
+        <span id="toggle-categorias-label">Ver categorias</span>
+        <svg class="ic chevron-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </button>
     </div>
     <div class="sidebar-list" id="lista-categorias"></div>
@@ -1938,6 +2048,40 @@ function renderSidebar(filtro=''){
 document.getElementById('busca').addEventListener('input', e => renderSidebar(e.target.value));
 
 // =====================================================================
+// ACORDEÃO DE CATEGORIAS (mobile) — ver @media (max-width:800px) no CSS.
+// A sidebar inteira continua sendo recriada via innerHTML em renderSidebar(),
+// mas o elemento .sidebar (e o botão de toggle) não são recriados, então o
+// estado aberto/fechado do acordeão sobrevive a cada re-render da lista.
+// =====================================================================
+function toggleCategoriasMobile(){
+  const sidebar = document.querySelector('.sidebar');
+  const aberto = sidebar.classList.toggle('mobile-aberto');
+  document.getElementById('btn-toggle-categorias').setAttribute('aria-expanded', aberto ? 'true' : 'false');
+  document.getElementById('toggle-categorias-label').textContent = aberto ? 'Ocultar categorias' : 'Ver categorias';
+}
+function fecharCategoriasMobile(){
+  if(window.innerWidth > 800) return;
+  const sidebar = document.querySelector('.sidebar');
+  if(!sidebar.classList.contains('mobile-aberto')) return;
+  sidebar.classList.remove('mobile-aberto');
+  document.getElementById('btn-toggle-categorias').setAttribute('aria-expanded', 'false');
+  document.getElementById('toggle-categorias-label').textContent = 'Ver categorias';
+}
+// Ao tocar em qualquer categoria/resultado da lista, fecha o acordeão no mobile
+// para revelar o conteúdo selecionado imediatamente (delegação de evento: continua
+// funcionando mesmo com a lista sendo recriada a cada renderSidebar()).
+document.getElementById('lista-categorias').addEventListener('click', e => {
+  if(e.target.closest('button')) fecharCategoriasMobile();
+});
+// Ao focar a busca no mobile, abre o acordeão automaticamente para que os
+// resultados filtrados fiquem visíveis enquanto o usuário digita.
+document.getElementById('busca').addEventListener('focus', () => {
+  if(window.innerWidth <= 800 && !document.querySelector('.sidebar').classList.contains('mobile-aberto')){
+    toggleCategoriasMobile();
+  }
+});
+
+// =====================================================================
 // STATUS DA CATEGORIA (semáforo)
 // =====================================================================
 function statusCategoria(cat){
@@ -2298,10 +2442,10 @@ function renderNaoConformidades(el){
   } else {
     autoBody.innerHTML = autoAbertas.map(i => `
       <tr>
-        <td>${i.texto}</td>
-        <td><span class="ic-inline">${svg(CAT_ICON[i.catId])}</span> ${i.catNome}</td>
-        <td><span class="grav-chip ${i.crit}">${i.crit === 'alta' ? 'Alta' : i.crit === 'media' ? 'Média' : 'Baixa'}</span></td>
-        <td>Em aberto</td>
+        <td data-label="Ocorrência">${i.texto}</td>
+        <td data-label="Rotina"><span class="ic-inline">${svg(CAT_ICON[i.catId])}</span> ${i.catNome}</td>
+        <td data-label="Gravidade"><span class="grav-chip ${i.crit}">${i.crit === 'alta' ? 'Alta' : i.crit === 'media' ? 'Média' : 'Baixa'}</span></td>
+        <td data-label="Status">Em aberto</td>
       </tr>
     `).join('');
   }
@@ -2314,16 +2458,16 @@ function renderNaoConformidades(el){
     }
     body.innerHTML = ncManual.map(n => `
       <tr>
-        <td>${n.texto}</td>
-        <td><span class="grav-chip ${n.gravidade}">${n.gravidade === 'alta' ? 'Alta' : n.gravidade === 'media' ? 'Média' : 'Baixa'}</span></td>
-        <td>
+        <td data-label="Ocorrência">${n.texto}</td>
+        <td data-label="Gravidade"><span class="grav-chip ${n.gravidade}">${n.gravidade === 'alta' ? 'Alta' : n.gravidade === 'media' ? 'Média' : 'Baixa'}</span></td>
+        <td data-label="Status">
           <select class="nc-status-select" data-id="${n.id}">
             <option ${n.status==='Aberta'?'selected':''}>Aberta</option>
             <option ${n.status==='Em análise'?'selected':''}>Em análise</option>
             <option ${n.status==='Resolvida'?'selected':''}>Resolvida</option>
           </select>
         </td>
-        <td><button class="nc-del" data-id="${n.id}">✕</button></td>
+        <td><button class="nc-del" data-id="${n.id}" aria-label="Excluir ocorrência">✕</button></td>
       </tr>
     `).join('');
     body.querySelectorAll('.nc-status-select').forEach(sel => {
