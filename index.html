@@ -1056,9 +1056,21 @@
       url("images/banner-farmapratica.png");
   }
   @media (max-width:760px){
-    .institutional-banner{flex-direction:column;align-items:flex-start;padding:26px;gap:18px;}
-    .institutional-banner-visual{display:none;}
-    .institutional-cta{width:100%;justify-content:center;padding:11px 20px;font-size:14px;}
+    .institutional-banner{flex-direction:column;align-items:stretch;padding:0;gap:0;overflow:hidden;}
+    .institutional-banner-visual{
+      display:block;position:static;width:100%;height:130px;
+      -webkit-mask-image:none;mask-image:none;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(20,20,22,.55) 100%),
+        url("images/banner-farmapratica.png");
+    }
+    body.light .institutional-banner-visual{
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.02) 0%, rgba(20,20,22,.35) 100%),
+        url("images/banner-farmapratica.png");
+    }
+    .institutional-banner-text{padding:20px 22px 0;max-width:100%;}
+    .institutional-cta{width:calc(100% - 44px);margin:16px 22px 22px;justify-content:center;padding:11px 20px;font-size:14px;}
   }
 
   /* Coluna B — Status de Acesso + card de marca */
@@ -1146,7 +1158,46 @@
     .quad-panel{gap:16px;}
     .dashboard-head h1{font-size:22px;}
     .usage-legend .usage-name{white-space:normal;overflow:visible;text-overflow:unset;}
+    main{padding-bottom:88px;}
   }
+
+  /* ---------- MENU INFERIOR (MOBILE) ---------- */
+  .bottom-nav{display:none;}
+  @media (max-width: 760px){
+    .bottom-nav{
+      display:flex;
+      position:fixed;left:0;right:0;bottom:0;z-index:95;
+      justify-content:space-around;align-items:stretch;
+      gap:2px;
+      padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+      background:color-mix(in srgb, var(--bg-panel) 94%, transparent);
+      backdrop-filter:blur(16px) saturate(160%);
+      -webkit-backdrop-filter:blur(16px) saturate(160%);
+      border-top:1px solid var(--card-border);
+      box-shadow:0 -8px 22px -10px rgba(0,0,0,.4);
+    }
+  }
+  .bottom-nav-item{
+    flex:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    padding:5px 2px 4px;
+    text-decoration:none;color:var(--text-gray-dim);
+    font-size:9.5px;font-weight:600;letter-spacing:.1px;
+    -webkit-tap-highlight-color:transparent;
+    transition:color .18s ease;
+  }
+  .bottom-nav-item svg{width:19px;height:19px;}
+  .bottom-nav-icon-wrap{
+    width:40px;height:24px;border-radius:13px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    transition:background-color .18s ease, box-shadow .18s ease;
+  }
+  .bottom-nav-item.active{color:var(--red);}
+  .bottom-nav-item.active .bottom-nav-icon-wrap{
+    background:color-mix(in srgb, var(--red) 18%, transparent);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--red) 32%, transparent);
+  }
+  .bottom-nav-item:active .bottom-nav-icon-wrap{transform:scale(.93);}
   @media (max-width: 640px){
     .greeting-banner{padding:16px;gap:12px;}
     .greeting-banner-text h1{font-size:16.5px;margin-bottom:2px;}
@@ -1520,7 +1571,7 @@
     display:grid;
     grid-template-columns:repeat(4, 1fr);
     gap:16px;
-    max-width:66%;
+    max-width:58%;
     margin:0 auto;
   }
   @media (max-width:1100px){
@@ -1528,10 +1579,11 @@
   }
   .tools-hub-card{
     position:relative;
-    display:flex;flex-direction:column;align-items:center;text-align:center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     gap:7px;
     padding:20px 16px 16px;
     border-radius:16px;
+    aspect-ratio:1 / 1;
     background:
       radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--hub-color) 20%, transparent), transparent 70%),
       linear-gradient(160deg, var(--card-bg) 0%, color-mix(in srgb, var(--card-bg) 88%, #000 6%) 100%);
@@ -1540,6 +1592,9 @@
     box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 38%, transparent), 0 0 24px -8px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 12px 26px -14px rgba(0,0,0,.45), var(--tool-card-bevel);
     text-decoration:none;color:inherit;cursor:pointer;
     transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  @media (max-width:1100px){
+    .tools-hub-card{aspect-ratio:auto;}
   }
   .tools-hub-card:hover{
     transform:translateY(-5px);
@@ -1604,6 +1659,33 @@
   @media (max-width:760px){ .trio-panel{grid-template-columns:1fr;} }
   .trio-panel .stats-footer{display:flex;flex-direction:column;}
   .trio-panel .stats-footer-inner{flex:1;}
+
+  /* --- Favoritos / Notas / Ferramentas mais usadas mais compactos no mobile --- */
+  @media (max-width:640px){
+    .trio-panel{gap:12px;}
+    .trio-panel > .stat-block{padding:14px 15px 15px;border-radius:12px;}
+    .trio-panel .stats-card-head{margin-bottom:10px !important;}
+    .trio-panel .stats-card-head h4,
+    .trio-panel > .stats-footer h3{font-size:12.5px;gap:6px;}
+    .trio-panel .stat-icon-badge{width:24px;height:24px;border-radius:7px;}
+    .trio-panel .stat-icon-badge svg{width:12px;height:12px;}
+    .trio-panel .fav-list,
+    .trio-panel .notes-list{max-height:160px;}
+    .trio-panel .fav-list:has(.fav-empty){min-height:100px;}
+    .trio-panel .note-category-row{margin-bottom:10px;gap:6px;}
+    .trio-panel .note-category-chip{padding:7px 8px;}
+    .trio-panel .note-category-chip .chip-title{font-size:11px;}
+    .trio-panel .note-category-chip .chip-desc{display:none;}
+    .trio-panel .notes-add-btn{padding:8px 10px;font-size:12px;margin-bottom:10px;}
+    .trio-panel > .stats-footer{padding:12px 14px 8px;}
+    .trio-panel .stats-footer-inner{gap:14px;}
+    .trio-panel .time-saved-card{padding:9px 13px;min-width:0;transform:none;}
+    .trio-panel .time-saved-value{font-size:18px;}
+    .trio-panel .time-saved-eyebrow{font-size:9.5px;}
+    .trio-panel .time-saved-label{font-size:10px;}
+    .trio-panel .usage-donut{width:52px;height:52px;}
+    .trio-panel .usage-donut-row{gap:12px;}
+  }
 
   /* --- Banner institucional + dica Ctrl+K lado a lado --- */
   .bottom-row{
@@ -1998,6 +2080,40 @@
 </main>
 
 <footer>© 2026 FarmaPrática. Todos os direitos reservados.</footer>
+
+<!-- Menu inferior (mobile) — botões genéricos por enquanto, funcionalidade a definir -->
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navegação principal">
+  <a href="#" class="bottom-nav-item active" onclick="return false;">
+    <span class="bottom-nav-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+    </span>
+    <span>Início</span>
+  </a>
+  <a href="#" class="bottom-nav-item" onclick="return false;">
+    <span class="bottom-nav-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+    </span>
+    <span>Ferramentas</span>
+  </a>
+  <a href="#" class="bottom-nav-item" onclick="return false;">
+    <span class="bottom-nav-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+    </span>
+    <span>Favoritos</span>
+  </a>
+  <a href="#" class="bottom-nav-item" onclick="return false;">
+    <span class="bottom-nav-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    </span>
+    <span>Notas</span>
+  </a>
+  <a href="#" class="bottom-nav-item" onclick="return false;">
+    <span class="bottom-nav-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+    </span>
+    <span>Mais</span>
+  </a>
+</nav>
 
 <div class="page-transition" id="page-transition"></div>
 
