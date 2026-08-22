@@ -19,12 +19,12 @@
 <style>
   :root{
     /* Paleta grafite médio/escuro — tema padrão (antigo "modo claro" aprovado) */
-    --bg:#5a5f66;
-    --bg-panel:#4a4e55;
-    --card-bg:#4f545c;
-    --card-border:#63686f;
-    --card-hover-bg:#585d65;
-    --placeholder-border:#5c6167;
+    --bg:#43474e;
+    --bg-panel:#33373e;
+    --card-bg:#383d45;
+    --card-border:#4c5158;
+    --card-hover-bg:#41464e;
+    --placeholder-border:#454a51;
     --red:#e4172c;
     --red-dark:#a10f1f;
     --red-glow:rgba(228,23,44,0.22);
@@ -34,9 +34,9 @@
     --text-white:#f5f5f4;
     --text-gray:#d2d5d9;
     --text-gray-dim:#a7abb1;
-    --sidebar-bg:#454951;
-    --sidebar-border:#63686f;
-    --sidebar-hover:#585d65;
+    --sidebar-bg:#2e323a;
+    --sidebar-border:#4c5158;
+    --sidebar-hover:#41464e;
     --sidebar-text:#d2d5d9;
     --heading-shadow:0 2px 12px rgba(0,0,0,.3);
     --body-text-shadow:0 1px 6px rgba(0,0,0,.25);
@@ -46,6 +46,8 @@
     --c-purple:#a855f7; --c-purple-dark:#8b30dd; --c-purple-glow:rgba(168,85,247,0.18);
     --c-amber:#f59e0b; --c-amber-dark:#c9790a; --c-amber-glow:rgba(245,158,11,0.18);
     --c-green:#22c55e; --c-green-dark:#16a34a; --c-green-glow:rgba(34,197,94,0.18);
+    --c-magenta:#e0479e; --c-magenta-dark:#b13380; --c-magenta-glow:rgba(224,71,158,0.18);
+    --c-teal:#14b8a6; --c-teal-dark:#0e8074; --c-teal-glow:rgba(20,184,166,0.18);
     --sidebar-width:256px;
     --sidebar-width-collapsed:64px;
     --shadow-card:0 14px 32px -10px rgba(0,0,0,.4), 0 4px 10px -4px rgba(0,0,0,.3);
@@ -452,6 +454,47 @@
   .theme-toggle .icon-moon{display:none;}
   body.light .theme-toggle .icon-sun{display:none;}
   body.light .theme-toggle .icon-moon{display:block;}
+
+  /* COR DE FUNDO (seletor de tema de cor) */
+  .color-theme-wrap{position:relative;flex:none;}
+  .color-theme-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:9px;
+    border:1px solid #6b7078;background:transparent;
+    color:var(--text-white);cursor:pointer;
+    transition:background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+    box-shadow:var(--shadow-btn);
+  }
+  .color-theme-toggle:hover{transform:translateY(-2px);box-shadow:var(--shadow-btn-hover);background:rgba(255,255,255,0.06);}
+  body.light .color-theme-toggle{border-color:#c7cbd1;}
+  body.light .color-theme-toggle:hover{background:rgba(35,40,48,0.05);}
+  .color-theme-toggle svg{width:18px;height:18px;}
+  .color-theme-popover{
+    position:absolute;top:calc(100% + 10px);right:0;
+    background:var(--bg-panel);border:1px solid var(--card-border);
+    border-radius:14px;padding:14px 16px;min-width:210px;
+    box-shadow:var(--shadow-card-hover);
+    opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index:200;
+  }
+  .color-theme-popover.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .color-theme-popover-title{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--text-gray-dim);margin-bottom:10px;}
+  .color-theme-options{display:flex;flex-wrap:wrap;gap:9px;}
+  .color-swatch-btn{
+    width:32px;height:32px;border-radius:9px;border:2px solid transparent;cursor:pointer;
+    padding:0;position:relative;transition:transform .15s ease, border-color .15s ease;
+  }
+  .color-swatch-btn:hover{transform:translateY(-2px);}
+  .color-swatch-btn.active{border-color:var(--text-white);box-shadow:0 0 0 2px color-mix(in srgb, var(--text-white) 25%, transparent);}
+  .color-swatch-btn.active::after{
+    content:"";position:absolute;inset:0;margin:auto;width:6px;height:6px;border-radius:50%;
+    background:#fff;box-shadow:0 0 4px rgba(0,0,0,.5);
+  }
+  .color-theme-popover-hint{font-size:10.5px;color:var(--text-gray-dim);margin-top:10px;line-height:1.5;}
+  #color-theme-options-light{display:none;}
+  body.light #color-theme-options-dark{display:none;}
+  body.light #color-theme-options-light{display:flex;}
 
   @media (max-width: 900px){
     .search-box{display:none;}
@@ -1440,6 +1483,136 @@
   @media (max-width: 900px){
     header{padding:18px 20px; flex-wrap:wrap; gap:14px;}
   }
+
+  /* ===================================================================
+     NOVO CONCEITO: Ferramentas Farmacêuticas como seção central
+     Não altera header/sidebar/cores/tipografia — só reorganiza o
+     conteúdo do dashboard em uma coluna única, com as ferramentas
+     como elemento central e protagonista.
+     =================================================================== */
+  .dashboard-grid{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  /* --- Seção central de Ferramentas --- */
+  .tools-hub-header{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 22px;
+  }
+  .tools-hub-header h2{
+    font-size:21px;font-weight:800;letter-spacing:2px;
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    text-shadow:0 0 18px var(--red-glow);
+  }
+  .tools-hub-header h2 .hub-sparkle{color:var(--red);font-size:16px;}
+  .tools-hub-header p{
+    margin-top:10px;font-size:13.5px;color:var(--text-gray-dim);line-height:1.55;
+  }
+  .tools-hub-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:16px;
+    max-width:82%;
+    margin:0 auto;
+  }
+  @media (max-width:1100px){
+    .tools-hub-grid{grid-template-columns:repeat(2, 1fr); max-width:100%;}
+  }
+  @media (max-width:640px){
+    .tools-hub-grid{grid-template-columns:1fr; max-width:100%;}
+  }
+  .tools-hub-card{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    gap:7px;
+    padding:20px 16px 16px;
+    border-radius:16px;
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--hub-color) 20%, transparent), transparent 70%),
+      linear-gradient(160deg, var(--card-bg) 0%, color-mix(in srgb, var(--card-bg) 88%, #000 6%) 100%);
+    border:2px solid color-mix(in srgb, var(--hub-color) 65%, var(--card-border));
+    border-top-width:3px;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 38%, transparent), 0 0 24px -8px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 12px 26px -14px rgba(0,0,0,.45), var(--tool-card-bevel);
+    text-decoration:none;color:inherit;cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .tools-hub-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--hub-color);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 65%, transparent), 0 0 30px -6px color-mix(in srgb, var(--hub-color) 70%, transparent), 0 18px 36px -16px rgba(0,0,0,.5), var(--tool-card-bevel-hover);
+  }
+  .tools-hub-icon{
+    width:44px;height:44px;border-radius:12px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--hub-color) 55%, transparent), color-mix(in srgb, var(--hub-color) 14%, transparent));
+    color:var(--hub-color);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--hub-color) 60%, transparent), 0 0 20px -3px color-mix(in srgb, var(--hub-color) 85%, transparent);
+    transition:box-shadow .25s ease, filter .25s ease;
+  }
+  .tools-hub-card:hover .tools-hub-icon{
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--hub-color) 65%, transparent), 0 0 22px -2px var(--hub-color);
+    filter:brightness(1.15);
+  }
+  .tools-hub-icon svg{width:21px;height:21px;filter:drop-shadow(0 0 6px color-mix(in srgb, var(--hub-color) 90%, transparent));}
+  .tools-hub-card:hover .tools-hub-icon svg{filter:drop-shadow(0 0 7px var(--hub-color));}
+  .tools-hub-card h3{font-size:13.5px;font-weight:700;line-height:1.28;}
+  .tools-hub-card p{font-size:11.5px;color:var(--text-gray-dim);line-height:1.4;min-height:28px;}
+  .tools-hub-arrow{
+    margin-top:2px;width:26px;height:26px;border-radius:50%;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid color-mix(in srgb, var(--hub-color) 55%, transparent);
+    color:var(--hub-color);
+    box-shadow:0 0 10px -2px color-mix(in srgb, var(--hub-color) 75%, transparent);
+    transition:background .25s ease, transform .25s ease;
+  }
+  .tools-hub-arrow svg{width:14px;height:14px;}
+  .tools-hub-card:hover .tools-hub-arrow{
+    background:color-mix(in srgb, var(--hub-color) 20%, transparent);
+    transform:translateX(3px);
+  }
+  .tools-hub-card.placeholder{opacity:.82;}
+  .tools-hub-soon-badge{
+    position:absolute;top:14px;right:14px;
+    font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    padding:3px 7px;border-radius:6px;
+    background:color-mix(in srgb, var(--hub-color) 22%, transparent);
+    color:var(--hub-color);
+  }
+
+  /* --- Favoritos + Notas lado a lado --- */
+  .trio-panel{grid-template-columns:0.85fr 1fr 1.3fr;}
+  @media (max-width:1200px){ .trio-panel{grid-template-columns:1fr 1fr;} }
+  @media (max-width:760px){ .trio-panel{grid-template-columns:1fr;} }
+  .trio-panel .stats-footer{display:flex;flex-direction:column;}
+  .trio-panel .stats-footer-inner{flex:1;}
+
+  /* --- Banner institucional + dica Ctrl+K lado a lado --- */
+  .bottom-row{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:22px;
+    align-items:stretch;
+  }
+  @media (max-width:900px){ .bottom-row{grid-template-columns:1fr;} }
+  .bottom-row .institutional-banner{margin:0;}
+  .quick-tip-card{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:22px;border-radius:16px;
+    border:1px solid var(--card-border);
+    background:var(--bg-panel);
+    font-size:12.5px;line-height:1.6;color:var(--text-gray-dim);
+  }
+  .quick-tip-card svg{flex:none;width:20px;height:20px;color:var(--text-gray-dim);opacity:.7;margin-top:1px;}
+  .quick-tip-card strong{color:var(--text-gray);}
+  .quick-tip-card kbd{
+    display:inline-block;font:inherit;font-size:11px;font-weight:700;
+    padding:1.5px 6px;border-radius:5px;
+    background:var(--card-bg);border:1px solid var(--card-border);
+    color:var(--text-gray);
+  }
 </style>
 </head>
 <body>
@@ -1463,14 +1636,7 @@
     </a>
 
     <div class="sidebar-divider"></div>
-
-    <a href="#" class="sidebar-item" id="side-mais" onclick="sidebarNav(this,'panel-mais');return false;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-      <span>Mais</span>
-    </a>
-
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-subheading">Ferramentas</div>
+    <div class="sidebar-subheading">Ferramentas Farmacêuticas</div>
     <a href="farmadesk/" class="sidebar-item tool-shortcut" style="--ts-color:var(--red);" onclick="closeMobileMenu()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       <span>Guia</span>
@@ -1543,6 +1709,29 @@
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Abrir menu" aria-label="Abrir menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
+      <div class="color-theme-wrap" id="color-theme-wrap">
+        <button class="color-theme-toggle" onclick="toggleColorThemePopover()" title="Cor de fundo" aria-label="Escolher cor de fundo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2c4.5 0 8 3 8 6.5a4.5 4.5 0 0 1-4.5 4.5h-1.3a1.5 1.5 0 0 0-1 2.6c.4.4.7.9.7 1.5 0 1.1-.9 2-2 2-.6 0-1.1-.3-1.5-.6"/></svg>
+        </button>
+        <div class="color-theme-popover" id="color-theme-popover">
+          <div class="color-theme-popover-title">Cor de fundo</div>
+          <div class="color-theme-options" id="color-theme-options-dark">
+            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Grafite atual" style="background:linear-gradient(135deg,#43474e 50%,#383d45 50%);"></button>
+            <button class="color-swatch-btn" data-bg="modelo" onclick="applyBgPalette('modelo')" title="Modelo (imagem)" style="background:linear-gradient(135deg,#0d0f13 50%,#1a1e26 50%);"></button>
+            <button class="color-swatch-btn" data-bg="preto" onclick="applyBgPalette('preto')" title="Preto neutro" style="background:linear-gradient(135deg,#121212 50%,#1e1e1e 50%);"></button>
+            <button class="color-swatch-btn" data-bg="azul" onclick="applyBgPalette('azul')" title="Azul-marinho" style="background:linear-gradient(135deg,#0a0e1a 50%,#141d34 50%);"></button>
+            <button class="color-swatch-btn" data-bg="roxo" onclick="applyBgPalette('roxo')" title="Roxo profundo" style="background:linear-gradient(135deg,#120f1a 50%,#20192e 50%);"></button>
+          </div>
+          <div class="color-theme-options" id="color-theme-options-light">
+            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Cinza atual" style="background:linear-gradient(135deg,#eceef1 50%,#ffffff 50%);"></button>
+            <button class="color-swatch-btn" data-bg="azul" onclick="applyBgPalette('azul')" title="Azul claro" style="background:linear-gradient(135deg,#e7edf5 50%,#ffffff 50%);"></button>
+            <button class="color-swatch-btn" data-bg="verde" onclick="applyBgPalette('verde')" title="Verde-água claro" style="background:linear-gradient(135deg,#e9f3ef 50%,#ffffff 50%);"></button>
+            <button class="color-swatch-btn" data-bg="lilas" onclick="applyBgPalette('lilas')" title="Lilás claro" style="background:linear-gradient(135deg,#f0edf7 50%,#ffffff 50%);"></button>
+            <button class="color-swatch-btn" data-bg="areia" onclick="applyBgPalette('areia')" title="Areia" style="background:linear-gradient(135deg,#f3efe9 50%,#ffffff 50%);"></button>
+          </div>
+          <div class="color-theme-popover-hint">Sua escolha fica salva neste navegador (uma para cada tema).</div>
+        </div>
+      </div>
       <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
@@ -1564,8 +1753,6 @@
 
 <div class="dashboard-grid" id="panel-inicio">
 
-    <div class="dashboard-col-left">
-
     <div class="dashboard-head">
       <div class="greeting-banner">
         <div class="greeting-smoke" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -1584,9 +1771,102 @@
       </div>
     </div>
 
-    <!-- Coluna A: Estatísticas + Resumo Profissional -->
+    <!-- Ferramentas Farmacêuticas — nova seção central, protagonista da página -->
+    <section class="tools-hub-section" id="panel-mais">
+      <div class="tools-hub-header">
+        <h2><span class="hub-sparkle">✦</span> FERRAMENTAS FARMACÊUTICAS <span class="hub-sparkle">✦</span></h2>
+        <p>Tudo que você precisa para uma rotina mais segura, ágil e baseada em evidências.</p>
+      </div>
+      <div class="tools-hub-grid">
+
+        <!-- 1. Guia de Dispensação -->
+        <a href="farmadesk/" class="tools-hub-card" style="--hub-color:var(--red);" id="tool-guia">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Guia de Dispensação Farmacêutica</h3>
+          <p>Orientação farmacêutica: condições, alertas e encaminhamento.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 2. Substituição de Medicamentos Equivalentes -->
+        <a href="medinter/" class="tools-hub-card" style="--hub-color:var(--c-blue);" id="tool-medinter">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <h3>Substituição de Medicamentos</h3>
+          <p>Equivalentes por nome comercial, princípio ativo ou registro MS.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 3. Calculadora Pediátrica -->
+        <a href="dosespediatricas/" class="tools-hub-card" style="--hub-color:var(--c-green);" id="tool-calc">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><rect x="8" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="18" width="8" height="2" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h3>Calculadora Pediátrica</h3>
+          <p>Doses por peso e idade, com múltiplas formulações disponíveis.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 4. Validador de Receitas -->
+        <a href="receitas/" class="tools-hub-card" style="--hub-color:var(--c-purple);" id="tool-validador">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
+          </div>
+          <h3>Conferência de Receitas</h3>
+          <p>Validação de receituário: tipo, validade e retenção.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 5. Consulta por Medicamentos de Controle Especial -->
+        <a href="consultacontrolados/" class="tools-hub-card" style="--hub-color:var(--c-amber);" id="tool-consulta">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/></svg>
+          </div>
+          <h3>Medicamentos de Controle Especial</h3>
+          <p>Tipo de receita, validade, retenção e quantidade máxima.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 6. Checklist de Rotina -->
+        <a href="checklist/" class="tools-hub-card" style="--hub-color:var(--c-cyan);" id="tool-checklist">
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Checklist de Rotina</h3>
+          <p>Conferência diária: temperatura, validades e boas práticas.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 7. Interações Medicamentosas (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-magenta);" id="tool-interacoes" onclick="return false;">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Interações Medicamentosas</h3>
+          <p>Consulte interações entre princípios ativos.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+        <!-- 8. Exames Laboratoriais (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-teal);" id="tool-exames" onclick="return false;">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
+          </div>
+          <h3>Exames Laboratoriais</h3>
+          <p>Valores de referência e interpretação para apoio na prática.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Favoritos + Notas de Rotina lado a lado -->
     <section class="card stats-card">
-      <div class="quad-panel">
+      <div class="quad-panel trio-panel">
         <div class="stat-block" id="panel-favoritos">
           <div class="stats-card-head" style="margin-bottom:16px;">
             <h4><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>Favoritos</h4>
@@ -1647,7 +1927,8 @@
           </div>
         </div>
 
-        <div class="stats-footer stats-footer-wide">
+        <!-- Suas ferramentas mais utilizadas — agora na mesma linha de Favoritos/Notas -->
+        <div class="stats-footer">
           <h3><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg></span>Suas ferramentas mais utilizadas</h3>
           <div class="stats-footer-inner">
             <div id="usage-donut-wrap">
@@ -1674,124 +1955,28 @@
       </div>
     </section>
 
-    <section class="card institutional-banner">
-      <div class="institutional-banner-text">
-        <h2>Pratique com segurança. Decida com confiança.</h2>
-        <p>Ferramentas baseadas em evidências e nas principais legislações farmacêuticas do Brasil.</p>
-      </div>
-      <!-- CTA placeholder: sem destino definido ainda -->
-      <a href="#" class="btn btn-primary institutional-cta">
-        Saiba mais
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <div class="institutional-banner-visual" aria-hidden="true"></div>
-    </section>
-
-    </div>
-
-    <!-- Coluna C: Ferramentas Farmacêuticas -->
-    <section class="tools-col" id="panel-mais">
-      <h2>
-        <span class="tools-col-h2-label"><svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg>FERRAMENTAS FARMACÊUTICAS</span>
-        <!-- Placeholder: sem página de listagem completa definida ainda -->
-        <button type="button" class="ver-todas-btn" onclick="return false;">Ver todas</button>
-      </h2>
-      <div class="tool-list">
-
-        <!-- 1. Guia de Dispensação -->
-        <a href="farmadesk/" class="tool-card flagship" id="tool-guia">
-          <div class="tool-icon c-red">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Guia de Dispensação Farmacêutica</h3>
-            <p>Orientação farmacêutica: condições, alertas e encaminhamento.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 2. Substituição de Medicamentos Equivalentes -->
-        <a href="medinter/" class="tool-card accent-blue" id="tool-medinter">
-          <div class="tool-icon c-blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Substituição de Medicamentos</h3>
-            <p>Equivalentes por nome comercial, princípio ativo ou registro MS.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 3. Calculadora Pediátrica -->
-        <a href="dosespediatricas/" class="tool-card accent-green" id="tool-calc">
-          <div class="tool-icon c-green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><rect x="8" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="18" width="8" height="2" fill="currentColor" stroke="none"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Calculadora Pediátrica</h3>
-            <p>Doses por peso e idade, com múltiplas formulações disponíveis.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 4. Validador de Receitas -->
-        <a href="receitas/" class="tool-card accent-purple" id="tool-validador">
-          <div class="tool-icon c-purple">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Conferência de Receitas</h3>
-            <p>Validação de receituário: tipo, validade e retenção.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 5. Consulta por Medicamentos de Controle Especial -->
-        <a href="consultacontrolados/" class="tool-card accent-amber" id="tool-consulta">
-          <div class="tool-icon c-amber">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Medicamentos de Controle Especial</h3>
-            <p>Tipo de receita, validade, retenção e quantidade máxima.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- 6. Checklist de Rotina em Drogarias/Farmácias -->
-        <a href="checklist/" class="tool-card accent-cyan" id="tool-checklist">
-          <div class="tool-icon c-cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-          </div>
-          <div class="tool-info">
-            <h3>Checklist de Rotina</h3>
-            <p>Conferência diária: temperatura, validades e boas práticas.</p>
-          </div>
-          <div class="tool-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </a>
-
-        <!-- Card de dica: preenche o espaço remanescente da coluna e reforça a busca cruzada -->
-        <div class="tools-tip-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <div>
-            <strong>Dica:</strong> use <kbd>Ctrl</kbd> + <kbd>K</kbd> para buscar por qualquer medicamento ou condição em todas as ferramentas do FarmaPrática, sem sair da página inicial.
-          </div>
+    <!-- Banner institucional + dica de atalho Ctrl+K -->
+    <div class="bottom-row">
+      <section class="card institutional-banner">
+        <div class="institutional-banner-text">
+          <h2>Pratique com segurança. Decida com confiança.</h2>
+          <p>Ferramentas baseadas em evidências e nas principais legislações farmacêuticas do Brasil.</p>
         </div>
+        <!-- CTA placeholder: sem destino definido ainda -->
+        <a href="#" class="btn btn-primary institutional-cta">
+          Saiba mais
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="institutional-banner-visual" aria-hidden="true"></div>
+      </section>
 
+      <div class="quick-tip-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <div>
+          <strong>Dica:</strong> use <kbd>Ctrl</kbd> + <kbd>K</kbd> para buscar por qualquer medicamento ou condição em todas as ferramentas do FarmaPrática, sem sair da página inicial.
+        </div>
       </div>
-    </section>
+    </div>
 
   </div>
 </main>
@@ -1826,7 +2011,73 @@
   // ---------- TEMA ----------
   function toggleTheme(){
     document.body.classList.toggle('light');
+    loadAndApplyBgTheme();
   }
+
+  // ---------- COR DE FUNDO (tema de cor, escuro e claro) ----------
+  var BG_THEME_KEY_DARK = 'fp-bg-theme-dark';
+  var BG_THEME_KEY_LIGHT = 'fp-bg-theme-light';
+  var BG_THEME_DEFAULT_DARK = 'roxo';
+  var BG_THEME_DEFAULT_LIGHT = 'atual';
+  var bgPalettesDark = {
+    atual:  {bg:'#43474e', bgPanel:'#33373e', cardBg:'#383d45', cardBorder:'#4c5158', cardHoverBg:'#41464e', placeholderBorder:'#454a51', sidebarBg:'#2e323a', sidebarBorder:'#4c5158', sidebarHover:'#41464e'},
+    modelo: {bg:'#0d0f13', bgPanel:'#171a21', cardBg:'#1a1e26', cardBorder:'#2a2f3a', cardHoverBg:'#20242d', placeholderBorder:'#262a33', sidebarBg:'#0a0c10', sidebarBorder:'#21252d', sidebarHover:'#1a1e26'},
+    preto:  {bg:'#121212', bgPanel:'#1c1c1c', cardBg:'#1e1e1e', cardBorder:'#2e2e2e', cardHoverBg:'#242424', placeholderBorder:'#282828', sidebarBg:'#0e0e0e', sidebarBorder:'#2a2a2a', sidebarHover:'#1e1e1e'},
+    azul:   {bg:'#0a0e1a', bgPanel:'#121a2e', cardBg:'#141d34', cardBorder:'#243252', cardHoverBg:'#192544', placeholderBorder:'#1e2a48', sidebarBg:'#070a14', sidebarBorder:'#233150', sidebarHover:'#141d34'},
+    roxo:   {bg:'#120f1a', bgPanel:'#1c1728', cardBg:'#20192e', cardBorder:'#332947', cardHoverBg:'#261f38', placeholderBorder:'#2b2340', sidebarBg:'#0d0a14', sidebarBorder:'#332947', sidebarHover:'#20192e'}
+  };
+  var bgPalettesLight = {
+    atual: {bg:'#eceef1', bgPanel:'#f6f7f9', cardBg:'#ffffff', cardBorder:'#d7dade', cardHoverBg:'#f1f2f5', placeholderBorder:'#d0d3d8', sidebarBg:'#e2e5e9', sidebarBorder:'#d2d6db', sidebarHover:'#eceef1'},
+    azul:  {bg:'#e7edf5', bgPanel:'#f2f6fb', cardBg:'#ffffff', cardBorder:'#d3ddea', cardHoverBg:'#eaf1f8', placeholderBorder:'#cfdaea', sidebarBg:'#dde7f2', sidebarBorder:'#c9d6e8', sidebarHover:'#e7edf5'},
+    verde: {bg:'#e9f3ef', bgPanel:'#f3faf7', cardBg:'#ffffff', cardBorder:'#d2e5dd', cardHoverBg:'#eef7f3', placeholderBorder:'#cde2d9', sidebarBg:'#ddefe7', sidebarBorder:'#c7ddd2', sidebarHover:'#e9f3ef'},
+    lilas: {bg:'#f0edf7', bgPanel:'#f8f5fc', cardBg:'#ffffff', cardBorder:'#ded6ee', cardHoverBg:'#f4f0fa', placeholderBorder:'#dad0ec', sidebarBg:'#e7e0f3', sidebarBorder:'#d4c9e9', sidebarHover:'#f0edf7'},
+    areia: {bg:'#f3efe9', bgPanel:'#faf7f2', cardBg:'#ffffff', cardBorder:'#e3dccf', cardHoverBg:'#f6f2ec', placeholderBorder:'#ded5c5', sidebarBg:'#ede5d8', sidebarBorder:'#ded2bd', sidebarHover:'#f3efe9'}
+  };
+  function applyBgPalette(name, skipSave){
+    var isLight = document.body.classList.contains('light');
+    var dict = isLight ? bgPalettesLight : bgPalettesDark;
+    var p = dict[name];
+    if(!p) return;
+    var s = document.body.style;
+    s.setProperty('--bg', p.bg);
+    s.setProperty('--bg-panel', p.bgPanel);
+    s.setProperty('--card-bg', p.cardBg);
+    s.setProperty('--card-border', p.cardBorder);
+    s.setProperty('--card-hover-bg', p.cardHoverBg);
+    s.setProperty('--placeholder-border', p.placeholderBorder);
+    s.setProperty('--sidebar-bg', p.sidebarBg);
+    s.setProperty('--sidebar-border', p.sidebarBorder);
+    s.setProperty('--sidebar-hover', p.sidebarHover);
+    var groupId = isLight ? 'color-theme-options-light' : 'color-theme-options-dark';
+    var group = document.getElementById(groupId);
+    if(group){
+      group.querySelectorAll('.color-swatch-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.bg === name);
+      });
+    }
+    if(!skipSave){
+      try{ localStorage.setItem(isLight ? BG_THEME_KEY_LIGHT : BG_THEME_KEY_DARK, name); }catch(e){}
+    }
+  }
+  function toggleColorThemePopover(){
+    document.getElementById('color-theme-popover').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e){
+    var wrap = document.getElementById('color-theme-wrap');
+    var popover = document.getElementById('color-theme-popover');
+    if(wrap && popover && popover.classList.contains('open') && !wrap.contains(e.target)){
+      popover.classList.remove('open');
+    }
+  });
+  function loadAndApplyBgTheme(){
+    var isLight = document.body.classList.contains('light');
+    var key = isLight ? BG_THEME_KEY_LIGHT : BG_THEME_KEY_DARK;
+    var fallback = isLight ? BG_THEME_DEFAULT_LIGHT : BG_THEME_DEFAULT_DARK;
+    var saved = fallback;
+    try{ saved = localStorage.getItem(key) || fallback; }catch(e){}
+    applyBgPalette(saved, true);
+  }
+  loadAndApplyBgTheme();
 
   // ---------- SIDEBAR ----------
   // Marca o item clicado como ativo e rola até a seção correspondente (navegação de página única).
