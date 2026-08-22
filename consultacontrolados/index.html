@@ -527,14 +527,41 @@
   }
   .aviso-responsabilidade p{ font-size: .78rem; line-height: 1.6; color: var(--text-gray); margin: 0; }
 
+  /* Botão "Voltar à lista" só existe no fluxo mobile de view dedicada — fica sempre oculto
+     por padrão (inclusive no desktop, fora do media query abaixo) e só reaparece quando
+     `.app-body.mobile-vista-detalhe` está ativo (regra dentro do @media(max-width:800px)). */
+  .mobile-voltar-lista{
+    display:none;
+    align-items:center; gap:6px;
+    width:max-content;
+    margin-bottom:14px;
+    padding:9px 14px;
+    border-radius:9px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:var(--text);
+    font-size:.82rem; font-weight:700;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-voltar-lista svg{ width:15px; height:15px; flex-shrink:0; }
+
   @media (max-width: 800px){
     body{ height:auto; overflow:visible; }
     .topbar-app{ padding: 8px 14px; }
     .topbar-app .titulo-principal{ font-size: .85rem; white-space:normal; }
     .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
     .app-body{ flex-direction:column; min-height:auto; }
-    .sidebar{ width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); max-height: 44vh; }
+    .sidebar{ width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); }
     .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
+
+    /* Navegação mobile em tela única: mostra a lista OU a substância selecionada, nunca as duas
+       empilhadas ao mesmo tempo (antes a sidebar ficava travada em 44vh acima do conteúdo,
+       deixando a tela "dividida" — pedido do usuário foi trocar por uma view dedicada). */
+    .app-body:not(.mobile-vista-detalhe) .main{ display:none; }
+    .app-body.mobile-vista-detalhe .sidebar{ display:none; }
+    .app-body.mobile-vista-detalhe .classe-flyout{ display:none !important; }
+    .app-body.mobile-vista-detalhe .mobile-voltar-lista{ display:inline-flex; }
     .main-inner{ max-width:100%; }
     .info-bar{ flex-wrap:wrap; gap:16px; }
 
@@ -634,6 +661,10 @@
 
   <div class="main">
     <div class="main-inner">
+      <button type="button" class="mobile-voltar-lista" onclick="voltarListaMobile()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Voltar à lista
+      </button>
       <div id="conteudo">
         <div class="empty-state">
           <div class="empty-icon">📋</div>
@@ -8064,6 +8095,15 @@ function selecionarSubstancia(item){
   classeAtiva = classeDoItem(item);
   renderSidebar(document.getElementById('busca').value);
   renderConteudo();
+  if(window.matchMedia('(max-width:800px)').matches){
+    document.querySelector('.app-body').classList.add('mobile-vista-detalhe');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+}
+
+function voltarListaMobile(){
+  document.querySelector('.app-body').classList.remove('mobile-vista-detalhe');
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function toggleObs(){
