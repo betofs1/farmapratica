@@ -1056,21 +1056,9 @@
       url("images/banner-farmapratica.png");
   }
   @media (max-width:760px){
-    .institutional-banner{flex-direction:column;align-items:stretch;padding:0;gap:0;overflow:hidden;}
-    .institutional-banner-visual{
-      display:block;position:static;width:100%;height:130px;
-      -webkit-mask-image:none;mask-image:none;
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(20,20,22,.55) 100%),
-        url("images/banner-farmapratica.png");
-    }
-    body.light .institutional-banner-visual{
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,.02) 0%, rgba(20,20,22,.35) 100%),
-        url("images/banner-farmapratica.png");
-    }
-    .institutional-banner-text{padding:20px 22px 0;max-width:100%;}
-    .institutional-cta{width:calc(100% - 44px);margin:16px 22px 22px;justify-content:center;padding:11px 20px;font-size:14px;}
+    .institutional-banner{flex-direction:column;align-items:flex-start;padding:26px;gap:18px;}
+    .institutional-banner-visual{display:none;}
+    .institutional-cta{width:100%;justify-content:center;padding:11px 20px;font-size:14px;}
   }
 
   /* Coluna B — Status de Acesso + card de marca */
@@ -2057,8 +2045,8 @@
     <div class="bottom-row">
       <section class="card institutional-banner">
         <div class="institutional-banner-text">
-          <h2>Pratique com segurança. Decida com confiança.</h2>
-          <p>Ferramentas baseadas em evidências e nas principais legislações farmacêuticas do Brasil.</p>
+          <h2>Da teoria à prática, em um só lugar.</h2>
+          <p>O FarmaPrática reúne as ferramentas do seu dia a dia de balcão — para decidir mais rápido, com respaldo técnico e legislação sempre à mão.</p>
         </div>
         <!-- CTA placeholder: sem destino definido ainda -->
         <a href="#" class="btn btn-primary institutional-cta">
