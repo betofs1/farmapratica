@@ -262,10 +262,6 @@
   .topbar-app .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
   .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:100%; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
-  /* Legenda do botão "Modo Detalhado", explicando sua função — só aparece
-     na versão mobile (no desktop o title="" do próprio botão já cumpre
-     esse papel via tooltip, que não existe ao toque no celular). */
-  .dm-hint-mobile{ display:none; }
   @media (max-width: 800px){
     .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; padding: 8px 14px; }
     .topbar-app .logo-wrap{ padding-left:0; justify-content:center; margin-bottom:6px; }
@@ -276,10 +272,11 @@
        ficou bem mais alta que no desktop) e passam a fluir como uma 3ª linha
        do grid, centralizados abaixo do título. */
     .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; margin-top:10px; }
-    .dm-hint-mobile{
-      display:block; grid-column:1; text-align:center; font-size:.68rem;
-      color: var(--text-dim); line-height:1.45; margin: 8px auto 0; padding: 0 14px; max-width: 420px;
-    }
+    /* Reforço redundante (a regra "de verdade" que vence a cascata está no
+       @media(max-width:800px) mais abaixo no arquivo, que vem depois deste
+       no CSS): garante o rótulo do botão "Modo Detalhado" visível mesmo se
+       este bloco algum dia acabar vindo por último. */
+    .detail-mode-toggle .dm-label{ display:inline; }
   }
 
   .app-body{ display:flex; flex:1; min-height:0; }
@@ -606,8 +603,21 @@
   @media (max-width: 800px){
     body{ height:auto; overflow:visible; }
     .topbar-app{ padding: 8px 14px; }
-    .topbar-app .titulo-principal{ font-size: .85rem; white-space:normal; }
+    /* Marca reduzida no mobile para dar mais destaque ao título da
+       ferramenta, que passa a ser o foco visual do cabeçalho nessa largura. */
+    .brand{ gap: 8px; }
+    .brand img{ width:25px; height:25px; }
+    .brand-text h1{ font-size:13.5px; }
+    .brand-text p{ font-size:8px; }
+    .topbar-app .titulo-principal{
+      font-size: 1.08rem; white-space:normal;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.45);
+    }
+    body.light .topbar-app .titulo-principal{
+      text-shadow: 0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);
+    }
     .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
+    .detail-mode-toggle .dm-label{ display:inline; }
     .app-body{ flex-direction:column; min-height:auto; }
     .sidebar{ width:100%; height:auto; border-right:none; border-bottom:1px solid var(--border); }
     .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
@@ -685,7 +695,6 @@
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
     </button>
   </div>
-  <p class="dm-hint-mobile">O <strong>Modo Detalhado</strong> agrupa os medicamentos por classe farmacológica (ex.: antibióticos, benzodiazepínicos, opioides) em vez de por tipo de receita. Toque numa classe para ver as substâncias dela.</p>
 </div>
 
 <div class="app-body">
@@ -7869,12 +7878,9 @@
 
 <script>
 // ---------- Tema claro/escuro ----------
-(function(){
-  const salvo = localStorage.getItem('farmapratica-theme');
-  if(salvo === 'dark'){
-    document.body.classList.remove('light');
-  }
-})();
+// A ferramenta sempre inicia no tema claro (<body class="light"> no HTML),
+// independente do que estiver salvo no localStorage de sessões anteriores —
+// só o alternador de tema (toggleTheme, abaixo) muda o tema durante a sessão.
 function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');

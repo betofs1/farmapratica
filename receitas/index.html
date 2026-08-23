@@ -107,9 +107,22 @@
   body.light .theme-toggle .icon-sun{display:none;}
   body.light .theme-toggle .icon-moon{display:block;}
   @media (max-width:800px){
-    header.topbar-app{flex-wrap:wrap;padding:12px 14px;}
+    header.topbar-app{flex-wrap:wrap;padding:12px 14px;gap:8px;}
+    /* 23/08/2026: marca centralizada e reduzida — logo-wrap ganha largura total
+       para forçar linha própria (empurrando .header-right para a linha seguinte,
+       sem sobrepor nada) e é centralizada dentro dela. */
+    .topbar-app .logo-wrap{width:100%;justify-content:center;}
+    .topbar-app .brand{gap:8px;}
+    .topbar-app .brand img{width:25px;height:25px;}
+    .topbar-app .brand-text h1{font-size:14px;}
+    .topbar-app .brand-text p{font-size:8.5px;}
     .topbar-app .titulo-central{position:static;transform:none;left:auto;top:auto;order:3;flex-basis:100%;max-width:100%;}
     .topbar-app .titulo-principal, .topbar-app .titulo-descricao{white-space:normal;}
+    /* Título da ferramenta como foco visual no mobile: --heading-shadow some no
+       tema claro (valor "none"), então reforçamos aqui por tema — mesmo padrão
+       de sombra já usado em outra ferramenta do site. */
+    .topbar-app .titulo-principal{font-size:1.1rem;text-shadow:0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);}
+    body:not(.light) .topbar-app .titulo-principal{text-shadow:0 1px 0 rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.45);}
   }
   main{max-width:1180px;margin:0 auto;padding:28px 24px 64px;}
   section{margin-bottom:28px;}
@@ -397,7 +410,7 @@
   }
 </style>
 </head>
-<body>
+<body class="light">
 
 <header class="topbar-app">
   <div class="logo-wrap">
@@ -881,12 +894,11 @@
 /* =========================================================
    Tema claro/escuro
    ========================================================= */
-(function(){
-  const salvo = localStorage.getItem('farmapratica-theme');
-  if(salvo === 'light'){
-    document.body.classList.add('light');
-  }
-})();
+/* 23/08/2026: a página agora sempre inicia em modo claro — o <body> já
+   nasce com class="light" no HTML, então não é mais necessário ler o
+   tema salvo no localStorage ao carregar (a IIFE que fazia isso foi
+   removida). toggleTheme() continua salvando a escolha feita durante a
+   sessão, só não é mais lida de volta num carregamento futuro. */
 function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');

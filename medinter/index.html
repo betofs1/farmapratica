@@ -252,12 +252,32 @@
     .search-wrap{flex-direction:column;gap:7px;}
     #searchBtn,#clearBtn{justify-content:center;}
     .topbar-app{grid-template-columns:1fr;gap:8px;padding:10px 16px;flex-wrap:wrap;row-gap:4px;}
+    /* Marca (logo+nome) do FarmaPrática: reduzida e centralizada em sua própria
+       linha, no topo do cabeçalho. Antes ela ficava grande e encostada à
+       esquerda, competindo visualmente com o título da ferramenta — agora ela
+       vira um selo discreto e o título abaixo dela ganha o protagonismo. */
+    .logo-wrap{order:1;width:100%;}
+    .logo-wrap a{justify-content:center;}
+    .brand{gap:7px;}
+    .brand img{width:25px;height:25px;}
+    .brand-text h1{font-size:13px;}
+    .brand-text p{font-size:8px;}
     /* Título+descrição da ferramenta: no desktop fica centralizado em posição
        absoluta sobre a topbar; no mobile isso sobreporia o logo e o db-pill,
        então aqui ele volta ao fluxo normal do flex, ocupando a própria linha
-       abaixo do logo (100% de largura força a quebra de linha). */
+       abaixo do logo (100% de largura força a quebra de linha). Como a marca
+       acima dele agora é pequena, o título ganha um leve aumento de fonte e
+       um text-shadow em camadas para se destacar como o elemento principal
+       do cabeçalho (mesmo tratamento usado hoje em outra ferramenta do site). */
     .titulo-central{position:static;left:auto;transform:none;order:2;width:100%;pointer-events:auto;margin-top:2px;}
-    .topbar-right{margin-left:auto;order:1;}
+    .titulo-principal{font-size:1.05rem;text-shadow:0 1px 0 rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.45);}
+    body.light .titulo-principal{text-shadow:0 1px 0 rgba(255,255,255,.7),0 3px 10px rgba(23,26,32,.22);}
+    /* Faixa da direita (contador do banco + tema): o botão de tema sai do
+       fluxo e vira um ícone fixo no canto superior direito da topbar (mesmo
+       padrão já usado em outra ferramenta do site), sobrando só o db-pill,
+       que passa a ocupar sua própria linha centralizada abaixo do título. */
+    .topbar-right{margin-left:0;order:3;width:100%;justify-content:center;}
+    .theme-toggle{position:absolute;top:14px;right:14px;}
     .search-section{padding:14px;}
     /* Caixa de busca mais compacta no mobile: reduz padding do input/botões
        e o espaçamento entre eles para caber melhor sem ficar espremida. */
@@ -1193,7 +1213,11 @@ function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
-if(localStorage.getItem('theme')==='dark') document.body.classList.remove('light');
+// Decisão de produto: a ferramenta sempre inicia em modo claro, independente
+// da preferência salva em localStorage('theme') em uma sessão anterior. O
+// toggleTheme() continua gravando a escolha normalmente (funciona durante a
+// sessão), só não é mais lida de volta no carregamento da página.
+// if(localStorage.getItem('theme')==='dark') document.body.classList.remove('light');
 
 // Override updateDBUI for new topbar
 function updateDBUI(state){
