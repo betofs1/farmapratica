@@ -974,7 +974,21 @@
 
   @media (max-width: 800px){
     .topbar-app{ padding: 8px 14px; }
-    .topbar-app .titulo-principal{ font-size: .85rem; white-space:normal; }
+    /* Marca FarmaPrática reduzida e discreta no mobile — o protagonismo passa a
+       ser do título da própria ferramenta, não da marca (pedido do usuário). */
+    .topbar-app .brand{ gap:7px; }
+    .topbar-app .brand img{ width:24px; height:24px; }
+    .topbar-app .brand-text h1{ font-size:13px; }
+    .topbar-app .brand-text p{ font-size:7.5px; }
+    .topbar-app .titulo-principal{
+      font-size: 1.05rem;
+      white-space:normal;
+      margin-top:3px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.45);
+    }
+    body.light .topbar-app .titulo-principal{
+      text-shadow: 0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);
+    }
     .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
     /* Sidebar e conteúdo agora ocupam a tela inteira, uma vista por vez (ver bloco
        "Navegação mobile em vista única" mais abaixo), em vez de empilhar os dois
@@ -1065,6 +1079,42 @@
   .fav-header .icon{ width:12px; height:12px; }
   .fav-group{ margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--border); }
   .drug-item .fav-dot{ margin-left:auto; color: var(--amber); width:12px; height:12px; flex-shrink:0; }
+
+  /* ---------- Menu inferior mobile (busca + favoritos) ---------- */
+  .mobile-bottom-nav{ display:none; }
+  .mobile-bottom-nav-item{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:none; border:none; color: var(--text-dim);
+    font-family: inherit; font-size:.65rem; font-weight:700;
+    cursor:pointer; padding:6px 22px; border-radius:10px;
+    position:relative;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-bottom-nav-item .icon{ width:19px; height:19px; }
+  .mobile-bottom-nav-item:active{ background: var(--hover-tint); }
+  .mobile-bottom-nav-item .fav-count{
+    position:absolute; top:1px; right:13px;
+    min-width:14px; height:14px; padding:0 3px;
+    border-radius:7px; background: var(--red-bright); color:#fff;
+    font-size:.58rem; font-weight:800; line-height:14px; text-align:center;
+  }
+  .mobile-search-fechar{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px; flex-shrink:0;
+    border:none; background:transparent; color: var(--text-dim);
+    cursor:pointer; border-radius:50%;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-search-fechar .icon{ width:14px; height:14px; }
+  .mobile-search-fechar:hover{ background: var(--hover-tint); color: var(--text); }
+  .mobile-search-backdrop{
+    display:none;
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.55);
+    z-index:990;
+  }
+  body.mobile-search-open .mobile-search-backdrop{ display:block; }
 
   /* ---------- Skeleton de carregamento ---------- */
   .skeleton-item{
@@ -1163,9 +1213,63 @@
 
     /* Áreas de toque maiores, mais fáceis de operar com uma mão no balcão */
     .btn-icon-action, .btn-fav-calc{ width:40px; height:40px; }
-    .drug-item{ padding: 11px 12px 11px 11px; }
-    .cat-header{ padding: 10px 12px !important; }
     .aviso-titulo{ align-items:flex-start; }
+
+    /* Lista mais densa no mobile: fonte e espaçamentos reduzidos para caber mais
+       fármacos na tela sem rolar tanto — pedido explícito do usuário, mesmo que
+       isso reverta o aumento de padding "para toque" de uma rodada anterior. */
+    .drug-item{ padding: 7px 10px 7px 9px; font-size:.78rem; margin-bottom:4px; }
+    .cat-header{ padding: 6px 9px !important; margin-bottom:5px !important; }
+    .cat-group{ margin-top:12px; }
+    .cat-group:first-child{ margin-top:4px; }
+    .sidebar-list{ padding:8px 10px 76px; }
+
+    /* Campo de busca e Favoritos saem da sidebar e viram um menu inferior fixo —
+       a busca abre como um cartão flutuante por cima da lista (que continua
+       visível e filtrando em tempo real atrás dele); Favoritos abre no mesmo
+       modal centralizado já usado para "Nomes comerciais" (#comerciais-overlay). */
+    .sidebar-header{ display:none; }
+    .fav-group{ display:none; }
+    .mobile-bottom-nav{
+      display:flex;
+      position:fixed; left:0; right:0; bottom:0;
+      z-index:960;
+      justify-content:center; gap:6px;
+      background: var(--sidebar);
+      border-top:1px solid var(--border);
+      padding: 6px 16px calc(6px + env(safe-area-inset-bottom));
+      box-shadow: 0 -6px 18px rgba(0,0,0,.28);
+    }
+    body.light .mobile-bottom-nav{ box-shadow: 0 -6px 18px rgba(35,40,48,.1); }
+    .main{ padding-bottom:76px; }
+
+    body.mobile-search-open .sidebar-header{
+      display:block;
+      position:fixed;
+      top:calc(10px + env(safe-area-inset-top));
+      left:12px; right:12px;
+      z-index:1000;
+      margin:0;
+      padding:10px 12px;
+      background: var(--sidebar);
+      border:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      border-radius:12px;
+      box-shadow: 0 14px 34px -10px rgba(0,0,0,.55);
+    }
+    body.mobile-search-open .mobile-search-fechar{ display:inline-flex; }
+    /* .sidebar é item flex com z-index:2, o que já basta para formar seu próprio
+       contexto de empilhamento — mesmo com .sidebar-header em position:fixed e
+       z-index:1000, esse valor só é comparado DENTRO do contexto de .sidebar, que
+       por sua vez perde para o backdrop (z-index:990) na comparação externa (mesma
+       classe de bug já corrigida no farmadesk). No mobile as duas vistas nunca
+       aparecem lado a lado (ver .mobile-vista-lista/.mobile-vista-farmaco acima),
+       então o z-index de .sidebar não tem mais função aqui: zerá-lo remove o
+       contexto de empilhamento e deixa .sidebar-header (fixed) competir direto no
+       nível raiz, ficando acima do backdrop; o restante da lista (.sidebar-list,
+       estático) permanece abaixo do backdrop e é corretamente escurecido/bloqueado. */
+    .sidebar{ z-index:auto; }
+    body.mobile-search-open .mobile-bottom-nav{ display:none; }
   }
 
   /* ---------- Impressão ---------- */
@@ -1222,6 +1326,18 @@
   </div>
 </div>
 
+<div class="comerciais-overlay" id="favoritos-overlay" role="dialog" aria-modal="true" aria-labelledby="favoritos-titulo">
+  <div class="comerciais-modal">
+    <div class="comerciais-header">
+      <h3 id="favoritos-titulo">Favoritos</h3>
+      <button type="button" class="comerciais-fechar" id="favoritos-fechar" aria-label="Fechar">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      </button>
+    </div>
+    <div class="comerciais-body" id="favoritos-body"></div>
+  </div>
+</div>
+
 <div class="topbar-app">
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
@@ -1250,6 +1366,9 @@
       <div class="search-box">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
         <input type="text" id="busca" placeholder="Busque por Fármaco">
+        <button type="button" class="mobile-search-fechar" id="mobile-search-fechar" aria-label="Fechar busca" title="Fechar busca">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+        </button>
       </div>
     </div>
     <div class="sidebar-list" id="lista-farmacos">
@@ -1301,16 +1420,25 @@
   </div>
 </div>
 
+<div class="mobile-search-backdrop" id="mobile-search-backdrop"></div>
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <button type="button" class="mobile-bottom-nav-item" id="btn-mobile-buscar">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+    <span>Buscar</span>
+  </button>
+  <button type="button" class="mobile-bottom-nav-item" id="btn-mobile-favoritos">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l3.1 6.28 6.93 1-5.02 4.9 1.19 6.9-6.2-3.26-6.2 3.26 1.19-6.9-5.02-4.9 6.93-1z"/></svg></span>
+    <span>Favoritos</span>
+    <span class="fav-count" id="fav-count" style="display:none;"></span>
+  </button>
+</nav>
 
 <script>
 // ---------- Tema claro/escuro ----------
-(function(){
-  const salvo = localStorage.getItem('farmapratica-theme');
-  if(salvo === 'dark'){
-    document.body.classList.remove('light');
-  }
-})();
-
+// A ferramenta sempre inicia no modo claro, mesmo que uma sessão anterior
+// (nesta ou em outra ferramenta do FarmaPrática, já que a chave é compartilhada)
+// tenha salvo o modo escuro — o toggle abaixo continua funcionando normalmente
+// durante a sessão, só não é mais lido de volta ao carregar a página.
 function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
@@ -1398,10 +1526,77 @@ document.getElementById('comerciais-overlay').addEventListener('click', (e) => {
   if(e.target.id === 'comerciais-overlay') fecharComerciais();
 });
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && document.getElementById('comerciais-overlay').classList.contains('aberto')){
+  if(e.key !== 'Escape') return;
+  if(document.getElementById('comerciais-overlay').classList.contains('aberto')){
     fecharComerciais();
   }
+  if(document.getElementById('favoritos-overlay').classList.contains('aberto')){
+    fecharFavoritosModal();
+  }
+  if(document.body.classList.contains('mobile-search-open')){
+    fecharBuscaMobile();
+  }
 });
+
+// ---------- Menu inferior mobile: busca ----------
+// A busca sai da sidebar e vira um botão no menu inferior; ao tocar, o campo
+// #busca (o mesmo da sidebar, reaproveitado) aparece como cartão flutuante por
+// cima da lista, que continua visível e filtrando em tempo real atrás dele.
+function abrirBuscaMobile(){
+  mobileMostrarLista();
+  document.body.classList.add('mobile-search-open');
+  const busca = document.getElementById('busca');
+  if(busca) setTimeout(() => busca.focus(), 50);
+}
+function fecharBuscaMobile(){
+  document.body.classList.remove('mobile-search-open');
+}
+document.getElementById('btn-mobile-buscar').addEventListener('click', abrirBuscaMobile);
+document.getElementById('mobile-search-fechar').addEventListener('click', fecharBuscaMobile);
+document.getElementById('mobile-search-backdrop').addEventListener('click', fecharBuscaMobile);
+
+// ---------- Menu inferior mobile: favoritos ----------
+// Reaproveita o mesmo modal centralizado já usado para "Nomes comerciais"
+// (#comerciais-overlay), com IDs próprios (#favoritos-overlay).
+function renderFavoritosModal(){
+  const body = document.getElementById('favoritos-body');
+  if(!DB){
+    body.innerHTML = '<div class="empty-sub" style="padding:16px 4px;">Carregando dados...</div>';
+    return;
+  }
+  const favs = getFavsCalc();
+  const favsValidos = favs.map(fv => DB.farmacos.find(f => f.id === fv.id)).filter(Boolean);
+  body.innerHTML = '';
+  if(!favsValidos.length){
+    body.innerHTML = '<div class="empty-sub" style="padding:16px 4px;">Nenhum fármaco favoritado ainda. Toque na estrela dentro de um fármaco para adicioná-lo aqui.</div>';
+    return;
+  }
+  favsValidos.forEach(f => {
+    const btn = criarBotaoFarmaco(f, '');
+    btn.addEventListener('click', fecharFavoritosModal);
+    body.appendChild(btn);
+  });
+}
+function abrirFavoritosModal(){
+  renderFavoritosModal();
+  document.getElementById('favoritos-overlay').classList.add('aberto');
+}
+function fecharFavoritosModal(){
+  document.getElementById('favoritos-overlay').classList.remove('aberto');
+}
+document.getElementById('btn-mobile-favoritos').addEventListener('click', abrirFavoritosModal);
+document.getElementById('favoritos-fechar').addEventListener('click', fecharFavoritosModal);
+document.getElementById('favoritos-overlay').addEventListener('click', (e) => {
+  if(e.target.id === 'favoritos-overlay') fecharFavoritosModal();
+});
+function atualizarFavCount(){
+  const el = document.getElementById('fav-count');
+  if(!el) return;
+  const n = getFavsCalc().length;
+  if(n > 0){ el.textContent = n; el.style.display = 'block'; }
+  else{ el.style.display = 'none'; }
+}
+atualizarFavCount();
 
 let DB = null;
 let farmacoAtual = null;
@@ -1463,6 +1658,7 @@ function toggleFavCalc(){
   }
   renderConteudo();
   renderSidebar(document.getElementById('busca').value);
+  atualizarFavCount();
 }
 
 function escapeHtml(s){
