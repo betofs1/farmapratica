@@ -36,6 +36,25 @@
     --tarja-branca-glow: rgba(185,140,240,.22);
     --tarja-verde: #3fb87f;
     --tarja-verde-glow: rgba(63,184,127,.22);
+    /* Cores por família farmacológica (Modo Detalhado). Antibiótico e
+       ansiolítico reaproveitam as tarjas verde/azul acima (mesmo
+       significado de cor já usado no restante do site); as demais são
+       cores novas, escolhidas para não colidir com o vermelho de marca
+       nem com as 4 tarjas existentes. */
+    --tag-opioide: #e8823c;
+    --tag-opioide-glow: rgba(232,130,60,.22);
+    --tag-estimulante: #d84fd8;
+    --tag-estimulante-glow: rgba(216,79,216,.22);
+    --tag-anticonvulsivante: #2bc4b5;
+    --tag-anticonvulsivante-glow: rgba(43,196,181,.22);
+    --tag-antipsicotico: #8b8ff5;
+    --tag-antipsicotico-glow: rgba(139,143,245,.22);
+    --tag-antidepressivo: #ef70ad;
+    --tag-antidepressivo-glow: rgba(239,112,173,.22);
+    --tag-hormonio: #c4933f;
+    --tag-hormonio-glow: rgba(196,147,63,.22);
+    --tag-outro: #9aa1ab;
+    --tag-outro-glow: rgba(154,161,171,.20);
   }
 
   body.light{
@@ -64,6 +83,20 @@
     --tarja-branca-glow: rgba(124,58,237,.15);
     --tarja-verde: #1f8a53;
     --tarja-verde-glow: rgba(31,138,83,.15);
+    --tag-opioide: #c2600d;
+    --tag-opioide-glow: rgba(194,96,13,.15);
+    --tag-estimulante: #a8259e;
+    --tag-estimulante-glow: rgba(168,37,158,.14);
+    --tag-anticonvulsivante: #0f8f81;
+    --tag-anticonvulsivante-glow: rgba(15,143,129,.14);
+    --tag-antipsicotico: #4f46d0;
+    --tag-antipsicotico-glow: rgba(79,70,208,.14);
+    --tag-antidepressivo: #c23576;
+    --tag-antidepressivo-glow: rgba(194,53,118,.14);
+    --tag-hormonio: #8a5f1e;
+    --tag-hormonio-glow: rgba(138,95,30,.14);
+    --tag-outro: #656c76;
+    --tag-outro-glow: rgba(101,108,118,.13);
   }
   body.light .drug-item:hover{ color: #000; }
   body.light .empty-icon{ background: linear-gradient(135deg, rgba(161,15,31,.12), rgba(201,121,10,.12)); }
@@ -160,16 +193,32 @@
   .theme-toggle{ flex-shrink:0; }
   body.modo-detalhado-ativo{ --sidebar-w: 430px; }
   @media (max-width: 980px){ .detail-mode-toggle .dm-label{ display:none; } .detail-mode-toggle{ padding:0 9px; } .topbar-actions{ right:14px; gap:6px; } }
-  .cat-header.classe-grupo{ border-left-color: var(--amber); justify-content:space-between; }
+  /* Cor por família farmacológica: cada botão de classe (ex. "Antibiótico
+     aminoglicosídeo") recebe uma classe utilitária "cls-*" (ver corDaClasse()
+     no JS) que define --cls-c/--cls-g; as regras abaixo só consomem essas
+     variáveis, com a cor âmbar antiga como fallback. Vale para mobile e
+     desktop — é o mesmo botão renderizado nos dois. */
+  .cls-antibiotico{ --cls-c: var(--tarja-verde); --cls-g: var(--tarja-verde-glow); }
+  .cls-ansiolitico{ --cls-c: var(--tarja-azul); --cls-g: var(--tarja-azul-glow); }
+  .cls-opioide{ --cls-c: var(--tag-opioide); --cls-g: var(--tag-opioide-glow); }
+  .cls-estimulante{ --cls-c: var(--tag-estimulante); --cls-g: var(--tag-estimulante-glow); }
+  .cls-anticonvulsivante{ --cls-c: var(--tag-anticonvulsivante); --cls-g: var(--tag-anticonvulsivante-glow); }
+  .cls-antipsicotico{ --cls-c: var(--tag-antipsicotico); --cls-g: var(--tag-antipsicotico-glow); }
+  .cls-antidepressivo{ --cls-c: var(--tag-antidepressivo); --cls-g: var(--tag-antidepressivo-glow); }
+  .cls-hormonio{ --cls-c: var(--tag-hormonio); --cls-g: var(--tag-hormonio-glow); }
+  .cls-outro{ --cls-c: var(--tag-outro); --cls-g: var(--tag-outro-glow); }
+
+  .cat-header.classe-grupo{ border-left-color: var(--cls-c, var(--amber)); justify-content:space-between; }
   .cat-header.classe-grupo .cat-nome{ flex:1; }
   .cat-header.classe-grupo .cat-abre{
     flex-shrink:0; width:14px; height:14px; opacity:.7; transition: transform .15s ease;
   }
+  .cat-header.classe-grupo .cat-count{ background: var(--cls-g, rgba(245,158,11,.14)); color: var(--cls-c, var(--amber)); }
   .cat-header.classe-grupo.aberto{
-    background: rgba(245,158,11,.14); border-color: var(--amber); color: var(--amber);
+    background: var(--cls-g, rgba(245,158,11,.14)); border-color: var(--cls-c, var(--amber)); color: var(--cls-c, var(--amber));
   }
-  .cat-header.classe-grupo.aberto .cat-count{ background: rgba(245,158,11,.22); color: var(--amber); }
-  .cat-header.classe-grupo.aberto .cat-abre{ transform: translateX(2px); color: var(--amber); }
+  .cat-header.classe-grupo.aberto .cat-count{ background: var(--cls-g, rgba(245,158,11,.22)); color: var(--cls-c, var(--amber)); }
+  .cat-header.classe-grupo.aberto .cat-abre{ transform: translateX(2px); color: var(--cls-c, var(--amber)); }
 
   /* ---------- Flyout de classe (modo detalhado) ---------- */
   .classe-flyout{
@@ -189,7 +238,7 @@
   }
   .classe-flyout-head h3{
     margin:0; font-size:.78rem; font-weight:800; text-transform:uppercase;
-    letter-spacing:.4px; color: var(--amber); line-height:1.3;
+    letter-spacing:.4px; color: var(--cls-c, var(--amber)); line-height:1.3;
   }
   .classe-flyout-close{
     flex-shrink:0; width:22px; height:22px; border-radius:6px; border:1px solid var(--border);
@@ -213,8 +262,12 @@
   .topbar-app .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
   .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:100%; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
+  /* Legenda do botão "Modo Detalhado", explicando sua função — só aparece
+     na versão mobile (no desktop o title="" do próprio botão já cumpre
+     esse papel via tooltip, que não existe ao toque no celular). */
+  .dm-hint-mobile{ display:none; }
   @media (max-width: 800px){
-    .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto; padding: 8px 14px; }
+    .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; padding: 8px 14px; }
     .topbar-app .logo-wrap{ padding-left:0; justify-content:center; margin-bottom:6px; }
     .topbar-app .titulo-central{ grid-column:1; padding:0; }
     /* Os botões do cabeçalho (Modo Detalhado + tema) saem da posição absoluta
@@ -223,6 +276,10 @@
        ficou bem mais alta que no desktop) e passam a fluir como uma 3ª linha
        do grid, centralizados abaixo do título. */
     .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; margin-top:10px; }
+    .dm-hint-mobile{
+      display:block; grid-column:1; text-align:center; font-size:.68rem;
+      color: var(--text-dim); line-height:1.45; margin: 8px auto 0; padding: 0 14px; max-width: 420px;
+    }
   }
 
   .app-body{ display:flex; flex:1; min-height:0; }
@@ -628,6 +685,7 @@
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
     </button>
   </div>
+  <p class="dm-hint-mobile">O <strong>Modo Detalhado</strong> agrupa os medicamentos por classe farmacológica (ex.: antibióticos, benzodiazepínicos, opioides) em vez de por tipo de receita — toque numa classe para ver as substâncias dela.</p>
 </div>
 
 <div class="app-body">
@@ -7883,6 +7941,33 @@ function classeDoItem(item){
   return (det && det.classe) ? det.classe : (CAT_LABEL[item.codigo] || item.codigo);
 }
 
+// Agrupamento de cor por família farmacológica (Modo Detalhado). A "classe"
+// vinda dos dados é um texto livre e específico (ex.: "Antibiótico
+// aminoglicosídeo", "Antipsicótico atípico (de segunda geração)"), então
+// aqui ela é classificada por palavra-chave num pequeno conjunto de
+// famílias visuais — não é 1 cor por classe exata (seriam ~80), e sim 1 cor
+// por família. Antibiótico/antimicrobiano e benzodiazepínico/ansiolítico
+// reaproveitam as cores de tarja já usadas no resto do site (verde = Lista
+// Antimicrobianos, azul = Lista B/psicotrópicos), mantendo o mesmo
+// significado de cor; as demais famílias ganham uma cor nova (--tag-*,
+// definidas no :root); o que não casar com nenhuma regra cai em "outro".
+const REGRAS_COR_CLASSE = [
+  { chave:'antibiotico',       teste:/antibiótic|antimicrobian|antimicobacterian|antiviral|betalactamase/i },
+  { chave:'ansiolitico',       teste:/benzodiazep|ansiolític/i },
+  { chave:'opioide',           teste:/opioide/i },
+  { chave:'estimulante',       teste:/psicoestimulante|anorexígeno|estimulante do sistema nervoso|recaptação de noradrenalina/i },
+  { chave:'anticonvulsivante', teste:/anticonvulsivante|barbitúric|relaxante muscular|estabilizador de humor/i },
+  { chave:'antipsicotico',     teste:/antipsicótic/i },
+  { chave:'antidepressivo',    teste:/antidepressivo|recaptação de serotonina/i },
+  { chave:'hormonio',          teste:/andrógeno|esteroide anabolizante|hormônio de crescimento|precursor hormonal/i },
+];
+
+function corDaClasse(nomeClasse){
+  if(!nomeClasse) return 'outro';
+  const regra = REGRAS_COR_CLASSE.find(r => r.teste.test(nomeClasse));
+  return regra ? regra.chave : 'outro';
+}
+
 function temMarca(item){
   return substanciasComMarca.has(normaliza(item.nome));
 }
@@ -7935,15 +8020,20 @@ function renderClasseFlyout(porClasse){
   const itensEl = document.getElementById('classe-flyout-itens');
   if(!flyout) return;
 
+  // No mobile o resultado da classe já é expandido dentro da própria lista
+  // (ver renderSidebar), igual ao comportamento do modo não-detalhado — o
+  // flyout lateral abaixo é um recurso só de desktop (coluna extra ao lado
+  // da sidebar) e por isso fica sempre fechado no mobile.
+  const mobile = window.matchMedia('(max-width:800px)').matches;
   const itensClasse = classeAtiva ? (porClasse[classeAtiva] || []) : [];
-  if(!modoDetalhado || !classeAtiva || itensClasse.length === 0){
-    flyout.classList.remove('aberto');
+  if(mobile || !modoDetalhado || !classeAtiva || itensClasse.length === 0){
+    flyout.className = 'classe-flyout';
     titulo.textContent = '';
     itensEl.innerHTML = '';
     return;
   }
 
-  flyout.classList.add('aberto');
+  flyout.className = 'classe-flyout aberto cls-' + corDaClasse(classeAtiva);
   titulo.textContent = classeAtiva;
   itensEl.innerHTML = '';
   ordenarPorDisponibilidade(itensClasse).forEach(item => {
@@ -8009,16 +8099,35 @@ function renderSidebar(filtro=''){
       }
     } else {
       if(classeAtiva && !porClasseAtual[classeAtiva]) classeAtiva = null;
+      // No mobile não existe a coluna lateral extra que o flyout usa no
+      // desktop, então — a pedido do usuário — o resultado da classe
+      // expande dentro do próprio menu, igual ao acordeão do modo não-
+      // detalhado (toggleCategoria/.cat-grupo-itens), em vez de abrir num
+      // painel separado.
+      const mobileInline = window.matchMedia('(max-width:800px)').matches;
       classesOrdenadas.forEach(nomeClasse => {
         const itensCat = porClasseAtual[nomeClasse];
         algumaEncontrada = true;
 
         const aberta = nomeClasse === classeAtiva;
+        const corClasse = corDaClasse(nomeClasse);
         const header = document.createElement('button');
-        header.className = 'cat-header classe-grupo' + (aberta ? ' aberto' : '');
+        header.className = 'cat-header classe-grupo cls-' + corClasse + (aberta ? ' aberto' : '');
         header.innerHTML = `<span class="cat-nome">${nomeClasse}</span><span class="cat-count">${itensCat.length}</span><svg class="cat-abre" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`;
         header.onclick = () => abrirClasseFlyout(nomeClasse);
         lista.appendChild(header);
+
+        if(mobileInline && aberta){
+          const grupo = document.createElement('div');
+          grupo.className = 'cat-grupo';
+          const itensWrap = document.createElement('div');
+          itensWrap.className = 'cat-grupo-itens';
+          ordenarPorDisponibilidade(itensCat).forEach(item => {
+            itensWrap.appendChild(criarDrugItemBtn(item));
+          });
+          grupo.appendChild(itensWrap);
+          lista.appendChild(grupo);
+        }
       });
     }
   } else {
