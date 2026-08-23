@@ -16,10 +16,10 @@
     --red-deep:#a10f1f;
     --red-bright:#eb3d4f;
     --ink:#f5f5f4;
-    --paper:#5a5f66;
-    --paper-dim:#4a4e55;
-    --card:#4f545c;
-    --rule:#63686f;
+    --paper:#120f1a;
+    --paper-dim:#1c1728;
+    --card:#20192e;
+    --rule:#332947;
     --amber:#f59e0b;
     --danger:#e4172c;
     --muted:#a7abb1;
@@ -700,7 +700,7 @@
     overflow:hidden;
     background:
       radial-gradient(120% 140% at 50% -10%, rgba(228,23,44,.18), transparent 62%),
-      linear-gradient(165deg, #52565d 0%, #383c41 100%);
+      linear-gradient(165deg, #493c67 0%, #322848 100%);
     border:1px solid rgba(228,23,44,0.5);
     border-radius:14px;
     padding:40px 32px 36px;
@@ -742,7 +742,7 @@
   .welcome-cards{display:flex;flex-direction:column;gap:10px;text-align:left;}
   .wc-item{
     display:flex;gap:14px;align-items:flex-start;
-    background:var(--paper-dim);
+    background:var(--card);
     border-left:3px solid var(--red);
     border-radius:0 8px 8px 0;
     padding:13px 15px;
@@ -1191,7 +1191,7 @@
     .block > ul{padding:0 16px 0 32px;}
     .block > p{margin:0 16px 8px;}
     .empty-content{margin:0 16px;}
-    .top-row{flex-direction:column;}
+    .top-row{align-items:center;}
   }
 
   /* ===== AJUSTES MOBILE (telefones, até 640px) =====
@@ -1206,12 +1206,18 @@
     .header-tagline-row{padding:0 16px;}
 
     /* Cabeçalho mais compacto no mobile */
-    header.top{padding:16px 16px 18px;}
-    .top-row{gap:10px;}
-    .brand img{width:38px; height:38px;}
-    .brand-text h1{font-size:19px;}
-    .brand-text p{font-size:11.5px;}
-    .top-actions{gap:8px;}
+    header.top{padding:14px 16px;}
+    .top-row{gap:8px 10px; flex-wrap:nowrap;}
+    .brand{gap:9px; min-width:0; flex:1 1 auto;}
+    .brand img{width:32px; height:32px; flex-shrink:0;}
+    .brand-text{min-width:0;}
+    .brand-text h1{font-size:16.5px;}
+    .brand-text p{font-size:10px; line-height:1.35;}
+    .top-actions{gap:6px; flex-shrink:0;}
+    .theme-toggle-top{width:32px; height:32px;}
+    .quick-mode-btn .btn-top-label{display:none;}
+    .quick-mode-btn{padding:0; width:32px; height:32px; justify-content:center;}
+    .quick-mode-btn svg{margin:0;}
 
     /* Busca: input em linha própria (senão fica espremido), atalho de teclado oculto (sem sentido no touch) */
     .search-shortcut-hint{display:none;}
@@ -1222,6 +1228,33 @@
 
     .layout{margin-top:18px; padding:0 16px;}
     .back-to-top{right:16px; bottom:16px; width:40px; height:40px;}
+
+    /* Painel de boas-vindas mais compacto no mobile (estava muito extenso) */
+    .welcome-panel{padding:26px 20px 22px; margin:18px auto;}
+    .welcome-logo{margin:0 auto 10px;}
+    .welcome-logo img{width:52px; height:52px;}
+    .welcome-title{font-size:19px; margin:0 0 6px;}
+    .welcome-desc{font-size:12px; margin:0 0 18px; line-height:1.5;}
+    .welcome-cards{gap:8px;}
+    .wc-item{padding:10px 12px; gap:10px;}
+    .wc-item svg{width:16px; height:16px;}
+    .wc-item strong{font-size:12px;}
+    .wc-item span{font-size:11px; line-height:1.42;}
+
+    /* Cards de condição: fonte menor no mobile */
+    .system-tag{font-size:9.5px;}
+    h2.cond-title{font-size:15.5px;}
+
+    /* "Todos os sistemas" pisca até o usuário tocar nele, indicando que o
+       menu de sistemas está recolhido e precisa ser aberto */
+    @keyframes sysAlertaPulse{
+      0%,100%{ background:transparent; box-shadow:0 0 0 0 rgba(228,23,44,.5); }
+      50%{ background:rgba(228,23,44,.16); box-shadow:0 0 0 5px rgba(228,23,44,0); }
+    }
+    #sysList.sys-alerta-ativa .sys-btn-trigger{
+      border-radius:9px;
+      animation:sysAlertaPulse 1.6s ease-in-out infinite;
+    }
   }
 </style>
 </head>
@@ -1496,6 +1529,8 @@ let systems = [];
 let allConditions = [];
 
 let activeSystem = null; // null = nenhum sistema selecionado (estado inicial)
+// Pisca o botão-gatilho do menu de sistemas (mobile) até o usuário tocar em "Todos os sistemas"
+let sysAlertaAtivo = true;
 
 const sysListEl = document.getElementById('sysList');
 const cardsEl = document.getElementById('cards');
@@ -1584,6 +1619,7 @@ function renderSidebar(){
   // primeiro item ("Todos os sistemas") quando nada foi selecionado ainda.
   const triggerBtn = sysListEl.querySelector('.sys-btn.active') || sysListEl.querySelector('.sys-btn');
   if(triggerBtn) triggerBtn.classList.add('sys-btn-trigger');
+  sysListEl.classList.toggle('sys-alerta-ativa', sysAlertaAtivo);
 }
 
 function highlight(text, q){
@@ -2037,6 +2073,10 @@ function toggleClearBtn(){
 sysListEl.addEventListener('click', e => {
   const btn = e.target.closest('.sys-btn');
   if(!btn) return;
+  if(btn.dataset.slug === 'all' && sysAlertaAtivo){
+    sysAlertaAtivo = false;
+    sysListEl.classList.remove('sys-alerta-ativa');
+  }
   const isMobileAccordion = window.matchMedia('(max-width:760px)').matches;
   if(isMobileAccordion && btn.classList.contains('sys-btn-trigger') && !sysListEl.classList.contains('sys-expanded')){
     sysListEl.classList.add('sys-expanded');
