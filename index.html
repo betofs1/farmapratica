@@ -726,6 +726,7 @@
     border-radius:16px;
     padding:22px 24px 26px;
     margin:0;
+    min-width:0;
     transition:box-shadow .35s ease;
     display:flex;flex-direction:column;
     box-shadow:var(--shadow-card);
@@ -1347,9 +1348,10 @@
   .about-socials a svg{width:20px;height:20px;}
 
   /* ---------- CARD FAVORITOS ---------- */
-  .fav-list{display:flex;flex-direction:column;gap:10px;}
+  .fav-list{display:flex;flex-direction:column;gap:10px;min-width:0;}
   .fav-item{
     display:flex;align-items:center;gap:12px;
+    min-width:0;
     background:var(--bg-panel);
     border:1px solid var(--card-border);
     border-radius:11px;
@@ -1365,7 +1367,7 @@
   }
   .fav-source-icon svg{width:17px;height:17px;}
   .fav-info{flex:1;min-width:0;}
-  .fav-label{font-size:13.5px;font-weight:600;color:var(--text-white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .fav-label{display:block;max-width:100%;font-size:13.5px;font-weight:600;color:var(--text-white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .fav-source{font-size:11px;color:var(--text-gray-dim);margin-top:1px;}
   .fav-star{flex:none;width:15px;height:15px;color:#fbbf24;display:flex;}
   .fav-star svg{width:15px;height:15px;}

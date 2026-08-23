@@ -789,8 +789,22 @@
     transition:color .15s, transform .15s;
     flex-shrink:0;
   }
-  .star-btn:hover{color:#f5c518;transform:scale(1.2);}
+  /* :hover só se aplica em dispositivos com hover de verdade (mouse) — em touch,
+     aplicar :hover incondicionalmente faz o navegador "prender" o estado de hover
+     (estrela dourada/ampliada) depois do toque, até o usuário tocar em outro lugar,
+     dando a falsa impressão de que a estrela não desmarcou ao tentar remover um
+     favorito. */
+  @media (hover:hover) and (pointer:fine){
+    .star-btn:hover{color:#f5c518;transform:scale(1.2);}
+  }
   .star-btn.starred{color:#f5c518;}
+  /* Alvo de toque maior em telas sensíveis ao toque (23/08/2026) — o botão
+     tinha só ~24×22px de área clicável (padding:2px 4px + glifo de 18px),
+     abaixo do mínimo recomendado para toque; texto do usuário: "clico no
+     ícone da estrela para retirar uma condição e está difícil de sair". */
+  @media (pointer:coarse){
+    .star-btn{ padding:11px 12px; margin:-9px -8px -9px 0; }
+  }
 
   /* SIDEBAR FAVORITOS (direita) */
   aside.fav-sidebar{
