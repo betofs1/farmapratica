@@ -19,12 +19,13 @@
 <style>
   :root{
     /* Paleta grafite médio/escuro — tema padrão (antigo "modo claro" aprovado) */
-    --bg:#43474e;
-    --bg-panel:#33373e;
-    --card-bg:#383d45;
-    --card-border:#4c5158;
-    --card-hover-bg:#41464e;
-    --placeholder-border:#454a51;
+    /* 24/08/2026: fundo do modo escuro 10% mais claro (menos preto, mais cinza) — ver bgPalettesDark no script para a mesma correção nas 5 paletas de cor de fundo. */
+    --bg:#545962;
+    --bg-panel:#454a54;
+    --card-bg:#49505a;
+    --card-border:#5c626b;
+    --card-hover-bg:#525862;
+    --placeholder-border:#565c64;
     --red:#e4172c;
     --red-dark:#a10f1f;
     --red-glow:rgba(228,23,44,0.22);
@@ -34,9 +35,9 @@
     --text-white:#f5f5f4;
     --text-gray:#d2d5d9;
     --text-gray-dim:#a7abb1;
-    --sidebar-bg:#2e323a;
-    --sidebar-border:#4c5158;
-    --sidebar-hover:#41464e;
+    --sidebar-bg:#404651;
+    --sidebar-border:#5c626b;
+    --sidebar-hover:#525862;
     --sidebar-text:#d2d5d9;
     --heading-shadow:0 2px 12px rgba(0,0,0,.3);
     --body-text-shadow:0 1px 6px rgba(0,0,0,.25);
@@ -1843,11 +1844,11 @@
         <div class="color-theme-popover" id="color-theme-popover">
           <div class="color-theme-popover-title">Cor de fundo</div>
           <div class="color-theme-options" id="color-theme-options-dark">
-            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Grafite atual" style="background:linear-gradient(135deg,#43474e 50%,#383d45 50%);"></button>
-            <button class="color-swatch-btn" data-bg="modelo" onclick="applyBgPalette('modelo')" title="Modelo (imagem)" style="background:linear-gradient(135deg,#0d0f13 50%,#1a1e26 50%);"></button>
-            <button class="color-swatch-btn" data-bg="preto" onclick="applyBgPalette('preto')" title="Preto neutro" style="background:linear-gradient(135deg,#121212 50%,#1e1e1e 50%);"></button>
-            <button class="color-swatch-btn" data-bg="azul" onclick="applyBgPalette('azul')" title="Azul-marinho" style="background:linear-gradient(135deg,#0a0e1a 50%,#141d34 50%);"></button>
-            <button class="color-swatch-btn" data-bg="roxo" onclick="applyBgPalette('roxo')" title="Roxo profundo" style="background:linear-gradient(135deg,#120f1a 50%,#20192e 50%);"></button>
+            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Grafite atual" style="background:linear-gradient(135deg,#545962 50%,#49505a 50%);"></button>
+            <button class="color-swatch-btn" data-bg="modelo" onclick="applyBgPalette('modelo')" title="Modelo (imagem)" style="background:linear-gradient(135deg,#20252f 50%,#2c3340 50%);"></button>
+            <button class="color-swatch-btn" data-bg="preto" onclick="applyBgPalette('preto')" title="Preto neutro" style="background:linear-gradient(135deg,#2a2a2a 50%,#343434 50%);"></button>
+            <button class="color-swatch-btn" data-bg="azul" onclick="applyBgPalette('azul')" title="Azul-marinho" style="background:linear-gradient(135deg,#17203c 50%,#202f54 50%);"></button>
+            <button class="color-swatch-btn" data-bg="roxo" onclick="applyBgPalette('roxo')" title="Roxo profundo" style="background:linear-gradient(135deg,#272038 50%,#34284a 50%);"></button>
           </div>
           <div class="color-theme-options" id="color-theme-options-light">
             <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Cinza atual" style="background:linear-gradient(135deg,#eceef1 50%,#ffffff 50%);"></button>
@@ -2180,12 +2181,14 @@
   var BG_THEME_KEY_LIGHT = 'fp-bg-theme-light';
   var BG_THEME_DEFAULT_DARK = 'roxo';
   var BG_THEME_DEFAULT_LIGHT = 'atual';
+  // 24/08/2026: todas as 5 paletas escuras clareadas ~10% (menos preto, mais cinza — testado
+  // e aprovado pelo usuário numa página de teste antes de aplicar aqui oficialmente).
   var bgPalettesDark = {
-    atual:  {bg:'#43474e', bgPanel:'#33373e', cardBg:'#383d45', cardBorder:'#4c5158', cardHoverBg:'#41464e', placeholderBorder:'#454a51', sidebarBg:'#2e323a', sidebarBorder:'#4c5158', sidebarHover:'#41464e'},
-    modelo: {bg:'#0d0f13', bgPanel:'#171a21', cardBg:'#1a1e26', cardBorder:'#2a2f3a', cardHoverBg:'#20242d', placeholderBorder:'#262a33', sidebarBg:'#0a0c10', sidebarBorder:'#21252d', sidebarHover:'#1a1e26'},
-    preto:  {bg:'#121212', bgPanel:'#1c1c1c', cardBg:'#1e1e1e', cardBorder:'#2e2e2e', cardHoverBg:'#242424', placeholderBorder:'#282828', sidebarBg:'#0e0e0e', sidebarBorder:'#2a2a2a', sidebarHover:'#1e1e1e'},
-    azul:   {bg:'#0a0e1a', bgPanel:'#121a2e', cardBg:'#141d34', cardBorder:'#243252', cardHoverBg:'#192544', placeholderBorder:'#1e2a48', sidebarBg:'#070a14', sidebarBorder:'#233150', sidebarHover:'#141d34'},
-    roxo:   {bg:'#120f1a', bgPanel:'#1c1728', cardBg:'#20192e', cardBorder:'#332947', cardHoverBg:'#261f38', placeholderBorder:'#2b2340', sidebarBg:'#0d0a14', sidebarBorder:'#332947', sidebarHover:'#20192e'}
+    atual:  {bg:'#545962', bgPanel:'#454a54', cardBg:'#49505a', cardBorder:'#5c626b', cardHoverBg:'#525862', placeholderBorder:'#565c64', sidebarBg:'#404651', sidebarBorder:'#5c626b', sidebarHover:'#525862'},
+    modelo: {bg:'#20252f', bgPanel:'#2a2f3c', cardBg:'#2c3340', cardBorder:'#3b4252', cardHoverBg:'#323846', placeholderBorder:'#383e4b', sidebarBg:'#1d222e', sidebarBorder:'#333946', sidebarHover:'#2c3340'},
+    preto:  {bg:'#2a2a2a', bgPanel:'#333333', cardBg:'#343434', cardBorder:'#434343', cardHoverBg:'#3a3a3a', placeholderBorder:'#3e3e3e', sidebarBg:'#262626', sidebarBorder:'#3f3f3f', sidebarHover:'#343434'},
+    azul:   {bg:'#17203c', bgPanel:'#1f2c4e', cardBg:'#202f54', cardBorder:'#30436d', cardHoverBg:'#243662', placeholderBorder:'#2a3b65', sidebarBg:'#141c38', sidebarBorder:'#2f426b', sidebarHover:'#202f54'},
+    roxo:   {bg:'#272038', bgPanel:'#302744', cardBg:'#34284a', cardBorder:'#453860', cardHoverBg:'#382e53', placeholderBorder:'#3d325b', sidebarBg:'#221a34', sidebarBorder:'#453860', sidebarHover:'#34284a'}
   };
   var bgPalettesLight = {
     atual: {bg:'#eceef1', bgPanel:'#f6f7f9', cardBg:'#ffffff', cardBorder:'#d7dade', cardHoverBg:'#f1f2f5', placeholderBorder:'#d0d3d8', sidebarBg:'#e2e5e9', sidebarBorder:'#d2d6db', sidebarHover:'#eceef1'},
