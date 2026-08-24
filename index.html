@@ -1603,6 +1603,17 @@
   @media (max-width:1100px){
     .tools-hub-grid{grid-template-columns:repeat(2, 1fr); max-width:100%;}
   }
+  /* 24/08/2026: acima de 1100px o grid tem max-width:46%/margin:0 auto, o que o centraliza
+     dentro da área de conteúdo — mas essa área começa 64px à direita da borda real da tela
+     (largura fixa da sidebar recolhida), então o centro do grid ficava ~32px à direita do
+     centro real da tela. Corrigido deslocando o grid de volta pela metade dessa largura,
+     só nessa faixa (abaixo de 1100px o grid já ocupa 100% da largura disponível, sem sobra
+     para centralizar, e abaixo de 900px a sidebar vira um menu fora da tela sem gutter). */
+  @media (min-width:1101px){
+    .tools-hub-header, .tools-hub-grid{
+      transform:translateX(calc(-1 * var(--sidebar-width-collapsed) / 2));
+    }
+  }
   .tools-hub-card{
     position:relative;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
@@ -1612,12 +1623,12 @@
     aspect-ratio:1 / 1;
     background:
       radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--hub-color) 20%, transparent), transparent 70%),
-      linear-gradient(160deg, var(--card-bg) 0%, color-mix(in srgb, var(--card-bg) 88%, #000 6%) 100%);
-    border:2px solid color-mix(in srgb, var(--hub-color) 65%, var(--card-border));
-    border-top-width:3px;
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 38%, transparent), 0 0 24px -8px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 12px 26px -14px rgba(0,0,0,.45), var(--tool-card-bevel);
+      linear-gradient(160deg, color-mix(in srgb, var(--card-bg) 92%, #fff 8%) 0%, color-mix(in srgb, var(--card-bg) 82%, #000 10%) 100%);
+    border:3px solid color-mix(in srgb, var(--hub-color) 70%, var(--card-border));
+    border-top-width:4px;
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 42%, transparent), 0 0 24px -8px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 6px 0 0 color-mix(in srgb, var(--hub-color) 50%, rgba(0,0,0,.55)), 0 14px 28px -12px rgba(0,0,0,.5), var(--tool-card-bevel);
     text-decoration:none;color:inherit;cursor:pointer;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .25s ease;
   }
   @media (max-width:1100px){
     .tools-hub-card{aspect-ratio:auto;}
@@ -1625,7 +1636,11 @@
   .tools-hub-card:hover{
     transform:translateY(-5px);
     border-color:var(--hub-color);
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 65%, transparent), 0 0 30px -6px color-mix(in srgb, var(--hub-color) 70%, transparent), 0 18px 36px -16px rgba(0,0,0,.5), var(--tool-card-bevel-hover);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 65%, transparent), 0 0 32px -6px color-mix(in srgb, var(--hub-color) 70%, transparent), 0 11px 0 0 color-mix(in srgb, var(--hub-color) 55%, rgba(0,0,0,.55)), 0 24px 42px -16px rgba(0,0,0,.55), var(--tool-card-bevel-hover);
+  }
+  .tools-hub-card:active{
+    transform:translateY(2px);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 0 16px -6px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 2px 0 0 color-mix(in srgb, var(--hub-color) 50%, rgba(0,0,0,.55)), 0 6px 12px -10px rgba(0,0,0,.4), var(--tool-card-bevel);
   }
   .tools-hub-icon{
     width:44px;height:44px;border-radius:12px;flex:none;
@@ -2179,7 +2194,7 @@
   // ---------- COR DE FUNDO (tema de cor, escuro e claro) ----------
   var BG_THEME_KEY_DARK = 'fp-bg-theme-dark';
   var BG_THEME_KEY_LIGHT = 'fp-bg-theme-light';
-  var BG_THEME_DEFAULT_DARK = 'roxo';
+  var BG_THEME_DEFAULT_DARK = 'azul';
   var BG_THEME_DEFAULT_LIGHT = 'atual';
   // 24/08/2026: todas as 5 paletas escuras clareadas ~10% (menos preto, mais cinza — testado
   // e aprovado pelo usuário numa página de teste antes de aplicar aqui oficialmente).
