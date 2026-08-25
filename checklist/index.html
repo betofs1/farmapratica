@@ -241,10 +241,19 @@
     white-space:normal;
     max-width: 480px;
   }
+  /* Elementos exclusivos do cabeçalho mobile (25/08/2026) — escondidos por
+     padrão; aparecem só dentro do @media (max-width:800px) abaixo. */
+  .titulo-icon-badge{ display:none; }
+  .titulo-underline{ display:none; }
+  .topbar-home-mobile{ display:none; }
   @media (max-width: 800px){
     .topbar-app{ grid-template-columns: 1fr; padding: 8px 14px; }
-    .topbar-app .logo-wrap{ padding-left:0; justify-content:flex-start; margin-bottom:6px; }
-    .topbar-app .titulo-central{ grid-column:1; }
+    /* 25/08/2026: logo + nome "FarmaPrática" saem do cabeçalho mobile (ver
+       bloco de estilo do título mais abaixo) — .titulo-central ganha padding
+       lateral simétrico para o texto centralizado não colidir com o ícone
+       compacto de "voltar ao início" (.topbar-home-mobile), que fica só à
+       esquerda. */
+    .topbar-app .titulo-central{ grid-column:1; padding:0 44px; }
     /* No layout empilhado (logo em cima, título embaixo) o topbar-app fica mais alto;
        .topbar-actions é position:absolute com top:50% pensado para a barra única do
        desktop, então passa a flutuar por cima do título. Aqui ele volta ao fluxo normal,
@@ -342,29 +351,6 @@
   .sidebar-mobile-toggle .chevron-toggle{ transition: transform .2s ease; flex-shrink:0; transform: rotate(180deg); }
   .sidebar.categorias-fechadas .sidebar-mobile-toggle .chevron-toggle{ transform: rotate(0deg); }
 
-  /* Botão "Voltar" ao fim da lista de categorias — só existe/aparece no mobile
-     (ver @media 800px). Some com a lista já vindo aberta por padrão desde a
-     rodada anterior; dá pra fechar o acordeão sem precisar rolar de volta até
-     o topo da sidebar para tocar em #btn-toggle-categorias. */
-  .btn-voltar-categorias{
-    display:none;
-    width:100%;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    margin-top:12px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius:10px;
-    color: var(--text-dim);
-    font-size:.8rem;
-    font-weight:700;
-    padding: 11px 14px;
-    cursor:pointer;
-  }
-  .btn-voltar-categorias:hover{ color: var(--text); border-color: var(--red-bright); }
-  .btn-voltar-categorias svg{ width:15px; height:15px; }
-
   /* ---------- Navegação em "trilha" vertical (estilo timeline) ---------- */
   .sidebar-list{ flex:1; overflow-y:auto; padding: 6px 14px 24px; }
   .pin-row{ display:flex; flex-direction:column; gap:8px; margin-bottom: 18px; }
@@ -392,13 +378,19 @@
   .pin-card.active .pin-ic{ background: rgba(255,255,255,.18); }
   .pin-card.nc-pin{ color: var(--pill-text); }
   .pin-card.hoje-cta{
-    background: linear-gradient(135deg, rgba(245,158,11,.16), rgba(161,15,31,.1));
-    border-color: rgba(245,158,11,.4);
+    /* 25/08/2026: removido o componente vermelho do fundo/ícone (era um
+       degradê âmbar→vermelho) — o cartão "Rotina de Hoje" ficava parecido
+       demais com "Visão Geral da Rotina" (vermelho sólido quando ativo, que
+       é o estado inicial padrão da página). Agora fica só em tons de
+       âmbar/dourado, fazendo contraste de verdade com o vermelho ao lado. */
+    background: linear-gradient(135deg, rgba(245,158,11,.18), rgba(255,209,102,.12));
+    border-color: rgba(245,158,11,.45);
     color: var(--text);
   }
-  .pin-card.hoje-cta .pin-ic{ background: linear-gradient(135deg, var(--amber), var(--red-bright)); color:#fff; }
+  .pin-card.hoje-cta .pin-ic{ background: linear-gradient(135deg, #ffd166, var(--amber)); color:#4a2e02; }
   .pin-card.hoje-cta .pin-badge{ background: var(--amber); border-color: transparent; color:#1a1200; }
   .pin-card.hoje-cta.active{ background: linear-gradient(135deg, var(--red-dark), var(--red)); border-color:transparent; color:#fff; }
+  .pin-card.hoje-cta.active .pin-ic{ background: rgba(255,255,255,.22); color:#fff; }
   .pin-card.hoje-cta.active .pin-badge{ background: rgba(255,255,255,.22); color:#fff; }
   .pin-card .pin-badge{
     margin-left:auto; font-size:.68rem; font-weight:800; padding:2px 8px; border-radius:20px;
@@ -632,6 +624,26 @@
   }
   .fonte-tag b{ color: var(--text); }
 
+  /* ---------- Navegação "Voltar" / "Próximo" entre rotinas (25/08/2026) ---------- */
+  .cat-nav-row{
+    display:flex; gap:12px; margin-top:28px; padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .btn-cat-nav{
+    flex:1; display:flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 18px; border-radius:12px; font-size:.82rem; font-weight:800;
+    letter-spacing:.5px; cursor:pointer; border:1px solid var(--border);
+    background:var(--card); color:var(--text);
+    transition: transform .12s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .btn-cat-nav .ic{ width:16px; height:16px; }
+  .btn-cat-nav:hover{ transform:translateY(-2px); border-color:var(--text-dim); }
+  .btn-cat-proximo{
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    border-color:transparent; color:#fff;
+  }
+  .btn-cat-proximo:hover{ box-shadow:0 8px 20px var(--red-glow); border-color:transparent; }
+
   /* ---------- Painel Fonte de Dados ---------- */
   .fonte-grupo{ margin-bottom: 22px; }
   .fonte-grupo h3{ font-size:.85rem; font-weight:800; color: var(--amber); text-transform:uppercase; letter-spacing:.5px; margin: 0 0 10px; }
@@ -823,18 +835,35 @@
   }
   .aviso-responsabilidade p{ font-size: .78rem; line-height: 1.6; color: var(--text-gray); margin: 0 0 4px; }
   .aviso-responsabilidade strong{ color: var(--text); }
+  /* Cópia do Aviso de Uso ao fim do menu de rotinas — só existe/aparece no
+     mobile (25/08/2026, ver @media abaixo e renderSidebar() no JS). */
+  .sidebar-aviso{ display:none; }
 
   @media (max-width: 800px){
     body{ height:auto; overflow:visible; }
     .topbar-app{ padding: 8px 14px; }
-    /* 23/08/2026, 2ª rodada: marca (logo + FarmaPrática) reduzida e discreta —
-       o foco visual passa a ser o título da própria ferramenta, com sombra
-       reforçada, seguindo o mesmo padrão já aplicado nas outras 4 ferramentas
-       desta rodada (ver cabecalhos-padronizacao.md). */
-    .topbar-app .brand{ gap:8px; }
-    .topbar-app .brand img{ width:25px; height:25px; }
-    .topbar-app .brand-text h1{ font-size:14px; }
-    .topbar-app .brand-text p{ font-size:8px; }
+    /* 25/08/2026: logo + nome "FarmaPrática" removidos do topo no mobile
+       (substituindo a redução de 23/08) — o foco vira 100% o título da
+       ferramenta, agora com um selo/ícone e gradiente para um visual mais
+       moderno/estilizado, a pedido do usuário. Um ícone compacto de "início"
+       (.topbar-home-mobile) substitui a função de navegação que o logo tinha. */
+    .topbar-app .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center;
+      position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px;
+      border:1px solid var(--border); background:var(--card);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red-bright); }
+    /* 25/08/2026, 2ª rodada: usuário pediu para voltar o título ao estilo
+       anterior (o "modernizado" com selo/gradiente não agradou) — de volta ao
+       texto sólido com sombra em duas camadas, mesmo padrão usado desde
+       23/08. O selo (.titulo-icon-badge) e a linha decorativa
+       (.titulo-underline) ficam ocultos (mesmo valor padrão do desktop). */
+    .titulo-icon-badge{ display:none; }
+    .titulo-underline{ display:none; }
     .topbar-app .titulo-principal{
       font-size: 1.05rem; white-space:normal;
       text-shadow:0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);
@@ -864,8 +893,14 @@
     .sidebar{ width:100%; height:auto; max-height:none; border-right:none; border-bottom:1px solid var(--border); }
 
     .sidebar-header{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding: 14px 16px 12px; }
-    .busca-mobile-toggle{ display:flex; flex:1 1 auto; min-width:0; margin-bottom:0; }
-    .busca-mobile-toggle .busca-mobile-txt{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    /* 25/08/2026: vira só um ícone de lupa (sem texto/pílula), a pedido do
+       usuário — menos um elemento de texto competindo por espaço no cabeçalho
+       compacto do mobile. */
+    .busca-mobile-toggle{
+      display:flex; flex:0 0 auto; width:42px; height:42px;
+      padding:0; border-radius:50%; margin-bottom:0;
+    }
+    .busca-mobile-toggle .busca-mobile-txt{ display:none; }
     .search-box{
       display:none;
       flex:1 1 100%;
@@ -874,12 +909,15 @@
     }
     .sidebar-header.busca-mobile-aberta .search-box{ display:flex; }
     .sidebar-header.busca-mobile-aberta .busca-mobile-toggle{ background: var(--red); border-color:transparent; color:#fff; }
+    /* 25/08/2026: mantém o texto ao lado do ícone (antes só ícone, escondido
+       via .btn-label), a pedido do usuário — "Fonte de Dados" fica mais claro
+       que um ícone sozinho. */
     .btn-fonte-dados{
-      width:auto; flex:0 0 auto;
-      padding: 10px 12px;
+      width:auto; flex:1 1 auto;
+      padding: 10px 14px;
       border-radius:12px;
+      justify-content:center;
     }
-    .btn-fonte-dados .btn-label{ display:none; }
     .sidebar-mobile-toggle{
       display:flex;
       width:auto; flex:0 0 auto;
@@ -888,7 +926,6 @@
       border-radius:12px;
     }
     #toggle-categorias-label{ display:none; }
-    .btn-voltar-categorias{ display:flex; }
 
     .sidebar-list{
       flex:none;
@@ -977,6 +1014,58 @@
     table.nc-table td[data-label=""]::before,
     table.nc-table td:not([data-label])::before{ content:none; }
     table.nc-table td[colspan]{ padding:14px 0; }
+
+    /* ---- Menu de rotinas em blocos 2x2 (25/08/2026) ----
+       Redesenho do mobile a pedido do usuário: em vez da lista vertical em
+       "trilha" (timeline) usada no desktop, os pin-cards (Rotina de Hoje /
+       Visão Geral da Rotina) e os rail-cards de cada categoria viram blocos
+       quadrados em grade de 2 colunas — mais fácil de escanear e tocar no
+       celular. O botão "Não Conformidades" (.pin-row-footer) fica de fora da
+       grade, como um item de largura total encerrando a lista, seguido do
+       aviso de uso (.sidebar-aviso, só existe/aparece no mobile) — a rolagem
+       da tela inicial (menu de rotinas) termina aí, antes de qualquer
+       conteúdo de "main" (ver body.mobile-menu-only mais abaixo). */
+    .pin-row-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+    .pin-row-grid .pin-card{
+      flex-direction:column; align-items:flex-start; justify-content:flex-start;
+      gap:10px; min-height:104px; padding:14px 12px;
+    }
+    .pin-row-grid .pin-card .pin-badge{ margin-left:0; margin-top:auto; align-self:flex-end; }
+    .pin-row-footer{ display:block; margin-top:4px; }
+    .pin-row-footer .pin-card{ flex-direction:row; align-items:center; min-height:auto; padding:12px 14px; }
+    .pin-row-footer .pin-card .pin-badge{ margin-left:auto; margin-top:0; align-self:center; }
+    .pin-label{ font-size:.82rem; line-height:1.3; }
+
+    .rail-group{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px;
+      padding-left:0; margin-bottom:20px;
+    }
+    .rail-group::before{ display:none; }
+    .rail-title{ grid-column:1/-1; margin-left:0; padding-left:0; margin-bottom:2px; }
+    .rail-title::before{ display:none; }
+    .rail-node{ margin-bottom:0; }
+    .rail-node::before{ display:none; }
+    .rail-card{
+      flex-direction:column; align-items:flex-start; justify-content:flex-start;
+      gap:10px; min-height:104px; padding:14px 12px;
+    }
+    .rail-card .rc-ic{
+      width:32px; height:32px; border-radius:10px;
+      background: var(--panel); color: var(--rail-color);
+    }
+    .rail-card.active .rc-ic{ background: rgba(255,255,255,.2); color:#fff; }
+    .rail-card .rc-label{ flex:none; width:100%; font-size:.78rem; line-height:1.3; }
+    .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; }
+
+    .sidebar-aviso{ display:block; margin-top:16px; }
+
+    /* Tela inicial no mobile: só o menu de rotinas fica visível (ver
+       renderSidebar() no JS, que já vem aberto por padrão) — o conteúdo de
+       "main" (dashboard/categoria/etc.) só aparece depois da primeira escolha
+       do usuário, quando revelarConteudoMobile() remove esta classe. */
+    body.mobile-menu-only .main{ display:none; }
+
+    .cat-nav-row{ flex-direction:column; }
   }
 
   @media (max-width: 380px){
@@ -1038,9 +1127,12 @@
   }
 </style>
 </head>
-<body class="light">
+<body class="light mobile-menu-only">
 
 <div class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
       <div class="brand">
@@ -1053,13 +1145,17 @@
     </a>
   </div>
   <div class="titulo-central">
+    <div class="titulo-icon-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 10.5 3.5 3.5L14 6"/><path d="m8.5 14 1.5 1.5L18 7.5"/></svg>
+    </div>
     <div class="titulo-principal">CHECKLIST DE ROTINA E AUTOINSPEÇÃO</div>
+    <div class="titulo-underline" aria-hidden="true"></div>
     <div class="titulo-descricao">Conferência diária e autoinspeção de conformidade com base em RDCs, portarias e boas práticas farmacêuticas</div>
   </div>
   <div class="topbar-actions">
     <button class="estab-header-btn" onclick="abrirEstabelecimentoHeader()" title="Identificação do Estabelecimento" aria-label="Identificação do Estabelecimento">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V6l7-3 7 3v15"/><path d="M9 9h1M14 9h1M9 13h1M14 13h1M9 17h1M14 17h1"/></svg>
-      <span>Dados da Empresa e Profissional</span>
+      <span>Dados da Drogaria</span>
     </button>
     <button class="modo-toggle" id="btn-modo" onclick="alternarModo()" title="Alternar entre modo Simples e Técnico">
       <span id="modo-icone"></span>
@@ -1334,6 +1430,8 @@ const ICON_PATHS = {
   'trending-up': '<path d="m3 17 6-6 4 4 8-8"/><path d="M15 6h6v6"/>',
   'test-tube': '<path d="M9 2.5h6"/><path d="M10 2.5v13.5a2 2 0 0 0 4 0V2.5"/><path d="M10 11h4"/>',
   syringe: '<path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 15 5l-9.5 9.5a2 2 0 0 0 0 2.8L7 19l9.5-9.5"/><path d="M8.5 13.5 5 17l-2.5 4.5L7 19l3.5-3.5"/><path d="m11 8 2 2"/><path d="m13.5 5.5 2 2"/>',
+  'arrow-left': '<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>',
+  'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
 };
 function svg(name, cls){
   const inner = ICON_PATHS[name] || '';
@@ -2031,12 +2129,14 @@ function contarPendenciasHoje(){
 }
 
 function abrirRotinaHoje(){
+  revelarConteudoMobile();
   categoriaAtual = 'hoje';
   renderSidebar(document.getElementById('busca').value);
   renderMain();
 }
 
 function abrirFontesDados(){
+  revelarConteudoMobile();
   categoriaAtual = 'fontes';
   renderSidebar(document.getElementById('busca').value);
   renderMain();
@@ -2069,16 +2169,16 @@ function renderSidebar(filtro=''){
   // Fixados no topo: Rotina de Hoje (CTA) + Visão Geral
   const pendentesHoje = contarPendenciasHoje();
   const pinRow = document.createElement('div');
-  pinRow.className = 'pin-row';
+  pinRow.className = 'pin-row pin-row-grid';
   const hojeBtn = document.createElement('button');
   hojeBtn.className = 'pin-card hoje-cta' + (categoriaAtual==='hoje' ? ' active' : '');
-  hojeBtn.innerHTML = `<span class="pin-ic">${svg('sun')}</span><span>Rotina de Hoje</span><span class="pin-badge">${pendentesHoje}</span>`;
+  hojeBtn.innerHTML = `<span class="pin-ic">${svg('sun')}</span><span class="pin-label">Rotina de Hoje</span><span class="pin-badge">${pendentesHoje}</span>`;
   hojeBtn.onclick = abrirRotinaHoje;
   pinRow.appendChild(hojeBtn);
   const dashBtn = document.createElement('button');
   dashBtn.className = 'pin-card' + (categoriaAtual===null ? ' active' : '');
-  dashBtn.innerHTML = `<span class="pin-ic">${svg('home')}</span><span>Visão Geral</span>`;
-  dashBtn.onclick = () => { categoriaAtual = null; renderSidebar(document.getElementById('busca').value); renderMain(); };
+  dashBtn.innerHTML = `<span class="pin-ic">${svg('home')}</span><span class="pin-label">Visão Geral da Rotina</span>`;
+  dashBtn.onclick = () => { revelarConteudoMobile(); categoriaAtual = null; renderSidebar(document.getElementById('busca').value); renderMain(); };
   pinRow.appendChild(dashBtn);
   lista.appendChild(pinRow);
 
@@ -2103,7 +2203,7 @@ function renderSidebar(filtro=''){
       const btn = document.createElement('button');
       btn.className = 'rail-card' + (categoriaAtual === i.catId ? ' active' : '');
       btn.innerHTML = `<span class="rc-ic">${svg(CAT_ICON[i.catId])}</span><span class="rc-label">${i.texto}</span>`;
-      btn.onclick = () => { categoriaAtual = i.catId; renderMain(true, i.id); };
+      btn.onclick = () => { revelarConteudoMobile(); categoriaAtual = i.catId; renderMain(true, i.id); };
       node.appendChild(btn);
       wrap.appendChild(node);
     });
@@ -2130,7 +2230,7 @@ function renderSidebar(filtro=''){
       const btn = document.createElement('button');
       btn.className = 'rail-card' + (ativo ? ' active' : '');
       btn.innerHTML = `<span class="rc-ic">${svg(CAT_ICON[c.id])}</span><span class="rc-label">${c.nome}</span>${ringSVG(pct, ativo)}`;
-      btn.onclick = () => { categoriaAtual = c.id; renderSidebar(); renderMain(); };
+      btn.onclick = () => { revelarConteudoMobile(); categoriaAtual = c.id; renderSidebar(); renderMain(); };
       node.appendChild(btn);
       wrap.appendChild(node);
     });
@@ -2139,25 +2239,29 @@ function renderSidebar(filtro=''){
 
   // Fixados embaixo: Não Conformidades e Fonte de Dados fica no cabeçalho fixo (fora desta lista)
   const pinRow2 = document.createElement('div');
-  pinRow2.className = 'pin-row';
+  pinRow2.className = 'pin-row pin-row-footer';
   pinRow2.style.marginTop = '4px';
   const ncBtn = document.createElement('button');
   const ncAbertas = contarNaoConformidadesAbertas();
   ncBtn.className = 'pin-card nc-pin' + (categoriaAtual === 'nc' ? ' active' : '');
-  ncBtn.innerHTML = `<span class="pin-ic">${svg('alert-triangle')}</span><span>Não Conformidades</span><span class="pin-badge">${ncAbertas}</span>`;
-  ncBtn.onclick = () => { categoriaAtual = 'nc'; renderSidebar(); renderMain(); };
+  ncBtn.innerHTML = `<span class="pin-ic">${svg('alert-triangle')}</span><span class="pin-label">Não Conformidades</span><span class="pin-badge">${ncAbertas}</span>`;
+  ncBtn.onclick = () => { revelarConteudoMobile(); categoriaAtual = 'nc'; renderSidebar(); renderMain(); };
   pinRow2.appendChild(ncBtn);
   lista.appendChild(pinRow2);
 
-  // Botão "Voltar" — só aparece no mobile (ver .btn-voltar-categorias no CSS),
-  // ao final da lista, para fechar o acordeão de categorias sem precisar rolar
-  // de volta até o topo da sidebar.
-  const voltarBtn = document.createElement('button');
-  voltarBtn.type = 'button';
-  voltarBtn.className = 'btn-voltar-categorias';
-  voltarBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg><span>Voltar</span>`;
-  voltarBtn.onclick = fecharCategoriasMobile;
-  lista.appendChild(voltarBtn);
+  // Aviso de Uso — só aparece no mobile (ver .sidebar-aviso no CSS), como
+  // último elemento da tela inicial (menu de rotinas), a pedido do usuário
+  // (25/08/2026): a rolagem da tela de abertura no celular termina aqui, logo
+  // após "Não Conformidades", em vez de continuar para o conteúdo de "main"
+  // (que só aparece depois de uma escolha — ver body.mobile-menu-only).
+  const avisoMobile = document.createElement('div');
+  avisoMobile.className = 'sidebar-aviso aviso-responsabilidade';
+  avisoMobile.innerHTML = `
+    <div class="aviso-titulo">${svg('alert-circle')} Aviso de Uso</div>
+    <p>Este checklist é uma <strong>ferramenta de apoio operacional</strong> para a rotina do farmacêutico responsável técnico e de sua equipe. Ele não substitui a leitura integral das normas citadas — use o painel <strong>"Fonte de Dados"</strong> para acessá-las diretamente.</p>
+    <p>Os dados marcados são armazenados <strong>apenas neste navegador</strong>, sem envio a servidores externos.</p>
+  `;
+  lista.appendChild(avisoMobile);
 }
 
 document.getElementById('busca').addEventListener('input', e => renderSidebar(e.target.value));
@@ -2247,6 +2351,7 @@ function toggleEstabMobile(){
 // já aberto e a tela rolada até ele — sem precisar navegar pela lista de
 // categorias para achá-lo.
 function abrirEstabelecimentoHeader(){
+  revelarConteudoMobile();
   categoriaAtual = null;
   renderSidebar(document.getElementById('busca').value);
   renderMain();
@@ -2295,6 +2400,62 @@ function renderNormaCard(chave){
 // =====================================================================
 // RENDER PRINCIPAL
 // =====================================================================
+
+// ---------- Tela inicial "menu de rotinas" no mobile (25/08/2026) ----------
+// Ao abrir a ferramenta no celular, o <body> já vem com a classe
+// "mobile-menu-only" no HTML estático, que esconde .main via CSS (ver
+// @media max-width:800px) — a única coisa visível é o menu de rotinas (a
+// lista de categorias, que já fica aberta por padrão). O conteúdo do
+// dashboard/categoria/etc. já é renderizado normalmente por baixo (nenhuma
+// lógica de renderMain() precisou mudar), só fica oculto até a primeira
+// escolha do usuário, quando esta função remove a classe. No desktop a
+// classe não tem nenhum efeito (a regra que a usa só existe dentro do
+// @media), então nada muda lá.
+function revelarConteudoMobile(){
+  document.body.classList.remove('mobile-menu-only');
+}
+
+// ---------- Navegação "VOLTAR" / "PRÓXIMO" entre rotinas (25/08/2026) ----------
+function scrollConteudoTopo(){
+  const mainEl = document.querySelector('.main');
+  if(mainEl) mainEl.scrollTo({ top:0, behavior:'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+function categoriasOrdenadas(){
+  return ['diario','semanal','mensal'].flatMap(freq => DATA.categorias.filter(c => c.freq === freq));
+}
+function proximaCategoria(catId){
+  const ordenadas = categoriasOrdenadas();
+  const idx = ordenadas.findIndex(c => c.id === catId);
+  if(idx === -1 || idx === ordenadas.length - 1) return null;
+  return ordenadas[idx + 1];
+}
+function navRowHTML(proxCat){
+  return `
+    <div class="cat-nav-row">
+      <button class="btn-cat-nav btn-cat-voltar" id="btn-cat-voltar" type="button">${svg('arrow-left')}<span>VOLTAR</span></button>
+      ${proxCat ? `<button class="btn-cat-nav btn-cat-proximo" id="btn-cat-proximo" type="button"><span>PRÓXIMO</span>${svg('arrow-right')}</button>` : ''}
+    </div>`;
+}
+function wireNavRow(proxCat){
+  const voltar = document.getElementById('btn-cat-voltar');
+  if(voltar) voltar.addEventListener('click', () => {
+    revelarConteudoMobile();
+    categoriaAtual = null;
+    renderSidebar();
+    renderMain();
+    scrollConteudoTopo();
+  });
+  const proximo = document.getElementById('btn-cat-proximo');
+  if(proximo && proxCat) proximo.addEventListener('click', () => {
+    revelarConteudoMobile();
+    categoriaAtual = proxCat.id;
+    renderSidebar();
+    renderMain();
+    scrollConteudoTopo();
+  });
+}
+
 // =====================================================================
 // CARD DE ITEM (reutilizado pela visão de categoria e pela Rotina de Hoje)
 // =====================================================================
@@ -2358,6 +2519,7 @@ function renderMain(abrirItem=false, itemIdParaAbrir=null){
   const pct = total ? Math.round((marcados/total)*100) : 0;
   const status = statusCategoria(cat);
   const todosMarcados = marcados === total;
+  const proxCat = proximaCategoria(cat.id);
 
   el.innerHTML = `
     <div class="main-header">
@@ -2384,6 +2546,7 @@ function renderMain(abrirItem=false, itemIdParaAbrir=null){
 
     <div class="itens-grid" id="itens-grid"></div>
     <div class="fonte-tag">${svg('book-open')} Base normativa consolidada a partir de RDCs, portarias e resoluções vigentes — veja o painel "Fonte de Dados" no menu para os links oficiais.</div>
+    ${navRowHTML(proxCat)}
   `;
 
   const grid = document.getElementById('itens-grid');
@@ -2407,6 +2570,8 @@ function renderMain(abrirItem=false, itemIdParaAbrir=null){
     renderSidebar();
     renderMain();
   });
+
+  wireNavRow(proxCat);
 
   if(abrirItem && itemIdParaAbrir){
     const alvo = document.querySelector(`.item-card.aberto`);
@@ -2449,6 +2614,7 @@ function renderRotinaHoje(el){
     </div>
 
     <div class="itens-grid" id="itens-grid-hoje"></div>
+    ${navRowHTML(null)}
   `;
 
   const grid = document.getElementById('itens-grid-hoje');
@@ -2460,6 +2626,8 @@ function renderRotinaHoje(el){
     renderSidebar();
     renderMain();
   });
+
+  wireNavRow(null);
 }
 
 // ---------- Dashboard ----------
@@ -2556,7 +2724,7 @@ function renderDashboard(el){
       <div class="progress-track"><div class="progress-fill ${pct===100?'full':''}" style="width:${pct}%"></div></div>
       <div class="pct-row"><span>${marcados}/${total} itens</span><span>${pct}%</span></div>
     `;
-    card.onclick = () => { categoriaAtual = cat.id; renderSidebar(); renderMain(); };
+    card.onclick = () => { revelarConteudoMobile(); categoriaAtual = cat.id; renderSidebar(); renderMain(); };
     grid.appendChild(card);
   });
 
@@ -2627,6 +2795,7 @@ function renderNaoConformidades(el){
         <tbody id="nc-manual-body"></tbody>
       </table>
     </div>
+    ${navRowHTML(null)}
   `;
 
   const autoBody = document.getElementById('nc-auto-body');
@@ -2692,6 +2861,8 @@ function renderNaoConformidades(el){
     renderManual();
     renderSidebar();
   });
+
+  wireNavRow(null);
 }
 
 // ---------- Painel Fonte de Dados ----------
@@ -2717,6 +2888,7 @@ function renderFontesDados(el){
       Esta lista reúne todas as legislações, resoluções e normas citadas nos itens do checklist, com o órgão emissor e uma breve explicação de origem. Use os links para consultar o texto oficial e completo sempre que precisar — recomenda-se revisão periódica, já que normas sanitárias são atualizadas com frequência.
     </p>
     <div id="fontes-lista"></div>
+    ${navRowHTML(null)}
   `;
 
   const listaEl = document.getElementById('fontes-lista');
@@ -2739,6 +2911,8 @@ function renderFontesDados(el){
     });
     listaEl.appendChild(grupoDiv);
   });
+
+  wireNavRow(null);
 }
 
 // =====================================================================

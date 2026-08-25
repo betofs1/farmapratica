@@ -64,12 +64,16 @@
   /* ---------- LIGHT THEME ---------- */
   body.light{
     /* Paleta cinza/grafite claro — superfícies claras, mas sempre diferenciando caixas e cabeçalho entre si */
-    --bg:#eceef1;
-    --bg-panel:#f6f7f9;
-    --card-bg:#ffffff;
-    --card-border:#d7dade;
-    --card-hover-bg:#f1f2f5;
-    --placeholder-border:#d0d3d8;
+    /* 25/08/2026: grafite claro a 30% (testado pelo usuário numa página de teste com slider 0-100,
+       mesmo método usado para o modo escuro em 24/08) — menos "quase-branco", mais distinção entre
+       caixas e fundo. Cinzas de texto (--text-gray/--text-gray-dim/--sidebar-text) também aprofundados
+       um pouco para manter leitura elegante sobre o novo tom. */
+    --bg:#e1e4e7;
+    --bg-panel:#ecedf0;
+    --card-bg:#f7f8f9;
+    --card-border:#c5c9ce;
+    --card-hover-bg:#eaecf0;
+    --placeholder-border:#c1c5cb;
     --red:#d4152a;
     --red-dark:#a10f1f;
     --red-glow:rgba(212,21,42,0.14);
@@ -77,12 +81,12 @@
     --accent2-dark:#166a48;
     --accent2-glow:rgba(31,138,95,0.14);
     --text-white:#22262c;
-    --text-gray:#4b5057;
-    --text-gray-dim:#767c84;
-    --sidebar-bg:#e2e5e9;
-    --sidebar-border:#d2d6db;
-    --sidebar-hover:#eceef1;
-    --sidebar-text:#4b5057;
+    --text-gray:#454a52;
+    --text-gray-dim:#6d737b;
+    --sidebar-bg:#d6dadf;
+    --sidebar-border:#c4c9cf;
+    --sidebar-hover:#e1e4e7;
+    --sidebar-text:#454a52;
     --heading-shadow:none;
     --shadow-card:0 10px 26px -12px rgba(35,40,48,.14), 0 3px 8px -3px rgba(35,40,48,.08);
     --shadow-card-hover:0 16px 36px -14px rgba(35,40,48,.18), 0 5px 12px -3px rgba(35,40,48,.1);
@@ -560,7 +564,8 @@
   }
   body.light .greeting-banner{
     box-shadow:var(--shadow-card-hover), 0 2px 0 0 rgba(35,40,48,.08);
-    background:linear-gradient(135deg, var(--bg) 0%, color-mix(in srgb, var(--card-border) 55%, #fff 45%) 42%, var(--bg-panel) 100%);
+    background:linear-gradient(135deg, var(--card-bg) 0%, color-mix(in srgb, var(--card-border) 45%, var(--card-bg) 55%) 42%, var(--bg-panel) 100%);
+    border:1px solid var(--card-border);
   }
   /* Brilho móvel discreto, sensação de gradiente vivo sem ser chamativo */
   .greeting-banner::after{
@@ -1603,17 +1608,15 @@
   @media (max-width:1100px){
     .tools-hub-grid{grid-template-columns:repeat(2, 1fr); max-width:100%;}
   }
-  /* 24/08/2026: acima de 1100px o grid tem max-width:46%/margin:0 auto, o que o centraliza
-     dentro da área de conteúdo — mas essa área começa 64px à direita da borda real da tela
-     (largura fixa da sidebar recolhida), então o centro do grid ficava ~32px à direita do
-     centro real da tela. Corrigido deslocando o grid de volta pela metade dessa largura,
-     só nessa faixa (abaixo de 1100px o grid já ocupa 100% da largura disponível, sem sobra
-     para centralizar, e abaixo de 900px a sidebar vira um menu fora da tela sem gutter). */
-  @media (min-width:1101px){
-    .tools-hub-header, .tools-hub-grid{
-      transform:translateX(calc(-1 * var(--sidebar-width-collapsed) / 2));
-    }
-  }
+  /* 24-25/08/2026: acima de 1100px o grid tem max-width:46%/margin:0 auto, centralizando dentro
+     da área de conteúdo — que começa deslocada da borda real da tela pela largura da sidebar
+     recolhida. Uma primeira correção usou um deslocamento fixo em CSS (metade da largura da
+     sidebar), mas o usuário reportou que com zoom do navegador (ou monitores de resolução menor)
+     o desalinhamento voltava, bem maior que o previsto — o `body{zoom:.9}` do site, somado ao
+     zoom do navegador, faz esse deslocamento fixo não bater mais. Trocado por recentralização via
+     JavaScript (função recenterToolsHub, no final do arquivo), que mede a posição REAL do grid na
+     tela a cada carregamento/redimensionamento/zoom e corrige o exato pixel necessário — não
+     depende de nenhuma suposição sobre largura de sidebar ou fatores de zoom. */
   .tools-hub-card{
     position:relative;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
@@ -1866,7 +1869,7 @@
             <button class="color-swatch-btn" data-bg="roxo" onclick="applyBgPalette('roxo')" title="Roxo profundo" style="background:linear-gradient(135deg,#272038 50%,#34284a 50%);"></button>
           </div>
           <div class="color-theme-options" id="color-theme-options-light">
-            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Cinza atual" style="background:linear-gradient(135deg,#eceef1 50%,#ffffff 50%);"></button>
+            <button class="color-swatch-btn" data-bg="atual" onclick="applyBgPalette('atual')" title="Cinza atual" style="background:linear-gradient(135deg,#e1e4e7 50%,#f7f8f9 50%);"></button>
             <button class="color-swatch-btn" data-bg="azul" onclick="applyBgPalette('azul')" title="Azul claro" style="background:linear-gradient(135deg,#e7edf5 50%,#ffffff 50%);"></button>
             <button class="color-swatch-btn" data-bg="verde" onclick="applyBgPalette('verde')" title="Verde-água claro" style="background:linear-gradient(135deg,#e9f3ef 50%,#ffffff 50%);"></button>
             <button class="color-swatch-btn" data-bg="lilas" onclick="applyBgPalette('lilas')" title="Lilás claro" style="background:linear-gradient(135deg,#f0edf7 50%,#ffffff 50%);"></button>
@@ -2206,7 +2209,7 @@
     roxo:   {bg:'#272038', bgPanel:'#302744', cardBg:'#34284a', cardBorder:'#453860', cardHoverBg:'#382e53', placeholderBorder:'#3d325b', sidebarBg:'#221a34', sidebarBorder:'#453860', sidebarHover:'#34284a'}
   };
   var bgPalettesLight = {
-    atual: {bg:'#eceef1', bgPanel:'#f6f7f9', cardBg:'#ffffff', cardBorder:'#d7dade', cardHoverBg:'#f1f2f5', placeholderBorder:'#d0d3d8', sidebarBg:'#e2e5e9', sidebarBorder:'#d2d6db', sidebarHover:'#eceef1'},
+    atual: {bg:'#e1e4e7', bgPanel:'#ecedf0', cardBg:'#f7f8f9', cardBorder:'#c5c9ce', cardHoverBg:'#eaecf0', placeholderBorder:'#c1c5cb', sidebarBg:'#d6dadf', sidebarBorder:'#c4c9cf', sidebarHover:'#e1e4e7'},
     azul:  {bg:'#e7edf5', bgPanel:'#f2f6fb', cardBg:'#ffffff', cardBorder:'#d3ddea', cardHoverBg:'#eaf1f8', placeholderBorder:'#cfdaea', sidebarBg:'#dde7f2', sidebarBorder:'#c9d6e8', sidebarHover:'#e7edf5'},
     verde: {bg:'#e9f3ef', bgPanel:'#f3faf7', cardBg:'#ffffff', cardBorder:'#d2e5dd', cardHoverBg:'#eef7f3', placeholderBorder:'#cde2d9', sidebarBg:'#ddefe7', sidebarBorder:'#c7ddd2', sidebarHover:'#e9f3ef'},
     lilas: {bg:'#f0edf7', bgPanel:'#f8f5fc', cardBg:'#ffffff', cardBorder:'#ded6ee', cardHoverBg:'#f4f0fa', placeholderBorder:'#dad0ec', sidebarBg:'#e7e0f3', sidebarBorder:'#d4c9e9', sidebarHover:'#f0edf7'},
@@ -3140,6 +3143,37 @@
   renderNotes();
   renderUsageTimeCard();
   setInterval(renderUsageTimeCard, 30000);
+
+  // ---------- CENTRALIZAÇÃO DA GRADE "FERRAMENTAS FARMACÊUTICAS" ----------
+  // 25/08/2026: recentraliza o grid medindo a posição REAL na tela (getBoundingClientRect),
+  // em vez de um deslocamento fixo em CSS — robusto a zoom do navegador, telas de resolução
+  // menor e ao body{zoom:.9} do site, que juntos tornavam qualquer valor fixo impreciso.
+  function recenterToolsHub(){
+    var grid = document.querySelector('.tools-hub-grid');
+    var header = document.querySelector('.tools-hub-header');
+    if(!grid) return;
+    grid.style.transform = 'none';
+    if(header) header.style.transform = 'none';
+    // Abaixo de 1101px (mesmo ponto de corte do CSS, @media max-width:1100px) o grid já ocupa
+    // 100% da largura disponível, sem sobra pra centralizar — recentralizar ali criaria assimetria.
+    if(window.innerWidth <= 1100){
+      return;
+    }
+    var viewportCenter = window.innerWidth / 2;
+    var gridRect = grid.getBoundingClientRect();
+    var gridCenter = gridRect.left + gridRect.width / 2;
+    grid.style.transform = 'translateX(' + (viewportCenter - gridCenter) + 'px)';
+    if(header){
+      var headerRect = header.getBoundingClientRect();
+      var headerCenter = headerRect.left + headerRect.width / 2;
+      header.style.transform = 'translateX(' + (viewportCenter - headerCenter) + 'px)';
+    }
+  }
+  window.addEventListener('load', recenterToolsHub);
+  window.addEventListener('resize', recenterToolsHub);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(recenterToolsHub); }
+  setTimeout(recenterToolsHub, 400);
+  recenterToolsHub();
 </script>
 
 </body>
