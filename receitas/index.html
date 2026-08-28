@@ -82,6 +82,10 @@
   }
   .topbar-app .logo-wrap{display:flex;align-items:center;flex-shrink:0;}
   .topbar-app .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
+  /* 27/08/2026: botão "início" exclusivo do cabeçalho mobile — oculto por padrão,
+     só aparece dentro do @media(max-width:800px) abaixo (mesmo padrão já usado
+     no Checklist de Rotina). */
+  .topbar-home-mobile{ display:none; }
   .brand{display:flex;align-items:center;gap:14px;}
   .brand img{width:50px;height:50px;flex-shrink:0;}
   .brand-text h1{font-family:'Inter',sans-serif;font-size:25px;font-weight:800;letter-spacing:-0.3px;line-height:1.1;margin:0;color:var(--text);}
@@ -93,7 +97,11 @@
     max-width:52%;pointer-events:none;
   }
   .topbar-app .titulo-principal{font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;letter-spacing:.4px;color:var(--text);white-space:nowrap;text-transform:uppercase;text-shadow:var(--heading-shadow);}
-  .topbar-app .titulo-descricao{font-size:.74rem;color:var(--muted);margin-top:2px;white-space:nowrap;}
+  /* 27/08/2026: breve explicação estática da função da ferramenta, pedida pelo
+     usuário — fica entre o título e a etiqueta dinâmica da aba ativa
+     (id="tituloPagina", que já mostra "Notificação de Receita A/B/..."). */
+  .topbar-app .titulo-explicacao{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:400;color:var(--muted);margin-top:3px;line-height:1.4;pointer-events:none;}
+  .topbar-app .titulo-descricao{font-size:.7rem;font-weight:700;color:var(--brand-red);margin-top:5px;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px;}
   .header-right{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0;}
   .theme-toggle{
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
@@ -107,26 +115,35 @@
   body.light .theme-toggle .icon-sun{display:none;}
   body.light .theme-toggle .icon-moon{display:block;}
   @media (max-width:800px){
-    header.topbar-app{flex-wrap:wrap;padding:12px 14px;gap:6px;}
-    /* 24/08/2026: marca reduzida e sempre à esquerda — logo-wrap ganha largura total
-       para forçar linha própria, mas alinhada ao início (esquerda), não centralizada.
-       .header-right (badge de divergência + botão de tema) sai do fluxo normal e
-       vira um ícone fixo no canto superior direito da topbar, para não abrir uma
-       linha própria entre a marca e o título (mesmo padrão já usado em outra
-       ferramenta do site). */
-    .topbar-app .logo-wrap{width:100%;justify-content:flex-start;}
-    .topbar-app .brand{gap:8px;}
-    .topbar-app .brand img{width:25px;height:25px;}
-    .topbar-app .brand-text h1{font-size:14px;}
-    .topbar-app .brand-text p{font-size:8.5px;}
-    .topbar-app .titulo-central{position:static;transform:none;left:auto;top:auto;flex-basis:100%;max-width:100%;}
-    .topbar-app .header-right{position:absolute;top:12px;right:14px;margin-left:0;}
-    .topbar-app .titulo-principal, .topbar-app .titulo-descricao{white-space:normal;}
+    /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
+       aprovado no Checklist de Rotina — a marca (logo+"FarmaPrática") some
+       completamente do mobile, e um botão circular de "início"
+       (.topbar-home-mobile) no canto superior esquerdo assume a função de
+       navegação que o logo tinha. */
+    header.topbar-app{flex-wrap:wrap;justify-content:center;padding:10px 14px;gap:8px;position:relative;}
+    .topbar-app .logo-wrap{display:none;}
+    .topbar-home-mobile{
+      display:flex;align-items:center;justify-content:center;
+      position:absolute;left:14px;top:10px;
+      width:34px;height:34px;border-radius:9px;
+      border:1px solid var(--border);background:var(--card);
+      color:var(--muted);text-decoration:none;z-index:2;
+    }
+    .topbar-home-mobile svg{width:17px;height:17px;}
+    .topbar-home-mobile:hover{color:var(--text);border-color:var(--brand-red);}
+    /* Título+descrição: volta ao fluxo normal, com respiro simétrico dos dois
+       lados para não colidir com o botão de início. */
+    .topbar-app .titulo-central{position:static;transform:none;left:auto;top:auto;flex-basis:100%;max-width:100%;padding:0 44px;}
+    .topbar-app .titulo-principal, .topbar-app .titulo-explicacao, .topbar-app .titulo-descricao{white-space:normal;}
     /* Título da ferramenta como foco visual no mobile: --heading-shadow some no
        tema claro (valor "none"), então reforçamos aqui por tema — mesmo padrão
        de sombra já usado em outra ferramenta do site. */
     .topbar-app .titulo-principal{font-size:1.1rem;text-shadow:0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);}
     body:not(.light) .topbar-app .titulo-principal{text-shadow:0 1px 0 rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.45);}
+    /* Faixa de ações (alerta de divergência + tema): volta ao fluxo normal,
+       numa linha própria centralizada abaixo do título — sem ícones flutuando
+       em cantos fixos, mesmo padrão do Checklist de Rotina. */
+    .topbar-app .header-right{position:static;margin-left:0;flex-basis:100%;justify-content:center;flex-wrap:wrap;row-gap:8px;}
   }
   main{max-width:1180px;margin:0 auto;padding:28px 24px 64px;}
   section{margin-bottom:28px;}
@@ -417,6 +434,9 @@
 <body class="light">
 
 <header class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
       <div class="brand">
@@ -430,6 +450,7 @@
   </div>
   <div class="titulo-central">
     <div class="titulo-principal">CONFERÊNCIA DE RECEITAS</div>
+    <div class="titulo-explicacao">Confira o preenchimento, a validade e o prazo de retenção da notificação de receita antes da dispensação</div>
     <div class="titulo-descricao" id="tituloPagina">Notificação de Receita A</div>
   </div>
   <div class="header-right">

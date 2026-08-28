@@ -254,6 +254,10 @@
   .drug-item.sem-comercial:hover{ color: var(--text-gray); }
   .topbar-app .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left: 40px; }
   .topbar-app .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
+  /* 27/08/2026: botão "início" exclusivo do cabeçalho mobile — oculto por padrão,
+     só aparece dentro do @media(max-width:800px) mais abaixo (mesmo padrão já
+     usado no Checklist de Rotina). */
+  .topbar-home-mobile{ display:none; }
   .brand{ display:flex; align-items:center; gap:14px; }
   .brand img{ width:50px; height:50px; }
   .brand-text h1{ font-size:25px; font-weight:800; letter-spacing:-0.3px; line-height:1.1; margin:0; color: var(--text); }
@@ -263,15 +267,30 @@
   .topbar-app .titulo-principal{ font-size: 1rem; font-weight:800; white-space:normal; letter-spacing:.4px; max-width:100%; line-height:1.25; }
   .topbar-app .titulo-descricao{ font-size: .74rem; color: var(--text-dim); margin-top:2px; white-space:nowrap; }
   @media (max-width: 800px){
-    .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; padding: 8px 14px; }
-    .topbar-app .logo-wrap{ padding-left:0; justify-content:flex-start; margin-bottom:6px; }
-    .topbar-app .titulo-central{ grid-column:1; padding:0; }
+    /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
+       aprovado no Checklist de Rotina — a marca (logo+"FarmaPrática") some
+       completamente do mobile, e um botão circular de "início"
+       (.topbar-home-mobile) no canto superior esquerdo assume a função de
+       navegação que o logo tinha. */
+    .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto; padding: 8px 14px; position:relative; }
+    .topbar-app .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center;
+      position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    .topbar-app .titulo-central{ grid-column:1; padding:0 44px; }
     /* Os botões do cabeçalho (Modo Detalhado + tema) saem da posição absoluta
        centralizada verticalmente (que ficava sobrepondo o subtítulo da marca
        ou o título central em telas estreitas, já que a pilha logo+título
-       ficou bem mais alta que no desktop) e passam a fluir como uma 3ª linha
-       do grid, centralizados abaixo do título. */
-    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; margin-top:10px; }
+       ficou bem mais alta que no desktop) e passam a fluir como uma 2ª linha
+       do grid, centralizados abaixo do título — mesmo padrão do Checklist de
+       Rotina (nenhum ícone flutuando em canto fixo). */
+    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
     /* Reforço redundante (a regra "de verdade" que vence a cascata está no
        @media(max-width:800px) mais abaixo no arquivo, que vem depois deste
        no CSS): garante o rótulo do botão "Modo Detalhado" visível mesmo se
@@ -670,6 +689,9 @@
 <body class="light">
 
 <div class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
       <div class="brand">

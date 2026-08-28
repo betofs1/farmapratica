@@ -330,26 +330,10 @@
   .btn-fonte-dados:hover{ transform: translateY(-1px); background: linear-gradient(135deg, rgba(245,158,11,.22), rgba(161,15,31,.12)); }
   .btn-fonte-dados.active{ background: linear-gradient(135deg, var(--red-dark), var(--red)); color:#fff; border-color: transparent; border-style:solid; }
 
-  /* Acordeão de categorias — só existe/aparece no mobile (ver @media 800px);
-     no desktop a lista de categorias já fica sempre visível na sidebar. */
-  .sidebar-mobile-toggle{
-    display:none;
-    width:100%;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    margin-top:10px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius:10px;
-    color: var(--text);
-    font-size:.82rem;
-    font-weight:800;
-    padding: 11px 14px;
-    cursor:pointer;
-  }
-  .sidebar-mobile-toggle .chevron-toggle{ transition: transform .2s ease; flex-shrink:0; transform: rotate(180deg); }
-  .sidebar.categorias-fechadas .sidebar-mobile-toggle .chevron-toggle{ transform: rotate(0deg); }
+  /* Botão "Início" (27/08/2026) — só existe/aparece no mobile (ver @media
+     800px), ao lado de "Fonte de Dados". Sempre volta para o menu inicial de
+     rotinas (ver irParaMenuMobile() no JS), de qualquer tela de conteúdo. */
+  .btn-inicio-mobile{ display:none; }
 
   /* ---------- Navegação em "trilha" vertical (estilo timeline) ---------- */
   .sidebar-list{ flex:1; overflow-y:auto; padding: 6px 14px 24px; }
@@ -397,6 +381,11 @@
     background: var(--card); border:1px solid var(--border); color:var(--text-dim); flex-shrink:0;
   }
   .pin-card.active .pin-badge{ background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); color:#fff; }
+  /* Texto do card (rótulo + descrição) — a descrição só aparece no mobile,
+     nos blocos 2x2 de "Rotina de Hoje"/"Visão Geral da Rotina" (27/08/2026,
+     ver @media 800px). No desktop o card continua só com o rótulo. */
+  .pin-text{ display:flex; flex-direction:column; min-width:0; }
+  .pin-desc{ display:none; }
 
   .rail-group{ position:relative; padding-left:20px; margin-bottom:22px; }
   .rail-group::before{
@@ -885,11 +874,10 @@
          lado a lado com o botão de busca compacto;
        - a lista de categorias (pin-row com Rotina de Hoje/Visão Geral + trilhas
          Diário/Semanal/Mensal + Não Conformidades) passa a vir ABERTA por padrão
-         (sem precisar tocar em nada) — o acordeão continua existindo, só que
-         invertido: a classe `.categorias-fechadas` agora é quem RECOLHE a lista
-         (ver #btn-toggle-categorias e JS: toggleCategoriasMobile/fecharCategoriasMobile/
-         setCategoriasMobile), útil para quem quiser esconder a lista depois de
-         escolher uma categoria e não precisar dela na tela. */
+         (sem precisar tocar em nada). 27/08/2026: o botão "Ver/Ocultar
+         categorias" e o acordeão foram removidos — a lista SEMPRE fica
+         expandida agora; ela só sai da tela quando o conteúdo (.main) está em
+         foco (ver body:not(.mobile-menu-only) .sidebar-list mais abaixo). */
     .sidebar{ width:100%; height:auto; max-height:none; border-right:none; border-bottom:1px solid var(--border); }
 
     .sidebar-header{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding: 14px 16px 12px; }
@@ -918,28 +906,27 @@
       border-radius:12px;
       justify-content:center;
     }
-    .sidebar-mobile-toggle{
-      display:flex;
-      width:auto; flex:0 0 auto;
-      margin-top:0;
-      padding: 10px 12px;
-      border-radius:12px;
+    /* Botão "Início" (27/08/2026) — ao lado de "Fonte de Dados", mesmo
+       tamanho/formato do ícone de busca, para simetria visual no cabeçalho. */
+    .btn-inicio-mobile{
+      display:flex; flex:0 0 auto; width:42px; height:42px;
+      align-items:center; justify-content:center;
+      padding:0; border-radius:50%;
+      border:1px solid var(--border); background: var(--panel); color: var(--text-dim);
+      cursor:pointer; transition: color .15s ease, border-color .15s ease;
     }
-    #toggle-categorias-label{ display:none; }
+    .btn-inicio-mobile svg{ width:18px; height:18px; }
+    .btn-inicio-mobile:hover{ color: var(--text); border-color: var(--red-bright); }
 
+    /* 27/08/2026: a lista de categorias SEMPRE fica expandida no mobile — o
+       acordeão "ver/ocultar categorias" foi removido (o botão não tinha mais
+       utilidade: a lista nunca deve ficar oculta). Ela só desaparece da tela
+       quando o conteúdo (.main) está em foco, ver body.mobile-menu-only mais
+       abaixo — nunca por um toggle manual. */
     .sidebar-list{
       flex:none;
-      max-height:2000px;
-      opacity:1;
       overflow:visible;
       padding:10px 14px 24px;
-      transition: max-height .25s ease, opacity .2s ease;
-    }
-    .sidebar.categorias-fechadas .sidebar-list{
-      max-height:0;
-      opacity:0;
-      overflow:hidden;
-      padding:0 14px;
     }
 
     .main{ padding: 20px 18px 50px; height:auto; overflow-y:visible; }
@@ -1015,47 +1002,64 @@
     table.nc-table td:not([data-label])::before{ content:none; }
     table.nc-table td[colspan]{ padding:14px 0; }
 
-    /* ---- Menu de rotinas em blocos 2x2 (25/08/2026) ----
+    /* ---- Menu de rotinas em blocos 2x2, mais compactos (27/08/2026) ----
        Redesenho do mobile a pedido do usuário: em vez da lista vertical em
        "trilha" (timeline) usada no desktop, os pin-cards (Rotina de Hoje /
        Visão Geral da Rotina) e os rail-cards de cada categoria viram blocos
-       quadrados em grade de 2 colunas — mais fácil de escanear e tocar no
-       celular. O botão "Não Conformidades" (.pin-row-footer) fica de fora da
-       grade, como um item de largura total encerrando a lista, seguido do
-       aviso de uso (.sidebar-aviso, só existe/aparece no mobile) — a rolagem
-       da tela inicial (menu de rotinas) termina aí, antes de qualquer
-       conteúdo de "main" (ver body.mobile-menu-only mais abaixo). */
-    .pin-row-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+       em grade de 2 colunas — mais fácil de escanear e tocar no celular.
+       27/08/2026: blocos reduzidos (estavam desproporcionalmente grandes) e
+       cabeçalhos de frequência (Diário/Semanal/Mensal) redesenhados como
+       faixas com fundo e borda de destaque, mais organizados visualmente. O
+       botão "Não Conformidades" (.pin-row-footer) fica de fora da grade, como
+       um item de largura total encerrando a lista, seguido do aviso de uso
+       (.sidebar-aviso, só existe/aparece no mobile) — a rolagem da tela
+       inicial (menu de rotinas) termina aí, antes de qualquer conteúdo de
+       "main" (ver body.mobile-menu-only mais abaixo). */
+    .pin-row-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
     .pin-row-grid .pin-card{
       flex-direction:column; align-items:flex-start; justify-content:flex-start;
-      gap:10px; min-height:104px; padding:14px 12px;
+      gap:6px; min-height:82px; padding:10px 10px; border-radius:14px;
     }
+    .pin-row-grid .pin-card .pin-ic{ width:26px; height:26px; border-radius:8px; }
+    .pin-row-grid .pin-card .pin-ic .ic{ width:14px; height:14px; }
     .pin-row-grid .pin-card .pin-badge{ margin-left:0; margin-top:auto; align-self:flex-end; }
-    .pin-row-footer{ display:block; margin-top:4px; }
-    .pin-row-footer .pin-card{ flex-direction:row; align-items:center; min-height:auto; padding:12px 14px; }
+    .pin-row-footer{ display:block; margin-top:2px; }
+    .pin-row-footer .pin-card{ flex-direction:row; align-items:center; min-height:auto; padding:11px 14px; }
     .pin-row-footer .pin-card .pin-badge{ margin-left:auto; margin-top:0; align-self:center; }
-    .pin-label{ font-size:.82rem; line-height:1.3; }
+    .pin-label{ font-size:.76rem; line-height:1.25; }
+    /* Pequena explicação da função do botão, dentro do próprio card — só
+       "Rotina de Hoje" e "Visão Geral da Rotina" têm (27/08/2026). */
+    .pin-row-grid .pin-desc{
+      display:block; font-size:.6rem; font-weight:600; line-height:1.2;
+      color: var(--text-dim);
+    }
+    .pin-card.active .pin-desc{ color: rgba(255,255,255,.75); }
 
     .rail-group{
-      display:grid; grid-template-columns:1fr 1fr; gap:10px;
-      padding-left:0; margin-bottom:20px;
+      display:grid; grid-template-columns:1fr 1fr; gap:8px;
+      padding-left:0; margin-bottom:18px; align-content:start;
     }
     .rail-group::before{ display:none; }
-    .rail-title{ grid-column:1/-1; margin-left:0; padding-left:0; margin-bottom:2px; }
+    .rail-title{
+      grid-column:1/-1; margin:0 0 8px; padding:6px 10px 6px 9px;
+      border-radius:8px; border:1px solid var(--border); border-left:3px solid var(--rail-color);
+      background: var(--card);
+    }
     .rail-title::before{ display:none; }
     .rail-node{ margin-bottom:0; }
     .rail-node::before{ display:none; }
     .rail-card{
       flex-direction:column; align-items:flex-start; justify-content:flex-start;
-      gap:10px; min-height:104px; padding:14px 12px;
+      gap:6px; min-height:82px; padding:10px 10px; border-radius:14px;
     }
     .rail-card .rc-ic{
-      width:32px; height:32px; border-radius:10px;
+      width:26px; height:26px; border-radius:8px;
       background: var(--panel); color: var(--rail-color);
     }
+    .rail-card .rc-ic .ic{ width:15px; height:15px; }
     .rail-card.active .rc-ic{ background: rgba(255,255,255,.2); color:#fff; }
-    .rail-card .rc-label{ flex:none; width:100%; font-size:.78rem; line-height:1.3; }
-    .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; }
+    .rail-card .rc-label{ flex:none; width:100%; font-size:.72rem; line-height:1.25; }
+    .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; width:24px; height:24px; }
 
     .sidebar-aviso{ display:block; margin-top:16px; }
 
@@ -1064,6 +1068,13 @@
        "main" (dashboard/categoria/etc.) só aparece depois da primeira escolha
        do usuário, quando revelarConteudoMobile() remove esta classe. */
     body.mobile-menu-only .main{ display:none; }
+    /* 27/08/2026: o inverso também passa a valer — assim que o conteúdo está
+       em foco (qualquer categoria, Rotina de Hoje, Visão Geral, Não
+       Conformidades ou Fonte de Dados), o menu de rotinas some da tela, para
+       não empilhar as duas coisas numa página gigante. "VOLTAR" e "Início"
+       readicionam a classe mobile-menu-only (ver irParaMenuMobile() no JS),
+       trazendo o menu de volta e escondendo o conteúdo outra vez. */
+    body:not(.mobile-menu-only) .sidebar-list{ display:none; }
 
     .cat-nav-row{ flex-direction:column; }
   }
@@ -1198,13 +1209,12 @@
         <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg></span>
         <input type="text" id="busca" placeholder="Buscar item do checklist...">
       </div>
-      <button class="btn-fonte-dados" id="btn-fonte-dados" onclick="abrirFontesDados(); fecharCategoriasMobile()" aria-label="Fonte de Dados" title="Fonte de Dados">
+      <button class="btn-fonte-dados" id="btn-fonte-dados" onclick="abrirFontesDados()" aria-label="Fonte de Dados" title="Fonte de Dados">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5C4 4 8 4 12 6c4-2 8-2 10-.5v13c-2-1.5-6-1.5-10 .5-4-2-8-2-10-.5Z"/><path d="M12 6v13"/></svg>
         <span class="btn-label">Fonte de Dados</span>
       </button>
-      <button class="sidebar-mobile-toggle" id="btn-toggle-categorias" onclick="toggleCategoriasMobile()" aria-expanded="true" aria-controls="lista-categorias" aria-label="Ver ou ocultar categorias" title="Ver ou ocultar categorias">
-        <span id="toggle-categorias-label">Ocultar categorias</span>
-        <svg class="ic chevron-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <button class="btn-inicio-mobile" id="btn-inicio-mobile" onclick="irParaMenuMobile()" aria-label="Início" title="Início">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
       </button>
     </div>
     <div class="sidebar-list" id="lista-categorias"></div>
@@ -2172,12 +2182,12 @@ function renderSidebar(filtro=''){
   pinRow.className = 'pin-row pin-row-grid';
   const hojeBtn = document.createElement('button');
   hojeBtn.className = 'pin-card hoje-cta' + (categoriaAtual==='hoje' ? ' active' : '');
-  hojeBtn.innerHTML = `<span class="pin-ic">${svg('sun')}</span><span class="pin-label">Rotina de Hoje</span><span class="pin-badge">${pendentesHoje}</span>`;
+  hojeBtn.innerHTML = `<span class="pin-ic">${svg('sun')}</span><span class="pin-text"><span class="pin-label">Rotina de Hoje</span><span class="pin-desc">Itens a conferir hoje</span></span><span class="pin-badge">${pendentesHoje}</span>`;
   hojeBtn.onclick = abrirRotinaHoje;
   pinRow.appendChild(hojeBtn);
   const dashBtn = document.createElement('button');
   dashBtn.className = 'pin-card' + (categoriaAtual===null ? ' active' : '');
-  dashBtn.innerHTML = `<span class="pin-ic">${svg('home')}</span><span class="pin-label">Visão Geral da Rotina</span>`;
+  dashBtn.innerHTML = `<span class="pin-ic">${svg('home')}</span><span class="pin-text"><span class="pin-label">Visão Geral da Rotina</span><span class="pin-desc">Resumo geral de todas as categorias</span></span>`;
   dashBtn.onclick = () => { revelarConteudoMobile(); categoriaAtual = null; renderSidebar(document.getElementById('busca').value); renderMain(); };
   pinRow.appendChild(dashBtn);
   lista.appendChild(pinRow);
@@ -2267,47 +2277,6 @@ function renderSidebar(filtro=''){
 document.getElementById('busca').addEventListener('input', e => renderSidebar(e.target.value));
 
 // =====================================================================
-// ACORDEÃO DE CATEGORIAS (mobile) — ver @media (max-width:800px) no CSS.
-// A sidebar inteira continua sendo recriada via innerHTML em renderSidebar(),
-// mas o elemento .sidebar (e o botão de toggle) não são recriados, então o
-// estado aberto/fechado do acordeão sobrevive a cada re-render da lista.
-// Desde 23/08/2026 a lista vem ABERTA por padrão (classe `.categorias-fechadas`
-// é quem recolhe, invertido em relação à versão anterior que usava
-// `.mobile-aberto` para expandir) — objetivo: Rotina de Hoje/Visão Geral e a
-// lista de categorias já aparecem ao abrir a página no celular, sem precisar
-// tocar em nada primeiro.
-// =====================================================================
-function setCategoriasMobile(aberto){
-  const sidebar = document.querySelector('.sidebar');
-  sidebar.classList.toggle('categorias-fechadas', !aberto);
-  const btn = document.getElementById('btn-toggle-categorias');
-  btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
-  document.getElementById('toggle-categorias-label').textContent = aberto ? 'Ocultar categorias' : 'Ver categorias';
-}
-function toggleCategoriasMobile(){
-  const sidebar = document.querySelector('.sidebar');
-  setCategoriasMobile(sidebar.classList.contains('categorias-fechadas'));
-}
-function fecharCategoriasMobile(){
-  if(window.innerWidth > 800) return;
-  const sidebar = document.querySelector('.sidebar');
-  if(sidebar.classList.contains('categorias-fechadas')) return;
-  setCategoriasMobile(false);
-}
-// Ao tocar em qualquer categoria/resultado da lista, fecha o acordeão no mobile
-// para revelar o conteúdo selecionado imediatamente (delegação de evento: continua
-// funcionando mesmo com a lista sendo recriada a cada renderSidebar()).
-document.getElementById('lista-categorias').addEventListener('click', e => {
-  if(e.target.closest('button')) fecharCategoriasMobile();
-});
-// Ao focar a busca no mobile, garante que o acordeão esteja aberto para que os
-// resultados filtrados fiquem visíveis enquanto o usuário digita (a lista já
-// vem aberta por padrão, mas o usuário pode tê-la fechado manualmente antes).
-document.getElementById('busca').addEventListener('focus', () => {
-  if(window.innerWidth <= 800) setCategoriasMobile(true);
-});
-
-// =====================================================================
 // BUSCA COMPACTA (mobile) — ver @media (max-width:800px) no CSS.
 // No celular a .search-box (caixa de busca por extenso) fica escondida por
 // padrão atrás de um botão compacto "Buscar item" (#btn-busca-mobile), para
@@ -2355,16 +2324,15 @@ function abrirEstabelecimentoHeader(){
   categoriaAtual = null;
   renderSidebar(document.getElementById('busca').value);
   renderMain();
-  fecharCategoriasMobile();
   const card = document.getElementById('estab-card');
   if(!card) return;
   card.classList.add('aberto');
   const toggle = document.getElementById('estab-toggle');
   if(toggle) toggle.setAttribute('aria-expanded', 'true');
-  // Espera o acordeão de categorias terminar de recolher (transição de .25s
-  // no CSS) antes de rolar, para não calcular a posição com o layout ainda
-  // no meio da transição.
-  setTimeout(() => { card.scrollIntoView({ behavior:'smooth', block:'start' }); }, 280);
+  // 27/08/2026: não existe mais acordeão de categorias para esperar recolher
+  // (o menu some/aparece via display, sem transição) — um pequeno atraso
+  // ainda garante que o layout do card já aberto foi calculado antes de rolar.
+  setTimeout(() => { card.scrollIntoView({ behavior:'smooth', block:'start' }); }, 50);
 }
 
 // =====================================================================
@@ -2415,6 +2383,23 @@ function revelarConteudoMobile(){
   document.body.classList.remove('mobile-menu-only');
 }
 
+// ---------- Voltar ao menu de rotinas (27/08/2026) ----------
+// Readiciona a classe "mobile-menu-only": no mobile isso esconde .main e
+// volta a mostrar o menu de rotinas (ver body:not(.mobile-menu-only)
+// .sidebar-list no CSS); no desktop a classe não tem efeito algum (as regras
+// que a usam só existem dentro do @media 800px), então lá o comportamento
+// continua sendo simplesmente ir para a Visão Geral. Usada pelo botão
+// "Início" (cabeçalho da sidebar) e por todo botão "VOLTAR" das telas de
+// conteúdo (ver wireNavRow) — a pedido do usuário, "VOLTAR" deve sempre
+// voltar para o menu, não para a Visão Geral da Rotina.
+function irParaMenuMobile(){
+  document.body.classList.add('mobile-menu-only');
+  categoriaAtual = null;
+  renderSidebar(document.getElementById('busca').value);
+  renderMain();
+  scrollConteudoTopo();
+}
+
 // ---------- Navegação "VOLTAR" / "PRÓXIMO" entre rotinas (25/08/2026) ----------
 function scrollConteudoTopo(){
   const mainEl = document.querySelector('.main');
@@ -2439,13 +2424,7 @@ function navRowHTML(proxCat){
 }
 function wireNavRow(proxCat){
   const voltar = document.getElementById('btn-cat-voltar');
-  if(voltar) voltar.addEventListener('click', () => {
-    revelarConteudoMobile();
-    categoriaAtual = null;
-    renderSidebar();
-    renderMain();
-    scrollConteudoTopo();
-  });
+  if(voltar) voltar.addEventListener('click', irParaMenuMobile);
   const proximo = document.getElementById('btn-cat-proximo');
   if(proximo && proxCat) proximo.addEventListener('click', () => {
     revelarConteudoMobile();

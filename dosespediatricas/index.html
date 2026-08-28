@@ -121,6 +121,10 @@
     text-decoration:none;
     color:inherit;
   }
+  /* 27/08/2026: botão "início" exclusivo do cabeçalho mobile — oculto por padrão,
+     só aparece dentro do @media(max-width:800px) abaixo (mesmo padrão já usado
+     no Checklist de Rotina). */
+  .topbar-home-mobile{ display:none; }
   .brand{
     display:flex;
     align-items:center;
@@ -190,10 +194,33 @@
   }
 
   @media (max-width: 800px){
-    .topbar-app{ flex-wrap:wrap; justify-content:flex-start; gap:6px; padding: 14px 16px; }
-    .topbar-app .logo-wrap{ order:1; }
-    .topbar-app .titulo-central{ order:2; flex-basis:100%; }
-    .topbar-app .theme-toggle{ order:3; position:absolute; right:14px; top:14px; }
+    /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
+       aprovado no Checklist de Rotina — a marca (logo+"FarmaPrática") some
+       completamente do mobile, e um botão circular de "início"
+       (.topbar-home-mobile) no canto superior esquerdo assume a função de
+       navegação que o logo tinha. */
+    .topbar-app{ flex-wrap:wrap; justify-content:center; gap:8px; padding: 10px 14px; position:relative; }
+    .topbar-app .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center;
+      position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    /* Título+descrição: volta ao fluxo normal, com respiro simétrico dos dois
+       lados para não colidir com o botão de início. */
+    .topbar-app .titulo-central{ flex-basis:100%; padding:0 44px; }
+    .topbar-app .titulo-principal{ white-space:normal; }
+    .topbar-app .titulo-descricao{ white-space:normal; }
+    /* Botão de tema: sai do canto fixo (regra antiga tinha position:absolute) e
+       volta ao fluxo normal do flex — como o título acima ocupa a linha
+       inteira (flex-basis:100%), o botão fica sozinho na linha seguinte e
+       `justify-content:center` do .topbar-app já o centraliza, sem precisar de
+       nenhum ícone flutuando em canto fixo (mesmo padrão do Checklist de
+       Rotina). */
   }
 
   .app-body{
@@ -1339,6 +1366,9 @@
 </div>
 
 <div class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
   <div class="logo-wrap">
     <a href="../" title="Voltar para a página inicial do FarmaPrática">
       <div class="brand">

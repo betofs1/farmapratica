@@ -59,6 +59,13 @@
     --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.12), inset 0 -3px 8px 0 rgba(0,0,0,.35);
     --font-display:'Sora',-apple-system,BlinkMacSystemFont,sans-serif;
     --badge-neutral-fg:#c7cbd1;
+    /* 27/08/2026: preenchimento interno dos cards de "Ferramentas Farmacêuticas" —
+       antes era baseado quase 100% em --card-bg (muito próximo do --bg da página,
+       ficava "sem contraste"). Agora é um cinza-metálico próprio, com um degradê
+       mais aberto (claro em cima, escuro embaixo), sempre visivelmente diferente
+       do fundo da página, em qualquer tema. */
+    --tools-card-fill-1:#5c6169;
+    --tools-card-fill-2:#2c2f34;
   }
 
   /* ---------- LIGHT THEME ---------- */
@@ -96,6 +103,11 @@
     --tool-card-bevel:inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -2px 5px 0 rgba(35,40,48,.05);
     --tool-card-bevel-hover:inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -2px 6px 0 rgba(35,40,48,.07);
     --badge-neutral-fg:#5b6470;
+    /* 27/08/2026: no tema claro o cartão fica claro (texto do tema é escuro),
+       mas ainda um degradê branco→cinza claramente diferente do fundo (--bg
+       muito claro e neutro) — dá o mesmo efeito "painel metálico" do tema escuro. */
+    --tools-card-fill-1:#ffffff;
+    --tools-card-fill-2:#d5d9de;
   }
   body.light footer{border-top-color:#d7dade;}
   body.light .btn-outline{border-color:#c7cbd1;}
@@ -1584,6 +1596,45 @@
   }
 
   /* --- Seção central de Ferramentas --- */
+  /* 27/08/2026: centralização robusta, independente de resolução/zoom.
+     O body tem padding-left:var(--sidebar-width-collapsed) (reserva de espaço
+     para a sidebar fixa) mas nenhum padding-right equivalente — então a caixa
+     de conteúdo dentro de <main> (que também soma seu próprio padding
+     simétrico de 40px) NÃO fica centralizada na tela: ela fica deslocada à
+     direita por metade da largura da sidebar. Um `margin:0 auto` comum no
+     grid, dentro dessa caixa assimétrica, sempre resulta num menu puxado para
+     a esquerda do centro real da tela.
+     Tentativas anteriores tentaram compensar isso com um deslocamento fixo em
+     CSS e depois com JavaScript medindo a posição real do grid a cada
+     carregamento/resize (recenterToolsHub) — ambas se mostraram frágeis com
+     zoom do navegador e em algumas resoluções (o JS podia rodar antes do
+     layout estabilizar, ou o deslocamento fixo não bater com o zoom:.9 do
+     site). A solução agora é 100% CSS, sem nenhuma medição em JS: esta seção
+     ganha uma margem esquerda negativa exatamente do tamanho da sidebar
+     recolhida (cancelando a reserva de espaço do body só para ela) e a
+     largura correspondente a mais, deixando a caixa desta seção simétrica em
+     relação à tela real — dali para baixo, o `margin:0 auto` do cabeçalho e
+     do grid (mais abaixo) centraliza de verdade, em qualquer resolução ou
+     nível de zoom, porque é recalculado nativamente pelo motor de layout do
+     navegador a cada repintura, sem depender de nenhum evento de JS. */
+  .tools-hub-section{
+    margin-left: calc(-1 * var(--sidebar-width-collapsed));
+    width: calc(100% + var(--sidebar-width-collapsed));
+  }
+  @media (max-width:1100px){
+    /* 27/08/2026: o próprio grid já vira 2 colunas em max-width:100% aqui (ver
+       @media 1100px de `.tools-hub-grid` mais abaixo) — sem sobra de espaço
+       para centralizar, então a correção acima é desligada nesta faixa.
+       Sem este reset, a borda esquerda da seção fica numa posição praticamente
+       FIXA (independente da largura da tela, já que a correção é um deslocamento
+       constante em pixels) bem próxima da sidebar — e como o grid passa a ocupar
+       100% da seção exatamente aqui, os cards da coluna esquerda ficavam
+       parcialmente escondidos atrás da sidebar fixa (que tem z-index maior).
+       Abaixo de 900px, a sidebar também vira um menu retrátil sobreposto (a
+       própria regra que zera `body{padding-left:0}` está no @media da sidebar,
+       mais acima) — motivo a mais para não ter nenhuma correção aqui. */
+    .tools-hub-section{ margin-left:0; width:100%; }
+  }
   .tools-hub-header{
     text-align:center;
     max-width:640px;
@@ -1608,33 +1659,60 @@
   @media (max-width:1100px){
     .tools-hub-grid{grid-template-columns:repeat(2, 1fr); max-width:100%;}
   }
-  /* 24-25/08/2026: acima de 1100px o grid tem max-width:46%/margin:0 auto, centralizando dentro
-     da área de conteúdo — que começa deslocada da borda real da tela pela largura da sidebar
-     recolhida. Uma primeira correção usou um deslocamento fixo em CSS (metade da largura da
-     sidebar), mas o usuário reportou que com zoom do navegador (ou monitores de resolução menor)
-     o desalinhamento voltava, bem maior que o previsto — o `body{zoom:.9}` do site, somado ao
-     zoom do navegador, faz esse deslocamento fixo não bater mais. Trocado por recentralização via
-     JavaScript (função recenterToolsHub, no final do arquivo), que mede a posição REAL do grid na
-     tela a cada carregamento/redimensionamento/zoom e corrige o exato pixel necessário — não
-     depende de nenhuma suposição sobre largura de sidebar ou fatores de zoom. */
   .tools-hub-card{
     position:relative;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-    gap:7px;
-    padding:20px 16px 16px;
+    display:block;
     border-radius:16px;
     aspect-ratio:1 / 1;
-    background:
-      radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--hub-color) 20%, transparent), transparent 70%),
-      linear-gradient(160deg, color-mix(in srgb, var(--card-bg) 92%, #fff 8%) 0%, color-mix(in srgb, var(--card-bg) 82%, #000 10%) 100%);
+    /* 27/08/2026: min-width:0 é necessário aqui — sem isso, um item de grid
+       nunca encolhe abaixo do seu conteúdo mínimo (o texto do título/descrição
+       sem quebra), então em resoluções intermediárias as 4 colunas do grid
+       (repeat(4,1fr)) ultrapassavam a largura do próprio container
+       (`.tools-hub-grid`, com max-width:46%) e empurravam a última coluna de
+       cards para fora da tela — o mesmo sintoma relatado pelo usuário
+       (menu "saindo da tela"), independente da centralização em si. */
+    min-width:0;
     border:3px solid color-mix(in srgb, var(--hub-color) 70%, var(--card-border));
     border-top-width:4px;
     box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 42%, transparent), 0 0 24px -8px color-mix(in srgb, var(--hub-color) 55%, transparent), 0 6px 0 0 color-mix(in srgb, var(--hub-color) 50%, rgba(0,0,0,.55)), 0 14px 28px -12px rgba(0,0,0,.5), var(--tool-card-bevel);
     text-decoration:none;color:inherit;cursor:pointer;
     transition:transform .18s ease, box-shadow .18s ease, border-color .25s ease;
+    /* 27/08/2026: cada card passa a ser sua própria "container query" — o
+       conteúdo interno (ícone/título/descrição/seta) se adapta ao TAMANHO REAL
+       do card (calculado pelo navegador a cada layout), e não à largura da
+       janela. Isso cobre tanto o celular quanto qualquer coluna estreita no
+       desktop (ex.: 4 colunas numa janela de notebook), sem precisar adivinhar
+       larguras de viewport — ver os blocos `@container` logo abaixo. */
+    container-type: inline-size;
   }
-  @media (max-width:1100px){
-    .tools-hub-card{aspect-ratio:auto;}
+  /* 27/08/2026: quadrado garantido em qualquer largura de coluna.
+     `aspect-ratio:1/1` sozinho é só uma "preferência" — se o conteúdo (ícone +
+     título + descrição + seta) precisar de mais altura do que a largura da
+     coluna permite, o card cresce e vira retângulo (era o que acontecia antes
+     em telas intermediárias, por isso havia um @media desligando o aspect-ratio
+     abaixo de 1100px). A correção: o card fica "vazio" (sem padding, sem
+     conteúdo direto) e todo o conteúdo real mora em `.tools-hub-card-body`,
+     posicionado em absolute preenchendo o card inteiro. Conteúdo posicionado em
+     absolute sai do fluxo normal e não é mais contado no cálculo do tamanho do
+     pai — então o aspect-ratio do card nunca é sobrescrito, e vira sempre um
+     quadrado perfeito, com o conteúdo se ajustando (e rolando, se precisar)
+     dentro dele. */
+  .tools-hub-card-body{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    gap:7px;
+    padding:20px 16px 16px;
+    border-radius:13px;
+    overflow:hidden;
+    /* fundo interno com tonalidade própria (degradê cinza-metálico), sempre
+       visivelmente diferente do fundo da página atrás — antes usava quase a
+       mesma cor de --card-bg (muito parecida com --bg, "sumia" visualmente).
+       Agora usa --tools-card-fill-1/2 (claro→escuro), definidas por tema lá em
+       cima em :root / body.light, mais o brilho colorido do --hub-color de
+       cada ferramenta por cima. */
+    background:
+      radial-gradient(ellipse 100% 60% at 50% 0%, color-mix(in srgb, var(--hub-color) 22%, transparent), transparent 70%),
+      linear-gradient(160deg, var(--tools-card-fill-1) 0%, var(--tools-card-fill-2) 100%);
   }
   .tools-hub-card:hover{
     transform:translateY(-5px);
@@ -1682,19 +1760,40 @@
     background:color-mix(in srgb, var(--hub-color) 22%, transparent);
     color:var(--hub-color);
   }
+
+  /* 27/08/2026: tamanhos do conteúdo do card por FAIXA DE LARGURA DO PRÓPRIO
+     CARD (container query), não da janela — é o que garante caber tudo dentro
+     do quadrado perfeito em qualquer resolução, incluindo o "meio de caminho"
+     do desktop (ex.: notebook 1366px, onde a coluna do grid fica estreita mas
+     a janela continua "modo desktop"). Faixa "cheia" (>=200px de card): usa os
+     tamanhos padrão definidos acima. Faixas menores reduzem/ocultam conteúdo
+     progressivamente, do mesmo jeito que já era feito para celular — só que
+     agora baseado no tamanho real do card. */
+  @container (max-width:199.98px){
+    .tools-hub-card{border-radius:13px;border-top-width:3px;}
+    .tools-hub-card-body{padding:12px 8px 8px;gap:4px;border-radius:11px;}
+    .tools-hub-icon{width:34px;height:34px;border-radius:10px;}
+    .tools-hub-icon svg{width:16px;height:16px;}
+    .tools-hub-card h3{font-size:11.5px;line-height:1.18;}
+    .tools-hub-card p,
+    .tools-hub-arrow{display:none;}
+    .tools-hub-soon-badge{top:9px;right:9px;font-size:7px;padding:2px 5px;border-radius:5px;}
+  }
+  @container (max-width:99.98px){
+    .tools-hub-card{border-radius:12px;border-top-width:2px;}
+    .tools-hub-card-body{padding:8px 4px 6px;gap:3px;border-radius:10px;}
+    .tools-hub-icon{width:28px;height:28px;border-radius:9px;}
+    .tools-hub-icon svg{width:14px;height:14px;}
+    .tools-hub-card h3{font-size:9px;line-height:1.15;}
+    .tools-hub-soon-badge{top:4px;right:4px;font-size:6px;padding:2px 4px;border-radius:4px;}
+  }
+
   @media (max-width:640px){
     .tools-hub-header{max-width:100%;margin:0 auto 14px;}
     .tools-hub-header h2{font-size:15px;letter-spacing:1px;gap:8px;}
     .tools-hub-header h2 .hub-sparkle{font-size:12px;}
     .tools-hub-header p{font-size:11.5px;margin-top:6px;padding:0 8px;}
     .tools-hub-grid{grid-template-columns:repeat(4, 1fr); max-width:100%; gap:8px;}
-    .tools-hub-card{padding:10px 4px 8px;gap:4px;border-radius:12px;border-top-width:2px;}
-    .tools-hub-icon{width:32px;height:32px;border-radius:9px;}
-    .tools-hub-icon svg{width:16px;height:16px;}
-    .tools-hub-card h3{font-size:9px;line-height:1.15;}
-    .tools-hub-card p,
-    .tools-hub-arrow{display:none;}
-    .tools-hub-soon-badge{top:4px;right:4px;font-size:6px;padding:2px 4px;border-radius:4px;}
   }
 
   /* --- Favoritos + Notas lado a lado --- */
@@ -1927,66 +2026,79 @@
 
         <!-- 1. Guia de Dispensação -->
         <a href="farmadesk/" class="tools-hub-card" style="--hub-color:var(--red);" id="tool-guia">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           </div>
           <h3>Guia de Dispensação Farmacêutica</h3>
           <p>Orientação farmacêutica: condições, alertas e encaminhamento.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 2. Substituição de Medicamentos Equivalentes -->
         <a href="medinter/" class="tools-hub-card" style="--hub-color:var(--c-cyan);" id="tool-medinter">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
           </div>
           <h3>Substituição de Medicamentos</h3>
           <p>Equivalentes por nome comercial, princípio ativo ou registro MS.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 3. Calculadora Pediátrica -->
         <a href="dosespediatricas/" class="tools-hub-card" style="--hub-color:var(--c-magenta);" id="tool-calc">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><rect x="8" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="18" width="8" height="2" fill="currentColor" stroke="none"/></svg>
           </div>
           <h3>Calculadora Pediátrica</h3>
           <p>Doses por peso e idade, com múltiplas formulações disponíveis.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 4. Validador de Receitas -->
         <a href="receitas/" class="tools-hub-card" style="--hub-color:var(--c-green);" id="tool-validador">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
           </div>
           <h3>Conferência de Receitas</h3>
           <p>Validação de receituário: tipo, validade e retenção.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 5. Consulta por Medicamentos de Controle Especial -->
         <a href="consultacontrolados/" class="tools-hub-card" style="--hub-color:var(--c-blue);" id="tool-consulta">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/></svg>
           </div>
           <h3>Medicamentos de Controle Especial</h3>
           <p>Tipo de receita, validade, retenção e quantidade máxima.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 6. Checklist de Rotina -->
         <a href="checklist/" class="tools-hub-card" style="--hub-color:var(--c-amber);" id="tool-checklist">
+          <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           </div>
           <h3>Checklist de Rotina</h3>
           <p>Conferência diária: temperatura, validades e boas práticas.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 7. Interações Medicamentosas (em breve — sem página própria ainda) -->
         <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-teal);" id="tool-interacoes" onclick="return false;">
+          <div class="tools-hub-card-body">
           <span class="tools-hub-soon-badge">Em breve</span>
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -1994,10 +2106,12 @@
           <h3>Interações Medicamentosas</h3>
           <p>Consulte interações entre princípios ativos.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
         <!-- 8. Exames Laboratoriais (em breve — sem página própria ainda) -->
         <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-purple);" id="tool-exames" onclick="return false;">
+          <div class="tools-hub-card-body">
           <span class="tools-hub-soon-badge">Em breve</span>
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
@@ -2005,6 +2119,7 @@
           <h3>Exames Laboratoriais</h3>
           <p>Valores de referência e interpretação para apoio na prática.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
         </a>
 
       </div>
@@ -3145,35 +3260,13 @@
   setInterval(renderUsageTimeCard, 30000);
 
   // ---------- CENTRALIZAÇÃO DA GRADE "FERRAMENTAS FARMACÊUTICAS" ----------
-  // 25/08/2026: recentraliza o grid medindo a posição REAL na tela (getBoundingClientRect),
-  // em vez de um deslocamento fixo em CSS — robusto a zoom do navegador, telas de resolução
-  // menor e ao body{zoom:.9} do site, que juntos tornavam qualquer valor fixo impreciso.
-  function recenterToolsHub(){
-    var grid = document.querySelector('.tools-hub-grid');
-    var header = document.querySelector('.tools-hub-header');
-    if(!grid) return;
-    grid.style.transform = 'none';
-    if(header) header.style.transform = 'none';
-    // Abaixo de 1101px (mesmo ponto de corte do CSS, @media max-width:1100px) o grid já ocupa
-    // 100% da largura disponível, sem sobra pra centralizar — recentralizar ali criaria assimetria.
-    if(window.innerWidth <= 1100){
-      return;
-    }
-    var viewportCenter = window.innerWidth / 2;
-    var gridRect = grid.getBoundingClientRect();
-    var gridCenter = gridRect.left + gridRect.width / 2;
-    grid.style.transform = 'translateX(' + (viewportCenter - gridCenter) + 'px)';
-    if(header){
-      var headerRect = header.getBoundingClientRect();
-      var headerCenter = headerRect.left + headerRect.width / 2;
-      header.style.transform = 'translateX(' + (viewportCenter - headerCenter) + 'px)';
-    }
-  }
-  window.addEventListener('load', recenterToolsHub);
-  window.addEventListener('resize', recenterToolsHub);
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(recenterToolsHub); }
-  setTimeout(recenterToolsHub, 400);
-  recenterToolsHub();
+  // 27/08/2026: a recentralização via JavaScript (medindo a posição real do
+  // grid a cada load/resize) foi removida — mostrou-se frágil em algumas
+  // resoluções/zoom. Substituída por uma correção 100% CSS em `.tools-hub-section`
+  // (ver comentário e regra logo acima de `.tools-hub-header` no <style>), que
+  // cancela matematicamente a reserva de espaço da sidebar sem depender de
+  // medição em JS — sempre correta, em qualquer resolução ou zoom, recalculada
+  // nativamente pelo navegador a cada repintura.
 </script>
 
 </body>

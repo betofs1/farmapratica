@@ -38,6 +38,10 @@
     border-bottom:2px solid rgba(228,23,44,.35);box-shadow:0 2px 20px rgba(0,0,0,.15);z-index:3;gap:16px;
   }
   .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
+  /* 27/08/2026: botão "início" exclusivo do cabeçalho mobile — oculto por padrão,
+     só aparece dentro do @media(max-width:768px) abaixo (mesmo padrão já usado
+     no Checklist de Rotina). */
+  .topbar-home-mobile{ display:none; }
   .brand{display:flex;align-items:center;gap:14px;}
   .brand img{width:50px;height:50px;object-fit:contain;}
   .brand-text h1{font-size:25px;font-weight:800;letter-spacing:-.3px;line-height:1.1;margin:0;color:var(--text);}
@@ -251,33 +255,34 @@
     .main-content{padding:16px;}
     .search-wrap{flex-direction:column;gap:7px;}
     #searchBtn,#clearBtn{justify-content:center;}
-    .topbar-app{grid-template-columns:1fr;gap:8px;padding:10px 16px;flex-wrap:wrap;row-gap:4px;}
-    /* Marca (logo+nome) do FarmaPrática: reduzida e centralizada em sua própria
-       linha, no topo do cabeçalho. Antes ela ficava grande e encostada à
-       esquerda, competindo visualmente com o título da ferramenta — agora ela
-       vira um selo discreto e o título abaixo dela ganha o protagonismo. */
-    .logo-wrap{order:1;width:100%;}
-    .logo-wrap a{justify-content:flex-start;}
-    .brand{gap:7px;}
-    .brand img{width:25px;height:25px;}
-    .brand-text h1{font-size:13px;}
-    .brand-text p{font-size:8px;}
+    .topbar-app{gap:8px;padding:10px 14px;flex-wrap:wrap;row-gap:8px;position:relative;}
+    /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
+       aprovado no Checklist de Rotina — a marca (logo+"FarmaPrática") some
+       completamente do mobile, e um botão circular de "início" (topbar-home-mobile)
+       no canto superior esquerdo assume a função de navegação que o logo tinha. */
+    .logo-wrap{display:none;}
+    .topbar-home-mobile{
+      display:flex;align-items:center;justify-content:center;
+      position:absolute;left:14px;top:10px;
+      width:34px;height:34px;border-radius:9px;
+      border:1px solid var(--border);background:var(--panel);
+      color:var(--text-dim);text-decoration:none;z-index:2;
+    }
+    .topbar-home-mobile svg{width:17px;height:17px;}
+    .topbar-home-mobile:hover{color:var(--accent-bright);border-color:var(--accent);}
     /* Título+descrição da ferramenta: no desktop fica centralizado em posição
-       absoluta sobre a topbar; no mobile isso sobreporia o logo e o db-pill,
-       então aqui ele volta ao fluxo normal do flex, ocupando a própria linha
-       abaixo do logo (100% de largura força a quebra de linha). Como a marca
-       acima dele agora é pequena, o título ganha um leve aumento de fonte e
-       um text-shadow em camadas para se destacar como o elemento principal
-       do cabeçalho (mesmo tratamento usado hoje em outra ferramenta do site). */
-    .titulo-central{position:static;left:auto;transform:none;order:2;width:100%;pointer-events:auto;margin-top:2px;}
+       absoluta sobre a topbar; no mobile isso sobreporia o botão de início,
+       então aqui ele volta ao fluxo normal do flex, com respiro simétrico dos
+       dois lados para não colidir com o botão. Título com leve aumento de
+       fonte e text-shadow em camadas para se destacar como o elemento
+       principal do cabeçalho (mesmo tratamento do Checklist de Rotina). */
+    .titulo-central{position:static;left:auto;transform:none;width:100%;pointer-events:auto;margin-top:0;padding:0 44px;}
     .titulo-principal{font-size:1.05rem;text-shadow:0 1px 0 rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.45);}
     body.light .titulo-principal{text-shadow:0 1px 0 rgba(255,255,255,.7),0 3px 10px rgba(23,26,32,.22);}
-    /* Faixa da direita (contador do banco + tema): o botão de tema sai do
-       fluxo e vira um ícone fixo no canto superior direito da topbar (mesmo
-       padrão já usado em outra ferramenta do site), sobrando só o db-pill,
-       que passa a ocupar sua própria linha centralizada abaixo do título. */
-    .topbar-right{margin-left:0;order:3;width:100%;justify-content:center;}
-    .theme-toggle{position:absolute;top:14px;right:14px;}
+    /* Faixa de ações (contador do banco + tema): volta ao fluxo normal, numa
+       linha própria centralizada abaixo do título — sem ícones flutuando em
+       cantos fixos, mesmo padrão do Checklist de Rotina. */
+    .topbar-right{margin-left:0;width:100%;justify-content:center;flex-wrap:wrap;row-gap:8px;}
     .search-section{padding:14px;}
     /* Caixa de busca mais compacta no mobile: reduz padding do input/botões
        e o espaçamento entre eles para caber melhor sem ficar espremida. */
@@ -315,6 +320,9 @@
 
 <body class="light">
 <div class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
   <div class="logo-wrap">
     <a href="../" title="Ir para a Home">
       <div class="brand">
