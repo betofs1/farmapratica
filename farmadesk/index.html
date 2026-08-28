@@ -63,6 +63,11 @@
     border-color:rgba(0,0,0,0.16);
   }
   body.light .theme-toggle-top:hover{background:rgba(0,0,0,0.09);}
+  body.light .study-counter{
+    background:rgba(0,0,0,0.045);
+    color:#201d1e;
+    border-color:rgba(0,0,0,0.16);
+  }
   html{
     overflow-y:scroll;
     scrollbar-gutter:stable;
@@ -222,6 +227,23 @@
   }
   .btn-top.ghost:hover{background:rgba(255,255,255,0.12); box-shadow:none;}
   .btn-top svg{flex-shrink:0;}
+  .study-counter{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.22);
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+    cursor:default;
+    font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
+  }
+  .study-counter svg{flex-shrink:0;opacity:.85;}
+  .study-counter b{font-size:13px;}
   .theme-toggle-top{
     display:flex;align-items:center;justify-content:center;
     width:36px;height:36px;padding:0;border-radius:8px;
@@ -660,6 +682,16 @@
     font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
     font-style:italic;
   }
+  .condition-source-note{
+    font-size:10.5px;
+    color:#9a9aa5;
+    margin:14px 16px 0;
+    padding-top:10px;
+    border-top:1px dashed #e2e5ec;
+    font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
+    font-style:italic;
+    line-height:1.5;
+  }
 
   /* LISTAS */
   .block > ul{
@@ -741,6 +773,37 @@
     line-height:1;
     white-space:nowrap;
   }
+  .drug-link-group{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+    vertical-align:middle;
+  }
+  .drug-link-secondary{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:#6b6f7a;
+    background:transparent;
+    border:1px solid #d8dbe2;
+    border-radius:5px;
+    padding:2px 5px;
+    opacity:0.92;
+    transition:opacity .15s, background .15s, color .15s, transform .12s;
+    text-decoration:none;
+    gap:3px;
+    font-size:10px;
+    font-family:'Inter',"Helvetica Neue",Arial,sans-serif;
+    font-weight:700;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .drug-link-secondary:hover{opacity:1; background:#eef0f4; color:#2c2f38; transform:translateY(-1px);}
+  .drug-link-secondary.drug-ped-link{border-color:rgba(59,130,246,.4); color:#3b82f6;}
+  .drug-link-secondary.drug-ped-link:hover{background:rgba(59,130,246,.1); color:#3b82f6;}
+  .drug-link-secondary.drug-sub-link{border-color:rgba(16,185,129,.4); color:#0d9668;}
+  .drug-link-secondary.drug-sub-link:hover{background:rgba(16,185,129,.1); color:#0d9668;}
   .drug-img-link:hover{
     opacity:1;
     background:var(--red-bright);
@@ -1354,6 +1417,8 @@
     .quick-mode-btn .btn-top-label{display:none;}
     .quick-mode-btn{padding:0; width:32px; height:32px; justify-content:center;}
     .quick-mode-btn svg{margin:0;}
+    .study-counter{padding:0 8px; height:32px;}
+    .study-counter .study-counter-label{display:none;}
 
     /* Busca: input em linha própria (senão fica espremido), atalho de teclado oculto (sem sentido no touch) */
     .search-shortcut-hint{display:none;}
@@ -1407,6 +1472,10 @@
       </div>
     </a>
     <div class="top-actions">
+      <div class="study-counter" id="studyCounter" title="Condições distintas consultadas nos últimos 7 dias (semana atual, seg–dom)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <b id="studyCounterNum">0</b><span class="study-counter-label">&nbsp;esta semana</span>
+      </div>
       <button class="theme-toggle-top" type="button" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
@@ -1603,6 +1672,7 @@
 </div>
 
 <!-- MODAL CALCULADORA PEDIÁTRICA -->
+
 <div class="modal-overlay" id="calcOverlay">
   <div class="modal" style="max-width:560px;">
     <div class="modal-head">
@@ -1661,6 +1731,64 @@ function toggleTheme(){
 
 let APP_DATA = { systems: [], conditions: [] };
 const FAV_KEY = 'farmadesk_favs_v1';
+
+// ---------- CONTADOR DE ESTUDO SEMANAL ----------
+// Registra condições distintas abertas por dia, para incentivar o uso contínuo
+// como ferramenta de estudo (não só consulta pontual no balcão).
+const STUDY_KEY = 'farmadesk_estudo_v1';
+const studyCounterEl = document.getElementById('studyCounter');
+const studyCounterNumEl = document.getElementById('studyCounterNum');
+
+function studyDayKey(d){
+  d = d || new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function loadStudyData(){
+  try{ return JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; }catch(e){ return {}; }
+}
+function saveStudyData(data){
+  try{ localStorage.setItem(STUDY_KEY, JSON.stringify(data)); }catch(e){}
+}
+// Segunda-feira da semana atual (mesma convenção do rastreador de tempo de uso: semana seg–dom)
+function currentWeekMonday(){
+  const now = new Date();
+  const day = now.getDay(); // 0=domingo ... 6=sábado
+  const diffToMonday = (day === 0) ? -6 : (1 - day);
+  const monday = new Date(now);
+  monday.setDate(now.getDate() + diffToMonday);
+  monday.setHours(0,0,0,0);
+  return monday;
+}
+function registerConditionView(id){
+  if(!id) return;
+  const data = loadStudyData();
+  const key = studyDayKey();
+  const list = data[key] || [];
+  if(!list.includes(id)){
+    list.push(id);
+    data[key] = list;
+    saveStudyData(data);
+  }
+  updateStudyCounterUI();
+}
+function computeWeeklyStudyCount(){
+  const data = loadStudyData();
+  const monday = currentWeekMonday();
+  const seen = new Set();
+  for(let i = 0; i < 7; i++){
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    if(d > new Date()) break; // não conta dias futuros da semana
+    const ids = data[studyDayKey(d)] || [];
+    ids.forEach(id => seen.add(id));
+  }
+  return seen.size;
+}
+function updateStudyCounterUI(){
+  if(!studyCounterNumEl) return;
+  studyCounterNumEl.textContent = computeWeeklyStudyCount();
+}
+
 
 async function loadData(){
   try{
@@ -1860,6 +1988,38 @@ function isDrugName(text) {
   return true;
 }
 
+// ---------- INTEGRAÇÃO CRUZADA: Calculadora Pediátrica e Substituição de Medicamentos ----------
+// Reaproveita a lista real de fármacos da Calculadora Pediátrica (dosespediatricas) para
+// só oferecer o link de dose pediátrica quando o fármaco realmente existir lá.
+let PEDIATRIC_DRUG_MAP = {}; // nome normalizado -> id em dosespediatricas/dados.json
+function normalizeDrugName(s){
+  return (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .replace(/\([^)]*\)/g, ' ') // remove parênteses (ex.: "(Acetaminofeno)")
+    .replace(/[^a-z0-9\s+]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+async function loadPediatricDrugMap(){
+  try{
+    const res = await fetch('../dosespediatricas/dados.json', { cache: 'no-store' });
+    const data = await res.json();
+    (data.farmacos || []).forEach(f => {
+      const key = normalizeDrugName(f.nome);
+      if(key) PEDIATRIC_DRUG_MAP[key] = f.id;
+    });
+  }catch(e){
+    // Calculadora Pediátrica pode não estar acessível (ex.: aberto localmente sem
+    // servidor, ou pasta movida) — o link de dose pediátrica simplesmente não aparece,
+    // sem quebrar nada do restante da página.
+  }
+}
+function lookupPediatricDrugId(name){
+  const key = normalizeDrugName(name);
+  return key ? (PEDIATRIC_DRUG_MAP[key] || null) : null;
+}
+
 function injectDrugLinks(){
   document.querySelectorAll('.card-body .block').forEach(block => {
     const label = block.querySelector('.block-label');
@@ -1894,7 +2054,6 @@ if (parentLi && parentLi.querySelector('ul')) {
 
       // Extrai nomes separados por / com espaço nos dois lados (evita quebrar doses como "150mg/g")
       const parts = rawText.split(/\s+\/\s+/);
-      let inserted = false;
 
       // Verifica se a strong contém nomes de medicamentos (qualquer parte)
       const drugParts = parts.filter(p => isDrugName(p.replace(/\([^)]*\)/g,'').trim()));
@@ -1904,20 +2063,43 @@ if (parentLi && parentLi.querySelector('ul')) {
         return;
       }
 
-      // Para cada nome de medicamento na lista, inserir ícone após a strong correspondente
-      // Estratégia: inserir apenas 1 ícone agrupado logo após o <strong> completo
-      // O link busca todos os nomes detectados (título completo, sem truncar na dose)
+      // Para cada nome de medicamento na lista, inserir um grupo de ícones após a strong
+      // correspondente: foto da embalagem (sempre), dose pediátrica (quando o fármaco
+      // existir na Calculadora Pediátrica) e equivalentes/substituição (sempre).
       const mainDrug = drugParts[0].replace(/[:\s]+$/,'').trim();
-      const url = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(mainDrug + ' Embalagem do medicamento')}`;
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.title = `🔍 Ver embalagem do medicamento: ${mainDrug}`;
-      link.className = 'drug-img-link';
-      link.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><polyline points="21 15 16 10 5 21"/></svg> foto`;
+
+      const group = document.createElement('span');
+      group.className = 'drug-link-group';
+
+      const photoUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(mainDrug + ' Embalagem do medicamento')}`;
+      const photoLink = document.createElement('a');
+      photoLink.href = photoUrl;
+      photoLink.target = '_blank';
+      photoLink.rel = 'noopener noreferrer';
+      photoLink.title = `🔍 Ver embalagem do medicamento: ${mainDrug}`;
+      photoLink.className = 'drug-img-link';
+      photoLink.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/><polyline points="21 15 16 10 5 21"/></svg> foto`;
+      group.appendChild(photoLink);
+
+      const pedId = lookupPediatricDrugId(mainDrug);
+      if(pedId){
+        const pedLink = document.createElement('a');
+        pedLink.href = `../dosespediatricas/?farmaco=${encodeURIComponent(pedId)}`;
+        pedLink.title = `Abrir "${mainDrug}" direto na Calculadora Pediátrica`;
+        pedLink.className = 'drug-link-secondary drug-ped-link';
+        pedLink.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg> dose pediátrica`;
+        group.appendChild(pedLink);
+      }
+
+      const medLink = document.createElement('a');
+      medLink.href = `../medinter/?med=${encodeURIComponent(mainDrug)}`;
+      medLink.title = `Ver equivalentes/substitutos de "${mainDrug}" na Substituição de Medicamentos`;
+      medLink.className = 'drug-link-secondary drug-sub-link';
+      medLink.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> equivalentes`;
+      group.appendChild(medLink);
+
       strong.dataset.linked = '1';
-      strong.after(link);
+      strong.after(group);
     });
   });
 }
@@ -1999,10 +2181,11 @@ function render(filter){
 
   let filtered = allConditions;
   if(q){
-    // Busca global — ignora filtro de sistema, busca em título e conteúdo
-    filtered = filtered.filter(c =>
-      (c.title + ' ' + (c.html||'').replace(/<[^>]+>/g,' ')).toLowerCase().includes(q)
-    );
+    // Busca global — ignora filtro de sistema, busca em título, conteúdo e sinônimos (tags)
+    filtered = filtered.filter(c => {
+      const tagsTxt = Array.isArray(c.tags) ? c.tags.join(' ') : (c.tags || '');
+      return (c.title + ' ' + tagsTxt + ' ' + (c.html||'').replace(/<[^>]+>/g,' ')).toLowerCase().includes(q);
+    });
   } else if(activeSystem && activeSystem !== 'all'){
     filtered = filtered.filter(c => c.systemSlug === activeSystem);
   }
@@ -2059,6 +2242,7 @@ function render(filter){
       if(!isOpen){
         article.classList.add('open');
         injectDrugLinks();
+        registerConditionView(c.id);
       }
     });
 
@@ -2234,6 +2418,7 @@ function openFav(id){
   if(card){
     document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
     card.classList.add('open');
+    registerConditionView(id);
     setTimeout(() => {
       card.scrollIntoView({behavior:'smooth', block:'start'});
       injectDrugLinks();
@@ -3046,10 +3231,12 @@ backToTopBtn.addEventListener('click', () => {
       <div class="skeleton-line title"></div>
     </div>
   `).join('');
+  loadPediatricDrugMap(); // dispara em paralelo, não bloqueia a renderização das condições
   await loadData();
   systems = APP_DATA.systems || [];
   allConditions = APP_DATA.conditions || [];
   activeSystem = null;
+  updateStudyCounterUI();
   render('');
   var __deepCond = new URLSearchParams(location.search).get('cond');
   if(__deepCond){
