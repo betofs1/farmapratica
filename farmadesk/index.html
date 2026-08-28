@@ -802,8 +802,6 @@
   .drug-link-secondary:hover{opacity:1; background:#eef0f4; color:#2c2f38; transform:translateY(-1px);}
   .drug-link-secondary.drug-ped-link{border-color:rgba(59,130,246,.4); color:#3b82f6;}
   .drug-link-secondary.drug-ped-link:hover{background:rgba(59,130,246,.1); color:#3b82f6;}
-  .drug-link-secondary.drug-sub-link{border-color:rgba(16,185,129,.4); color:#0d9668;}
-  .drug-link-secondary.drug-sub-link:hover{background:rgba(16,185,129,.1); color:#0d9668;}
   .drug-img-link:hover{
     opacity:1;
     background:var(--red-bright);
@@ -2064,8 +2062,9 @@ if (parentLi && parentLi.querySelector('ul')) {
       }
 
       // Para cada nome de medicamento na lista, inserir um grupo de ícones após a strong
-      // correspondente: foto da embalagem (sempre), dose pediátrica (quando o fármaco
-      // existir na Calculadora Pediátrica) e equivalentes/substituição (sempre).
+      // correspondente: foto da embalagem (sempre) e dose pediátrica (quando o fármaco
+      // existir na Calculadora Pediátrica). Botão de equivalentes/substituição removido
+      // a pedido do usuário em 28/08/2026.
       const mainDrug = drugParts[0].replace(/[:\s]+$/,'').trim();
 
       const group = document.createElement('span');
@@ -2090,13 +2089,6 @@ if (parentLi && parentLi.querySelector('ul')) {
         pedLink.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg> dose pediátrica`;
         group.appendChild(pedLink);
       }
-
-      const medLink = document.createElement('a');
-      medLink.href = `../medinter/?med=${encodeURIComponent(mainDrug)}`;
-      medLink.title = `Ver equivalentes/substitutos de "${mainDrug}" na Substituição de Medicamentos`;
-      medLink.className = 'drug-link-secondary drug-sub-link';
-      medLink.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> equivalentes`;
-      group.appendChild(medLink);
 
       strong.dataset.linked = '1';
       strong.after(group);
