@@ -269,13 +269,19 @@
   .btn-copiar svg{width:12px;height:12px;}
   .btn-copiar:hover{border-color:var(--accent);color:var(--accent-bright);}
   .btn-copiar.copiado{background:rgba(16,185,129,.15);border-color:#10b981;color:#10b981;}
-  .ddinter-nota{
-    font-size:12px;color:var(--text-dim);background:var(--panel);border:1px dashed var(--border);
-    border-radius:8px;padding:9px 12px;margin-top:8px;line-height:1.5;
+  .tipo-badges{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 12px;}
+  .tipo-pill{
+    display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;color:var(--text-dim);
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:4px 10px;
   }
-  .ddinter-tag{
+  .tipo-pill.tipo-principal{color:var(--accent-bright);border-color:color-mix(in srgb, var(--accent-bright) 40%, transparent);}
+  .fonte-tag{
     display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;color:var(--text-dim);
     background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:5px 11px;
+  }
+  .naoreconhecido-nota{
+    font-size:12px;color:var(--text-dim);background:var(--panel);border:1px dashed var(--border);
+    border-radius:8px;padding:9px 12px;margin-top:10px;line-height:1.5;
   }
   .btn-ver-resultado.carregando{opacity:.75;cursor:wait;}
 
@@ -423,7 +429,7 @@
       </div>
 
       <div class="disclaimer">
-        <strong>⚠ Uso profissional:</strong> ferramenta de apoio à decisão farmacêutica, combinando uma base curada em português (mecanismo, conduta e ação de balcão) com uma camada ampla de gravidade proveniente da <a href="https://ddinter2.scbdd.com/" target="_blank" rel="noopener" style="color:var(--accent-bright);font-weight:700;text-decoration:none;">DDInter 2.0</a> (base aberta, licença CC BY-NC-SA 4.0 — uso não comercial). Não substitui o julgamento clínico nem bases especializadas de referência (ex.: Micromedex, UpToDate, Stockley's Drug Interactions, bula do medicamento). A dipirona/metamizol não consta na base DDInter (não aprovada nos EUA) — as interações envolvendo dipirona vêm exclusivamente da base curada. Sempre avalie o contexto clínico completo do paciente.
+        <strong>⚠ Uso profissional:</strong> ferramenta de apoio à decisão farmacêutica, com base própria, curada em português (mecanismo, tipo de interação, conduta e ação de balcão) para os princípios ativos cadastrados. É uma base inicial, em expansão contínua — a ausência de um par nesta lista não descarta interação clinicamente relevante. Não substitui o julgamento clínico nem bases especializadas de referência (ex.: Micromedex, UpToDate, Stockley's Drug Interactions, bula do medicamento). Sempre avalie o contexto clínico completo do paciente.
       </div>
     </div>
 
@@ -438,131 +444,72 @@
    Esta base é um ponto de partida: recomenda-se evoluir para uma base
    de referência validada (ver conversa com o desenvolvedor).
 ===================================================================== */
-const ALIASES = {
-  'aas':'aas','acido acetilsalicilico':'aas','aspirina':'aas',
-  'varfarina':'varfarina','marevan':'varfarina','varfarina sodica':'varfarina',
-  'dipirona':'aine','metamizol':'aine','novalgina':'aine','dipirona sodica':'aine',
-  'ibuprofeno':'aine','alivium':'aine','diclofenaco':'aine','naproxeno':'aine','cetoprofeno':'aine','nimesulida':'aine',
-  'enalapril':'ieca','captopril':'ieca','lisinopril':'ieca','ramipril':'ieca',
-  'losartana':'bra','losartana potassica':'bra','olmesartana':'bra','olmesartana medoxomila':'bra','valsartana':'bra','candesartana':'bra','telmisartana':'bra',
-  'espironolactona':'espironolactona','aldactone':'espironolactona',
-  'hidroclorotiazida':'hidroclorotiazida','hctz':'hidroclorotiazida','clortalidona':'hidroclorotiazida',
-  'anlodipino':'bcc','anlodipina':'bcc','besilato de anlodipino':'bcc',
-  'sinvastatina':'estatina','atorvastatina':'estatina','rosuvastatina':'estatina','pravastatina':'estatina',
-  'claritromicina':'macrolideo','azitromicina':'macrolideo','eritromicina':'macrolideo',
-  'omeprazol':'ibp_potente','esomeprazol':'ibp_potente',
-  'clopidogrel':'clopidogrel','plavix':'clopidogrel',
-  'metformina':'metformina','glifage':'metformina',
-  'fluoxetina':'isrs','sertralina':'isrs','paroxetina':'isrs','citalopram':'isrs','escitalopram':'isrs',
-  'tramadol':'tramadol',
-  'levotiroxina':'levotiroxina','puran t4':'levotiroxina',
-  'carbonato de calcio':'calcio','carbonato de calcio + colecalciferol':'calcio','citrato de calcio':'calcio',
-  'sulfato ferroso':'ferro','ferro quelato glicinato':'ferro',
-  'ciprofloxacino':'quinolona','levofloxacino':'quinolona','norfloxacino':'quinolona',
-  'digoxina':'digoxina',
-  'amiodarona':'amiodarona',
-  'amoxicilina':'antibiotico_amplo','amoxicilina + clavulanato':'antibiotico_amplo','cefalexina':'antibiotico_amplo','clavulin':'antibiotico_amplo',
-  'metoclopramida':'metoclopramida','plasil':'metoclopramida',
-  'metronidazol':'metronidazol','flagyl':'metronidazol',
-  'alcool':'alcool','bebida alcoolica':'alcool','etanol':'alcool',
-  'rifampicina':'indutor_enzimatico','carbamazepina':'indutor_enzimatico','fenitoina':'indutor_enzimatico','fenobarbital':'indutor_enzimatico',
-  'anticoncepcional':'contraceptivo','contraceptivo oral':'contraceptivo','etinilestradiol':'contraceptivo',
-  'sildenafila':'sildenafila','viagra':'sildenafila','tadalafila':'sildenafila',
-  'nitrato':'nitrato','isordil':'nitrato','monocordil':'nitrato','dinitrato de isossorbida':'nitrato',
-  'propranolol':'bb_nao_seletivo',
-  'insulina':'antidiabetico','glibenclamida':'antidiabetico','gliclazida':'antidiabetico'
-};
+/* =====================================================================
+   Base de dados própria — medicamentos.json + interacoes.json.
+   Substitui a antiga base curada + camada ampla DDInter por uma única
+   base de dados própria, extensível e sem dependência de terceiros.
+   medicamentos.json: cadastro (id, nome, classeTerapeutica, aliases).
+   interacoes.json: relações entre medicamentos/classes (gravidade,
+   tipo de interação, mecanismo, conduta, ação de balcão, fonte).
+   Carregados de forma assíncrona no início da página.
+===================================================================== */
+let MEDICAMENTOS = [];
+let INTERACOES = [];
+let MED_BY_ALIAS = {};   // nome normalizado (nome/id/alias) -> medicamento
+let INTERACOES_MAP = {}; // "chaveA|chaveB" (ordenado) -> registro de interação
+let BASE_READY = false;
 
-const INTERACOES = [
-  {a:'varfarina', b:'aas', gravidade:'grave',
-    mecanismo:'Efeito antiplaquetário do AAS somado ao efeito anticoagulante da varfarina, com deslocamento parcial da ligação proteica — aumento expressivo do risco de sangramento (inclusive gastrintestinal).',
-    conduta:'Evitar associação, exceto sob indicação médica expressa (ex.: síndrome coronariana). Se mantida, monitorar INR com maior frequência e sinais de sangramento.',
-    balcao:'Encaminhar ao médico antes de dispensar; orientar sinais de alarme (sangramento gengival, fezes escurecidas, hematomas) e reforçar não associar AINEs por conta própria.'},
-  {a:'varfarina', b:'aine', gravidade:'grave',
-    mecanismo:'AINEs (incluindo dipirona por ação antiplaquetária leve) inibem a agregação plaquetária e podem lesar a mucosa gastrintestinal, potencializando o risco hemorrágico da varfarina.',
-    conduta:'Evitar uso concomitante. Preferir paracetamol para analgesia/antitermia quando possível.',
-    balcao:'Não dispensar AINE sem orientação médica para paciente em uso de varfarina; sugerir paracetamol e registrar a orientação.'},
-  {a:'ieca', b:'espironolactona', gravidade:'grave',
-    mecanismo:'Ambos reduzem a excreção de potássio (IECA por menor estímulo à aldosterona; espironolactona por antagonismo direto) — risco de hiperpotassemia, especialmente em disfunção renal.',
-    conduta:'Monitorar potássio sérico e função renal periodicamente, sobretudo no início do tratamento e em ajustes de dose.',
-    balcao:'Perguntar sobre exames recentes de potássio/função renal; orientar retorno médico se houver fraqueza muscular, palpitações ou parestesias.'},
-  {a:'ieca', b:'aine', gravidade:'moderada',
-    mecanismo:'AINEs inibem a síntese de prostaglandinas renais, reduzindo o efeito anti-hipertensivo do IECA e aumentando o risco de lesão renal aguda (mais crítico se associado também a diurético).',
-    conduta:'Monitorar pressão arterial e função renal; evitar uso prolongado ou em altas doses de AINE, principalmente em idosos ou nefropatas.',
-    balcao:'Priorizar paracetamol para dor/febre; se AINE for indispensável, orientar uso pelo menor tempo possível e hidratação adequada.'},
-  {a:'bra', b:'aine', gravidade:'moderada',
-    mecanismo:'Mesmo mecanismo dos IECA: AINEs (incluindo dipirona) antagonizam o efeito anti-hipertensivo dos bloqueadores do receptor de angiotensina II ao inibir prostaglandinas renais, com risco de retenção hidrossalina e disfunção renal.',
-    conduta:'Monitorar pressão arterial e função renal (creatinina, ureia, eletrólitos), especialmente em uso prolongado ou em pacientes de risco.',
-    balcao:'Alertar o paciente hipertenso sobre uso frequente de analgésicos/anti-inflamatórios de balcão; sugerir paracetamol como alternativa e monitorar a pressão arterial se disponível.'},
-  {a:'hidroclorotiazida', b:'aine', gravidade:'moderada',
-    mecanismo:'AINEs reduzem a síntese de prostaglandinas renais, atenuando o efeito diurético e anti-hipertensivo do tiazídico, com possível repercussão na função renal.',
-    conduta:'Monitorar pressão arterial e função renal; evitar uso crônico do AINE sem acompanhamento.',
-    balcao:'Reforçar que analgésicos de venda livre usados com frequência podem reduzir o efeito do diurético; sugerir reavaliação médica se a dor for recorrente.'},
-  {a:'estatina', b:'macrolideo', gravidade:'grave',
-    mecanismo:'Claritromicina/eritromicina inibem o CYP3A4, principal via de metabolização de sinvastatina/atorvastatina, elevando seus níveis plasmáticos e o risco de miopatia/rabdomiólise.',
-    conduta:'Suspender temporariamente a estatina durante o curso do macrolídeo (quando esse for de curta duração) ou optar por macrolídeo com menor interação (ex.: azitromicina tem risco menor, mas ainda requer atenção).',
-    balcao:'Perguntar ativamente sobre uso de estatina antes de dispensar claritromicina/eritromicina; orientar sinais de miopatia (dor muscular, fraqueza, urina escura) e encaminhar dúvida ao prescritor.'},
-  {a:'ibp_potente', b:'clopidogrel', gravidade:'moderada',
-    mecanismo:'Omeprazol/esomeprazol inibem o CYP2C19, reduzindo a bioativação do clopidogrel (pró-fármaco) e, consequentemente, seu efeito antiagregante plaquetário.',
-    conduta:'Quando a proteção gástrica for necessária, preferir pantoprazol (menor interação) em vez de omeprazol/esomeprazol.',
-    balcao:'Ao identificar a combinação, sugerir avaliação médica para troca do inibidor de bomba de prótons; não interromper o clopidogrel por conta própria.'},
-  {a:'isrs', b:'tramadol', gravidade:'grave',
-    mecanismo:'Ação serotoninérgica somada (ISRS + tramadol, que também inibe a recaptação de serotonina) aumenta o risco de síndrome serotoninérgica.',
-    conduta:'Evitar associação quando possível; se necessária, monitorar sinais precoces (agitação, tremor, sudorese, taquicardia, hipertermia).',
-    balcao:'Orientar o paciente sobre sinais de alerta e buscar atendimento imediato se surgirem; registrar a combinação para acompanhamento farmacoterapêutico.'},
-  {a:'levotiroxina', b:'calcio', gravidade:'moderada',
-    mecanismo:'Interação físico-química: cálcio forma complexos insolúveis com a levotiroxina no trato gastrintestinal, reduzindo sua absorção.',
-    conduta:'Não é necessário suspender nenhum dos dois — basta espaçar a administração.',
-    balcao:'Orientar tomar a levotiroxina em jejum, pela manhã, e aguardar pelo menos 4 horas antes do cálcio (ou de laticínios/antiácidos). Diferencial de orientação farmacêutica de horário, não de suspensão.'},
-  {a:'levotiroxina', b:'ferro', gravidade:'moderada',
-    mecanismo:'O ferro também forma complexos com a levotiroxina no trato gastrintestinal, reduzindo sua absorção — mesmo mecanismo do cálcio.',
-    conduta:'Manter ambos os tratamentos, ajustando apenas o horário de administração.',
-    balcao:'Orientar espaçar em pelo menos 4 horas a levotiroxina do sulfato ferroso; reforçar a importância da regularidade para não comprometer o controle da tireoide.'},
-  {a:'quinolona', b:'calcio', gravidade:'moderada',
-    mecanismo:'Cátions polivalentes (cálcio, além de ferro, magnésio, antiácidos) quelam as quinolonas no trato gastrintestinal, reduzindo significativamente sua absorção e eficácia antimicrobiana.',
-    conduta:'Espaçar a administração: quinolona 2h antes ou 4-6h depois do cátion.',
-    balcao:'Perguntar sobre uso de suplementos de cálcio/ferro ou antiácidos ao dispensar quinolona; orientar o intervalo de horário por escrito.'},
-  {a:'quinolona', b:'ferro', gravidade:'moderada',
-    mecanismo:'Mesmo mecanismo de quelação por cátion polivalente, reduzindo a absorção e a eficácia da quinolona.',
-    conduta:'Espaçar a administração: quinolona 2h antes ou 4-6h depois do sulfato ferroso.',
-    balcao:'Orientar por escrito o intervalo entre os dois medicamentos, já que é um erro comum de horário no uso domiciliar.'},
-  {a:'digoxina', b:'amiodarona', gravidade:'grave',
-    mecanismo:'Amiodarona inibe a glicoproteína-P intestinal e renal, reduzindo o clearance da digoxina e elevando seus níveis séricos — risco de toxicidade digitálica (náusea, arritmias, distúrbios visuais).',
-    conduta:'Em geral recomenda-se reduzir a dose de digoxina em cerca de 30-50% ao iniciar amiodarona, com monitorização de nível sérico quando disponível.',
-    balcao:'Reforçar adesão exata à dose prescrita e orientar sinais de toxicidade digitálica; encaminhar ao médico se houver início recente de amiodarona.'},
-  {a:'varfarina', b:'antibiotico_amplo', gravidade:'moderada',
-    mecanismo:'Antibióticos de amplo espectro reduzem a flora intestinal produtora de vitamina K, potencializando o efeito anticoagulante da varfarina.',
-    conduta:'Monitorar INR com maior frequência durante e após o curso do antibiótico.',
-    balcao:'Alertar o paciente anticoagulado sobre sinais de sangramento durante o uso do antibiótico e reforçar retorno para controle de INR.'},
-  {a:'isrs', b:'metoclopramida', gravidade:'moderada',
-    mecanismo:'Ambos aumentam a atividade serotoninérgica/dopaminérgica central — risco somado de sintomas extrapiramidais e, mais raramente, de síndrome serotoninérgica leve.',
-    conduta:'Uso pontual de metoclopramida geralmente é aceitável; evitar uso prolongado concomitante sem acompanhamento.',
-    balcao:'Evitar recomendar metoclopramida de forma prolongada para quem já usa antidepressivo ISRS; orientar uso pelo menor tempo possível.'},
-  {a:'metronidazol', b:'alcool', gravidade:'moderada',
-    mecanismo:'Metronidazol inibe a aldeído desidrogenase, levando ao acúmulo de acetaldeído e reação tipo dissulfiram (rubor, náusea, taquicardia, cefaleia) com o consumo de álcool.',
-    conduta:'Orientar abstinência de álcool durante o tratamento e por pelo menos 24-48h após o término.',
-    balcao:'Reforçar essa orientação de forma explícita na dispensação — é uma das interações mais frequentemente esquecidas pelo paciente.'},
-  {a:'contraceptivo', b:'indutor_enzimatico', gravidade:'moderada',
-    mecanismo:'Rifampicina, carbamazepina e outros indutores enzimáticos aumentam o metabolismo hepático (CYP3A4) do etinilestradiol, reduzindo a eficácia contraceptiva.',
-    conduta:'Recomendar método contraceptivo de barreira adicional durante o uso do indutor e por algumas semanas após o término (ou método não hormonal).',
-    balcao:'Alertar ativamente a paciente sobre risco de falha contraceptiva ao dispensar qualquer um desses indutores — orientação frequentemente omitida em receituário.'},
-  {a:'sildenafila', b:'nitrato', gravidade:'contraindicada',
-    mecanismo:'Ambos potencializam a via do óxido nítrico/GMPc, causando vasodilatação sistêmica somada — risco de hipotensão grave e colapso cardiovascular.',
-    conduta:'Contraindicado o uso concomitante em qualquer intervalo próximo (nitratos costumam exigir pelo menos 24-48h de intervalo, a depender do inibidor da PDE5).',
-    balcao:'Nunca dispensar/orientar uso concomitante; perguntar ativamente sobre uso de nitrato antes de recomendar ou dispensar inibidores da PDE5, mesmo por demanda espontânea.'},
-  {a:'aas', b:'aine', gravidade:'moderada',
-    mecanismo:'Uso regular de ibuprofeno (e outros AINEs não seletivos) pode bloquear competitivamente a ligação irreversível do AAS à COX-1 plaquetária, reduzindo seu efeito cardioprotetor.',
-    conduta:'Quando ambos forem necessários, orientar tomar o AAS pelo menos 30-60 minutos antes do AINE (ou 8h depois), conforme orientação médica.',
-    balcao:'Perguntar sobre uso de AAS em baixa dose (cardioproteção) antes de recomendar AINE de venda livre; orientar o espaçamento se a associação for indicada pelo médico.'},
-  {a:'bb_nao_seletivo', b:'antidiabetico', gravidade:'moderada',
-    mecanismo:'Betabloqueadores não seletivos (ex.: propranolol) mascaram sintomas adrenérgicos de hipoglicemia (tremor, taquicardia), dificultando o reconhecimento precoce pelo paciente.',
-    conduta:'Preferir betabloqueador cardiosseletivo quando possível; reforçar automonitorização glicêmica.',
-    balcao:'Orientar o paciente diabético a ficar atento a sintomas menos óbvios de hipoglicemia (sudorese, confusão) e reforçar a importância do controle glicêmico domiciliar.'},
-  {a:'metformina', b:'alcool', gravidade:'moderada',
-    mecanismo:'O consumo de álcool, especialmente em excesso ou associado a jejum prolongado, aumenta o risco de acidose láctica em pacientes em uso de metformina.',
-    conduta:'Orientar moderação/evitar consumo excessivo de álcool, principalmente combinado a jejum.',
-    balcao:'Reforçar orientação sobre consumo consciente de álcool na dispensação de metformina, sobretudo em pacientes com função renal/hepática limítrofe.'}
-];
+function norm(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim().replace(/\s+/g,' ');
+}
+
+function indexarBase(){
+  MED_BY_ALIAS = {};
+  MEDICAMENTOS.forEach(function(m){
+    const nomes = [m.id.replace(/_/g,' '), m.nome].concat(m.aliases || []);
+    nomes.forEach(function(n){
+      const k = norm(n);
+      if(k) MED_BY_ALIAS[k] = m;
+    });
+  });
+  INTERACOES_MAP = {};
+  INTERACOES.forEach(function(it){
+    const k = [it.medicamentoA, it.medicamentoB].sort().join('|');
+    INTERACOES_MAP[k] = it;
+  });
+}
+
+const BASE_LOAD_PROMISE = Promise.all([
+  fetch('medicamentos.json').then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); }),
+  fetch('interacoes.json').then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+]).then(function(resultados){
+  MEDICAMENTOS = resultados[0];
+  INTERACOES = resultados[1];
+  indexarBase();
+  BASE_READY = true;
+  construirVocabulario();
+  atualizarDbLabel();
+}).catch(function(err){
+  console.warn('Falha ao carregar a base de medicamentos/interações:', err);
+  BASE_READY = false;
+  atualizarDbLabel();
+});
+
+/* encontrarMedicamento: resolve um nome digitado para o cadastro (ou null
+   se não reconhecido). chavesDoMedicamento: chaves de busca para cruzar
+   com interacoes.json — o próprio id do medicamento e todas as suas
+   classes terapêuticas (permite tanto um par específico por substância
+   quanto um par genérico por classe, ex.: "aine"). Nomes não reconhecidos
+   caem no fallback (norm do texto digitado), mantendo o comportamento
+   anterior para o caso raro de digitação de algo fora do cadastro. */
+function encontrarMedicamento(nomeDigitado){
+  return MED_BY_ALIAS[norm(nomeDigitado)] || null;
+}
+function chavesDoMedicamento(nomeDigitado){
+  const med = encontrarMedicamento(nomeDigitado);
+  if(med) return [med.id].concat(med.classeTerapeutica || []);
+  return [norm(nomeDigitado)];
+}
 
 const SEVERIDADE_ORDEM = ['contraindicada','grave','moderada','leve','nao_classificada'];
 const SEVERIDADE_LABEL = {contraindicada:'Contraindicadas', grave:'Graves', moderada:'Moderadas', leve:'Leves', nao_classificada:'Não Classificadas'};
@@ -574,61 +521,30 @@ const SEVERIDADE_ICON = {
   nao_classificada:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>'
 };
 
-/* =====================================================================
-   Camada ampla — DDInter 2.0 (open-access, CC BY-NC-SA 4.0). Cobre
-   milhares de pares adicionais, mas só com gravidade (sem mecanismo/
-   conduta em português) — por isso é sempre uma camada "abaixo" da
-   base curada acima: só é consultada quando o par não está na base
-   curada. Carregado de forma assíncrona; se falhar, a ferramenta
-   continua funcionando normalmente só com a base curada.
-===================================================================== */
-const DDI_LEVEL_NOME = ['leve','moderada','grave','nao_classificada']; // índice = código do arquivo gerado
-let DDI = null;          // {meta, drugs, aliases, pairs}
-let DDI_PAIR_MAP = null; // Map "idxA_idxB" (idxA<idxB) -> nivel (0-3)
-let DDI_READY = false;
-const DDI_LOAD_PROMISE = fetch('interacoes-ddinter.json')
-  .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
-  .then(function(data){
-    DDI = data;
-    DDI_PAIR_MAP = new Map();
-    data.pairs.forEach(function(p){
-      DDI_PAIR_MAP.set(p[0]+'_'+p[1], p[2]);
-    });
-    DDI_READY = true;
-    construirVocabulario();
-    atualizarDbLabel();
-  })
-  .catch(function(err){
-    console.warn('Camada ampliada (DDInter) indisponível:', err);
-    DDI_READY = false;
-    atualizarDbLabel();
+/* Tipo de interação — classificação farmacológica além da gravidade,
+   pensada para uso didático/estudo (não só "o que fazer", mas "por que
+   acontece" e "que tipo de efeito esperar"). */
+const TIPO_LABEL = {farmacocinetica:'Farmacocinética', farmacodinamica:'Farmacodinâmica'};
+const SUBTIPO_LABEL = {absorcao:'Absorção', metabolismo:'Metabolismo', excrecao:'Excreção'};
+const EFEITO_LABEL = {
+  efeito_aditivo:'Efeito aditivo', antagonismo:'Antagonismo', prolongamento_qt:'Prolongamento de QT',
+  sangramento:'Sangramento', sedacao:'Sedação', hipotensao:'Hipotensão', hipercalemia:'Hipercalemia',
+  sindrome_serotoninergica:'Síndrome serotoninérgica'
+};
+function tipoBadgesHtml(info){
+  const pills = [];
+  if(info.tipo) pills.push('<span class="tipo-pill tipo-principal">'+escapeHtml(TIPO_LABEL[info.tipo] || info.tipo)+'</span>');
+  if(info.subtipo) pills.push('<span class="tipo-pill">'+escapeHtml(SUBTIPO_LABEL[info.subtipo] || info.subtipo)+'</span>');
+  (info.efeitoClinico || []).forEach(function(e){
+    pills.push('<span class="tipo-pill">'+escapeHtml(EFEITO_LABEL[e] || e)+'</span>');
   });
-
-function ddiIndiceDroga(nomeDigitado){
-  if(!DDI) return null;
-  const n = norm(nomeDigitado);
-  return (n in DDI.aliases) ? DDI.aliases[n] : null;
-}
-
-const INTERACOES_MAP = {};
-INTERACOES.forEach(function(it){
-  const k = [it.a, it.b].sort().join('|');
-  INTERACOES_MAP[k] = it;
-});
-
-function norm(s){
-  return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim().replace(/\s+/g,' ');
-}
-function chave(nomeDigitado){
-  const n = norm(nomeDigitado);
-  return ALIASES[n] || n;
+  return pills.length ? '<div class="tipo-badges">'+pills.join('')+'</div>' : '';
 }
 
 /* ===================== Autocomplete de medicamentos =====================
    Sugestões enquanto o usuário digita (ex.: "ibu" -> "Ibuprofeno"). O
-   vocabulário combina os nomes/sinônimos da base curada (ALIASES, sempre
-   disponível) com os aliases da camada ampliada DDInter (só entram depois
-   que o JSON carrega — a lista é reconstruída nesse momento). */
+   vocabulário é construído a partir de medicamentos.json (nome + aliases
+   de cada cadastro) assim que a base carrega. */
 let VOCAB = [];
 let sugestaoAtiva = -1;
 let fecharSugestoesTimeout = null;
@@ -640,38 +556,22 @@ function capitalizarTermo(s){
 function construirVocabulario(){
   const vistos = new Set();
   const lista = [];
-  Object.keys(ALIASES).forEach(function(k){
-    if(vistos.has(k)) return;
-    vistos.add(k);
-    lista.push({norm:k, display:capitalizarTermo(k)});
+  MEDICAMENTOS.forEach(function(m){
+    const kNome = norm(m.nome);
+    if(!vistos.has(kNome)){
+      vistos.add(kNome);
+      lista.push({norm:kNome, display:m.nome});
+    }
+    (m.aliases || []).forEach(function(a){
+      const k = norm(a);
+      if(vistos.has(k)) return;
+      vistos.add(k);
+      lista.push({norm:k, display:capitalizarTermo(a)});
+    });
   });
-  if(DDI && DDI.aliases && DDI.drugs){
-    // Agrupa os aliases do DDInter por medicamento (índice) para poder
-    // esconder a forma em inglês das sugestões quando já existe uma
-    // variante em português para o mesmo medicamento (evita sugerir
-    // "Ibuprofen" e "Ibuprofeno" ao mesmo tempo). A busca em si (chave/
-    // ddiIndiceDroga) continua usando DDI.aliases completo, sem filtro.
-    const porIndice = {};
-    Object.keys(DDI.aliases).forEach(function(k){
-      const idx = DDI.aliases[k];
-      (porIndice[idx] = porIndice[idx] || []).push(k);
-    });
-    Object.keys(porIndice).forEach(function(idxStr){
-      const chaves = porIndice[idxStr];
-      const engNorm = norm(DDI.drugs[Number(idxStr)]);
-      const temVariantePt = chaves.some(function(k){ return k !== engNorm; });
-      chaves.forEach(function(k){
-        if(temVariantePt && k === engNorm) return;
-        if(vistos.has(k)) return;
-        vistos.add(k);
-        lista.push({norm:k, display:capitalizarTermo(k)});
-      });
-    });
-  }
   lista.sort(function(a,b){ return a.display.localeCompare(b.display,'pt-BR'); });
   VOCAB = lista;
 }
-construirVocabulario();
 
 function mostrarSugestoes(linhaId, inputEl){
   if(fecharSugestoesTimeout){ clearTimeout(fecharSugestoesTimeout); fecharSugestoesTimeout = null; }
@@ -849,46 +749,39 @@ function coletarEntradas(){
 }
 
 function analisarPares(nomes){
-  const vistosCurada = new Set(); // dedup só para não repetir o mesmo card de classe (ex.: dois AINEs diferentes + a mesma ARB)
-  const vistosDDI = new Set();    // dedup por par de substâncias exatas (índice DDInter)
+  const vistos = new Set(); // dedup só para não repetir o mesmo card de classe (ex.: dois AINEs diferentes + a mesma ARB)
   const pares = [];
+  const naoReconhecidos = new Set();
+  nomes.forEach(function(n){
+    if(!encontrarMedicamento(n)) naoReconhecidos.add(n);
+  });
   for(let i=0;i<nomes.length;i++){
     for(let j=i+1;j<nomes.length;j++){
-      // 1) Base curada (por classe/princípio ativo, com mecanismo/conduta em PT)
-      const k1 = chave(nomes[i]), k2 = chave(nomes[j]);
-      let resolvidoPelaCurada = false;
-      if(k1 !== k2){
-        const key = [k1,k2].sort().join('|');
-        const dado = INTERACOES_MAP[key];
-        if(dado){
-          resolvidoPelaCurada = true;
-          if(!vistosCurada.has(key)){
-            vistosCurada.add(key);
-            pares.push({ tipo:'curada', nomeA: nomes[i], nomeB: nomes[j], info: dado });
-          }
+      // Quando as duas entradas caem na MESMA classe canônica (ex.: dois
+      // benzodiazepínicos diferentes) a chave vira "classe|classe" e é
+      // buscada normalmente: só gera card se houver uma entrada própria de
+      // "duplicidade terapêutica" cadastrada para aquela classe (ex.:
+      // benzodiazepinico); classes sem entrada própria (ex.: duas BRAs
+      // diferentes) continuam sem card, como antes. Duas entradas que são
+      // literalmente a mesma substância digitada duas vezes são ignoradas.
+      const mesmaSubstancia = norm(nomes[i]) === norm(nomes[j]);
+      if(mesmaSubstancia) continue;
+      const chavesA = chavesDoMedicamento(nomes[i]);
+      const chavesB = chavesDoMedicamento(nomes[j]);
+      let dado = null, key = null;
+      for(let x=0;x<chavesA.length && !dado;x++){
+        for(let y=0;y<chavesB.length && !dado;y++){
+          const k = [chavesA[x], chavesB[y]].sort().join('|');
+          if(INTERACOES_MAP[k]){ dado = INTERACOES_MAP[k]; key = k; }
         }
       }
-      if(resolvidoPelaCurada) continue; // não busca também na camada ampla p/ este par
-
-      // 2) Camada ampla DDInter (só gravidade, sem mecanismo/conduta em PT) —
-      //    dedup por substância exata (índice DDInter), não por classe.
-      if(DDI_READY && DDI_PAIR_MAP){
-        const idxA = ddiIndiceDroga(nomes[i]);
-        const idxB = ddiIndiceDroga(nomes[j]);
-        if(idxA != null && idxB != null && idxA !== idxB){
-          const pkey = idxA < idxB ? idxA+'_'+idxB : idxB+'_'+idxA;
-          if(!vistosDDI.has(pkey)){
-            vistosDDI.add(pkey);
-            if(DDI_PAIR_MAP.has(pkey)){
-              const nivel = DDI_PAIR_MAP.get(pkey);
-              pares.push({ tipo:'ddinter', nomeA: nomes[i], nomeB: nomes[j], gravidade: DDI_LEVEL_NOME[nivel] });
-            }
-          }
-        }
+      if(dado && !vistos.has(key)){
+        vistos.add(key);
+        pares.push({ nomeA: nomes[i], nomeB: nomes[j], info: dado });
       }
     }
   }
-  return pares;
+  return { pares: pares, naoReconhecidos: Array.from(naoReconhecidos) };
 }
 
 function verResultado(){
@@ -898,19 +791,19 @@ function verResultado(){
   const rodar = function(){
     btn.classList.remove('carregando');
     btn.textContent = 'Ver resultado';
-    const pares = analisarPares(entradas);
-    renderResultado(entradas, pares);
-    salvarHistorico(entradas, pares);
+    const resultado = analisarPares(entradas);
+    renderResultado(entradas, resultado.pares, resultado.naoReconhecidos);
+    salvarHistorico(entradas, resultado.pares);
     document.getElementById('defaultView').classList.add('hide');
     document.getElementById('resultadoView').classList.add('show');
     window.scrollTo({top:0, behavior:'smooth'});
   };
-  // Aguarda a camada ampla (DDInter) resolver — sucesso ou falha — antes de
-  // analisar; se ela já tiver carregado antes (caso comum), a promise
-  // resolvida retorna praticamente na hora.
+  // Aguarda a base carregar — sucesso ou falha — antes de analisar; se ela
+  // já tiver carregado antes (caso comum), a promise resolvida retorna
+  // praticamente na hora.
   btn.classList.add('carregando');
   btn.textContent = 'Analisando…';
-  DDI_LOAD_PROMISE.finally(rodar);
+  BASE_LOAD_PROMISE.finally(rodar);
 }
 
 function novaAnalise(){
@@ -918,7 +811,7 @@ function novaAnalise(){
   document.getElementById('defaultView').classList.remove('hide');
 }
 
-function renderResultado(entradas, pares){
+function renderResultado(entradas, pares, naoReconhecidos){
   // Chips de entrada, agrupados por linha (para refletir combinações)
   const chipsWrap = document.getElementById('resultadoChips');
   chipsWrap.innerHTML = '';
@@ -933,19 +826,26 @@ function renderResultado(entradas, pares){
   const corpo = document.getElementById('resultadoCorpo');
   const notificarBox = document.getElementById('notificarBox');
 
+  // Nota sobre medicamentos digitados que não constam no cadastro — evita
+  // que a ausência de card seja lida como "confirmado, sem interação"
+  // quando na verdade o medicamento nem foi reconhecido pela base.
+  const notaNaoReconhecidos = (naoReconhecidos && naoReconhecidos.length)
+    ? '<div class="naoreconhecido-nota">⚠ '+(naoReconhecidos.length === 1 ? 'O medicamento a seguir não consta' : 'Os medicamentos a seguir não constam')+' no cadastro atual: <strong>'+escapeHtml(naoReconhecidos.join(', '))+'</strong>. A ausência de interação exibida abaixo não cobre esse(s) item(ns) — confirme em uma base especializada de referência.</div>'
+    : '';
+
   if(pares.length === 0){
     corpo.innerHTML = '<div class="sem-interacao">'+
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>'+
       '<div class="t">Nenhuma interação conhecida encontrada</div>'+
       '<div class="d">Na base atual não foram identificadas interações relevantes entre os medicamentos informados. Isso não descarta a existência de interação — confirme em uma base especializada de referência caso haja dúvida clínica.</div>'+
-    '</div>';
+    '</div>'+notaNaoReconhecidos;
     notificarBox.style.display = 'none';
     return;
   }
 
   const grupos = {};
   pares.forEach(function(p){
-    const s = gravidadeDoPar(p);
+    const s = p.info.gravidade;
     (grupos[s] = grupos[s] || []).push(p);
   });
 
@@ -960,48 +860,30 @@ function renderResultado(entradas, pares){
       'Interações '+SEVERIDADE_LABEL[sev]+'<span class="n">'+lista.length+' interação(ões) encontrada(s)</span></div>';
     lista.forEach(function(p, idx){
       const cardId = 'card_'+sev+'_'+idx;
-      if(p.tipo === 'curada'){
-        html += '<div class="interacao-card">'+
-          '<div class="interacao-head">'+
-            '<div><div class="interacao-par-label">Interação</div><div class="interacao-par">'+escapeHtml(p.nomeA)+' + '+escapeHtml(p.nomeB)+'</div></div>'+
-            '<span class="interacao-badge badge-'+sev+'">'+BADGE_LABEL[sev]+'</span>'+
-          '</div>'+
-          '<div class="bloco-label">Mecanismo farmacológico</div>'+
-          '<div class="bloco-texto">'+escapeHtml(p.info.mecanismo)+'</div>'+
-          '<div class="bloco-label">Conduta clínica recomendada</div>'+
-          '<div class="bloco-conduta bloco-texto">'+escapeHtml(p.info.conduta)+'</div>'+
-          '<div class="bloco-label">Ação sugerida no balcão <span style="opacity:.7;font-weight:500;text-transform:none;">(diferencial farmacêutico)</span></div>'+
-          '<div class="bloco-balcao bloco-texto">'+escapeHtml(p.info.balcao)+'</div>'+
-          '<div class="card-actions">'+
-            '<button class="btn-copiar" id="'+cardId+'" onclick="copiarIntervencao(this,\''+escapeAttr(p.nomeA)+'\',\''+escapeAttr(p.nomeB)+'\',\''+sev+'\',\''+escapeAttr(p.info.conduta)+'\',\''+escapeAttr(p.info.balcao)+'\')">'+
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
-              'Registrar intervenção farmacêutica</button>'+
-          '</div>'+
-        '</div>';
-      } else {
-        // Camada ampla (DDInter): só gravidade, sem mecanismo/conduta em PT.
-        const notaSev = sev === 'nao_classificada'
-          ? 'Interação identificada na base ampliada (DDInter), com gravidade não classificada pela fonte.'
-          : 'Interação identificada na base ampliada (DDInter) — gravidade indicada, mas sem mecanismo/conduta detalhados em português nesta base.';
-        html += '<div class="interacao-card reduzida">'+
-          '<div class="interacao-head">'+
-            '<div><div class="interacao-par-label">Interação</div><div class="interacao-par">'+escapeHtml(p.nomeA)+' + '+escapeHtml(p.nomeB)+'</div></div>'+
-            '<span class="interacao-badge badge-'+sev+'">'+BADGE_LABEL[sev]+'</span>'+
-          '</div>'+
-          '<div class="ddinter-nota">'+notaSev+' Consulte uma fonte especializada (bula, Micromedex, UpToDate) para mecanismo e conduta antes de orientar o paciente.</div>'+
-          '<div class="card-actions">'+
-            '<button class="btn-copiar" id="'+cardId+'" onclick="copiarIntervencaoSimples(this,\''+escapeAttr(p.nomeA)+'\',\''+escapeAttr(p.nomeB)+'\',\''+sev+'\')">'+
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
-              'Registrar intervenção farmacêutica</button>'+
-            '<span class="ddinter-tag">Fonte: DDInter</span>'+
-          '</div>'+
-        '</div>';
-      }
+      html += '<div class="interacao-card">'+
+        '<div class="interacao-head">'+
+          '<div><div class="interacao-par-label">Interação</div><div class="interacao-par">'+escapeHtml(p.nomeA)+' + '+escapeHtml(p.nomeB)+'</div></div>'+
+          '<span class="interacao-badge badge-'+sev+'">'+BADGE_LABEL[sev]+'</span>'+
+        '</div>'+
+        tipoBadgesHtml(p.info)+
+        '<div class="bloco-label">Mecanismo farmacológico</div>'+
+        '<div class="bloco-texto">'+escapeHtml(p.info.mecanismo)+'</div>'+
+        '<div class="bloco-label">Conduta clínica recomendada</div>'+
+        '<div class="bloco-conduta bloco-texto">'+escapeHtml(p.info.conduta)+'</div>'+
+        '<div class="bloco-label">Ação sugerida no balcão <span style="opacity:.7;font-weight:500;text-transform:none;">(diferencial farmacêutico)</span></div>'+
+        '<div class="bloco-balcao bloco-texto">'+escapeHtml(p.info.acaoBalcao)+'</div>'+
+        '<div class="card-actions">'+
+          '<button class="btn-copiar" id="'+cardId+'" onclick="copiarIntervencao(this,\''+escapeAttr(p.nomeA)+'\',\''+escapeAttr(p.nomeB)+'\',\''+sev+'\',\''+escapeAttr(p.info.conduta)+'\',\''+escapeAttr(p.info.acaoBalcao)+'\')">'+
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
+            'Registrar intervenção farmacêutica</button>'+
+          (p.info.fonte ? '<span class="fonte-tag">Fonte: '+escapeHtml(p.info.fonte)+'</span>' : '')+
+        '</div>'+
+      '</div>';
     });
     html += '</div>';
   });
 
-  corpo.innerHTML = html;
+  corpo.innerHTML = html + notaNaoReconhecidos;
   notificarBox.style.display = temGrave ? 'flex' : 'none';
 }
 
@@ -1017,18 +899,6 @@ function copiarIntervencao(btn, a, b, sev, conduta, balcao){
     'Gravidade da interação: '+capitalize(sev)+'\\n'+
     'Conduta clínica: '+conduta+'\\n'+
     'Ação farmacêutica no atendimento: '+balcao+'\\n'+
-    'Farmacêutico(a) responsável: ____________________  CRF: ________';
-  copiarTexto(texto, btn);
-}
-
-function copiarIntervencaoSimples(btn, a, b, sev){
-  const hoje = new Date().toLocaleDateString('pt-BR');
-  const texto = 'REGISTRO DE INTERVENÇÃO FARMACÊUTICA\\n'+
-    'Data: '+hoje+'\\n'+
-    'Medicamentos envolvidos: '+a+' + '+b+'\\n'+
-    'Gravidade da interação: '+BADGE_LABEL[sev]+' (fonte: DDInter — sem mecanismo/conduta detalhados nesta base)\\n'+
-    'Conduta clínica: a definir com base em fonte especializada (bula, Micromedex, UpToDate)\\n'+
-    'Ação farmacêutica no atendimento: ____________________\\n'+
     'Farmacêutico(a) responsável: ____________________  CRF: ________';
   copiarTexto(texto, btn);
 }
@@ -1061,7 +931,7 @@ function carregarHistorico(){
   try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; }
 }
 function gravidadeDoPar(p){
-  return p.tipo === 'curada' ? p.info.gravidade : p.gravidade;
+  return p.info.gravidade;
 }
 function salvarHistorico(entradas, pares){
   const hist = carregarHistorico();
@@ -1137,12 +1007,12 @@ function toggleTheme(){
 function atualizarDbLabel(){
   const el = document.getElementById('dbLabel');
   const dot = document.querySelector('.db-dot');
-  if(DDI_READY && DDI){
-    el.textContent = INTERACOES.length + ' interações detalhadas + ' + DDI.meta.pares.toLocaleString('pt-BR') + ' pares (DDInter)';
+  if(BASE_READY){
+    el.textContent = MEDICAMENTOS.length + ' medicamentos · ' + INTERACOES.length + ' interações mapeadas · base própria';
     if(dot){ dot.style.background = '#10b981'; dot.style.boxShadow = '0 0 0 3px rgba(16,185,129,.2)'; }
   } else {
-    el.textContent = INTERACOES.length + ' interações mapeadas · base inicial';
-    if(dot){ dot.style.background = '#f59e0b'; dot.style.boxShadow = '0 0 0 3px rgba(245,158,11,.2)'; }
+    el.textContent = 'Base indisponível — recarregue a página';
+    if(dot){ dot.style.background = '#dc2626'; dot.style.boxShadow = '0 0 0 3px rgba(220,38,38,.2)'; }
   }
 }
 

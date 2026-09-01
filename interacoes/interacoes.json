@@ -1,0 +1,599 @@
+[
+  {
+    "id": "INT001",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "aas",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Efeito antiplaquetário do AAS somado ao efeito anticoagulante da varfarina, com deslocamento parcial da ligação proteica — aumento expressivo do risco de sangramento (inclusive gastrintestinal).",
+    "conduta": "Evitar associação, exceto sob indicação médica expressa (ex.: síndrome coronariana). Se mantida, monitorar INR com maior frequência e sinais de sangramento.",
+    "acaoBalcao": "Encaminhar ao médico antes de dispensar; orientar sinais de alarme (sangramento gengival, fezes escurecidas, hematomas) e reforçar não associar AINEs por conta própria.",
+    "fonte": "Stockley's Drug Interactions; Micromedex"
+  },
+  {
+    "id": "INT002",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "aine",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "AINEs (incluindo dipirona por ação antiplaquetária leve) inibem a agregação plaquetária e podem lesar a mucosa gastrintestinal, potencializando o risco hemorrágico da varfarina.",
+    "conduta": "Evitar uso concomitante. Preferir paracetamol para analgesia/antitermia quando possível.",
+    "acaoBalcao": "Não dispensar AINE sem orientação médica para paciente em uso de varfarina; sugerir paracetamol e registrar a orientação.",
+    "fonte": "Stockley's Drug Interactions; Micromedex"
+  },
+  {
+    "id": "INT003",
+    "medicamentoA": "ieca",
+    "medicamentoB": "espironolactona",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "Ambos reduzem a excreção de potássio (IECA por menor estímulo à aldosterona; espironolactona por antagonismo direto) — risco de hiperpotassemia, especialmente em disfunção renal.",
+    "conduta": "Monitorar potássio sérico e função renal periodicamente, sobretudo no início do tratamento e em ajustes de dose.",
+    "acaoBalcao": "Perguntar sobre exames recentes de potássio/função renal; orientar retorno médico se houver fraqueza muscular, palpitações ou parestesias.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT004",
+    "medicamentoA": "ieca",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "AINEs inibem a síntese de prostaglandinas renais, reduzindo o efeito anti-hipertensivo do IECA e aumentando o risco de lesão renal aguda (mais crítico se associado também a diurético).",
+    "conduta": "Monitorar pressão arterial e função renal; evitar uso prolongado ou em altas doses de AINE, principalmente em idosos ou nefropatas.",
+    "acaoBalcao": "Priorizar paracetamol para dor/febre; se AINE for indispensável, orientar uso pelo menor tempo possível e hidratação adequada.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT005",
+    "medicamentoA": "bra",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Mesmo mecanismo dos IECA: AINEs (incluindo dipirona) antagonizam o efeito anti-hipertensivo dos bloqueadores do receptor de angiotensina II ao inibir prostaglandinas renais, com risco de retenção hidrossalina e disfunção renal.",
+    "conduta": "Monitorar pressão arterial e função renal (creatinina, ureia, eletrólitos), especialmente em uso prolongado ou em pacientes de risco.",
+    "acaoBalcao": "Alertar o paciente hipertenso sobre uso frequente de analgésicos/anti-inflamatórios de balcão; sugerir paracetamol como alternativa e monitorar a pressão arterial se disponível.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT006",
+    "medicamentoA": "hidroclorotiazida",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "AINEs reduzem a síntese de prostaglandinas renais, atenuando o efeito diurético e anti-hipertensivo do tiazídico, com possível repercussão na função renal.",
+    "conduta": "Monitorar pressão arterial e função renal; evitar uso crônico do AINE sem acompanhamento.",
+    "acaoBalcao": "Reforçar que analgésicos de venda livre usados com frequência podem reduzir o efeito do diurético; sugerir reavaliação médica se a dor for recorrente.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT007",
+    "medicamentoA": "estatina",
+    "medicamentoB": "macrolideo",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina/eritromicina inibem o CYP3A4, principal via de metabolização de sinvastatina/atorvastatina, elevando seus níveis plasmáticos e o risco de miopatia/rabdomiólise.",
+    "conduta": "Suspender temporariamente a estatina durante o curso do macrolídeo (quando esse for de curta duração) ou optar por macrolídeo com menor interação (ex.: azitromicina tem risco menor, mas ainda requer atenção).",
+    "acaoBalcao": "Perguntar ativamente sobre uso de estatina antes de dispensar claritromicina/eritromicina; orientar sinais de miopatia (dor muscular, fraqueza, urina escura) e encaminhar dúvida ao prescritor.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT008",
+    "medicamentoA": "ibp_potente",
+    "medicamentoB": "clopidogrel",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Omeprazol/esomeprazol inibem o CYP2C19, reduzindo a bioativação do clopidogrel (pró-fármaco) e, consequentemente, seu efeito antiagregante plaquetário.",
+    "conduta": "Quando a proteção gástrica for necessária, preferir pantoprazol (menor interação) em vez de omeprazol/esomeprazol.",
+    "acaoBalcao": "Ao identificar a combinação, sugerir avaliação médica para troca do inibidor de bomba de prótons; não interromper o clopidogrel por conta própria.",
+    "fonte": "Micromedex; bula do medicamento"
+  },
+  {
+    "id": "INT009",
+    "medicamentoA": "isrs",
+    "medicamentoB": "tramadol",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Ação serotoninérgica somada (ISRS + tramadol, que também inibe a recaptação de serotonina) aumenta o risco de síndrome serotoninérgica.",
+    "conduta": "Evitar associação quando possível; se necessária, monitorar sinais precoces (agitação, tremor, sudorese, taquicardia, hipertermia).",
+    "acaoBalcao": "Orientar o paciente sobre sinais de alerta e buscar atendimento imediato se surgirem; registrar a combinação para acompanhamento farmacoterapêutico.",
+    "fonte": "Stockley's Drug Interactions; Micromedex"
+  },
+  {
+    "id": "INT010",
+    "medicamentoA": "levotiroxina",
+    "medicamentoB": "calcio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Interação físico-química: cálcio forma complexos insolúveis com a levotiroxina no trato gastrintestinal, reduzindo sua absorção.",
+    "conduta": "Não é necessário suspender nenhum dos dois — basta espaçar a administração.",
+    "acaoBalcao": "Orientar tomar a levotiroxina em jejum, pela manhã, e aguardar pelo menos 4 horas antes do cálcio (ou de laticínios/antiácidos). Diferencial de orientação farmacêutica de horário, não de suspensão.",
+    "fonte": "Bula do medicamento; UpToDate"
+  },
+  {
+    "id": "INT011",
+    "medicamentoA": "levotiroxina",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O ferro também forma complexos com a levotiroxina no trato gastrintestinal, reduzindo sua absorção — mesmo mecanismo do cálcio.",
+    "conduta": "Manter ambos os tratamentos, ajustando apenas o horário de administração.",
+    "acaoBalcao": "Orientar espaçar em pelo menos 4 horas a levotiroxina do sulfato ferroso; reforçar a importância da regularidade para não comprometer o controle da tireoide.",
+    "fonte": "Bula do medicamento; UpToDate"
+  },
+  {
+    "id": "INT012",
+    "medicamentoA": "quinolona",
+    "medicamentoB": "calcio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Cátions polivalentes (cálcio, além de ferro, magnésio, antiácidos) quelam as quinolonas no trato gastrintestinal, reduzindo significativamente sua absorção e eficácia antimicrobiana.",
+    "conduta": "Espaçar a administração: quinolona 2h antes ou 4-6h depois do cátion.",
+    "acaoBalcao": "Perguntar sobre uso de suplementos de cálcio/ferro ou antiácidos ao dispensar quinolona; orientar o intervalo de horário por escrito.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT013",
+    "medicamentoA": "quinolona",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Mesmo mecanismo de quelação por cátion polivalente, reduzindo a absorção e a eficácia da quinolona.",
+    "conduta": "Espaçar a administração: quinolona 2h antes ou 4-6h depois do sulfato ferroso.",
+    "acaoBalcao": "Orientar por escrito o intervalo entre os dois medicamentos, já que é um erro comum de horário no uso domiciliar.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT014",
+    "medicamentoA": "digoxina",
+    "medicamentoB": "amiodarona",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Amiodarona inibe a glicoproteína-P intestinal e renal, reduzindo o clearance da digoxina e elevando seus níveis séricos — risco de toxicidade digitálica (náusea, arritmias, distúrbios visuais).",
+    "conduta": "Em geral recomenda-se reduzir a dose de digoxina em cerca de 30-50% ao iniciar amiodarona, com monitorização de nível sérico quando disponível.",
+    "acaoBalcao": "Reforçar adesão exata à dose prescrita e orientar sinais de toxicidade digitálica; encaminhar ao médico se houver início recente de amiodarona.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT015",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "antibiotico_amplo",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Antibióticos de amplo espectro reduzem a flora intestinal produtora de vitamina K, potencializando o efeito anticoagulante da varfarina.",
+    "conduta": "Monitorar INR com maior frequência durante e após o curso do antibiótico.",
+    "acaoBalcao": "Alertar o paciente anticoagulado sobre sinais de sangramento durante o uso do antibiótico e reforçar retorno para controle de INR.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT016",
+    "medicamentoA": "isrs",
+    "medicamentoB": "metoclopramida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Ambos aumentam a atividade serotoninérgica/dopaminérgica central — risco somado de sintomas extrapiramidais e, mais raramente, de síndrome serotoninérgica leve.",
+    "conduta": "Uso pontual de metoclopramida geralmente é aceitável; evitar uso prolongado concomitante sem acompanhamento.",
+    "acaoBalcao": "Evitar recomendar metoclopramida de forma prolongada para quem já usa antidepressivo ISRS; orientar uso pelo menor tempo possível.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT017",
+    "medicamentoA": "metronidazol",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [],
+    "mecanismo": "Metronidazol inibe a aldeído desidrogenase, levando ao acúmulo de acetaldeído e reação tipo dissulfiram (rubor, náusea, taquicardia, cefaleia) com o consumo de álcool.",
+    "conduta": "Orientar abstinência de álcool durante o tratamento e por pelo menos 24-48h após o término.",
+    "acaoBalcao": "Reforçar essa orientação de forma explícita na dispensação — é uma das interações mais frequentemente esquecidas pelo paciente.",
+    "fonte": "Bula do medicamento; Micromedex"
+  },
+  {
+    "id": "INT018",
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Rifampicina, carbamazepina e outros indutores enzimáticos aumentam o metabolismo hepático (CYP3A4) do etinilestradiol, reduzindo a eficácia contraceptiva.",
+    "conduta": "Recomendar método contraceptivo de barreira adicional durante o uso do indutor e por algumas semanas após o término (ou método não hormonal).",
+    "acaoBalcao": "Alertar ativamente a paciente sobre risco de falha contraceptiva ao dispensar qualquer um desses indutores — orientação frequentemente omitida em receituário.",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT019",
+    "medicamentoA": "sildenafila",
+    "medicamentoB": "nitrato",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Ambos potencializam a via do óxido nítrico/GMPc, causando vasodilatação sistêmica somada — risco de hipotensão grave e colapso cardiovascular.",
+    "conduta": "Contraindicado o uso concomitante em qualquer intervalo próximo (nitratos costumam exigir pelo menos 24-48h de intervalo, a depender do inibidor da PDE5).",
+    "acaoBalcao": "Nunca dispensar/orientar uso concomitante; perguntar ativamente sobre uso de nitrato antes de recomendar ou dispensar inibidores da PDE5, mesmo por demanda espontânea.",
+    "fonte": "Bula do medicamento; Micromedex"
+  },
+  {
+    "id": "INT020",
+    "medicamentoA": "aas",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Uso regular de ibuprofeno (e outros AINEs não seletivos) pode bloquear competitivamente a ligação irreversível do AAS à COX-1 plaquetária, reduzindo seu efeito cardioprotetor.",
+    "conduta": "Quando ambos forem necessários, orientar tomar o AAS pelo menos 30-60 minutos antes do AINE (ou 8h depois), conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de AAS em baixa dose (cardioproteção) antes de recomendar AINE de venda livre; orientar o espaçamento se a associação for indicada pelo médico.",
+    "fonte": "UpToDate"
+  },
+  {
+    "id": "INT021",
+    "medicamentoA": "betabloqueador",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [],
+    "mecanismo": "Betabloqueadores (efeito mais pronunciado nos não seletivos, ex.: propranolol) mascaram sintomas adrenérgicos de hipoglicemia (tremor, taquicardia), dificultando o reconhecimento precoce pelo paciente.",
+    "conduta": "Preferir betabloqueador cardiosseletivo (ex.: atenolol, metoprolol, bisoprolol) quando possível; reforçar automonitorização glicêmica.",
+    "acaoBalcao": "Orientar o paciente diabético a ficar atento a sintomas menos óbvios de hipoglicemia (sudorese, confusão) e reforçar a importância do controle glicêmico domiciliar.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT022",
+    "medicamentoA": "betabloqueador",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Associação de betabloqueador com bloqueador de canal de cálcio não di-hidropiridínico (verapamil/diltiazem) produz depressão aditiva da condução atrioventricular e da contratilidade miocárdica — risco de bradicardia importante, bloqueio AV e piora/precipitação de insuficiência cardíaca.",
+    "conduta": "Evitar associação rotineira, especialmente por via oral crônica; quando necessária, iniciar com doses baixas e monitorar FC, PA e sinais de ICC, com acompanhamento médico próximo.",
+    "acaoBalcao": "Perguntar sobre histórico de bradicardia/bloqueio cardíaco antes de recomendar produtos que possam interferir na frequência cardíaca; orientar procurar atendimento se houver tontura, síncope ou FC muito baixa, e encaminhar ao prescritor para reavaliação da associação.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT023",
+    "medicamentoA": "digoxina",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diuréticos tiazídicos podem causar hipopotassemia e hipomagnesemia, que aumentam a sensibilidade do miocárdio à digoxina e o risco de toxicidade digitálica (arritmias), mesmo com níveis séricos de digoxina dentro da faixa terapêutica.",
+    "conduta": "Monitorar potássio (e magnésio, se possível) periodicamente; considerar diurético poupador de potássio associado quando indicado pelo médico.",
+    "acaoBalcao": "Perguntar sobre sintomas de hipopotassemia/toxicidade digitálica (náusea, alterações visuais, palpitações, fraqueza muscular) e reforçar a importância dos exames de controle periódicos.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT024",
+    "medicamentoA": "corticoide_sistemico",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Corticoides sistêmicos com atividade mineralocorticoide (ex.: prednisona) somam-se ao efeito caliurético dos diuréticos tiazídicos, aumentando o risco de hipopotassemia; também podem promover retenção hidrossalina, antagonizando parcialmente o efeito anti-hipertensivo/diurético.",
+    "conduta": "Monitorar potássio sérico e pressão arterial, especialmente em uso prolongado de corticoide; ajustar conforme orientação médica.",
+    "acaoBalcao": "Reforçar sinais de hipopotassemia (cãibras, fraqueza, palpitações) e perguntar sobre uso de corticoide sistêmico ao dispensar diurético, e vice-versa.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT025",
+    "medicamentoA": "hidroclorotiazida",
+    "medicamentoB": "metformina",
+    "gravidade": "leve",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Diuréticos tiazídicos podem induzir hiperglicemia (redução da secreção/sensibilidade à insulina), antagonizando parcialmente o efeito hipoglicemiante da metformina — geralmente um efeito discreto e dose-dependente.",
+    "conduta": "Monitorar glicemia, especialmente no início do tratamento ou em ajustes de dose do diurético; geralmente não contraindica a associação.",
+    "acaoBalcao": "Orientar sobre monitorização glicêmica regular quando ambos forem usados; reforçar hábitos de vida (dieta/atividade física) que ajudam a mitigar o efeito hiperglicemiante do diurético.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT026",
+    "medicamentoA": "metformina",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O consumo de álcool, especialmente em excesso ou associado a jejum prolongado, aumenta o risco de acidose láctica em pacientes em uso de metformina.",
+    "conduta": "Orientar moderação/evitar consumo excessivo de álcool, principalmente combinado a jejum.",
+    "acaoBalcao": "Reforçar orientação sobre consumo consciente de álcool na dispensação de metformina, sobretudo em pacientes com função renal/hepática limítrofe.",
+    "fonte": "Bula do medicamento"
+  },
+  {
+    "id": "INT027",
+    "medicamentoA": "benzodiazepinico",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Associação de dois benzodiazepínicos diferentes — mesma classe/mecanismo gabaérgico — configura duplicidade terapêutica com depressão aditiva do SNC: sedação excessiva, ataxia, prejuízo cognitivo/psicomotor e risco de depressão respiratória, mais relevante em idosos ou associado a outros depressores do SNC (opioides, álcool, anti-histamínicos sedativos).",
+    "conduta": "Evitar uso concomitante crônico de dois benzodiazepínicos, exceto em estratégia terapêutica específica orientada (ex.: substituição/desmame conduzido pelo prescritor). Reavaliar indicação junto ao médico quando identificado.",
+    "acaoBalcao": "Perguntar sobre uso de outros depressores do SNC (álcool, opioides, anti-histamínicos sedativos) antes de dispensar; orientar sobre sonolência excessiva e risco de quedas, especialmente em idosos, e reforçar não dirigir/operar máquinas.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT028",
+    "medicamentoA": "opioide",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Opioides (tramadol, codeína) e benzodiazepínicos deprimem o SNC por vias distintas que se somam — risco aumentado de sedação profunda, depressão respiratória e óbito. Alerta de caixa preta (FDA) para essa combinação.",
+    "conduta": "Evitar associação sempre que possível; quando indispensável, usar as menores doses eficazes pelo menor tempo, com monitorização.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de benzodiazepínico antes de dispensar opioide (e vice-versa); orientar sinais de sedação excessiva/dificuldade respiratória e nunca associar a álcool.",
+    "fonte": "FDA Drug Safety Communication; Micromedex"
+  },
+  {
+    "id": "INT029",
+    "medicamentoA": "opioide",
+    "medicamentoB": "alcool",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "O álcool potencializa a depressão do SNC causada pelos opioides, aumentando o risco de sedação profunda e depressão respiratória — mesmo mecanismo de risco da associação com benzodiazepínicos.",
+    "conduta": "Orientar abstinência de álcool durante o tratamento com opioide.",
+    "acaoBalcao": "Reforçar essa orientação explicitamente na dispensação de opioides, especialmente em uso não hospitalar/domiciliar.",
+    "fonte": "FDA Drug Safety Communication; bula do medicamento"
+  },
+  {
+    "id": "INT030",
+    "medicamentoA": "estatina",
+    "medicamentoB": "fibrato",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Estatinas e fibratos têm toxicidade muscular aditiva; a genfibrozila especificamente também inibe a glicuronidação de várias estatinas (via UGT), elevando ainda mais seus níveis plasmáticos — risco de miopatia/rabdomiólise maior do que com fenofibrato.",
+    "conduta": "Quando a associação for necessária (dislipidemia mista), preferir fenofibrato à genfibrozila; usar a menor dose eficaz de estatina e monitorar CK e sintomas musculares.",
+    "acaoBalcao": "Perguntar sobre dor/fraqueza muscular e urina escura ao dispensar a combinação; reforçar retorno médico se houver esses sintomas.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT031",
+    "medicamentoA": "corticoide_sistemico",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Corticoides sistêmicos e AINEs lesam a mucosa gastrintestinal por mecanismos complementares (corticoide reduz a renovação da mucosa; AINE inibe prostaglandinas protetoras) — risco aditivo de úlcera péptica e sangramento digestivo.",
+    "conduta": "Evitar uso concomitante prolongado; quando necessário, considerar proteção gástrica (ex.: IBP) conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de corticoide sistêmico antes de recomendar AINE de venda livre; orientar sinais de alarme (dor epigástrica, fezes escurecidas) e sugerir paracetamol como alternativa quando possível.",
+    "fonte": "Stockley's Drug Interactions; UpToDate"
+  },
+  {
+    "id": "INT032",
+    "medicamentoA": "anti_hipertensivo",
+    "medicamentoB": "descongestionante_nasal",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo",
+      "hipotensao"
+    ],
+    "mecanismo": "Pseudoefedrina e fenilefrina são agonistas alfa-adrenérgicos que causam vasoconstrição e podem elevar a pressão arterial, antagonizando o efeito de qualquer classe anti-hipertensiva — combinação muito comum em produtos de venda livre para gripe/resfriado/sinusite.",
+    "conduta": "Evitar descongestionantes orais em hipertensos não controlados; preferir formulações tópicas nasais de uso curto ou opções sem descongestionante.",
+    "acaoBalcao": "Perguntar ativamente sobre hipertensão antes de recomendar qualquer produto de gripe/resfriado de balcão; verificar a composição de associações prontas (muitas contêm pseudoefedrina/fenilefrina de forma não óbvia no nome comercial).",
+    "fonte": "Micromedex; bula do medicamento"
+  },
+  {
+    "id": "INT033",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "fitoterapico_antiplaquetario",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Ginkgo biloba e alho (em doses de suplemento) têm atividade antiplaquetária própria, somando-se ao efeito anticoagulante da varfarina e aumentando o risco de sangramento.",
+    "conduta": "Orientar suspensão de suplementos antiplaquetários antes de procedimentos invasivos/cirúrgicos; monitorar INR e sinais de sangramento se o uso for mantido.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de fitoterápicos/suplementos (não só medicamentos prescritos) em pacientes anticoagulados — item frequentemente omitido pelo paciente por não considerar \"remédio\".",
+    "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT034",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos (rifampicina, carbamazepina, fenitoína, fenobarbital e também a erva-de-são-joão/Hypericum perforatum, um fitoterápico indutor de CYP450) aumentam o metabolismo hepático da varfarina, reduzindo seu efeito anticoagulante — risco oposto ao das interações de sangramento: perda de eficácia e risco trombótico.",
+    "conduta": "Monitorar INR com maior frequência ao iniciar ou suspender qualquer indutor enzimático; pode ser necessário ajustar a dose de varfarina.",
+    "acaoBalcao": "Perguntar sobre uso de erva-de-são-joão/fitoterápicos ao dispensar varfarina — é uma interação frequentemente esquecida por não ser um \"medicamento\" na percepção do paciente; orientar não iniciar/suspender por conta própria.",
+    "fonte": "Stockley's Drug Interactions; Micromedex"
+  },
+  {
+    "id": "INT035",
+    "medicamentoA": "ieca",
+    "medicamentoB": "suplemento_potassio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "IECA reduz a excreção renal de potássio (menor estímulo à aldosterona); somado à suplementação direta de potássio, o risco de hiperpotassemia aumenta — mesmo mecanismo já mapeado para IECA + espironolactona.",
+    "conduta": "Evitar suplementação de potássio não orientada em uso de IECA; monitorar potássio sérico se a associação for necessária.",
+    "acaoBalcao": "Perguntar sobre uso de IECA antes de recomendar suplemento de potássio de venda livre; orientar sintomas de hiperpotassemia (fraqueza muscular, palpitações).",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT036",
+    "medicamentoA": "bra",
+    "medicamentoB": "suplemento_potassio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "Mesmo mecanismo dos IECA: bloqueadores do receptor de angiotensina II reduzem a excreção renal de potássio, e a suplementação direta soma o risco de hiperpotassemia.",
+    "conduta": "Evitar suplementação de potássio não orientada em uso de BRA; monitorar potássio sérico se a associação for necessária.",
+    "acaoBalcao": "Perguntar sobre uso de BRA antes de recomendar suplemento de potássio de venda livre; orientar sintomas de hiperpotassemia.",
+    "fonte": "Micromedex"
+  },
+  {
+    "id": "INT037",
+    "medicamentoA": "litio",
+    "medicamentoB": "aine",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "AINEs reduzem a perfusão renal (inibição de prostaglandinas), diminuindo a depuração renal do lítio e elevando seus níveis séricos — risco de toxicidade por lítio (estreita janela terapêutica).",
+    "conduta": "Evitar AINE em uso contínuo de lítio; se indispensável, usar pelo menor tempo possível e monitorar litemia.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de lítio antes de recomendar qualquer AINE de venda livre; sugerir paracetamol como alternativa e orientar sinais de toxicidade por lítio (tremor, confusão, náusea, diarreia).",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT038",
+    "medicamentoA": "litio",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diuréticos tiazídicos aumentam a reabsorção proximal de sódio e, secundariamente, de lítio, reduzindo sua depuração renal e elevando os níveis séricos — uma das interações mais bem documentadas envolvendo lítio, com risco significativo de toxicidade.",
+    "conduta": "Evitar associação quando possível; se necessária, iniciar com dose reduzida de lítio e monitorar litemia com frequência maior após início/ajuste do diurético.",
+    "acaoBalcao": "Reforçar a importância da monitorização de litemia ao identificar a combinação; orientar sinais de toxicidade (tremor grosseiro, confusão, ataxia) e encaminhar ao prescritor.",
+    "fonte": "Micromedex; UpToDate"
+  },
+  {
+    "id": "INT039",
+    "medicamentoA": "isrs",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "ISRS reduzem a captação de serotonina pelas plaquetas, prejudicando sua função hemostática; somado ao efeito antiplaquetário/gástrico dos AINEs, o risco de sangramento (especialmente gastrintestinal) aumenta.",
+    "conduta": "Quando a associação for necessária, considerar proteção gástrica e usar o AINE pelo menor tempo possível.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo ISRS antes de recomendar AINE de venda livre; sugerir paracetamol como alternativa quando possível.",
+    "fonte": "Stockley's Drug Interactions"
+  }
+]
