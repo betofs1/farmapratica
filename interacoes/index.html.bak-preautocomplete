@@ -87,22 +87,11 @@
   .sidebar-title{font-size:15px;font-weight:800;color:var(--text);margin:0 0 4px;}
   .sidebar-sub{font-size:11.5px;color:var(--text-dim);margin:0 0 16px;line-height:1.4;}
   .med-row{
-    position:relative;background:var(--panel);border:1.5px solid var(--border);border-radius:var(--radius);
+    background:var(--panel);border:1.5px solid var(--border);border-radius:var(--radius);
     padding:8px 10px;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
     transition:border-color .15s;
   }
   .med-row:focus-within{border-color:var(--accent-bright);}
-  .autocomplete-list{
-    display:none;position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:30;
-    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-    box-shadow:0 10px 28px rgba(0,0,0,.2);max-height:230px;overflow-y:auto;padding:6px;
-  }
-  .autocomplete-list.show{display:block;}
-  .autocomplete-item{
-    display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;
-    padding:8px 10px;border-radius:8px;font-size:13px;color:var(--text);font-family:inherit;
-  }
-  .autocomplete-item:hover,.autocomplete-item.ativo{background:var(--accent-glow);color:var(--accent-bright);}
   .med-chip{
     display:inline-flex;align-items:center;gap:6px;background:var(--accent-glow);
     border:1px solid color-mix(in srgb, var(--accent-bright) 55%, transparent);
@@ -595,7 +584,6 @@ const DDI_LOAD_PROMISE = fetch('interacoes-ddinter.json')
       DDI_PAIR_MAP.set(p[0]+'_'+p[1], p[2]);
     });
     DDI_READY = true;
-    construirVocabulario();
     atualizarDbLabel();
   })
   .catch(function(err){
@@ -624,142 +612,6 @@ function chave(nomeDigitado){
   return ALIASES[n] || n;
 }
 
-/* ===================== Autocomplete de medicamentos =====================
-   Sugestões enquanto o usuário digita (ex.: "ibu" -> "Ibuprofeno"). O
-   vocabulário combina os nomes/sinônimos da base curada (ALIASES, sempre
-   disponível) com os aliases da camada ampliada DDInter (só entram depois
-   que o JSON carrega — a lista é reconstruída nesse momento). */
-let VOCAB = [];
-let sugestaoAtiva = -1;
-let fecharSugestoesTimeout = null;
-let sugestaoLinhaAtual = null; // qual linha tem o dropdown aberto no momento (só uma por vez)
-
-function capitalizarTermo(s){
-  return s.replace(/(^|\s)([a-zà-öø-ÿ])/g, function(m,p1,p2){ return p1+p2.toUpperCase(); });
-}
-function construirVocabulario(){
-  const vistos = new Set();
-  const lista = [];
-  Object.keys(ALIASES).forEach(function(k){
-    if(vistos.has(k)) return;
-    vistos.add(k);
-    lista.push({norm:k, display:capitalizarTermo(k)});
-  });
-  if(DDI && DDI.aliases && DDI.drugs){
-    // Agrupa os aliases do DDInter por medicamento (índice) para poder
-    // esconder a forma em inglês das sugestões quando já existe uma
-    // variante em português para o mesmo medicamento (evita sugerir
-    // "Ibuprofen" e "Ibuprofeno" ao mesmo tempo). A busca em si (chave/
-    // ddiIndiceDroga) continua usando DDI.aliases completo, sem filtro.
-    const porIndice = {};
-    Object.keys(DDI.aliases).forEach(function(k){
-      const idx = DDI.aliases[k];
-      (porIndice[idx] = porIndice[idx] || []).push(k);
-    });
-    Object.keys(porIndice).forEach(function(idxStr){
-      const chaves = porIndice[idxStr];
-      const engNorm = norm(DDI.drugs[Number(idxStr)]);
-      const temVariantePt = chaves.some(function(k){ return k !== engNorm; });
-      chaves.forEach(function(k){
-        if(temVariantePt && k === engNorm) return;
-        if(vistos.has(k)) return;
-        vistos.add(k);
-        lista.push({norm:k, display:capitalizarTermo(k)});
-      });
-    });
-  }
-  lista.sort(function(a,b){ return a.display.localeCompare(b.display,'pt-BR'); });
-  VOCAB = lista;
-}
-construirVocabulario();
-
-function mostrarSugestoes(linhaId, inputEl){
-  if(fecharSugestoesTimeout){ clearTimeout(fecharSugestoesTimeout); fecharSugestoesTimeout = null; }
-  if(sugestaoLinhaAtual !== null && sugestaoLinhaAtual !== linhaId){
-    ocultarSugestoes(sugestaoLinhaAtual); // só um dropdown aberto por vez (evita sobreposição entre linhas)
-  }
-  const box = document.getElementById('autoList'+linhaId);
-  if(!box) return;
-  const termo = norm(inputEl.value);
-  sugestaoAtiva = -1;
-  if(termo.length < 2){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; sugestaoLinhaAtual=null; return; }
-  const comeca = [];
-  const contem = [];
-  for(let i=0;i<VOCAB.length && comeca.length < 8;i++){
-    const item = VOCAB[i];
-    if(item.norm === termo) continue;
-    const idx = item.norm.indexOf(termo);
-    if(idx === 0) comeca.push(item);
-    else if(idx > 0 && contem.length < 8) contem.push(item);
-  }
-  const resultado = comeca.concat(contem).slice(0,8);
-  if(resultado.length === 0){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; sugestaoLinhaAtual=null; return; }
-  box.innerHTML = resultado.map(function(item, i){
-    return '<button type="button" class="autocomplete-item" data-idx="'+i+'">'+escapeHtml(item.display)+'</button>';
-  }).join('');
-  box._itens = resultado;
-  box.onmousedown = function(ev){
-    ev.preventDefault();
-    const btn = ev.target.closest('.autocomplete-item');
-    if(!btn) return;
-    const item = box._itens[parseInt(btn.getAttribute('data-idx'),10)];
-    if(item) selecionarSugestao(linhaId, item.display);
-  };
-  box.classList.add('show');
-  sugestaoLinhaAtual = linhaId;
-}
-function ocultarSugestoes(linhaId){
-  const box = document.getElementById('autoList'+linhaId);
-  if(box){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; }
-  sugestaoAtiva = -1;
-  if(sugestaoLinhaAtual === linhaId) sugestaoLinhaAtual = null;
-}
-function agendarFecharSugestoes(linhaId){
-  fecharSugestoesTimeout = setTimeout(function(){ ocultarSugestoes(linhaId); }, 150);
-}
-function selecionarSugestao(linhaId, valor){
-  const linha = linhas.find(function(l){ return l.id === linhaId; });
-  if(linha){ linha.chips.push(valor); }
-  ocultarSugestoes(linhaId);
-  renderLinhas();
-  const inp = document.querySelector('.med-row input[data-linha="'+linhaId+'"]');
-  if(inp) inp.focus();
-}
-function destacarSugestao(box){
-  if(!box) return;
-  const els = box.querySelectorAll('.autocomplete-item');
-  els.forEach(function(el, i){ el.classList.toggle('ativo', i===sugestaoAtiva); });
-}
-function tratarTeclaInput(event, linhaId, inputEl){
-  const box = document.getElementById('autoList'+linhaId);
-  const itens = (box && box.classList.contains('show')) ? (box._itens||[]) : [];
-  if(event.key === 'ArrowDown' && itens.length){
-    event.preventDefault();
-    sugestaoAtiva = Math.min(sugestaoAtiva+1, itens.length-1);
-    destacarSugestao(box);
-    return;
-  }
-  if(event.key === 'ArrowUp' && itens.length){
-    event.preventDefault();
-    sugestaoAtiva = Math.max(sugestaoAtiva-1, -1);
-    destacarSugestao(box);
-    return;
-  }
-  if(event.key === 'Escape'){
-    ocultarSugestoes(linhaId);
-    return;
-  }
-  if(event.key === 'Enter'){
-    event.preventDefault();
-    if(itens.length && sugestaoAtiva >= 0){
-      selecionarSugestao(linhaId, itens[sugestaoAtiva].display);
-    } else {
-      confirmarChip(linhaId, inputEl);
-      ocultarSugestoes(linhaId);
-    }
-  }
-}
-
 /* ===================== Estado / linhas de medicamento ===================== */
 let linhas = [ {id:1, chips:[]}, {id:2, chips:[]} ];
 let seqId = 3;
@@ -781,15 +633,11 @@ function renderLinhas(){
     });
     row.innerHTML = chipsHtml +
       '<div class="med-row-input">'+
-        '<input type="text" placeholder="Adicione um medicamento" data-linha="'+linha.id+'" autocomplete="off" '+
-          'oninput="mostrarSugestoes('+linha.id+',this)" '+
-          'onfocus="mostrarSugestoes('+linha.id+',this)" '+
-          'onblur="agendarFecharSugestoes('+linha.id+')" '+
-          'onkeydown="tratarTeclaInput(event,'+linha.id+',this)">'+
+        '<input type="text" placeholder="Adicione um medicamento" data-linha="'+linha.id+'" '+
+          'onkeydown="if(event.key===\'Enter\'){event.preventDefault();confirmarChip('+linha.id+',this);}">'+
         '<button type="button" class="btn-add-chip" title="Adicionar" onclick="confirmarChip('+linha.id+', this.previousElementSibling)">'+
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>'+
-      '</div>'+
-      '<div class="autocomplete-list" id="autoList'+linha.id+'"></div>';
+      '</div>';
     if(linhas.length > 2){
       const btnDel = document.createElement('button');
       btnDel.type = 'button';
