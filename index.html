@@ -244,6 +244,9 @@
   .sidebar-item.tool-shortcut:hover{background:var(--sidebar-hover);}
   .sidebar-item.tool-shortcut:hover svg{opacity:1;}
   .sidebar-item.tool-shortcut:hover span{color:var(--text-white);}
+  .sidebar-item.tool-shortcut.disabled:hover{background:transparent;}
+  .sidebar-item.tool-shortcut.disabled:hover svg{opacity:.85;}
+  .sidebar-item.tool-shortcut.disabled:hover span{color:var(--text-gray);}
   .sidebar-bottom{
     padding:12px 12px 16px;
     display:flex;flex-direction:column;gap:8px;
@@ -2019,6 +2022,30 @@
     <a href="checklist/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-amber);" onclick="closeMobileMenu()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       <span>Checklist de Rotina</span>
+    </a>
+    <a href="interacoes/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-teal);" onclick="closeMobileMenu()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span>Interações Med.</span>
+    </a>
+    <a href="#" class="sidebar-item tool-shortcut disabled" style="--ts-color:var(--c-purple);" onclick="return false;" title="Em breve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
+      <span>Exames Laboratoriais</span>
+    </a>
+    <a href="#" class="sidebar-item tool-shortcut disabled" style="--ts-color:var(--c-indigo);" onclick="return false;" title="Em breve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>
+      <span>Consultório Farm.</span>
+    </a>
+    <a href="#" class="sidebar-item tool-shortcut disabled" style="--ts-color:var(--c-orange);" onclick="return false;" title="Em breve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+      <span>Bulário Farmacêutico</span>
+    </a>
+    <a href="#" class="sidebar-item tool-shortcut disabled" style="--ts-color:var(--c-lime);" onclick="return false;" title="Em breve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <span>Desafio Clínico</span>
+    </a>
+    <a href="#" class="sidebar-item tool-shortcut disabled" style="--ts-color:var(--c-sky);" onclick="return false;" title="Em breve">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/></svg>
+      <span>Dicionário Farmacêutico</span>
     </a>
 
   </div>
