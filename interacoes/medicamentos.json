@@ -40,7 +40,8 @@
       "aine"
     ],
     "aliases": [
-      "alivium"
+      "alivium",
+      "advil"
     ]
   },
   {
@@ -49,7 +50,13 @@
     "classeTerapeutica": [
       "aine"
     ],
-    "aliases": []
+    "aliases": [
+      "cataflam",
+      "voltaren",
+      "diclofenaco sodico",
+      "diclofenaco potassico",
+      "diclofenaco resinato"
+    ]
   },
   {
     "id": "naproxeno",
@@ -57,7 +64,9 @@
     "classeTerapeutica": [
       "aine"
     ],
-    "aliases": []
+    "aliases": [
+      "flanax"
+    ]
   },
   {
     "id": "cetoprofeno",
@@ -65,7 +74,9 @@
     "classeTerapeutica": [
       "aine"
     ],
-    "aliases": []
+    "aliases": [
+      "profenid"
+    ]
   },
   {
     "id": "nimesulida",
@@ -73,7 +84,10 @@
     "classeTerapeutica": [
       "aine"
     ],
-    "aliases": []
+    "aliases": [
+      "nisulid",
+      "scaflam"
+    ]
   },
   {
     "id": "enalapril",
@@ -840,6 +854,163 @@
     ],
     "aliases": [
       "carbonato de litio"
+    ]
+  },
+  {
+    "id": "piroxicam",
+    "nome": "Piroxicam",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "feldene"
+    ]
+  },
+  {
+    "id": "meloxicam",
+    "nome": "Meloxicam",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "movatec"
+    ]
+  },
+  {
+    "id": "tenoxicam",
+    "nome": "Tenoxicam",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "tilatil"
+    ]
+  },
+  {
+    "id": "indometacina",
+    "nome": "Indometacina",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "cetorolaco",
+    "nome": "Cetorolaco",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "cetorolaco de trometamina",
+      "toradol"
+    ]
+  },
+  {
+    "id": "acido_mefenamico",
+    "nome": "Ácido Mefenâmico",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "ponstan"
+    ]
+  },
+  {
+    "id": "nabumetona",
+    "nome": "Nabumetona",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "dexcetoprofeno",
+    "nome": "Dexcetoprofeno",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "dexcetoprofeno trometamol",
+      "enantyum"
+    ]
+  },
+  {
+    "id": "aceclofenaco",
+    "nome": "Aceclofenaco",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "proflam"
+    ]
+  },
+  {
+    "id": "sulindaco",
+    "nome": "Sulindaco",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "flurbiprofeno",
+    "nome": "Flurbiprofeno",
+    "classeTerapeutica": [
+      "aine"
+    ],
+    "aliases": [
+      "benflogin"
+    ]
+  },
+  {
+    "id": "celecoxibe",
+    "nome": "Celecoxibe",
+    "classeTerapeutica": [
+      "aine_coxibe"
+    ],
+    "aliases": [
+      "celebra"
+    ]
+  },
+  {
+    "id": "etoricoxibe",
+    "nome": "Etoricoxibe",
+    "classeTerapeutica": [
+      "aine_coxibe"
+    ],
+    "aliases": [
+      "arcoxia"
+    ]
+  },
+  {
+    "id": "parecoxibe",
+    "nome": "Parecoxibe",
+    "classeTerapeutica": [
+      "aine_coxibe"
+    ],
+    "aliases": [
+      "bextra iv"
+    ]
+  },
+  {
+    "id": "metotrexato",
+    "nome": "Metotrexato",
+    "classeTerapeutica": [
+      "metotrexato"
+    ],
+    "aliases": [
+      "metotrexato"
+    ]
+  },
+  {
+    "id": "furosemida",
+    "nome": "Furosemida",
+    "classeTerapeutica": [
+      "diuretico_alca",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "lasix"
     ]
   }
 ]

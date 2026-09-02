@@ -49,6 +49,10 @@
     --c-green:#22c55e; --c-green-dark:#16a34a; --c-green-glow:rgba(34,197,94,0.18);
     --c-magenta:#e0479e; --c-magenta-dark:#b13380; --c-magenta-glow:rgba(224,71,158,0.18);
     --c-teal:#14b8a6; --c-teal-dark:#0e8074; --c-teal-glow:rgba(20,184,166,0.18);
+    --c-indigo:#6366f1; --c-indigo-dark:#4338ca; --c-indigo-glow:rgba(99,102,241,0.18);
+    --c-orange:#fb923c; --c-orange-dark:#ea6a12; --c-orange-glow:rgba(251,146,60,0.18);
+    --c-lime:#84cc16; --c-lime-dark:#65a30d; --c-lime-glow:rgba(132,204,22,0.18);
+    --c-sky:#0ea5e9; --c-sky-dark:#0284c7; --c-sky-glow:rgba(14,165,233,0.18);
     --sidebar-width:256px;
     --sidebar-width-collapsed:64px;
     --shadow-card:0 14px 32px -10px rgba(0,0,0,.4), 0 4px 10px -4px rgba(0,0,0,.3);
@@ -1751,9 +1755,9 @@
   }
   .tools-hub-grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(6, 1fr);
     gap:16px;
-    max-width:46%;
+    max-width:69%;
     margin:0 auto;
   }
   @media (max-width:1100px){
@@ -2239,6 +2243,58 @@
           </div>
           <h3>Exames Laboratoriais</h3>
           <p>Valores de referência e interpretação para apoio na prática.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        </a>
+
+        <!-- 9. Consultório Farmacêutico (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-indigo);" id="tool-consultorio" onclick="return false;">
+          <div class="tools-hub-card-body">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>
+          </div>
+          <h3>Consultório Farmacêutico</h3>
+          <p>Serviços clínicos e cuidados de saúde no consultório.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        </a>
+
+        <!-- 10. Bulário Farmacêutico (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-orange);" id="tool-bulario" onclick="return false;">
+          <div class="tools-hub-card-body">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <h3>Bulário Farmacêutico</h3>
+          <p>Consulta rápida a informações essenciais sobre medicamentos.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        </a>
+
+        <!-- 11. Desafio Clínico (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-lime);" id="tool-desafio" onclick="return false;">
+          <div class="tools-hub-card-body">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3>Desafio Clínico</h3>
+          <p>Pratique identificação de condições e tomada de decisão.</p>
+          <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        </a>
+
+        <!-- 12. Dicionário Farmacêutico (em breve — sem página própria ainda) -->
+        <a href="#" class="tools-hub-card placeholder" style="--hub-color:var(--c-sky);" id="tool-dicionario" onclick="return false;">
+          <div class="tools-hub-card-body">
+          <span class="tools-hub-soon-badge">Em breve</span>
+          <div class="tools-hub-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/></svg>
+          </div>
+          <h3>Dicionário Farmacêutico</h3>
+          <p>Termos e definições essenciais da farmacologia e prática.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
         </div>
         </a>
