@@ -179,7 +179,8 @@
     "nome": "Espironolactona",
     "classeTerapeutica": [
       "espironolactona",
-      "anti_hipertensivo"
+      "anti_hipertensivo",
+      "poupador_potassio"
     ],
     "aliases": [
       "aldactone"
@@ -441,7 +442,8 @@
     "id": "amiodarona",
     "nome": "Amiodarona",
     "classeTerapeutica": [
-      "amiodarona"
+      "amiodarona",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -621,7 +623,8 @@
     "nome": "Sotalol",
     "classeTerapeutica": [
       "betabloqueador",
-      "anti_hipertensivo"
+      "anti_hipertensivo",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -1011,6 +1014,362 @@
     ],
     "aliases": [
       "lasix"
+    ]
+  },
+  {
+    "id": "bumetanida",
+    "nome": "Bumetanida",
+    "classeTerapeutica": [
+      "diuretico_alca",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "burinax"
+    ]
+  },
+  {
+    "id": "indapamida",
+    "nome": "Indapamida",
+    "classeTerapeutica": [
+      "hidroclorotiazida",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "natrilix"
+    ]
+  },
+  {
+    "id": "amilorida",
+    "nome": "Amilorida",
+    "classeTerapeutica": [
+      "poupador_potassio",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "triantereno",
+    "nome": "Triantereno",
+    "classeTerapeutica": [
+      "poupador_potassio",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "triamtereno"
+    ]
+  },
+  {
+    "id": "labetalol",
+    "nome": "Labetalol",
+    "classeTerapeutica": [
+      "betabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "trandate"
+    ]
+  },
+  {
+    "id": "timolol",
+    "nome": "Timolol",
+    "classeTerapeutica": [
+      "betabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nadolol",
+    "nome": "Nadolol",
+    "classeTerapeutica": [
+      "betabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "corgard"
+    ]
+  },
+  {
+    "id": "fosinopril",
+    "nome": "Fosinopril",
+    "classeTerapeutica": [
+      "ieca",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nifedipina",
+    "nome": "Nifedipina",
+    "classeTerapeutica": [
+      "bcc",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "adalat"
+    ]
+  },
+  {
+    "id": "felodipina",
+    "nome": "Felodipina",
+    "classeTerapeutica": [
+      "bcc",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "splendil"
+    ]
+  },
+  {
+    "id": "lercanidipina",
+    "nome": "Lercanidipina",
+    "classeTerapeutica": [
+      "bcc",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "zanidip"
+    ]
+  },
+  {
+    "id": "prazosina",
+    "nome": "Prazosina",
+    "classeTerapeutica": [
+      "alfabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "minipress"
+    ]
+  },
+  {
+    "id": "doxazosina",
+    "nome": "Doxazosina",
+    "classeTerapeutica": [
+      "alfabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "carduran"
+    ]
+  },
+  {
+    "id": "terazosina",
+    "nome": "Terazosina",
+    "classeTerapeutica": [
+      "alfabloqueador",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "metildopa",
+    "nome": "Metildopa",
+    "classeTerapeutica": [
+      "simpaticolitico_central",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "aldomet"
+    ]
+  },
+  {
+    "id": "clonidina",
+    "nome": "Clonidina",
+    "classeTerapeutica": [
+      "simpaticolitico_central",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "atensina"
+    ]
+  },
+  {
+    "id": "guanabenzo",
+    "nome": "Guanabenzo",
+    "classeTerapeutica": [
+      "simpaticolitico_central",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "guanfacina",
+    "nome": "Guanfacina",
+    "classeTerapeutica": [
+      "simpaticolitico_central",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "intuniv"
+    ]
+  },
+  {
+    "id": "hidralazina",
+    "nome": "Hidralazina",
+    "classeTerapeutica": [
+      "vasodilatador_direto",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "apresolina"
+    ]
+  },
+  {
+    "id": "minoxidil",
+    "nome": "Minoxidil (via oral)",
+    "classeTerapeutica": [
+      "vasodilatador_direto",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "loniten"
+    ]
+  },
+  {
+    "id": "diazoxido",
+    "nome": "Diazóxido",
+    "classeTerapeutica": [
+      "vasodilatador_direto",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nitroprussiato_sodio",
+    "nome": "Nitroprussiato de Sódio",
+    "classeTerapeutica": [
+      "vasodilatador_direto",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "nipride",
+      "nitroprussiato"
+    ]
+  },
+  {
+    "id": "fenoldopam",
+    "nome": "Fenoldopam",
+    "classeTerapeutica": [
+      "vasodilatador_direto",
+      "anti_hipertensivo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "metildigoxina",
+    "nome": "Metildigoxina",
+    "classeTerapeutica": [
+      "digoxina"
+    ],
+    "aliases": [
+      "lanitop"
+    ]
+  },
+  {
+    "id": "digitoxina",
+    "nome": "Digitoxina",
+    "classeTerapeutica": [
+      "digoxina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "lanatosideo_c",
+    "nome": "Lanatosídeo C",
+    "classeTerapeutica": [
+      "digoxina"
+    ],
+    "aliases": [
+      "cedilanide"
+    ]
+  },
+  {
+    "id": "dobutamina",
+    "nome": "Dobutamina",
+    "classeTerapeutica": [
+      "inotropico_simpaticomimetico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "lidocaina_ev",
+    "nome": "Lidocaína (uso antiarrítmico EV)",
+    "classeTerapeutica": [
+      "antiarritmico_classe1b"
+    ],
+    "aliases": [
+      "xylocaina ev"
+    ]
+  },
+  {
+    "id": "procainamida",
+    "nome": "Procainamida",
+    "classeTerapeutica": [
+      "antiarritmico_ia",
+      "prolonga_qt"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "quinidina",
+    "nome": "Quinidina",
+    "classeTerapeutica": [
+      "antiarritmico_ia",
+      "prolonga_qt"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "ranolazina",
+    "nome": "Ranolazina",
+    "classeTerapeutica": [
+      "antianginoso_novo",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "ranexa"
+    ]
+  },
+  {
+    "id": "nicorandil",
+    "nome": "Nicorandil",
+    "classeTerapeutica": [
+      "antianginoso_canalpotassio",
+      "nitrato"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "trimetazidina",
+    "nome": "Trimetazidina",
+    "classeTerapeutica": [
+      "antianginoso_metabolico"
+    ],
+    "aliases": [
+      "vastarel"
+    ]
+  },
+  {
+    "id": "ivabradina",
+    "nome": "Ivabradina",
+    "classeTerapeutica": [
+      "antianginoso_if"
+    ],
+    "aliases": [
+      "procoralan"
+    ]
+  },
+  {
+    "id": "nitroglicerina",
+    "nome": "Nitroglicerina",
+    "classeTerapeutica": [
+      "nitrato"
+    ],
+    "aliases": [
+      "trinitrina",
+      "nitrolingual",
+      "tridil"
     ]
   }
 ]

@@ -275,7 +275,7 @@
   },
   {
     "id": "INT019",
-    "medicamentoA": "sildenafila",
+    "medicamentoA": "ipde5",
     "medicamentoB": "nitrato",
     "gravidade": "contraindicada",
     "tipo": "farmacodinamica",
@@ -762,5 +762,252 @@
     "conduta": "Mesmas precauções do AINE não seletivo, especialmente em insuficiência cardíaca.",
     "acaoBalcao": "Perguntar sobre uso de furosemida/insuficiência cardíaca antes de recomendar coxibe.",
     "fonte": "Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT051",
+    "medicamentoA": "ieca",
+    "medicamentoB": "poupador_potassio",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "Both IECA and diuréticos poupadores de potássio (espironolactona, amilorida, triantereno) reduzem a excreção renal de potássio por vias diferentes (redução de aldosterona vs. bloqueio direto do ENaC), com risco somado de hipercalemia grave, especialmente em idosos, diabéticos ou insuficiência renal.",
+    "conduta": "Monitorar potássio sérico e função renal, principalmente nas primeiras semanas de associação; evitar em insuficiência renal significativa.",
+    "acaoBalcao": "Encaminhar para avaliação médica se associação persistente sem monitorização recente de potássio/creatinina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT052",
+    "medicamentoA": "bra",
+    "medicamentoB": "poupador_potassio",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "BRA reduzem a secreção de aldosterona; associados a diuréticos poupadores de potássio, o efeito hipercalemiante se soma, com risco de arritmias por hipercalemia.",
+    "conduta": "Monitorar potássio sérico e função renal; evitar em insuficiência renal significativa.",
+    "acaoBalcao": "Encaminhar para avaliação médica se associação persistente sem monitorização recente de potássio/creatinina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT053",
+    "medicamentoA": "digoxina",
+    "medicamentoB": "poupador_potassio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diuréticos poupadores de potássio, especialmente a espironolactona, podem reduzir a depuração renal da digoxina e aumentar seus níveis séricos, além de interferir em alguns ensaios laboratoriais de dosagem.",
+    "conduta": "Monitorar sinais de toxicidade digitálica (náusea, distúrbios visuais, arritmias); considerar ajuste de dose da digoxina.",
+    "acaoBalcao": "Orientar o paciente a relatar náusea, alterações visuais ou palpitações ao médico.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT054",
+    "medicamentoA": "digoxina",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Verapamil e diltiazem inibem a glicoproteína-P, reduzindo a depuração da digoxina e aumentando seus níveis séricos; somam-se efeitos depressores sobre a condução do nó AV (bradicardia, bloqueio AV).",
+    "conduta": "Monitorar níveis séricos de digoxina e frequência cardíaca; pode ser necessário reduzir a dose de digoxina.",
+    "acaoBalcao": "Orientar o paciente a relatar tontura, bradicardia sintomática ou sinais de toxicidade digitálica.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT055",
+    "medicamentoA": "estatina",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Verapamil e diltiazem inibem o CYP3A4, reduzindo o metabolismo de estatinas sensíveis (sinvastatina, atorvastatina) e aumentando o risco de miopatia/rabdomiólise.",
+    "conduta": "Preferir estatinas menos dependentes do CYP3A4 (rosuvastatina, pravastatina) ou respeitar doses máximas recomendadas em bula para a associação.",
+    "acaoBalcao": "Alertar sobre dor muscular inexplicada, fraqueza ou urina escura e orientar procura de atendimento médico.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT056",
+    "medicamentoA": "betabloqueador",
+    "medicamentoB": "simpaticolitico_central",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito bradicardizante e hipotensor aditivo entre betabloqueadores e simpaticolíticos de ação central (clonidina, metildopa); a suspensão abrupta de clonidina em uso concomitante com betabloqueador pode desencadear crise hipertensiva rebote grave.",
+    "conduta": "Se necessário suspender, retirar primeiro o betabloqueador e depois, gradualmente, a clonidina.",
+    "acaoBalcao": "Nunca suspender clonidina abruptamente; orientar retorno ao médico para plano de retirada gradual.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT057",
+    "medicamentoA": "varfarina",
+    "medicamentoB": "amiodarona",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Amiodarona é potente inibidor do CYP2C9 e CYP3A4, reduzindo o metabolismo da varfarina e aumentando significativamente o INR (frequentemente exige redução de 30-50% da dose de varfarina).",
+    "conduta": "Monitorar INR com maior frequência ao iniciar, ajustar ou suspender amiodarona; ajustar dose de varfarina conforme resposta.",
+    "acaoBalcao": "Reforçar sinais de sangramento e a importância do controle de INR mais frequente nesse período.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT058",
+    "medicamentoA": "estatina",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Amiodarona inibe o CYP3A4, aumentando os níveis séricos de estatinas sensíveis a essa via e o risco de miopatia/rabdomiólise.",
+    "conduta": "Preferir estatinas menos dependentes do CYP3A4 ou respeitar limites de dose combinada recomendados em bula.",
+    "acaoBalcao": "Alertar sobre dor muscular inexplicada, fraqueza ou urina escura.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT059",
+    "medicamentoA": "anti_hipertensivo",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "AINEs inibem a síntese de prostaglandinas renais vasodilatadoras, promovendo retenção de sódio e água e reduzindo o efeito hipotensor de praticamente todas as classes de anti-hipertensivos.",
+    "conduta": "Evitar uso contínuo de AINEs em hipertensos; se necessário, priorizar paracetamol e monitorar a pressão arterial.",
+    "acaoBalcao": "Alertar sobre uso frequente/contínuo de AINEs de venda livre em pacientes hipertensos.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT060",
+    "medicamentoA": "anti_hipertensivo",
+    "medicamentoB": "aine_coxibe",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Coxibes também inibem a COX-2 renal, reduzindo a síntese de prostaglandinas vasodilatadoras e antagonizando o efeito hipotensor dos anti-hipertensivos, de forma semelhante aos AINEs não seletivos.",
+    "conduta": "Evitar uso contínuo em hipertensos; monitorar pressão arterial e função renal.",
+    "acaoBalcao": "Alertar sobre uso frequente/contínuo desses medicamentos em pacientes hipertensos.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT061",
+    "medicamentoA": "metildopa",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Sais de ferro por via oral quelam a metildopa no trato gastrointestinal, reduzindo sua absorção e eficácia anti-hipertensiva.",
+    "conduta": "Separar a administração dos dois medicamentos por pelo menos 2 horas.",
+    "acaoBalcao": "Orientar sobre o intervalo entre metildopa e suplementos de ferro.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT062",
+    "medicamentoA": "prolonga_qt",
+    "medicamentoB": "prolonga_qt",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Associação de dois ou mais fármacos que prolongam o intervalo QT tem efeito cumulativo sobre a repolarização ventricular, aumentando o risco de arritmias ventriculares graves, incluindo Torsades de Pointes.",
+    "conduta": "Evitar associação quando possível; se necessária, monitorar ECG (intervalo QTc) e eletrólitos (potássio, magnésio).",
+    "acaoBalcao": "Encaminhar para avaliação médica, especialmente se houver histórico cardíaco, uso de múltiplos medicamentos ou sintomas como palpitações/síncope.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT063",
+    "medicamentoA": "ivabradina",
+    "medicamentoB": "macrolideo",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Macrolídeos como claritromicina são inibidores potentes do CYP3A4, principal via de metabolização da ivabradina, aumentando significativamente seus níveis séricos e o risco de bradicardia grave.",
+    "conduta": "Associação contraindicada em bula; considerar alternativa terapêutica ao macrolídeo.",
+    "acaoBalcao": "Encaminhar para avaliação médica antes de dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT065",
+    "medicamentoA": "metoclopramida",
+    "medicamentoB": "trimetazidina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ambos podem estar associados a sintomas extrapiramidais (parkinsonismo, tremor); o uso concomitante aumenta o risco desses efeitos, especialmente em idosos.",
+    "conduta": "Evitar associação prolongada; se necessária, monitorar sinais de parkinsonismo/tremor.",
+    "acaoBalcao": "Alertar sobre tremores, rigidez ou movimentos involuntários e orientar procura de atendimento médico.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT066",
+    "medicamentoA": "ranolazina",
+    "medicamentoB": "macrolideo",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Macrolídeos inibem o CYP3A4, principal via de metabolização da ranolazina, aumentando seus níveis séricos e o risco de prolongamento do intervalo QT.",
+    "conduta": "Associação contraindicada ou de uso restrito em bula; considerar alternativa ao macrolídeo.",
+    "acaoBalcao": "Encaminhar para avaliação médica antes de dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT067",
+    "medicamentoA": "alfabloqueador",
+    "medicamentoB": "ipde5",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Ambos promovem vasodilatação e redução da pressão arterial por vias diferentes; a associação aumenta o risco de hipotensão sintomática/ortostática, especialmente no início do tratamento ou com doses mais altas.",
+    "conduta": "Se a associação for necessária, iniciar o inibidor de PDE5 na menor dose e apenas quando o paciente estiver estabilizado com o alfabloqueador; espaçar os horários de administração.",
+    "acaoBalcao": "Alertar sobre risco de tontura/desmaio, especialmente ao levantar-se rapidamente.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
   }
 ]
