@@ -1009,5 +1009,1426 @@
     "conduta": "Se a associação for necessária, iniciar o inibidor de PDE5 na menor dose e apenas quando o paciente estiver estabilizado com o alfabloqueador; espaçar os horários de administração.",
     "acaoBalcao": "Alertar sobre risco de tontura/desmaio, especialmente ao levantar-se rapidamente.",
     "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT064",
+    "medicamentoA": "metformina",
+    "medicamentoB": "contraste_iodado",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Contrastes iodados podem causar nefropatia induzida por contraste, reduzindo a depuração renal da metformina e aumentando o risco de acidose láctica, um efeito adverso raro mas potencialmente fatal.",
+    "conduta": "Suspender a metformina no momento do exame com contraste iodado e só reintroduzir após 48h, com função renal reavaliada e normal.",
+    "acaoBalcao": "Perguntar ativamente sobre exames de imagem com contraste agendados/recentes ao dispensar metformina; orientar sobre a suspensão temporária.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT068",
+    "medicamentoA": "sulfonilureia",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "AINEs deslocam as sulfonilureias (glibenclamida, gliclazida) de sua ligação às proteínas plasmáticas, aumentando a fração livre do fármaco e potencializando o efeito hipoglicemiante.",
+    "conduta": "Monitorar glicemia mais de perto no início/ajuste de dose do AINE; considerar alternativa (paracetamol) quando possível.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia (tremor, sudorese, tontura, confusão) ao dispensar um AINE para quem usa sulfonilureia.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT069",
+    "medicamentoA": "antidiabetico",
+    "medicamentoB": "corticoide_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Corticosteroides sistêmicos aumentam a glicemia por estímulo da gliconeogênese hepática e indução de resistência periférica à insulina, antagonizando o efeito de insulina e sulfonilureias.",
+    "conduta": "Monitorar glicemia com mais frequência durante o curso de corticoide; pode ser necessário ajuste temporário da dose do antidiabético.",
+    "acaoBalcao": "Reforçar a automonitorização da glicemia capilar enquanto durar o uso do corticoide.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT070",
+    "medicamentoA": "tiazolidinediona",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A pioglitazona, associada a insulina ou sulfonilureias, soma o efeito hipoglicemiante; além disso, a retenção hídrica característica das tiazolidinedionas é agravada pela insulina, aumentando o risco de edema e de descompensação de insuficiência cardíaca.",
+    "conduta": "Monitorar glicemia e sinais de retenção hídrica/edema; evitar em pacientes com insuficiência cardíaca sintomática.",
+    "acaoBalcao": "Perguntar sobre inchaço nos membros inferiores e ganho de peso rápido; orientar sobre sinais de hipoglicemia.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT071",
+    "medicamentoA": "gliptina",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibidores de DPP-4 aumentam a secreção de insulina de forma dependente da glicose (risco intrínseco baixo), mas quando associados a insulina ou sulfonilureias o efeito hipoglicemiante se soma, frequentemente exigindo redução da dose do secretagogo/insulina.",
+    "conduta": "Monitorar glicemia ao iniciar a gliptina; considerar redução da dose de insulina ou sulfonilureia já em uso.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT072",
+    "medicamentoA": "glp1_agonista",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Agonistas do receptor de GLP-1 aumentam a secreção de insulina de forma dependente da glicose; associados a insulina ou sulfonilureias, o efeito hipoglicemiante se soma, geralmente exigindo redução da dose do secretagogo/insulina.",
+    "conduta": "Monitorar glicemia ao iniciar o agonista de GLP-1; considerar redução da dose de insulina ou sulfonilureia já em uso.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT073",
+    "medicamentoA": "glp1_agonista",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Agonistas de GLP-1 retardam o esvaziamento gástrico, podendo alterar a velocidade/extensão de absorção de fármacos orais de janela terapêutica estreita, como a varfarina, com potencial impacto sobre o INR.",
+    "conduta": "Monitorar INR com mais frequência ao iniciar, ajustar a dose ou suspender o agonista de GLP-1.",
+    "acaoBalcao": "Reforçar a importância do controle de INR mais frequente nesse período.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT074",
+    "medicamentoA": "sglt2",
+    "medicamentoB": "diuretico_alca",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Inibidores de SGLT2 promovem diurese osmótica; associados a diuréticos de alça, o efeito somado aumenta o risco de depleção de volume, hipotensão e lesão renal aguda, especialmente em idosos.",
+    "conduta": "Monitorar sinais de desidratação/hipotensão postural e função renal, principalmente no início do tratamento combinado.",
+    "acaoBalcao": "Reforçar hidratação adequada e orientar sobre sinais de hipotensão (tontura ao levantar).",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT075",
+    "medicamentoA": "sglt2",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Inibidores de SGLT2 promovem diurese osmótica; associados a diuréticos tiazídicos, o efeito somado aumenta o risco de depleção de volume e hipotensão, especialmente em idosos.",
+    "conduta": "Monitorar sinais de desidratação/hipotensão postural, principalmente no início do tratamento combinado.",
+    "acaoBalcao": "Reforçar hidratação adequada e orientar sobre sinais de hipotensão (tontura ao levantar).",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT076",
+    "medicamentoA": "sglt2",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "AINEs reduzem a perfusão renal por inibição de prostaglandinas vasodilatadoras; combinados ao efeito diurético osmótico dos inibidores de SGLT2, aumentam o risco de lesão renal aguda, especialmente em depleção de volume.",
+    "conduta": "Evitar uso contínuo de AINEs; monitorar função renal se a associação for necessária.",
+    "acaoBalcao": "Alertar sobre uso frequente/contínuo de AINEs de venda livre em quem usa inibidor de SGLT2.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT077",
+    "medicamentoA": "sglt2",
+    "medicamentoB": "aine_coxibe",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Coxibes também reduzem a perfusão renal por inibição da COX-2 renal; combinados ao efeito diurético osmótico dos inibidores de SGLT2, aumentam o risco de lesão renal aguda, especialmente em depleção de volume.",
+    "conduta": "Evitar uso contínuo; monitorar função renal se a associação for necessária.",
+    "acaoBalcao": "Alertar sobre uso frequente/contínuo desses medicamentos em quem usa inibidor de SGLT2.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT078",
+    "medicamentoA": "acarbose",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "A acarbose retarda e reduz a absorção intestinal de carboidratos e pode reduzir também a absorção da digoxina, potencialmente diminuindo seus níveis séricos e sua eficácia.",
+    "conduta": "Separar a administração dos dois medicamentos; monitorar sinais de subdosagem de digoxina (persistência de sintomas de ICC/controle de frequência).",
+    "acaoBalcao": "Orientar sobre o espaçamento entre acarbose e digoxina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT079",
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "tramadol",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Tricíclicos, IRSN e antidepressivos atípicos serotoninérgicos, assim como os ISRS já mapeados, somam atividade serotoninérgica ao efeito do tramadol (inibidor de recaptação de serotonina/noradrenalina), aumentando o risco de síndrome serotoninérgica.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar sinais precoces de síndrome serotoninérgica (agitação, hipertermia, clônus, hiper-reflexia).",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivos ao dispensar tramadol e orientar sobre sinais de alerta.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT080",
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "antidepressivo_serotoninergico",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A combinação de dois antidepressivos com atividade serotoninérgica (ISRS, IRSN, tricíclicos, trazodona, mirtazapina) soma o efeito sobre a serotonina sináptica, aumentando o risco de síndrome serotoninérgica; associações desse tipo só devem ocorrer sob supervisão médica especializada (ex.: estratégias de potencialização).",
+    "conduta": "Confirmar que a associação é intencional e supervisionada por prescritor; monitorar sinais de síndrome serotoninérgica, especialmente no início ou ajuste de dose.",
+    "acaoBalcao": "Questionar se o paciente sabe que está usando dois antidepressivos simultaneamente e reforçar sinais de alerta.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT081",
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "imao_b",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Inibidores da MAO (incluindo os seletivos de MAO-B em doses mais altas) bloqueiam a degradação de monoaminas; associados a qualquer antidepressivo serotoninérgico, o risco de síndrome serotoninérgica grave (podendo ser fatal) é considerado contraindicação, exigindo período de washout entre as trocas.",
+    "conduta": "Não associar; respeitar período de washout de pelo menos 2 semanas (5 semanas após fluoxetina, pela meia-vida longa) na troca entre as classes.",
+    "acaoBalcao": "Nunca dispensar as duas classes juntas sem confirmação médica explícita do prescritor sobre o washout.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT082",
+    "medicamentoA": "bupropiona",
+    "medicamentoB": "imao_b",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A combinação de bupropiona (que já reduz o limiar convulsivo isoladamente) com inibidores da MAO tem risco documentado de crise hipertensiva e convulsões, sendo formalmente contraindicada em bula.",
+    "conduta": "Não associar; respeitar período de washout de pelo menos 2 semanas entre a suspensão do IMAO e o início da bupropiona (e vice-versa).",
+    "acaoBalcao": "Nunca dispensar as duas classes juntas sem confirmação médica explícita do prescritor sobre o washout.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT083",
+    "medicamentoA": "gabapentinoide",
+    "medicamentoB": "opioide",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Gabapentina e pregabalina somam depressão do sistema nervoso central ao efeito dos opioides, aumentando significativamente o risco de sedação profunda e depressão respiratória — associação alvo de alerta de segurança do FDA (2019) mesmo em doses terapêuticas.",
+    "conduta": "Usar a menor dose eficaz de cada fármaco quando a associação for necessária; monitorar sinais de sedação excessiva/depressão respiratória, especialmente no início do tratamento combinado.",
+    "acaoBalcao": "Alertar sobre sonolência intensa e reforçar não dirigir/operar máquinas; perguntar sobre uso de opioide ao dispensar gabapentina/pregabalina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT084",
+    "medicamentoA": "gabapentinoide",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Gabapentinoides e benzodiazepínicos (incluindo zolpidem, que reaproveita esta classe pelo mesmo risco) somam depressão do SNC, aumentando sedação, tontura e risco de quedas, sobretudo em idosos.",
+    "conduta": "Avaliar a real necessidade da associação; considerar redução de dose em idosos.",
+    "acaoBalcao": "Orientar sobre sonolência intensa, risco de quedas e não associar a álcool.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT085",
+    "medicamentoA": "acido_valproico",
+    "medicamentoB": "lamotrigina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ácido valproico inibe a glicuronidação hepática da lamotrigina, podendo dobrar seus níveis séricos e aumentar substancialmente o risco de reações cutâneas graves (incluindo síndrome de Stevens-Johnson), o que exige titulação de dose muito mais lenta e cautelosa da lamotrigina nessa combinação.",
+    "conduta": "Titular a lamotrigina em doses e incrementos reduzidos (conforme protocolo específico para uso com valproato); monitorar rash cutâneo rigorosamente.",
+    "acaoBalcao": "Reforçar a importância de comunicar imediatamente qualquer erupção cutânea nova ao prescritor.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT086",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "lamotrigina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Carbamazepina, fenitoína, fenobarbital e oxcarbazepina induzem a glicuronidação hepática, reduzindo os níveis séricos e a eficácia da lamotrigina.",
+    "conduta": "Pode ser necessário ajuste de dose (aumento) da lamotrigina; monitorar controle das crises/humor.",
+    "acaoBalcao": "Perguntar sobre perda de eficácia (aumento de crises) ao dispensar essa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT087",
+    "medicamentoA": "acido_valproico",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Carbamazepina e fenitoína induzem o metabolismo do ácido valproico, reduzindo seus níveis séricos e podendo comprometer o controle das crises/estabilização do humor.",
+    "conduta": "Monitorar níveis séricos de valproato e resposta clínica; pode ser necessário ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre perda de eficácia ao dispensar essa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT088",
+    "medicamentoA": "antipsicotico",
+    "medicamentoB": "metoclopramida",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Antipsicóticos (típicos e atípicos) e metoclopramida são antagonistas dopaminérgicos; a associação soma o risco de sintomas extrapiramidais agudos (distonia, acatisia, parkinsonismo) e, a longo prazo, discinesia tardia.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar sinais extrapiramidais, especialmente no início do tratamento.",
+    "acaoBalcao": "Perguntar sobre uso de antipsicótico antes de recomendar/dispensar metoclopramida para náusea/vômito.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT089",
+    "medicamentoA": "antipsicotico",
+    "medicamentoB": "dopaminergico_parkinson",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Antipsicóticos bloqueiam receptores dopaminérgicos centrais, antagonizando diretamente o efeito de levodopa e agonistas dopaminérgicos (pramipexol, ropinirol), podendo piorar o parkinsonismo e reduzir a eficácia do tratamento da doença de Parkinson.",
+    "conduta": "Evitar antipsicóticos com forte bloqueio D2 em pacientes parkinsonianos; se necessário tratar sintomas psicóticos, preferir antipsicóticos com menor afinidade D2 sob orientação médica (ex.: quetiapina, clozapina).",
+    "acaoBalcao": "Alertar para piora de tremor/rigidez ao iniciar um antipsicótico em paciente com Parkinson.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT090",
+    "medicamentoA": "relaxante_muscular_central",
+    "medicamentoB": "imao_b",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A ciclobenzaprina tem estrutura muito semelhante à dos antidepressivos tricíclicos e é formalmente contraindicada com IMAO pelo risco de crise hipertensiva/síndrome serotoninérgica; por cautela, a mesma restrição é estendida aos demais relaxantes musculares de ação central desta classe.",
+    "conduta": "Evitar a associação; respeitar período de washout do IMAO antes de iniciar um relaxante muscular central.",
+    "acaoBalcao": "Perguntar sobre uso de IMAO/selegilina antes de dispensar um relaxante muscular central.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT091",
+    "medicamentoA": "relaxante_muscular_central",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Relaxantes musculares de ação central somam depressão do SNC ao efeito dos opioides — combinação comum na prática (dor musculoesquelética), mas com risco aumentado de sedação excessiva e depressão respiratória.",
+    "conduta": "Usar a menor dose eficaz de cada fármaco; reavaliar a necessidade de manter os dois por período prolongado.",
+    "acaoBalcao": "Orientar sobre sonolência intensa e reforçar não dirigir/operar máquinas.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT092",
+    "medicamentoA": "relaxante_muscular_central",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Relaxantes musculares de ação central e benzodiazepínicos (incluindo zolpidem) somam depressão do SNC, aumentando sedação, tontura e risco de quedas.",
+    "conduta": "Avaliar a real necessidade da associação; considerar redução de dose, especialmente em idosos.",
+    "acaoBalcao": "Orientar sobre sonolência intensa, risco de quedas e não associar a álcool.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT093",
+    "medicamentoA": "dantroleno",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipercalemia"
+    ],
+    "mecanismo": "A associação de dantroleno (uso hospitalar, hipertermia maligna/espasticidade grave) com verapamil ou diltiazem tem relatos de colapso cardiovascular, hipercalemia e depressão miocárdica grave.",
+    "conduta": "Evitar a associação; quando ambos forem clinicamente necessários, uso restrito a ambiente hospitalar com monitorização cardiovascular contínua.",
+    "acaoBalcao": "Interação de uso hospitalar — relevante principalmente para conferência de prescrição em ambiente intra-hospitalar.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT094",
+    "medicamentoA": "buspirona",
+    "medicamentoB": "imao_b",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A buspirona, agonista parcial de receptores 5-HT1A, tem interação descrita com IMAO com risco de crise hipertensiva/síndrome serotoninérgica.",
+    "conduta": "Evitar a associação; respeitar período de washout do IMAO antes de iniciar buspirona.",
+    "acaoBalcao": "Perguntar sobre uso de IMAO/selegilina antes de dispensar buspirona.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT095",
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A associação de antidepressivos serotoninérgicos com lítio é uma estratégia reconhecida de potencialização no tratamento da depressão resistente, mas exige monitorização, pois pode aumentar o risco de síndrome serotoninérgica e de tremor/toxicidade por lítio.",
+    "conduta": "Confirmar que a associação é intencional e supervisionada; monitorar sinais de síndrome serotoninérgica e de toxicidade por lítio (tremor, ataxia, confusão).",
+    "acaoBalcao": "Reforçar a importância dos exames de controle de litemia nesse contexto.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT096",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "digoxina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Macrolídeos (especialmente claritromicina e eritromicina) inibem a glicoproteína-P intestinal/renal e o CYP3A4, reduzindo a depuração da digoxina e podendo elevar seus níveis séricos a valores tóxicos.",
+    "conduta": "Monitorar sinais de toxicidade digitálica (náusea, arritmias, alterações visuais) durante o curso do antibiótico; considerar dosagem de digoxina sérica se o tratamento for prolongado.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de dispensar um macrolídeo; reforçar sinais de alerta de toxicidade.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT097",
+    "medicamentoA": "quinolona",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Fluoroquinolonas (ciprofloxacino, levofloxacino, norfloxacino) inibem o CYP1A2/CYP3A4 e alteram a flora intestinal produtora de vitamina K, potencializando o efeito da varfarina e aumentando o INR.",
+    "conduta": "Monitorar INR com mais frequência durante e após o curso do antibiótico; pode ser necessário ajuste temporário da dose de varfarina.",
+    "acaoBalcao": "Reforçar a importância do controle de INR mais próximo nesse período.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT098",
+    "medicamentoA": "quinolona",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Fluoroquinolonas têm efeito documentado sobre a homeostase glicêmica (tanto hipoglicemia quanto hiperglicemia), por interferência nos canais de potássio dependentes de ATP das células beta pancreáticas; o risco é maior em associação com insulina ou sulfonilureias.",
+    "conduta": "Monitorar glicemia mais de perto durante o curso do antibiótico, especialmente em idosos e diabéticos com função renal reduzida.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia/hiperglicemia ao dispensar uma fluoroquinolona para quem usa insulina/sulfonilureia.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT099",
+    "medicamentoA": "tetraciclina",
+    "medicamentoB": "calcio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Íons de cálcio formam quelatos insolúveis com as tetraciclinas no trato gastrointestinal, reduzindo drasticamente sua absorção e eficácia — mesmo mecanismo já mapeado para as quinolonas.",
+    "conduta": "Espaçar a administração em pelo menos 2 a 3 horas entre os dois medicamentos.",
+    "acaoBalcao": "Orientar sobre o espaçamento de horário ao dispensar a associação; evitar tomar a tetraciclina com leite/derivados.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT100",
+    "medicamentoA": "tetraciclina",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Íons de ferro formam quelatos insolúveis com as tetraciclinas no trato gastrointestinal, reduzindo a absorção de ambos — mesmo mecanismo já mapeado para as quinolonas.",
+    "conduta": "Espaçar a administração em pelo menos 2 a 3 horas entre os dois medicamentos.",
+    "acaoBalcao": "Orientar sobre o espaçamento de horário ao dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT101",
+    "medicamentoA": "tetraciclina",
+    "medicamentoB": "anticoncepcional_oral",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Tetraciclinas podem alterar a flora intestinal envolvida na circulação êntero-hepática dos estrogênios, com potencial (embora controverso na literatura mais recente) de reduzir a eficácia contraceptiva.",
+    "conduta": "Orientar o uso de método contraceptivo de barreira adicional durante o curso do antibiótico e por alguns dias após.",
+    "acaoBalcao": "Reforçar essa orientação ativamente ao dispensar a associação, dada a relevância prática mesmo com evidência debatida.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT102",
+    "medicamentoA": "tetraciclina",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Tetraciclinas reduzem a flora intestinal produtora de vitamina K, potencializando o efeito anticoagulante da varfarina.",
+    "conduta": "Monitorar INR com mais frequência durante o curso do antibiótico.",
+    "acaoBalcao": "Reforçar a importância do controle de INR mais próximo nesse período.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT103",
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "varfarina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O sulfametoxazol é um potente inibidor do CYP2C9, a principal via de metabolização da varfarina, podendo elevar substancialmente o INR e o risco de sangramento — uma das interações farmacocinéticas mais significativas envolvendo antibióticos.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar INR rigorosamente e ajustar a dose de varfarina.",
+    "acaoBalcao": "Alertar sobre sinais de sangramento e reforçar controle de INR mais próximo.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT104",
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Trimetoprima e metotrexato são ambos antagonistas do folato por vias distintas; a associação soma toxicidade, com risco de mielossupressão grave (pancitopenia).",
+    "conduta": "Evitar a associação sempre que possível; se necessária, monitorar hemograma rigorosamente.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de dispensar sulfametoxazol+trimetoprima.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT105",
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "A trimetoprima tem ação poupadora de potássio semelhante à amilorida; associada a diuréticos tiazídicos (que já predispõem a distúrbios eletrolíticos), aumenta o risco de hiponatremia e hiperpotassemia, especialmente em idosos.",
+    "conduta": "Monitorar eletrólitos séricos, principalmente em idosos ou em uso prolongado.",
+    "acaoBalcao": "Alertar sobre sinais de distúrbio eletrolítico (fraqueza, cãibras, arritmia) nessa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT106",
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "sulfonilureia",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O sulfametoxazol desloca as sulfonilureias de sua ligação às proteínas plasmáticas e inibe seu metabolismo hepático, potencializando o efeito hipoglicemiante.",
+    "conduta": "Monitorar glicemia mais de perto durante o curso do antibiótico.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao dispensar essa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT107",
+    "medicamentoA": "vancomicina",
+    "medicamentoB": "aminoglicosideo",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Vancomicina e aminoglicosídeos (gentamicina) somam nefrotoxicidade e ototoxicidade — associação de uso hospitalar comum em infecções graves, mas que exige monitorização rigorosa da função renal e auditiva.",
+    "conduta": "Monitorar função renal (creatinina) e sinais de ototoxicidade regularmente durante o tratamento combinado; ajustar doses conforme níveis séricos.",
+    "acaoBalcao": "Interação relevante principalmente para conferência de prescrição em ambiente hospitalar/home care.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT108",
+    "medicamentoA": "vancomicina",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "AINEs reduzem a perfusão renal por inibição de prostaglandinas vasodilatadoras, somando-se ao potencial nefrotóxico da vancomicina, especialmente em pacientes desidratados ou com função renal já comprometida.",
+    "conduta": "Evitar uso concomitante de AINEs durante o tratamento com vancomicina; monitorar função renal se a associação for necessária.",
+    "acaoBalcao": "Alertar sobre uso de AINEs de venda livre em quem está em tratamento com vancomicina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT109",
+    "medicamentoA": "aminoglicosideo",
+    "medicamentoB": "diuretico_alca",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diuréticos de alça (furosemida, bumetanida) potencializam a ototoxicidade dos aminoglicosídeos, com risco de perda auditiva irreversível — interação clássica de uso hospitalar.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar função auditiva e renal rigorosamente.",
+    "acaoBalcao": "Interação relevante principalmente para conferência de prescrição em ambiente hospitalar.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT110",
+    "medicamentoA": "antibiotico_amplo",
+    "medicamentoB": "anticoncepcional_oral",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Antibióticos de amplo espectro (amoxicilina, ampicilina, cefalosporinas) podem alterar a flora intestinal envolvida na circulação êntero-hepática dos estrogênios; embora a evidência mais recente questione a magnitude desse efeito para a maioria dos antibióticos não indutores enzimáticos, a orientação de cautela permanece prática comum de dispensação.",
+    "conduta": "Orientar método contraceptivo de barreira adicional durante o curso do antibiótico e por alguns dias após, como conduta conservadora.",
+    "acaoBalcao": "Reforçar essa orientação ativamente ao dispensar a associação, mesmo reconhecendo a controvérsia científica sobre a magnitude real do risco.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT111",
+    "medicamentoA": "beta2_agonista",
+    "medicamentoB": "betabloqueador",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Betabloqueadores (mesmo os cardiosseletivos, especialmente em doses altas, e sobretudo os não seletivos como propranolol/sotalol) antagonizam a broncodilatação mediada por receptores beta-2, podendo precipitar broncoespasmo em pacientes asmáticos/DPOC.",
+    "conduta": "Evitar betabloqueadores não seletivos em asma/DPOC; se um betabloqueador for indispensável, preferir um cardiosseletivo em dose baixa, com monitorização respiratória.",
+    "acaoBalcao": "Perguntar sobre uso de broncodilatador antes de dispensar um betabloqueador, especialmente em pacientes com histórico de asma/DPOC.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT112",
+    "medicamentoA": "beta2_agonista",
+    "medicamentoB": "diuretico_alca",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Beta-agonistas deslocam potássio para o meio intracelular; esse efeito soma-se à perda de potássio causada pelos diuréticos de alça, aumentando o risco de hipopotassemia e arritmias, especialmente com uso frequente/doses altas de broncodilatador.",
+    "conduta": "Monitorar potássio sérico em uso combinado frequente/prolongado, principalmente em cardiopatas.",
+    "acaoBalcao": "Alertar sobre sinais de hipopotassemia (cãibras, fraqueza, palpitações) quando o paciente usa broncodilatador de resgate com frequência e também diurético de alça.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT113",
+    "medicamentoA": "beta2_agonista",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Mesmo mecanismo hipopotassêmico aditivo já mapeado com diuréticos de alça, agora com o diurético tiazídico.",
+    "conduta": "Monitorar potássio sérico em uso combinado frequente/prolongado.",
+    "acaoBalcao": "Alertar sobre sinais de hipopotassemia quando o broncodilatador é usado com frequência.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT114",
+    "medicamentoA": "anticolinergico",
+    "medicamentoB": "anticolinergico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Anticolinérgicos inalatórios (ipratrópio, tiotrópio), urinários (solifenacina, oxibutinina), anti-histamínicos de 1ª geração (difenidramina, dexclorfeniramina, cetotifeno, carbinoxamina), antidepressivos tricíclicos e outros anticolinérgicos (escopolamina, orfenadrina) somam efeitos anticolinérgicos periféricos e centrais: boca seca, retenção urinária, constipação, visão turva, taquicardia e, em idosos, confusão mental/delirium.",
+    "conduta": "Avaliar a real necessidade de manter mais de um anticolinérgico simultaneamente, especialmente em idosos (maior risco de comprometimento cognitivo); reforçar hidratação e manejo dos sintomas periféricos.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de outros medicamentos com efeito anticolinérgico ao dispensar qualquer um desta lista, principalmente para pacientes idosos.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT115",
+    "medicamentoA": "teofilina",
+    "medicamentoB": "macrolideo",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Macrolídeos inibem o CYP3A4/CYP1A2 hepático, reduzindo o clearance da teofilina — fármaco de índice terapêutico estreito — e aumentando o risco de toxicidade (náusea, taquicardia, arritmias, convulsões).",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar níveis séricos de teofilina e sinais de toxicidade.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de dispensar um macrolídeo; alertar sobre sinais de toxicidade (náusea, palpitações, tremores).",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT116",
+    "medicamentoA": "teofilina",
+    "medicamentoB": "quinolona",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Fluoroquinolonas (especialmente ciprofloxacino) inibem o CYP1A2, com o mesmo risco de acúmulo tóxico de teofilina já descrito para macrolídeos.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar níveis séricos de teofilina e sinais de toxicidade.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de dispensar uma quinolona.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT117",
+    "medicamentoA": "teofilina",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos (e também o tabagismo, por indução de CYP1A2) reduzem os níveis séricos de teofilina, podendo comprometer o controle da asma/DPOC.",
+    "conduta": "Monitorar controle dos sintomas respiratórios; pode ser necessário ajuste de dose da teofilina.",
+    "acaoBalcao": "Perguntar sobre perda de controle dos sintomas respiratórios ao dispensar essa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT118",
+    "medicamentoA": "corticoide_inalatorio",
+    "medicamentoB": "macrolideo",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A inibição do CYP3A4 pelos macrolídeos aumenta a exposição sistêmica ao corticoide inalatório (budesonida/fluticasona), com risco de síndrome de Cushing iatrogênica e supressão adrenal em uso prolongado ou doses altas.",
+    "conduta": "Em cursos curtos de antibiótico o risco costuma ser baixo; para uso prolongado/repetido, considerar corticoide inalatório menos dependente do CYP3A4 ou monitorar sinais de hipercortisolismo.",
+    "acaoBalcao": "Alertar para sinais de excesso de corticoide (ganho de peso facial/tronco, fragilidade capilar) em uso combinado prolongado.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT119",
+    "medicamentoA": "montelucaste",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "leve",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos podem reduzir os níveis séricos de montelucaste, com possível perda parcial de eficácia no controle da asma/rinite alérgica.",
+    "conduta": "Monitorar controle dos sintomas; ajuste de dose raramente necessário.",
+    "acaoBalcao": "Perguntar sobre perda de controle dos sintomas alérgicos/asmáticos ao dispensar essa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT120",
+    "medicamentoA": "anti_histaminico_sedativo",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Anti-histamínicos de 1ª geração (sedativos) somam depressão do SNC aos benzodiazepínicos, aumentando sonolência, tontura e risco de quedas/comprometimento psicomotor.",
+    "conduta": "Avaliar a real necessidade da associação; considerar anti-histamínico de 2ª/3ª geração (não sedativo) como alternativa.",
+    "acaoBalcao": "Orientar sobre sonolência intensa e reforçar não dirigir/operar máquinas.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT121",
+    "medicamentoA": "anti_histaminico_sedativo",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Anti-histamínicos de 1ª geração somam depressão do SNC aos opioides, aumentando o risco de sedação excessiva e, em doses altas, depressão respiratória.",
+    "conduta": "Avaliar a real necessidade da associação; usar a menor dose eficaz de cada fármaco.",
+    "acaoBalcao": "Orientar sobre sonolência intensa e reforçar não dirigir/operar máquinas.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT122",
+    "medicamentoA": "cimetidina",
+    "medicamentoB": "varfarina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Cimetidina é um potente inibidor de múltiplas isoformas do citocromo P450, reduzindo o metabolismo da varfarina e podendo elevar substancialmente o INR.",
+    "conduta": "Preferir outro antagonista H2 (ex.: famotidina) quando possível; se a associação for necessária, monitorar INR rigorosamente.",
+    "acaoBalcao": "Alertar sobre sinais de sangramento e reforçar controle de INR mais próximo.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT123",
+    "medicamentoA": "cimetidina",
+    "medicamentoB": "fenitoina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Cimetidina inibe o metabolismo hepático da fenitoína, aumentando seus níveis séricos e o risco de toxicidade (ataxia, nistagmo, sedação).",
+    "conduta": "Monitorar sinais de toxicidade por fenitoína; considerar antagonista H2 alternativo.",
+    "acaoBalcao": "Perguntar sobre uso de fenitoína antes de recomendar/dispensar cimetidina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT124",
+    "medicamentoA": "cimetidina",
+    "medicamentoB": "teofilina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Cimetidina é um dos inibidores mais potentes do metabolismo hepático da teofilina, com o mesmo risco de toxicidade já descrito para macrolídeos e quinolonas.",
+    "conduta": "Preferir outro antagonista H2 (ex.: famotidina); se necessário associar, monitorar níveis séricos de teofilina.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de recomendar/dispensar cimetidina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT125",
+    "medicamentoA": "simeticona",
+    "medicamentoB": "levotiroxina",
+    "gravidade": "leve",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Simeticona pode reduzir a absorção intestinal da levotiroxina quando administradas simultaneamente.",
+    "conduta": "Espaçar a administração em pelo menos 4 horas.",
+    "acaoBalcao": "Orientar sobre o espaçamento de horário ao dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT126",
+    "medicamentoA": "laxante",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O uso crônico de laxantes estimulantes pode causar hipopotassemia, potencializando a toxicidade digitálica mesmo com níveis séricos de digoxina dentro da faixa terapêutica.",
+    "conduta": "Evitar uso crônico/diário de laxante sem orientação médica; monitorar potássio se o uso for prolongado.",
+    "acaoBalcao": "Perguntar sobre uso crônico de laxante ao dispensar digoxina e reforçar sinais de toxicidade digitálica.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT127",
+    "medicamentoA": "laxante",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Soma do risco de depleção de potássio entre laxantes estimulantes e diuréticos tiazídicos.",
+    "conduta": "Evitar uso crônico de laxante sem orientação médica; monitorar eletrólitos em uso prolongado combinado.",
+    "acaoBalcao": "Alertar sobre sinais de hipopotassemia (cãibras, fraqueza, arritmia) nessa combinação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT128",
+    "medicamentoA": "loperamida",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Depressão aditiva do SNC — mesmo mecanismo genérico já mapeado para opioide+benzodiazepínico, estendido à loperamida (opioide sintético de ação predominantemente periférica em dose terapêutica, mas com risco de efeito central em doses altas/uso indevido).",
+    "conduta": "Usar loperamida na menor dose eficaz e por curto prazo; atenção redobrada em uso concomitante com benzodiazepínico.",
+    "acaoBalcao": "Orientar sobre sonolência e reforçar não exceder a dose recomendada de loperamida.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT129",
+    "medicamentoA": "loperamida",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Soma de depressão do SNC entre loperamida e outros opioides, com risco aumentado em doses altas/uso indevido de loperamida.",
+    "conduta": "Usar loperamida na menor dose eficaz e por curto prazo.",
+    "acaoBalcao": "Orientar sobre sonolência e reforçar não exceder a dose recomendada de loperamida.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT130",
+    "medicamentoA": "bismuto_subsalicilato",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O componente salicilato do bismuto subsalicilato tem efeito antiplaquetário, somando-se ao efeito anticoagulante da varfarina e aumentando o risco de sangramento.",
+    "conduta": "Evitar uso concomitante quando possível; se necessário, monitorar sinais de sangramento.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de recomendar/dispensar bismuto subsalicilato.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT131",
+    "medicamentoA": "bismuto_subsalicilato",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Salicilatos reduzem a depuração renal do metotrexato, aumentando o risco de toxicidade hematológica — mesmo mecanismo já mapeado para o AAS.",
+    "conduta": "Evitar a associação em pacientes que usam metotrexato em doses antirreumáticas/antineoplásicas.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de recomendar/dispensar bismuto subsalicilato.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT132",
+    "medicamentoA": "bismuto_subsalicilato",
+    "medicamentoB": "tetraciclina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O bismuto forma quelatos insolúveis com as tetraciclinas no trato gastrointestinal, reduzindo sua absorção — mesmo mecanismo já mapeado para cálcio e ferro.",
+    "conduta": "Espaçar a administração em pelo menos 2 horas entre os dois medicamentos.",
+    "acaoBalcao": "Orientar sobre o espaçamento de horário ao dispensar a associação.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT133",
+    "medicamentoA": "diuretico_alca",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Mesmo mecanismo hipopotassêmico já mapeado para hidroclorotiazida+digoxina, agora estendido aos diuréticos de alça (furosemida, bumetanida): a perda de potássio aumenta a sensibilidade do miocárdio à digoxina e o risco de toxicidade digitálica.",
+    "conduta": "Monitorar potássio (e magnésio, se possível) periodicamente; considerar diurético poupador de potássio associado quando indicado pelo médico.",
+    "acaoBalcao": "Perguntar sobre sintomas de hipopotassemia/toxicidade digitálica e reforçar a importância dos exames de controle periódicos.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT134",
+    "medicamentoA": "diuretico_alca",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diuréticos de alça também reduzem a depuração renal do lítio, embora com risco menor do que os diuréticos tiazídicos; ainda assim clinicamente relevante dada a janela terapêutica estreita do lítio.",
+    "conduta": "Monitorar litemia mais de perto ao iniciar ou ajustar a dose do diurético de alça.",
+    "acaoBalcao": "Reforçar a importância dos exames de controle de litemia nesse contexto.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT135",
+    "medicamentoA": "paracetamol",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O uso regular de paracetamol em doses mais altas (>2 g/dia por vários dias) pode potencializar o efeito da varfarina, provavelmente por interferência na síntese hepática de fatores de coagulação dependentes de vitamina K, elevando o INR.",
+    "conduta": "Uso ocasional/pontual em dose baixa tem risco mínimo; para uso regular/diário, monitorar INR mais de perto.",
+    "acaoBalcao": "Perguntar sobre a frequência de uso de paracetamol em pacientes que usam varfarina; reforçar que doses ocasionais são geralmente seguras.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT136",
+    "medicamentoA": "paracetamol",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O uso crônico de álcool induz o CYP2E1, aumentando a formação do metabólito hepatotóxico do paracetamol (NAPQI) mesmo em doses terapêuticas, elevando o risco de hepatotoxicidade. O risco é bem menor em consumo ocasional/social.",
+    "conduta": "Evitar uso regular de paracetamol em pacientes etilistas crônicos; nesses casos, considerar alternativa analgésica quando possível.",
+    "acaoBalcao": "Perguntar sobre padrão de consumo de álcool ao dispensar paracetamol para uso contínuo, não apenas uso pontual.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT137",
+    "medicamentoA": "paracetamol",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Indutores enzimáticos (rifampicina, carbamazepina, fenitoína, fenobarbital) aumentam a formação do metabólito hepatotóxico do paracetamol (NAPQI) pela mesma via do CYP2E1/CYP3A4, elevando o risco de hepatotoxicidade mesmo em doses terapêuticas.",
+    "conduta": "Evitar uso prolongado de paracetamol em doses altas nesses pacientes; preferir a menor dose eficaz pelo menor tempo possível.",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes/rifampicina ao orientar sobre limites de dose diária de paracetamol.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT138",
+    "medicamentoA": "meperidina",
+    "medicamentoB": "imao_b",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Interação clássica e potencialmente fatal: a meperidina tem atividade serotoninérgica própria (inibe recaptação de serotonina) que, associada a um IMAO, pode causar síndrome serotoninérgica grave com hiperpirexia, rigidez e instabilidade autonômica — uma das contraindicações mais citadas na literatura de farmacologia.",
+    "conduta": "Não associar sob nenhuma circunstância; respeitar período de washout do IMAO antes de considerar meperidina.",
+    "acaoBalcao": "Nunca dispensar as duas classes juntas; perguntar ativamente sobre uso de IMAO/selegilina antes de qualquer opioide, mas especialmente meperidina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT139",
+    "medicamentoA": "nalbufina",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "A nalbufina é um agonista-antagonista opioide (agonista κ, antagonista/agonista parcial em receptores μ); quando associada a um agonista opioide pleno (morfina, fentanila, oxicodona etc.), pode antagonizar parcialmente o efeito analgésico e, em usuários crônicos de opioides plenos, precipitar síndrome de abstinência aguda.",
+    "conduta": "Evitar associar nalbufina a um agonista opioide pleno já em uso; se a troca for necessária, fazer de forma planejada e com acompanhamento.",
+    "acaoBalcao": "Perguntar sobre uso crônico de outro opioide antes de recomendar/dispensar nalbufina.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT140",
+    "medicamentoA": "metronidazol",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O metronidazol (e o tinidazol, por mecanismo semelhante) inibe o CYP2C9 hepático, principal via de metabolização da varfarina, reduzindo seu clearance e potencializando o efeito anticoagulante, com elevação do INR.",
+    "conduta": "Monitorar INR mais de perto durante e após o curso de metronidazol/tinidazol; pode ser necessário ajuste temporário da dose de varfarina.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar metronidazol/tinidazol para tratamentos de mais de poucos dias.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT141",
+    "medicamentoA": "metronidazol",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O metronidazol (e o tinidazol) pode reduzir a depuração renal do lítio, elevando seus níveis séricos e o risco de toxicidade (tremor, ataxia, confusão).",
+    "conduta": "Considerar monitorização do nível sérico de lítio durante uso concomitante, especialmente em cursos prolongados.",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar metronidazol/tinidazol.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT142",
+    "medicamentoA": "ivermectina",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "A ivermectina, em doses elevadas ou em pacientes com maior permeabilidade da barreira hematoencefálica, pode potencializar a atividade GABAérgica; associada a benzodiazepínicos, aumenta o risco de sedação excessiva e depressão do SNC.",
+    "conduta": "Uso pontual em dose única geralmente tem risco baixo; orientar cautela em esquemas repetidos ou pacientes mais vulneráveis (idosos, hepatopatas).",
+    "acaoBalcao": "Alertar sobre sonolência excessiva ao dispensar ivermectina para quem usa benzodiazepínico regularmente.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT143",
+    "medicamentoA": "praziquantel",
+    "medicamentoB": "corticoide_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Corticosteroides sistêmicos (incluindo dexametasona) induzem o metabolismo hepático do praziquantel, reduzindo significativamente seus níveis plasmáticos e podendo comprometer a eficácia do tratamento antiparasitário.",
+    "conduta": "Evitar administração concomitante quando possível; se a associação for necessária (ex.: neurocisticercose, onde corticoide é usado para controlar reação inflamatória), fazer sob acompanhamento médico especializado.",
+    "acaoBalcao": "Perguntar sobre uso de corticoide sistêmico antes de dispensar praziquantel; encaminhar dúvidas de esquema para o prescritor.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT144",
+    "medicamentoA": "antiviral_herpes",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aciclovir, valaciclovir e famciclovir têm eliminação renal e podem cristalizar nos túbulos renais em altas doses; a associação com AINEs (também potencialmente nefrotóxicos) aumenta o risco de lesão renal aguda, especialmente em desidratação.",
+    "conduta": "Orientar hidratação adequada; monitorar função renal em uso prolongado ou doses elevadas, principalmente em idosos.",
+    "acaoBalcao": "Reforçar a importância de boa ingestão hídrica ao dispensar aciclovir/valaciclovir para quem usa AINE com frequência.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT145",
+    "medicamentoA": "antiviral_herpes",
+    "medicamentoB": "aminoglicosideo",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito nefrotóxico aditivo entre os antivirais análogos de nucleosídeo (eliminação renal, risco de cristalização tubular) e os aminoglicosídeos.",
+    "conduta": "Evitar associação quando possível; se necessária, monitorar função renal de perto.",
+    "acaoBalcao": "Alertar sobre esse risco combinado, comum em contexto hospitalar mais do que em balcão.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT146",
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "estatina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ritonavir (isolado ou como potencializador farmacocinético no Paxlovid) é um dos inibidores mais potentes do CYP3A4 conhecidos, elevando drasticamente os níveis de estatinas metabolizadas por essa via (sinvastatina, lovastatina especialmente), com risco importante de rabdomiólise.",
+    "conduta": "Sinvastatina e lovastatina: associação a evitar. Atorvastatina: usar a menor dose possível. Pravastatina/rosuvastatina (menos dependentes do CYP3A4) são alternativas mais seguras durante o tratamento.",
+    "acaoBalcao": "Perguntar sobre uso de estatina antes de dispensar ritonavir/Paxlovid; encaminhar para avaliação de troca temporária de estatina se necessário.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT147",
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "A potente inibição do CYP3A4 pelo ritonavir eleva significativamente os níveis de benzodiazepínicos metabolizados por essa via (midazolam, alprazolam, diazepam), com risco de sedação profunda e depressão respiratória.",
+    "conduta": "Evitar associação quando possível; se necessária, preferir benzodiazepínicos com metabolismo menos dependente do CYP3A4 (lorazepam) e reduzir dose.",
+    "acaoBalcao": "Perguntar sobre uso de benzodiazepínico antes de dispensar ritonavir/Paxlovid.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT148",
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O ritonavir pode alterar (aumentar ou reduzir, de forma variável) os níveis de varfarina por interação com múltiplas vias do citocromo P450, tornando o efeito anticoagulante imprevisível.",
+    "conduta": "Monitorar INR mais frequentemente no início e ao final do tratamento com ritonavir/Paxlovid.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar Paxlovid.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT149",
+    "medicamentoA": "tenofovir",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O tenofovir tem potencial nefrotóxico intrínseco (lesão tubular proximal); o uso concomitante de AINEs aumenta o risco de disfunção renal, especialmente com uso crônico de ambos.",
+    "conduta": "Evitar uso regular de AINE em pacientes em tratamento com tenofovir; preferir paracetamol para dor/febre quando possível.",
+    "acaoBalcao": "Perguntar sobre uso regular de AINE em pacientes que fazem uso de tenofovir (comum em PrEP e tratamento de HIV/hepatite B).",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT150",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "estatina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos (fluconazol, itraconazol, voriconazol, cetoconazol, posaconazol) inibem o CYP3A4, elevando os níveis de estatinas metabolizadas por essa via e aumentando o risco de miopatia/rabdomiólise — mecanismo análogo ao dos macrolídeos.",
+    "conduta": "Considerar suspensão temporária da estatina durante o curso do antifúngico, ou reduzir a dose; pravastatina/rosuvastatina são alternativas mais seguras.",
+    "acaoBalcao": "Perguntar sobre uso de estatina antes de dispensar antifúngico oral sistêmico.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT151",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Os azólicos sistêmicos inibem enzimas do citocromo P450 (CYP2C9/CYP3A4) envolvidas no metabolismo da varfarina, potencializando o efeito anticoagulante e elevando o INR.",
+    "conduta": "Monitorar INR mais de perto durante e após o curso do antifúngico.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar antifúngico oral sistêmico.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT152",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "A inibição do CYP3A4 pelos azólicos sistêmicos eleva os níveis de benzodiazepínicos metabolizados por essa via, potencializando a sedação.",
+    "conduta": "Reduzir a dose do benzodiazepínico durante o tratamento antifúngico quando a associação for necessária.",
+    "acaoBalcao": "Alertar sobre sonolência excessiva.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT153",
+    "medicamentoA": "itraconazol",
+    "medicamentoB": "ibp_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O itraconazol necessita de meio ácido gástrico para boa absorção; inibidores da bomba de prótons elevam o pH gástrico e podem reduzir significativamente sua biodisponibilidade e eficácia.",
+    "conduta": "Quando possível, administrar o itraconazol com bebida ácida (ex.: refrigerante tipo cola) e distanciar dos horários do IBP; considerar formulação alternativa (cápsula vs. solução) conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de IBP antes de dispensar itraconazol; orientar sobre administração com alimento/bebida ácida.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT154",
+    "medicamentoA": "terbinafina_oral",
+    "medicamentoB": "antidepressivo_serotoninergico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A terbinafina oral é um inibidor potente do CYP2D6, via de metabolização de diversos antidepressivos (ISRS, tricíclicos), podendo elevar seus níveis plasmáticos e efeitos adversos.",
+    "conduta": "Observar sinais de excesso do antidepressivo (sedação, efeitos anticolinérgicos, náusea) durante o curso da terbinafina; ajuste de dose pode ser necessário.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo antes de dispensar terbinafina oral para onicomicose (tratamento prolongado, 6-12 semanas).",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT155",
+    "medicamentoA": "terbinafina_oral",
+    "medicamentoB": "betabloqueador",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A inibição do CYP2D6 pela terbinafina pode elevar os níveis de betabloqueadores metabolizados por essa via (metoprolol, propranolol), potencializando bradicardia e hipotensão.",
+    "conduta": "Observar sinais de bradicardia/hipotensão em uso prolongado; considerar acompanhamento se o paciente já apresentar essa combinação.",
+    "acaoBalcao": "Perguntar sobre uso de betabloqueador antes de dispensar terbinafina oral para tratamentos longos.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT156",
+    "medicamentoA": "anfotericina_b_sistemica",
+    "medicamentoB": "aminoglicosideo",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito nefrotóxico aditivo entre dois dos agentes mais nefrotóxicos em uso clínico; a associação eleva substancialmente o risco de lesão renal aguda.",
+    "conduta": "Evitar associação quando possível; se necessária (contexto hospitalar), monitorar função renal e eletrólitos rigorosamente.",
+    "acaoBalcao": "Contexto tipicamente hospitalar; reforçar a gravidade se identificado em conciliação medicamentosa.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT157",
+    "medicamentoA": "anfotericina_b_sistemica",
+    "medicamentoB": "digoxina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A anfotericina B frequentemente causa hipocalemia; a hipocalemia aumenta a sensibilidade do miocárdio à digoxina, elevando o risco de arritmias e toxicidade digitálica mesmo em níveis séricos de digoxina considerados normais.",
+    "conduta": "Monitorar potássio sérico de perto durante o uso concomitante; repor potássio conforme necessário.",
+    "acaoBalcao": "Contexto tipicamente hospitalar; reforçar a importância da monitorização de potássio.",
+    "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
+  },
+  {
+    "id": "INT158",
+    "medicamentoA": "aine",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O uso regular/crônico de álcool compromete a barreira protetora da mucosa gástrica; associado ao efeito dos AINEs (inibição de prostaglandinas protetoras da mucosa), aumenta significativamente o risco de erosão e sangramento digestivo. O consumo pontual/social representa risco bem menor que o uso regular.",
+    "conduta": "Uso ocasional em dose baixa tem risco reduzido; para uso regular de AINE, orientar sobre consumo de álcool concomitante, especialmente em pacientes com histórico de doença péptica.",
+    "acaoBalcao": "Perguntar sobre consumo regular de álcool antes de recomendar AINE de venda livre para uso contínuo; reforçar administração com alimento.",
+    "fonte": "Farmacologia clínica estabelecida; bulas de AINEs/dipirona"
+  },
+  {
+    "id": "INT159",
+    "medicamentoA": "aine_coxibe",
+    "medicamentoB": "alcool",
+    "gravidade": "leve",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os inibidores seletivos de COX-2 preservam a COX-1 plaquetária/da mucosa gástrica, resultando em risco gastrointestinal basal menor que o dos AINEs tradicionais; a potencialização pelo álcool ainda existe, mas com magnitude reduzida.",
+    "conduta": "Risco menor que com AINE tradicional; ainda assim, orientar moderação em uso regular concomitante.",
+    "acaoBalcao": "Mencionar que o risco é menor que com AINE tradicional, mas não nulo.",
+    "fonte": "Farmacologia clínica estabelecida; bulas de AINEs/dipirona"
   }
 ]

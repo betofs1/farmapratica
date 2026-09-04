@@ -254,7 +254,8 @@
     "id": "claritromicina",
     "nome": "Claritromicina",
     "classeTerapeutica": [
-      "macrolideo"
+      "macrolideo",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -262,7 +263,8 @@
     "id": "azitromicina",
     "nome": "Azitromicina",
     "classeTerapeutica": [
-      "macrolideo"
+      "macrolideo",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -270,7 +272,8 @@
     "id": "eritromicina",
     "nome": "Eritromicina",
     "classeTerapeutica": [
-      "macrolideo"
+      "macrolideo",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -314,7 +317,8 @@
     "id": "fluoxetina",
     "nome": "Fluoxetina",
     "classeTerapeutica": [
-      "isrs"
+      "isrs",
+      "antidepressivo_serotoninergico"
     ],
     "aliases": []
   },
@@ -322,7 +326,8 @@
     "id": "sertralina",
     "nome": "Sertralina",
     "classeTerapeutica": [
-      "isrs"
+      "isrs",
+      "antidepressivo_serotoninergico"
     ],
     "aliases": []
   },
@@ -330,7 +335,8 @@
     "id": "paroxetina",
     "nome": "Paroxetina",
     "classeTerapeutica": [
-      "isrs"
+      "isrs",
+      "antidepressivo_serotoninergico"
     ],
     "aliases": []
   },
@@ -338,7 +344,8 @@
     "id": "citalopram",
     "nome": "Citalopram",
     "classeTerapeutica": [
-      "isrs"
+      "isrs",
+      "antidepressivo_serotoninergico"
     ],
     "aliases": []
   },
@@ -346,7 +353,8 @@
     "id": "escitalopram",
     "nome": "Escitalopram",
     "classeTerapeutica": [
-      "isrs"
+      "isrs",
+      "antidepressivo_serotoninergico"
     ],
     "aliases": []
   },
@@ -410,7 +418,8 @@
     "id": "ciprofloxacino",
     "nome": "Ciprofloxacino",
     "classeTerapeutica": [
-      "quinolona"
+      "quinolona",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -418,7 +427,8 @@
     "id": "levofloxacino",
     "nome": "Levofloxacino",
     "classeTerapeutica": [
-      "quinolona"
+      "quinolona",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -426,7 +436,8 @@
     "id": "norfloxacino",
     "nome": "Norfloxacino",
     "classeTerapeutica": [
-      "quinolona"
+      "quinolona",
+      "prolonga_qt"
     ],
     "aliases": []
   },
@@ -537,7 +548,17 @@
     ],
     "aliases": [
       "contraceptivo oral",
-      "etinilestradiol"
+      "etinilestradiol",
+      "ciclo 21",
+      "nordette",
+      "femina",
+      "gynera",
+      "cilest",
+      "ovral",
+      "diane 35",
+      "nuvaring",
+      "evra",
+      "primolut-nor"
     ]
   },
   {
@@ -640,7 +661,8 @@
     "id": "glibenclamida",
     "nome": "Glibenclamida",
     "classeTerapeutica": [
-      "antidiabetico"
+      "antidiabetico",
+      "sulfonilureia"
     ],
     "aliases": []
   },
@@ -648,7 +670,8 @@
     "id": "gliclazida",
     "nome": "Gliclazida",
     "classeTerapeutica": [
-      "antidiabetico"
+      "antidiabetico",
+      "sulfonilureia"
     ],
     "aliases": []
   },
@@ -1371,5 +1394,1444 @@
       "nitrolingual",
       "tridil"
     ]
+  },
+  {
+    "id": "pioglitazona",
+    "nome": "Pioglitazona",
+    "classeTerapeutica": [
+      "tiazolidinediona"
+    ],
+    "aliases": [
+      "actos",
+      "pios",
+      "pioglit"
+    ]
+  },
+  {
+    "id": "sitagliptina",
+    "nome": "Sitagliptina",
+    "classeTerapeutica": [
+      "gliptina"
+    ],
+    "aliases": [
+      "januvia",
+      "xelevia"
+    ]
+  },
+  {
+    "id": "empagliflozina",
+    "nome": "Empagliflozina",
+    "classeTerapeutica": [
+      "sglt2"
+    ],
+    "aliases": [
+      "jardiance"
+    ]
+  },
+  {
+    "id": "dapagliflozina",
+    "nome": "Dapagliflozina",
+    "classeTerapeutica": [
+      "sglt2"
+    ],
+    "aliases": [
+      "forxiga"
+    ]
+  },
+  {
+    "id": "acarbose",
+    "nome": "Acarbose",
+    "classeTerapeutica": [
+      "inibidor_alfaglicosidase"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "semaglutida",
+    "nome": "Semaglutida",
+    "classeTerapeutica": [
+      "glp1_agonista"
+    ],
+    "aliases": [
+      "ozempic",
+      "rybelsus",
+      "wegovy"
+    ]
+  },
+  {
+    "id": "liraglutida",
+    "nome": "Liraglutida",
+    "classeTerapeutica": [
+      "glp1_agonista"
+    ],
+    "aliases": [
+      "victoza",
+      "saxenda"
+    ]
+  },
+  {
+    "id": "tirzepatida",
+    "nome": "Tirzepatida",
+    "classeTerapeutica": [
+      "glp1_agonista"
+    ],
+    "aliases": [
+      "mounjaro"
+    ]
+  },
+  {
+    "id": "dulaglutida",
+    "nome": "Dulaglutida",
+    "classeTerapeutica": [
+      "glp1_agonista"
+    ],
+    "aliases": [
+      "trulicity"
+    ]
+  },
+  {
+    "id": "contraste_iodado",
+    "nome": "Contraste Iodado (radiológico)",
+    "classeTerapeutica": [
+      "contraste_iodado"
+    ],
+    "aliases": [
+      "meio de contraste iodado",
+      "contraste radiologico",
+      "contraste iodado ev"
+    ]
+  },
+  {
+    "id": "amitriptilina",
+    "nome": "Amitriptilina",
+    "classeTerapeutica": [
+      "antidepressivo_triciclico",
+      "antidepressivo_serotoninergico",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "elavil",
+      "amytril",
+      "tryptanol"
+    ]
+  },
+  {
+    "id": "nortriptilina",
+    "nome": "Nortriptilina",
+    "classeTerapeutica": [
+      "antidepressivo_triciclico",
+      "antidepressivo_serotoninergico",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "pamelor"
+    ]
+  },
+  {
+    "id": "imipramina",
+    "nome": "Imipramina",
+    "classeTerapeutica": [
+      "antidepressivo_triciclico",
+      "antidepressivo_serotoninergico",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "tofranil"
+    ]
+  },
+  {
+    "id": "clomipramina",
+    "nome": "Clomipramina",
+    "classeTerapeutica": [
+      "antidepressivo_triciclico",
+      "antidepressivo_serotoninergico",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "anafranil"
+    ]
+  },
+  {
+    "id": "venlafaxina",
+    "nome": "Venlafaxina",
+    "classeTerapeutica": [
+      "irsn",
+      "antidepressivo_serotoninergico"
+    ],
+    "aliases": [
+      "efexor"
+    ]
+  },
+  {
+    "id": "duloxetina",
+    "nome": "Duloxetina",
+    "classeTerapeutica": [
+      "irsn",
+      "antidepressivo_serotoninergico"
+    ],
+    "aliases": [
+      "cymbalta"
+    ]
+  },
+  {
+    "id": "mirtazapina",
+    "nome": "Mirtazapina",
+    "classeTerapeutica": [
+      "antidepressivo_atipico",
+      "antidepressivo_serotoninergico"
+    ],
+    "aliases": [
+      "remeron"
+    ]
+  },
+  {
+    "id": "trazodona",
+    "nome": "Trazodona",
+    "classeTerapeutica": [
+      "antidepressivo_atipico",
+      "antidepressivo_serotoninergico"
+    ],
+    "aliases": [
+      "donaren"
+    ]
+  },
+  {
+    "id": "bupropiona",
+    "nome": "Bupropiona",
+    "classeTerapeutica": [
+      "antidepressivo_atipico",
+      "bupropiona"
+    ],
+    "aliases": [
+      "wellbutrin",
+      "zyban",
+      "bup"
+    ]
+  },
+  {
+    "id": "selegilina",
+    "nome": "Selegilina",
+    "classeTerapeutica": [
+      "imao_b"
+    ],
+    "aliases": [
+      "jumex",
+      "eldepryl"
+    ]
+  },
+  {
+    "id": "zolpidem",
+    "nome": "Zolpidem",
+    "classeTerapeutica": [
+      "hipnotico_z",
+      "benzodiazepinico"
+    ],
+    "aliases": [
+      "stilnox",
+      "patz",
+      "zolfest"
+    ]
+  },
+  {
+    "id": "buspirona",
+    "nome": "Buspirona",
+    "classeTerapeutica": [
+      "buspirona"
+    ],
+    "aliases": [
+      "ansitec",
+      "buspanil"
+    ]
+  },
+  {
+    "id": "acido_valproico",
+    "nome": "Ácido Valproico",
+    "classeTerapeutica": [
+      "acido_valproico"
+    ],
+    "aliases": [
+      "depakene",
+      "valproato",
+      "depakote"
+    ]
+  },
+  {
+    "id": "lamotrigina",
+    "nome": "Lamotrigina",
+    "classeTerapeutica": [
+      "lamotrigina"
+    ],
+    "aliases": [
+      "lamictal",
+      "neural"
+    ]
+  },
+  {
+    "id": "levetiracetam",
+    "nome": "Levetiracetam",
+    "classeTerapeutica": [
+      "levetiracetam"
+    ],
+    "aliases": [
+      "keppra"
+    ]
+  },
+  {
+    "id": "topiramato",
+    "nome": "Topiramato",
+    "classeTerapeutica": [
+      "topiramato"
+    ],
+    "aliases": [
+      "topamax"
+    ]
+  },
+  {
+    "id": "oxcarbazepina",
+    "nome": "Oxcarbazepina",
+    "classeTerapeutica": [
+      "oxcarbazepina",
+      "indutor_enzimatico"
+    ],
+    "aliases": [
+      "trileptal"
+    ]
+  },
+  {
+    "id": "gabapentina",
+    "nome": "Gabapentina",
+    "classeTerapeutica": [
+      "gabapentinoide"
+    ],
+    "aliases": [
+      "neurontin",
+      "progresse"
+    ]
+  },
+  {
+    "id": "pregabalina",
+    "nome": "Pregabalina",
+    "classeTerapeutica": [
+      "gabapentinoide"
+    ],
+    "aliases": [
+      "lyrica",
+      "prebictal"
+    ]
+  },
+  {
+    "id": "risperidona",
+    "nome": "Risperidona",
+    "classeTerapeutica": [
+      "antipsicotico_atipico",
+      "antipsicotico"
+    ],
+    "aliases": [
+      "risperdal"
+    ]
+  },
+  {
+    "id": "olanzapina",
+    "nome": "Olanzapina",
+    "classeTerapeutica": [
+      "antipsicotico_atipico",
+      "antipsicotico"
+    ],
+    "aliases": [
+      "zyprexa"
+    ]
+  },
+  {
+    "id": "quetiapina",
+    "nome": "Quetiapina",
+    "classeTerapeutica": [
+      "antipsicotico_atipico",
+      "antipsicotico"
+    ],
+    "aliases": [
+      "seroquel"
+    ]
+  },
+  {
+    "id": "clozapina",
+    "nome": "Clozapina",
+    "classeTerapeutica": [
+      "antipsicotico_atipico",
+      "antipsicotico"
+    ],
+    "aliases": [
+      "leponex",
+      "clozaril"
+    ]
+  },
+  {
+    "id": "haloperidol",
+    "nome": "Haloperidol",
+    "classeTerapeutica": [
+      "antipsicotico_tipico",
+      "antipsicotico",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "haldol"
+    ]
+  },
+  {
+    "id": "clorpromazina",
+    "nome": "Clorpromazina",
+    "classeTerapeutica": [
+      "antipsicotico_tipico",
+      "antipsicotico",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "amplictil",
+      "largactil"
+    ]
+  },
+  {
+    "id": "levodopa_carbidopa",
+    "nome": "Levodopa + Carbidopa",
+    "classeTerapeutica": [
+      "dopaminergico_parkinson"
+    ],
+    "aliases": [
+      "prolopa",
+      "sinemet",
+      "levodopa"
+    ]
+  },
+  {
+    "id": "pramipexol",
+    "nome": "Pramipexol",
+    "classeTerapeutica": [
+      "dopaminergico_parkinson"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "ropinirol",
+    "nome": "Ropinirol",
+    "classeTerapeutica": [
+      "dopaminergico_parkinson"
+    ],
+    "aliases": [
+      "ropinirole"
+    ]
+  },
+  {
+    "id": "ciclobenzaprina",
+    "nome": "Ciclobenzaprina",
+    "classeTerapeutica": [
+      "relaxante_muscular_central"
+    ],
+    "aliases": [
+      "flexeril",
+      "miosan"
+    ]
+  },
+  {
+    "id": "carisoprodol",
+    "nome": "Carisoprodol",
+    "classeTerapeutica": [
+      "relaxante_muscular_central"
+    ],
+    "aliases": [
+      "soma"
+    ]
+  },
+  {
+    "id": "metocarbamol",
+    "nome": "Metocarbamol",
+    "classeTerapeutica": [
+      "relaxante_muscular_central"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "orfenadrina",
+    "nome": "Orfenadrina",
+    "classeTerapeutica": [
+      "relaxante_muscular_central",
+      "prolonga_qt",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "norflex"
+    ]
+  },
+  {
+    "id": "dantroleno",
+    "nome": "Dantroleno",
+    "classeTerapeutica": [
+      "dantroleno"
+    ],
+    "aliases": [
+      "dantrolen"
+    ]
+  },
+  {
+    "id": "doxiciclina",
+    "nome": "Doxiciclina",
+    "classeTerapeutica": [
+      "tetraciclina"
+    ],
+    "aliases": [
+      "vibramicina"
+    ]
+  },
+  {
+    "id": "tetraciclina",
+    "nome": "Tetraciclina",
+    "classeTerapeutica": [
+      "tetraciclina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "sulfametoxazol_trimetoprima",
+    "nome": "Sulfametoxazol + Trimetoprima",
+    "classeTerapeutica": [
+      "sulfonamida_trimetoprima"
+    ],
+    "aliases": [
+      "bactrim",
+      "cotrimoxazol",
+      "smx-tmp"
+    ]
+  },
+  {
+    "id": "vancomicina",
+    "nome": "Vancomicina",
+    "classeTerapeutica": [
+      "vancomicina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "clindamicina",
+    "nome": "Clindamicina",
+    "classeTerapeutica": [
+      "lincosamida"
+    ],
+    "aliases": [
+      "dalacin"
+    ]
+  },
+  {
+    "id": "ceftriaxona",
+    "nome": "Ceftriaxona",
+    "classeTerapeutica": [
+      "cefalosporina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "cefuroxima",
+    "nome": "Cefuroxima",
+    "classeTerapeutica": [
+      "cefalosporina"
+    ],
+    "aliases": [
+      "zinnat"
+    ]
+  },
+  {
+    "id": "ampicilina",
+    "nome": "Ampicilina",
+    "classeTerapeutica": [
+      "antibiotico_amplo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "gentamicina",
+    "nome": "Gentamicina",
+    "classeTerapeutica": [
+      "aminoglicosideo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "salbutamol",
+    "nome": "Salbutamol",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": [
+      "aerolin"
+    ]
+  },
+  {
+    "id": "fenoterol",
+    "nome": "Fenoterol",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "terbutalina",
+    "nome": "Terbutalina",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "salmeterol",
+    "nome": "Salmeterol",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "formoterol",
+    "nome": "Formoterol",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "indacaterol",
+    "nome": "Indacaterol",
+    "classeTerapeutica": [
+      "beta2_agonista"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "ipratropio",
+    "nome": "Brometo de Ipratrópio",
+    "classeTerapeutica": [
+      "anticolinergico_inalatorio",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "atrovent"
+    ]
+  },
+  {
+    "id": "tiotropio",
+    "nome": "Tiotrópio",
+    "classeTerapeutica": [
+      "anticolinergico_inalatorio",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "spiriva"
+    ]
+  },
+  {
+    "id": "budesonida",
+    "nome": "Budesonida",
+    "classeTerapeutica": [
+      "budesonida",
+      "corticoide_inalatorio"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "fluticasona",
+    "nome": "Fluticasona",
+    "classeTerapeutica": [
+      "corticoide_inalatorio"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "montelucaste",
+    "nome": "Montelucaste",
+    "classeTerapeutica": [
+      "montelucaste"
+    ],
+    "aliases": [
+      "singulair"
+    ]
+  },
+  {
+    "id": "teofilina",
+    "nome": "Teofilina",
+    "classeTerapeutica": [
+      "teofilina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "loratadina",
+    "nome": "Loratadina",
+    "classeTerapeutica": [
+      "anti_histaminico_h1_2geracao"
+    ],
+    "aliases": [
+      "claritin"
+    ]
+  },
+  {
+    "id": "fexofenadina",
+    "nome": "Fexofenadina",
+    "classeTerapeutica": [
+      "anti_histaminico_h1_2geracao"
+    ],
+    "aliases": [
+      "allegra"
+    ]
+  },
+  {
+    "id": "levocetirizina",
+    "nome": "Levocetirizina",
+    "classeTerapeutica": [
+      "anti_histaminico_h1_2geracao"
+    ],
+    "aliases": [
+      "xyzal"
+    ]
+  },
+  {
+    "id": "difenidramina",
+    "nome": "Difenidramina",
+    "classeTerapeutica": [
+      "difenidramina",
+      "anti_histaminico_sedativo",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "benadryl"
+    ]
+  },
+  {
+    "id": "dexclorfeniramina",
+    "nome": "Dexclorfeniramina",
+    "classeTerapeutica": [
+      "anti_histaminico_sedativo",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "polaramine"
+    ]
+  },
+  {
+    "id": "cetotifeno",
+    "nome": "Cetotifeno",
+    "classeTerapeutica": [
+      "anti_histaminico_sedativo",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "zaditen"
+    ]
+  },
+  {
+    "id": "carbinoxamina",
+    "nome": "Carbinoxamina",
+    "classeTerapeutica": [
+      "anti_histaminico_sedativo",
+      "anticolinergico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "cimetidina",
+    "nome": "Cimetidina",
+    "classeTerapeutica": [
+      "cimetidina",
+      "inibidor_cyp_h2"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "pantoprazol",
+    "nome": "Pantoprazol",
+    "classeTerapeutica": [
+      "ibp_potente"
+    ],
+    "aliases": [
+      "pantozol",
+      "zurcal"
+    ]
+  },
+  {
+    "id": "misoprostol",
+    "nome": "Misoprostol",
+    "classeTerapeutica": [
+      "misoprostol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "simeticona",
+    "nome": "Simeticona",
+    "classeTerapeutica": [
+      "simeticona"
+    ],
+    "aliases": [
+      "luftal"
+    ]
+  },
+  {
+    "id": "domperidona",
+    "nome": "Domperidona",
+    "classeTerapeutica": [
+      "domperidona",
+      "metoclopramida",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "motilium"
+    ]
+  },
+  {
+    "id": "bromoprida",
+    "nome": "Bromoprida",
+    "classeTerapeutica": [
+      "bromoprida",
+      "metoclopramida"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "lactulose",
+    "nome": "Lactulose",
+    "classeTerapeutica": [
+      "laxante"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "psyllium",
+    "nome": "Psyllium",
+    "classeTerapeutica": [
+      "laxante"
+    ],
+    "aliases": [
+      "metamucil"
+    ]
+  },
+  {
+    "id": "loperamida",
+    "nome": "Loperamida",
+    "classeTerapeutica": [
+      "loperamida"
+    ],
+    "aliases": [
+      "imosec"
+    ]
+  },
+  {
+    "id": "escopolamina",
+    "nome": "Escopolamina (Hioscina)",
+    "classeTerapeutica": [
+      "escopolamina",
+      "anticolinergico"
+    ],
+    "aliases": [
+      "buscopan",
+      "buscopan duo",
+      "hioscina"
+    ]
+  },
+  {
+    "id": "bismuto_subsalicilato",
+    "nome": "Bismuto Subsalicilato",
+    "classeTerapeutica": [
+      "bismuto_subsalicilato"
+    ],
+    "aliases": [
+      "pepto-bismol",
+      "pepto bismol"
+    ]
+  },
+  {
+    "id": "etinilestradiol_drospirenona",
+    "nome": "Etinilestradiol + Drospirenona",
+    "classeTerapeutica": [
+      "contraceptivo",
+      "poupador_potassio"
+    ],
+    "aliases": [
+      "yasmin",
+      "yaz"
+    ]
+  },
+  {
+    "id": "levonorgestrel_emergencial",
+    "nome": "Levonorgestrel (contracepção de emergência)",
+    "classeTerapeutica": [
+      "contraceptivo"
+    ],
+    "aliases": [
+      "postinor",
+      "postinor uno",
+      "postinor-2",
+      "pilula do dia seguinte"
+    ]
+  },
+  {
+    "id": "desogestrel",
+    "nome": "Desogestrel",
+    "classeTerapeutica": [
+      "contraceptivo"
+    ],
+    "aliases": [
+      "cerazette"
+    ]
+  },
+  {
+    "id": "etonogestrel_implante",
+    "nome": "Etonogestrel (implante)",
+    "classeTerapeutica": [
+      "contraceptivo"
+    ],
+    "aliases": [
+      "implanon",
+      "implanon nxt"
+    ]
+  },
+  {
+    "id": "acetato_medroxiprogesterona_estradiol",
+    "nome": "Acetato de Medroxiprogesterona + Cipionato de Estradiol",
+    "classeTerapeutica": [
+      "contraceptivo"
+    ],
+    "aliases": [
+      "cyclofemina"
+    ]
+  },
+  {
+    "id": "clotrimazol",
+    "nome": "Clotrimazol",
+    "classeTerapeutica": [
+      "antifungico_topico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "permetrina",
+    "nome": "Permetrina",
+    "classeTerapeutica": [
+      "permetrina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "acido_salicilico_topico",
+    "nome": "Ácido Salicílico (tópico)",
+    "classeTerapeutica": [
+      "ceratolitico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "peroxido_benzoila",
+    "nome": "Peróxido de Benzoíla",
+    "classeTerapeutica": [
+      "peroxido_benzoila"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "miconazol",
+    "nome": "Miconazol",
+    "classeTerapeutica": [
+      "antifungico_topico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "hidrocortisona",
+    "nome": "Hidrocortisona",
+    "classeTerapeutica": [
+      "corticoide_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "adapaleno",
+    "nome": "Adapaleno",
+    "classeTerapeutica": [
+      "retinoide_topico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "acido_fusidico",
+    "nome": "Ácido Fusídico",
+    "classeTerapeutica": [
+      "antibiotico_topico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "sulfadiazina_prata",
+    "nome": "Sulfadiazina de Prata",
+    "classeTerapeutica": [
+      "antibiotico_topico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "tamsulosina",
+    "nome": "Tamsulosina",
+    "classeTerapeutica": [
+      "alfabloqueador"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "finasterida",
+    "nome": "Finasterida",
+    "classeTerapeutica": [
+      "finasterida"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "solifenacina",
+    "nome": "Solifenacina",
+    "classeTerapeutica": [
+      "solifenacina",
+      "anticolinergico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "oxibutinina",
+    "nome": "Oxibutinina",
+    "classeTerapeutica": [
+      "oxibutinina",
+      "anticolinergico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nitrofurantoina",
+    "nome": "Nitrofurantoína",
+    "classeTerapeutica": [
+      "nitrofurantoina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "fenazopiridina",
+    "nome": "Fenazopiridina",
+    "classeTerapeutica": [
+      "fenazopiridina"
+    ],
+    "aliases": [
+      "cloridrato de fenazopiridina"
+    ]
+  },
+  {
+    "id": "paracetamol",
+    "nome": "Paracetamol (Acetaminofeno)",
+    "classeTerapeutica": [
+      "paracetamol"
+    ],
+    "aliases": [
+      "acetaminofeno",
+      "tylenol"
+    ]
+  },
+  {
+    "id": "morfina",
+    "nome": "Morfina",
+    "classeTerapeutica": [
+      "morfina",
+      "opioide"
+    ],
+    "aliases": [
+      "dimorf",
+      "ms contin"
+    ]
+  },
+  {
+    "id": "fentanila",
+    "nome": "Fentanila",
+    "classeTerapeutica": [
+      "fentanila",
+      "opioide"
+    ],
+    "aliases": [
+      "fentanil",
+      "durogesic"
+    ]
+  },
+  {
+    "id": "metadona",
+    "nome": "Metadona",
+    "classeTerapeutica": [
+      "metadona",
+      "opioide",
+      "prolonga_qt"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "meperidina",
+    "nome": "Meperidina (Petidina)",
+    "classeTerapeutica": [
+      "meperidina",
+      "opioide"
+    ],
+    "aliases": [
+      "petidina"
+    ]
+  },
+  {
+    "id": "buprenorfina",
+    "nome": "Buprenorfina",
+    "classeTerapeutica": [
+      "buprenorfina",
+      "opioide"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "tapentadol",
+    "nome": "Tapentadol",
+    "classeTerapeutica": [
+      "tapentadol",
+      "opioide",
+      "tramadol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "levorfanol",
+    "nome": "Levorfanol",
+    "classeTerapeutica": [
+      "levorfanol",
+      "opioide",
+      "tramadol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "remifentanila",
+    "nome": "Remifentanila",
+    "classeTerapeutica": [
+      "remifentanila",
+      "opioide"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nalbufina",
+    "nome": "Nalbufina",
+    "classeTerapeutica": [
+      "nalbufina",
+      "opioide"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "oximorfona",
+    "nome": "Oximorfona",
+    "classeTerapeutica": [
+      "oximorfona",
+      "opioide"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "naloxona",
+    "nome": "Naloxona",
+    "classeTerapeutica": [
+      "naloxona"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "metilprednisolona",
+    "nome": "Metilprednisolona",
+    "classeTerapeutica": [
+      "corticoide_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "deflazacorte",
+    "nome": "Deflazacorte",
+    "classeTerapeutica": [
+      "corticoide_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "triancinolona",
+    "nome": "Triancinolona",
+    "classeTerapeutica": [
+      "corticoide_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "fludrocortisona",
+    "nome": "Fludrocortisona",
+    "classeTerapeutica": [
+      "corticoide_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "trimebutina",
+    "nome": "Trimebutina",
+    "classeTerapeutica": [
+      "trimebutina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "pinaverio",
+    "nome": "Brometo de Pinavério",
+    "classeTerapeutica": [
+      "pinaverio"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "flumazenil",
+    "nome": "Flumazenil",
+    "classeTerapeutica": [
+      "flumazenil"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "tinidazol",
+    "nome": "Tinidazol",
+    "classeTerapeutica": [
+      "tinidazol",
+      "metronidazol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "albendazol",
+    "nome": "Albendazol",
+    "classeTerapeutica": [
+      "albendazol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "mebendazol",
+    "nome": "Mebendazol",
+    "classeTerapeutica": [
+      "mebendazol"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "ivermectina",
+    "nome": "Ivermectina",
+    "classeTerapeutica": [
+      "ivermectina"
+    ],
+    "aliases": [
+      "revectina"
+    ]
+  },
+  {
+    "id": "praziquantel",
+    "nome": "Praziquantel",
+    "classeTerapeutica": [
+      "praziquantel"
+    ],
+    "aliases": [
+      "cesol"
+    ]
+  },
+  {
+    "id": "nitazoxanida",
+    "nome": "Nitazoxanida",
+    "classeTerapeutica": [
+      "nitazoxanida"
+    ],
+    "aliases": [
+      "annita"
+    ]
+  },
+  {
+    "id": "hidroxicloroquina",
+    "nome": "Hidroxicloroquina",
+    "classeTerapeutica": [
+      "hidroxicloroquina",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "reuquinol"
+    ]
+  },
+  {
+    "id": "aciclovir",
+    "nome": "Aciclovir",
+    "classeTerapeutica": [
+      "aciclovir",
+      "antiviral_herpes"
+    ],
+    "aliases": [
+      "zovirax"
+    ]
+  },
+  {
+    "id": "valaciclovir",
+    "nome": "Valaciclovir",
+    "classeTerapeutica": [
+      "valaciclovir",
+      "antiviral_herpes"
+    ],
+    "aliases": [
+      "valtrex"
+    ]
+  },
+  {
+    "id": "famciclovir",
+    "nome": "Famciclovir",
+    "classeTerapeutica": [
+      "famciclovir",
+      "antiviral_herpes"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "oseltamivir",
+    "nome": "Oseltamivir",
+    "classeTerapeutica": [
+      "oseltamivir"
+    ],
+    "aliases": [
+      "tamiflu"
+    ]
+  },
+  {
+    "id": "ritonavir",
+    "nome": "Ritonavir",
+    "classeTerapeutica": [
+      "ritonavir",
+      "ritonavir_potente"
+    ],
+    "aliases": [
+      "norvir"
+    ]
+  },
+  {
+    "id": "nirmatrelvir_ritonavir",
+    "nome": "Nirmatrelvir + Ritonavir (Paxlovid)",
+    "classeTerapeutica": [
+      "nirmatrelvir_ritonavir",
+      "ritonavir_potente"
+    ],
+    "aliases": [
+      "paxlovid"
+    ]
+  },
+  {
+    "id": "efavirenz",
+    "nome": "Efavirenz",
+    "classeTerapeutica": [
+      "efavirenz",
+      "indutor_enzimatico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "tenofovir",
+    "nome": "Tenofovir",
+    "classeTerapeutica": [
+      "tenofovir"
+    ],
+    "aliases": [
+      "viread"
+    ]
+  },
+  {
+    "id": "fluconazol",
+    "nome": "Fluconazol",
+    "classeTerapeutica": [
+      "fluconazol",
+      "antifungico_azolico_sistemico",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "zoltec"
+    ]
+  },
+  {
+    "id": "itraconazol",
+    "nome": "Itraconazol",
+    "classeTerapeutica": [
+      "itraconazol",
+      "antifungico_azolico_sistemico"
+    ],
+    "aliases": [
+      "sporanox"
+    ]
+  },
+  {
+    "id": "voriconazol",
+    "nome": "Voriconazol",
+    "classeTerapeutica": [
+      "voriconazol",
+      "antifungico_azolico_sistemico"
+    ],
+    "aliases": [
+      "vfend"
+    ]
+  },
+  {
+    "id": "cetoconazol_oral",
+    "nome": "Cetoconazol (via oral)",
+    "classeTerapeutica": [
+      "cetoconazol_oral",
+      "antifungico_azolico_sistemico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "posaconazol",
+    "nome": "Posaconazol",
+    "classeTerapeutica": [
+      "posaconazol",
+      "antifungico_azolico_sistemico"
+    ],
+    "aliases": [
+      "noxafil"
+    ]
+  },
+  {
+    "id": "terbinafina_oral",
+    "nome": "Terbinafina (via oral)",
+    "classeTerapeutica": [
+      "terbinafina_oral"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "griseofulvina",
+    "nome": "Griseofulvina",
+    "classeTerapeutica": [
+      "griseofulvina",
+      "indutor_enzimatico"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "anfotericina_b_sistemica",
+    "nome": "Anfotericina B (sistêmica)",
+    "classeTerapeutica": [
+      "anfotericina_b_sistemica"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "nistatina_sistemica",
+    "nome": "Nistatina (oral/vaginal)",
+    "classeTerapeutica": [
+      "nistatina_sistemica"
+    ],
+    "aliases": []
   }
 ]
