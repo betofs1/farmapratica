@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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">
-<title>FarmaPrática | Calculadora de Doses</title>
+<title>FarmaPrática | Calculadora Pediátrica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -72,28 +72,7 @@
     height:100vh;
     overflow:hidden;
     transition: background-color .2s ease, color .2s ease;
-    position: relative;
   }
-
-  /* ---------- Modo Pediátrico: leve tingimento "bebê" da página inteira ----------
-     Aplicado via body.modo-pediatrico (idade < 18 anos informada). Usa uma camada
-     translúcida fixa (não interfere no layout/cores de cada componente individualmente,
-     por isso funciona igual nos temas claro e escuro) que aparece/desaparece com
-     transição suave conforme a idade digitada cruza o limiar de 18 anos. */
-  body::after{
-    content:'';
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:4;
-    background:
-      radial-gradient(circle at 12% -4%, rgba(79,143,209,.16), transparent 55%),
-      linear-gradient(180deg, rgba(79,143,209,.05), rgba(79,143,209,.02) 45%, transparent 75%);
-    opacity:0;
-    transition: opacity .35s ease;
-  }
-  body.modo-pediatrico::after{ opacity:1; }
-  @media print{ body::after{ display:none !important; } }
 
   /* ---------- Topbar ---------- */
   .topbar-app{
@@ -646,41 +625,6 @@
   @media (max-width: 560px){
     .peso-bar{ flex-wrap:wrap; gap:16px; }
   }
-
-  /* ---------- Selo de tipo de paciente (Adulto / Pediátrico) ---------- */
-  .tipo-paciente-banner{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    border-radius:14px;
-    padding:11px 18px;
-    margin-bottom:18px;
-    border:1px solid var(--border);
-    background: var(--card);
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    transition: background-color .25s ease, border-color .25s ease;
-  }
-  .tipo-paciente-banner[hidden]{ display:none; }
-  .tipo-paciente-banner .tp-icon{
-    width:36px; height:36px; border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
-    flex-shrink:0; transition: background-color .25s ease, color .25s ease;
-  }
-  .tipo-paciente-banner .tp-icon .icon{ width:20px; height:20px; }
-  .tipo-paciente-banner .tp-texto{ display:flex; flex-direction:column; gap:1px; min-width:0; }
-  .tipo-paciente-banner .tp-label{ font-size:.86rem; font-weight:800; letter-spacing:.4px; transition: color .25s ease; }
-  .tipo-paciente-banner .tp-sub{ font-size:.74rem; color:var(--text-dim); font-weight:600; }
-
-  .tipo-paciente-banner.tp-adulto{ border-color: rgba(228,23,44,.35); }
-  .tipo-paciente-banner.tp-adulto .tp-icon{ background: rgba(228,23,44,.12); color: var(--red-bright); }
-  .tipo-paciente-banner.tp-adulto .tp-label{ color: var(--red-bright); }
-
-  .tipo-paciente-banner.tp-pediatrico{ border-color: rgba(79,143,209,.4); }
-  .tipo-paciente-banner.tp-pediatrico .tp-icon{ background: rgba(79,143,209,.16); color:#4f8fd1; }
-  .tipo-paciente-banner.tp-pediatrico .tp-label{ color:#4f8fd1; }
-
-  .tipo-paciente-banner.tp-transicao .tp-sub{ color:#c9790a; font-weight:700; }
-  body.light .tipo-paciente-banner.tp-transicao .tp-sub{ color:#a8650a; }
 
   .empty-state{
     display:flex;
@@ -1437,8 +1381,8 @@
     </a>
   </div>
   <div class="titulo-central">
-    <div class="titulo-principal">CALCULADORA <span class="titulo-accent">DE DOSES</span></div>
-    <div class="titulo-descricao">Cálculo de doses por peso e idade — pediátrico e adulto — com base em bulas e diretrizes atualizadas</div>
+    <div class="titulo-principal">CALCULADORA <span class="titulo-accent">PEDIÁTRICA</span></div>
+    <div class="titulo-descricao">Cálculo de doses pediátricas com base em bulas e diretrizes atualizadas</div>
   </div>
   <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
@@ -1475,7 +1419,7 @@
         <div class="empty-state">
           <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
           <div class="empty-title">Nenhum fármaco selecionado</div>
-          <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose por peso e idade.</div>
+          <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose pediátrica por peso ou idade.</div>
         </div>
       </div>
     </div>
@@ -1550,9 +1494,7 @@ const ICONS = {
   tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.59 2H4a2 2 0 00-2 2v8.59a2 2 0 00.59 1.41l9 9a2 2 0 002.82 0l7.18-7.18a2 2 0 000-2.82l-9-9A2 2 0 0012.59 2z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>',
   fechar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
   chevronLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
-  paciente: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg>',
-  adulto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0114 0v2"/></svg>',
-  bebe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="M9 11c.6 1 1.6 1.5 3 1.5s2.4-.5 3-1.5"/><circle cx="9.5" cy="9" r=".6" fill="currentColor" stroke="none"/><circle cx="14.5" cy="9" r=".6" fill="currentColor" stroke="none"/><path d="M12 16v2.3"/><circle cx="12" cy="19.6" r="1.7"/></svg>'
+  paciente: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg>'
 };
 
 // Data de referência da última revisão geral da base (ajustar manualmente quando os dados forem revisados)
@@ -1722,7 +1664,7 @@ function syncFavToHubCalc(id, label, added){
     const hubId = 'calc-' + id;
     if(added){
       if(!list.some(f => f.id === hubId)){
-        list.push({id: hubId, label: label, source: 'calc', sourceLabel: 'Calculadora de Doses', href: 'dosespediatricas/?farmaco=' + encodeURIComponent(id)});
+        list.push({id: hubId, label: label, source: 'calc', sourceLabel: 'Calculadora Pediátrica', href: 'dosespediatricas/?farmaco=' + encodeURIComponent(id)});
       }
     } else {
       list = list.filter(f => f.id !== hubId);
@@ -1896,10 +1838,9 @@ function renderConteudo(){
       <div class="empty-state">
         <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
         <div class="empty-title">Nenhum fármaco selecionado</div>
-        <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose por peso e idade.</div>
+        <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose pediátrica por peso ou idade.</div>
       </div>
     `;
-    document.body.classList.remove('modo-pediatrico');
     return;
   }
   const f = farmacoAtual;
@@ -1959,19 +1900,11 @@ function renderConteudo(){
       </div>
     </div>
 
-    <div class="tipo-paciente-banner" id="tipo-paciente-banner" hidden aria-live="polite">
-      <div class="tp-icon" id="tipo-paciente-icon"></div>
-      <div class="tp-texto">
-        <span class="tp-label" id="tipo-paciente-label"></span>
-        <span class="tp-sub" id="tipo-paciente-sub"></span>
-      </div>
-    </div>
-
     <div id="observacoes-container" aria-live="polite"></div>
     <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
     <div class="fonte-tag"><span class="icon">${ICONS.livro}</span> Fonte: <b>${f.fonte}</b></div>
     <div class="print-only">
-      Gerado pela Calculadora de Doses — FarmaPrática · Base revisada em ${DADOS_VERIFICADOS_EM}. Ferramenta de apoio à decisão clínica; não substitui a avaliação individualizada do paciente nem a bula vigente do medicamento efetivamente dispensado. A responsabilidade pela prescrição, dispensação e administração é do profissional de saúde habilitado.
+      Gerado pela Calculadora Pediátrica — FarmaPrática · Base revisada em ${DADOS_VERIFICADOS_EM}. Ferramenta de apoio à decisão clínica; não substitui a avaliação individualizada do paciente nem a bula vigente do medicamento efetivamente dispensado. A responsabilidade pela prescrição, dispensação e administração é do profissional de saúde habilitado.
     </div>
   `;
 
@@ -2081,109 +2014,22 @@ function textoPlano(html){
   return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
 
-// ---------- Selo de tipo de paciente (Adulto / Pediátrico) + tingimento da página ----------
-function atualizarBannerPaciente(faixaClinica, idade, unidade){
-  const banner = document.getElementById('tipo-paciente-banner');
-  if(!banner) return;
-  const iconEl = document.getElementById('tipo-paciente-icon');
-  const labelEl = document.getElementById('tipo-paciente-label');
-  const subEl = document.getElementById('tipo-paciente-sub');
-
-  if(!faixaClinica){
-    banner.hidden = true;
-    document.body.classList.remove('modo-pediatrico');
-    return;
-  }
-
-  banner.hidden = false;
-  banner.classList.remove('tp-adulto', 'tp-pediatrico', 'tp-transicao');
-
-  const unidadeTxt = unidade === 'meses' ? (idade === 1 ? 'mês' : 'meses') : (idade === 1 ? 'ano' : 'anos');
-  const idadeTexto = `${idade} ${unidadeTxt}`;
-
-  if(faixaClinica === 'adulto'){
-    banner.classList.add('tp-adulto');
-    iconEl.innerHTML = ICONS.adulto;
-    labelEl.textContent = 'PACIENTE ADULTO';
-    subEl.textContent = `Idade informada: ${idadeTexto} — posologia de adulto`;
-    document.body.classList.remove('modo-pediatrico');
-  } else if(faixaClinica === 'transicao'){
-    banner.classList.add('tp-pediatrico', 'tp-transicao');
-    iconEl.innerHTML = ICONS.bebe;
-    labelEl.textContent = 'PACIENTE PEDIÁTRICO';
-    subEl.textContent = `Idade informada: ${idadeTexto} — faixa de transição (dose por peso limitada ao teto de adulto)`;
-    document.body.classList.add('modo-pediatrico');
-  } else {
-    banner.classList.add('tp-pediatrico');
-    iconEl.innerHTML = ICONS.bebe;
-    labelEl.textContent = 'PACIENTE PEDIÁTRICO';
-    subEl.textContent = `Idade informada: ${idadeTexto}`;
-    document.body.classList.add('modo-pediatrico');
-  }
-}
-
 function calcularEExibir(){
   const f = farmacoAtual;
   const peso = pesoAtual;
   const idadeMeses = idadeUnidade === 'meses' ? idadeAtual : idadeAtual * 12;
-  const idadeAnos = idadeMeses / 12;
   const formDiv = document.getElementById('formulacoes');
   const obsDiv = document.getElementById('observacoes-container');
   formDiv.innerHTML = '';
   obsDiv.innerHTML = '';
 
-  // ----- classificação do paciente por idade (Adulto / Pediátrico / faixa de transição 12-18) -----
-  // Corte padrão de 12 anos incompletos, ajustável por fármaco via idadeLimitePediatricaAnos
-  // (ex.: mantido em 18 para fármacos de baixo índice terapêutico, quando aplicável).
-  const idadeInformada = idadeAtual > 0;
-  const limitePed = f.idadeLimitePediatricaAnos || 12;
-  let faixaClinica = null; // 'pediatrico' | 'transicao' | 'adulto'
-  if(idadeInformada){
-    if(idadeAnos >= 18) faixaClinica = 'adulto';
-    else if(idadeAnos >= limitePed) faixaClinica = 'transicao';
-    else faixaClinica = 'pediatrico';
-  }
-  let usarRegimeAdulto = faixaClinica === 'adulto';
-  let transicaoPorPeso = false;
-  if(!usarRegimeAdulto && peso > 0 && f.pesoCorteAdultoKg && peso >= f.pesoCorteAdultoKg){
-    usarRegimeAdulto = true;
-    transicaoPorPeso = true;
-  }
-  atualizarBannerPaciente(faixaClinica, idadeAtual, idadeUnidade);
-
   // ----- calcular dose base (mg por administração) -----
   let dose = null; // {min, max} em mg por administração
   let infoMgKg = null; // para observação dinâmica
-  let regimeUsado = null; // 'adulto' | 'pediatrico' | 'transicao'
   const db = f.doseBase;
-  const da = f.doseAdulto;
 
   if(peso > 0){
-    if(usarRegimeAdulto && da && da.modo === 'fixa'){
-      regimeUsado = 'adulto';
-      let doseMin = da.doseMg.min, doseMax = da.doseMg.max;
-      dose = { min: doseMin, max: doseMax, capApplied:false };
-      dose.formulaBase = [seg(
-        'Dose fixa de adulto (posologia não calculada por peso)',
-        `→ ${doseMin === doseMax ? formatarMg(doseMax) : formatarMg(doseMin)+'–'+formatarMg(doseMax)} por administração${da.doseMaximaDiaMg ? ' (máx. ' + formatarMg(da.doseMaximaDiaMg) + '/dia)' : ''}`
-      )];
-    } else if(usarRegimeAdulto && da && da.modo === 'mgkg'){
-      regimeUsado = 'adulto';
-      let doseMin = da.doseMgKg.min * peso;
-      let doseMax = da.doseMgKg.max * peso;
-      let capApplied = false;
-      if(da.doseMaximaDoseMg){
-        if(doseMin > da.doseMaximaDoseMg){ doseMin = da.doseMaximaDoseMg; capApplied = true; }
-        if(doseMax > da.doseMaximaDoseMg){ doseMax = da.doseMaximaDoseMg; capApplied = true; }
-      }
-      dose = { min: doseMin, max: doseMax, capApplied };
-      infoMgKg = { unidade: 'dose', min: da.doseMgKg.min, max: da.doseMgKg.max };
-      dose.formulaBase = [seg(
-        'Calcular a dose de adulto por peso: peso × mg/kg/dose',
-        `→ ${peso} kg × ${da.doseMgKg.min}–${da.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo por dose)' : ''}`
-      )];
-    } else if(db.tipo === 'mgkg_dia'){
-      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
+    if(db.tipo === 'mgkg_dia'){
       let diaMin = db.doseMgKg.min * peso;
       let diaMax = db.doseMgKg.max * peso;
       let capApplied = false;
@@ -2204,9 +2050,7 @@ function calcularEExibir(){
           `→ ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg ÷ ${frac} = ${arred(dose.min)}–${arred(dose.max)} mg por administração`
         )
       ];
-      aplicarTravaAdulto();
     } else if(db.tipo === 'mgkg_dose'){
-      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
       let doseMin = db.doseMgKg.min * peso;
       let doseMax = db.doseMgKg.max * peso;
       let capApplied = false;
@@ -2220,9 +2064,7 @@ function calcularEExibir(){
         'Calcular a dose por administração: peso × mg/kg/dose',
         `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo por dose)' : ''}`
       )];
-      aplicarTravaAdulto();
     } else if(db.tipo === 'faixa_fixa'){
-      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
       let faixa;
       if(db.faixasPorIdade){
         faixa = db.faixas.find(fx => idadeMeses <= fx.idadeMaxMeses) || db.faixas[db.faixas.length-1];
@@ -2255,21 +2097,6 @@ function calcularEExibir(){
     }
   }
 
-  // ----- "Regra de ouro": trava de segurança final (dose calculada por peso nunca
-  // ultrapassa a dose máxima diária de adulto), aplicável às formulações mg/kg -----
-  let travaAdultoAplicada = false;
-  function aplicarTravaAdulto(){
-    if(!dose || !f.doseMaximaDiaAdultoMg || usarRegimeAdulto) return;
-    const vezesDiaEfetivo = db.vezesDia || db.fracionamento || 1;
-    const maxPorAdministracao = f.doseMaximaDiaAdultoMg / vezesDiaEfetivo;
-    if(dose.max > maxPorAdministracao){
-      dose.max = maxPorAdministracao;
-      if(dose.min > maxPorAdministracao) dose.min = maxPorAdministracao;
-      dose.capApplied = true;
-      travaAdultoAplicada = true;
-    }
-  }
-
   // ----- idade mínima: aviso -----
   let avisoIdade = null;
   if(f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses){
@@ -2277,17 +2104,7 @@ function calcularEExibir(){
   }
 
   // ----- render formulações -----
-  // Em regime de adulto, oculta apresentações em "gotas" quando o fármaco também tem
-  // outra apresentação (comprimido/líquido/etc.) disponível: gotas são, na prática
-  // farmacêutica, uma forma concentrada pensada para doses pequenas de lactentes/crianças
-  // — para um adulto, calcular a dose fixa de adulto em número de gotas resultaria em
-  // quantidades grandes e clinicamente sem sentido (ex.: "80 gotas"). Quando gotas é a
-  // ÚNICA apresentação cadastrada (ex.: colírios, óticos, algumas vitaminas), continua
-  // sendo exibida normalmente — nesses casos a gota já é a via de administração real
-  // para qualquer idade, não uma questão de conveniência posológica.
-  const temAlternativaNaoGotas = f.formulacoes.some(x => x.tipo !== 'gotas');
   f.formulacoes.forEach(form => {
-    if(usarRegimeAdulto && form.tipo === 'gotas' && temAlternativaNaoGotas) return;
     const card = document.createElement('div');
     card.className = 'formulacao';
 
@@ -2414,19 +2231,8 @@ function calcularEExibir(){
     const recTxt = infoMgKg.min === infoMgKg.max ? `${infoMgKg.min} ${unidadeTxt}` : `${infoMgKg.min}-${infoMgKg.max} ${unidadeTxt}`;
     obsItens.push(`Dose calculada equivalente a aproximadamente ${mgkgCalc} ${unidadeTxt} (recomendação de referência: ${recTxt}).`);
   }
-  if(travaAdultoAplicada){
-    obsItens.push(`Trava de segurança: a dose calculada pelo peso ultrapassaria a dose máxima de adulto (${formatarMg(f.doseMaximaDiaAdultoMg)}/dia) e foi ajustada a esse teto.`);
-  } else if(dose && dose.capApplied){
+  if(dose && dose.capApplied){
     obsItens.push('A dose calculada pelo peso ultrapassaria o teto recomendado: valor ajustado para a dose máxima de segurança.');
-  }
-  if(faixaClinica === 'transicao' && !usarRegimeAdulto && f.doseMaximaDiaAdultoMg){
-    obsItens.push(`Paciente adolescente (${limitePed}–17 anos): dose ajustada ao peso, limitada à dose convencional de adulto (máx. ${formatarMg(f.doseMaximaDiaAdultoMg)}/dia). Avaliar peso, estadiamento puberal e farmacocinética do fármaco.`);
-  }
-  if(transicaoPorPeso && f.pesoCorteAdultoKg){
-    obsItens.push(`Peso ≥ ${f.pesoCorteAdultoKg} kg: conduta ajustada para a posologia convencional de adulto, independentemente da idade.`);
-  }
-  if(faixaClinica === 'adulto' && !da && dose){
-    obsItens.push('Dose específica de adulto ainda não cadastrada para este fármaco: valor extrapolado pelo cálculo por peso, com a trava de segurança de adulto ativa.');
   }
   if(avisoIdade){ obsItens.push(avisoIdade); }
   if(f.idadeMinimaMeses > 0){

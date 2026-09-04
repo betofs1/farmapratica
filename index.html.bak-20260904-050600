@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FarmaPrática</title>
-<meta name="description" content="Ferramentas farmacêuticas reunidas em um só lugar: medicamentos intercambiáveis, guia de dispensação, calculadora de doses (todas as idades), validador de receitas e mais — para decisões mais rápidas e seguras no balcão.">
+<meta name="description" content="Ferramentas farmacêuticas reunidas em um só lugar: medicamentos intercambiáveis, guia de dispensação, calculadora pediátrica, validador de receitas e mais — para decisões mais rápidas e seguras no balcão.">
 <meta property="og:type" content="website">
-<meta property="og:description" content="Ferramentas farmacêuticas reunidas em um só lugar: medicamentos intercambiáveis, guia de dispensação, calculadora de doses (todas as idades), validador de receitas e mais.">
+<meta property="og:description" content="Ferramentas farmacêuticas reunidas em um só lugar: medicamentos intercambiáveis, guia de dispensação, calculadora pediátrica, validador de receitas e mais.">
 <meta property="og:image" content="https://betofs1.github.io/farmapratica/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FarmaPrática">
@@ -2009,7 +2009,7 @@
     </a>
     <a href="dosespediatricas/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-magenta);" onclick="closeMobileMenu()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8.01" y2="10"/><line x1="12" y1="10" x2="12.01" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/></svg>
-      <span>Calculadora de Doses</span>
+      <span>Calculadora Pediátrica</span>
     </a>
     <a href="receitas/" class="sidebar-item tool-shortcut" style="--ts-color:var(--c-green);" onclick="closeMobileMenu()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
@@ -2201,14 +2201,14 @@
         </div>
         </a>
 
-        <!-- 3. Calculadora de Doses -->
+        <!-- 3. Calculadora Pediátrica -->
         <a href="dosespediatricas/" class="tools-hub-card" style="--hub-color:var(--c-magenta);" id="tool-calc">
           <div class="tools-hub-card-body">
           <div class="tools-hub-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><rect x="8" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="10" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="14" y="14" width="2" height="2" fill="currentColor" stroke="none"/><rect x="8" y="18" width="8" height="2" fill="currentColor" stroke="none"/></svg>
           </div>
-          <h3>Calculadora de Doses</h3>
-          <p>Doses por peso e idade para todas as faixas etárias — pediátrico e adulto — com múltiplas formulações.</p>
+          <h3>Calculadora Pediátrica</h3>
+          <p>Doses por peso e idade, com múltiplas formulações disponíveis.</p>
           <span class="tools-hub-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
         </div>
         </a>
@@ -2763,7 +2763,7 @@
   var SEARCH_SOURCES_META = {
     guia:      {label:'Guia de Dispensação',   color:'#e4172c'},
     medinter:  {label:'Medicamentos Intercambiáveis', color:'#3b82f6'},
-    calc:      {label:'Calculadora de Doses', color:'#22c55e'},
+    calc:      {label:'Calculadora Pediátrica', color:'#22c55e'},
     consulta:  {label:'Consulta Controlados',  color:'#f59e0b'},
     checklist: {label:'Checklist de Rotina',   color:'#06b6d4'}
   };
@@ -3030,7 +3030,7 @@
   var FAV_SOURCES = {
     guia:      {label:'Guia de Dispensação',   icon:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>'},
     medinter:  {label:'Medicamentos Intercambiáveis', icon:'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>'},
-    calc:      {label:'Calculadora de Doses', icon:'<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8.01" y2="10"/><line x1="12" y1="10" x2="12.01" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/>'},
+    calc:      {label:'Calculadora Pediátrica', icon:'<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8.01" y2="10"/><line x1="12" y1="10" x2="12.01" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/>'},
     validador: {label:'Validador de Receitas',  icon:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/>'},
     consulta:  {label:'Consulta por Controle Especial', icon:'<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/>'},
     checklist: {label:'Checklist de Rotina',    icon:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>'},
@@ -3160,7 +3160,7 @@
   var ILLUSTRATIVE_USAGE = [
     {label:'Guia de Dispensação', pct:68},
     {label:'Medicamentos Intercambiáveis', pct:20},
-    {label:'Calculadora de Doses', pct:8},
+    {label:'Calculadora Pediátrica', pct:8},
     {label:'Validador de Receitas', pct:4}
   ];
 
