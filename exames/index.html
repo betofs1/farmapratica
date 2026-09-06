@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmaPrática | Exames Laboratoriais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #5a5f66;
+    --panel: #4a4e55;
+    --sidebar: #454951;
+    --card: #4f545c;
+    --card-hover: #585d65;
+    --border: #63686f;
+    --red-dark: #a10f1f;
+    --red: #e4172c;
+    --red-bright: #ef5b6b;
+    --red-glow: rgba(228,23,44,.22);
+    --text: #f5f5f4;
+    --text-dim: #a7abb1;
+    --text-gray: #d2d5d9;
+    --amber: #f59e0b;
+    --green-ok: #3fb87f;
+    --sidebar-w: 320px;
+    --hover-tint: #585d65;
+
+    --cat-red:#ef5b76;        --cat-red-glow:rgba(239,91,118,.22);
+    --cat-blue:#4fa3e3;       --cat-blue-glow:rgba(79,163,227,.22);
+    --cat-purple:#b98cf0;     --cat-purple-glow:rgba(185,140,240,.22);
+    --cat-amber:#f59e0b;      --cat-amber-glow:rgba(245,158,11,.22);
+    --cat-green:#3fb87f;      --cat-green-glow:rgba(63,184,127,.22);
+    --cat-sky:#38bdf8;        --cat-sky-glow:rgba(56,189,248,.22);
+    --cat-crimson:#f43f5e;    --cat-crimson-glow:rgba(244,63,94,.22);
+    --cat-orange:#e8823c;     --cat-orange-glow:rgba(232,130,60,.22);
+    --cat-cyan:#22d3ee;       --cat-cyan-glow:rgba(34,211,238,.22);
+    --cat-teal:#14b8a6;       --cat-teal-glow:rgba(20,184,166,.22);
+    --cat-indigo:#8b8ff5;     --cat-indigo-glow:rgba(139,143,245,.22);
+    --cat-lime:#a3e635;       --cat-lime-glow:rgba(163,230,53,.22);
+    --cat-magenta:#ef70ad;    --cat-magenta-glow:rgba(239,112,173,.22);
+    --cat-yellow:#eab308;     --cat-yellow-glow:rgba(234,179,8,.22);
+    --cat-brown:#b08968;      --cat-brown-glow:rgba(176,137,104,.22);
+    --cat-petrol:#0891b2;     --cat-petrol-glow:rgba(8,145,178,.22);
+    --cat-slate:#94a3b8;      --cat-slate-glow:rgba(148,163,184,.22);
+    --cat-gray:#9aa1ab;       --cat-gray-glow:rgba(154,161,171,.20);
+  }
+  body.light{
+    --bg: #eceef1;
+    --panel: #f6f7f9;
+    --sidebar: #e2e5e9;
+    --card: #ffffff;
+    --card-hover: #f1f2f5;
+    --border: #d7dade;
+    --red-dark: #a10f1f;
+    --red: #d4152a;
+    --red-bright: #eb374b;
+    --red-glow: rgba(212,21,42,.14);
+    --text: #22262c;
+    --text-dim: #767c84;
+    --text-gray: #4b5057;
+    --amber: #c9790a;
+    --green-ok: #1f8a53;
+    --hover-tint: #eceef1;
+
+    --cat-red:#d43a5c;        --cat-red-glow:rgba(212,58,92,.15);
+    --cat-blue:#1c6dbf;       --cat-blue-glow:rgba(28,109,191,.15);
+    --cat-purple:#7c3aed;     --cat-purple-glow:rgba(124,58,237,.15);
+    --cat-amber:#c9790a;      --cat-amber-glow:rgba(201,121,10,.15);
+    --cat-green:#1f8a53;      --cat-green-glow:rgba(31,138,83,.15);
+    --cat-sky:#0284c7;        --cat-sky-glow:rgba(2,132,199,.15);
+    --cat-crimson:#be123c;    --cat-crimson-glow:rgba(190,18,60,.15);
+    --cat-orange:#c2600d;     --cat-orange-glow:rgba(194,96,13,.15);
+    --cat-cyan:#0e7490;       --cat-cyan-glow:rgba(14,116,144,.15);
+    --cat-teal:#0f766e;       --cat-teal-glow:rgba(15,118,110,.15);
+    --cat-indigo:#4f46d0;     --cat-indigo-glow:rgba(79,70,208,.15);
+    --cat-lime:#65a30d;       --cat-lime-glow:rgba(101,163,13,.15);
+    --cat-magenta:#c23576;    --cat-magenta-glow:rgba(194,53,118,.15);
+    --cat-yellow:#a16207;     --cat-yellow-glow:rgba(161,98,7,.15);
+    --cat-brown:#8b5e34;      --cat-brown-glow:rgba(139,94,52,.15);
+    --cat-petrol:#155e75;     --cat-petrol-glow:rgba(21,94,117,.15);
+    --cat-slate:#475569;      --cat-slate-glow:rgba(71,85,105,.15);
+    --cat-gray:#656c76;       --cat-gray-glow:rgba(101,108,118,.13);
+  }
+  body.light .theme-toggle .icon-sun{ display:none; }
+  body.light .theme-toggle .icon-moon{ display:block; }
+  body.light{ background: var(--bg) !important; }
+  * { box-sizing: border-box; }
+  button, input, select, textarea { font-family: inherit; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background:
+      radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  a{ color:inherit; }
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb{ background: var(--border); border-radius:20px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+
+  /* ---------- Topbar ---------- */
+  .topbar-app{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display:grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    align-items:center;
+    min-height:84px;
+    flex-shrink:0;
+    padding:20px 40px 20px 0;
+    background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
+    border-bottom:2px solid rgba(228,23,44,.35);
+    position:relative;
+    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    z-index:3;
+  }
+  .topbar-home-mobile{ display:none; }
+  .sidebar-close-mobile{ display:none; }
+  .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left:40px; }
+  .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
+  .brand{ display:flex; align-items:center; gap:14px; }
+  .brand img{ width:44px; height:44px; }
+  .brand-text h1{ font-size:21px; font-weight:800; letter-spacing:-.3px; line-height:1.1; margin:0; color:var(--text); }
+  .brand-text h1 span{ color:var(--red); }
+  .brand-text p{ font-size:11px; color:var(--text-gray); font-weight:400; margin:2px 0 0; white-space:nowrap; }
+  .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
+  .titulo-principal{ font-size:1.15rem; font-weight:800; letter-spacing:.3px; max-width:100%; line-height:1.25; display:flex; align-items:center; gap:8px; }
+  .titulo-principal svg{ width:20px; height:20px; color:var(--red-bright); flex-shrink:0; }
+  .titulo-descricao{ font-size:.76rem; color:var(--text-dim); margin-top:3px; max-width:560px; }
+  .topbar-actions{ position:absolute; right:40px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .theme-toggle{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .theme-toggle:hover{ background:var(--hover-tint); }
+  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle .icon-moon{ display:none; }
+  .balcao-toggle{
+    display:flex; align-items:center; gap:7px; height:38px; padding:0 14px; border-radius:9px;
+    border:1px solid var(--border); background:transparent; color:var(--text-dim);
+    font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; cursor:pointer;
+    white-space:nowrap; transition:background-color .15s ease,border-color .15s ease,color .15s ease;
+  }
+  .balcao-toggle svg{ width:16px; height:16px; flex-shrink:0; }
+  .balcao-toggle:hover{ background:var(--hover-tint); color:var(--text); }
+  .balcao-toggle.active{ background: rgba(245,158,11,.14); border-color:var(--amber); color:var(--amber); }
+  @media (max-width:980px){ .balcao-toggle .bl-label{ display:none; } .balcao-toggle{ padding:0 9px; } .topbar-actions{ right:14px; gap:6px; } }
+
+  .app-body{ display:flex; flex:1; min-height:0; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    width:var(--sidebar-w); flex-shrink:0;
+    background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
+    border-right:1px solid var(--border);
+    display:flex; flex-direction:column; height:100%;
+    box-shadow: 4px 0 28px rgba(0,0,0,.18);
+    z-index:2;
+  }
+  .sidebar-header{ padding:14px 16px 10px; display:flex; flex-direction:column; gap:9px; }
+  .search-box{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:8px 10px; transition:border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus-within{ border-color:var(--red-bright); box-shadow:0 0 0 3px var(--red-glow); }
+  .search-box svg{ width:16px; height:16px; color:var(--text-dim); flex-shrink:0; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Manrope',sans-serif; }
+  .clear-btn{ display:none; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; flex-shrink:0; background:var(--hover-tint); border:none; color:var(--text-dim); font-size:.7rem; cursor:pointer; line-height:1; padding:0; }
+  .clear-btn.visivel{ display:flex; }
+  .clear-btn:hover{ background:var(--red-bright); color:#fff; }
+  .qtabs{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .qtab{
+    display:flex; align-items:center; justify-content:center; gap:5px; font-size:.68rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:.3px; padding:8px 6px; border-radius:9px; border:1px solid var(--border);
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); color:var(--text-dim); cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, color .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 3px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.16);
+  }
+  .qtab svg{ width:13px; height:13px; }
+  .qtab:hover{ color:var(--text); transform:translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 3px rgba(0,0,0,.1), 0 5px 10px rgba(0,0,0,.2); }
+  .qtab:active{ transform:translateY(1px); box-shadow: inset 0 2px 5px rgba(0,0,0,.25); }
+  .qtab.active{ background:linear-gradient(180deg,var(--red),var(--red-dark)); color:#fff; border-color:transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 4px rgba(0,0,0,.25), 0 3px 9px var(--red-glow); }
+  .qtab.active:hover{ transform:translateY(-1px); }
+
+  .sidebar-list{ flex:1; overflow-y:auto; padding:6px 10px 20px; }
+  .pinned-group{ margin:6px 0 14px; }
+  .pinned-head{ display:flex; align-items:center; gap:7px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--amber); padding:4px 4px 8px; }
+  .pinned-head svg{ width:14px; height:14px; }
+  .exam-chip-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .exam-chip{
+    display:flex; align-items:center; justify-content:center; gap:6px; padding:8px 8px; border-radius:9px;
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border);
+    font-size:.71rem; font-weight:700; color:var(--text-gray); cursor:pointer; text-align:center;
+    transition:transform .12s ease, box-shadow .12s ease, color .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 4px rgba(0,0,0,.16);
+  }
+  .exam-chip:hover{ border-color:var(--red-bright); color:var(--text); transform:translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 3px rgba(0,0,0,.08), 0 5px 10px rgba(0,0,0,.2); }
+  .exam-chip:active{ transform:translateY(1px); box-shadow: inset 0 2px 5px rgba(0,0,0,.22); }
+  .exam-chip.active{ background:linear-gradient(180deg,var(--red),var(--red-dark)); color:#fff; border-color:transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 4px rgba(0,0,0,.25), 0 3px 9px var(--red-glow); }
+
+  .cat-header{
+    display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
+    border-radius:9px; padding:9px 11px; margin:8px 0 5px; cursor:pointer;
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; font-weight:800; color:var(--text-gray);
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.18);
+  }
+  .cat-header:hover{ transform:translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.32), inset 0 -2px 3px rgba(0,0,0,.08), 0 5px 11px rgba(0,0,0,.22); }
+  .cat-header:active{ transform:translateY(1px); box-shadow: inset 0 2px 5px rgba(0,0,0,.22); }
+  .cat-header.aberto{ box-shadow: inset 0 2px 5px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.1); }
+  .cat-header .cat-nome{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--cc, var(--text-gray)); }
+  .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
+  .cat-header .cat-chevron{ flex-shrink:0; width:13px; height:13px; transition:transform .2s ease; opacity:.75; color:var(--cc,var(--text-dim)); }
+  .cat-header.aberto .cat-chevron{ transform:rotate(90deg); }
+  .cat-body{ display:none; padding:2px 0 8px 4px; }
+  .cat-body.aberto{ display:block; }
+  .cat-body-empty{ font-size:.72rem; color:var(--text-dim); padding:6px 10px 10px; font-style:italic; }
+  .cat-grupo-titulo{ font-size:.63rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); padding:8px 8px 3px; }
+  .exam-item{ display:flex; align-items:center; gap:8px; padding:8px 9px; border-radius:8px; cursor:pointer; transition:.12s ease; }
+  .exam-item:hover{ background:var(--card-hover); }
+  .exam-item.active{ background: var(--cg, var(--red-glow)); }
+  .exam-item .item-dot{ width:6px; height:6px; border-radius:50%; background:var(--cc, var(--red-bright)); flex-shrink:0; }
+  .exam-item .item-nome{ flex:1; min-width:0; font-size:.79rem; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .exam-item .item-sigla{ font-size:.66rem; color:var(--text-dim); flex-shrink:0; }
+  .fav-star{ flex-shrink:0; width:15px; height:15px; cursor:pointer; color:var(--text-dim); }
+  .fav-star.on{ color:var(--amber); }
+  .fav-star:hover{ color:var(--amber); }
+
+  /* ---------- Main ---------- */
+  .main{ flex:1; min-width:0; overflow-y:auto; padding:28px 34px 60px; }
+  .breadcrumb{ font-size:.76rem; color:var(--text-dim); margin-bottom:14px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .breadcrumb a{ color:var(--text-dim); text-decoration:none; cursor:pointer; }
+  .breadcrumb a:hover{ color:var(--red-bright); text-decoration:underline; }
+
+  /* Home / dashboard */
+  .home-hero{ margin-bottom:26px; }
+  .home-hero h2{ font-family:'Inter',sans-serif; font-size:1.7rem; font-weight:800; margin:0 0 6px; display:flex; align-items:center; gap:10px; }
+  .home-hero h2 svg{ width:30px; height:30px; flex-shrink:0; color:var(--red-bright); }
+  .home-hero h2 .brand-word span{ color:var(--red); }
+  .home-hero p{ margin:0; color:var(--text-dim); font-size:.92rem; max-width:640px; }
+  .intro-banner{ display:flex; align-items:flex-start; gap:14px; background:linear-gradient(120deg, var(--card), var(--panel)); border:1px solid var(--border); border-left:4px solid var(--red-bright); border-radius:14px; padding:16px 20px; margin-bottom:26px; box-shadow:0 4px 18px rgba(0,0,0,.12); }
+  .intro-banner-icon{ width:38px; height:38px; border-radius:11px; background:var(--red-glow); color:var(--red-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .intro-banner-icon svg{ width:20px; height:20px; }
+  .intro-banner p{ margin:0; font-size:.9rem; color:var(--text-gray); line-height:1.6; }
+  .home-search-big{ margin-top:18px; max-width:640px; }
+  .home-search-big .search-box{ padding:13px 16px; border-radius:13px; }
+  .home-search-big .search-box input{ font-size:.95rem; }
+  .section-title{ font-family:'Inter',sans-serif; font-size:.85rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--text-gray); margin:30px 0 12px; display:flex; align-items:center; gap:8px; }
+  .section-title svg{ width:16px; height:16px; color:var(--red-bright); }
+
+  .tiles-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .cat-tile{
+    background:var(--card); border:1px solid var(--border); border-top:3px solid var(--cc, var(--red-bright));
+    border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
+  .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; }
+  .cat-tile .ct-icon svg{ width:16px; height:16px; }
+  .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
+  .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
+
+  .quick-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .quick-card{ display:flex; align-items:center; gap:9px; background:var(--card); border:1px solid var(--border); border-radius:11px; padding:11px 12px; cursor:pointer; transition:.14s ease; }
+  .quick-card:hover{ border-color:var(--red-bright); transform:translateY(-2px); }
+  .quick-card .qc-dot{ width:9px; height:9px; border-radius:50%; background:var(--cc,var(--red-bright)); flex-shrink:0; }
+  .quick-card span{ font-size:.8rem; font-weight:700; }
+
+  .empty-hint{ display:flex; align-items:flex-start; gap:10px; font-size:.85rem; color:var(--text-dim); background:var(--card); border:1px dashed var(--border); border-radius:10px; padding:16px; }
+  .empty-hint svg{ width:18px; height:18px; flex-shrink:0; margin-top:1px; }
+  .empty-hint a{ color:var(--red-bright); font-weight:700; cursor:pointer; text-decoration:underline; }
+
+  /* Exam detail */
+  .exam-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .exam-head h2{ font-family:'Inter',sans-serif; font-size:1.55rem; font-weight:800; margin:0 0 6px; }
+  .exam-head .sigla-badge{ font-size:.85rem; font-weight:700; color:var(--cc, var(--red-bright)); background:var(--cg, var(--red-glow)); padding:2px 10px; border-radius:20px; margin-left:8px; vertical-align:middle; }
+  .exam-chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .exam-chips .chip{ font-size:.72rem; font-weight:700; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); padding:4px 11px; border-radius:20px; }
+  .exam-actions{ display:flex; gap:8px; align-items:center; flex-shrink:0; }
+  .btn-fav{ display:flex; align-items:center; gap:6px; padding:9px 15px; border-radius:9px; border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.76rem; font-weight:700; cursor:pointer; }
+  .btn-fav svg{ width:15px; height:15px; }
+  .btn-fav.on{ background:rgba(245,158,11,.14); border-color:var(--amber); color:var(--amber); }
+  .sinonimos-line{ font-size:.78rem; color:var(--text-dim); margin-top:8px; }
+
+  .indicadores-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:18px 0 6px; }
+  .indicador{ background:var(--card); border:1px solid var(--border); border-radius:11px; padding:10px 12px; }
+  .indicador .ind-label{ font-size:.62rem; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); font-weight:800; }
+  .indicador .ind-valor{ font-size:.82rem; font-weight:700; margin-top:3px; }
+
+  .tabbar{ display:flex; gap:4px; flex-wrap:wrap; margin:22px 0 0; border-bottom:1px solid var(--border); }
+  .tab-btn{ padding:9px 14px; font-size:.76rem; font-weight:700; color:var(--text-dim); background:transparent; border:none; border-bottom:2px solid transparent; cursor:pointer; white-space:nowrap; }
+  .tab-btn:hover{ color:var(--text); }
+  .tab-btn.active{ color:var(--red-bright); border-bottom-color:var(--red-bright); }
+  .tab-panel{ display:none; padding:20px 2px 10px; }
+  .tab-panel.active{ display:block; }
+  .tab-panel p{ line-height:1.65; font-size:.88rem; color:var(--text-gray); margin:0 0 12px; }
+  .tab-panel h5{ font-family:'Inter',sans-serif; font-size:.78rem; text-transform:uppercase; letter-spacing:.4px; margin:0 0 8px; color:var(--text-dim); }
+
+  .ref-table{ width:100%; border-collapse:collapse; font-size:.83rem; margin-bottom:8px; }
+  .ref-table th{ text-align:left; font-size:.65rem; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); padding:6px 10px; border-bottom:1px solid var(--border); }
+  .ref-table td{ padding:9px 10px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:top; }
+  .ref-table tr:hover td{ background:var(--card-hover); }
+  .ref-disclaimer{ display:flex; align-items:flex-start; gap:9px; font-size:.74rem; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:10px 12px; margin-top:6px; }
+  .ref-disclaimer svg{ width:16px; height:16px; flex-shrink:0; margin-top:1px; }
+
+  .interp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:760px){ .interp-grid{ grid-template-columns:1fr; } }
+  .interp-card{ border-radius:12px; padding:14px 16px; border:1px solid var(--border); }
+  .interp-card.alta{ background:rgba(244,63,94,.08); border-color:rgba(244,63,94,.3); }
+  .interp-card.baixa{ background:rgba(56,189,248,.08); border-color:rgba(56,189,248,.3); }
+  .interp-card h4{ margin:0 0 8px; font-size:.9rem; display:flex; align-items:center; gap:6px; }
+  .interp-card.alta h4{ color:#f43f5e; }
+  .interp-card.baixa h4{ color:#0284c7; }
+  .interp-card ul{ margin:0; padding-left:18px; font-size:.83rem; line-height:1.55; color:var(--text-gray); }
+  .interp-card .resumo{ font-size:.8rem; color:var(--text-dim); margin:0 0 8px; font-style:italic; }
+  .apoio-line{ margin-top:10px; font-size:.75rem; color:var(--text-dim); }
+  .apoio-line a{ color:var(--red-bright); cursor:pointer; font-weight:700; }
+
+  .med-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media(max-width:900px){ .med-grid{ grid-template-columns:1fr; } }
+  .med-card{ border-radius:12px; padding:13px 15px; border:1px solid var(--border); background:var(--card); }
+  .med-card h5{ margin:0 0 8px; font-size:.78rem; display:flex; align-items:center; gap:6px; }
+  .med-card.aumenta h5{ color:#f43f5e; }
+  .med-card.reduz h5{ color:#0284c7; }
+  .med-card.interfere h5{ color:var(--amber); }
+  .med-card ul{ margin:0; padding-left:16px; font-size:.79rem; line-height:1.55; color:var(--text-gray); }
+  .med-card .none{ font-size:.78rem; color:var(--text-dim); font-style:italic; }
+
+  .interf-list{ display:flex; flex-direction:column; gap:8px; }
+  .interf-item{ display:flex; gap:10px; padding:10px 12px; background:var(--card); border:1px solid var(--border); border-radius:10px; font-size:.83rem; }
+  .interf-item b{ color:var(--text); flex-shrink:0; min-width:170px; }
+  .interf-item span{ color:var(--text-gray); }
+
+  .prep-amostra-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:760px){ .prep-amostra-grid{ grid-template-columns:1fr; } }
+  .info-list{ margin:0; padding-left:18px; font-size:.83rem; line-height:1.6; color:var(--text-gray); }
+  .kv-row{ display:flex; gap:8px; font-size:.83rem; padding:6px 0; border-bottom:1px solid var(--border); }
+  .kv-row b{ min-width:130px; color:var(--text-dim); font-weight:700; flex-shrink:0; }
+
+  .chips-wrap{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip-link{ padding:7px 13px; border-radius:20px; background:var(--panel); border:1px solid var(--border); font-size:.79rem; font-weight:700; cursor:pointer; color:var(--text); }
+  .chip-link:hover{ border-color:var(--red-bright); color:var(--red-bright); }
+  .chip-static{ padding:7px 13px; border-radius:20px; background:transparent; border:1px dashed var(--border); font-size:.79rem; color:var(--text-dim); }
+
+  .alert-box{ display:flex; gap:10px; background:rgba(244,63,94,.08); border:1px solid rgba(244,63,94,.3); border-radius:12px; padding:14px 16px; margin-bottom:10px; }
+  .alert-box svg{ width:20px; height:20px; color:#f43f5e; flex-shrink:0; margin-top:1px; }
+  .alert-box ul{ margin:0; padding-left:18px; font-size:.85rem; line-height:1.6; color:var(--text); }
+  .fontes-box{ font-size:.78rem; color:var(--text-dim); }
+  .fontes-box ul{ margin:6px 0 0; padding-left:18px; line-height:1.6; }
+
+  .disclaimer-fixed{ display:flex; align-items:flex-start; gap:9px; font-size:.72rem; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:9px 12px; margin-top:22px; line-height:1.5; }
+  .disclaimer-fixed svg{ width:16px; height:16px; flex-shrink:0; margin-top:1px; }
+
+  /* Modo balcão (condensado) */
+  .balcao-view{ max-width:760px; }
+  .balcao-block{ margin-bottom:18px; }
+  .balcao-block h5{ font-family:'Inter',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); margin:0 0 8px; }
+  .balcao-block ul{ margin:0; padding-left:18px; font-size:.85rem; line-height:1.6; }
+  .balcao-badge{ display:inline-flex; align-items:center; gap:5px; font-size:.66rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--amber); background:rgba(245,158,11,.14); padding:3px 10px; border-radius:20px; margin-bottom:14px; }
+  .balcao-badge svg{ width:13px; height:13px; flex-shrink:0; }
+
+  /* Comparador */
+  .comp-form{ display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto; gap:8px; margin-bottom:14px; }
+  @media(max-width:760px){ .comp-form{ grid-template-columns:1fr 1fr; } }
+  .comp-form input{ padding:9px 10px; border-radius:8px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:.8rem; outline:none; }
+  .comp-form input:focus{ border-color:var(--red-bright); }
+  .comp-form button{ padding:9px 14px; border-radius:8px; border:none; background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; font-weight:700; font-size:.78rem; cursor:pointer; }
+  .comp-table{ width:100%; border-collapse:collapse; font-size:.82rem; margin-bottom:16px; }
+  .comp-table th{ text-align:left; font-size:.65rem; text-transform:uppercase; color:var(--text-dim); padding:6px 8px; border-bottom:1px solid var(--border); }
+  .comp-table td{ padding:8px; border-bottom:1px solid var(--border); }
+  .comp-table .del-row{ cursor:pointer; color:var(--text-dim); }
+  .comp-table .del-row:hover{ color:var(--red-bright); }
+  .trend-chip{ font-size:.72rem; font-weight:800; padding:3px 9px; border-radius:20px; }
+  .trend-up{ background:rgba(244,63,94,.14); color:#f43f5e; }
+  .trend-down{ background:rgba(56,189,248,.14); color:#0284c7; }
+  .trend-flat{ background:var(--hover-tint); color:var(--text-dim); }
+  .comp-empty{ font-size:.82rem; color:var(--text-dim); font-style:italic; margin-bottom:14px; }
+
+  /* Favoritos / Glossário / Calculadoras views */
+  .fav-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; }
+  .fav-card{ background:var(--card); border:1px solid var(--border); border-left:3px solid var(--cc,var(--red-bright)); border-radius:11px; padding:13px 14px; cursor:pointer; position:relative; }
+  .fav-card:hover{ border-color:var(--red-bright); }
+  .fav-card h4{ margin:0 0 4px; font-size:.86rem; }
+  .fav-card p{ margin:0; font-size:.72rem; color:var(--text-dim); }
+  .fav-card .remove-fav{ position:absolute; top:8px; right:8px; width:20px; height:20px; border-radius:50%; background:var(--hover-tint); color:var(--text-dim); border:none; cursor:pointer; font-size:.7rem; }
+  .fav-card .remove-fav:hover{ background:var(--red-bright); color:#fff; }
+
+  .gloss-list{ display:flex; flex-direction:column; gap:10px; max-width:760px; }
+  .gloss-item{ background:var(--card); border:1px solid var(--border); border-radius:10px; padding:12px 14px; }
+  .gloss-item b{ font-size:.85rem; color:var(--red-bright); }
+  .gloss-item p{ margin:4px 0 0; font-size:.83rem; color:var(--text-gray); line-height:1.55; }
+
+  .calc-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; }
+  .calc-card{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:18px 20px; }
+  .calc-card h4{ margin:0 0 4px; font-family:'Inter',sans-serif; font-size:1rem; }
+  .calc-card .calc-formula{ font-size:.74rem; color:var(--text-dim); background:var(--panel); border-radius:8px; padding:8px 10px; margin:8px 0 14px; font-family:monospace; }
+  .calc-field{ margin-bottom:10px; }
+  .calc-field label{ display:block; font-size:.72rem; color:var(--text-dim); margin-bottom:4px; font-weight:700; }
+  .calc-field input, .calc-field select{ width:100%; padding:9px 10px; border-radius:8px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-size:.85rem; outline:none; }
+  .calc-field input:focus, .calc-field select:focus{ border-color:var(--red-bright); }
+  .calc-btn{ width:100%; padding:10px; border-radius:9px; border:none; background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; font-weight:700; cursor:pointer; margin-top:4px; }
+  .calc-result{ margin-top:14px; padding:12px 14px; border-radius:10px; background:var(--panel); border:1px solid var(--border); font-size:.85rem; display:none; }
+  .calc-result.show{ display:block; }
+  .calc-result .cr-valor{ font-size:1.3rem; font-weight:800; color:var(--red-bright); }
+  .calc-result .cr-unidade{ font-size:.8rem; color:var(--text-dim); }
+  .calc-result .cr-interp{ margin-top:6px; font-size:.8rem; color:var(--text-gray); display:flex; align-items:flex-start; gap:7px; }
+  .calc-result .cr-interp svg{ width:15px; height:15px; flex-shrink:0; margin-top:1px; }
+  .calc-limit{ font-size:.72rem; color:var(--text-dim); margin-top:10px; line-height:1.5; }
+
+  /* Mobile */
+  @media (max-width:800px){
+    .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
+    .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center; position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px; border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    .titulo-central{ grid-column:1; padding:0 44px; }
+    .titulo-principal{ font-size:1.02rem; justify-content:center; }
+    .titulo-descricao{ display:none; }
+    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
+    .balcao-toggle .bl-label{ display:inline; }
+
+    .sidebar{
+      position:fixed; inset:0; z-index:30; width:100%; height:100%;
+      box-shadow:none; display:none;
+    }
+    body.mobile-menu-only .sidebar{ display:flex; }
+    .sidebar-close-mobile{
+      display:flex; align-items:center; gap:6px; align-self:flex-start;
+      margin:2px 0 6px; padding:8px 13px; border-radius:9px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text-dim); font-size:.76rem; font-weight:700; cursor:pointer;
+    }
+    .sidebar-close-mobile svg{ width:14px; height:14px; }
+    .app-body{ overflow-y:auto; }
+    .main{ padding:18px 16px 90px; }
+    .indicadores-row{ grid-template-columns:1fr 1fr; }
+    .med-grid{ grid-template-columns:1fr; }
+    .tabbar{ overflow-x:auto; flex-wrap:nowrap; }
+    .btn-voltar-mobile{
+      display:flex; align-items:center; gap:6px; margin:0 0 16px; padding:9px 14px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:700; cursor:pointer;
+    }
+    .btn-voltar-mobile svg{ width:14px; height:14px; }
+    .bottom-nav{
+      display:flex; position:fixed; bottom:0; left:0; right:0; height:60px; background:var(--sidebar);
+      border-top:1px solid var(--border); z-index:20; box-shadow:0 -4px 16px rgba(0,0,0,.2);
+    }
+    .bottom-nav button{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+      background:transparent; border:none; color:var(--text-dim); font-size:.62rem; font-weight:700; cursor:pointer;
+    }
+    .bottom-nav button svg{ width:18px; height:18px; }
+    .bottom-nav button.active{ color:var(--red-bright); }
+  }
+  @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
+</style>
+</head>
+<body class="light">
+
+<header class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Página inicial">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+  <div class="logo-wrap">
+    <a href="../">
+      <div class="brand">
+        <img src="logo.png" alt="FarmaPrática">
+        <div class="brand-text">
+          <h1>Farma<span>Prática</span></h1>
+          <p>Plataforma para Rotina, Gestão e<br>Cuidado Farmacêutico</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="titulo-central">
+    <div class="titulo-principal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/></svg>
+      Exames Laboratoriais
+    </div>
+    <div class="titulo-descricao">Consulta rápida a valores de referência, interpretação clínica e interações com medicamentos</div>
+  </div>
+  <div class="topbar-actions">
+    <button class="balcao-toggle" id="balcao-btn" onclick="toggleModoBalcao()" title="Modo Balcão: consulta ultra-resumida em poucos segundos">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span class="bl-label">Modo Balcão</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app-body">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-close-mobile" onclick="revelarConteudoMobile()">✕ Fechar</button>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="global-search" placeholder="Buscar exame, sigla, analito, condição ou medicamento..." oninput="onSearchInput(this.value)">
+        <button class="clear-btn" id="clear-search" onclick="clearSearch()">✕</button>
+      </div>
+      <div class="qtabs">
+        <button class="qtab active" data-view="inicio" onclick="setView('inicio')">Início</button>
+        <button class="qtab" data-view="favoritos" onclick="setView('favoritos')">★ Favoritos</button>
+        <button class="qtab" data-view="glossario" onclick="setView('glossario')">Glossário</button>
+        <button class="qtab" data-view="calculadoras" onclick="setView('calculadoras')">Calculadoras</button>
+      </div>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<nav class="bottom-nav">
+  <button onclick="setView('inicio')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Início</button>
+  <button onclick="setView('favoritos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Favoritos</button>
+  <button onclick="focarBuscaMobile()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Buscar</button>
+  <button onclick="setView('calculadoras')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/></svg>Calc.</button>
+</nav>
+
+<script>
+let DATA = {categorias:[], glossario:[], exames:[]};
+let state = { view:'inicio', categoria:null, exameId:null, openCats:new Set(['mais-consultados']), search:'' };
+let modoBalcao = false;
+let favoritos = new Set();
+let historico = [];
+let comparadorData = {};
+
+const ICONS = {
+  droplet:'<path d="M12 2s7 8.5 7 13a7 7 0 1 1-14 0c0-4.5 7-13 7-13z"/>',
+  flask:'<path d="M9 2v6L4 18a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 8V2"/><path d="M9 2h6"/>',
+  waves:'<path d="M2 12c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0 3.5 2 5 0"/><path d="M2 18c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0 3.5 2 5 0"/>',
+  heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6z"/>',
+  activity:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+  kidney:'<path d="M12 3c-3 0-5 3-5 7 0 5 2 11 5 11s5-6 5-11c0-4-2-7-5-7z"/>',
+  liver:'<path d="M3 13c1-5 6-9 12-8 4 1 6 4 6 7 0 5-5 8-10 8-4 0-7-2-8-4-1-1-1-2 0-3z"/>',
+  zap:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  heartbeat:'<path d="M22 12h-4l-3 8-4-16-3 8H2"/>',
+  flame:'<path d="M12 2s-6 6-6 12a6 6 0 0 0 12 0c0-3-2-4-2-7 0 2-2 3-2 5a2 2 0 0 1-4 0c0-4 2-6 2-10z"/>',
+  shield:'<path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/>',
+  bug:'<circle cx="12" cy="13" r="6"/><path d="M12 7V3M9 3l1.5 2M15 3l-1.5 2M4 13H2M22 13h-2M5 8L3 6M19 8l2-2M5 18l-2 2M19 18l2 2"/>',
+  clot:'<circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/>',
+  gland:'<circle cx="9" cy="9" r="4"/><circle cx="15" cy="15" r="4"/>',
+  leaf:'<path d="M12 2C6 2 3 8 3 13a9 9 0 0 0 9 9c6 0 9-6 9-11 0-4-3-9-9-9z"/><path d="M8 21c3-6 4-12 12-16"/>',
+  ribbon:'<path d="M12 2l3 6-3 4-3-4z"/><path d="M9 12l-4 9 5-2 2 3 2-3 5 2-4-9"/>',
+  droplets:'<path d="M7 16.3a4 4 0 1 0 5.7-5.7L9 7 5.3 10.6a4 4 0 0 0 1.7 5.7z"/><path d="M14 13a5 5 0 0 0 7 4.6"/>',
+  bug2:'<circle cx="12" cy="13" r="6"/><path d="M12 7V3"/>',
+  microscope:'<path d="M6 18h8M9 22h4M6 14a4 4 0 1 1 6-6l6 6"/><path d="M13 8l3-3"/>',
+  wind:'<path d="M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2M17.7 7.7A2.5 2.5 0 1 1 19.5 12H2"/>',
+  circle:'<circle cx="12" cy="12" r="9"/>',
+  scan:'<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/>',
+  more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+  star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  starOutline:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  alert:'<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/>',
+  back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+  chev:'<polyline points="9 18 15 12 9 6"/>'
+};
+function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
+
+function loadStorage(){
+  try{ favoritos = new Set(JSON.parse(localStorage.getItem('farmalab-favoritos')||'[]')); }catch(e){ favoritos = new Set(); }
+  try{ historico = JSON.parse(localStorage.getItem('farmalab-historico')||'[]'); }catch(e){ historico = []; }
+  try{ comparadorData = JSON.parse(localStorage.getItem('farmalab-comparador')||'{}'); }catch(e){ comparadorData = {}; }
+  try{ modoBalcao = localStorage.getItem('farmalab-balcao')==='1'; }catch(e){ modoBalcao=false; }
+}
+function saveFavoritos(){ localStorage.setItem('farmalab-favoritos', JSON.stringify([...favoritos])); }
+function saveHistorico(){ localStorage.setItem('farmalab-historico', JSON.stringify(historico)); }
+function saveComparador(){ localStorage.setItem('farmalab-comparador', JSON.stringify(comparadorData)); }
+
+function toggleTheme(){ document.body.classList.toggle('light'); }
+function toggleModoBalcao(){
+  modoBalcao = !modoBalcao;
+  localStorage.setItem('farmalab-balcao', modoBalcao?'1':'0');
+  document.getElementById('balcao-btn').classList.toggle('active', modoBalcao);
+  renderMain();
+}
+
+function getExame(id){ return DATA.exames.find(e=>e.id===id); }
+function getCategoria(id){ return DATA.categorias.find(c=>c.id===id); }
+function examesDaCategoria(catId){ return DATA.exames.filter(e=>e.categoria===catId); }
+function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
+
+function toggleFavorito(id, ev){
+  if(ev) ev.stopPropagation();
+  if(favoritos.has(id)) favoritos.delete(id); else favoritos.add(id);
+  saveFavoritos();
+  renderSidebar();
+  renderMain();
+}
+function addHistorico(id){
+  historico = historico.filter(x=>x!==id);
+  historico.unshift(id);
+  historico = historico.slice(0,10);
+  saveHistorico();
+}
+
+/* ---------------- Busca ---------------- */
+function normaliza(s){ return (s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+function calculadorasIndex(){
+  return [
+    {id:'tfg', nome:'TFG estimada (CKD-EPI / Cockcroft-Gault)', kw:'tfg egfr clearance creatinina filtracao glomerular funcao renal'},
+    {id:'ldlcalc', nome:'LDL calculado (Friedewald)', kw:'ldl colesterol friedewald calculo'},
+    {id:'rac', nome:'Relação Albumina/Creatinina urinária', kw:'albuminuria microalbuminuria rac relacao albumina creatinina urinaria'}
+  ];
+}
+function buscaGlobal(q){
+  const nq = normaliza(q);
+  if(!nq) return {exames:[], calcs:[], termos:[]};
+  const exames = DATA.exames.filter(e=>{
+    const campos = [e.nome, e.sigla, (e.sinonimos||[]).join(' '), e.sistema, e.grupo,
+      getCategoria(e.categoria)?.nome,
+      (e.condicoesClinicas?.aumentado||[]).join(' '), (e.condicoesClinicas?.reduzido||[]).join(' '),
+      (e.medicamentos?.aumentam||[]).join(' '), (e.medicamentos?.reduzem||[]).join(' '), (e.medicamentos?.interferem||[]).join(' '),
+      (e.correlatosTexto||[]).join(' ')];
+    return campos.some(c=>normaliza(c).includes(nq));
+  }).sort((a,b)=>{
+    const an = normaliza(a.nome).startsWith(nq) || normaliza(a.sigla).startsWith(nq);
+    const bn = normaliza(b.nome).startsWith(nq) || normaliza(b.sigla).startsWith(nq);
+    return (bn?1:0)-(an?1:0);
+  });
+  const calcs = calculadorasIndex().filter(c=>normaliza(c.kw).includes(nq) || normaliza(c.nome).includes(nq));
+  const termos = DATA.glossario.filter(g=>normaliza(g.termo).includes(nq) || normaliza(g.definicao).includes(nq));
+  return {exames, calcs, termos};
+}
+function onSearchInput(v){
+  state.search = v;
+  document.getElementById('clear-search').classList.toggle('visivel', !!v);
+  renderSidebar();
+}
+function clearSearch(){
+  state.search='';
+  document.getElementById('global-search').value='';
+  document.getElementById('clear-search').classList.remove('visivel');
+  renderSidebar();
+}
+function focarBuscaMobile(){ irParaMenuMobile(); document.getElementById('global-search').focus(); }
+
+/* ---------------- Views / navegação ---------------- */
+function setView(v){
+  state.view = v; state.exameId=null;
+  document.querySelectorAll('.qtab').forEach(b=>b.classList.toggle('active', b.dataset.view===v));
+  renderMain();
+  revelarConteudoMobile();
+}
+function abrirExame(id){
+  state.exameId = id; state.view='exame';
+  addHistorico(id);
+  document.querySelectorAll('.qtab').forEach(b=>b.classList.remove('active'));
+  renderSidebar();
+  renderMain();
+  revelarConteudoMobile();
+  document.getElementById('main').scrollTop = 0;
+}
+function toggleCategoria(catId){
+  if(state.openCats.has(catId)) state.openCats.delete(catId); else state.openCats.add(catId);
+  renderSidebar();
+}
+function irParaMenuMobile(){ document.body.classList.add('mobile-menu-only'); window.scrollTo(0,0); }
+function revelarConteudoMobile(){ document.body.classList.remove('mobile-menu-only'); }
+
+/* ---------------- Render: Sidebar ---------------- */
+function renderSidebar(){
+  const el = document.getElementById('sidebar-list');
+  if(state.search){
+    const r = buscaGlobal(state.search);
+    let html = '';
+    if(r.exames.length===0 && r.calcs.length===0 && r.termos.length===0){
+      html += '<div class="cat-body-empty">Nenhum resultado para "'+state.search+'".</div>';
+    }
+    if(r.exames.length){
+      html += '<div class="pinned-head">'+icon('star')+' Exames ('+r.exames.length+')</div>';
+      html += r.exames.map(e=>examItemHTML(e)).join('');
+    }
+    if(r.calcs.length){
+      html += '<div class="pinned-head" style="margin-top:14px">'+icon('activity')+' Calculadoras</div>';
+      html += r.calcs.map(c=>'<div class="exam-item" onclick="setView(\'calculadoras\')"><span class="item-dot"></span><span class="item-nome">'+c.nome+'</span></div>').join('');
+    }
+    if(r.termos.length){
+      html += '<div class="pinned-head" style="margin-top:14px">'+icon('more')+' Glossário</div>';
+      html += r.termos.map(t=>'<div class="exam-item" onclick="setView(\'glossario\')"><span class="item-dot"></span><span class="item-nome">'+t.termo+'</span></div>').join('');
+    }
+    el.innerHTML = html;
+    return;
+  }
+  let html = '';
+  const favExames = [...favoritos].map(id=>getExame(id)).filter(Boolean).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+  html += '<div class="pinned-group">';
+  html += '<div class="pinned-head">'+icon('star')+' Favoritos</div>';
+  if(favExames.length){
+    html += '<div class="exam-chip-grid">'+favExames.map(e=>'<button class="exam-chip'+(state.exameId===e.id?' active':'')+'" onclick="abrirExame(\''+e.id+'\')">'+e.sigla+'</button>').join('')+'</div>';
+  } else {
+    html += '<div class="cat-body-empty" style="padding:0 4px">Nenhum favorito ainda. Toque na estrela ao lado de um exame para adicioná-lo aqui.</div>';
+  }
+  html += '</div>';
+  DATA.categorias.forEach(cat=>{
+    const exs = examesDaCategoria(cat.id);
+    const aberto = state.openCats.has(cat.id);
+    html += '<button class="cat-header'+(aberto?' aberto':'')+'" '+ccStyle(cat.cor)+' onclick="toggleCategoria(\''+cat.id+'\')">';
+    html += '<span class="cat-nome">'+cat.nome+'</span><span class="cat-count">'+exs.length+'</span>'+icon('chev','cat-chevron');
+    html += '</button>';
+    html += '<div class="cat-body'+(aberto?' aberto':'')+'">';
+    if(exs.length===0){
+      html += '<div class="cat-body-empty">Nenhum exame cadastrado ainda nesta categoria.</div>';
+    } else {
+      const grupos = [...new Set(exs.map(e=>e.grupo||''))];
+      grupos.forEach(g=>{
+        if(g) html += '<div class="cat-grupo-titulo">'+g+'</div>';
+        exs.filter(e=>(e.grupo||'')===g).forEach(e=>{ html += examItemHTML(e); });
+      });
+    }
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+function examItemHTML(e){
+  const cat = getCategoria(e.categoria);
+  const fav = favoritos.has(e.id);
+  return '<div class="exam-item'+(state.exameId===e.id?' active':'')+'" '+ccStyle(cat?cat.cor:'gray')+' onclick="abrirExame(\''+e.id+'\')">'+
+    '<span class="item-dot"></span>'+
+    '<span class="item-nome">'+e.nome+'</span>'+
+    '<span class="item-sigla">'+e.sigla+'</span>'+
+    '<span class="fav-star'+(fav?' on':'')+'" onclick="toggleFavorito(\''+e.id+'\', event)">'+icon('star')+'</span>'+
+  '</div>';
+}
+
+/* ---------------- Render: Main ---------------- */
+function renderMain(){
+  const el = document.getElementById('main');
+  if(state.view==='exame' && state.exameId){ el.innerHTML = renderExame(getExame(state.exameId)); wireTabs(); wireComparador(); return; }
+  if(state.view==='favoritos'){ el.innerHTML = renderFavoritos(); return; }
+  if(state.view==='glossario'){ el.innerHTML = renderGlossario(); return; }
+  if(state.view==='calculadoras'){ el.innerHTML = renderCalculadoras(); wireCalculadoras(); return; }
+  el.innerHTML = renderInicio();
+}
+
+function renderInicio(){
+  const rapidos = DATA.exames.filter(e=>e.consultaRapida).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+  let html = '<div class="intro-banner"><span class="intro-banner-icon">'+icon('flask')+'</span>'+
+    '<p>Consulte exames laboratoriais, valores de referência, interpretação de resultados, interferentes e relações com medicamentos. Apoio técnico à prática farmacêutica, sem substituir avaliação clínica ou laudo laboratorial.</p></div>';
+
+  html += '<div class="section-title">'+icon('star')+' Consulta Rápida</div>';
+  html += '<div class="quick-grid">'+rapidos.map(e=>{
+    const cat=getCategoria(e.categoria);
+    return '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirExame(\''+e.id+'\')"><span class="qc-dot"></span><span>'+e.nome+'</span></div>';
+  }).join('')+'</div>';
+
+  if(favoritos.size){
+    html += '<div class="section-title">'+icon('star')+' Seus Favoritos</div>';
+    html += '<div class="quick-grid">'+[...favoritos].map(id=>getExame(id)).filter(Boolean).map(e=>{
+      const cat=getCategoria(e.categoria);
+      return '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirExame(\''+e.id+'\')"><span class="qc-dot"></span><span>'+e.nome+'</span></div>';
+    }).join('')+'</div>';
+  }
+
+  if(historico.length){
+    html += '<div class="section-title">'+icon('activity')+' Consultados recentemente</div>';
+    html += '<div class="quick-grid">'+historico.map(id=>getExame(id)).filter(Boolean).map(e=>{
+      const cat=getCategoria(e.categoria);
+      return '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirExame(\''+e.id+'\')"><span class="qc-dot"></span><span>'+e.nome+'</span></div>';
+    }).join('')+'</div>';
+  }
+
+  html += '<div class="section-title">'+icon('more')+' Categorias</div>';
+  html += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
+    const n = examesDaCategoria(cat.id).length;
+    return '<button class="cat-tile" '+ccStyle(cat.cor)+' onclick="toggleCategoriaHome(\''+cat.id+'\')">'+
+      '<span class="ct-icon">'+icon(cat.icone)+'</span>'+
+      '<h4>'+cat.nome+'</h4>'+
+      '<span class="ct-count">'+n+' exame'+(n===1?'':'s')+' cadastrado'+(n===1?'':'s')+'</span>'+
+    '</button>';
+  }).join('')+'</div>';
+
+  html += '<div class="disclaimer-fixed">'+icon('alert')+' Este conteúdo é uma ferramenta de apoio técnico à prática farmacêutica. Valores de referência podem variar entre laboratórios, métodos e populações. Priorize sempre o intervalo informado pelo laboratório do paciente. Um resultado isolado não estabelece diagnóstico; a interpretação deve considerar sintomas, histórico clínico e outros exames. Não substitui avaliação médica.</div>';
+  return html;
+}
+function toggleCategoriaHome(catId){
+  state.openCats.add(catId);
+  renderSidebar();
+  irParaMenuMobile();
+  document.getElementById('sidebar-list').scrollTop=0;
+}
+
+function renderExame(e){
+  if(!e) return '<p>Exame não encontrado.</p>';
+  const cat = getCategoria(e.categoria);
+  const fav = favoritos.has(e.id);
+  let html = '<button class="btn-voltar-mobile" onclick="setView(\'inicio\')">'+icon('back')+' Voltar</button>';
+  html += '<div class="breadcrumb"><a onclick="setView(\'inicio\')">Início</a> › <a onclick="toggleCategoriaHome(\''+cat.id+'\')">'+cat.nome+'</a> › '+e.nome+'</div>';
+  html += '<div class="exam-head" '+ccStyle(cat.cor)+'>';
+  html += '<div><h2>'+e.nome+' <span class="sigla-badge">'+e.sigla+'</span></h2>';
+  if(e.sinonimos && e.sinonimos.length) html += '<div class="sinonimos-line">Também conhecido como: '+e.sinonimos.join(', ')+'</div>';
+  html += '<div class="exam-chips"><span class="chip">'+cat.nome+'</span><span class="chip">'+e.sistema+'</span><span class="chip">'+e.amostraTipo+'</span></div>';
+  html += '</div>';
+  html += '<div class="exam-actions"><button class="btn-fav'+(fav?' on':'')+'" onclick="toggleFavorito(\''+e.id+'\')">'+icon('star')+' '+(fav?'Favoritado':'Favoritar')+'</button></div>';
+  html += '</div>';
+
+  if(modoBalcao){ html += renderBalcao(e); return html; }
+
+  html += '<div class="indicadores-row">';
+  html += '<div class="indicador"><div class="ind-label">O que avalia</div><div class="ind-valor">'+e.sistema+'</div></div>';
+  html += '<div class="indicador"><div class="ind-label">Amostra</div><div class="ind-valor">'+e.amostraTipo+'</div></div>';
+  html += '<div class="indicador"><div class="ind-label">Jejum</div><div class="ind-valor">'+(e.preparo.jejumNecessario?('Sim ('+e.preparo.tempoJejumHoras+'h)'):'Não necessário')+'</div></div>';
+  html += '<div class="indicador"><div class="ind-label">Referência</div><div class="ind-valor">'+e.valoresReferencia[0].faixa+' '+e.valoresReferencia[0].unidade+'</div></div>';
+  html += '</div>';
+
+  const tabs = [
+    ['geral','Visão Geral'], ['ref','Referência'], ['interp','Interpretação'], ['med','Medicamentos'],
+    ['interf','Interferentes'], ['prep','Preparo e Amostra'], ['correl','Correlatos'], ['comp','Comparar Resultados'], ['fontes','Fontes']
+  ];
+  html += '<div class="tabbar">'+tabs.map((t,i)=>'<button class="tab-btn'+(i===0?' active':'')+'" data-tab="'+t[0]+'" onclick="setTab(\''+t[0]+'\')">'+t[1]+'</button>').join('')+'</div>';
+
+  html += '<div class="tab-panel active" data-panel="geral">'+
+    '<p>'+e.descricao+'</p><h5>Finalidade</h5><p>'+e.finalidade+'</p></div>';
+
+  html += '<div class="tab-panel" data-panel="ref">'+
+    '<table class="ref-table"><thead><tr><th>Parâmetro</th><th>Valor de referência</th><th>Unidade</th><th>Observações</th></tr></thead><tbody>'+
+    e.valoresReferencia.map(v=>'<tr><td>'+v.parametro+'</td><td>'+v.faixa+'</td><td>'+v.unidade+'</td><td>'+(v.obs||'-')+'</td></tr>').join('')+
+    '</tbody></table>'+
+    '<div class="ref-disclaimer">'+icon('alert')+' Valores de referência podem variar conforme método analítico, equipamento, população e laboratório. Priorize sempre o intervalo de referência informado pelo laboratório que realizou o exame do paciente.</div>'+
+  '</div>';
+
+  html += '<div class="tab-panel" data-panel="interp"><div class="interp-grid">'+
+    '<div class="interp-card alta"><h4>↑ Aumentado</h4><p class="resumo">'+e.interpretacaoAlta.resumo+'</p><ul>'+e.interpretacaoAlta.causas.map(c=>'<li>'+c+'</li>').join('')+'</ul>'+
+      (e.interpretacaoAlta.examesApoio&&e.interpretacaoAlta.examesApoio.length?'<div class="apoio-line">Exames que ajudam na investigação: '+e.interpretacaoAlta.examesApoio.map(id=>{const ex=getExame(id); return ex?'<a onclick="abrirExame(\''+id+'\')">'+ex.nome+'</a>':id;}).join(', ')+'</div>':'')+
+    '</div>'+
+    '<div class="interp-card baixa"><h4>↓ Reduzido</h4><p class="resumo">'+e.interpretacaoBaixa.resumo+'</p><ul>'+e.interpretacaoBaixa.causas.map(c=>'<li>'+c+'</li>').join('')+'</ul>'+
+      (e.interpretacaoBaixa.examesApoio&&e.interpretacaoBaixa.examesApoio.length?'<div class="apoio-line">Exames que ajudam na investigação: '+e.interpretacaoBaixa.examesApoio.map(id=>{const ex=getExame(id); return ex?'<a onclick="abrirExame(\''+id+'\')">'+ex.nome+'</a>':id;}).join(', ')+'</div>':'')+
+    '</div>'+
+  '</div>'+
+  (alertaBoxHTML(e))+
+  '</div>';
+
+  html += '<div class="tab-panel" data-panel="med"><div class="med-grid">'+
+    '<div class="med-card aumenta"><h5>↑ Podem aumentar</h5>'+(e.medicamentos.aumentam.length?('<ul>'+e.medicamentos.aumentam.map(m=>'<li>'+m+'</li>').join('')+'</ul>'):'<div class="none">Nenhum registrado nesta base.</div>')+'</div>'+
+    '<div class="med-card reduz"><h5>↓ Podem reduzir</h5>'+(e.medicamentos.reduzem.length?('<ul>'+e.medicamentos.reduzem.map(m=>'<li>'+m+'</li>').join('')+'</ul>'):'<div class="none">Nenhum registrado nesta base.</div>')+'</div>'+
+    '<div class="med-card interfere"><h5>⚠ Podem interferir (analítico)</h5>'+(e.medicamentos.interferem.length?('<ul>'+e.medicamentos.interferem.map(m=>'<li>'+m+'</li>').join('')+'</ul>'):'<div class="none">Nenhum registrado nesta base.</div>')+'</div>'+
+  '</div><div class="ref-disclaimer">'+icon('alert')+' Diferencie sempre alteração verdadeira do marcador de alteração laboratorial que não representa, necessariamente, mudança real na função do órgão avaliado. Não interrompa medicamentos por conta própria devido a alterações laboratoriais. Discuta com o prescritor.</div></div>';
+
+  html += '<div class="tab-panel" data-panel="interf"><div class="interf-list">'+
+    e.interferentes.map(i=>'<div class="interf-item"><b>'+i.fator+'</b><span>'+i.efeito+'</span></div>').join('')+
+  '</div></div>';
+
+  html += '<div class="tab-panel" data-panel="prep"><div class="prep-amostra-grid">'+
+    '<div><h5>Antes da coleta</h5><ul class="info-list">'+e.preparo.observacoes.map(o=>'<li>'+o+'</li>').join('')+'</ul></div>'+
+    '<div><h5>Amostra e fase pré-analítica</h5>'+
+      '<div class="kv-row"><b>Tipo</b>'+e.amostra.tipo+'</div>'+
+      '<div class="kv-row"><b>Tubo</b>'+e.amostra.tubo+'</div>'+
+      '<div class="kv-row"><b>Armazenamento</b>'+e.amostra.armazenamento+'</div>'+
+      '<h5 style="margin-top:12px">Causas comuns de rejeição</h5><ul class="info-list">'+e.amostra.rejeicao.map(r=>'<li>'+r+'</li>').join('')+'</ul>'+
+    '</div>'+
+  '</div></div>';
+
+  html += '<div class="tab-panel" data-panel="correl"><h5>Exames que fazem sentido avaliar em conjunto</h5><div class="chips-wrap">'+
+    (e.correlatos||[]).map(id=>{const ex=getExame(id); return ex?'<button class="chip-link" onclick="abrirExame(\''+id+'\')">'+ex.nome+'</button>':'';}).join('')+
+    (e.correlatosTexto||[]).map(t=>'<span class="chip-static">'+t+'</span>').join('')+
+  '</div>'+(e.condicoesClinicas?condicoesClinicasHTML(e):'')+'</div>';
+
+  html += '<div class="tab-panel" data-panel="comp">'+comparadorHTML(e)+'</div>';
+
+  html += '<div class="tab-panel" data-panel="fontes"><div class="fontes-box"><p>Última atualização: '+ (e.dataAtualizacao||DATA.dataAtualizacao) +'</p><h5>Fontes e referências</h5><ul>'+(e.fontes||[]).map(f=>'<li>'+f+'</li>').join('')+'</ul>'+(e.observacoes?('<p style="margin-top:10px">'+e.observacoes+'</p>'):'')+'</div></div>';
+
+  return html;
+}
+function condicoesClinicasHTML(e){
+  return '<div class="interp-grid" style="margin-top:18px">'+
+    '<div class="interp-card alta"><h4>Condições associadas ao aumento</h4><ul>'+(e.condicoesClinicas.aumentado||[]).map(c=>'<li>'+c+'</li>').join('')+'</ul></div>'+
+    '<div class="interp-card baixa"><h4>Condições associadas à redução</h4><ul>'+(e.condicoesClinicas.reduzido||[]).map(c=>'<li>'+c+'</li>').join('')+'</ul></div>'+
+  '</div>';
+}
+function alertaBoxHTML(e){
+  if(!e.alertas || !e.alertas.length) return '';
+  return '<div class="alert-box">'+icon('alert')+'<div><b>Quando merece atenção?</b><ul>'+e.alertas.map(a=>'<li>'+a+'</li>').join('')+'</ul></div></div>';
+}
+function renderBalcao(e){
+  let html = '<div class="balcao-view"><span class="balcao-badge">'+icon('activity')+' Modo Balcão: consulta em segundos</span>';
+  html += '<div class="balcao-block"><h5>O que avalia</h5><p>'+e.descricao.split('.')[0]+'.</p></div>';
+  html += '<div class="balcao-block"><h5>Referência</h5>'+e.valoresReferencia.map(v=>'<div>'+v.parametro+': <b>'+v.faixa+' '+v.unidade+'</b></div>').join('')+'</div>';
+  html += '<div class="balcao-block"><h5>↑ Aumentado: principais causas</h5><ul>'+e.interpretacaoAlta.causas.slice(0,4).map(c=>'<li>'+c+'</li>').join('')+'</ul></div>';
+  html += '<div class="balcao-block"><h5>↓ Reduzido: principais causas</h5><ul>'+e.interpretacaoBaixa.causas.slice(0,4).map(c=>'<li>'+c+'</li>').join('')+'</ul></div>';
+  html += '<div class="balcao-block"><h5>Medicamentos relacionados</h5><ul>'+
+    e.medicamentos.aumentam.slice(0,3).map(m=>'<li>↑ '+m+'</li>').join('')+
+    e.medicamentos.reduzem.slice(0,3).map(m=>'<li>↓ '+m+'</li>').join('')+
+  '</ul></div>';
+  html += '<div class="balcao-block"><h5>Correlatos</h5><div class="chips-wrap">'+(e.correlatos||[]).map(id=>{const ex=getExame(id);return ex?'<button class="chip-link" onclick="abrirExame(\''+id+'\')">'+ex.nome+'</button>':'';}).join('')+'</div></div>';
+  if(e.alertas && e.alertas.length) html += '<div class="balcao-block">'+alertaBoxHTML(e)+'</div>';
+  html += '</div>';
+  return html;
+}
+function setTab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active', p.dataset.panel===tab));
+}
+function wireTabs(){ /* delegação via onclick inline já conectada na render */ }
+
+/* ---------------- Comparador ---------------- */
+function comparadorHTML(e){
+  const pontos = comparadorData[e.id] || [];
+  let html = '<h5>Registrar novo resultado</h5>';
+  html += '<div class="comp-form">'+
+    '<input type="date" id="comp-data">'+
+    '<input type="number" step="any" id="comp-valor" placeholder="Valor">'+
+    '<input type="text" id="comp-unidade" placeholder="Unidade" value="'+e.valoresReferencia[0].unidade+'">'+
+    '<input type="text" id="comp-lab" placeholder="Laboratório (opcional)">'+
+    '<button onclick="addComparador(\''+e.id+'\')">Adicionar</button>'+
+  '</div>';
+  if(!pontos.length){
+    html += '<div class="comp-empty">Nenhum resultado registrado ainda para este exame. Adicione resultados anteriores para visualizar a evolução ao longo do tempo.</div>';
+  } else {
+    const ordenados = [...pontos].sort((a,b)=>a.data.localeCompare(b.data));
+    html += sparklineSVG(ordenados);
+    html += '<table class="comp-table"><thead><tr><th>Data</th><th>Resultado</th><th>Laboratório</th><th></th></tr></thead><tbody>'+
+      ordenados.map((p,i)=>'<tr><td>'+formatData(p.data)+'</td><td>'+p.valor+' '+p.unidade+'</td><td>'+(p.lab||'-')+'</td><td class="del-row" onclick="removeComparador(\''+e.id+'\','+i+')">✕ remover</td></tr>').join('')+
+    '</tbody></table>';
+  }
+  html += '<div class="ref-disclaimer">'+icon('alert')+' A tendência exibida é apenas uma visualização dos resultados informados. Não constitui, isoladamente, diagnóstico ou interpretação clínica automática.</div>';
+  return html;
+}
+function formatData(iso){ const [y,m,d]=iso.split('-'); return d+'/'+m+'/'+y; }
+function sparklineSVG(pontos){
+  if(pontos.length<2){
+    const trend = '<span class="trend-chip trend-flat">• Ponto único</span>';
+    return '<div style="margin-bottom:12px">'+trend+'</div>';
+  }
+  const vals = pontos.map(p=>parseFloat(p.valor));
+  const min = Math.min(...vals), max = Math.max(...vals);
+  const range = (max-min)||1;
+  const w = 560, h = 90, pad=10;
+  const pts = vals.map((v,i)=>{
+    const x = pad + (i*(w-2*pad)/(vals.length-1));
+    const y = h-pad - ((v-min)/range)*(h-2*pad);
+    return x+','+y;
+  }).join(' ');
+  const last = vals[vals.length-1], prev = vals[vals.length-2];
+  let trendClass='trend-flat', trendLabel='→ Estável';
+  if(last>prev*1.03){ trendClass='trend-up'; trendLabel='↗ Aumento'; }
+  else if(last<prev*0.97){ trendClass='trend-down'; trendLabel='↘ Redução'; }
+  let svg = '<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'" style="margin-bottom:6px">';
+  svg += '<polyline points="'+pts+'" fill="none" stroke="var(--red-bright)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+  vals.forEach((v,i)=>{ const [x,y]=pts.split(' ')[i].split(','); svg += '<circle cx="'+x+'" cy="'+y+'" r="3.5" fill="var(--red-bright)"/>'; });
+  svg += '</svg>';
+  return '<div style="margin-bottom:6px">'+svg+'</div><div style="margin-bottom:12px"><span class="trend-chip '+trendClass+'">'+trendLabel+'</span></div>';
+}
+function addComparador(examId){
+  const data = document.getElementById('comp-data').value;
+  const valor = document.getElementById('comp-valor').value;
+  const unidade = document.getElementById('comp-unidade').value;
+  const lab = document.getElementById('comp-lab').value;
+  if(!data || valor===''){ alert('Informe ao menos a data e o valor do resultado.'); return; }
+  if(!comparadorData[examId]) comparadorData[examId]=[];
+  comparadorData[examId].push({data, valor:parseFloat(valor), unidade, lab});
+  saveComparador();
+  renderMain();
+  setTab('comp');
+}
+function removeComparador(examId, idx){
+  const ordenados = [...comparadorData[examId]].sort((a,b)=>a.data.localeCompare(b.data));
+  const alvo = ordenados[idx];
+  comparadorData[examId] = comparadorData[examId].filter(p=>p!==alvo);
+  saveComparador();
+  renderMain();
+  setTab('comp');
+}
+function wireComparador(){}
+
+/* ---------------- Favoritos / Glossário ---------------- */
+function renderFavoritos(){
+  const lista = [...favoritos].map(id=>getExame(id)).filter(Boolean);
+  let html = '<button class="btn-voltar-mobile" onclick="setView(\'inicio\')">'+icon('back')+' Voltar</button>';
+  html += '<div class="home-hero"><h2>'+icon('star')+' Exames Favoritos</h2><p>Exames marcados para consulta rápida e frequente.</p></div>';
+  if(!lista.length){
+    const sugestoes = DATA.exames.filter(e=>e.favoritoPadrao).slice(0,8);
+    html += '<div class="empty-hint">Você ainda não favoritou nenhum exame. Clique na estrela ao lado de um exame para adicioná-lo aqui.<br><br>Sugestões frequentes na rotina: '+
+      sugestoes.map(e=>'<a onclick="abrirExame(\''+e.id+'\')">'+e.nome+'</a>').join(', ')+'.</div>';
+  } else {
+    html += '<div class="fav-grid">'+lista.map(e=>{
+      const cat=getCategoria(e.categoria);
+      return '<div class="fav-card" '+ccStyle(cat.cor)+' onclick="abrirExame(\''+e.id+'\')"><button class="remove-fav" onclick="toggleFavorito(\''+e.id+'\',event)">✕</button><h4>'+e.nome+'</h4><p>'+cat.nome+' · '+e.sigla+'</p></div>';
+    }).join('')+'</div>';
+  }
+  return html;
+}
+function renderGlossario(){
+  let html = '<button class="btn-voltar-mobile" onclick="setView(\'inicio\')">'+icon('back')+' Voltar</button>';
+  html += '<div class="home-hero"><h2>'+icon('more')+' Glossário Laboratorial</h2><p>Termos técnicos usados com frequência na interpretação de exames laboratoriais.</p></div>';
+  html += '<div class="gloss-list">'+DATA.glossario.map(g=>'<div class="gloss-item"><b>'+g.termo+'</b><p>'+g.definicao+'</p></div>').join('')+'</div>';
+  return html;
+}
+
+/* ---------------- Calculadoras ---------------- */
+function renderCalculadoras(){
+  let html = '<button class="btn-voltar-mobile" onclick="setView(\'inicio\')">'+icon('back')+' Voltar</button>';
+  html += '<div class="home-hero"><h2>'+icon('activity')+' Calculadoras</h2><p>Ferramentas de apoio ao cálculo de parâmetros laboratoriais derivados. Sempre avalie o resultado dentro do contexto clínico do paciente.</p></div>';
+  html += '<div class="calc-grid">';
+
+  html += '<div class="calc-card"><h4>TFG estimada (função renal)</h4>'+
+    '<div class="calc-formula">CKD-EPI 2021 (sem raça) · Cockcroft-Gault</div>'+
+    '<div class="calc-field"><label>Sexo</label><select id="tfg-sexo"><option value="F">Feminino</option><option value="M">Masculino</option></select></div>'+
+    '<div class="calc-field"><label>Idade (anos)</label><input type="number" id="tfg-idade" placeholder="Ex.: 55"></div>'+
+    '<div class="calc-field"><label>Creatinina sérica (mg/dL)</label><input type="number" step="0.01" id="tfg-creat" placeholder="Ex.: 1.1"></div>'+
+    '<div class="calc-field"><label>Peso (kg): usado apenas no Cockcroft-Gault</label><input type="number" id="tfg-peso" placeholder="Ex.: 70"></div>'+
+    '<button class="calc-btn" onclick="calcularTFG()">Calcular</button>'+
+    '<div class="calc-result" id="tfg-result"></div>'+
+    '<div class="calc-limit">Fórmulas estimativas. Não substituem clearance medido diretamente (ex.: urina de 24h) em situações de massa muscular extrema, amputações, gestação ou função renal rapidamente variável.</div>'+
+  '</div>';
+
+  html += '<div class="calc-card"><h4>LDL calculado (Friedewald)</h4>'+
+    '<div class="calc-formula">LDL = CT − HDL − (TG / 5)  [mg/dL]</div>'+
+    '<div class="calc-field"><label>Colesterol Total (mg/dL)</label><input type="number" id="ldl-ct" placeholder="Ex.: 210"></div>'+
+    '<div class="calc-field"><label>HDL (mg/dL)</label><input type="number" id="ldl-hdl" placeholder="Ex.: 45"></div>'+
+    '<div class="calc-field"><label>Triglicerídeos (mg/dL)</label><input type="number" id="ldl-tg" placeholder="Ex.: 130"></div>'+
+    '<button class="calc-btn" onclick="calcularLDL()">Calcular</button>'+
+    '<div class="calc-result" id="ldl-result"></div>'+
+    '<div class="calc-limit">Válida apenas para triglicerídeos abaixo de 400 mg/dL. Acima disso, a fórmula perde precisão. Utilize a dosagem direta do LDL.</div>'+
+  '</div>';
+
+  html += '<div class="calc-card"><h4>Relação Albumina/Creatinina urinária</h4>'+
+    '<div class="calc-formula">RAC (mg/g) = Albumina (mg/L) × 100 / Creatinina urinária (mg/dL)</div>'+
+    '<div class="calc-field"><label>Albumina urinária (mg/L)</label><input type="number" id="rac-alb" placeholder="Ex.: 25"></div>'+
+    '<div class="calc-field"><label>Creatinina urinária (mg/dL)</label><input type="number" id="rac-creat" placeholder="Ex.: 80"></div>'+
+    '<button class="calc-btn" onclick="calcularRAC()">Calcular</button>'+
+    '<div class="calc-result" id="rac-result"></div>'+
+    '<div class="calc-limit">Classificação KDIGO: A1 &lt;30 mg/g (normal/levemente aumentada), A2 30–300 mg/g (moderadamente aumentada), A3 &gt;300 mg/g (gravemente aumentada). Confirmar com 2ª amostra antes de conclusões.</div>'+
+  '</div>';
+
+  html += '</div>';
+  return html;
+}
+function wireCalculadoras(){}
+function calcularTFG(){
+  const sexo = document.getElementById('tfg-sexo').value;
+  const idade = parseFloat(document.getElementById('tfg-idade').value);
+  const creat = parseFloat(document.getElementById('tfg-creat').value);
+  const peso = parseFloat(document.getElementById('tfg-peso').value);
+  const box = document.getElementById('tfg-result');
+  if(!idade || !creat){ box.classList.remove('show'); alert('Informe idade e creatinina.'); return; }
+  let k = sexo==='F'?0.7:0.9, a = sexo==='F'?-0.241:-0.302, mult = sexo==='F'?1.012:1;
+  const ratio = creat/k;
+  const expo = ratio<=1 ? a : -1.2;
+  const ckdepi = 142 * Math.pow(ratio, expo) * Math.pow(0.9938, idade) * mult;
+  let estagio = 'G1 (≥90, normal ou alta)';
+  if(ckdepi<15) estagio='G5 (<15, falência renal)';
+  else if(ckdepi<30) estagio='G4 (15–29, redução grave)';
+  else if(ckdepi<45) estagio='G3b (30–44, redução moderada-grave)';
+  else if(ckdepi<60) estagio='G3a (45–59, redução leve-moderada)';
+  else if(ckdepi<90) estagio='G2 (60–89, redução leve)';
+  let html = '<div class="cr-valor">'+ckdepi.toFixed(1)+'</div><div class="cr-unidade">mL/min/1,73m² (CKD-EPI 2021)</div>'+
+    '<div class="cr-interp">Categoria KDIGO estimada: <b>'+estagio+'</b></div>';
+  if(peso){
+    const cg = ((140-idade)*peso)/(72*creat) * (sexo==='F'?0.85:1);
+    html += '<div class="cr-interp">Cockcroft-Gault: <b>'+cg.toFixed(1)+' mL/min</b> (clearance de creatinina estimado, não normalizado por superfície corporal)</div>';
+  }
+  box.innerHTML = html; box.classList.add('show');
+}
+function calcularLDL(){
+  const ct = parseFloat(document.getElementById('ldl-ct').value);
+  const hdl = parseFloat(document.getElementById('ldl-hdl').value);
+  const tg = parseFloat(document.getElementById('ldl-tg').value);
+  const box = document.getElementById('ldl-result');
+  if(!ct || !hdl || !tg){ alert('Preencha os três valores.'); return; }
+  if(tg>=400){
+    box.innerHTML = '<div class="cr-interp">'+icon('alert')+' Triglicerídeos ≥ 400 mg/dL: a fórmula de Friedewald não é confiável. Solicite a dosagem direta do LDL.</div>';
+    box.classList.add('show'); return;
+  }
+  const ldl = ct - hdl - (tg/5);
+  let cat='Ótimo (<100)';
+  if(ldl>=190) cat='Muito alto (≥190)'; else if(ldl>=160) cat='Alto (160–189)'; else if(ldl>=130) cat='Limítrofe (130–159)'; else if(ldl>=100) cat='Próximo do ótimo (100–129)';
+  box.innerHTML = '<div class="cr-valor">'+ldl.toFixed(1)+'</div><div class="cr-unidade">mg/dL</div><div class="cr-interp">Categoria: <b>'+cat+'</b>. A meta terapêutica deve ser individualizada pelo risco cardiovascular do paciente.</div>';
+  box.classList.add('show');
+}
+function calcularRAC(){
+  const alb = parseFloat(document.getElementById('rac-alb').value);
+  const creat = parseFloat(document.getElementById('rac-creat').value);
+  const box = document.getElementById('rac-result');
+  if(!alb || !creat){ alert('Preencha os dois valores.'); return; }
+  const rac = (alb*100)/creat;
+  let cat='A1: normal a levemente aumentada (<30 mg/g)';
+  if(rac>300) cat='A3: gravemente aumentada (>300 mg/g)'; else if(rac>=30) cat='A2: moderadamente aumentada (30–300 mg/g)';
+  box.innerHTML = '<div class="cr-valor">'+rac.toFixed(1)+'</div><div class="cr-unidade">mg/g</div><div class="cr-interp">Categoria KDIGO: <b>'+cat+'</b></div>';
+  box.classList.add('show');
+}
+
+/* ---------------- Init ---------------- */
+function init(){
+  loadStorage();
+  document.getElementById('balcao-btn').classList.toggle('active', modoBalcao);
+  renderSidebar();
+  renderMain();
+}
+fetch('exames.json').then(r=>r.json()).then(data=>{ DATA=data; init(); })
+  .catch(err=>{
+    document.getElementById('main').innerHTML = '<div class="empty-hint">'+icon('alert')+' Não foi possível carregar os dados dos exames (exames.json). Se você abriu este arquivo diretamente no navegador, rode um servidor local (ex.: <code>python3 -m http.server</code>) ou acesse pela versão publicada do site.</div>';
+    console.error(err);
+  });
+</script>
+</body>
+</html>

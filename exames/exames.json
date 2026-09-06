@@ -1,0 +1,1051 @@
+{
+  "versao": "1.0",
+  "dataAtualizacao": "2026-09-05",
+  "categorias": [
+    {"id":"hematologia","nome":"Hematologia","cor":"red","icone":"droplet"},
+    {"id":"bioquimica","nome":"Bioquímica","cor":"blue","icone":"flask"},
+    {"id":"hormonios","nome":"Hormônios","cor":"purple","icone":"waves"},
+    {"id":"lipidograma","nome":"Lipidograma","cor":"amber","icone":"heart"},
+    {"id":"metabolismo","nome":"Glicemia e Metabolismo","cor":"amber","icone":"activity"},
+    {"id":"funcao-renal","nome":"Função Renal","cor":"green","icone":"kidney"},
+    {"id":"funcao-hepatica","nome":"Função Hepática","cor":"green","icone":"liver"},
+    {"id":"eletrolitos","nome":"Eletrólitos","cor":"sky","icone":"zap"},
+    {"id":"marcadores-cardiacos","nome":"Marcadores Cardíacos","cor":"crimson","icone":"heartbeat"},
+    {"id":"marcadores-inflamatorios","nome":"Marcadores Inflamatórios","cor":"orange","icone":"flame"},
+    {"id":"imunologia","nome":"Imunologia","cor":"cyan","icone":"shield"},
+    {"id":"infectologia","nome":"Infectologia","cor":"teal","icone":"bug"},
+    {"id":"coagulacao","nome":"Coagulação","cor":"indigo","icone":"clot"},
+    {"id":"endocrinologia","nome":"Endocrinologia","cor":"purple","icone":"gland"},
+    {"id":"vitaminas-minerais","nome":"Vitaminas e Minerais","cor":"lime","icone":"leaf"},
+    {"id":"marcadores-tumorais","nome":"Marcadores Tumorais","cor":"magenta","icone":"ribbon"},
+    {"id":"urinalise","nome":"Urinálise","cor":"yellow","icone":"droplets"},
+    {"id":"parasitologia","nome":"Parasitologia","cor":"brown","icone":"bug2"},
+    {"id":"microbiologia","nome":"Microbiologia","cor":"petrol","icone":"microscope"},
+    {"id":"gasometria","nome":"Gasometria","cor":"sky","icone":"wind"},
+    {"id":"fezes","nome":"Exames de Fezes","cor":"brown","icone":"circle"},
+    {"id":"imagem","nome":"Imagem e Complementares","cor":"slate","icone":"scan"},
+    {"id":"outros","nome":"Outros","cor":"gray","icone":"more"}
+  ],
+  "glossario": [
+    {"termo":"Analito","definicao":"Substância específica que está sendo medida em uma amostra biológica (ex.: glicose, creatinina, TSH)."},
+    {"termo":"Sensibilidade (diagnóstica)","definicao":"Capacidade de um teste identificar corretamente os indivíduos que realmente têm a condição (verdadeiros positivos)."},
+    {"termo":"Especificidade (diagnóstica)","definicao":"Capacidade de um teste identificar corretamente os indivíduos que não têm a condição (verdadeiros negativos)."},
+    {"termo":"Valor preditivo positivo","definicao":"Probabilidade de a condição estar realmente presente quando o resultado do teste é positivo. Depende da prevalência da condição na população testada."},
+    {"termo":"Valor preditivo negativo","definicao":"Probabilidade de a condição realmente estar ausente quando o resultado do teste é negativo."},
+    {"termo":"Intervalo de referência","definicao":"Faixa de valores esperada para 95% de uma população de referência saudável, para determinado método e laboratório. Não é sinônimo de \"normal\" nem de ausência de doença."},
+    {"termo":"Valor crítico (valor de pânico)","definicao":"Resultado tão alterado que representa risco iminente à vida, exigindo comunicação imediata ao solicitante pelo laboratório."},
+    {"termo":"Sensibilidade analítica","definicao":"Menor quantidade do analito que o método consegue detectar de forma confiável (limite de detecção)."},
+    {"termo":"Especificidade analítica","definicao":"Capacidade do método de medir exclusivamente o analito de interesse, sem sofrer interferência de substâncias semelhantes."},
+    {"termo":"Interferência","definicao":"Efeito de uma substância (endógena ou exógena) que altera o resultado de um exame sem refletir uma mudança real no analito."},
+    {"termo":"Hemólise","definicao":"Rompimento das hemácias durante ou após a coleta, liberando conteúdo intracelular (ex.: potássio, LDH) e falseando resultados."},
+    {"termo":"Lipemia","definicao":"Turbidez do soro/plasma por excesso de lipídeos, que pode interferir em métodos colorimétricos e turbidimétricos."},
+    {"termo":"Icterícia","definicao":"Excesso de bilirrubina na amostra, que pode interferir opticamente em métodos espectrofotométricos."},
+    {"termo":"Pré-analítico","definicao":"Etapa do processo laboratorial antes da análise propriamente dita: preparo do paciente, coleta, transporte e armazenamento da amostra. É a fase com maior risco de erro."},
+    {"termo":"Analítico","definicao":"Etapa em que a amostra é efetivamente processada e medida pelo equipamento/método laboratorial."},
+    {"termo":"Pós-analítico","definicao":"Etapa após a análise: liberação, validação e comunicação do resultado."},
+    {"termo":"TFG / eGFR","definicao":"Taxa de Filtração Glomerular (estimada): estimativa do volume de sangue filtrado pelos rins por minuto, calculada por fórmulas a partir da creatinina (ex.: CKD-EPI)."},
+    {"termo":"Clearance","definicao":"Volume de plasma \"limpo\" de uma substância por unidade de tempo por determinado órgão (geralmente o rim)."},
+    {"termo":"Biomarcador","definicao":"Substância mensurável que indica um estado biológico, fisiológico ou patológico específico."}
+  ],
+  "exames": [
+    {
+      "id":"hemograma",
+      "nome":"Hemograma Completo",
+      "sigla":"HMG",
+      "sinonimos":["Eritrograma","Leucograma","Plaquetometria","CBC"],
+      "categoria":"hematologia",
+      "grupo":"Série vermelha, branca e plaquetas",
+      "sistema":"Hematopoiético",
+      "amostraTipo":"Sangue total (EDTA)",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Avalia em conjunto as três linhagens celulares do sangue: série vermelha (hemácias, hemoglobina, hematócrito e índices hematimétricos), série branca (leucograma) e plaquetas. É um dos exames mais solicitados na rotina clínica, usado para triagem geral, investigação de anemias, infecções, processos inflamatórios e distúrbios da coagulação, além de acompanhamento de tratamentos (quimioterapia, uso de imunossupressores).",
+      "finalidade":"Triagem geral de saúde, investigação de anemia/policitemia, suspeita de infecção ou processo inflamatório, avaliação de distúrbios plaquetários e acompanhamento de terapias que afetam a medula óssea.",
+      "valoresReferencia":[
+        {"parametro":"Hemácias","faixa":"4,5 – 5,9 (homens) / 4,0 – 5,2 (mulheres)","unidade":"milhões/mm³","obs":"Varia com altitude e tabagismo"},
+        {"parametro":"Hemoglobina","faixa":"13,5 – 17,5 (homens) / 12,0 – 15,5 (mulheres)","unidade":"g/dL","obs":"Referência da OMS para anemia: <13 (H) / <12 (M)"},
+        {"parametro":"Hematócrito","faixa":"41 – 53 (homens) / 36 – 46 (mulheres)","unidade":"%","obs":""},
+        {"parametro":"VCM","faixa":"80 – 100","unidade":"fL","obs":"Classifica a anemia em micro/normo/macrocítica"},
+        {"parametro":"HCM","faixa":"27 – 33","unidade":"pg","obs":""},
+        {"parametro":"CHCM","faixa":"32 – 36","unidade":"g/dL","obs":""},
+        {"parametro":"RDW","faixa":"11,5 – 14,5","unidade":"%","obs":"Elevado sugere anisocitose (ex.: carência de ferro)"},
+        {"parametro":"Leucócitos totais","faixa":"4.000 – 11.000","unidade":"/mm³","obs":"Diferencial: segmentados 45–65%, linfócitos 20–40%, monócitos 2–8%, eosinófilos 1–4%, basófilos 0–1%"},
+        {"parametro":"Plaquetas","faixa":"150.000 – 450.000","unidade":"/mm³","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Aumento pode envolver qualquer uma das três linhagens, com significados clínicos distintos.",
+        "causas":["Poliglobulia/eritrocitose (desidratação, DPOC, tabagismo, altitude, policitemia vera)","Leucocitose (infecções bacterianas, inflamação, estresse, corticoterapia, leucemias)","Trombocitose (reativa a inflamação/sangramento, ou distúrbios mieloproliferativos)"],
+        "examesApoio":["pcr","glicemia"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução pode indicar anemia, leucopenia ou plaquetopenia, cada uma com investigação própria.",
+        "causas":["Anemia (ferropriva, carência de B12/folato, doença crônica, hemolítica, aplásica)","Leucopenia/neutropenia (viroses, uso de medicamentos mielotóxicos, doenças autoimunes)","Trombocitopenia (viral, autoimune, induzida por medicamento, hiperesplenismo)"],
+        "examesApoio":["ferritina","vitamina-b12"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Policitemia vera","Infecções bacterianas agudas","Doenças mieloproliferativas","Desidratação (hemoconcentração)"],
+        "reduzido":["Anemia ferropriva","Anemia megaloblástica (B12/folato)","Doença renal crônica (eritropoetina baixa)","Púrpura trombocitopênica","Neutropenia induzida por medicamento"]
+      },
+      "medicamentos":{
+        "aumentam":["Eritropoetina (eritrócitos)","Corticoides (leucócitos, por desmarginação)","Esteroides anabolizantes/testosterona (eritrócitos)","Lítio (leucócitos)"],
+        "reduzem":["Clozapina, metimazol e propiltiouracila (neutropenia/agranulocitose)","Quimioterápicos e metotrexato (mielossupressão)","Heparina (trombocitopenia induzida por heparina)","Ácido valproico (plaquetas)","Cloranfenicol (aplasia medular)","AINEs/AAS (sangramento oculto, anemia)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Hemólise na coleta","efeito":"Pode falsear contagens e liberar conteúdo intracelular, comprometendo o esfregaço"},
+        {"fator":"Exercício físico intenso recente","efeito":"Leucocitose transitória por desmarginação"},
+        {"fator":"Estase venosa prolongada (torniquete)","efeito":"Hemoconcentração, elevando falsamente hematócrito e proteínas"},
+        {"fator":"Gestação","efeito":"Anemia dilucional fisiológica, sobretudo no 2º/3º trimestre"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não é necessário jejum, exceto se coletado junto com outros exames que exijam.","Evitar exercício físico intenso nas horas anteriores à coleta."]},
+      "amostra":{"tipo":"Sangue total","tubo":"Tampa roxa (EDTA)","armazenamento":"Temperatura ambiente, processar em até 2h (idealmente); refrigerado se atraso","rejeicao":["Coágulos visíveis no tubo","Volume insuficiente (proporção sangue/anticoagulante inadequada)","Hemólise importante"]},
+      "correlatos":["ferritina","vitamina-b12","pcr"],
+      "correlatosTexto":["Reticulócitos","Ferro sérico e transferrina","Eletroforese de hemoglobina"],
+      "alertas":["Hemoglobina muito baixa (geralmente <7–8 g/dL) ou queda aguda e sintomática merece avaliação médica prioritária.","Neutropenia grave (neutrófilos muito baixos) associada a febre é uma emergência (neutropenia febril).","Plaquetas muito baixas com sangramento espontâneo requerem encaminhamento imediato.","Achados sugestivos de blastos ou alterações morfológicas graves no laudo merecem avaliação hematológica."],
+      "observacoes":"O hemograma deve sempre ser interpretado em conjunto (as três séries) e correlacionado com sintomas, história clínica e medicamentos em uso.",
+      "fontes":["Sociedade Brasileira de Patologia Clínica/Medicina Laboratorial (SBPC/ML)","Williams Hematology","Organização Mundial da Saúde – critérios de anemia"]
+    },
+
+    {
+      "id":"glicemia-jejum",
+      "nome":"Glicemia de Jejum",
+      "sigla":"GLIC",
+      "sinonimos":["Glicose sérica","Glicemia basal"],
+      "categoria":"metabolismo",
+      "grupo":"Controle glicêmico",
+      "sistema":"Metabolismo dos carboidratos",
+      "amostraTipo":"Soro/Plasma (fluoreto)",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede a concentração de glicose no sangue após jejum de pelo menos 8 horas. É o exame de triagem e diagnóstico mais utilizado para diabetes mellitus e pré-diabetes, além de acompanhar o controle glicêmico ao longo do tratamento.",
+      "finalidade":"Rastreio e diagnóstico de diabetes mellitus e pré-diabetes; acompanhamento do controle glicêmico; investigação de hipoglicemia.",
+      "valoresReferencia":[
+        {"parametro":"Normal","faixa":"70 – 99","unidade":"mg/dL","obs":""},
+        {"parametro":"Glicemia de jejum alterada (pré-diabetes)","faixa":"100 – 125","unidade":"mg/dL","obs":"Segundo critérios da SBD/ADA"},
+        {"parametro":"Diabetes mellitus","faixa":"≥ 126 (em duas ocasiões)","unidade":"mg/dL","obs":"Confirmar com segunda dosagem ou HbA1c"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hiperglicemia pode refletir diabetes, estresse agudo, uso de medicamentos ou jejum inadequado.",
+        "causas":["Diabetes mellitus tipo 1 ou 2","Estresse agudo (infecção, cirurgia, trauma)","Uso de corticoides ou outros hiperglicemiantes","Pancreatite, síndrome de Cushing","Jejum não realizado corretamente"],
+        "examesApoio":["hba1c"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipoglicemia pode ser causada por excesso de tratamento, jejum prolongado ou outras condições.",
+        "causas":["Uso excessivo de insulina/hipoglicemiantes orais","Jejum prolongado ou desnutrição","Insuficiência adrenal, hipopituitarismo","Insulinoma (raro)","Ingestão de álcool sem alimentação adequada"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Diabetes mellitus","Síndrome metabólica","Pancreatite aguda","Síndrome de Cushing"],
+        "reduzido":["Hipoglicemia induzida por medicamento","Insuficiência adrenal","Insulinoma"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","Diuréticos tiazídicos","Betabloqueadores (menor intensidade)","Antipsicóticos atípicos (olanzapina, clozapina, risperidona)","Inibidores de protease (antirretrovirais)","Niacina em doses altas"],
+        "reduzem":["Insulina e hipoglicemiantes orais (efeito terapêutico esperado)","Salicilatos em doses altas","Álcool (principalmente em jejum prolongado)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Jejum inadequado (<8h) ou muito prolongado (>16h)","efeito":"Falseia o resultado para mais ou para menos"},
+        {"fator":"Estresse agudo/dor no momento da coleta","efeito":"Pode elevar a glicemia por liberação de hormônios contrarreguladores"},
+        {"fator":"Coleta em tubo sem fluoreto e demora no processamento","efeito":"Glicólise in vitro reduz falsamente o valor (~5–7% por hora)"}
+      ],
+      "preparo":{"jejumNecessario":true,"tempoJejumHoras":8,"observacoes":["Jejum de 8 a 12 horas (evitar jejum superior a 16h).","Água pode ser ingerida normalmente.","Manter a rotina alimentar habitual nos dias anteriores."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa cinza (fluoreto/oxalato) preferencial, ou tampa vermelha/amarela com processamento rápido","armazenamento":"Separar o soro/plasma em até 30–60 min se o tubo não tiver fluoreto","rejeicao":["Amostra com longo tempo entre coleta e centrifugação sem fluoreto","Hemólise importante"]},
+      "correlatos":["hba1c"],
+      "correlatosTexto":["Teste oral de tolerância à glicose (TOTG)","Insulina e peptídeo C","Frutosamina"],
+      "alertas":["Glicemia muito elevada (geralmente >250–300 mg/dL) associada a sintomas (poliúria, polidipsia, sonolência) merece avaliação médica prioritária, pela possibilidade de cetoacidose ou estado hiperosmolar.","Hipoglicemia sintomática (<70 mg/dL com sintomas) é uma emergência que exige conduta imediata.","Diagnóstico de diabetes deve sempre ser confirmado e conduzido pelo médico responsável."],
+      "observacoes":"As diretrizes atuais não exigem mais jejum para o perfil lipídico, mas a glicemia de jejum continua exigindo o jejum padronizado para interpretação correta.",
+      "fontes":["Sociedade Brasileira de Diabetes (SBD) – Diretrizes 2023–2024","American Diabetes Association (ADA) – Standards of Care"]
+    },
+
+    {
+      "id":"hba1c",
+      "nome":"Hemoglobina Glicada",
+      "sigla":"HbA1c",
+      "sinonimos":["A1c","Hemoglobina A1c"],
+      "categoria":"metabolismo",
+      "grupo":"Controle glicêmico",
+      "sistema":"Metabolismo dos carboidratos",
+      "amostraTipo":"Sangue total (EDTA)",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Reflete a glicemia média dos últimos 2 a 3 meses, por meio da fração de hemoglobina ligada de forma não enzimática à glicose. Usada tanto para diagnóstico de diabetes quanto, principalmente, para acompanhamento do controle glicêmico em pacientes já diagnosticados.",
+      "finalidade":"Diagnóstico de diabetes/pré-diabetes e monitoramento do controle glicêmico a médio prazo.",
+      "valoresReferencia":[
+        {"parametro":"Normal","faixa":"< 5,7","unidade":"%","obs":""},
+        {"parametro":"Pré-diabetes","faixa":"5,7 – 6,4","unidade":"%","obs":""},
+        {"parametro":"Diabetes mellitus","faixa":"≥ 6,5","unidade":"%","obs":"Confirmar em segunda amostra, exceto se sintomas + glicemia franca"},
+        {"parametro":"Meta terapêutica usual em diabéticos","faixa":"< 7,0 (individualizar)","unidade":"%","obs":"Meta menos rígida em idosos/frágeis, mais rígida em gestação"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Indica controle glicêmico inadequado nos últimos 2–3 meses.",
+        "causas":["Diabetes mal controlado","Baixa adesão ao tratamento","Ajuste medicamentoso insuficiente"],
+        "examesApoio":["glicemia-jejum"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores muito baixos podem refletir hipoglicemias frequentes ou condições que encurtam a vida da hemácia.",
+        "causas":["Hipoglicemias recorrentes","Anemia hemolítica ou perda sanguínea recente (falso baixo, pela renovação acelerada das hemácias)"],
+        "examesApoio":["hemograma"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Diabetes mellitus descompensado"],
+        "reduzido":["Hipoglicemias frequentes","Anemias hemolíticas"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","Antipsicóticos atípicos","Betabloqueadores (indiretamente, por efeito glicêmico)"],
+        "reduzem":["Insulina e hipoglicemiantes orais (efeito terapêutico esperado)"],
+        "interferem":["Vitamina C e E em doses altas (podem interferir em alguns métodos)","Uso de eritropoetina ou transfusão recente (altera turnover das hemácias)"]
+      },
+      "interferentes":[
+        {"fator":"Anemias hemolíticas, hemoglobinopatias e perda sanguínea recente","efeito":"Falseiam o resultado (geralmente para menos), por alterar o tempo de vida da hemácia"},
+        {"fator":"Insuficiência renal e uremia","efeito":"Pode gerar hemoglobina carbamilada, interferindo em alguns métodos"},
+        {"fator":"Gestação","efeito":"Menor confiabilidade pela alteração do turnover eritrocitário; preferir glicemia/TOTG"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Pode ser coletada a qualquer hora do dia."]},
+      "amostra":{"tipo":"Sangue total","tubo":"Tampa roxa (EDTA)","armazenamento":"Refrigerado se não processado de imediato","rejeicao":["Hemólise intensa","Amostra coagulada"]},
+      "correlatos":["glicemia-jejum","hemograma"],
+      "correlatosTexto":["Frutosamina (alternativa em condições que invalidam a HbA1c)"],
+      "alertas":["Discrepância importante entre HbA1c e glicemias capilares/automonitorização merece investigação de interferentes (hemoglobinopatias, anemia).","Ajustes de meta terapêutica devem sempre ser definidos pelo médico assistente, considerando idade, comorbidades e risco de hipoglicemia."],
+      "observacoes":"Não deve ser o único parâmetro em situações que alteram o turnover das hemácias (ex.: anemia hemolítica, gestação, doença renal avançada); nesses casos, priorizar a glicemia/automonitorização.",
+      "fontes":["Sociedade Brasileira de Diabetes (SBD)","American Diabetes Association (ADA)"]
+    },
+
+    {
+      "id":"colesterol-total",
+      "nome":"Colesterol Total",
+      "sigla":"CT",
+      "sinonimos":["Colesterol sérico"],
+      "categoria":"lipidograma",
+      "grupo":"Perfil lipídico",
+      "sistema":"Metabolismo lipídico/cardiovascular",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede a quantidade total de colesterol circulante, somando as frações transportadas por LDL, HDL e outras lipoproteínas. Faz parte do perfil lipídico, usado para estimar risco cardiovascular e orientar terapia hipolipemiante.",
+      "finalidade":"Avaliação de risco cardiovascular e acompanhamento de dislipidemias.",
+      "valoresReferencia":[
+        {"parametro":"Desejável","faixa":"< 190","unidade":"mg/dL","obs":"Segundo a Atualização da Diretriz Brasileira de Dislipidemias; jejum não é mais obrigatório para a coleta"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipercolesterolemia aumenta o risco cardiovascular, sobretudo quando às custas de LDL.",
+        "causas":["Dislipidemia primária (genética/familiar)","Dieta rica em gorduras saturadas","Hipotireoidismo","Síndrome nefrótica","Colestase","Diabetes mal controlado"],
+        "examesApoio":["ldl","hdl","triglicerideos","tsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores muito baixos são menos comuns e podem indicar outras condições subjacentes.",
+        "causas":["Hipertireoidismo","Desnutrição/má absorção","Doença hepática grave","Uso de hipolipemiantes potentes"],
+        "examesApoio":["tsh"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Dislipidemia familiar","Hipotireoidismo","Síndrome nefrótica","Colestase"],
+        "reduzido":["Hipertireoidismo","Desnutrição","Hepatopatia grave"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","Diuréticos tiazídicos","Ciclosporina","Antipsicóticos atípicos (olanzapina, clozapina)","Progestagênios andrógenos","Inibidores de protease (antirretrovirais)"],
+        "reduzem":["Estatinas (efeito terapêutico esperado)","Ezetimiba","Colestiramina","Fibratos (efeito mais discreto sobre CT)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Jejum não é mais exigido","efeito":"Diretrizes atuais permitem coleta sem jejum, exceto se solicitado com triglicerídeos e houver orientação específica"},
+        {"fator":"Doença aguda/inflamação recente","efeito":"Pode reduzir transitoriamente o colesterol; preferir dosar após recuperação"},
+        {"fator":"Gestação","efeito":"Aumento fisiológico esperado, sobretudo no 3º trimestre"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é mais obrigatório para o perfil lipídico, segundo diretrizes atuais.","Evitar álcool nas 72h anteriores, se possível.","Manter a dieta habitual (não fazer dieta restritiva só para o exame)."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela (soro) ou verde (heparina)","armazenamento":"Refrigerado se atraso no processamento","rejeicao":["Amostra grosseiramente lipêmica sem centrifugação adequada"]},
+      "correlatos":["hdl","ldl","triglicerideos"],
+      "correlatosTexto":["Apolipoproteína B","Lipoproteína (a)"],
+      "alertas":["Valores muito elevados (ex.: >300–400 mg/dL) sugerem investigar dislipidemia familiar e merecem avaliação médica.","A decisão terapêutica considera sempre o risco cardiovascular global, não apenas o valor isolado do colesterol total."],
+      "observacoes":"O colesterol total isoladamente tem valor limitado; a interpretação clínica deve sempre considerar as frações LDL, HDL e triglicerídeos em conjunto.",
+      "fontes":["Sociedade Brasileira de Cardiologia (SBC) – Atualização da Diretriz Brasileira de Dislipidemias e Prevenção da Aterosclerose"]
+    },
+
+    {
+      "id":"hdl",
+      "nome":"HDL-Colesterol",
+      "sigla":"HDL",
+      "sinonimos":["Colesterol \"bom\"","Lipoproteína de alta densidade"],
+      "categoria":"lipidograma",
+      "grupo":"Perfil lipídico",
+      "sistema":"Metabolismo lipídico/cardiovascular",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede o colesterol transportado pela lipoproteína de alta densidade (HDL), envolvida no transporte reverso do colesterol dos tecidos para o fígado. Níveis mais altos estão associados a menor risco cardiovascular.",
+      "finalidade":"Avaliação de risco cardiovascular, como parte do perfil lipídico.",
+      "valoresReferencia":[
+        {"parametro":"Desejável (proteção relativa)","faixa":"> 40 (homens) / > 50 (mulheres)","unidade":"mg/dL","obs":"Valores mais altos são geralmente mais favoráveis"},
+        {"parametro":"Baixo (fator de risco)","faixa":"< 40 (homens) / < 50 (mulheres)","unidade":"mg/dL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"HDL elevado é geralmente favorável, mas valores extremos podem ter significado incerto.",
+        "causas":["Atividade física regular","Uso de álcool com moderação (não recomendado como estratégia terapêutica)","Fatores genéticos"],
+        "examesApoio":[]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"HDL baixo é considerado fator de risco cardiovascular independente.",
+        "causas":["Sedentarismo","Obesidade/síndrome metabólica","Tabagismo","Diabetes mal controlado","Uso de certos medicamentos"],
+        "examesApoio":["triglicerideos","glicemia-jejum"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Sem significado patológico na maioria dos casos"],
+        "reduzido":["Síndrome metabólica","Diabetes mellitus","Tabagismo","Sedentarismo"]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas (efeito discreto)","Fibratos (efeito mais consistente)","Niacina"],
+        "reduzem":["Betabloqueadores não seletivos","Progestagênios andrógenos","Esteroides anabolizantes"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Tabagismo","efeito":"Reduz o HDL"},
+        {"fator":"Sedentarismo/obesidade","efeito":"Associados a valores mais baixos"},
+        {"fator":"Doença aguda recente","efeito":"Pode reduzir transitoriamente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é mais obrigatório, salvo orientação específica.","Manter atividade física e dieta habituais."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela ou verde (heparina)","armazenamento":"Refrigerado se atraso","rejeicao":["Amostra lipêmica não centrifugada adequadamente"]},
+      "correlatos":["colesterol-total","ldl","triglicerideos"],
+      "correlatosTexto":["Apolipoproteína A1"],
+      "alertas":["HDL muito baixo associado a outros fatores de risco (diabetes, tabagismo, obesidade) reforça a importância de mudança de estilo de vida e avaliação de risco cardiovascular global."],
+      "observacoes":"Elevar o HDL farmacologicamente não demonstrou, isoladamente, reduzir eventos cardiovasculares nos grandes estudos; o foco terapêutico principal continua sendo a redução do LDL.",
+      "fontes":["Sociedade Brasileira de Cardiologia (SBC) – Atualização da Diretriz Brasileira de Dislipidemias"]
+    },
+
+    {
+      "id":"ldl",
+      "nome":"LDL-Colesterol",
+      "sigla":"LDL",
+      "sinonimos":["Colesterol \"ruim\"","Lipoproteína de baixa densidade"],
+      "categoria":"lipidograma",
+      "grupo":"Perfil lipídico",
+      "sistema":"Metabolismo lipídico/cardiovascular",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede o colesterol transportado pela lipoproteína de baixa densidade (LDL), a principal fração associada ao desenvolvimento de aterosclerose. Geralmente calculado pela fórmula de Friedewald (quando TG < 400 mg/dL) ou medido diretamente.",
+      "finalidade":"Principal parâmetro para estratificação de risco cardiovascular e definição de metas terapêuticas em dislipidemia.",
+      "valoresReferencia":[
+        {"parametro":"Ótimo","faixa":"< 100","unidade":"mg/dL","obs":"Meta em pacientes de alto/muito alto risco"},
+        {"parametro":"Próximo do ótimo","faixa":"100 – 129","unidade":"mg/dL","obs":""},
+        {"parametro":"Limítrofe","faixa":"130 – 159","unidade":"mg/dL","obs":""},
+        {"parametro":"Alto","faixa":"160 – 189","unidade":"mg/dL","obs":""},
+        {"parametro":"Muito alto","faixa":"≥ 190","unidade":"mg/dL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Não existe um único \"valor de referência\" fixo para o LDL: a meta terapêutica é individualizada conforme o risco cardiovascular global do paciente (calculado pelo médico).",
+        "causas":["Dislipidemia familiar (hipercolesterolemia familiar)","Dieta rica em gorduras saturadas/trans","Hipotireoidismo","Síndrome nefrótica","Obesidade"],
+        "examesApoio":["colesterol-total","tsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"LDL muito baixo é incomum fora do contexto terapêutico.",
+        "causas":["Uso de hipolipemiantes potentes (estatinas de alta intensidade, inibidores de PCSK9)","Desnutrição","Hepatopatia grave","Hipertireoidismo"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hipercolesterolemia familiar","Doença cardiovascular aterosclerótica","Hipotireoidismo","Síndrome nefrótica"],
+        "reduzido":["Uso de hipolipemiantes","Hepatopatia avançada"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","Diuréticos tiazídicos","Ciclosporina","Antipsicóticos atípicos"],
+        "reduzem":["Estatinas (primeira linha terapêutica)","Ezetimiba","Inibidores de PCSK9","Colestiramina"],
+        "interferem":["Triglicerídeos muito elevados (>400 mg/dL) invalidam o cálculo pela fórmula de Friedewald; nesse caso, é necessária dosagem direta do LDL"]
+      },
+      "interferentes":[
+        {"fator":"Triglicerídeos muito altos","efeito":"Invalida o cálculo indireto (Friedewald); requer método direto"},
+        {"fator":"Jejum não é mais obrigatório","efeito":"Pode ser coletado sem jejum, salvo orientação específica do laboratório/médico"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é mais obrigatório para o perfil lipídico.","Evitar álcool nas 72h anteriores, se possível."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela ou verde (heparina)","armazenamento":"Refrigerado se atraso","rejeicao":["Amostra grosseiramente lipêmica sem tratamento adequado"]},
+      "correlatos":["colesterol-total","hdl","triglicerideos"],
+      "correlatosTexto":["Apolipoproteína B","Lipoproteína (a)"],
+      "alertas":["LDL muito elevado (especialmente >190 mg/dL) em pessoa jovem sugere hipercolesterolemia familiar e merece avaliação médica/genética.","A meta terapêutica de LDL deve ser sempre definida pelo médico, conforme a estratificação de risco cardiovascular."],
+      "observacoes":"Não existe \"valor de referência normal\" único para LDL: o resultado deve ser interpretado à luz da meta individualizada de cada paciente, definida pelo risco cardiovascular.",
+      "fontes":["Sociedade Brasileira de Cardiologia (SBC) – Atualização da Diretriz Brasileira de Dislipidemias e Prevenção da Aterosclerose"]
+    },
+
+    {
+      "id":"triglicerideos",
+      "nome":"Triglicerídeos",
+      "sigla":"TG",
+      "sinonimos":["Triglicérides"],
+      "categoria":"lipidograma",
+      "grupo":"Perfil lipídico",
+      "sistema":"Metabolismo lipídico/cardiovascular",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede os triglicerídeos circulantes, principal forma de armazenamento energético de gorduras. Níveis muito elevados estão associados a risco cardiovascular e, quando extremos, a risco de pancreatite aguda.",
+      "finalidade":"Avaliação de risco cardiovascular e metabólico; investigação de risco de pancreatite quando muito elevados.",
+      "valoresReferencia":[
+        {"parametro":"Desejável","faixa":"< 150","unidade":"mg/dL","obs":"Sem jejum, segundo diretrizes atuais"},
+        {"parametro":"Limítrofe","faixa":"150 – 199","unidade":"mg/dL","obs":""},
+        {"parametro":"Alto","faixa":"200 – 499","unidade":"mg/dL","obs":""},
+        {"parametro":"Muito alto","faixa":"≥ 500","unidade":"mg/dL","obs":"Risco aumentado de pancreatite aguda"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipertrigliceridemia frequentemente associada a fatores metabólicos e dietéticos.",
+        "causas":["Obesidade/síndrome metabólica","Diabetes mal controlado","Consumo de álcool","Hipotireoidismo","Uso de certos medicamentos","Dislipidemia genética (hipertrigliceridemia familiar)"],
+        "examesApoio":["glicemia-jejum","tsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos são raramente clinicamente relevantes.",
+        "causas":["Desnutrição","Má absorção intestinal","Hipertireoidismo"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Síndrome metabólica","Diabetes mellitus","Pancreatite aguda (quando muito elevados)","Hipotireoidismo"],
+        "reduzido":["Desnutrição","Má absorção"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","Estrogênios orais/contraceptivos","Betabloqueadores não seletivos","Antipsicóticos atípicos (olanzapina, clozapina)","Isotretinoína","Inibidores de protease (antirretrovirais)","Consumo de álcool"],
+        "reduzem":["Fibratos (efeito terapêutico esperado)","Ácidos graxos ômega-3 em altas doses","Niacina"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Jejum inadequado","efeito":"Refeição recente eleva significativamente o valor; embora o jejum não seja mais obrigatório por diretriz, resultados muito alterados sem jejum podem exigir nova coleta em jejum para confirmação"},
+        {"fator":"Consumo de álcool recente","efeito":"Eleva os triglicerídeos"},
+        {"fator":"Exercício físico extenuante recente","efeito":"Pode alterar transitoriamente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é mais obrigatório, mas pode ser solicitado em casos específicos (ex.: triglicerídeos muito alterados).","Evitar álcool nas 72h anteriores.","Evitar refeição copiosa horas antes da coleta."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela ou verde (heparina)","armazenamento":"Refrigerado se atraso","rejeicao":["Amostra grosseiramente lipêmica pode limitar métodos automatizados"]},
+      "correlatos":["colesterol-total","hdl","ldl","glicemia-jejum"],
+      "correlatosTexto":["Apolipoproteína B","Lipase/amilase (se suspeita de pancreatite)"],
+      "alertas":["Triglicerídeos ≥ 500 mg/dL, especialmente ≥ 1000 mg/dL, aumentam o risco de pancreatite aguda e merecem avaliação médica prioritária.","Elevações extremas em criança ou jovem sugerem investigar causa genética."],
+      "observacoes":"Em pacientes com triglicerídeos muito elevados, o cálculo do LDL pela fórmula de Friedewald deixa de ser confiável, sendo necessária dosagem direta.",
+      "fontes":["Sociedade Brasileira de Cardiologia (SBC) – Atualização da Diretriz Brasileira de Dislipidemias"]
+    },
+
+    {
+      "id":"creatinina",
+      "nome":"Creatinina",
+      "sigla":"CREAT",
+      "sinonimos":["Creatinina sérica"],
+      "categoria":"funcao-renal",
+      "grupo":"Filtração glomerular",
+      "sistema":"Renal",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Produto do metabolismo muscular (creatina), eliminado quase exclusivamente pelos rins por filtração glomerular. É o marcador mais utilizado na prática para estimar a função renal, servindo de base para o cálculo da Taxa de Filtração Glomerular estimada (TFG/eGFR).",
+      "finalidade":"Avaliação da função renal, cálculo da TFG estimada, ajuste de dose de medicamentos com eliminação renal, monitoramento de nefrotoxicidade.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"0,7 – 1,3 (homens) / 0,6 – 1,1 (mulheres)","unidade":"mg/dL","obs":"Varia conforme massa muscular e método (Jaffe vs. enzimático)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere redução da filtração glomerular (lesão renal aguda ou crônica) ou aumento de massa muscular/ingestão proteica.",
+        "causas":["Redução da filtração glomerular (lesão renal aguda ou doença renal crônica)","Desidratação","Aumento de massa muscular (fisiológico, ex.: atletas)","Uso de medicamentos nefrotóxicos","Obstrução do trato urinário"],
+        "examesApoio":["ureia"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução geralmente reflete baixa massa muscular, não indica melhora da função renal em si.",
+        "causas":["Baixa massa muscular (idosos, desnutrição, amputação)","Gestação (aumento fisiológico da filtração glomerular)","Hepatopatia avançada (menor síntese de creatina)"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Lesão renal aguda","Doença renal crônica","Desidratação","Obstrução urinária (uropatia obstrutiva)"],
+        "reduzido":["Baixa massa muscular","Gestação"]
+      },
+      "medicamentos":{
+        "aumentam":["Trimetoprima (inibe secreção tubular, eleva a creatinina sem reduzir a TFG real)","Cimetidina (mesmo mecanismo)","AINEs (redução real da TFG por vasoconstrição da arteríola aferente)","Aminoglicosídeos, vancomicina e anfotericina B (nefrotoxicidade real)","Contraste iodado (nefropatia induzida por contraste)","Ciclosporina e tacrolimo (nefrotoxicidade)","IECA/BRA (elevação discreta e esperada ao iniciar o tratamento, geralmente sem significar dano renal)"],
+        "reduzem":[],
+        "interferem":["Cefalosporinas em doses altas podem interferir no método de Jaffe, elevando falsamente o resultado"]
+      },
+      "interferentes":[
+        {"fator":"Ingestão de carne recente (refeição rica em proteína/creatina)","efeito":"Pode elevar discretamente"},
+        {"fator":"Exercício físico intenso","efeito":"Pode elevar transitoriamente"},
+        {"fator":"Hemólise","efeito":"Pode interferir em métodos colorimétricos"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar exercício físico extenuante e ingestão excessiva de carne nas 24h anteriores, quando possível.","Não interrompa medicamentos por conta própria: se algum medicamento em uso puder interferir no exame, isso deve ser discutido com o profissional responsável."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se atraso","rejeicao":["Hemólise intensa"]},
+      "correlatos":["ureia"],
+      "correlatosTexto":["TFG/eGFR (calculadora)","Clearance de creatinina","EAS (urina tipo I)","Relação albumina/creatinina urinária"],
+      "alertas":["Elevação aguda e significativa da creatinina (ex.: aumento ≥0,3 mg/dL em 48h ou ≥50% em 7 dias) sugere lesão renal aguda e merece avaliação médica.","Creatinina elevada em paciente em uso de medicamentos nefrotóxicos ou com ajuste de dose renal deve ser comunicada ao prescritor."],
+      "observacoes":"Sempre priorizar o intervalo de referência informado pelo laboratório do paciente: o método analítico (Jaffe vs. enzimático) influencia o valor absoluto.",
+      "fontes":["Sociedade Brasileira de Nefrologia (SBN)","KDIGO Clinical Practice Guidelines"]
+    },
+
+    {
+      "id":"ureia",
+      "nome":"Ureia",
+      "sigla":"UREIA",
+      "sinonimos":["BUN (nitrogênio ureico, quando expresso dessa forma)"],
+      "categoria":"funcao-renal",
+      "grupo":"Filtração glomerular",
+      "sistema":"Renal/hepático",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":false,
+      "descricao":"Produto final do metabolismo das proteínas, sintetizado no fígado (ciclo da ureia) e eliminado pelos rins. Menos específico que a creatinina para função renal, pois também é influenciado por dieta, hidratação e catabolismo proteico.",
+      "finalidade":"Avaliação complementar da função renal, do estado de hidratação e do catabolismo proteico.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"15 – 45","unidade":"mg/dL","obs":"Varia conforme método e laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode indicar redução da função renal, desidratação ou aumento do catabolismo proteico.",
+        "causas":["Desidratação (azotemia pré-renal)","Doença renal aguda ou crônica","Dieta hiperproteica","Sangramento digestivo alto (proteína digerida absorvida)","Uso de corticoides (catabolismo proteico)","Insuficiência cardíaca"],
+        "examesApoio":["creatinina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução é menos comum e geralmente reflete baixa ingestão proteica ou doença hepática.",
+        "causas":["Dieta hipoproteica ou desnutrição","Hepatopatia grave (menor síntese de ureia)","Gestação (aumento da filtração glomerular)"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Desidratação","Lesão renal aguda/crônica","Sangramento digestivo alto","Insuficiência cardíaca descompensada"],
+        "reduzido":["Hepatopatia avançada","Desnutrição"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides (catabolismo proteico)","Tetraciclinas, exceto doxiciclina (efeito catabólico)","Diuréticos (por desidratação)","AINEs e outros nefrotóxicos"],
+        "reduzem":["Fenotiazinas","Uso de hormônio de crescimento"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Dieta hiperproteica recente","efeito":"Eleva o resultado"},
+        {"fator":"Estado de hidratação","efeito":"Desidratação eleva desproporcionalmente em relação à creatinina"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Manter hidratação e dieta habituais."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["creatinina"],
+      "correlatosTexto":["TFG/eGFR (calculadora)","Eletrólitos","EAS (urina tipo I)"],
+      "alertas":["Relação ureia/creatinina muito elevada sugere causa pré-renal (ex.: desidratação, sangramento digestivo) e deve ser avaliada pelo médico."],
+      "observacoes":"A ureia isolada é menos específica que a creatinina para função renal; deve ser interpretada em conjunto.",
+      "fontes":["Sociedade Brasileira de Nefrologia (SBN)"]
+    },
+
+    {
+      "id":"tgo",
+      "nome":"TGO / AST",
+      "sigla":"TGO/AST",
+      "sinonimos":["Transaminase glutâmico-oxalacética","Aspartato aminotransferase"],
+      "categoria":"funcao-hepatica",
+      "grupo":"Enzimas hepáticas",
+      "sistema":"Hepático/muscular",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Enzima presente no fígado, mas também no músculo cardíaco e esquelético, hemácias e outros tecidos, por isso é menos específica de lesão hepática do que a TGP/ALT. Usada em conjunto para avaliar lesão hepatocelular.",
+      "finalidade":"Avaliação de lesão hepatocelular e, em menor grau, de lesão muscular.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"10 – 40","unidade":"U/L","obs":"Varia conforme método/laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere lesão hepatocelular ou muscular; a proporção com a TGP ajuda na investigação da causa.",
+        "causas":["Hepatites virais agudas/crônicas","Esteatose hepática/esteato-hepatite (DHGNA)","Uso de álcool (razão AST/ALT >2 sugere causa alcoólica)","Hepatotoxicidade medicamentosa","Lesão muscular (rabdomiólise, exercício intenso, injeção intramuscular)","Infarto agudo do miocárdio (elevação leve e inespecífica)"],
+        "examesApoio":["tgp","ggt"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida.",
+        "causas":["Sem significado patológico relevante"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hepatite viral","Doença hepática gordurosa não alcoólica","Hepatopatia alcoólica","Lesão muscular"],
+        "reduzido":["Sem relevância clínica estabelecida"]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas","Paracetamol (hepatotoxicidade em dose elevada/uso crônico inadequado)","Isoniazida","Metotrexato","Amiodarona","Anticonvulsivantes (fenitoína, valproato, carbamazepina)","AINEs"],
+        "reduzem":[],
+        "interferem":["Hemólise pode falsear o resultado, pois hemácias contêm AST"]
+      },
+      "interferentes":[
+        {"fator":"Hemólise","efeito":"Eleva falsamente, pois a AST está presente nas hemácias"},
+        {"fator":"Exercício físico intenso recente","efeito":"Pode elevar por liberação muscular"},
+        {"fator":"Injeção intramuscular recente","efeito":"Pode elevar transitoriamente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar exercício físico intenso nas 24h anteriores.","Não interrompa medicamentos por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["tgp","ggt"],
+      "correlatosTexto":["Bilirrubinas","Fosfatase alcalina","INR/TP (função de síntese hepática)"],
+      "alertas":["Elevação muito acentuada (várias vezes o limite superior) sugere lesão hepática aguda grave e merece avaliação médica prioritária.","Suspeita de hepatotoxicidade medicamentosa deve ser comunicada ao prescritor; não suspender o medicamento por conta própria."],
+      "observacoes":"Deve sempre ser avaliada em conjunto com a TGP/ALT: a razão entre as duas ajuda a sugerir a causa provável da alteração.",
+      "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)"]
+    },
+
+    {
+      "id":"tgp",
+      "nome":"TGP / ALT",
+      "sigla":"TGP/ALT",
+      "sinonimos":["Transaminase glutâmico-pirúvica","Alanina aminotransferase"],
+      "categoria":"funcao-hepatica",
+      "grupo":"Enzimas hepáticas",
+      "sistema":"Hepático",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Enzima predominantemente hepática, considerada mais específica que a TGO/AST para lesão hepatocelular. É um dos marcadores mais usados para rastreio e acompanhamento de doenças do fígado.",
+      "finalidade":"Rastreio e acompanhamento de lesão hepatocelular (hepatites, esteatose hepática, hepatotoxicidade medicamentosa).",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"7 – 56","unidade":"U/L","obs":"Faixa ampla; varia conforme método/laboratório e sexo"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere lesão hepatocelular, sendo mais específica do fígado que a TGO/AST.",
+        "causas":["Doença hepática gordurosa não alcoólica (DHGNA/esteato-hepatite)","Hepatites virais agudas/crônicas","Hepatotoxicidade medicamentosa","Obesidade e síndrome metabólica","Uso de álcool"],
+        "examesApoio":["tgo","ggt"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida.",
+        "causas":["Sem significado patológico relevante"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Doença hepática gordurosa não alcoólica","Hepatite viral","Hepatotoxicidade medicamentosa"],
+        "reduzido":["Sem relevância clínica estabelecida"]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas","Paracetamol (hepatotoxicidade)","Isoniazida","Metotrexato","Antifúngicos azólicos","Anticonvulsivantes (fenitoína, valproato, carbamazepina)","AINEs"],
+        "reduzem":[],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Obesidade/esteatose hepática","efeito":"Frequentemente associada a elevação leve a moderada e persistente"},
+        {"fator":"Exercício físico intenso","efeito":"Menos relevante que para a TGO, mas pode influenciar discretamente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Não interrompa medicamentos por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["tgo","ggt"],
+      "correlatosTexto":["Bilirrubinas","Fosfatase alcalina","Ultrassonografia abdominal (esteatose)"],
+      "alertas":["Elevação persistente, mesmo que discreta, merece investigação (ex.: rastreio de esteatose hepática, hepatites virais).","Elevação acentuada e aguda sugere lesão hepática significativa e encaminhamento médico."],
+      "observacoes":"É o marcador de escolha para rastreio inicial de doença hepática gordurosa não alcoólica, hoje uma das causas mais comuns de alteração de transaminases.",
+      "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)"]
+    },
+
+    {
+      "id":"ggt",
+      "nome":"Gama-Glutamil Transferase",
+      "sigla":"GGT",
+      "sinonimos":["Gama-GT","γ-GT"],
+      "categoria":"funcao-hepatica",
+      "grupo":"Enzimas hepáticas / colestase",
+      "sistema":"Hepatobiliar",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":false,
+      "descricao":"Enzima presente principalmente no fígado e vias biliares, muito sensível (porém pouco específica) para lesão hepática e colestase. Também usada como marcador de consumo crônico de álcool e indutores enzimáticos.",
+      "finalidade":"Investigação de colestase, uso crônico de álcool e indução enzimática por medicamentos.",
+      "valoresReferencia":[
+        {"parametro":"Homens","faixa":"8 – 61","unidade":"U/L","obs":"Varia conforme método/laboratório"},
+        {"parametro":"Mulheres","faixa":"5 – 36","unidade":"U/L","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"É um dos marcadores mais sensíveis, porém menos específicos, de alteração hepatobiliar.",
+        "causas":["Consumo crônico de álcool","Colestase (obstrução de vias biliares)","Esteatose hepática","Uso de medicamentos indutores enzimáticos","Hepatotoxicidade medicamentosa"],
+        "examesApoio":["tgo","tgp"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida.",
+        "causas":["Sem significado patológico relevante"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Consumo crônico de álcool","Colestase","Esteatose hepática"],
+        "reduzido":["Sem relevância clínica estabelecida"]
+      },
+      "medicamentos":{
+        "aumentam":["Álcool (consumo crônico, um dos marcadores mais sensíveis)","Fenitoína, fenobarbital e carbamazepina (indutores enzimáticos)","Rifampicina","Contraceptivos orais/estrogênios (podem elevar discretamente)"],
+        "reduzem":[],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Consumo recente de álcool","efeito":"Pode elevar mesmo em uso não crônico, dependendo da quantidade"},
+        {"fator":"Obesidade/esteatose","efeito":"Associada a elevação persistente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar consumo de álcool nas 48–72h anteriores, quando possível."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["tgo","tgp"],
+      "correlatosTexto":["Fosfatase alcalina","Bilirrubinas"],
+      "alertas":["GGT muito elevada associada a icterícia ou prurido sugere colestase e merece avaliação médica.","Elevação isolada e persistente pode indicar consumo de álcool não relatado; abordar com sensibilidade."],
+      "observacoes":"Usada em conjunto com a fosfatase alcalina para confirmar origem hepatobiliar de uma elevação, já que a fosfatase alcalina também tem origem óssea.",
+      "fontes":["Sociedade Brasileira de Hepatologia"]
+    },
+
+    {
+      "id":"tsh",
+      "nome":"Hormônio Tireoestimulante",
+      "sigla":"TSH",
+      "sinonimos":["Tireotrofina"],
+      "categoria":"hormonios",
+      "grupo":"Eixo tireoidiano",
+      "sistema":"Endócrino (hipófise/tireoide)",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Hormônio hipofisário que regula a produção de T3/T4 pela tireoide, por retroalimentação negativa. É o exame de primeira linha para rastreio de disfunções tireoidianas, por ser o mais sensível a pequenas alterações da função tireoidiana.",
+      "finalidade":"Rastreio e monitoramento de hipotireoidismo e hipertireoidismo; ajuste de dose de levotiroxina.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"0,4 – 4,0","unidade":"mIU/L","obs":"Pode variar conforme método/laboratório e faixa etária; gestação tem faixas específicas por trimestre"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"TSH elevado geralmente indica hipotireoidismo (produção insuficiente de hormônios tireoidianos).",
+        "causas":["Hipotireoidismo primário (tireoidite de Hashimoto, pós-cirúrgico, pós-radioiodo)","Dose insuficiente de levotiroxina","Uso de amiodarona ou lítio","Fase de recuperação de doença não tireoidiana"],
+        "examesApoio":["t4-livre"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"TSH baixo/suprimido geralmente indica hipertireoidismo ou dose excessiva de levotiroxina.",
+        "causas":["Hipertireoidismo (Doença de Graves, bócio multinodular tóxico)","Dose excessiva de levotiroxina","Uso de corticoides em dose alta ou dopaminérgicos (supressão do TSH)","Tireotoxicose factícia"],
+        "examesApoio":["t4-livre"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hipotireoidismo primário","Tireoidite de Hashimoto"],
+        "reduzido":["Hipertireoidismo","Doença de Graves","Reposição excessiva de levotiroxina"]
+      },
+      "medicamentos":{
+        "aumentam":["Amiodarona (pode causar hipo ou hipertireoidismo)","Lítio (hipotireoidismo)","Metoclopramida e outros antieméticos dopaminérgicos-antagonistas (efeito variável)"],
+        "reduzem":["Corticoides em dose alta (suprimem o TSH)","Agonistas dopaminérgicos","Dose excessiva de levotiroxina"],
+        "interferem":["Biotina em doses altas pode interferir em imunoensaios, falseando o TSH (geralmente para baixo) e o T4 livre (geralmente para cima); suspender biotina alguns dias antes do exame, conforme orientação do laboratório/médico"]
+      },
+      "interferentes":[
+        {"fator":"Variação circadiana","efeito":"TSH tende a ser mais alto pela manhã; padronizar horário de coleta em acompanhamentos seriados"},
+        {"fator":"Doença aguda grave (síndrome do eutireoidiano doente)","efeito":"Pode alterar TSH e T4 livre sem disfunção tireoidiana real"},
+        {"fator":"Uso de biotina em suplementos","efeito":"Interferência analítica relevante em diversos métodos"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum, mas prefira horário padronizado em acompanhamentos seriados.","Se em uso de levotiroxina, muitos serviços recomendam coletar antes da dose matinal; seguir orientação do médico/laboratório.","Suspender suplementos com biotina alguns dias antes, se orientado, sem suspender medicamentos prescritos por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["t4-livre"],
+      "correlatosTexto":["T3 livre","Anti-TPO e anti-tireoglobulina"],
+      "alertas":["TSH muito alterado (muito alto ou suprimido), sobretudo com sintomas (fadiga extrema, taquicardia, perda de peso, edema), merece avaliação médica.","Uso de biotina deve sempre ser informado ao laboratório antes da coleta."],
+      "observacoes":"Deve ser interpretado sempre em conjunto com o T4 livre para caracterizar o tipo de disfunção tireoidiana (primária, subclínica, etc.).",
+      "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","American Thyroid Association (ATA)"]
+    },
+
+    {
+      "id":"t4-livre",
+      "nome":"Tiroxina Livre",
+      "sigla":"T4 Livre",
+      "sinonimos":["FT4","T4L"],
+      "categoria":"hormonios",
+      "grupo":"Eixo tireoidiano",
+      "sistema":"Endócrino (tireoide)",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede a fração livre (não ligada a proteínas transportadoras) do principal hormônio produzido pela tireoide. Usado em conjunto com o TSH para confirmar e classificar disfunções tireoidianas.",
+      "finalidade":"Confirmação e classificação de hipotireoidismo/hipertireoidismo; ajuste de dose de levotiroxina.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"0,8 – 1,8","unidade":"ng/dL","obs":"Varia conforme método/laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação, especialmente com TSH suprimido, indica hipertireoidismo.",
+        "causas":["Hipertireoidismo (Doença de Graves, bócio tóxico)","Dose excessiva de levotiroxina","Tireoidite subaguda (fase inicial)"],
+        "examesApoio":["tsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução, especialmente com TSH elevado, indica hipotireoidismo primário.",
+        "causas":["Hipotireoidismo primário","Dose insuficiente de levotiroxina","Hipotireoidismo central (mais raro, TSH pode estar baixo, normal ou levemente elevado)"],
+        "examesApoio":["tsh"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hipertireoidismo/Doença de Graves"],
+        "reduzido":["Hipotireoidismo primário ou central"]
+      },
+      "medicamentos":{
+        "aumentam":["Levotiroxina em dose excessiva","Amiodarona (pode causar hiper ou hipotireoidismo)"],
+        "reduzem":["Fenitoína, carbamazepina e rifampicina (aumentam o metabolismo do T4)","Dose insuficiente de levotiroxina"],
+        "interferem":["Biotina em doses altas pode falsear o resultado (geralmente elevando-o) em imunoensaios"]
+      },
+      "interferentes":[
+        {"fator":"Uso de biotina","efeito":"Interferência analítica relevante: informar uso ao laboratório"},
+        {"fator":"Gestação","efeito":"Alterações fisiológicas nas proteínas transportadoras podem exigir interpretação cuidadosa"},
+        {"fator":"Doença aguda grave","efeito":"Pode alterar sem disfunção tireoidiana real (síndrome do eutireoidiano doente)"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Se em uso de levotiroxina, seguir orientação sobre coleta antes ou depois da dose, conforme o serviço.","Informar uso de suplementos com biotina."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["tsh"],
+      "correlatosTexto":["T3 livre","Anti-TPO"],
+      "alertas":["Alterações importantes de T4 livre associadas a sintomas relevantes merecem avaliação médica para ajuste terapêutico."],
+      "observacoes":"A interpretação isolada do T4 livre sem o TSH tem valor limitado; os dois devem sempre ser avaliados em conjunto.",
+      "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","American Thyroid Association (ATA)"]
+    },
+
+    {
+      "id":"vitamina-d",
+      "nome":"Vitamina D (25-hidroxivitamina D)",
+      "sigla":"25(OH)D",
+      "sinonimos":["Vitamina D total","Calcidiol"],
+      "categoria":"vitaminas-minerais",
+      "grupo":"Vitaminas lipossolúveis",
+      "sistema":"Metabolismo ósseo/mineral",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Mede a forma de armazenamento (25-hidroxivitamina D), o melhor indicador do status corporal de vitamina D, importante para metabolismo ósseo, função muscular e imunomodulação.",
+      "finalidade":"Avaliação do status de vitamina D em pacientes com fatores de risco para deficiência, doença óssea, quedas/fraturas ou antes de tratamentos que afetam o metabolismo ósseo.",
+      "valoresReferencia":[
+        {"parametro":"Suficiência","faixa":"≥ 30","unidade":"ng/mL","obs":"Segundo Sociedade Brasileira de Endocrinologia (grupos de risco)"},
+        {"parametro":"Insuficiência","faixa":"20 – 29","unidade":"ng/mL","obs":""},
+        {"parametro":"Deficiência","faixa":"< 20","unidade":"ng/mL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Valores muito elevados geralmente decorrem de suplementação excessiva.",
+        "causas":["Suplementação excessiva de vitamina D (principal causa)","Doenças granulomatosas (raro, produção extrarrenal aumentada)"],
+        "examesApoio":[]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Deficiência é comum e multifatorial.",
+        "causas":["Baixa exposição solar","Baixa ingestão dietética","Má absorção intestinal","Obesidade (sequestro em tecido adiposo)","Doença renal ou hepática crônica","Uso de medicamentos que aumentam o catabolismo da vitamina D"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Intoxicação por suplementação excessiva"],
+        "reduzido":["Osteomalácia/raquitismo","Osteoporose","Má absorção intestinal","Doença renal crônica"]
+      },
+      "medicamentos":{
+        "aumentam":["Suplementação de colecalciferol/calcitriol (efeito terapêutico esperado)"],
+        "reduzem":["Fenitoína, fenobarbital e carbamazepina (aumentam o catabolismo hepático da vitamina D)","Corticoides em uso crônico","Orlistate (reduz absorção de vitaminas lipossolúveis)","Colestiramina (reduz absorção)","Rifampicina (indução enzimática)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Estação do ano/exposição solar","efeito":"Valores tendem a ser mais baixos no inverno/período de menor exposição solar"},
+        {"fator":"Obesidade","efeito":"Menor concentração sérica pelo sequestro em tecido adiposo"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Informar uso de suplementos vitamínicos e medicamentos anticonvulsivantes."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Proteger da luz; estável refrigerado por alguns dias","rejeicao":["Hemólise intensa"]},
+      "correlatos":[],
+      "correlatosTexto":["Cálcio total e iônico","Fósforo","PTH (paratormônio)","Fosfatase alcalina"],
+      "alertas":["Deficiência grave associada a dor óssea, fraqueza muscular ou fraturas de fragilidade merece avaliação médica.","Suspeita de intoxicação por vitamina D (hipercalcemia associada) é uma condição que exige avaliação médica prioritária."],
+      "observacoes":"O rastreio populacional em pessoas assintomáticas e sem fatores de risco não é recomendado pelas diretrizes atuais: a dosagem deve ser direcionada a grupos de risco.",
+      "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","Endocrine Society Clinical Practice Guideline"]
+    },
+
+    {
+      "id":"vitamina-b12",
+      "nome":"Vitamina B12",
+      "sigla":"B12",
+      "sinonimos":["Cobalamina"],
+      "categoria":"vitaminas-minerais",
+      "grupo":"Vitaminas hidrossolúveis",
+      "sistema":"Hematopoiético/neurológico",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Vitamina essencial para síntese de DNA e função neurológica. Sua carência é causa importante de anemia megaloblástica e de manifestações neurológicas, muitas vezes de instalação insidiosa.",
+      "finalidade":"Investigação de anemia macrocítica/megaloblástica, sintomas neurológicos (parestesias, alterações cognitivas) e monitoramento em grupos de risco (veganos, uso crônico de metformina/IBP, pós-bariátrica).",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"200 – 900","unidade":"pg/mL","obs":"Valores entre 200–300 pg/mL são uma \"zona cinzenta\" que pode exigir investigação adicional (ácido metilmalônico, homocisteína)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Valores elevados são menos comuns e geralmente refletem suplementação.",
+        "causas":["Suplementação recente de B12 (oral ou injetável)","Doenças mieloproliferativas (raro)","Doença hepática (liberação de estoques)"],
+        "examesApoio":[]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Deficiência é relativamente comum, sobretudo em grupos de risco.",
+        "causas":["Dieta vegetariana/vegana estrita sem suplementação","Anemia perniciosa (gastrite atrófica autoimune)","Má absorção (doença celíaca, doença de Crohn, cirurgia bariátrica)","Uso crônico de metformina ou inibidores de bomba de prótons","Idade avançada (menor absorção)"],
+        "examesApoio":["hemograma"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Suplementação recente","Doenças mieloproliferativas (raro)"],
+        "reduzido":["Anemia perniciosa","Má absorção intestinal","Dieta vegana sem suplementação"]
+      },
+      "medicamentos":{
+        "aumentam":["Suplementação de vitamina B12 (efeito terapêutico esperado)"],
+        "reduzem":["Metformina (uso crônico reduz absorção)","Inibidores de bomba de prótons e antagonistas H2 (hipocloridria reduz absorção)","Colchicina","Colestiramina"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Suplementação recente","efeito":"Pode elevar significativamente, mascarando deficiência subjacente"},
+        {"fator":"Gestação","efeito":"Valores podem estar fisiologicamente reduzidos"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum, embora alguns laboratórios recomendem jejum leve de 4h.","Informar suplementação recente de vitamina B12.","Não interrompa medicamentos por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Proteger da luz; refrigerar se atraso","rejeicao":["Hemólise intensa"]},
+      "correlatos":["hemograma"],
+      "correlatosTexto":["Ácido fólico","Ácido metilmalônico","Homocisteína"],
+      "alertas":["Deficiência associada a sintomas neurológicos (parestesias, alterações de marcha, declínio cognitivo) merece avaliação médica, pois o dano neurológico pode ser irreversível se não tratado a tempo.","Resultado na \"zona cinzenta\" (200–300 pg/mL) com sintomas sugestivos justifica investigação adicional, não apenas repetição do exame."],
+      "observacoes":"Em pacientes sintomáticos com B12 na zona limítrofe, considerar investigação complementar (ácido metilmalônico e homocisteína), mais sensíveis para deficiência tecidual.",
+      "fontes":["Sociedade Brasileira de Hematologia e Hemoterapia","Manuais de Hematologia Clínica (Williams Hematology)"]
+    },
+
+    {
+      "id":"ferritina",
+      "nome":"Ferritina",
+      "sigla":"FERR",
+      "sinonimos":[],
+      "categoria":"vitaminas-minerais",
+      "grupo":"Metabolismo do ferro",
+      "sistema":"Metabolismo do ferro/fase aguda",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Principal proteína de armazenamento de ferro no organismo; seu nível sérico reflete, de forma geral, os estoques corporais de ferro. É também uma proteína de fase aguda, podendo se elevar em qualquer processo inflamatório ou infeccioso, independentemente do estoque real de ferro.",
+      "finalidade":"Avaliação dos estoques de ferro (deficiência ou sobrecarga) e, secundariamente, como marcador inespecífico de processo inflamatório/infeccioso.",
+      "valoresReferencia":[
+        {"parametro":"Homens","faixa":"30 – 400","unidade":"ng/mL","obs":"Varia conforme método/laboratório"},
+        {"parametro":"Mulheres","faixa":"15 – 150","unidade":"ng/mL","obs":"Valores mais baixos, sobretudo em mulheres em idade fértil"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode indicar sobrecarga de ferro real ou apenas resposta de fase aguda (inflamação/infecção), sem relação com o estoque de ferro.",
+        "causas":["Processo inflamatório ou infeccioso agudo (fase aguda)","Sobrecarga de ferro (hemocromatose, transfusões repetidas)","Doença hepática (esteatose, hepatite)","Síndrome metabólica/resistência à insulina","Neoplasias (em alguns casos)"],
+        "examesApoio":["pcr","hemograma"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução é um indicador sensível e relativamente específico de depleção dos estoques de ferro.",
+        "causas":["Anemia ferropriva (deficiência de ferro)","Sangramento crônico (menstrual, digestivo)","Dieta pobre em ferro","Gestação"],
+        "examesApoio":["hemograma"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hemocromatose","Processo inflamatório/infeccioso agudo","Doença hepática"],
+        "reduzido":["Anemia ferropriva","Sangramento crônico"]
+      },
+      "medicamentos":{
+        "aumentam":["Suplementação de ferro (efeito terapêutico esperado)","Consumo excessivo de álcool"],
+        "reduzem":[],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Qualquer processo inflamatório/infeccioso agudo","efeito":"Eleva a ferritina independentemente do estoque real de ferro; interpretar com cautela nesse contexto, idealmente junto com PCR"},
+        {"fator":"Consumo de álcool","efeito":"Pode elevar"},
+        {"fator":"Hemólise da amostra","efeito":"Pode falsear o resultado"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Idealmente, evitar dosar durante infecções agudas, exceto se essa for a própria intenção da avaliação."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["hemograma","pcr"],
+      "correlatosTexto":["Ferro sérico","Transferrina e índice de saturação de transferrina","Capacidade total de ligação do ferro (TIBC)"],
+      "alertas":["Ferritina muito baixa em paciente com anemia reforça fortemente o diagnóstico de anemia ferropriva e a necessidade de investigar a causa do sangramento/perda de ferro.","Ferritina muito elevada, especialmente associada a alterações hepáticas, pode sugerir sobrecarga de ferro (hemocromatose) e merece avaliação médica."],
+      "observacoes":"Por ser reagente de fase aguda, a ferritina pode estar \"falsamente normal ou elevada\" em pessoas com deficiência de ferro que também têm um processo inflamatório concomitante: a interpretação conjunta com PCR ajuda a esclarecer esse cenário.",
+      "fontes":["Sociedade Brasileira de Hematologia e Hemoterapia","World Health Organization – Guideline on ferritin concentrations"]
+    },
+
+    {
+      "id":"pcr",
+      "nome":"Proteína C-Reativa",
+      "sigla":"PCR",
+      "sinonimos":["CRP","Proteína C reativa"],
+      "categoria":"marcadores-inflamatorios",
+      "grupo":"Fase aguda",
+      "sistema":"Resposta inflamatória sistêmica",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Proteína de fase aguda produzida pelo fígado em resposta a citocinas inflamatórias (especialmente IL-6). Eleva-se rapidamente (poucas horas) em praticamente qualquer processo inflamatório, infeccioso ou de lesão tecidual, e cai rapidamente com a resolução, por isso é útil também para acompanhar resposta ao tratamento.",
+      "finalidade":"Triagem e acompanhamento de processos inflamatórios/infecciosos; a versão ultrassensível (PCR-us) também é usada para estratificação de risco cardiovascular.",
+      "valoresReferencia":[
+        {"parametro":"PCR convencional","faixa":"< 3,0 (valores >10 sugerem processo inflamatório/infeccioso significativo)","unidade":"mg/L","obs":"Método convencional, para triagem de inflamação/infecção"},
+        {"parametro":"PCR ultrassensível (risco cardiovascular)","faixa":"< 1,0 (baixo risco) / 1,0–3,0 (risco intermediário) / > 3,0 (alto risco)","unidade":"mg/L","obs":"Usada especificamente para estratificação de risco cardiovascular, não para triagem de infecção aguda"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação é altamente sensível, porém pouco específica quanto à causa: indica presença de inflamação/infecção, mas não seu local ou etiologia.",
+        "causas":["Infecções bacterianas (tende a elevar mais que em infecções virais)","Doenças autoimunes/inflamatórias (artrite reumatoide, doença inflamatória intestinal)","Lesão tecidual (cirurgia, trauma, infarto)","Neoplasias","Obesidade (elevação crônica e discreta)"],
+        "examesApoio":["hemograma","ferritina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos/normais têm alto valor preditivo negativo para processo inflamatório agudo significativo.",
+        "causas":["Ausência de processo inflamatório/infeccioso agudo relevante"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Infecções bacterianas","Doenças autoimunes em atividade","Pós-operatório recente","Obesidade (elevação crônica discreta)"],
+        "reduzido":["Sem relevância clínica: reflete ausência de processo inflamatório agudo"]
+      },
+      "medicamentos":{
+        "aumentam":[],
+        "reduzem":["Estatinas (efeito anti-inflamatório pleiotrópico discreto)","Corticoides (suprimem a resposta inflamatória)","AINEs (podem reduzir discretamente)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Qualquer processo inflamatório concomitante (mesmo leve)","efeito":"Pode elevar o resultado sem relação com a condição que motivou o pedido"},
+        {"fator":"Obesidade","efeito":"Associada a elevação crônica discreta, mesmo sem doença aguda"},
+        {"fator":"Gestação","efeito":"Pode estar fisiologicamente elevada"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Não é necessário preparo especial."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
+      "correlatos":["hemograma","ferritina"],
+      "correlatosTexto":["Velocidade de hemossedimentação (VHS)","Procalcitonina (mais específica para infecção bacteriana)"],
+      "alertas":["Elevação muito acentuada (ex.: >100 mg/L), especialmente com febre e mau estado geral, sugere infecção bacteriana significativa e merece avaliação médica prioritária.","PCR isolada não define diagnóstico; deve sempre ser interpretada junto ao quadro clínico."],
+      "observacoes":"A PCR ultrassensível (PCR-us), usada para risco cardiovascular, não deve ser solicitada/interpretada durante infecções ou inflamações agudas, pois qualquer processo inflamatório concomitante invalida sua interpretação nesse contexto.",
+      "fontes":["Sociedade Brasileira de Patologia Clínica/Medicina Laboratorial (SBPC/ML)","Sociedade Brasileira de Cardiologia (PCR-us e risco cardiovascular)"]
+    },
+
+    {
+      "id":"sodio",
+      "nome":"Sódio",
+      "sigla":"Na⁺",
+      "sinonimos":["Natremia"],
+      "categoria":"eletrolitos",
+      "grupo":"Eletrólitos séricos",
+      "sistema":"Equilíbrio hidroeletrolítico",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Principal cátion do líquido extracelular, fundamental para o equilíbrio osmótico e a volemia. Alterações costumam refletir mais problemas no balanço de água do que no balanço de sódio propriamente dito.",
+      "finalidade":"Avaliação do equilíbrio hidroeletrolítico, investigação de hiponatremia/hipernatremia.",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"135 – 145","unidade":"mEq/L (mmol/L)","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipernatremia geralmente reflete perda de água livre maior que a perda de sódio, ou baixa ingestão hídrica.",
+        "causas":["Desidratação/baixa ingestão de água","Diabetes insipidus","Diarreia ou vômitos importantes sem reposição adequada","Uso excessivo de soluções salinas hipertônicas","Diuréticos"],
+        "examesApoio":["potassio","ureia"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hiponatremia é o distúrbio eletrolítico mais comum na prática clínica, com múltiplas causas possíveis.",
+        "causas":["Uso de diuréticos (principalmente tiazídicos)","SIADH (síndrome de secreção inapropriada de ADH)","Insuficiência cardíaca, hepática ou renal (estados edematosos)","Vômitos/diarreia com reposição inadequada","Polidipsia psicogênica"],
+        "examesApoio":["potassio"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Desidratação","Diabetes insipidus"],
+        "reduzido":["SIADH","Insuficiência cardíaca","Uso de diuréticos tiazídicos"]
+      },
+      "medicamentos":{
+        "aumentam":["Corticoides","AINEs (retenção de sódio e água)"],
+        "reduzem":["Diuréticos tiazídicos (causa clássica de hiponatremia)","Diuréticos de alça (em menor intensidade)","Inibidores seletivos da recaptação de serotonina, ISRS (SIADH)","Carbamazepina e oxcarbazepina (SIADH)","Antipsicóticos (podem contribuir para SIADH)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Hiperglicemia grave","efeito":"Pode causar hiponatremia dilucional (\"pseudo-hiponatremia\" ou hiponatremia translacional), sem refletir déficit real de sódio"},
+        {"fator":"Hemólise","efeito":"Pode interferir minimamente, mais relevante para potássio"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Não interrompa medicamentos (como diuréticos) por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Processar em tempo hábil; evitar hemólise","rejeicao":["Hemólise intensa","Uso de anticoagulante inadequado (ex.: EDTA em tubo de eletrólitos)"]},
+      "correlatos":["potassio"],
+      "correlatosTexto":["Osmolalidade sérica e urinária","Ureia e creatinina"],
+      "alertas":["Sódio muito baixo (geralmente <120 mEq/L) ou muito alto, especialmente com sintomas neurológicos (confusão, convulsão), é uma emergência médica.","Correção rápida ou inadequada do sódio deve ser sempre conduzida por profissional médico, pelo risco de complicações neurológicas graves."],
+      "observacoes":"Alterações de sódio quase sempre refletem alterações no balanço de água, não necessariamente na quantidade total de sódio corporal.",
+      "fontes":["Sociedade Brasileira de Nefrologia (SBN)"]
+    },
+
+    {
+      "id":"potassio",
+      "nome":"Potássio",
+      "sigla":"K⁺",
+      "sinonimos":["Calemia","Potassemia"],
+      "categoria":"eletrolitos",
+      "grupo":"Eletrólitos séricos",
+      "sistema":"Equilíbrio hidroeletrolítico/cardíaco",
+      "amostraTipo":"Soro/Plasma",
+      "consultaRapida":true,
+      "favoritoPadrao":true,
+      "descricao":"Principal cátion intracelular, essencial para a atividade elétrica cardíaca e neuromuscular. Alterações relativamente pequenas podem ter consequências clínicas significativas, sobretudo arritmias.",
+      "finalidade":"Avaliação do equilíbrio hidroeletrolítico, investigação de arritmias, monitoramento de medicamentos que afetam o potássio (diuréticos, IECA/BRA).",
+      "valoresReferencia":[
+        {"parametro":"Adulto","faixa":"3,5 – 5,0","unidade":"mEq/L (mmol/L)","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipercalemia pode ser grave e potencialmente arritmogênica, exigindo atenção especial.",
+        "causas":["Doença renal aguda ou crônica","Uso de IECA/BRA, espironolactona ou outros poupadores de potássio","Suplementação excessiva de potássio","Acidose metabólica (desloca potássio para fora da célula)","Hemólise da amostra (causa mais comum de \"pseudo-hipercalemia\")"],
+        "examesApoio":["creatinina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipocalemia é comum, frequentemente relacionada a uso de diuréticos ou perdas gastrointestinais.",
+        "causas":["Uso de diuréticos tiazídicos ou de alça (causa mais comum)","Vômitos ou diarreia importantes","Uso de corticoides","Hiperaldosteronismo","Uso de laxantes/abuso"],
+        "examesApoio":["sodio"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Doença renal crônica","Acidose metabólica","Uso de poupadores de potássio"],
+        "reduzido":["Uso de diuréticos","Perdas gastrointestinais importantes","Hiperaldosteronismo"]
+      },
+      "medicamentos":{
+        "aumentam":["IECA e BRA","Espironolactona e outros diuréticos poupadores de potássio","AINEs","Betabloqueadores","Suplementos de potássio","Trimetoprima em doses altas","Heparina (uso prolongado)"],
+        "reduzem":["Diuréticos tiazídicos e de alça (causa mais comum de hipocalemia)","Corticoides","Insulina (desloca potássio para dentro da célula, efeito esperado no tratamento de hipercalemia)","Agonistas beta-2 adrenérgicos (ex.: salbutamol, mesmo mecanismo da insulina)","Laxantes (uso crônico/abuso)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Hemólise da amostra","efeito":"É a causa mais comum de \"pseudo-hipercalemia\": sempre suspeitar antes de tratar um potássio alto isolado sem correlação clínica"},
+        {"fator":"Demora no processamento/centrifugação","efeito":"O potássio sai das células para o soro/plasma, elevando falsamente o resultado"},
+        {"fator":"Abertura e fechamento repetido da mão durante a coleta (garroteamento prolongado)","efeito":"Pode elevar falsamente"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar fechar e abrir a mão repetidamente durante a coleta.","Processar a amostra o quanto antes.","Não interrompa medicamentos (como diuréticos ou IECA/BRA) por conta própria."]},
+      "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Centrifugar e separar o soro/plasma o quanto antes, idealmente em até 1h","rejeicao":["Hemólise (principal causa de rejeição/necessidade de nova coleta)","Amostra com tempo de coagulação excessivo"]},
+      "correlatos":["sodio"],
+      "correlatosTexto":["Eletrocardiograma (ECG) em alterações significativas","Gasometria (equilíbrio ácido-base)"],
+      "alertas":["Potássio muito alterado (geralmente <2,5 ou >6,0 mEq/L), especialmente com alterações no ECG ou sintomas (fraqueza muscular, palpitações), é uma emergência médica.","Antes de agir sobre um potássio alterado, sempre descartar hemólise/erro pré-analítico como causa, especialmente se o resultado não bate com o quadro clínico."],
+      "observacoes":"É um dos eletrólitos mais sensíveis a erro pré-analítico (hemólise, demora no processamento), um resultado alterado sem explicação clínica deve, sempre que possível, ser reconferido antes de qualquer conduta.",
+      "fontes":["Sociedade Brasileira de Nefrologia (SBN)","Sociedade Brasileira de Cardiologia (manejo de hipercalemia)"]
+    }
+  ]
+}
