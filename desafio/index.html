@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmaPrática | Desafio Clínico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #5a5f66;
+    --panel: #4a4e55;
+    --sidebar: #454951;
+    --card: #4f545c;
+    --card-hover: #585d65;
+    --border: #63686f;
+    --red-dark: #3f6212;
+    --red: #65a30d;
+    --red-bright: #a3e635;
+    --red-glow: rgba(163,230,53,.22);
+    --marca-vermelho: #FF0000;
+    --text: #f5f5f4;
+    --text-dim: #a7abb1;
+    --text-gray: #d2d5d9;
+    --amber: #f59e0b;
+    --green-ok: #3fb87f;
+    --sky-ok: #38bdf8;
+    --sidebar-w: 330px;
+    --hover-tint: #585d65;
+    --erro: #ef5b6b;
+    --erro-glow: rgba(239,91,107,.16);
+    --atencao: #f59e0b;
+    --atencao-glow: rgba(245,158,11,.14);
+    --acerto: #3fb87f;
+    --acerto-glow: rgba(63,184,127,.16);
+
+    --cat-red:#ef5b76;        --cat-red-glow:rgba(239,91,118,.22);
+    --cat-blue:#4fa3e3;       --cat-blue-glow:rgba(79,163,227,.22);
+    --cat-purple:#b98cf0;     --cat-purple-glow:rgba(185,140,240,.22);
+    --cat-amber:#f59e0b;      --cat-amber-glow:rgba(245,158,11,.22);
+    --cat-green:#3fb87f;      --cat-green-glow:rgba(63,184,127,.22);
+    --cat-sky:#38bdf8;        --cat-sky-glow:rgba(56,189,248,.22);
+    --cat-crimson:#f43f5e;    --cat-crimson-glow:rgba(244,63,94,.22);
+    --cat-orange:#e8823c;     --cat-orange-glow:rgba(232,130,60,.22);
+    --cat-cyan:#22d3ee;       --cat-cyan-glow:rgba(34,211,238,.22);
+    --cat-teal:#14b8a6;       --cat-teal-glow:rgba(20,184,166,.22);
+    --cat-indigo:#8b8ff5;     --cat-indigo-glow:rgba(139,143,245,.22);
+    --cat-lime:#a3e635;       --cat-lime-glow:rgba(163,230,53,.22);
+    --cat-magenta:#ef70ad;    --cat-magenta-glow:rgba(239,112,173,.22);
+    --cat-yellow:#eab308;     --cat-yellow-glow:rgba(234,179,8,.22);
+    --cat-brown:#b08968;      --cat-brown-glow:rgba(176,137,104,.22);
+    --cat-petrol:#0891b2;     --cat-petrol-glow:rgba(8,145,178,.22);
+    --cat-slate:#94a3b8;      --cat-slate-glow:rgba(148,163,184,.22);
+    --cat-gray:#9aa1ab;       --cat-gray-glow:rgba(154,161,171,.20);
+  }
+  body.light{
+    --bg: #eceef1;
+    --panel: #f6f7f9;
+    --sidebar: #e2e5e9;
+    --card: #ffffff;
+    --card-hover: #f1f2f5;
+    --border: #d7dade;
+    --red-dark: #3f6212;
+    --red: #4d7c0f;
+    --red-bright: #65a30d;
+    --red-glow: rgba(101,163,13,.14);
+    --marca-vermelho: #d4152a;
+    --text: #22262c;
+    --text-dim: #767c84;
+    --text-gray: #4b5057;
+    --amber: #c9790a;
+    --green-ok: #1f8a53;
+    --sky-ok: #0284c7;
+    --hover-tint: #eceef1;
+    --erro: #d4374b;
+    --erro-glow: rgba(212,55,75,.10);
+    --atencao: #c9790a;
+    --atencao-glow: rgba(201,121,10,.10);
+    --acerto: #1f8a53;
+    --acerto-glow: rgba(31,138,83,.10);
+
+    --cat-red:#d43a5c;        --cat-red-glow:rgba(212,58,92,.15);
+    --cat-blue:#1c6dbf;       --cat-blue-glow:rgba(28,109,191,.15);
+    --cat-purple:#7c3aed;     --cat-purple-glow:rgba(124,58,237,.15);
+    --cat-amber:#c9790a;      --cat-amber-glow:rgba(201,121,10,.15);
+    --cat-green:#1f8a53;      --cat-green-glow:rgba(31,138,83,.15);
+    --cat-sky:#0284c7;        --cat-sky-glow:rgba(2,132,199,.15);
+    --cat-crimson:#be123c;    --cat-crimson-glow:rgba(190,18,60,.15);
+    --cat-orange:#c2600d;     --cat-orange-glow:rgba(194,96,13,.15);
+    --cat-cyan:#0e7490;       --cat-cyan-glow:rgba(14,116,144,.15);
+    --cat-teal:#0f766e;       --cat-teal-glow:rgba(15,118,110,.15);
+    --cat-indigo:#4f46d0;     --cat-indigo-glow:rgba(79,70,208,.15);
+    --cat-lime:#65a30d;       --cat-lime-glow:rgba(101,163,13,.15);
+    --cat-magenta:#c23576;    --cat-magenta-glow:rgba(194,53,118,.15);
+    --cat-yellow:#a16207;     --cat-yellow-glow:rgba(161,98,7,.15);
+    --cat-brown:#8b5e34;      --cat-brown-glow:rgba(139,94,52,.15);
+    --cat-petrol:#155e75;     --cat-petrol-glow:rgba(21,94,117,.15);
+    --cat-slate:#475569;      --cat-slate-glow:rgba(71,85,105,.15);
+    --cat-gray:#656c76;       --cat-gray-glow:rgba(101,108,118,.13);
+  }
+  body.light .theme-toggle .icon-sun{ display:none; }
+  body.light .theme-toggle .icon-moon{ display:block; }
+  body.light{ background: var(--bg) !important; }
+  * { box-sizing: border-box; }
+  button, input, select, textarea { font-family: inherit; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background:
+      radial-gradient(900px 500px at 15% -10%, rgba(163,230,53,.06), transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  a{ color:inherit; }
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb{ background: var(--border); border-radius:20px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+
+  /* ---------- Topbar ---------- */
+  .topbar-app{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display:grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    align-items:center;
+    min-height:84px;
+    flex-shrink:0;
+    padding:20px 40px 20px 0;
+    background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
+    border-bottom: 2px solid var(--marca-vermelho);
+    position:relative;
+    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    z-index:3;
+  }
+  .topbar-home-mobile{ display:none; }
+  .sidebar-close-mobile{ display:none; }
+  .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left:40px; }
+  .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
+  .brand{ display:flex; align-items:center; gap:14px; }
+  .brand img{ width:44px; height:44px; }
+  .brand-text h1{ font-size:21px; font-weight:800; letter-spacing:-.3px; line-height:1.1; margin:0; color:var(--text); }
+  .brand-text h1 span{ color:var(--marca-vermelho); }
+  .brand-text p{ font-size:11px; color:var(--text-gray); font-weight:400; margin:2px 0 0; white-space:nowrap; }
+  .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
+  .titulo-principal{ font-size:1.15rem; font-weight:800; letter-spacing:.3px; max-width:100%; line-height:1.25; display:flex; align-items:center; gap:8px; }
+  .titulo-principal svg{ width:20px; height:20px; color:var(--red-bright); flex-shrink:0; }
+  .titulo-descricao{ font-size:.76rem; color:var(--text-dim); margin-top:3px; max-width:560px; }
+  .topbar-actions{ position:absolute; right:40px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .theme-toggle{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .theme-toggle:hover{ background:var(--hover-tint); }
+  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle .icon-moon{ display:none; }
+  .stat-pill{ display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:20px; border:1px solid var(--border); background:var(--panel); font-size:.74rem; font-weight:700; color:var(--text-gray); }
+  .stat-pill svg{ width:14px; height:14px; color:var(--red-bright); }
+
+  .app-body{ display:flex; flex:1; min-height:0; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    width:var(--sidebar-w); flex-shrink:0;
+    background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
+    border-right:1px solid var(--border);
+    display:flex; flex-direction:column; height:100%;
+    box-shadow: 4px 0 28px rgba(0,0,0,.18);
+    z-index:2;
+  }
+  .sidebar-header{ padding:14px 16px 8px; display:flex; flex-direction:column; gap:6px; }
+  .nav-list{ display:flex; flex-direction:column; gap:4px; }
+  .nav-item{
+    display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; border:1px solid transparent;
+    background:transparent; color:var(--text-gray); font-size:.85rem; font-weight:700; cursor:pointer; text-align:left;
+  }
+  .nav-item svg{ width:16px; height:16px; flex-shrink:0; color:var(--text-dim); }
+  .nav-item:hover{ background:var(--card-hover); }
+  .nav-item.active{ background:linear-gradient(180deg,var(--red),var(--red-dark)); color:#fff; box-shadow: 0 3px 9px var(--red-glow); }
+  .nav-item.active svg{ color:#fff; }
+
+  .sidebar-list{ flex:1; overflow-y:auto; padding:10px 10px 20px; }
+  .sidebar-subheading{ font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--text-dim); padding:10px 8px 6px; }
+
+  .cat-header{
+    display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
+    border-radius:9px; padding:9px 11px; margin:0 0 6px; cursor:pointer;
+    font-size:.76rem; font-weight:700; color:var(--text-gray);
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.18);
+  }
+  .cat-header:hover{ transform:translateY(-1px); }
+  .cat-header .cat-emoji{ font-size:1rem; flex-shrink:0; }
+  .cat-header .cat-nome{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--cc, var(--text-gray)); }
+  .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
+
+  /* ---------- Main ---------- */
+  .main{ flex:1; min-width:0; overflow-y:auto; padding:28px 34px 60px; }
+  .breadcrumb{ font-size:.76rem; color:var(--text-dim); margin-bottom:14px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .breadcrumb a{ color:var(--text-dim); text-decoration:none; cursor:pointer; }
+  .breadcrumb a:hover{ color:var(--red-bright); text-decoration:underline; }
+
+  .home-hero{ margin-bottom:22px; }
+  .home-hero h2{ font-family:'Inter',sans-serif; font-size:1.7rem; font-weight:800; margin:0 0 6px; display:flex; align-items:center; gap:10px; }
+  .home-hero h2 svg{ width:30px; height:30px; flex-shrink:0; color:var(--red-bright); }
+  .home-hero h2 .brand-word span{ color:var(--red-bright); }
+  .home-hero p{ margin:0; color:var(--text-dim); font-size:.92rem; max-width:680px; }
+  .intro-banner{ display:flex; align-items:flex-start; gap:14px; background:linear-gradient(120deg, var(--card), var(--panel)); border:1px solid var(--border); border-left:4px solid var(--red-bright); border-radius:14px; padding:16px 20px; margin-bottom:24px; box-shadow:0 4px 18px rgba(0,0,0,.12); }
+  .intro-banner-icon{ width:38px; height:38px; border-radius:11px; background:var(--red-glow); color:var(--red-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .intro-banner-icon svg{ width:20px; height:20px; }
+  .intro-banner p{ margin:0; font-size:.9rem; color:var(--text-gray); line-height:1.6; }
+  .section-title{ font-family:'Inter',sans-serif; font-size:.85rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--text-gray); margin:30px 0 12px; display:flex; align-items:center; gap:8px; }
+  .section-title svg{ width:16px; height:16px; color:var(--red-bright); }
+
+  .stats-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin-bottom:8px; }
+  .stat-card{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; }
+  .stat-card .sc-val{ font-family:'Inter',sans-serif; font-size:1.5rem; font-weight:800; color:var(--red-bright); }
+  .stat-card .sc-label{ font-size:.72rem; color:var(--text-dim); font-weight:700; text-transform:uppercase; letter-spacing:.3px; }
+
+  .quick-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; }
+  .quick-card{
+    display:flex; flex-direction:column; gap:8px; background:var(--card); border:1px solid var(--border); border-top:3px solid var(--cc, var(--red-bright));
+    border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
+  }
+  .quick-card:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
+  .quick-card .qc-icon{ width:32px; height:32px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+  .quick-card h4{ margin:0; font-size:.88rem; font-weight:800; font-family:'Inter',sans-serif; }
+  .quick-card p{ margin:0; font-size:.74rem; color:var(--text-dim); line-height:1.4; }
+
+  .tiles-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; }
+  .cat-tile{
+    background:var(--card); border:1px solid var(--border); border-top:3px solid var(--cc, var(--red-bright));
+    border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
+  .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
+  .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
+
+  .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; align-items:center; }
+  .filter-bar select{ background:var(--card); border:1px solid var(--border); color:var(--text); font-size:.78rem; font-weight:700; padding:8px 12px; border-radius:9px; cursor:pointer; }
+  .filter-bar select:focus{ outline:none; border-color:var(--red-bright); }
+  .btn{
+    display:inline-flex; align-items:center; gap:7px; padding:9px 16px; border-radius:10px; border:1px solid var(--border);
+    background:var(--panel); color:var(--text); font-size:.8rem; font-weight:700; cursor:pointer; transition:.14s ease;
+  }
+  .btn:hover{ border-color:var(--red-bright); }
+  .btn svg{ width:14px; height:14px; }
+  .btn-primary{ background:linear-gradient(135deg,var(--red),var(--red-dark)); color:#fff; border-color:transparent; box-shadow:0 3px 9px var(--red-glow); }
+  .btn-primary:hover{ filter:brightness(1.08); }
+  .btn-block{ width:100%; justify-content:center; }
+
+  .case-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+  .case-card{ background:var(--card); border:1px solid var(--border); border-left:3px solid var(--cc,var(--red-bright)); border-radius:12px; padding:15px 16px; cursor:pointer; display:flex; flex-direction:column; gap:8px; }
+  .case-card:hover{ border-color:var(--red-bright); transform:translateY(-2px); }
+  .case-card h4{ margin:0; font-size:.92rem; font-weight:800; font-family:'Inter',sans-serif; }
+  .case-card p{ margin:0; font-size:.78rem; color:var(--text-dim); line-height:1.5; }
+  .case-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{ font-size:.64rem; font-weight:800; text-transform:uppercase; letter-spacing:.3px; padding:3px 9px; border-radius:20px; background:var(--panel); border:1px solid var(--border); color:var(--text-dim); }
+  .tag.nivel-basico{ color:var(--acerto); border-color:var(--acerto); }
+  .tag.nivel-intermediario{ color:var(--sky-ok); border-color:var(--sky-ok); }
+  .tag.nivel-avancado{ color:var(--atencao); border-color:var(--atencao); }
+  .tag.nivel-especialista{ color:var(--erro); border-color:var(--erro); }
+  .case-card.done{ opacity:.65; }
+  .case-check{ display:inline-flex; align-items:center; gap:5px; font-size:.7rem; font-weight:800; color:var(--acerto); }
+  .case-check svg{ width:12px; height:12px; }
+
+  /* Case player */
+  .player-card{ max-width:760px; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:26px 28px; box-shadow:0 8px 26px rgba(0,0,0,.14); }
+  .player-progress{ display:flex; gap:5px; margin-bottom:18px; }
+  .player-progress .pp-seg{ flex:1; height:5px; border-radius:4px; background:var(--panel); }
+  .player-progress .pp-seg.done{ background:var(--red-bright); }
+  .player-progress .pp-seg.current{ background:var(--sky-ok); }
+  .player-title{ font-family:'Inter',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); font-weight:800; margin-bottom:8px; }
+  .player-texto{ font-size:1rem; line-height:1.7; color:var(--text); margin-bottom:22px; }
+  .opcoes-list{ display:flex; flex-direction:column; gap:10px; }
+  .opcao-btn{
+    text-align:left; padding:13px 16px; border-radius:11px; border:1px solid var(--border); background:var(--panel);
+    color:var(--text); font-size:.87rem; line-height:1.5; cursor:pointer; transition:.14s ease;
+  }
+  .opcao-btn:hover:not(:disabled){ border-color:var(--red-bright); transform:translateX(2px); }
+  .opcao-btn:disabled{ cursor:default; }
+  .opcao-btn.sel-acerto{ border-color:var(--acerto); background:var(--acerto-glow); }
+  .opcao-btn.sel-atencao{ border-color:var(--atencao); background:var(--atencao-glow); }
+  .opcao-btn.sel-erro{ border-color:var(--erro); background:var(--erro-glow); }
+  .opcao-btn.dim{ opacity:.5; }
+  .feedback-box{ margin-top:16px; padding:15px 18px; border-radius:12px; display:flex; gap:12px; align-items:flex-start; }
+  .feedback-box svg{ width:19px; height:19px; flex-shrink:0; margin-top:1px; }
+  .feedback-box p{ margin:0; font-size:.87rem; line-height:1.6; }
+  .feedback-box.fb-acerto{ background:var(--acerto-glow); border:1px solid var(--acerto); }
+  .feedback-box.fb-acerto svg{ color:var(--acerto); }
+  .feedback-box.fb-atencao{ background:var(--atencao-glow); border:1px solid var(--atencao); }
+  .feedback-box.fb-atencao svg{ color:var(--atencao); }
+  .feedback-box.fb-erro{ background:var(--erro-glow); border:1px solid var(--erro); }
+  .feedback-box.fb-erro svg{ color:var(--erro); }
+  .player-footer{ margin-top:22px; display:flex; justify-content:flex-end; }
+
+  /* Resumo final */
+  .resumo-grid{ display:flex; flex-direction:column; gap:14px; max-width:760px; }
+  .resumo-block{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:15px 19px; }
+  .resumo-block h5{ font-family:'Inter',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 7px; color:var(--text-dim); }
+  .resumo-block p{ margin:0; font-size:.88rem; line-height:1.65; color:var(--text-gray); }
+  .score-banner{ display:flex; align-items:center; gap:16px; background:linear-gradient(120deg,var(--card),var(--panel)); border:1px solid var(--red-bright); border-radius:15px; padding:20px 24px; max-width:760px; margin-bottom:18px; }
+  .score-banner .sb-num{ font-family:'Inter',sans-serif; font-size:2.1rem; font-weight:800; color:var(--red-bright); }
+  .score-banner .sb-label{ font-size:.8rem; color:var(--text-dim); }
+
+  /* Quiz */
+  .quiz-progress-line{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; font-size:.78rem; color:var(--text-dim); font-weight:700; max-width:760px; }
+  .quiz-tipo-badge{ font-size:.65rem; font-weight:800; text-transform:uppercase; padding:3px 10px; border-radius:20px; background:var(--panel); border:1px solid var(--border); color:var(--red-bright); }
+
+  /* Flashcards */
+  .flash-wrap{ max-width:560px; margin:0 auto; }
+  .flashcard{
+    background:var(--card); border:1px solid var(--border); border-radius:18px; min-height:260px; padding:30px;
+    display:flex; align-items:center; justify-content:center; text-align:center; cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.16); position:relative;
+  }
+  .flashcard .fc-face{ font-size:1.05rem; line-height:1.6; }
+  .flashcard .fc-hint{ position:absolute; bottom:14px; font-size:.68rem; color:var(--text-dim); left:0; right:0; }
+  .flashcard.verso{ border-color:var(--red-bright); }
+  .flash-actions{ display:flex; gap:10px; margin-top:18px; }
+  .flash-actions .btn{ flex:1; justify-content:center; }
+  .flash-counter{ text-align:center; font-size:.78rem; color:var(--text-dim); margin-bottom:14px; font-weight:700; }
+
+  /* Conquistas */
+  .badge-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+  .badge-card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; display:flex; gap:12px; align-items:flex-start; }
+  .badge-card.locked{ opacity:.45; }
+  .badge-card .bc-emoji{ font-size:1.8rem; flex-shrink:0; }
+  .badge-card h4{ margin:0 0 4px; font-size:.85rem; font-weight:800; }
+  .badge-card p{ margin:0; font-size:.74rem; color:var(--text-dim); line-height:1.5; }
+
+  .empty-hint{ display:flex; align-items:flex-start; gap:10px; font-size:.85rem; color:var(--text-dim); background:var(--card); border:1px dashed var(--border); border-radius:10px; padding:16px; }
+  .empty-hint svg{ width:18px; height:18px; flex-shrink:0; margin-top:1px; }
+  .disclaimer-fixed{ display:flex; align-items:flex-start; gap:9px; font-size:.72rem; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:9px 12px; margin-top:18px; line-height:1.5; max-width:760px; }
+  .disclaimer-fixed svg{ width:16px; height:16px; flex-shrink:0; margin-top:1px; }
+
+  .toast{
+    position:fixed; top:20px; right:20px; z-index:50; background:var(--card); border:1px solid var(--red-bright);
+    border-radius:12px; padding:14px 18px; box-shadow:0 10px 30px rgba(0,0,0,.3); display:flex; gap:10px; align-items:center;
+    max-width:300px; animation: toast-in .25s ease;
+  }
+  .toast .t-emoji{ font-size:1.6rem; }
+  .toast h5{ margin:0 0 2px; font-size:.8rem; font-weight:800; }
+  .toast p{ margin:0; font-size:.72rem; color:var(--text-dim); }
+  @keyframes toast-in{ from{ transform:translateX(30px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+
+  /* Mobile */
+  @media (max-width:800px){
+    .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
+    .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center; position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px; border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    .titulo-central{ grid-column:1; padding:0 44px; }
+    .titulo-principal{ font-size:1.02rem; justify-content:center; }
+    .titulo-descricao{ display:none; }
+    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
+
+    .sidebar{
+      position:fixed; inset:0; z-index:30; width:100%; height:100%;
+      box-shadow:none; display:none;
+    }
+    body.mobile-menu-only .sidebar{ display:flex; }
+    .sidebar-close-mobile{
+      display:flex; align-items:center; gap:6px; align-self:flex-start;
+      margin:2px 0 6px; padding:8px 13px; border-radius:9px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text-dim); font-size:.76rem; font-weight:700; cursor:pointer;
+    }
+    .sidebar-close-mobile svg{ width:14px; height:14px; }
+    .app-body{ overflow-y:auto; }
+    .main{ padding:18px 16px 90px; }
+    .player-card{ padding:18px 16px; }
+    .bottom-nav{
+      display:flex; position:fixed; bottom:0; left:0; right:0; height:60px; background:var(--sidebar);
+      border-top:1px solid var(--border); z-index:20; box-shadow:0 -4px 16px rgba(0,0,0,.2);
+    }
+    .bottom-nav button{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+      background:transparent; border:none; color:var(--text-dim); font-size:.62rem; font-weight:700; cursor:pointer;
+    }
+    .bottom-nav button svg{ width:18px; height:18px; }
+    .bottom-nav button.active{ color:var(--red-bright); }
+    .btn-voltar-mobile{
+      display:flex; align-items:center; gap:6px; margin:0 0 16px; padding:9px 14px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:700; cursor:pointer;
+    }
+    .btn-voltar-mobile svg{ width:14px; height:14px; }
+  }
+  @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
+</style>
+</head>
+<body class="light">
+
+<header class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Página inicial">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+  <div class="logo-wrap">
+    <a href="../">
+      <div class="brand">
+        <img src="logo.png" alt="FarmaPrática">
+        <div class="brand-text">
+          <h1>Farma<span>Prática</span></h1>
+          <p>Plataforma para Rotina, Gestão e<br>Cuidado Farmacêutico</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="titulo-central">
+    <div class="titulo-principal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      Desafio Clínico
+    </div>
+    <div class="titulo-descricao">Treino de raciocínio clínico, casos, quiz e flashcards para a rotina farmacêutica</div>
+  </div>
+  <div class="topbar-actions">
+    <div class="stat-pill" id="topbar-pontos" title="Pontos acumulados">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span id="topbar-pontos-val">0</span>
+    </div>
+    <div class="stat-pill" id="topbar-streak" title="Sequência de dias">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+      <span id="topbar-streak-val">0</span>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app-body">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-close-mobile" onclick="fecharMenuMobile()">✕ Fechar</button>
+      <div class="nav-list"></div>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<nav class="bottom-nav">
+  <button onclick="setView('inicio')" data-bn="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Início</button>
+  <button onclick="setView('casos')" data-bn="casos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Casos</button>
+  <button onclick="setView('quizConfig')" data-bn="quizConfig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17"/></svg>Quiz</button>
+  <button onclick="abrirMenuMobile()" data-bn="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>Menu</button>
+</nav>
+
+<script>
+let DATA = { meta:{}, categorias:[], casos:[], quiz:[], flashcards:[], conquistas:[] };
+let CAT_BY_ID = {}, CASO_BY_ID = {}, QUIZ_BY_ID = {}, FC_BY_ID = {}, CONQ_BY_ID = {};
+let state = {
+  view:'inicio',
+  categoriaId:null,
+  casoId:null, casoStepIndex:0, casoPontosGanhos:0, casoPontosMax:0, casoAcertosComp:[], casoRespostaAtual:null,
+  quizFiltro:{categoria:'todas', nivel:'todos', concurso:false, quantidade:10},
+  quizQueue:[], quizIndex:0, quizAcertos:0, quizErros:[], quizRespostaAtual:null,
+  flashFiltro:{categoria:'todas'},
+  flashQueue:[], flashIndex:0, flashVirado:false,
+  casosFiltro:{categoria:'todas', nivel:'todos', foco:'todos', ambiente:'todos'}
+};
+let progresso = null;
+
+const ICONS = {
+  home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+  cases:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  quiz:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12" y2="17"/>',
+  cards:'<rect x="2" y="6" width="14" height="14" rx="2"/><path d="M6 6V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2"/>',
+  trophy:'<path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 4h3a2 2 0 0 1-2 4h-1"/><path d="M7 4H4a2 2 0 0 0 2 4h1"/>',
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  bolt:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  alert:'<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/>',
+  pill:'<path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/>',
+  flask:'<path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/>',
+  store:'<path d="M2 7h20l-1.5 5.5a2 2 0 0 1-2 1.5H5.5a2 2 0 0 1-2-1.5z"/><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/>',
+  stetho:'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',
+  check:'<polyline points="20 6 9 17 4 12"/>',
+  chev:'<polyline points="9 18 15 12 9 6"/>',
+  back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+  info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/>',
+  book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/>',
+  flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
+};
+function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
+function esc(s){ return (s==null?'':s).toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
+function getCat(id){ return CAT_BY_ID[id]; }
+function catLabel(catId){ const c = getCat(catId); return c ? (c.emoji+' '+c.nome) : catId; }
+
+const NIVEL_LABEL = {basico:'Básico', intermediario:'Intermediário', avancado:'Avançado', especialista:'Especialista'};
+const FOCO_LABEL = {geral:'Geral', farmacoterapeutico:'Farmacoterapêutico', laboratorial:'Laboratorial', 'sinal-alerta':'Sinais de Alerta'};
+const AMBIENTE_LABEL = {balcao:'Balcão', consultorio:'Consultório'};
+
+/* ---------------- Progresso (localStorage) ---------------- */
+function progressoDefault(){
+  return {
+    casosResolvidos:[], pontosTotais:0, streakDias:0, ultimoDia:null,
+    questoesRespondidas:0, acertosTotais:0,
+    acertosPorCompetencia:{}, acertosPorCategoria:{},
+    conquistasDesbloqueadas:[], cartoesDificeis:[]
+  };
+}
+function loadProgresso(){
+  try{
+    const raw = localStorage.getItem('desafioclinico-progresso');
+    progresso = raw ? Object.assign(progressoDefault(), JSON.parse(raw)) : progressoDefault();
+  }catch(e){ progresso = progressoDefault(); }
+}
+function saveProgresso(){
+  try{ localStorage.setItem('desafioclinico-progresso', JSON.stringify(progresso)); }catch(e){}
+  atualizarTopbar();
+}
+function hojeStr(){ const d = new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+function registrarDiaAtivo(){
+  const hoje = hojeStr();
+  if(progresso.ultimoDia === hoje) return;
+  if(!progresso.ultimoDia){ progresso.streakDias = 1; }
+  else{
+    const d1 = new Date(progresso.ultimoDia.split('-').join('/'));
+    const d0 = new Date(hoje.split('-').join('/'));
+    const diffDias = Math.round((d0-d1)/86400000);
+    progresso.streakDias = (diffDias === 1) ? (progresso.streakDias+1) : 1;
+  }
+  progresso.ultimoDia = hoje;
+}
+function registrarAcertoCompetencia(comp){
+  if(!comp) return;
+  progresso.acertosPorCompetencia[comp] = (progresso.acertosPorCompetencia[comp]||0) + 1;
+}
+function registrarAcertoCategoria(catId){
+  progresso.acertosPorCategoria[catId] = (progresso.acertosPorCategoria[catId]||0) + 1;
+}
+function atualizarTopbar(){
+  const p = document.getElementById('topbar-pontos-val');
+  const s = document.getElementById('topbar-streak-val');
+  if(p) p.textContent = progresso.pontosTotais;
+  if(s) s.textContent = progresso.streakDias;
+}
+
+/* ---------------- Conquistas ---------------- */
+function casosAvancadosResolvidosCount(){
+  return progresso.casosResolvidos.filter(id => {
+    const c = CASO_BY_ID[id];
+    return c && (c.nivel === 'avancado' || c.nivel === 'especialista');
+  }).length;
+}
+function conquistaDesbloqueada(conq){
+  const cr = conq.criterio;
+  switch(cr.tipo){
+    case 'casosResolvidos': return progresso.casosResolvidos.length >= cr.valor;
+    case 'streakDias': return progresso.streakDias >= cr.valor;
+    case 'competencia': return (progresso.acertosPorCompetencia[cr.chave]||0) >= cr.valor;
+    case 'casosAvancados': return casosAvancadosResolvidosCount() >= cr.valor;
+    case 'questoesRespondidas': return progresso.questoesRespondidas >= cr.valor;
+    case 'taxaAcerto':
+      if(progresso.questoesRespondidas < (cr.minimoRespostas||0)) return false;
+      return progresso.questoesRespondidas>0 && (progresso.acertosTotais/progresso.questoesRespondidas*100) >= cr.valor;
+    case 'pontosTotais': return progresso.pontosTotais >= cr.valor;
+    default: return false;
+  }
+}
+function checkConquistas(){
+  const novas = [];
+  DATA.conquistas.forEach(conq => {
+    const ja = progresso.conquistasDesbloqueadas.includes(conq.id);
+    if(!ja && conquistaDesbloqueada(conq)){
+      progresso.conquistasDesbloqueadas.push(conq.id);
+      novas.push(conq);
+    }
+  });
+  if(novas.length){ saveProgresso(); mostrarToasts(novas); }
+  return novas;
+}
+function mostrarToasts(conqs){
+  let delay = 0;
+  conqs.forEach(c => {
+    setTimeout(()=>{
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.innerHTML = '<div class="t-emoji">'+c.emoji+'</div><div><h5>Conquista desbloqueada!</h5><p>'+esc(c.nome)+'</p></div>';
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), 4200);
+    }, delay);
+    delay += 350;
+  });
+}
+
+/* ---------------- Tema / navegação básica ---------------- */
+function toggleTheme(){ document.body.classList.toggle('light'); }
+function abrirMenuMobile(){ document.body.classList.add('mobile-menu-only'); }
+function fecharMenuMobile(){ document.body.classList.remove('mobile-menu-only'); }
+
+function setView(view, extra){
+  state.view = view;
+  if(extra) Object.assign(state, extra);
+  window.scrollTo(0,0);
+  const mainEl = document.getElementById('main');
+  if(mainEl) mainEl.scrollTop = 0;
+  fecharMenuMobile();
+  renderSidebar();
+  renderMain();
+  renderBottomNav();
+}
+function renderBottomNav(){
+  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+  const map = {inicio:'inicio', casos:'casos', categoria:'casos', caso:'casos', casoResumo:'casos',
+    quizConfig:'quizConfig', quiz:'quizConfig', quizResultado:'quizConfig'};
+  const key = map[state.view];
+  if(key){ const b = document.querySelector('.bottom-nav button[data-bn="'+key+'"]'); if(b) b.classList.add('active'); }
+}
+
+/* ---------------- Sidebar ---------------- */
+function renderSidebar(){
+  const navItems = [
+    {id:'inicio', label:'Início', icon:'home'},
+    {id:'casos', label:'Casos Clínicos', icon:'cases'},
+    {id:'quizConfig', label:'Quiz', icon:'quiz'},
+    {id:'flashConfig', label:'Flashcards', icon:'cards'},
+    {id:'conquistas', label:'Conquistas', icon:'trophy'}
+  ];
+  const activeMap = {categoria:'casos', caso:'casos', casoResumo:'casos', quiz:'quizConfig', quizResultado:'quizConfig', flashcards:'flashConfig'};
+  const activeView = activeMap[state.view] || state.view;
+  const navHtml = navItems.map(n =>
+    '<button class="nav-item'+(activeView===n.id?' active':'')+'" onclick="setView(\''+n.id+'\')">'+icon(n.icon)+'<span>'+n.label+'</span></button>'
+  ).join('');
+  document.querySelector('.nav-list').innerHTML = navHtml;
+
+  const list = document.getElementById('sidebar-list');
+  let html = '<div class="sidebar-subheading">Categorias Clínicas</div>';
+  html += DATA.categorias.map(cat => {
+    const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
+    return '<div class="cat-header" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
+      '<span class="cat-emoji">'+cat.emoji+'</span><span class="cat-nome">'+esc(cat.nome)+'</span>'+
+      '<span class="cat-count">'+n+'</span></div>';
+  }).join('');
+  list.innerHTML = html;
+}
+
+/* ---------------- Navegação de conteúdo ---------------- */
+function abrirCategoria(id){ setView('categoria', {categoriaId:id}); }
+
+function breadcrumb(items){
+  return '<div class="breadcrumb">'+items.map((it,i)=>{
+    if(i===items.length-1) return '<span>'+esc(it.label)+'</span>';
+    return '<a onclick="'+it.action+'">'+esc(it.label)+'</a><span>/</span>';
+  }).join('')+'</div>';
+}
+
+/* ---------------- CASOS: fluxo ---------------- */
+function abrirCaso(id){
+  const caso = CASO_BY_ID[id];
+  if(!caso) return;
+  let max = 0;
+  caso.etapas.forEach(et=>{
+    if(et.tipo==='decisao'){
+      const melhor = Math.max.apply(null, et.opcoes.map(o=>o.pontos||0));
+      max += melhor;
+    }
+  });
+  state.casoId = id; state.casoStepIndex = 0; state.casoPontosGanhos = 0; state.casoPontosMax = max;
+  state.casoAcertosComp = []; state.casoRespostaAtual = null;
+  setView('caso');
+}
+function selecionarOpcaoCaso(idxOpcao){
+  if(state.casoRespostaAtual !== null) return;
+  const caso = CASO_BY_ID[state.casoId];
+  const etapa = caso.etapas[state.casoStepIndex];
+  const opcao = etapa.opcoes[idxOpcao];
+  state.casoRespostaAtual = idxOpcao;
+  state.casoPontosGanhos += (opcao.pontos||0);
+  if(opcao.tipo === 'acerto'){
+    registrarAcertoCompetencia(etapa.competencia);
+    registrarAcertoCategoria(caso.categoria);
+  }
+  renderMain();
+}
+function avancarEtapaCaso(){
+  const caso = CASO_BY_ID[state.casoId];
+  state.casoStepIndex++;
+  state.casoRespostaAtual = null;
+  if(state.casoStepIndex >= caso.etapas.length){
+    finalizarCaso();
+  }else{
+    renderMain();
+  }
+}
+function finalizarCaso(){
+  const caso = CASO_BY_ID[state.casoId];
+  if(!progresso.casosResolvidos.includes(caso.id)) progresso.casosResolvidos.push(caso.id);
+  progresso.pontosTotais += state.casoPontosGanhos;
+  registrarDiaAtivo();
+  saveProgresso();
+  checkConquistas();
+  setView('casoResumo');
+}
+
+/* ---------------- QUIZ ---------------- */
+function shuffle(arr){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function iniciarQuiz(){
+  const f = state.quizFiltro;
+  let pool = DATA.quiz.filter(q => (f.categoria==='todas' || q.categoria===f.categoria) &&
+    (f.nivel==='todos' || q.nivel===f.nivel) && (!f.concurso || q.concurso===true));
+  pool = shuffle(pool).slice(0, f.quantidade);
+  if(pool.length === 0){ return; }
+  state.quizQueue = pool; state.quizIndex = 0; state.quizAcertos = 0; state.quizErros = []; state.quizRespostaAtual = null;
+  setView('quiz');
+}
+function iniciarQuizRapido(){
+  state.quizFiltro = {categoria:'todas', nivel:'todos', concurso:false, quantidade:5};
+  iniciarQuiz();
+}
+function iniciarQuizModo(modo){
+  if(modo === 'concurso') state.quizFiltro = {categoria:'todas', nivel:'todos', concurso:true, quantidade:10};
+  if(modo === 'dificil') state.quizFiltro = {categoria:'todas', nivel:'avancado', concurso:false, quantidade:10};
+  iniciarQuiz();
+}
+function responderQuiz(idx){
+  if(state.quizRespostaAtual !== null) return;
+  const q = state.quizQueue[state.quizIndex];
+  state.quizRespostaAtual = idx;
+  if(idx === q.correta){ state.quizAcertos++; }
+  else{ state.quizErros.push(q); }
+  renderMain();
+}
+function avancarQuiz(){
+  state.quizIndex++;
+  state.quizRespostaAtual = null;
+  if(state.quizIndex >= state.quizQueue.length){ finalizarQuiz(); }
+  else{ renderMain(); }
+}
+function finalizarQuiz(){
+  progresso.questoesRespondidas += state.quizQueue.length;
+  progresso.acertosTotais += state.quizAcertos;
+  registrarDiaAtivo();
+  saveProgresso();
+  checkConquistas();
+  setView('quizResultado');
+}
+
+/* ---------------- FLASHCARDS ---------------- */
+function iniciarFlash(categoriaId){
+  state.flashFiltro = {categoria:categoriaId||'todas'};
+  let pool = DATA.flashcards.filter(fc => state.flashFiltro.categoria==='todas' || fc.categoria===state.flashFiltro.categoria);
+  const dificeis = pool.filter(fc => progresso.cartoesDificeis.includes(fc.id));
+  const resto = shuffle(pool.filter(fc => !progresso.cartoesDificeis.includes(fc.id)));
+  state.flashQueue = dificeis.concat(resto);
+  state.flashIndex = 0; state.flashVirado = false;
+  if(state.flashQueue.length===0) return;
+  setView('flashcards');
+}
+function virarCartao(){ state.flashVirado = !state.flashVirado; renderMain(); }
+function marcarCartao(sei){
+  const fc = state.flashQueue[state.flashIndex];
+  const idx = progresso.cartoesDificeis.indexOf(fc.id);
+  if(sei){ if(idx>=0) progresso.cartoesDificeis.splice(idx,1); }
+  else{ if(idx<0) progresso.cartoesDificeis.push(fc.id); }
+  registrarDiaAtivo();
+  saveProgresso();
+  state.flashIndex++;
+  state.flashVirado = false;
+  if(state.flashIndex >= state.flashQueue.length){ renderMain(); }
+  else{ renderMain(); }
+}
+
+/* =================================================================
+   RENDER
+   ================================================================= */
+function renderMain(){
+  const main = document.getElementById('main');
+  let html = '';
+  switch(state.view){
+    case 'inicio': html = viewInicio(); break;
+    case 'categoria': html = viewCategoria(); break;
+    case 'casos': html = viewCasosList(); break;
+    case 'caso': html = viewCasoPlayer(); break;
+    case 'casoResumo': html = viewCasoResumo(); break;
+    case 'quizConfig': html = viewQuizConfig(); break;
+    case 'quiz': html = viewQuizPlayer(); break;
+    case 'quizResultado': html = viewQuizResultado(); break;
+    case 'flashConfig': html = viewFlashConfig(); break;
+    case 'flashcards': html = viewFlashPlayer(); break;
+    case 'conquistas': html = viewConquistas(); break;
+    default: html = viewInicio();
+  }
+  main.innerHTML = html;
+}
+
+function statsResumo(){
+  const total = DATA.casos.length;
+  const resolvidos = progresso.casosResolvidos.length;
+  const taxa = progresso.questoesRespondidas>0 ? Math.round(progresso.acertosTotais/progresso.questoesRespondidas*100) : 0;
+  return {total, resolvidos, taxa};
+}
+
+function viewInicio(){
+  const st = statsResumo();
+  let h = '<div class="home-hero"><h2>'+icon('target')+'<span class="brand-word">Desafio <span>Clínico</span></span></h2>';
+  h += '<p>Pratique o raciocínio clínico farmacêutico com casos progressivos, quiz e flashcards — da queixa à conduta, passando pelos sinais de alerta.</p></div>';
+
+  h += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('info')+'</div>'+
+    '<p>Conteúdo educacional de apoio ao raciocínio clínico farmacêutico — não substitui avaliação médica, protocolo institucional ou julgamento clínico individualizado diante de cada paciente real.</p></div>';
+
+  h += '<div class="section-title">'+icon('trophy')+'Seu progresso</div>';
+  h += '<div class="stats-grid">'+
+    '<div class="stat-card"><div class="sc-val">'+st.resolvidos+'/'+st.total+'</div><div class="sc-label">Casos resolvidos</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+progresso.pontosTotais+'</div><div class="sc-label">Pontos</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+progresso.streakDias+'</div><div class="sc-label">Dias seguidos</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+st.taxa+'%</div><div class="sc-label">Acerto no quiz</div></div>'+
+    '</div>';
+
+  h += '<div class="section-title">'+icon('bolt')+'Começar agora</div>';
+  h += '<div class="quick-grid">'+
+    quickCard('cases','red','Caso Aleatório','Um caso clínico sorteado, do começo ao fim.','iniciarCasoAleatorio()')+
+    quickCard('bolt','amber','Desafio Rápido','5 perguntas curtas, direto ao ponto.','iniciarQuizRapido()')+
+    quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.','iniciarFlash()')+
+    quickCard('alert','crimson','Sinais de Alerta','Casos focados em reconhecimento de red flags.',"setView('casos',{casosFiltro:{categoria:'todas',nivel:'todos',foco:'sinal-alerta',ambiente:'todos'}})")+
+    quickCard('flask','indigo','Modo Concurso','Questões em estilo de prova.',"iniciarQuizModo('concurso')")+
+    quickCard('target','purple','Modo Difícil','Casos e questões de nível avançado/especialista.',"iniciarQuizModo('dificil')")+
+    '</div>';
+
+  h += '<div class="section-title">'+icon('cases')+'Categorias clínicas</div>';
+  h += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
+    const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
+    return '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
+      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-count">'+n+' caso'+(n===1?'':'s')+'</div></div>';
+  }).join('')+'</div>';
+
+  h += disclaimerBox();
+  return h;
+}
+function quickCard(iconName, cor, titulo, desc, onclick){
+  return '<div class="quick-card" '+ccStyle(cor)+' onclick="'+onclick+'">'+
+    '<div class="qc-icon">'+icon(iconName)+'</div><h4>'+esc(titulo)+'</h4><p>'+esc(desc)+'</p></div>';
+}
+function disclaimerBox(){
+  return '<div class="disclaimer-fixed">'+icon('info')+
+    '<span>Conteúdo educacional para treino de raciocínio clínico farmacêutico. Não substitui avaliação médica, protocolo institucional ou a legislação sanitária vigente — sempre individualize a conduta diante do paciente real.</span></div>';
+}
+function iniciarCasoAleatorio(){
+  const pool = DATA.casos;
+  const escolhido = pool[Math.floor(Math.random()*pool.length)];
+  abrirCaso(escolhido.id);
+}
+
+function viewCategoria(){
+  const cat = getCat(state.categoriaId);
+  if(!cat) return viewInicio();
+  const casos = DATA.casos.filter(c=>c.categoria===cat.id);
+  const quizN = DATA.quiz.filter(q=>q.categoria===cat.id).length;
+  const fcN = DATA.flashcards.filter(f=>f.categoria===cat.id).length;
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:cat.nome}]);
+  h += '<div class="home-hero" '+ccStyle(cat.cor)+'><h2 style="color:var(--cc)">'+cat.emoji+' '+esc(cat.nome)+'</h2><p>'+esc(cat.descricao)+'</p></div>';
+
+  h += '<div class="section-title">'+icon('cases')+'Casos Clínicos ('+casos.length+')</div>';
+  h += casos.length ? '<div class="case-grid">'+casos.map(caseCard).join('')+'</div>' :
+    '<div class="empty-hint">'+icon('info')+'<span>Ainda não há casos cadastrados nesta categoria.</span></div>';
+
+  h += '<div class="section-title">'+icon('quiz')+'Quiz desta categoria</div>';
+  h += quizN ? '<button class="btn btn-primary" onclick="state.quizFiltro={categoria:\''+cat.id+'\',nivel:\'todos\',concurso:false,quantidade:'+Math.min(10,quizN)+'};iniciarQuiz()">'+icon('bolt')+'Iniciar Quiz ('+quizN+' questões)</button>' :
+    '<div class="empty-hint">'+icon('info')+'<span>Ainda não há questões cadastradas nesta categoria.</span></div>';
+
+  h += '<div class="section-title" style="margin-top:26px">'+icon('cards')+'Flashcards desta categoria</div>';
+  h += fcN ? '<button class="btn btn-primary" onclick="iniciarFlash(\''+cat.id+'\')">'+icon('cards')+'Estudar Flashcards ('+fcN+')</button>' :
+    '<div class="empty-hint">'+icon('info')+'<span>Ainda não há flashcards cadastrados nesta categoria.</span></div>';
+
+  return h;
+}
+function caseCard(c){
+  const resolvido = progresso.casosResolvidos.includes(c.id);
+  const cat = getCat(c.categoria);
+  return '<div class="case-card'+(resolvido?' done':'')+'" '+ccStyle(cat.cor)+' onclick="abrirCaso(\''+c.id+'\')">'+
+    '<h4>'+esc(c.titulo)+'</h4><p>'+esc(c.resumo)+'</p>'+
+    '<div class="case-tags"><span class="tag nivel-'+c.nivel+'">'+NIVEL_LABEL[c.nivel]+'</span>'+
+    '<span class="tag">'+FOCO_LABEL[c.foco]+'</span><span class="tag">'+AMBIENTE_LABEL[c.ambiente]+'</span></div>'+
+    (resolvido ? '<span class="case-check">'+icon('check')+'Resolvido</span>' : '')+
+    '</div>';
+}
+
+function viewCasosList(){
+  const f = state.casosFiltro;
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Casos Clínicos'}]);
+  h += '<div class="home-hero"><h2>'+icon('cases')+'Casos Clínicos</h2><p>Filtre por categoria, nível, foco ou ambiente de atendimento.</p></div>';
+  h += '<div class="filter-bar">';
+  h += selectFiltro('casosFiltro','categoria', [['todas','Todas as categorias']].concat(DATA.categorias.map(c=>[c.id, c.emoji+' '+c.nome])), f.categoria);
+  h += selectFiltro('casosFiltro','nivel', [['todos','Todos os níveis'],['basico','Básico'],['intermediario','Intermediário'],['avancado','Avançado'],['especialista','Especialista']], f.nivel);
+  h += selectFiltro('casosFiltro','foco', [['todos','Todos os focos'],['geral','Geral'],['farmacoterapeutico','Farmacoterapêutico'],['laboratorial','Laboratorial'],['sinal-alerta','Sinais de Alerta']], f.foco);
+  h += selectFiltro('casosFiltro','ambiente', [['todos','Todos os ambientes'],['balcao','Balcão'],['consultorio','Consultório']], f.ambiente);
+  h += '</div>';
+  const casos = DATA.casos.filter(c =>
+    (f.categoria==='todas'||c.categoria===f.categoria) &&
+    (f.nivel==='todos'||c.nivel===f.nivel) &&
+    (f.foco==='todos'||c.foco===f.foco) &&
+    (f.ambiente==='todos'||c.ambiente===f.ambiente));
+  h += '<div id="casos-list-result">'+(casos.length ? '<div class="case-grid">'+casos.map(caseCard).join('')+'</div>' :
+    '<div class="empty-hint">'+icon('info')+'<span>Nenhum caso encontrado com esses filtros.</span></div>')+'</div>';
+  return h;
+}
+function selectFiltro(stateKey, campo, opcoes, atual){
+  const id = 'filtro-'+stateKey+'-'+campo;
+  let s = '<select id="'+id+'" onchange="onFiltroChange(\''+stateKey+'\',\''+campo+'\',this.value)">';
+  s += opcoes.map(([v,l])=>'<option value="'+v+'"'+(v===atual?' selected':'')+'>'+esc(l)+'</option>').join('');
+  s += '</select>';
+  return s;
+}
+function onFiltroChange(stateKey, campo, valor){
+  state[stateKey][campo] = (campo==='quantidade') ? parseInt(valor,10) : valor;
+  renderMain();
+}
+
+/* ---- Case player ---- */
+function viewCasoPlayer(){
+  const caso = CASO_BY_ID[state.casoId];
+  const cat = getCat(caso.categoria);
+  const etapa = caso.etapas[state.casoStepIndex];
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:cat.nome, action:"abrirCategoria('"+cat.id+"')"}, {label:caso.titulo}]);
+  h += '<div class="player-card">';
+  h += '<div class="player-progress">'+caso.etapas.map((e,i)=>{
+    const cls = i<state.casoStepIndex ? 'done' : (i===state.casoStepIndex ? 'current' : '');
+    return '<div class="pp-seg '+cls+'"></div>';
+  }).join('')+'</div>';
+  h += '<div class="player-title">'+esc(etapa.titulo)+' · Etapa '+(state.casoStepIndex+1)+' de '+caso.etapas.length+'</div>';
+  h += '<div class="player-texto">'+esc(etapa.texto)+'</div>';
+
+  if(etapa.tipo === 'info'){
+    h += '<div class="player-footer"><button class="btn btn-primary" onclick="avancarEtapaCaso()">Continuar '+icon('chev')+'</button></div>';
+  }else{
+    h += '<div class="opcoes-list">'+etapa.opcoes.map((op,i)=>{
+      let cls = 'opcao-btn';
+      let disabled = '';
+      if(state.casoRespostaAtual !== null){
+        disabled = 'disabled';
+        if(i === state.casoRespostaAtual) cls += ' sel-'+op.tipo;
+        else cls += ' dim';
+      }
+      return '<button class="'+cls+'" '+disabled+' onclick="selecionarOpcaoCaso('+i+')">'+esc(op.texto)+'</button>';
+    }).join('')+'</div>';
+    if(state.casoRespostaAtual !== null){
+      const op = etapa.opcoes[state.casoRespostaAtual];
+      const fbIcon = op.tipo==='acerto' ? 'check' : (op.tipo==='atencao' ? 'alert' : 'info');
+      h += '<div class="feedback-box fb-'+op.tipo+'">'+icon(fbIcon)+'<p>'+esc(op.feedback)+'</p></div>';
+      h += '<div class="player-footer"><button class="btn btn-primary" onclick="avancarEtapaCaso()">'+
+        (state.casoStepIndex+1>=caso.etapas.length ? 'Ver Resumo' : 'Continuar')+' '+icon('chev')+'</button></div>';
+    }
+  }
+  h += '</div>';
+  return h;
+}
+
+function viewCasoResumo(){
+  const caso = CASO_BY_ID[state.casoId];
+  const cat = getCat(caso.categoria);
+  const rf = caso.resumoFinal;
+  const pct = state.casoPontosMax>0 ? Math.round(state.casoPontosGanhos/state.casoPontosMax*100) : 0;
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:cat.nome, action:"abrirCategoria('"+cat.id+"')"}, {label:'Resumo do caso'}]);
+  h += '<div class="score-banner"><div class="sb-num">'+pct+'%</div><div><div class="sb-label">Pontuação neste caso</div>'+
+    '<div style="font-weight:800">'+state.casoPontosGanhos+' de '+state.casoPontosMax+' pontos possíveis</div></div></div>';
+  h += '<div class="home-hero"><h2>'+icon('book')+'Aprenda com o caso</h2><p>'+esc(caso.titulo)+'</p></div>';
+  h += '<div class="resumo-grid">';
+  h += resumoBlock('Condição', rf.condicao);
+  h += resumoBlock('Sinais importantes', rf.sinaisImportantes);
+  if(rf.medicamentos) h += resumoBlock('Medicamentos envolvidos', rf.medicamentos);
+  if(rf.examesRelevantes) h += resumoBlock('Exames relevantes', rf.examesRelevantes);
+  h += resumoBlock('Sinal de alerta', rf.sinalAlerta);
+  h += resumoBlock('Conduta farmacêutica', rf.condutaFarmaceutica);
+  h += resumoBlock('O que memorizar', rf.memorizar);
+  if(caso.termosDicionario && caso.termosDicionario.length){
+    h += '<div class="resumo-block"><h5>Termos do Dicionário Farmacêutico</h5><div class="case-tags">'+
+      caso.termosDicionario.map(tid=>'<a class="tag" style="cursor:pointer" href="../dicionario/?termo='+encodeURIComponent(tid)+'" target="_blank" rel="noopener">'+esc(tid.replace(/-/g,' '))+'</a>').join('')+
+      '</div></div>';
+  }
+  if(caso.fontes && caso.fontes.length){
+    h += '<div class="resumo-block"><h5>Fontes</h5><p>'+caso.fontes.map(esc).join(' · ')+'</p></div>';
+  }
+  h += '</div>';
+  h += '<div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">'+
+    '<button class="btn btn-primary" onclick="iniciarCasoAleatorio()">'+icon('cases')+'Próximo Caso Aleatório</button>'+
+    '<button class="btn" onclick="abrirCategoria(\''+cat.id+'\')">'+icon('back')+'Voltar para '+esc(cat.nome)+'</button>'+
+    '</div>';
+  h += disclaimerBox();
+  return h;
+}
+function resumoBlock(titulo, texto){
+  return '<div class="resumo-block"><h5>'+esc(titulo)+'</h5><p>'+esc(texto)+'</p></div>';
+}
+
+/* ---- Quiz ---- */
+function viewQuizConfig(){
+  const f = state.quizFiltro;
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Quiz'}]);
+  h += '<div class="home-hero"><h2>'+icon('quiz')+'Quiz</h2><p>Escolha a categoria, o nível e a quantidade de questões.</p></div>';
+  h += '<div class="filter-bar">';
+  h += selectFiltro('quizFiltro','categoria', [['todas','Todas as categorias']].concat(DATA.categorias.map(c=>[c.id, c.emoji+' '+c.nome])), f.categoria);
+  h += selectFiltro('quizFiltro','nivel', [['todos','Todos os níveis'],['basico','Básico'],['intermediario','Intermediário'],['avancado','Avançado'],['especialista','Especialista']], f.nivel);
+  h += selectFiltro('quizFiltro','quantidade', [[5,'5 questões'],[10,'10 questões'],[20,'20 questões'],[50,'50 questões']], f.quantidade);
+  h += '</div>';
+  h += '<label style="display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:700;color:var(--text-gray);margin-bottom:18px;cursor:pointer">'+
+    '<input type="checkbox" id="quiz-concurso-chk" '+(f.concurso?'checked':'')+' onchange="onFiltroChange(\'quizFiltro\',\'concurso\',this.checked)"> Modo Concurso — apenas questões em estilo de prova</label>';
+  const disponiveis = DATA.quiz.filter(q => (f.categoria==='todas'||q.categoria===f.categoria) && (f.nivel==='todos'||q.nivel===f.nivel) && (!f.concurso||q.concurso===true)).length;
+  h += '<button class="btn btn-primary" '+(disponiveis===0?'disabled':'')+' onclick="iniciarQuiz()">'+icon('bolt')+'Iniciar Quiz ('+Math.min(f.quantidade,disponiveis)+' de '+disponiveis+' disponíveis)</button>';
+  if(disponiveis===0) h += '<div class="empty-hint" style="margin-top:14px">'+icon('info')+'<span>Nenhuma questão disponível com esses filtros.</span></div>';
+  return h;
+}
+function onFiltroChangeCheckbox(){}
+
+function viewQuizPlayer(){
+  const q = state.quizQueue[state.quizIndex];
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Quiz'}]);
+  h += '<div class="quiz-progress-line"><span>Questão '+(state.quizIndex+1)+' de '+state.quizQueue.length+'</span>'+
+    '<span class="quiz-tipo-badge">'+catLabel(q.categoria)+' · '+NIVEL_LABEL[q.nivel]+(q.concurso?' · Concurso':'')+'</span></div>';
+  h += '<div class="player-card">';
+  h += '<div class="player-progress">'+state.quizQueue.map((_,i)=>{
+    const cls = i<state.quizIndex ? 'done' : (i===state.quizIndex ? 'current' : '');
+    return '<div class="pp-seg '+cls+'"></div>';
+  }).join('')+'</div>';
+  h += '<div class="player-texto">'+esc(q.pergunta)+'</div>';
+  h += '<div class="opcoes-list">'+q.opcoes.map((op,i)=>{
+    let cls = 'opcao-btn'; let disabled = '';
+    if(state.quizRespostaAtual !== null){
+      disabled = 'disabled';
+      if(i === q.correta) cls += ' sel-acerto';
+      else if(i === state.quizRespostaAtual) cls += ' sel-erro';
+      else cls += ' dim';
+    }
+    return '<button class="'+cls+'" '+disabled+' onclick="responderQuiz('+i+')">'+esc(op)+'</button>';
+  }).join('')+'</div>';
+  if(state.quizRespostaAtual !== null){
+    const acertou = state.quizRespostaAtual === q.correta;
+    h += '<div class="feedback-box fb-'+(acertou?'acerto':'erro')+'">'+icon(acertou?'check':'info')+'<p>'+esc(q.explicacao)+'</p></div>';
+    h += '<div class="player-footer"><button class="btn btn-primary" onclick="avancarQuiz()">'+
+      (state.quizIndex+1>=state.quizQueue.length ? 'Ver Resultado' : 'Próxima Questão')+' '+icon('chev')+'</button></div>';
+  }
+  h += '</div>';
+  return h;
+}
+function viewQuizResultado(){
+  const total = state.quizQueue.length;
+  const pct = total>0 ? Math.round(state.quizAcertos/total*100) : 0;
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Resultado do Quiz'}]);
+  h += '<div class="score-banner"><div class="sb-num">'+pct+'%</div><div><div class="sb-label">Resultado do quiz</div>'+
+    '<div style="font-weight:800">'+state.quizAcertos+' de '+total+' questões corretas</div></div></div>';
+  if(state.quizErros.length){
+    h += '<div class="section-title">'+icon('info')+'Questões para revisar</div>';
+    h += '<div class="resumo-grid">'+state.quizErros.map(q=>{
+      return '<div class="resumo-block"><h5>'+esc(catLabel(q.categoria))+'</h5><p><b>'+esc(q.pergunta)+'</b><br>Resposta correta: '+esc(q.opcoes[q.correta])+'<br>'+esc(q.explicacao)+'</p></div>';
+    }).join('')+'</div>';
+  }
+  h += '<div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">'+
+    '<button class="btn btn-primary" onclick="iniciarQuiz()">'+icon('quiz')+'Repetir com os mesmos filtros</button>'+
+    '<button class="btn" onclick="setView(\'quizConfig\')">'+icon('back')+'Novo Quiz</button></div>';
+  return h;
+}
+
+/* ---- Flashcards ---- */
+function viewFlashConfig(){
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Flashcards'}]);
+  h += '<div class="home-hero"><h2>'+icon('cards')+'Flashcards</h2><p>Revise conceitos-chave — cartões marcados como "não sei" voltam a aparecer primeiro nas próximas sessões.</p></div>';
+  h += '<div class="filter-bar">';
+  h += selectFiltro('flashFiltro','categoria', [['todas','Todas as categorias']].concat(DATA.categorias.map(c=>[c.id, c.emoji+' '+c.nome])), state.flashFiltro.categoria);
+  h += '</div>';
+  const n = DATA.flashcards.filter(fc => state.flashFiltro.categoria==='todas' || fc.categoria===state.flashFiltro.categoria).length;
+  h += '<button class="btn btn-primary" onclick="iniciarFlash(state.flashFiltro.categoria)">'+icon('cards')+'Estudar ('+n+' cartões)</button>';
+  if(progresso.cartoesDificeis.length) h += '<div class="empty-hint" style="margin-top:14px">'+icon('info')+'<span>Você tem '+progresso.cartoesDificeis.length+' cartão(ões) marcados como difíceis — eles aparecerão primeiro.</span></div>';
+  return h;
+}
+function viewFlashPlayer(){
+  if(state.flashIndex >= state.flashQueue.length){
+    let h = '<div class="home-hero"><h2>'+icon('check')+'Sessão concluída!</h2><p>Você revisou '+state.flashQueue.length+' cartões.</p></div>';
+    h += '<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" onclick="iniciarFlash(state.flashFiltro.categoria)">'+icon('cards')+'Estudar Novamente</button>'+
+      '<button class="btn" onclick="setView(\'flashConfig\')">'+icon('back')+'Escolher outra categoria</button></div>';
+    return h;
+  }
+  const fc = state.flashQueue[state.flashIndex];
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Flashcards'}]);
+  h += '<div class="flash-wrap">';
+  h += '<div class="flash-counter">Cartão '+(state.flashIndex+1)+' de '+state.flashQueue.length+' · '+catLabel(fc.categoria)+'</div>';
+  h += '<div class="flashcard'+(state.flashVirado?' verso':'')+'" onclick="virarCartao()">'+
+    '<div class="fc-face">'+esc(state.flashVirado ? fc.verso : fc.frente)+'</div>'+
+    '<div class="fc-hint">'+(state.flashVirado ? 'Resposta — toque para voltar' : 'Toque para ver a resposta')+'</div></div>';
+  h += '<div class="flash-actions">'+
+    '<button class="btn" style="border-color:var(--erro);color:var(--erro)" onclick="marcarCartao(false)">Não sei</button>'+
+    '<button class="btn" style="border-color:var(--acerto);color:var(--acerto)" onclick="marcarCartao(true)">Sei bem</button>'+
+    '</div>';
+  h += '</div>';
+  return h;
+}
+
+/* ---- Conquistas ---- */
+function viewConquistas(){
+  const st = statsResumo();
+  let h = '<div class="home-hero"><h2>'+icon('trophy')+'Conquistas</h2><p>Continue praticando para desbloquear todas as conquistas.</p></div>';
+  h += '<div class="stats-grid">'+
+    '<div class="stat-card"><div class="sc-val">'+progresso.conquistasDesbloqueadas.length+'/'+DATA.conquistas.length+'</div><div class="sc-label">Desbloqueadas</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+progresso.pontosTotais+'</div><div class="sc-label">Pontos</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+progresso.streakDias+'</div><div class="sc-label">Dias seguidos</div></div>'+
+    '<div class="stat-card"><div class="sc-val">'+st.taxa+'%</div><div class="sc-label">Acerto no quiz</div></div>'+
+    '</div>';
+  h += '<div class="badge-grid" style="margin-top:20px">'+DATA.conquistas.map(c=>{
+    const unlocked = progresso.conquistasDesbloqueadas.includes(c.id);
+    return '<div class="badge-card'+(unlocked?'':' locked')+'"><div class="bc-emoji">'+c.emoji+'</div>'+
+      '<div><h4>'+esc(c.nome)+'</h4><p>'+esc(c.descricao)+'</p></div></div>';
+  }).join('')+'</div>';
+  return h;
+}
+
+/* =================================================================
+   INIT
+   ================================================================= */
+function abrirTermoQueryParam(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('caso');
+}
+fetch('desafio.json').then(r=>r.json()).then(data=>{
+  DATA = data;
+  DATA.categorias.forEach(c=>CAT_BY_ID[c.id]=c);
+  DATA.casos.forEach(c=>CASO_BY_ID[c.id]=c);
+  DATA.quiz.forEach(q=>QUIZ_BY_ID[q.id]=q);
+  DATA.flashcards.forEach(f=>FC_BY_ID[f.id]=f);
+  DATA.conquistas.forEach(c=>CONQ_BY_ID[c.id]=c);
+  loadProgresso();
+  atualizarTopbar();
+  const casoParam = abrirTermoQueryParam();
+  if(casoParam && CASO_BY_ID[casoParam]){ abrirCaso(casoParam); }
+  else{ setView('inicio'); }
+}).catch(err=>{
+  document.getElementById('main').innerHTML = '<div class="empty-hint">'+icon('info')+'<span>Não foi possível carregar os dados do Desafio Clínico. Se estiver testando localmente, sirva a pasta por um servidor HTTP.</span></div>';
+  console.error(err);
+});
+</script>
+</body>
+</html>

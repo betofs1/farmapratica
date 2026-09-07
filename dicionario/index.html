@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmaPrática | Dicionário Farmacêutico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #5a5f66;
+    --panel: #4a4e55;
+    --sidebar: #454951;
+    --card: #4f545c;
+    --card-hover: #585d65;
+    --border: #63686f;
+    --red-dark: #a10f1f;
+    --red: #e4172c;
+    --red-bright: #ef5b6b;
+    --red-glow: rgba(228,23,44,.22);
+    --text: #f5f5f4;
+    --text-dim: #a7abb1;
+    --text-gray: #d2d5d9;
+    --amber: #f59e0b;
+    --green-ok: #3fb87f;
+    --sky-ok: #38bdf8;
+    --sidebar-w: 330px;
+    --hover-tint: #585d65;
+
+    --cat-red:#ef5b76;        --cat-red-glow:rgba(239,91,118,.22);
+    --cat-blue:#4fa3e3;       --cat-blue-glow:rgba(79,163,227,.22);
+    --cat-purple:#b98cf0;     --cat-purple-glow:rgba(185,140,240,.22);
+    --cat-amber:#f59e0b;      --cat-amber-glow:rgba(245,158,11,.22);
+    --cat-green:#3fb87f;      --cat-green-glow:rgba(63,184,127,.22);
+    --cat-sky:#38bdf8;        --cat-sky-glow:rgba(56,189,248,.22);
+    --cat-crimson:#f43f5e;    --cat-crimson-glow:rgba(244,63,94,.22);
+    --cat-orange:#e8823c;     --cat-orange-glow:rgba(232,130,60,.22);
+    --cat-cyan:#22d3ee;       --cat-cyan-glow:rgba(34,211,238,.22);
+    --cat-teal:#14b8a6;       --cat-teal-glow:rgba(20,184,166,.22);
+    --cat-indigo:#8b8ff5;     --cat-indigo-glow:rgba(139,143,245,.22);
+    --cat-lime:#a3e635;       --cat-lime-glow:rgba(163,230,53,.22);
+    --cat-magenta:#ef70ad;    --cat-magenta-glow:rgba(239,112,173,.22);
+    --cat-yellow:#eab308;     --cat-yellow-glow:rgba(234,179,8,.22);
+    --cat-brown:#b08968;      --cat-brown-glow:rgba(176,137,104,.22);
+    --cat-petrol:#0891b2;     --cat-petrol-glow:rgba(8,145,178,.22);
+    --cat-slate:#94a3b8;      --cat-slate-glow:rgba(148,163,184,.22);
+    --cat-gray:#9aa1ab;       --cat-gray-glow:rgba(154,161,171,.20);
+  }
+  body.light{
+    --bg: #eceef1;
+    --panel: #f6f7f9;
+    --sidebar: #e2e5e9;
+    --card: #ffffff;
+    --card-hover: #f1f2f5;
+    --border: #d7dade;
+    --red-dark: #a10f1f;
+    --red: #d4152a;
+    --red-bright: #eb374b;
+    --red-glow: rgba(212,21,42,.14);
+    --text: #22262c;
+    --text-dim: #767c84;
+    --text-gray: #4b5057;
+    --amber: #c9790a;
+    --green-ok: #1f8a53;
+    --sky-ok: #0284c7;
+    --hover-tint: #eceef1;
+
+    --cat-red:#d43a5c;        --cat-red-glow:rgba(212,58,92,.15);
+    --cat-blue:#1c6dbf;       --cat-blue-glow:rgba(28,109,191,.15);
+    --cat-purple:#7c3aed;     --cat-purple-glow:rgba(124,58,237,.15);
+    --cat-amber:#c9790a;      --cat-amber-glow:rgba(201,121,10,.15);
+    --cat-green:#1f8a53;      --cat-green-glow:rgba(31,138,83,.15);
+    --cat-sky:#0284c7;        --cat-sky-glow:rgba(2,132,199,.15);
+    --cat-crimson:#be123c;    --cat-crimson-glow:rgba(190,18,60,.15);
+    --cat-orange:#c2600d;     --cat-orange-glow:rgba(194,96,13,.15);
+    --cat-cyan:#0e7490;       --cat-cyan-glow:rgba(14,116,144,.15);
+    --cat-teal:#0f766e;       --cat-teal-glow:rgba(15,118,110,.15);
+    --cat-indigo:#4f46d0;     --cat-indigo-glow:rgba(79,70,208,.15);
+    --cat-lime:#65a30d;       --cat-lime-glow:rgba(101,163,13,.15);
+    --cat-magenta:#c23576;    --cat-magenta-glow:rgba(194,53,118,.15);
+    --cat-yellow:#a16207;     --cat-yellow-glow:rgba(161,98,7,.15);
+    --cat-brown:#8b5e34;      --cat-brown-glow:rgba(139,94,52,.15);
+    --cat-petrol:#155e75;     --cat-petrol-glow:rgba(21,94,117,.15);
+    --cat-slate:#475569;      --cat-slate-glow:rgba(71,85,105,.15);
+    --cat-gray:#656c76;       --cat-gray-glow:rgba(101,108,118,.13);
+  }
+  body.light .theme-toggle .icon-sun{ display:none; }
+  body.light .theme-toggle .icon-moon{ display:block; }
+  body.light{ background: var(--bg) !important; }
+  * { box-sizing: border-box; }
+  button, input, select, textarea { font-family: inherit; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background:
+      radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
+      radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  a{ color:inherit; }
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-thumb{ background: var(--border); border-radius:20px; }
+  ::-webkit-scrollbar-track{ background: transparent; }
+
+  /* ---------- Topbar ---------- */
+  .topbar-app{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display:grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    align-items:center;
+    min-height:84px;
+    flex-shrink:0;
+    padding:20px 40px 20px 0;
+    background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
+    border-bottom:2px solid rgba(228,23,44,.35);
+    position:relative;
+    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    z-index:3;
+  }
+  .topbar-home-mobile{ display:none; }
+  .sidebar-close-mobile{ display:none; }
+  .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left:40px; }
+  .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
+  .brand{ display:flex; align-items:center; gap:14px; }
+  .brand img{ width:44px; height:44px; }
+  .brand-text h1{ font-size:21px; font-weight:800; letter-spacing:-.3px; line-height:1.1; margin:0; color:var(--text); }
+  .brand-text h1 span{ color:var(--red); }
+  .brand-text p{ font-size:11px; color:var(--text-gray); font-weight:400; margin:2px 0 0; white-space:nowrap; }
+  .titulo-central{ grid-column:2; min-width:0; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 12px; }
+  .titulo-principal{ font-size:1.15rem; font-weight:800; letter-spacing:.3px; max-width:100%; line-height:1.25; display:flex; align-items:center; gap:8px; }
+  .titulo-principal svg{ width:20px; height:20px; color:var(--red-bright); flex-shrink:0; }
+  .titulo-descricao{ font-size:.76rem; color:var(--text-dim); margin-top:3px; max-width:560px; }
+  .topbar-actions{ position:absolute; right:40px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .theme-toggle{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .theme-toggle:hover{ background:var(--hover-tint); }
+  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle .icon-moon{ display:none; }
+
+  .app-body{ display:flex; flex:1; min-height:0; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    width:var(--sidebar-w); flex-shrink:0;
+    background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
+    border-right:1px solid var(--border);
+    display:flex; flex-direction:column; height:100%;
+    box-shadow: 4px 0 28px rgba(0,0,0,.18);
+    z-index:2;
+  }
+  .sidebar-header{ padding:14px 16px 10px; display:flex; flex-direction:column; gap:9px; position:relative; }
+  .search-box{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:8px 10px; transition:border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus-within{ border-color:var(--red-bright); box-shadow:0 0 0 3px var(--red-glow); }
+  .search-box svg{ width:16px; height:16px; color:var(--text-dim); flex-shrink:0; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Manrope',sans-serif; }
+  .clear-btn{ display:none; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; flex-shrink:0; background:var(--hover-tint); border:none; color:var(--text-dim); font-size:.7rem; cursor:pointer; line-height:1; padding:0; }
+  .clear-btn.visivel{ display:flex; }
+  .clear-btn:hover{ background:var(--red-bright); color:#fff; }
+
+  .autocomplete-drop{
+    position:absolute; left:16px; right:16px; top:52px; z-index:10;
+    background:var(--card); border:1px solid var(--border); border-radius:11px;
+    box-shadow:0 12px 30px rgba(0,0,0,.28); max-height:340px; overflow-y:auto; display:none;
+  }
+  .autocomplete-drop.show{ display:block; }
+  .ac-item{ display:flex; align-items:center; gap:9px; padding:9px 12px; cursor:pointer; border-bottom:1px solid var(--border); }
+  .ac-item:last-child{ border-bottom:none; }
+  .ac-item:hover, .ac-item.hl{ background:var(--card-hover); }
+  .ac-dot{ width:7px; height:7px; border-radius:50%; background:var(--cc,var(--red-bright)); flex-shrink:0; }
+  .ac-nome{ font-size:.82rem; font-weight:700; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ac-cat{ font-size:.64rem; color:var(--text-dim); flex-shrink:0; }
+  .ac-empty{ padding:14px 12px; font-size:.8rem; color:var(--text-dim); }
+  .ac-sugestao{ padding:9px 12px; font-size:.78rem; color:var(--text-dim); border-bottom:1px solid var(--border); }
+  .ac-sugestao b{ color:var(--red-bright); cursor:pointer; }
+
+  .qtabs{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .qtab{
+    display:flex; align-items:center; justify-content:center; gap:5px; font-size:.68rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:.3px; padding:8px 6px; border-radius:9px; border:1px solid var(--border);
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); color:var(--text-dim); cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, color .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 3px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.16);
+  }
+  .qtab svg{ width:13px; height:13px; }
+  .qtab:hover{ color:var(--text); transform:translateY(-1px); }
+  .qtab.active{ background:linear-gradient(180deg,var(--red),var(--red-dark)); color:#fff; border-color:transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 4px rgba(0,0,0,.25), 0 3px 9px var(--red-glow); }
+
+  .sidebar-list{ flex:1; overflow-y:auto; padding:6px 10px 20px; }
+  .pinned-group{ margin:6px 0 14px; }
+  .pinned-head{ display:flex; align-items:center; gap:7px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--amber); padding:4px 4px 8px; }
+  .pinned-head svg{ width:14px; height:14px; }
+  .chip-mini-grid{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip-mini{
+    padding:7px 11px; border-radius:20px;
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border);
+    font-size:.72rem; font-weight:700; color:var(--text-gray); cursor:pointer;
+    transition:transform .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .chip-mini:hover{ border-color:var(--red-bright); color:var(--text); transform:translateY(-1px); }
+
+  .cat-header{
+    display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
+    border-radius:9px; padding:9px 11px; margin:8px 0 5px; cursor:pointer;
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; font-weight:800; color:var(--text-gray);
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.18);
+  }
+  .cat-header:hover{ transform:translateY(-1px); }
+  .cat-header .cat-emoji{ font-size:.95rem; flex-shrink:0; }
+  .cat-header .cat-nome{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--cc, var(--text-gray)); }
+  .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
+  .cat-header .cat-chevron{ flex-shrink:0; width:13px; height:13px; transition:transform .2s ease; opacity:.75; color:var(--cc,var(--text-dim)); }
+  .cat-header.aberto .cat-chevron{ transform:rotate(90deg); }
+  .cat-body{ display:none; padding:2px 0 8px 4px; }
+  .cat-body.aberto{ display:block; }
+  .cat-body-empty{ font-size:.72rem; color:var(--text-dim); padding:6px 10px 10px; font-style:italic; }
+  .term-item{ display:flex; align-items:center; gap:8px; padding:7px 9px; border-radius:8px; cursor:pointer; transition:.12s ease; }
+  .term-item:hover{ background:var(--card-hover); }
+  .term-item.active{ background: var(--cg, var(--red-glow)); }
+  .term-item .item-dot{ width:6px; height:6px; border-radius:50%; background:var(--cc, var(--red-bright)); flex-shrink:0; }
+  .term-item .item-nome{ flex:1; min-width:0; font-size:.79rem; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .term-item .item-sigla{ font-size:.64rem; color:var(--text-dim); flex-shrink:0; }
+
+  /* ---------- Main ---------- */
+  .main{ flex:1; min-width:0; overflow-y:auto; padding:28px 34px 60px; }
+  .breadcrumb{ font-size:.76rem; color:var(--text-dim); margin-bottom:14px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .breadcrumb a{ color:var(--text-dim); text-decoration:none; cursor:pointer; }
+  .breadcrumb a:hover{ color:var(--red-bright); text-decoration:underline; }
+
+  /* Home / dashboard */
+  .home-hero{ margin-bottom:22px; }
+  .home-hero h2{ font-family:'Inter',sans-serif; font-size:1.7rem; font-weight:800; margin:0 0 6px; display:flex; align-items:center; gap:10px; }
+  .home-hero h2 svg{ width:30px; height:30px; flex-shrink:0; color:var(--red-bright); }
+  .home-hero h2 .brand-word span{ color:var(--red); }
+  .home-hero p{ margin:0; color:var(--text-dim); font-size:.92rem; max-width:680px; }
+  .intro-banner{ display:flex; align-items:flex-start; gap:14px; background:linear-gradient(120deg, var(--card), var(--panel)); border:1px solid var(--border); border-left:4px solid var(--red-bright); border-radius:14px; padding:16px 20px; margin-bottom:24px; box-shadow:0 4px 18px rgba(0,0,0,.12); }
+  .intro-banner-icon{ width:38px; height:38px; border-radius:11px; background:var(--red-glow); color:var(--red-bright); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .intro-banner-icon svg{ width:20px; height:20px; }
+  .intro-banner p{ margin:0; font-size:.9rem; color:var(--text-gray); line-height:1.6; }
+  .home-search-big{ margin-top:18px; max-width:680px; position:relative; }
+  .home-search-big .search-box{ padding:13px 16px; border-radius:13px; }
+  .home-search-big .search-box input{ font-size:.95rem; }
+  .home-search-big .autocomplete-drop{ top:56px; left:0; right:0; }
+  .exemplos-line{ margin-top:10px; font-size:.78rem; color:var(--text-dim); }
+  .exemplos-line b{ color:var(--text-gray); font-weight:700; }
+  .section-title{ font-family:'Inter',sans-serif; font-size:.85rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--text-gray); margin:30px 0 12px; display:flex; align-items:center; gap:8px; }
+  .section-title svg{ width:16px; height:16px; color:var(--red-bright); }
+
+  .tiles-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; }
+  .cat-tile{
+    background:var(--card); border:1px solid var(--border); border-top:3px solid var(--cc, var(--red-bright));
+    border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
+  .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
+  .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
+
+  .quick-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+  .quick-card{ display:flex; align-items:center; gap:9px; background:var(--card); border:1px solid var(--border); border-radius:11px; padding:11px 12px; cursor:pointer; transition:.14s ease; }
+  .quick-card:hover{ border-color:var(--red-bright); transform:translateY(-2px); }
+  .quick-card .qc-dot{ width:9px; height:9px; border-radius:50%; background:var(--cc,var(--red-bright)); flex-shrink:0; }
+  .quick-card span{ font-size:.8rem; font-weight:700; }
+
+  .empty-hint{ display:flex; align-items:flex-start; gap:10px; font-size:.85rem; color:var(--text-dim); background:var(--card); border:1px dashed var(--border); border-radius:10px; padding:16px; }
+  .empty-hint svg{ width:18px; height:18px; flex-shrink:0; margin-top:1px; }
+
+  /* Term detail */
+  .term-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .term-head h2{ font-family:'Inter',sans-serif; font-size:1.55rem; font-weight:800; margin:0 0 6px; }
+  .term-head .sigla-badge{ font-size:.85rem; font-weight:700; color:var(--cc, var(--red-bright)); background:var(--cg, var(--red-glow)); padding:2px 10px; border-radius:20px; margin-left:8px; vertical-align:middle; }
+  .term-chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; align-items:center; }
+  .term-chips .chip{ font-size:.72rem; font-weight:700; color:var(--cc,var(--text-dim)); background:var(--cg,var(--panel)); border:1px solid var(--border); padding:4px 11px; border-radius:20px; display:inline-flex; align-items:center; gap:5px; }
+  .sinonimos-line{ font-size:.78rem; color:var(--text-dim); margin-top:8px; }
+  .sinonimos-line b{ color:var(--text-gray); font-weight:700; }
+
+  .level-toggle{ display:flex; gap:4px; background:var(--panel); border:1px solid var(--border); border-radius:11px; padding:4px; flex-shrink:0; }
+  .level-btn{ display:flex; align-items:center; gap:6px; padding:8px 13px; border-radius:8px; border:none; background:transparent; color:var(--text-dim); font-size:.74rem; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .level-btn:hover{ color:var(--text); }
+  .level-btn.active{ background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; }
+
+  .term-body{ margin-top:22px; display:flex; flex-direction:column; gap:20px; max-width:920px; }
+  .term-block{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:16px 20px; }
+  .term-block h5{ font-family:'Inter',sans-serif; font-size:.74rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 9px; color:var(--text-dim); display:flex; align-items:center; gap:7px; }
+  .term-block h5 svg{ width:14px; height:14px; color:var(--red-bright); }
+  .term-block p{ margin:0; font-size:.9rem; line-height:1.68; color:var(--text-gray); }
+  [data-min-nivel]{ display:none; }
+  .nivel-rapido [data-min-nivel="rapido"]{ display:block; }
+  .nivel-completo [data-min-nivel="rapido"], .nivel-completo [data-min-nivel="completo"]{ display:block; }
+  .nivel-estudo [data-min-nivel]{ display:block; }
+
+  .callout{ border-radius:13px; padding:15px 18px; display:flex; gap:12px; align-items:flex-start; }
+  .callout svg{ width:19px; height:19px; flex-shrink:0; margin-top:1px; }
+  .callout p{ margin:0; font-size:.87rem; line-height:1.6; }
+  .callout-saber{ background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.32); }
+  .callout-saber svg{ color:var(--sky-ok); }
+  .callout-saber b{ color:var(--sky-ok); }
+  .callout-atencao{ background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.34); }
+  .callout-atencao svg{ color:var(--amber); }
+  .callout-atencao b{ color:var(--amber); }
+
+  .cascata-flow{ display:flex; flex-direction:column; gap:0; }
+  .cascata-step{ display:flex; gap:12px; align-items:flex-start; padding:10px 0; }
+  .cascata-step .cs-num{ width:26px; height:26px; border-radius:50%; background:var(--cg,var(--red-glow)); color:var(--cc,var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; flex-shrink:0; }
+  .cascata-step .cs-body{ flex:1; min-width:0; }
+  .cascata-step .cs-label{ font-size:.64rem; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); font-weight:800; margin-bottom:2px; }
+  .cascata-step .cs-val{ font-size:.87rem; color:var(--text); line-height:1.55; }
+  .cascata-arrow{ margin-left:13px; width:1px; height:14px; background:var(--border); }
+  .cascata-tags{ display:flex; flex-wrap:wrap; gap:7px; }
+  .cascata-tags span{ background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:4px 11px; font-size:.78rem; font-weight:600; }
+
+  .chips-wrap{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip-link{ padding:7px 13px; border-radius:20px; background:var(--panel); border:1px solid var(--border); font-size:.79rem; font-weight:700; cursor:pointer; color:var(--text); display:inline-flex; align-items:center; gap:6px; }
+  .chip-link:hover{ border-color:var(--red-bright); color:var(--red-bright); }
+  .chip-link .cl-dot{ width:6px; height:6px; border-radius:50%; background:var(--cc,var(--red-bright)); }
+
+  .naoconfunda-box{ border:1px solid rgba(185,140,240,.35); background:rgba(185,140,240,.08); border-radius:13px; padding:16px 18px; }
+  .naoconfunda-box h5{ color:#b98cf0; }
+  .naoconfunda-box h5 svg{ color:#b98cf0; }
+  .nc-link{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 12px; background:var(--panel); border:1px solid var(--border); border-radius:10px; cursor:pointer; margin-top:4px; }
+  .nc-link:hover{ border-color:#b98cf0; }
+  .nc-link span{ font-size:.85rem; font-weight:700; }
+  .nc-link svg{ width:15px; height:15px; color:var(--text-dim); flex-shrink:0; }
+
+  .comp-table-wrap{ overflow-x:auto; }
+  .comp-table{ width:100%; border-collapse:collapse; font-size:.83rem; margin-top:4px; }
+  .comp-table th{ text-align:left; font-size:.66rem; text-transform:uppercase; letter-spacing:.4px; color:var(--text-dim); padding:8px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  .comp-table td{ padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text-gray); vertical-align:top; }
+  .comp-table tr:last-child td{ border-bottom:none; }
+  .comp-table td:first-child{ color:var(--text); font-weight:700; white-space:nowrap; }
+
+  .fontes-box{ font-size:.78rem; color:var(--text-dim); }
+  .fontes-box ul{ margin:6px 0 0; padding-left:18px; line-height:1.6; }
+  .disclaimer-fixed{ display:flex; align-items:flex-start; gap:9px; font-size:.72rem; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:9px 12px; margin-top:6px; line-height:1.5; }
+  .disclaimer-fixed svg{ width:16px; height:16px; flex-shrink:0; margin-top:1px; }
+
+  /* Categoria view */
+  .term-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; }
+  .term-card{ background:var(--card); border:1px solid var(--border); border-left:3px solid var(--cc,var(--red-bright)); border-radius:11px; padding:13px 14px; cursor:pointer; }
+  .term-card:hover{ border-color:var(--red-bright); transform:translateY(-2px); }
+  .term-card h4{ margin:0 0 4px; font-size:.88rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .term-card .tc-sigla{ font-size:.68rem; font-weight:700; color:var(--cc,var(--red-bright)); }
+  .term-card p{ margin:0; font-size:.76rem; color:var(--text-dim); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* Não confunda grid */
+  .nc-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+  .nc-card{ background:var(--card); border:1px solid var(--border); border-left:3px solid #b98cf0; border-radius:11px; padding:14px 16px; cursor:pointer; }
+  .nc-card:hover{ border-color:#b98cf0; transform:translateY(-2px); }
+  .nc-card h4{ margin:0 0 6px; font-size:.9rem; }
+  .nc-card p{ margin:0; font-size:.78rem; color:var(--text-dim); line-height:1.55; }
+
+  .historico-line{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+
+  /* Mobile */
+  @media (max-width:800px){
+    .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
+    .logo-wrap{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center; position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px; border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    .titulo-central{ grid-column:1; padding:0 44px; }
+    .titulo-principal{ font-size:1.02rem; justify-content:center; }
+    .titulo-descricao{ display:none; }
+    .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
+
+    .sidebar{
+      position:fixed; inset:0; z-index:30; width:100%; height:100%;
+      box-shadow:none; display:none;
+    }
+    body.mobile-menu-only .sidebar{ display:flex; }
+    .sidebar-close-mobile{
+      display:flex; align-items:center; gap:6px; align-self:flex-start;
+      margin:2px 0 6px; padding:8px 13px; border-radius:9px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text-dim); font-size:.76rem; font-weight:700; cursor:pointer;
+    }
+    .sidebar-close-mobile svg{ width:14px; height:14px; }
+    .app-body{ overflow-y:auto; }
+    .main{ padding:18px 16px 90px; }
+    .term-head{ flex-direction:column; }
+    .level-toggle{ width:100%; }
+    .level-btn{ flex:1; justify-content:center; }
+    .bottom-nav{
+      display:flex; position:fixed; bottom:0; left:0; right:0; height:60px; background:var(--sidebar);
+      border-top:1px solid var(--border); z-index:20; box-shadow:0 -4px 16px rgba(0,0,0,.2);
+    }
+    .bottom-nav button{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+      background:transparent; border:none; color:var(--text-dim); font-size:.62rem; font-weight:700; cursor:pointer;
+    }
+    .bottom-nav button svg{ width:18px; height:18px; }
+    .bottom-nav button.active{ color:var(--red-bright); }
+    .btn-voltar-mobile{
+      display:flex; align-items:center; gap:6px; margin:0 0 16px; padding:9px 14px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:700; cursor:pointer;
+    }
+    .btn-voltar-mobile svg{ width:14px; height:14px; }
+  }
+  @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
+</style>
+</head>
+<body class="light">
+
+<header class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Página inicial">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+  <div class="logo-wrap">
+    <a href="../">
+      <div class="brand">
+        <img src="logo.png" alt="FarmaPrática">
+        <div class="brand-text">
+          <h1>Farma<span>Prática</span></h1>
+          <p>Plataforma para Rotina, Gestão e<br>Cuidado Farmacêutico</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="titulo-central">
+    <div class="titulo-principal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/></svg>
+      Dicionário Farmacêutico
+    </div>
+    <div class="titulo-descricao">Consulta técnica e didática de termos de farmacologia, farmácia clínica e prática profissional</div>
+  </div>
+  <div class="topbar-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app-body">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="sidebar-close-mobile" onclick="fecharMenuMobile()">✕ Fechar</button>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="global-search" autocomplete="off" placeholder="Buscar termo, sigla, sinônimo, classe, mecanismo..." oninput="onSearchInput(this.value)" onkeydown="onSearchKeydown(event)" onfocus="onSearchInput(this.value)">
+        <button class="clear-btn" id="clear-search" onclick="clearSearch()">✕</button>
+      </div>
+      <div id="ac-drop-sidebar" class="autocomplete-drop"></div>
+      <div class="qtabs">
+        <button class="qtab active" data-view="inicio" onclick="setView('inicio')">Início</button>
+        <button class="qtab" data-view="naoconfunda" onclick="setView('naoconfunda')">Não Confunda</button>
+      </div>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<nav class="bottom-nav">
+  <button onclick="setView('inicio')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Início</button>
+  <button onclick="abrirMenuMobile()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>Categorias</button>
+  <button onclick="focarBuscaMobile()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Buscar</button>
+  <button onclick="setView('naoconfunda')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>Não Confunda</button>
+</nav>
+
+<script>
+let DATA = { meta:{}, categorias:[], termos:[], comparacoes:[] };
+let TERM_BY_ID = {};
+let COMP_BY_ID = {};
+let CAT_BY_ID = {};
+let state = { view:'inicio', termoId:null, categoriaId:null, comparacaoId:null, search:'', nivel:'completo', openCats:new Set() };
+let historico = [];
+let acIndex = -1;
+let acResultsCache = [];
+
+const CATEGORY_EMOJI = {
+  'farmacologia-geral':'🧪', 'farmacodinamica':'🧬', 'farmacocinetica':'⏳', 'interacoes':'🔗',
+  'farmacia-clinica':'⚕️', 'dispensacao':'🏪', 'farmacoterapia':'💊', 'farmacovigilancia':'⚠️',
+  'toxicologia':'☠️', 'farmacotecnica':'⚗️', 'controle-qualidade':'✅', 'microbiologia':'🦠',
+  'imunologia':'🛡️', 'fisiologia':'❤️', 'fisiopatologia':'🩺', 'semiologia':'📋',
+  'legislacao':'⚖️', 'saude-publica':'🌍', 'vigilancia-sanitaria':'👁️', 'gestao-farmaceutica':'📦'
+};
+
+const ICONS = {
+  book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/>',
+  search:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  bulb:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6v.7h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2z"/>',
+  alert:'<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/>',
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  flow:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88"/><path d="M14.47 14.48L20 20"/><path d="M8.12 8.12L12 12"/>',
+  link:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+  scale:'<path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M3 16v5h5"/><path d="M21 16v5h-5"/><path d="M3 3l7 7"/><path d="M14 14l7 7"/>',
+  swap:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+  home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+  history:'<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/>',
+  back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+  chev:'<polyline points="9 18 15 12 9 6"/>',
+  layers:'<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+  info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/>'
+};
+function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
+
+/* ---------------- Utilidades ---------------- */
+function normaliza(s){ return (s||'').toString().normalize('NFD').replace(new RegExp(String.fromCharCode(91,768,45,879,93),'g'),'').toLowerCase().trim(); }
+function esc(s){ return (s||'').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
+function catEmoji(catId){ return CATEGORY_EMOJI[catId] || '📖'; }
+function getTerm(id){ return TERM_BY_ID[id]; }
+function getCat(id){ return CAT_BY_ID[id]; }
+function getComp(id){ return COMP_BY_ID[id]; }
+function termosDaCategoria(catId){ return DATA.termos.filter(t=>t.categoria===catId).sort((a,b)=>a.termo.localeCompare(b.termo,'pt-BR')); }
+
+function levenshtein(a, b){
+  a = a||''; b = b||'';
+  const m = a.length, n = b.length;
+  if(m===0) return n; if(n===0) return m;
+  let prev = Array(n+1).fill(0).map((_,i)=>i);
+  for(let i=1;i<=m;i++){
+    let cur = [i];
+    for(let j=1;j<=n;j++){
+      const cost = a[i-1]===b[j-1] ? 0 : 1;
+      cur[j] = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+cost);
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+function termoSearchBlob(t){
+  if(t._blob) return t._blob;
+  const cat = getCat(t.categoria);
+  const parts = [t.termo, t.sigla, (t.sinonimos||[]).join(' '), cat?cat.nome:'', t.definicao, t.explicacaoSimplificada, t.aplicacaoPratica, t.exemploPratico];
+  t._blob = normaliza(parts.join(' | '));
+  return t._blob;
+}
+
+function buscaGlobal(q){
+  const nq = normaliza(q);
+  if(!nq) return { termos:[], comparacoes:[], sugestoes:[] };
+  let termos = DATA.termos.filter(t => termoSearchBlob(t).includes(nq));
+  termos.sort((a,b)=>{
+    const score = t => {
+      const nome = normaliza(t.termo), sigla = normaliza(t.sigla);
+      if(nome===nq || sigla===nq) return 0;
+      if(nome.startsWith(nq) || sigla.startsWith(nq)) return 1;
+      if((t.sinonimos||[]).some(s=>normaliza(s).startsWith(nq))) return 2;
+      return 3;
+    };
+    return score(a)-score(b) || a.termo.localeCompare(b.termo,'pt-BR');
+  });
+  const comparacoes = DATA.comparacoes.filter(c => normaliza(c.titulo).includes(nq) || normaliza(c.resumo).includes(nq));
+  let sugestoes = [];
+  if(termos.length===0 && nq.length>=3){
+    const cands = DATA.termos.map(t=>{
+      const nome = normaliza(t.termo);
+      let dist = levenshtein(nq, nome);
+      (t.sinonimos||[]).forEach(s=>{ dist = Math.min(dist, levenshtein(nq, normaliza(s))); });
+      return {t, dist};
+    }).filter(c=>c.dist <= Math.max(2, Math.floor(nq.length*0.34)));
+    cands.sort((a,b)=>a.dist-b.dist);
+    sugestoes = cands.slice(0,5).map(c=>c.t);
+  }
+  return { termos, comparacoes, sugestoes };
+}
+
+/* ---------------- Histórico ---------------- */
+function loadHistorico(){
+  try{ historico = JSON.parse(localStorage.getItem('farmadic-historico')||'[]'); }catch(e){ historico = []; }
+}
+function addHistorico(id){
+  historico = historico.filter(x=>x!==id);
+  historico.unshift(id);
+  historico = historico.slice(0,10);
+  try{ localStorage.setItem('farmadic-historico', JSON.stringify(historico)); }catch(e){}
+}
+
+/* ---------------- Tema / navegação básica ---------------- */
+function toggleTheme(){ document.body.classList.toggle('light'); }
+function abrirMenuMobile(){ document.body.classList.add('mobile-menu-only'); }
+function fecharMenuMobile(){ document.body.classList.remove('mobile-menu-only'); }
+function focarBuscaMobile(){ abrirMenuMobile(); setTimeout(()=>document.getElementById('global-search').focus(), 50); }
+
+function setView(view, extra){
+  state.view = view;
+  if(extra) Object.assign(state, extra);
+  window.scrollTo(0,0);
+  document.getElementById('main').scrollTop = 0;
+  fecharMenuMobile();
+  hideAutocomplete();
+  renderSidebar();
+  renderMain();
+}
+function abrirTermo(id){
+  addHistorico(id);
+  setView('termo', {termoId:id});
+}
+function abrirCategoria(id){
+  state.openCats.add(id);
+  setView('categoria', {categoriaId:id});
+}
+function abrirComparacao(id){
+  setView('comparacao', {comparacaoId:id});
+}
+function setNivel(n){
+  state.nivel = n;
+  renderMain();
+}
+
+/* ---------------- Busca / autocomplete ---------------- */
+function clearSearch(){
+  state.search = '';
+  document.getElementById('global-search').value = '';
+  document.getElementById('clear-search').classList.remove('visivel');
+  hideAutocomplete();
+  document.getElementById('global-search').focus();
+}
+function hideAutocomplete(){
+  ['ac-drop-sidebar','ac-drop-home'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){ el.classList.remove('show'); el.innerHTML=''; }
+  });
+  acIndex = -1; acResultsCache = [];
+}
+function renderAutocomplete(q, dropId){
+  const drop = document.getElementById(dropId);
+  if(!drop) return;
+  if(!q){ drop.classList.remove('show'); drop.innerHTML=''; return; }
+  const r = buscaGlobal(q);
+  acResultsCache = r.termos.slice(0,8);
+  let html = '';
+  if(acResultsCache.length===0){
+    if(r.sugestoes.length){
+      html += '<div class="ac-sugestao">Nenhum resultado exato. Você quis dizer: ' +
+        r.sugestoes.map(t=>'<b onclick="irParaTermoBusca(\''+t.id+'\')">'+esc(t.termo)+'</b>').join(', ') + '?</div>';
+    } else {
+      html += '<div class="ac-empty">Nenhum termo encontrado para "'+esc(q)+'".</div>';
+    }
+  } else {
+    acResultsCache.forEach(t=>{
+      const cat = getCat(t.categoria);
+      html += '<div class="ac-item" '+ (cat?ccStyle(cat.cor):'') +' onclick="irParaTermoBusca(\''+t.id+'\')">' +
+        '<span class="ac-dot"></span><span class="ac-nome">'+esc(t.termo)+(t.sigla?' <span style="color:var(--text-dim);font-weight:500;">('+esc(t.sigla)+')</span>':'')+'</span>' +
+        '<span class="ac-cat">'+(cat?esc(cat.nome):'')+'</span></div>';
+    });
+  }
+  drop.innerHTML = html;
+  drop.classList.add('show');
+  acIndex = -1;
+}
+function onSearchInput(v){
+  state.search = v;
+  const clearBtn = document.getElementById('clear-search');
+  if(clearBtn) clearBtn.classList.toggle('visivel', !!v);
+  const dropId = (state.view==='inicio') ? 'ac-drop-home' : 'ac-drop-sidebar';
+  renderAutocomplete(v, 'ac-drop-sidebar');
+  if(document.getElementById('ac-drop-home')) renderAutocomplete(v, 'ac-drop-home');
+}
+function onSearchKeydown(ev){
+  if(ev.key==='Enter'){
+    if(acResultsCache.length>0){ irParaTermoBusca(acResultsCache[0].id); }
+    else if(state.search){ setView('buscaResultados'); }
+    ev.preventDefault();
+  } else if(ev.key==='Escape'){
+    hideAutocomplete();
+  }
+}
+function irParaTermoBusca(id){
+  clearSearch();
+  abrirTermo(id);
+}
+function syncHomeSearch(v){
+  const el = document.getElementById('global-search');
+  if(el) el.value = v;
+  onSearchInput(v);
+}
+
+/* ---------------- Render: Sidebar ---------------- */
+function renderSidebar(){
+  const el = document.getElementById('sidebar-list');
+  document.querySelectorAll('.qtab').forEach(b=>b.classList.toggle('active', b.dataset.view===state.view));
+  let html = '';
+  if(historico.length){
+    html += '<div class="pinned-group"><div class="pinned-head">'+icon('history')+' Consultados recentemente</div><div class="chip-mini-grid">';
+    historico.slice(0,6).forEach(id=>{
+      const t = getTerm(id);
+      if(t) html += '<span class="chip-mini" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>';
+    });
+    html += '</div></div>';
+  }
+  DATA.categorias.forEach(cat=>{
+    const terms = termosDaCategoria(cat.id);
+    const aberto = state.openCats.has(cat.id);
+    html += '<button class="cat-header'+(aberto?' aberto':'')+'" '+ccStyle(cat.cor)+' onclick="toggleCat(\''+cat.id+'\')">' +
+      '<span class="cat-emoji">'+catEmoji(cat.id)+'</span>' +
+      '<span class="cat-nome">'+esc(cat.nome)+'</span>' +
+      '<span class="cat-count">'+terms.length+'</span>' +
+      icon('chev','cat-chevron') + '</button>';
+    html += '<div class="cat-body'+(aberto?' aberto':'')+'" id="catbody-'+cat.id+'">';
+    if(terms.length===0){
+      html += '<div class="cat-body-empty">Nenhum termo cadastrado ainda nesta categoria.</div>';
+    } else {
+      terms.forEach(t=>{
+        html += '<div class="term-item'+(state.termoId===t.id?' active':'')+'" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
+          '<span class="item-dot"></span><span class="item-nome">'+esc(t.termo)+'</span>' +
+          (t.sigla?'<span class="item-sigla">'+esc(t.sigla)+'</span>':'') + '</div>';
+      });
+    }
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+function toggleCat(id){
+  if(state.openCats.has(id)) state.openCats.delete(id); else state.openCats.add(id);
+  renderSidebar();
+}
+
+/* ---------------- Render: Main ---------------- */
+function renderMain(){
+  const el = document.getElementById('main');
+  if(state.view==='inicio') el.innerHTML = viewInicio();
+  else if(state.view==='termo') el.innerHTML = viewTermo(state.termoId);
+  else if(state.view==='categoria') el.innerHTML = viewCategoria(state.categoriaId);
+  else if(state.view==='naoconfunda') el.innerHTML = viewNaoConfundaLista();
+  else if(state.view==='comparacao') el.innerHTML = viewComparacao(state.comparacaoId);
+  else if(state.view==='buscaResultados') el.innerHTML = viewBuscaResultados(state.search);
+  else el.innerHTML = viewInicio();
+}
+
+function breadcrumb(items){
+  let html = '<div class="breadcrumb">';
+  items.forEach((it,i)=>{
+    if(i>0) html += '<span>›</span>';
+    html += it.href ? '<a onclick="'+it.href+'">'+esc(it.label)+'</a>' : '<span>'+esc(it.label)+'</span>';
+  });
+  html += '</div>';
+  return html;
+}
+
+const TERMOS_DESTAQUE = ['agonista','antagonista','biodisponibilidade','meia-vida','cyp3a4','ram','pro-farmaco','uso-off-label','sindrome-serotoninergica','indice-terapeutico'];
+
+function viewInicio(){
+  let html = '<div class="home-hero"><h2>'+icon('book')+' <span class="brand-word">Dicionário Farma<span>Prática</span></span></h2>' +
+    '<p>Consulta técnica, didática e rápida de termos de Farmacologia, Farmácia Clínica, Farmacotécnica, Toxicologia, Legislação e demais áreas da prática farmacêutica — com definição, explicação simplificada, aplicação prática e termos relacionados.</p></div>';
+
+  html += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('bulb')+'</div>' +
+    '<p>Cada verbete responde não só "o que significa", mas "por que isso importa para o farmacêutico": conecta definição, mecanismo, exemplo prático e termos relacionados. Use o alternador de nível (⚡ Rápido / 📚 Completo / 🎓 Estudo) em cada termo para controlar a profundidade do conteúdo.</p></div>';
+
+  html += '<div class="home-search-big"><div class="search-box">'+icon('search')+
+    '<input autocomplete="off" placeholder="Pesquise um termo, sigla, sinônimo, mecanismo ou classe farmacológica..." oninput="syncHomeSearch(this.value)" onkeydown="onSearchKeydown(event)" value="'+esc(state.search)+'">' +
+    '</div><div id="ac-drop-home" class="autocomplete-drop"></div>' +
+    '<div class="exemplos-line"><b>Experimente:</b> ' + TERMOS_DESTAQUE.slice(0,6).map(id=>{ const t=getTerm(id); return t?'<span class="chip-mini" style="display:inline-block;margin:3px 4px 0 0;" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>':''; }).join('') + '</div></div>';
+
+  html += '<div class="section-title">'+icon('target')+' Termos em destaque</div><div class="quick-grid">';
+  TERMOS_DESTAQUE.forEach(id=>{
+    const t = getTerm(id); if(!t) return;
+    const cat = getCat(t.categoria);
+    html += '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+id+'\')"><span class="qc-dot"></span><span>'+esc(t.termo)+'</span></div>';
+  });
+  html += '</div>';
+
+  html += '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div><div class="tiles-grid">';
+  DATA.categorias.forEach(cat=>{
+    const n = termosDaCategoria(cat.id).length;
+    html += '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">' +
+      '<div class="ct-icon">'+catEmoji(cat.id)+'</div><h4>'+esc(cat.nome)+'</h4><div class="ct-count">'+n+' termo'+(n===1?'':'s')+'</div></div>';
+  });
+  html += '</div>';
+
+  if(historico.length){
+    html += '<div class="section-title">'+icon('history')+' Consultados recentemente</div><div class="historico-line">';
+    historico.slice(0,10).forEach(id=>{
+      const t = getTerm(id); if(!t) return;
+      html += '<span class="chip-mini" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>';
+    });
+    html += '</div>';
+  }
+
+  return html;
+}
+
+function nivelBtn(n, label, emoji){
+  return '<button class="level-btn'+(state.nivel===n?' active':'')+'" onclick="setNivel(\''+n+'\')">'+emoji+' '+label+'</button>';
+}
+
+function renderCascata(t){
+  if(!t.cascata) return '';
+  const c = t.cascata;
+  let html = '<div class="term-block" data-min-nivel="completo"><h5>'+icon('flow')+' Classificação em Cascata</h5><div class="cascata-flow">';
+  const steps = [
+    ['Classe / Termo', t.termo],
+    ['Subclasse', c.subclasse],
+    ['Mecanismo', c.mecanismo]
+  ];
+  steps.forEach((s,i)=>{
+    html += '<div class="cascata-step"><div class="cs-num">'+(i+1)+'</div><div class="cs-body"><div class="cs-label">'+esc(s[0])+'</div><div class="cs-val">'+esc(s[1])+'</div></div></div>';
+    if(i<steps.length-1) html += '<div class="cascata-arrow"></div>';
+  });
+  if(c.exemplos && c.exemplos.length){
+    html += '<div class="cascata-arrow"></div><div class="cascata-step"><div class="cs-num">4</div><div class="cs-body"><div class="cs-label">Exemplos</div><div class="cascata-tags">'+c.exemplos.map(e=>'<span>'+esc(e)+'</span>').join('')+'</div></div></div>';
+  }
+  if(c.aplicacoes && c.aplicacoes.length){
+    html += '<div class="cascata-arrow"></div><div class="cascata-step"><div class="cs-num">5</div><div class="cs-body"><div class="cs-label">Aplicações Clínicas</div><div class="cascata-tags">'+c.aplicacoes.map(e=>'<span>'+esc(e)+'</span>').join('')+'</div></div></div>';
+  }
+  html += '</div></div>';
+  return html;
+}
+
+function chipLink(id, cor){
+  const t = getTerm(id);
+  if(!t) return '';
+  const cat = getCat(t.categoria);
+  return '<span class="chip-link" '+(cat?ccStyle(cat.cor):'')+' onclick="abrirTermo(\''+id+'\')"><span class="cl-dot"></span>'+esc(t.termo)+'</span>';
+}
+
+function viewTermo(id){
+  const t = getTerm(id);
+  if(!t) return '<div class="empty-hint">'+icon('alert')+'<span>Termo não encontrado.</span></div>';
+  const cat = getCat(t.categoria);
+  let html = '<button class="btn-voltar-mobile" onclick="abrirCategoria(\''+cat.id+'\')">'+icon('back')+' Voltar para '+esc(cat.nome)+'</button>';
+  html += breadcrumb([
+    {label:'Início', href:"setView('inicio')"},
+    {label:cat.nome, href:"abrirCategoria('"+cat.id+"')"},
+    {label:t.termo}
+  ]);
+
+  html += '<div class="term-head"><div>' +
+    '<h2>'+esc(t.termo)+(t.sigla?'<span class="sigla-badge" '+ccStyle(cat.cor)+'>'+esc(t.sigla)+'</span>':'')+'</h2>' +
+    '<div class="term-chips"><span class="chip" '+ccStyle(cat.cor)+'>'+catEmoji(cat.id)+' '+esc(cat.nome)+'</span></div>';
+  if(t.sinonimos && t.sinonimos.length){
+    html += '<div class="sinonimos-line"><b>Sinônimos:</b> '+t.sinonimos.map(esc).join(', ')+'</div>';
+  }
+  html += '</div>';
+  html += '<div class="level-toggle">'+nivelBtn('rapido','Rápido','⚡')+nivelBtn('completo','Completo','📚')+nivelBtn('estudo','Estudo','🎓')+'</div>';
+  html += '</div>';
+
+  html += '<div class="term-body nivel-'+state.nivel+'">';
+
+  html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('book')+' Definição</h5><p>'+esc(t.definicao)+'</p></div>';
+
+  if(t.explicacaoSimplificada){
+    html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('bulb')+' Explicação Simplificada</h5><p>'+esc(t.explicacaoSimplificada)+'</p></div>';
+  }
+
+  html += renderCascata(t);
+
+  if(t.aplicacaoPratica){
+    html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('target')+' Aplicação na Prática</h5><p>'+esc(t.aplicacaoPratica)+'</p></div>';
+  }
+  if(t.exemploPratico){
+    html += '<div class="term-block" data-min-nivel="completo"><h5>'+icon('info')+' Exemplo Prático</h5><p>'+esc(t.exemploPratico)+'</p></div>';
+  }
+  if(t.vocePrecisaSaber){
+    html += '<div class="callout callout-saber" data-min-nivel="completo">'+icon('bulb')+'<p><b>💡 Você Precisa Saber:</b> '+esc(t.vocePrecisaSaber)+'</p></div>';
+  }
+  if(t.atencao){
+    html += '<div class="callout callout-atencao" data-min-nivel="estudo">'+icon('alert')+'<p><b>⚠️ Atenção:</b> '+esc(t.atencao)+'</p></div>';
+  }
+
+  if(t.naoConfunda && t.naoConfunda.length){
+    html += '<div class="naoconfunda-box" data-min-nivel="estudo"><h5>'+icon('swap')+' Não Confunda</h5>';
+    t.naoConfunda.forEach(cid=>{
+      const c = getComp(cid); if(!c) return;
+      const outros = c.termos.filter(x=>x!==id).map(x=>{const ot=getTerm(x); return ot?ot.termo:x;}).join(' × ');
+      html += '<div class="nc-link" onclick="abrirComparacao(\''+cid+'\')"><span>'+esc(c.titulo)+'</span>'+icon('chev')+'</div>';
+    });
+    html += '</div>';
+  }
+
+  if(t.termosRelacionados && t.termosRelacionados.length){
+    const validos = t.termosRelacionados.filter(rid=>getTerm(rid));
+    if(validos.length){
+      html += '<div class="term-block" data-min-nivel="completo"><h5>'+icon('link')+' Termos Relacionados</h5><div class="chips-wrap">' +
+        validos.map(rid=>chipLink(rid)).join('') + '</div></div>';
+    }
+  }
+
+  html += '<div class="term-block" data-min-nivel="rapido"><div class="fontes-box">';
+  if(t.fontes && t.fontes.length){
+    html += '<b>Fontes de referência:</b><ul>'+t.fontes.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>';
+  }
+  html += '<div class="disclaimer-fixed">'+icon('alert')+'<span>Conteúdo educacional de apoio à prática farmacêutica — não substitui a bula oficial, protocolos institucionais ou a legislação sanitária vigente. Sempre confira a versão mais atual das normas citadas.</span></div>';
+  html += '</div></div>';
+
+  html += '</div>'; // term-body
+  return html;
+}
+
+function viewCategoria(catId){
+  const cat = getCat(catId);
+  if(!cat) return viewInicio();
+  const terms = termosDaCategoria(catId);
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:cat.nome}]);
+  html += '<div class="home-hero"><h2 '+ccStyle(cat.cor)+' style="color:var(--cc)">'+catEmoji(catId)+' '+esc(cat.nome)+'</h2>' +
+    '<p>'+esc(cat.descricao||'')+'</p></div>';
+  if(terms.length===0){
+    html += '<div class="empty-hint">'+icon('info')+'<span>Nenhum termo cadastrado ainda nesta categoria — em expansão nas próximas atualizações.</span></div>';
+  } else {
+    html += '<div class="term-grid">';
+    terms.forEach(t=>{
+      html += '<div class="term-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
+        '<h4>'+esc(t.termo)+(t.sigla?' <span class="tc-sigla">('+esc(t.sigla)+')</span>':'')+'</h4>' +
+        '<p>'+esc(t.explicacaoSimplificada||t.definicao)+'</p></div>';
+    });
+    html += '</div>';
+  }
+  return html;
+}
+
+function viewNaoConfundaLista(){
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Não Confunda'}]);
+  html += '<div class="home-hero"><h2>'+icon('swap')+' Não Confunda</h2><p>Comparações objetivas entre termos frequentemente confundidos na prática e em provas — potência × eficácia, biodisponibilidade × bioequivalência, agonista × antagonista, e muitos outros.</p></div>';
+  html += '<div class="nc-grid">';
+  DATA.comparacoes.slice().sort((a,b)=>a.titulo.localeCompare(b.titulo,'pt-BR')).forEach(c=>{
+    html += '<div class="nc-card" onclick="abrirComparacao(\''+c.id+'\')"><h4>'+esc(c.titulo)+'</h4><p>'+esc(c.resumo)+'</p></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function viewComparacao(id){
+  const c = getComp(id);
+  if(!c) return viewNaoConfundaLista();
+  const termosObjs = c.termos.map(tid=>getTerm(tid)).filter(Boolean);
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Não Confunda', href:"setView('naoconfunda')"}, {label:c.titulo}]);
+  html += '<div class="home-hero"><h2>'+icon('swap')+' '+esc(c.titulo)+'</h2><p>'+esc(c.resumo)+'</p></div>';
+  html += '<div class="term-block comp-table-wrap" style="max-width:920px;"><div class="comp-table-wrap"><table class="comp-table"><thead><tr><th>Aspecto</th>' +
+    termosObjs.map(t=>'<th>'+esc(t.termo)+'</th>').join('') + '</tr></thead><tbody>';
+  (c.tabela||[]).forEach(row=>{
+    html += '<tr><td>'+esc(row.aspecto)+'</td>' + row.valores.map(v=>'<td>'+esc(v)+'</td>').join('') + '</tr>';
+  });
+  html += '</tbody></table></div></div>';
+  html += '<div class="section-title">'+icon('book')+' Ver verbetes completos</div><div class="chips-wrap">' +
+    termosObjs.map(t=>chipLink(t.id)).join('') + '</div>';
+  return html;
+}
+
+function viewBuscaResultados(q){
+  const r = buscaGlobal(q);
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Resultados para "'+q+'"'}]);
+  html += '<div class="home-hero"><h2>'+icon('search')+' Resultados para "'+esc(q)+'"</h2>' +
+    '<p>'+r.termos.length+' termo(s) encontrado(s)'+(r.comparacoes.length?' · '+r.comparacoes.length+' comparação(ões) em Não Confunda':'')+'</p></div>';
+  if(r.termos.length===0){
+    if(r.sugestoes.length){
+      html += '<div class="empty-hint">'+icon('info')+'<span>Nenhum resultado exato. Você quis dizer: ' +
+        r.sugestoes.map(t=>'<a onclick="abrirTermo(\''+t.id+'\')" style="color:var(--red-bright);cursor:pointer;font-weight:700;">'+esc(t.termo)+'</a>').join(', ') + '?</span></div>';
+    } else {
+      html += '<div class="empty-hint">'+icon('info')+'<span>Nenhum termo encontrado. Tente outra palavra-chave, sigla ou classe farmacológica.</span></div>';
+    }
+  } else {
+    html += '<div class="term-grid">';
+    r.termos.forEach(t=>{
+      const cat = getCat(t.categoria);
+      html += '<div class="term-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
+        '<h4>'+esc(t.termo)+(t.sigla?' <span class="tc-sigla">('+esc(t.sigla)+')</span>':'')+'</h4>' +
+        '<p>'+esc(t.explicacaoSimplificada||t.definicao)+'</p></div>';
+    });
+    html += '</div>';
+  }
+  if(r.comparacoes.length){
+    html += '<div class="section-title">'+icon('swap')+' Em "Não Confunda"</div><div class="nc-grid">';
+    r.comparacoes.forEach(c=>{
+      html += '<div class="nc-card" onclick="abrirComparacao(\''+c.id+'\')"><h4>'+esc(c.titulo)+'</h4><p>'+esc(c.resumo)+'</p></div>';
+    });
+    html += '</div>';
+  }
+  return html;
+}
+
+/* ---------------- Boot ---------------- */
+document.addEventListener('click', function(ev){
+  const wraps = ['global-search','ac-drop-sidebar','ac-drop-home'];
+  const inside = wraps.some(id=>{ const el=document.getElementById(id); return el && el.contains(ev.target); });
+  if(!inside) hideAutocomplete();
+});
+
+fetch('dicionario.json').then(r=>r.json()).then(data=>{
+  DATA = data;
+  DATA.categorias.forEach(c=>CAT_BY_ID[c.id]=c);
+  DATA.termos.forEach(t=>TERM_BY_ID[t.id]=t);
+  DATA.comparacoes.forEach(c=>COMP_BY_ID[c.id]=c);
+  loadHistorico();
+  const paramTermo = new URLSearchParams(window.location.search).get('termo');
+  if(paramTermo && TERM_BY_ID[paramTermo]){
+    abrirTermo(paramTermo);
+  }else{
+    renderSidebar();
+    renderMain();
+  }
+}).catch(err=>{
+  document.getElementById('main').innerHTML = '<div class="empty-hint">'+icon('alert')+'<span>Não foi possível carregar os dados do dicionário ('+esc(err.message)+'). Se estiver abrindo o arquivo localmente com duplo clique, sirva a pasta por um servidor HTTP (veja o README).</span></div>';
+});
+</script>
+</body>
+</html>
