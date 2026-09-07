@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultório Farmacêutico — FarmaPrática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eceef1; --panel:#f6f7f9; --card:#ffffff; --card2:#f1f2f5; --border:#d7dade;
+  --text:#22262c; --muted:#5b6472; --sidebar-bg:#e2e5e9; --sidebar-border:#d2d6db;
+  --red:#e4172c; --red-dark:#a10f1f;
+  --c-indigo:#6366f1; --c-indigo-dark:#4338ca; --c-indigo-glow:rgba(99,102,241,.16);
+  --c-cyan:#0e93ab; --c-teal:#0c7c70; --c-amber:#b3730a; --c-green:#158a3d; --c-blue:#2563eb;
+  --c-purple:#7a2fd1; --c-magenta:#a3336f;
+  --ok:#158a3d; --warn:#b3730a; --danger:#c81a2e; --info:#2563eb;
+  --font-display:'Sora',Arial,sans-serif; --font-body:'Inter',Arial,sans-serif;
+  --radius:12px; --sidebar-w:250px; --header-h:64px;
+}
+body.dark{
+  --bg:#12151a; --panel:#181c22; --card:#1e232b; --card2:#242a33; --border:#2a3038;
+  --text:#e7ebf0; --muted:#9aa4b2; --sidebar-bg:#181c22; --sidebar-border:#2a3038;
+  --c-indigo:#818cf8; --c-indigo-dark:#6366f1; --c-indigo-glow:rgba(129,140,248,.2);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--font-body);
+  min-height:100vh; transition:background .2s,color .2s; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+input,select,textarea{
+  font-family:inherit;background:var(--card2);color:var(--text);border:1px solid var(--border);
+  border-radius:8px;padding:9px 10px;font-size:.85rem;width:100%;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--c-indigo);outline-offset:1px;}
+label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:4px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;}
+.field{margin-bottom:12px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:760px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
+.hidden{display:none!important;}
+
+/* ===== Header ===== */
+.topbar-app{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;row-gap:8px;
+  padding:10px 20px;background:var(--panel);border-bottom:3px solid rgba(228,23,44,.4);
+  position:relative;z-index:50;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none;}
+.brand img{width:36px;height:36px;object-fit:contain;display:block;}
+.brand-text h1{font-family:var(--font-display);font-size:.95rem;margin:0;color:var(--text);font-weight:800;line-height:1.1;}
+.brand-text p{font-size:.64rem;color:var(--muted);margin:1px 0 0;line-height:1.2;}
+.titulo-wrap{flex:1 1 240px;text-align:center;min-width:0;}
+.titulo-wrap h2{font-family:var(--font-display);font-weight:800;font-size:1.05rem;margin:0;color:var(--text);letter-spacing:.01em;}
+.titulo-wrap span{display:block;font-size:.68rem;font-weight:500;color:var(--muted);margin-top:2px;}
+.topbar-right{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto;}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card2);display:flex;align-items:center;justify-content:center;color:var(--text);flex:none;}
+.theme-toggle svg{width:17px;height:17px;}
+.mobile-nav-toggle{display:none;}
+@media(max-width:900px){
+  .topbar-app{padding:8px 12px;}
+  .brand-text{display:none;}
+  .brand img{width:30px;height:30px;}
+  .titulo-wrap h2{font-size:.86rem;}
+  .titulo-wrap span{display:none;}
+}
+
+/* ===== Integration strip ===== */
+.integration-bar{display:flex;gap:8px;flex-wrap:wrap;padding:8px 20px;background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;}
+.integration-bar a{display:inline-flex;align-items:center;gap:6px;font-size:.71rem;font-weight:600;padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--card2);color:var(--muted);white-space:nowrap;text-decoration:none;flex:none;}
+.integration-bar a:hover{color:var(--text);border-color:var(--c-indigo);}
+
+/* ===== App shell ===== */
+.app-shell{display:flex;align-items:flex-start;}
+.sidebar{
+  width:var(--sidebar-w);flex:none;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);
+  position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;padding:10px 0 30px;
+}
+.side-group-label{font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:14px 18px 6px;font-weight:700;}
+.side-link{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 18px;font-size:.82rem;color:var(--muted);text-decoration:none;border-left:3px solid transparent;font-weight:500;background:transparent;border-top:none;border-bottom:none;border-right:none;}
+.side-link:hover{background:var(--card2);color:var(--text);}
+.side-link.active{background:var(--card2);color:var(--text);border-left-color:var(--c-indigo);font-weight:700;}
+.side-link .ic{font-size:1rem;width:20px;text-align:center;flex:none;}
+.side-link .lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.main{flex:1;min-width:0;padding:22px 26px 70px;}
+.sidebar-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:59;}
+@media(max-width:900px){
+  .app-shell{display:block;}
+  .sidebar{position:fixed;left:0;top:0;height:100vh;z-index:60;width:280px;transform:translateX(-100%);transition:transform .2s ease;box-shadow:0 0 30px rgba(0,0,0,.3);padding-top:14px;}
+  .sidebar.open{transform:translateX(0);}
+  .sidebar-backdrop.show{display:block;}
+  .mobile-nav-toggle{display:flex;align-items:center;gap:7px;margin:10px 12px 0;padding:9px 13px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:.8rem;font-weight:700;width:calc(100% - 24px);justify-content:center;}
+  .main{padding:14px 12px 60px;}
+}
+
+/* ===== Cards / typography ===== */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px;}
+.card h2{font-family:var(--font-display);font-size:1rem;margin:0 0 4px;}
+.card h3{font-family:var(--font-display);font-size:.88rem;margin:0 0 8px;}
+.card .sub{color:var(--muted);font-size:.78rem;margin:0 0 14px;}
+.section-title{font-family:var(--font-display);font-size:1.35rem;font-weight:800;margin:0 0 4px;}
+.section-desc{color:var(--muted);font-size:.85rem;margin:0 0 18px;max-width:820px;}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:9px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:.81rem;font-weight:600;white-space:nowrap;}
+.btn:hover{border-color:var(--c-indigo);}
+.btn-primary{background:linear-gradient(135deg,var(--c-indigo),var(--c-indigo-dark));border-color:transparent;color:#fff;}
+.btn-primary:hover{filter:brightness(1.08);}
+.btn-danger{background:transparent;border-color:var(--danger);color:var(--danger);}
+.btn-sm{padding:5px 10px;font-size:.72rem;border-radius:7px;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:.68rem;font-weight:700;letter-spacing:.02em;white-space:nowrap;}
+.pill-ok{background:rgba(21,138,61,.15);color:var(--ok);}
+.pill-warn{background:rgba(179,115,10,.15);color:var(--warn);}
+.pill-danger{background:rgba(200,26,46,.15);color:var(--danger);}
+.pill-info{background:rgba(37,99,235,.15);color:var(--info);}
+.pill-muted{background:var(--card2);color:var(--muted);}
+
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+th,td{padding:8px 9px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;}
+th{font-size:.66rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);font-weight:700;white-space:nowrap;}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;}
+.table-wrap table{border:none;}
+.empty-state{padding:26px 14px;text-align:center;color:var(--muted);font-size:.85rem;border:1px dashed var(--border);border-radius:10px;}
+.dic-link{color:var(--c-indigo);text-decoration:none;font-weight:700;border-bottom:1px dotted var(--c-indigo);}
+.dic-link:hover{opacity:.8;}
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:2px 7px;font-size:.7rem;margin:0 4px 4px 0;}
+
+.grid-dash{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:1100px){.grid-dash{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.grid-dash{grid-template-columns:1fr;}}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.kpi .n{font-family:var(--font-display);font-size:1.7rem;font-weight:800;line-height:1;}
+.kpi .l{font-size:.73rem;color:var(--muted);margin-top:6px;}
+
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:4px;}
+.tool-tile{border:1px solid var(--border);border-top:3px solid var(--tile-c,var(--c-indigo));background:var(--card);border-radius:10px;padding:13px 12px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:4px;}
+.tool-tile:hover{border-color:var(--tile-c,var(--c-indigo));}
+.tool-tile .ic{font-size:1.25rem;}
+.tool-tile b{font-size:.81rem;font-family:var(--font-display);}
+.tool-tile span{font-size:.67rem;color:var(--muted);}
+
+.patient-picker{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:11px 15px;margin-bottom:18px;}
+.patient-badge{font-family:var(--font-display);font-weight:800;font-size:.98rem;}
+.patient-sub{font-size:.72rem;color:var(--muted);}
+
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.tab-btn{padding:8px 13px;font-size:.78rem;font-weight:600;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;}
+.tab-btn.active{color:var(--c-indigo);border-bottom-color:var(--c-indigo);}
+.tab-btn:hover{color:var(--text);}
+
+.alert-box{display:flex;gap:10px;align-items:flex-start;padding:10px 13px;border-radius:9px;border-left:4px solid var(--info);background:var(--card2);margin-bottom:10px;font-size:.82rem;}
+.alert-box.urgente{border-left-color:var(--danger);}
+.alert-box.prioritario{border-left-color:#e0663f;}
+.alert-box.atencao{border-left-color:var(--warn);}
+.alert-box.rotina{border-left-color:var(--ok);}
+.alert-box .lvl{font-weight:800;font-size:.66rem;text-transform:uppercase;display:block;margin-bottom:2px;}
+
+.disclaimer{background:rgba(179,115,10,.1);border:1px solid rgba(179,115,10,.35);color:var(--text);border-radius:9px;padding:11px 14px;font-size:.78rem;margin-bottom:14px;line-height:1.5;}
+.disclaimer b{color:var(--warn);}
+
+.soap-block{border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:10px;background:var(--card2);}
+.soap-block h4{margin:0 0 8px;font-family:var(--font-display);font-size:.82rem;}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.chip{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:.72rem;}
+
+.mai-crit{display:inline-flex;gap:3px;}
+.mai-crit button{width:27px;height:27px;border-radius:6px;border:1px solid var(--border);background:var(--card2);font-weight:800;font-size:.78rem;color:var(--muted);}
+.mai-crit button.sel-ok{background:rgba(21,138,61,.18);color:var(--ok);border-color:var(--ok);}
+.mai-crit button.sel-x{background:rgba(200,26,46,.18);color:var(--danger);border-color:var(--danger);}
+.mai-crit button.sel-q{background:rgba(179,115,10,.18);color:var(--warn);border-color:var(--warn);}
+.mai-just-row td{background:var(--panel);}
+
+.timeline{position:relative;padding-left:24px;}
+.timeline:before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:16px;}
+.tl-item:before{content:'';position:absolute;left:-24px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--c-indigo);border:2px solid var(--panel);}
+.tl-date{font-size:.68rem;color:var(--muted);font-weight:700;}
+.tl-title{font-size:.85rem;font-weight:700;margin:2px 0;}
+.tl-desc{font-size:.78rem;color:var(--muted);}
+
+.print-doc{display:none;}
+@media print{
+  body *{visibility:hidden;}
+  .print-doc,.print-doc *{visibility:visible;}
+  .print-doc{display:block;position:absolute;left:0;top:0;width:100%;padding:20px;}
+}
+.footer-note{text-align:center;color:var(--muted);font-size:.7rem;padding:18px;}
+::-webkit-scrollbar{width:9px;height:9px;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:6px;}
+</style>
+</head>
+<body>
+
+<header class="topbar-app">
+  <a href="../" class="brand">
+    <img src="logo.png" alt="FarmaPrática">
+    <div class="brand-text">
+      <h1>FarmaPrática</h1>
+      <p>Plataforma para Rotina, Gestão e Cuidado Farmacêutico</p>
+    </div>
+  </a>
+  <div class="titulo-wrap">
+    <h2>CONSULTÓRIO FARMACÊUTICO</h2>
+    <span>Cuidado farmacêutico clínico — atendimento, documentação e acompanhamento</span>
+  </div>
+  <div class="topbar-right">
+    <a href="../" class="btn btn-sm" title="Início do FarmaPrática">🏠 Início</a>
+    <button class="theme-toggle" id="themeToggle" title="Alternar tema" aria-label="Alternar tema" type="button"></button>
+  </div>
+</header>
+
+<div class="integration-bar">
+  <a href="../farmadesk/">📗 Guia de Dispensação</a>
+  <a href="../interacoes/">⚠️ Interações Medicamentosas</a>
+  <a href="../exames/">🧪 Exames Laboratoriais</a>
+  <a href="../dicionario/">📖 Dicionário Farmacêutico</a>
+  <a href="../dosespediatricas/">🧮 Calculadora Pediátrica</a>
+  <a href="../medinter/">🔁 Substituição de Medicamentos</a>
+</div>
+
+<button class="mobile-nav-toggle" id="mobileNavToggle" type="button">☰ Menu do Consultório</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main" id="main"></main>
+</div>
+
+<div class="print-doc" id="printDoc"></div>
+
+<div class="footer-note">CONSULTÓRIO FARMACÊUTICO — FarmaPrática. Ferramenta de apoio à documentação clínica; não substitui julgamento profissional, protocolos institucionais, diretrizes oficiais ou avaliação médica. Dados armazenados apenas neste navegador (localStorage).</div>
+
+<script>
+/* =========================================================================
+   CONSULTÓRIO FARMACÊUTICO — FarmaPrática
+   Reescrita completa (do zero). Armazenamento: localStorage do navegador.
+   ========================================================================= */
+'use strict';
+
+/* ---------------- Utilitários ---------------- */
+function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+function todayISO(){ return new Date().toISOString().slice(0,10); }
+function fmtDate(iso){ if(!iso) return '—'; const p=iso.split('-'); return p.length===3? `${p[2]}/${p[1]}/${p[0]}` : iso; }
+function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function calcIdade(nasc){
+  if(!nasc) return '—';
+  const b=new Date(nasc+'T00:00:00'), t=new Date();
+  if(isNaN(b.getTime())) return '—';
+  let a=t.getFullYear()-b.getFullYear(); const m=t.getMonth()-b.getMonth();
+  if(m<0||(m===0&&t.getDate()<b.getDate())) a--;
+  return a+' anos';
+}
+function calcIMC(peso,altura){
+  const p=parseFloat(peso), h=parseFloat(altura);
+  if(!p||!h) return null;
+  return Math.round((p/(h*h))*10)/10;
+}
+function classIMC(imc){
+  if(imc==null) return '—';
+  if(imc<18.5) return 'Abaixo do peso';
+  if(imc<25) return 'Eutrofia';
+  if(imc<30) return 'Sobrepeso';
+  if(imc<35) return 'Obesidade grau I';
+  if(imc<40) return 'Obesidade grau II';
+  return 'Obesidade grau III';
+}
+
+/* ---------------- Dicionário (links cruzados) ---------------- */
+const DIC_TERMOS = {
+  'clearance':'clearance','adesao':'adesao-tratamento','interacao-farmacocinetica':'interacao-farmacocinetica',
+  'ram':'ram','prm':'problema-relacionado-medicamento','meia-vida':'meia-vida',
+  'biodisponibilidade':'biodisponibilidade','automedicacao':'automedicacao','contraindicacao':'contraindicacao',
+  'farmacovigilancia':'farmacovigilancia-termo'
+};
+function dicLink(label, termoKey){
+  const id = DIC_TERMOS[termoKey] || termoKey;
+  return `<a class="dic-link" href="../dicionario/?termo=${encodeURIComponent(id)}" target="_blank" rel="noopener">${esc(label)} <small>📖</small></a>`;
+}
+
+/* ---------------- Base de dados (localStorage) ---------------- */
+const DB_KEY='fp_consultorio_db_v2';
+const THEME_KEY='farmapratica-theme';
+function defaultDB(){
+  return { pacientes:[], agenda:[], config:{ profissional:{nome:'',crf:''}, estabelecimento:{nome:'',cnpj:'',endereco:''} } };
+}
+function loadDB(){
+  try{
+    const raw=localStorage.getItem(DB_KEY);
+    if(!raw) return defaultDB();
+    const parsed=JSON.parse(raw);
+    return Object.assign(defaultDB(),parsed);
+  }catch(e){ console.error('Erro ao carregar dados; iniciando base vazia.',e); return defaultDB(); }
+}
+let DB = loadDB();
+function save(){ try{ localStorage.setItem(DB_KEY, JSON.stringify(DB)); }catch(e){ console.error('Erro ao salvar',e); } }
+
+const state = { view:'dashboard', pacienteId:null, pacTab:'ficha', editing:{} };
+function pacAtual(){ return DB.pacientes.find(p=>p.id===state.pacienteId) || null; }
+
+/* ---------------- Tema ---------------- */
+function applyTheme(t){
+  document.body.classList.toggle('dark', t==='dark');
+  const btn=document.getElementById('themeToggle');
+  if(!btn) return;
+  btn.innerHTML = t==='dark'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+}
+function initTheme(){
+  let saved='light';
+  try{ saved = localStorage.getItem(THEME_KEY) || 'light'; }catch(e){}
+  applyTheme(saved);
+  const btn=document.getElementById('themeToggle');
+  if(btn) btn.addEventListener('click', ()=>{
+    const cur = document.body.classList.contains('dark') ? 'dark':'light';
+    const next = cur==='dark' ? 'light' : 'dark';
+    try{ localStorage.setItem(THEME_KEY,next); }catch(e){}
+    applyTheme(next);
+  });
+}
+
+/* ---------------- Navegação ---------------- */
+const NAV = [
+  {group:'Visão geral', items:[
+    ['dashboard','🏠','Painel principal'],
+    ['pacientes','🧑‍🤝‍🧑','Pacientes'],
+    ['agenda','📅','Agenda'],
+    ['alertas','🔔','Alertas clínicos'],
+    ['indicadores','📊','Indicadores'],
+  ]},
+  {group:'Atendimento do paciente', items:[
+    ['pac:ficha','🪪','Ficha do paciente'],
+    ['pac:consulta','🩺','Consulta / SOAP'],
+    ['pac:medicamentos','💊','Farmacoterapia'],
+    ['pac:mai','📋','Adequação (MAI)'],
+    ['pac:conciliacao','🔄','Conciliação'],
+    ['pac:acompanhamento','📈','Acompanhamento'],
+    ['pac:cuidado','🗂️','Plano de cuidado'],
+    ['pac:procedimentos','💉','Procedimentos e vacinação'],
+    ['pac:educacao','🎓','Educação e tabagismo'],
+    ['pac:prm','⚠️','PRMs e intervenções'],
+    ['pac:encaminhamento','📤','Encaminhamento'],
+    ['pac:prescricao','📝','Prescrição farmacêutica'],
+    ['pac:documentos','🖨️','Documentos'],
+    ['pac:linha','⏱️','Linha do tempo'],
+  ]},
+  {group:'Base institucional', items:[
+    ['regulatorio','⚖️','Base regulatória'],
+    ['config','⚙️','Configurações'],
+  ]}
+];
+const PAC_TABS = [
+  ['ficha','Ficha'],['consulta','Consulta/SOAP'],['medicamentos','Farmacoterapia'],['mai','MAI'],
+  ['conciliacao','Conciliação'],['acompanhamento','Acompanhamento'],['cuidado','Plano de cuidado'],
+  ['procedimentos','Procedimentos'],['educacao','Educação/Tabagismo'],['prm','PRM/Intervenções'],
+  ['encaminhamento','Encaminhamento'],['prescricao','Prescrição'],['documentos','Documentos'],['linha','Linha do tempo']
+];
+
+function renderSidebar(){
+  const el = document.getElementById('sidebar');
+  const pacAberto = !!pacAtual();
+  let html = '';
+  NAV.forEach(grp=>{
+    html += `<div class="side-group-label">${esc(grp.group)}</div>`;
+    grp.items.forEach(([id,ic,label])=>{
+      const isPac = id.indexOf('pac:')===0;
+      const active = isPac ? (state.view==='paciente' && ('pac:'+state.pacTab)===id) : (state.view===id);
+      const disabled = isPac && !pacAberto;
+      html += `<button type="button" class="side-link ${active?'active':''}" data-act="nav:${id}" ${disabled?'disabled style="opacity:.4;cursor:not-allowed;"':''} title="${disabled?'Selecione um paciente primeiro':''}">
+        <span class="ic">${ic}</span><span class="lb">${esc(label)}</span>
+      </button>`;
+    });
+  });
+  el.innerHTML = html;
+}
+
+function renderAll(){
+  renderSidebar();
+  const main = document.getElementById('main');
+  let html;
+  switch(state.view){
+    case 'dashboard': html = viewDashboard(); break;
+    case 'pacientes': html = viewPacientes(); break;
+    case 'agenda': html = viewAgenda(); break;
+    case 'alertas': html = viewAlertas(); break;
+    case 'indicadores': html = viewIndicadores(); break;
+    case 'regulatorio': html = viewRegulatorio(); break;
+    case 'config': html = viewConfig(); break;
+    case 'paciente': html = viewPaciente(); break;
+    default: html = viewDashboard();
+  }
+  main.innerHTML = html;
+  window.scrollTo(0,0);
+}
+function navTo(id){
+  if(id.indexOf('pac:')===0){
+    if(!pacAtual()){ alert('Selecione um paciente na aba "Pacientes" antes de abrir este módulo.'); return; }
+    state.view='paciente'; state.pacTab=id.split(':')[1];
+  } else {
+    state.view=id;
+  }
+  state.editing = {};
+  renderAll();
+}
+function navTile(id,ic,label,color){
+  return `<button type="button" class="tool-tile" data-act="nav:${id}" style="--tile-c:${color};text-align:left;">
+    <span class="ic">${ic}</span><b>${esc(label)}</b>
+  </button>`;
+}
+
+/* ================= ALERTAS AUTOMÁTICOS (apoio à decisão) ================= */
+function gerarAlertas(){
+  const alertas=[];
+  DB.pacientes.forEach(p=>{
+    const ultimaEvo=(p.evolucoes||[]).slice(-1)[0];
+    if(ultimaEvo){
+      const dias=Math.floor((Date.now()-new Date(ultimaEvo.data+'T00:00:00').getTime())/86400000);
+      if(dias>180) alertas.push({nivel:'atencao',pacienteId:p.id,texto:`${p.nome}: sem consulta/evolução registrada há mais de 6 meses (${dias} dias).`});
+    } else if((p.medicamentos||[]).length){
+      alertas.push({nivel:'atencao',pacienteId:p.id,texto:`${p.nome}: possui farmacoterapia registrada mas nenhuma consulta/evolução ainda.`});
+    }
+    (p.medicamentos||[]).forEach(m=>{
+      if(m.ativo!==false && (m.adesao||'')==='Baixa') alertas.push({nivel:'prioritario',pacienteId:p.id,texto:`${p.nome}: baixa adesão relatada a ${m.principioAtivo||m.nomeComercial||'medicamento'}.`});
+    });
+    (p.intervencoes||[]).forEach(it=>{
+      if(it.resultado==='pendente'||it.resultado==='sem retorno') alertas.push({nivel:'prioritario',pacienteId:p.id,texto:`${p.nome}: intervenção farmacêutica aguardando resposta (${it.problema||'ver detalhes'}).`});
+    });
+    (p.maiAvaliacoes||[]).slice(-1).forEach(av=>{
+      (av.medicamentos||[]).forEach(m=>{
+        const nc=Object.values(m.criterios||{}).filter(v=>v==='x').length;
+        if(nc>=3) alertas.push({nivel:'urgente',pacienteId:p.id,texto:`${p.nome}: ${m.nome||'medicamento'} com ${nc} não conformidades na última avaliação de adequação (MAI adaptado).`});
+      });
+    });
+    (p.planosCuidado||[]).forEach(pl=>{
+      if(pl.status==='Necessita revisão') alertas.push({nivel:'atencao',pacienteId:p.id,texto:`${p.nome}: plano de cuidado "${pl.problema||'—'}" necessita revisão.`});
+    });
+    (p.ram||[]).forEach(r=>{
+      if(r.gravidade==='Grave'||r.gravidade==='Grave/Fatal') alertas.push({nivel:'urgente',pacienteId:p.id,texto:`${p.nome}: suspeita de RAM grave registrada (${r.medicamentoSuspeito||'—'}).`});
+    });
+  });
+  const ordem={urgente:0,prioritario:1,atencao:2,rotina:3};
+  return alertas.sort((a,b)=>ordem[a.nivel]-ordem[b.nivel]);
+}
+function labelNivel(n){ return {urgente:'🔴 Urgente',prioritario:'🟠 Prioritário',atencao:'🟡 Atenção',rotina:'🟢 Rotina'}[n]||n; }
+
+/* ================= DASHBOARD ================= */
+function viewDashboard(){
+  const totalPac=DB.pacientes.length;
+  const hoje=todayISO();
+  const retornos=(DB.agenda||[]).filter(a=>a.data>=hoje).length;
+  let intervPend=0;
+  DB.pacientes.forEach(p=>{ intervPend += (p.intervencoes||[]).filter(i=>i.resultado==='pendente'||i.resultado==='sem retorno').length; });
+  const alertas=gerarAlertas();
+  const proxAgenda=(DB.agenda||[]).filter(a=>a.data>=hoje).sort((a,b)=>a.data.localeCompare(b.data)).slice(0,5);
+  const semAcompanhamento = DB.pacientes.filter(p=>{
+    const u=(p.evolucoes||[]).slice(-1)[0];
+    if(!u) return true;
+    return Math.floor((Date.now()-new Date(u.data+'T00:00:00').getTime())/86400000)>180;
+  }).length;
+
+  return `
+  <div class="section-title">Painel principal</div>
+  <div class="section-desc">Visão geral do consultório farmacêutico: pacientes em acompanhamento, pendências, alertas clínicos e acesso rápido aos módulos.</div>
+
+  <div class="grid-dash">
+    <div class="kpi"><div class="n">${totalPac}</div><div class="l">Pacientes cadastrados</div></div>
+    <div class="kpi"><div class="n">${retornos}</div><div class="l">Retornos/agendamentos futuros</div></div>
+    <div class="kpi"><div class="n">${intervPend}</div><div class="l">Intervenções aguardando resposta</div></div>
+    <div class="kpi"><div class="n">${alertas.length}</div><div class="l">Alertas clínicos ativos</div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>Acesso rápido</h2>
+    <div class="tools-grid">
+      ${navTile('pacientes','🧑‍🤝‍🧑','Novo paciente','var(--c-indigo)')}
+      ${navTile('pac:consulta','🩺','Consulta farmacêutica','var(--c-teal)')}
+      ${navTile('pac:mai','📋','Revisão da farmacoterapia (MAI)','var(--c-amber)')}
+      ${navTile('pac:conciliacao','🔄','Conciliação medicamentosa','var(--c-cyan)')}
+      ${navTile('pac:acompanhamento','📈','Acompanhamento','var(--c-green)')}
+      ${navTile('pac:procedimentos','💉','Procedimentos','var(--c-blue)')}
+      ${navTile('pac:educacao','🎓','Educação em saúde','var(--c-purple)')}
+      ${navTile('pac:prescricao','📝','Prescrição farmacêutica','var(--c-magenta)')}
+      ${navTile('pac:encaminhamento','📤','Encaminhamento','var(--c-indigo)')}
+      ${navTile('pac:documentos','🖨️','Documentos','var(--c-teal)')}
+      ${navTile('agenda','📅','Agenda','var(--c-blue)')}
+      ${navTile('alertas','🔔','Alertas clínicos','var(--red)')}
+      ${navTile('indicadores','📊','Indicadores','var(--c-green)')}
+      ${navTile('regulatorio','⚖️','Protocolos e base regulatória','var(--c-purple)')}
+    </div>
+    <p class="sub" style="margin-top:10px;">Selecione um paciente em <b>Pacientes</b> para habilitar os módulos clínicos (consulta, farmacoterapia, acompanhamento etc.).</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Pacientes em acompanhamento</h2>
+      ${DB.pacientes.length? `<table><tr><th>Nome</th><th>Idade</th><th>Última evolução</th></tr>${DB.pacientes.slice(0,6).map(p=>{
+        const u=(p.evolucoes||[]).slice(-1)[0];
+        return `<tr><td><b>${esc(p.nome)}</b></td><td>${calcIdade(p.nascimento)}</td><td>${u?fmtDate(u.data):'—'}</td></tr>`;
+      }).join('')}</table>` : '<div class="empty-state">Nenhum paciente cadastrado ainda.</div>'}
+      <p class="sub" style="margin:8px 0 0;">${semAcompanhamento} paciente(s) sem acompanhamento recente (&gt;6 meses ou sem evolução registrada).</p>
+    </div>
+    <div class="card">
+      <h2>Próximos retornos</h2>
+      ${proxAgenda.length? `<table><tr><th>Data</th><th>Paciente</th><th>Tipo</th></tr>${proxAgenda.map(a=>{
+        const p=DB.pacientes.find(x=>x.id===a.pacienteId);
+        return `<tr><td>${fmtDate(a.data)}</td><td>${esc(p?p.nome:'—')}</td><td>${esc(a.tipo||'—')}</td></tr>`;
+      }).join('')}</table>` : '<div class="empty-state">Nenhum retorno agendado.</div>'}
+      <div class="btn-row"><button type="button" class="btn btn-sm" data-act="nav:agenda">Abrir agenda completa</button></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Alertas clínicos recentes</h2>
+    ${alertas.length? alertas.slice(0,6).map(a=>`<div class="alert-box ${a.nivel}"><div><span class="lvl">${labelNivel(a.nivel)}</span>${esc(a.texto)}</div></div>`).join('') : '<div class="empty-state">Nenhum alerta identificado no momento.</div>'}
+    ${alertas.length>6?`<div class="btn-row"><button type="button" class="btn btn-sm" data-act="nav:alertas">Ver todos (${alertas.length})</button></div>`:''}
+  </div>
+  <div class="disclaimer"><b>Apoio à decisão:</b> os alertas e sugestões desta ferramenta são gerados por regras automáticas simples a partir dos dados registrados — não são inteligência artificial nem substituem julgamento clínico. A decisão final é sempre do profissional farmacêutico, considerando protocolos institucionais, diretrizes oficiais e avaliação médica quando necessária.</div>
+  `;
+}
+
+/* ================= PACIENTES ================= */
+function viewPacientes(){
+  const list=DB.pacientes;
+  const ed=state.editing.pacienteForm;
+  return `
+  <div class="section-title">Pacientes</div>
+  <div class="section-desc">Cadastro e seleção de pacientes em acompanhamento farmacoterapêutico.</div>
+
+  <div class="card">
+    <h2>${ed?'Editar paciente':'Novo paciente'}</h2>
+    <form id="formPaciente" data-act-submit="save-paciente">
+      <div class="grid3">
+        <div class="field"><label>Nome completo *</label><input name="nome" required value="${esc(ed?.nome||'')}"></div>
+        <div class="field"><label>Data de nascimento</label><input type="date" name="nascimento" value="${esc(ed?.nascimento||'')}"></div>
+        <div class="field"><label>Sexo</label><select name="sexo">
+          <option value="">Selecione</option>
+          <option ${ed?.sexo==='Feminino'?'selected':''}>Feminino</option>
+          <option ${ed?.sexo==='Masculino'?'selected':''}>Masculino</option>
+          <option ${ed?.sexo==='Outro'?'selected':''}>Outro</option>
+        </select></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Contato</label><input name="contato" value="${esc(ed?.contato||'')}"></div>
+        <div class="field"><label>Profissão</label><input name="profissao" value="${esc(ed?.profissao||'')}"></div>
+        <div class="field"><label>Cuidador/responsável (se aplicável)</label><input name="cuidador" value="${esc(ed?.cuidador||'')}"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="submit">${ed?'Salvar alterações':'Cadastrar paciente'}</button>
+        ${ed?'<button class="btn" type="button" data-act="cancel-edit-pac">Cancelar</button>':''}
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Pacientes cadastrados (${list.length})</h2>
+    ${list.length? `<div class="table-wrap"><table>
+      <tr><th>Nome</th><th>Idade</th><th>Sexo</th><th>Contato</th><th>Ações</th></tr>
+      ${list.map(p=>`<tr>
+        <td><b>${esc(p.nome)}</b></td>
+        <td>${calcIdade(p.nascimento)}</td>
+        <td>${esc(p.sexo||'—')}</td>
+        <td>${esc(p.contato||'—')}</td>
+        <td>
+          <button type="button" class="btn btn-sm" data-act="abrir-pac:${p.id}">Abrir ficha</button>
+          <button type="button" class="btn btn-sm" data-act="edit-pac:${p.id}">Editar</button>
+          <button type="button" class="btn btn-sm btn-danger" data-act="del-pac:${p.id}">Excluir</button>
+        </td>
+      </tr>`).join('')}
+    </table></div>` : '<div class="empty-state">Nenhum paciente cadastrado ainda.</div>'}
+  </div>
+  `;
+}
+
+/* ================= AGENDA ================= */
+function viewAgenda(){
+  const list=(DB.agenda||[]).slice().sort((a,b)=>a.data.localeCompare(b.data));
+  const ed = state.editing.agendaId ? (DB.agenda||[]).find(a=>a.id===state.editing.agendaId) : null;
+  return `
+  <div class="section-title">Agenda</div>
+  <div class="section-desc">Consultas, retornos, acompanhamento, vacinação, procedimentos e revisão da farmacoterapia.</div>
+  <div class="card">
+    <h2>${ed?'Editar agendamento':'Novo agendamento'}</h2>
+    <form id="formAgenda" data-act-submit="save-agenda">
+      <div class="grid3">
+        <div class="field"><label>Paciente *</label><select name="pacienteId" required>
+          <option value="">Selecione</option>
+          ${DB.pacientes.map(p=>`<option value="${p.id}" ${ed?.pacienteId===p.id?'selected':''}>${esc(p.nome)}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Data *</label><input type="date" name="data" required value="${esc(ed?.data||'')}"></div>
+        <div class="field"><label>Tipo</label><select name="tipo">
+          ${['Consulta','Retorno','Revisão da farmacoterapia','Vacinação','Procedimento','Acompanhamento'].map(t=>`<option ${ed?.tipo===t?'selected':''}>${t}</option>`).join('')}
+        </select></div>
+      </div>
+      <div class="field"><label>Observações</label><input name="obs" value="${esc(ed?.obs||'')}"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="submit">${ed?'Salvar':'Agendar'}</button>
+        ${ed?'<button class="btn" type="button" data-act="cancel-edit-agenda">Cancelar</button>':''}
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Agendamentos (${list.length})</h2>
+    ${list.length? `<div class="table-wrap"><table><tr><th>Data</th><th>Paciente</th><th>Tipo</th><th>Obs.</th><th>Ações</th></tr>
+      ${list.map(a=>{ const p=DB.pacientes.find(x=>x.id===a.pacienteId);
+        return `<tr><td>${fmtDate(a.data)}</td><td>${esc(p?p.nome:'—')}</td><td>${esc(a.tipo||'—')}</td><td>${esc(a.obs||'—')}</td>
+        <td><button type="button" class="btn btn-sm" data-act="edit-agenda:${a.id}">Editar</button>
+        <button type="button" class="btn btn-sm btn-danger" data-act="del-agenda:${a.id}">Excluir</button></td></tr>`;
+      }).join('')}
+    </table></div>` : '<div class="empty-state">Nenhum agendamento cadastrado.</div>'}
+  </div>
+  `;
+}
+
+/* ================= ALERTAS ================= */
+function viewAlertas(){
+  const alertas=gerarAlertas();
+  return `
+  <div class="section-title">Alertas clínicos</div>
+  <div class="section-desc">Gerados automaticamente a partir dos dados registrados nos pacientes — apoio à decisão, não substitui julgamento clínico.</div>
+  <div class="card">
+    ${alertas.length? alertas.map(a=>`<div class="alert-box ${a.nivel}"><div><span class="lvl">${labelNivel(a.nivel)}</span>${esc(a.texto)}
+      <div class="btn-row"><button type="button" class="btn btn-sm" data-act="abrir-pac:${a.pacienteId}">Abrir paciente</button></div>
+    </div></div>`).join('') : '<div class="empty-state">Nenhum alerta no momento.</div>'}
+  </div>`;
+}
+
+/* ================= INDICADORES ================= */
+function viewIndicadores(){
+  const pacientes=DB.pacientes;
+  let consultas=0,revisoes=0,conciliacoes=0,intervencoes=0,encaminhamentos=0,procedimentos=0,rastreamentos=0,vacinacoes=0;
+  pacientes.forEach(p=>{
+    consultas += (p.evolucoes||[]).length;
+    revisoes += (p.maiAvaliacoes||[]).length;
+    conciliacoes += (p.conciliacoes||[]).length;
+    intervencoes += (p.intervencoes||[]).length;
+    encaminhamentos += (p.encaminhamentos||[]).length;
+    rastreamentos += (p.rastreamentos||[]).length;
+    vacinacoes += (p.vacinas||[]).length;
+    procedimentos += (p.administracoes||[]).length;
+  });
+  return `
+  <div class="section-title">Indicadores</div>
+  <div class="section-desc">Painel do consultório — visão agregada de toda a atividade clínica registrada.</div>
+  <div class="grid-dash">
+    <div class="kpi"><div class="n">${pacientes.length}</div><div class="l">Pacientes ativos</div></div>
+    <div class="kpi"><div class="n">${consultas}</div><div class="l">Consultas/evoluções (SOAP)</div></div>
+    <div class="kpi"><div class="n">${revisoes}</div><div class="l">Revisões de farmacoterapia (MAI)</div></div>
+    <div class="kpi"><div class="n">${conciliacoes}</div><div class="l">Conciliações medicamentosas</div></div>
+    <div class="kpi"><div class="n">${intervencoes}</div><div class="l">Intervenções farmacêuticas</div></div>
+    <div class="kpi"><div class="n">${encaminhamentos}</div><div class="l">Encaminhamentos</div></div>
+    <div class="kpi"><div class="n">${rastreamentos}</div><div class="l">Rastreamentos/aferições</div></div>
+    <div class="kpi"><div class="n">${vacinacoes}</div><div class="l">Doses de vacina registradas</div></div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <h2>Por paciente</h2>
+    <div class="table-wrap"><table><tr><th>Paciente</th><th>Consultas</th><th>MAI</th><th>PRMs</th><th>Intervenções</th><th>Adesão média*</th></tr>
+      ${pacientes.map(p=>{
+        const adesoes=(p.medicamentos||[]).map(m=>m.adesao).filter(Boolean);
+        const boa=adesoes.filter(a=>a==='Boa').length;
+        const adesaoTxt = adesoes.length? `${Math.round(boa/adesoes.length*100)}% boa` : '—';
+        return `<tr><td>${esc(p.nome)}</td><td>${(p.evolucoes||[]).length}</td><td>${(p.maiAvaliacoes||[]).length}</td><td>${(p.prms||[]).length}</td><td>${(p.intervencoes||[]).length}</td><td>${adesaoTxt}</td></tr>`;
+      }).join('') || '<tr><td colspan="6" class="empty-state">Nenhum paciente cadastrado.</td></tr>'}
+    </table></div>
+    <p class="sub" style="margin-top:8px;">*percentual de medicamentos ativos com adesão relatada como "Boa", sobre o total de medicamentos com adesão informada.</p>
+  </div>`;
+}
+
+/* ================= BASE REGULATÓRIA ================= */
+const NORMAS_PADRAO=[
+  {norma:'Resolução CFF nº 585/2013', tema:'Regulamenta as atribuições clínicas do farmacêutico', escopo:'Nacional (CFF)'},
+  {norma:'Resolução CFF nº 586/2013', tema:'Regula a prescrição farmacêutica', escopo:'Nacional (CFF)'},
+  {norma:'RDC Anvisa nº 44/2009', tema:'Boas práticas farmacêuticas em farmácias e drogarias', escopo:'Nacional (Anvisa)'},
+];
+function viewRegulatorio(){
+  if(!DB.regulatorio || !DB.regulatorio.length) DB.regulatorio = NORMAS_PADRAO.map(n=>Object.assign({},n));
+  const list = DB.regulatorio;
+  const ed = state.editing.normaId!=null ? list[state.editing.normaId] : null;
+  return `
+  <div class="section-title">Base regulatória</div>
+  <div class="disclaimer"><b>Atenção:</b> esta informação pode ter sido alterada por nova legislação. Sempre priorize a fonte oficial (Diário Oficial da União, portal do CFF, portal da Anvisa) antes de qualquer decisão baseada nestas referências. As normas abaixo são editáveis — atualize conforme resoluções posteriores que alterem ou substituam as anteriores.</div>
+  <div class="card">
+    <h2>${ed!=null?'Editar norma':'Adicionar norma/protocolo'}</h2>
+    <form id="formNorma" data-act-submit="save-norma">
+      <div class="grid2">
+        <div class="field"><label>Norma</label><input name="norma" required value="${esc(ed?.norma||'')}" placeholder="Ex.: Resolução CFF nº 585/2013"></div>
+        <div class="field"><label>Data</label><input type="date" name="data" value="${esc(ed?.data||'')}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Vigência</label><input name="vigencia" value="${esc(ed?.vigencia||'Em vigor')}"></div>
+        <div class="field"><label>Escopo</label><input name="escopo" value="${esc(ed?.escopo||'')}" placeholder="Ex.: Nacional (CFF)"></div>
+      </div>
+      <div class="field"><label>Tema</label><input name="tema" value="${esc(ed?.tema||'')}"></div>
+      <div class="grid2">
+        <div class="field"><label>Alterações / norma substituída</label><input name="alteracoes" value="${esc(ed?.alteracoes||'')}"></div>
+        <div class="field"><label>Fonte oficial (link ou referência)</label><input name="fonte" value="${esc(ed?.fonte||'')}"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="submit">${ed!=null?'Salvar':'Adicionar'}</button>
+        ${ed!=null?'<button class="btn" type="button" data-act="cancel-edit-norma">Cancelar</button>':''}
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Normas cadastradas (${list.length})</h2>
+    <div class="table-wrap"><table><tr><th>Norma</th><th>Tema</th><th>Escopo</th><th>Vigência</th><th>Ações</th></tr>
+      ${list.map((n,idx)=>`<tr><td><b>${esc(n.norma)}</b>${n.fonte?`<br><a href="${esc(n.fonte)}" target="_blank" rel="noopener" class="dic-link">fonte oficial</a>`:''}</td><td>${esc(n.tema||'—')}</td><td>${esc(n.escopo||'—')}</td><td>${esc(n.vigencia||'—')}</td>
+      <td><button type="button" class="btn btn-sm" data-act="edit-norma:${idx}">Editar</button>
+      <button type="button" class="btn btn-sm btn-danger" data-act="del-norma:${idx}">Excluir</button></td></tr>`).join('')}
+    </table></div>
+  </div>`;
+}
+
+/* ================= CONFIGURAÇÕES ================= */
+function viewConfig(){
+  const cfg=DB.config||{profissional:{},estabelecimento:{}};
+  return `
+  <div class="section-title">Configurações</div>
+  <div class="section-desc">Dados do profissional e do estabelecimento (usados no cabeçalho dos documentos gerados) e ferramentas de dados.</div>
+  <div class="card">
+    <h2>Profissional e estabelecimento</h2>
+    <form id="formConfig" data-act-submit="save-config">
+      <div class="grid2">
+        <div class="field"><label>Nome do farmacêutico responsável</label><input name="profNome" value="${esc(cfg.profissional?.nome||'')}"></div>
+        <div class="field"><label>CRF</label><input name="profCrf" value="${esc(cfg.profissional?.crf||'')}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Estabelecimento</label><input name="estabNome" value="${esc(cfg.estabelecimento?.nome||'')}"></div>
+        <div class="field"><label>CNPJ</label><input name="estabCnpj" value="${esc(cfg.estabelecimento?.cnpj||'')}"></div>
+      </div>
+      <div class="field"><label>Endereço</label><input name="estabEndereco" value="${esc(cfg.estabelecimento?.endereco||'')}"></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button></div>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Segurança, privacidade e dados</h2>
+    <p class="sub">Todos os dados desta ferramenta ficam salvos apenas no navegador deste computador (<code>localStorage</code>) — não há envio a servidores externos. Isso significa que: (1) os dados não sincronizam entre dispositivos ou navegadores; (2) limpar o cache/dados do navegador apaga os registros; (3) não há controle de acesso por senha nesta versão — se o computador é compartilhado, restrinja o acesso ao sistema operacional. Considere os princípios da LGPD ao lidar com dados de saúde: minimização, finalidade e confidencialidade.</p>
+    <div class="btn-row">
+      <button type="button" class="btn" data-act="export-json">⬇️ Exportar backup (.json)</button>
+      <label class="btn" style="margin:0;">⬆️ Importar backup<input type="file" accept=".json" id="importFile" style="display:none;"></label>
+      <button type="button" class="btn btn-danger" data-act="clear-all">🗑️ Apagar todos os dados</button>
+    </div>
+  </div>`;
+}
+/* ================= WORKSPACE DO PACIENTE ================= */
+function viewPaciente(){
+  const p=pacAtual();
+  if(!p) return `<div class="empty-state">Selecione um paciente na aba <button type="button" class="dic-link" style="background:none;border:none;padding:0;" data-act="nav:pacientes">Pacientes</button>.</div>`;
+  let body='';
+  switch(state.pacTab){
+    case 'ficha': body=tabFicha(p); break;
+    case 'consulta': body=tabConsulta(p); break;
+    case 'medicamentos': body=tabMedicamentos(p); break;
+    case 'mai': body=tabMAI(p); break;
+    case 'conciliacao': body=tabConciliacao(p); break;
+    case 'acompanhamento': body=tabAcompanhamento(p); break;
+    case 'cuidado': body=tabCuidado(p); break;
+    case 'procedimentos': body=tabProcedimentos(p); break;
+    case 'educacao': body=tabEducacao(p); break;
+    case 'prm': body=tabPRM(p); break;
+    case 'encaminhamento': body=tabEncaminhamento(p); break;
+    case 'prescricao': body=tabPrescricao(p); break;
+    case 'documentos': body=tabDocumentos(p); break;
+    case 'linha': body=tabLinha(p); break;
+    default: body=tabFicha(p);
+  }
+  return `
+  <div class="patient-picker">
+    <div>
+      <div class="patient-badge">${esc(p.nome)}</div>
+      <div class="patient-sub">${calcIdade(p.nascimento)} · ${esc(p.sexo||'sexo não informado')} · ${(p.medicamentos||[]).filter(m=>m.ativo!==false).length} medicamento(s) em uso</div>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+      <button type="button" class="btn btn-sm" data-act="nav:pacientes">Trocar paciente</button>
+      <a class="btn btn-sm" href="../interacoes/" target="_blank" rel="noopener">⚠️ Verificar interações</a>
+    </div>
+  </div>
+  <div class="tabs">
+    ${PAC_TABS.map(([id,label])=>`<button type="button" class="tab-btn ${state.pacTab===id?'active':''}" data-act="nav:pac:${id}">${esc(label)}</button>`).join('')}
+  </div>
+  ${body}
+  `;
+}
+
+/* ---- FICHA (identificação, dados clínicos, histórico) ---- */
+function tabFicha(p){
+  p.clinico = p.clinico||{};
+  p.historico = p.historico||{};
+  const imc = calcIMC(p.clinico.peso,p.clinico.altura);
+  return `
+  <div class="card">
+    <h2>Identificação</h2>
+    <form id="formIdentificacao" data-act-submit="save-identificacao">
+      <div class="grid3">
+        <div class="field"><label>Nome completo</label><input name="nome" required value="${esc(p.nome||'')}"></div>
+        <div class="field"><label>Data de nascimento</label><input type="date" name="nascimento" value="${esc(p.nascimento||'')}"></div>
+        <div class="field"><label>Idade</label><input value="${calcIdade(p.nascimento)}" disabled></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Sexo</label><select name="sexo">
+          <option value="">Selecione</option>
+          ${['Feminino','Masculino','Outro'].map(s=>`<option ${p.sexo===s?'selected':''}>${s}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Contato</label><input name="contato" value="${esc(p.contato||'')}"></div>
+        <div class="field"><label>Profissão</label><input name="profissao" value="${esc(p.profissao||'')}"></div>
+      </div>
+      <div class="field"><label>Cuidador/responsável (se aplicável)</label><input name="cuidador" value="${esc(p.cuidador||'')}"></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar identificação</button></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Dados clínicos</h2>
+    <p class="sub">Atualização longitudinal — cada vez que este formulário é salvo, os valores atuais também alimentam o gráfico de <button type="button" class="dic-link" style="background:none;border:none;padding:0;" data-act="nav:pac:acompanhamento">Acompanhamento</button>.</p>
+    <form id="formClinico" data-act-submit="save-clinico">
+      <div class="grid4">
+        <div class="field"><label>Peso (kg)</label><input type="number" step="0.1" name="peso" value="${esc(p.clinico.peso||'')}"></div>
+        <div class="field"><label>Altura (m)</label><input type="number" step="0.01" name="altura" value="${esc(p.clinico.altura||'')}"></div>
+        <div class="field"><label>IMC</label><input value="${imc!=null?imc+' — '+classIMC(imc):'—'}" disabled></div>
+        <div class="field"><label>Circunf. abdominal (cm)</label><input type="number" step="0.1" name="circAbd" value="${esc(p.clinico.circAbd||'')}"></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Pressão arterial (mmHg)</label><input name="pa" placeholder="Ex.: 120/80" value="${esc(p.clinico.pa||'')}"></div>
+        <div class="field"><label>Freq. cardíaca (bpm)</label><input type="number" name="fc" value="${esc(p.clinico.fc||'')}"></div>
+        <div class="field"><label>Freq. respiratória (irpm)</label><input type="number" name="fr" value="${esc(p.clinico.fr||'')}"></div>
+        <div class="field"><label>Temperatura (°C)</label><input type="number" step="0.1" name="temp" value="${esc(p.clinico.temp||'')}"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Saturação de O2 (%)</label><input type="number" name="sato2" value="${esc(p.clinico.sato2||'')}"></div>
+        <div class="field"><label>Glicemia (mg/dL)</label><input type="number" name="glicemia" value="${esc(p.clinico.glicemia||'')}"></div>
+        <div class="field"><label>Outros parâmetros</label><input name="outros" value="${esc(p.clinico.outros||'')}"></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar dados clínicos</button></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Histórico</h2>
+    <form id="formHistorico" data-act-submit="save-historico">
+      <div class="grid2">
+        <div class="field"><label>Doenças diagnosticadas</label><textarea name="doencas" rows="2">${esc(p.historico.doencas||'')}</textarea></div>
+        <div class="field"><label>Alergias</label><textarea name="alergias" rows="2">${esc(p.historico.alergias||'')}</textarea></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Cirurgias</label><textarea name="cirurgias" rows="2">${esc(p.historico.cirurgias||'')}</textarea></div>
+        <div class="field"><label>Hospitalizações</label><textarea name="hospitalizacoes" rows="2">${esc(p.historico.hospitalizacoes||'')}</textarea></div>
+      </div>
+      <div class="field"><label>Antecedentes familiares</label><textarea name="familiares" rows="2">${esc(p.historico.familiares||'')}</textarea></div>
+      <div class="grid3">
+        <div class="field"><label>Alimentação</label><input name="alimentacao" value="${esc(p.historico.alimentacao||'')}"></div>
+        <div class="field"><label>Atividade física</label><input name="atividadeFisica" value="${esc(p.historico.atividadeFisica||'')}"></div>
+        <div class="field"><label>Sono</label><input name="sono" value="${esc(p.historico.sono||'')}"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>${dicLink('Tabagismo','automedicacao')}</label><select name="tabagismo">
+          ${['Não fumante','Ex-fumante','Fumante'].map(t=>`<option ${p.historico.tabagismo===t?'selected':''}>${t}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Consumo de álcool</label><select name="alcool">
+          ${['Não consome','Ocasional','Frequente'].map(t=>`<option ${p.historico.alcool===t?'selected':''}>${t}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Histórico medicamentoso (resumo)</label><input name="medicamentosoResumo" value="${esc(p.historico.medicamentosoResumo||'')}"></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar histórico</button></div>
+    </form>
+  </div>`;
+}
+
+/* ---- CONSULTA / SOAP ---- */
+const CHECKLIST_PRE=['Identificação','Queixa principal','História clínica','Alergias','Medicamentos','Automedicação','Suplementos','Adesão','Interações','Exames','Sinais de alerta','Parâmetros clínicos','Plano de cuidado','Orientações','Encaminhamento','Retorno','Registro completo'];
+const CHECKLIST_ALTA=['Todos os problemas foram registrados?','A farmacoterapia foi avaliada?','Há alguma interação relevante?','Há algum PRM?','Há necessidade de intervenção?','Há necessidade de encaminhamento?','O paciente recebeu orientação?','Foram definidas metas?','Foi definido acompanhamento?','Foi registrada a próxima avaliação?'];
+
+function tabConsulta(p){
+  const list=p.evolucoes||[];
+  const ed = state.editing.evoId ? list.find(e=>e.id===state.editing.evoId) : (state.editing.evoDraft);
+  const draft = ed || {};
+  const showForm = state.editing.evoOpen;
+  return `
+  <div class="card">
+    <h2>Consulta farmacêutica — evolução SOAP</h2>
+    <p class="sub">Acolhimento, anamnese farmacêutica, histórico de saúde, estilo de vida e medicamentos são registrados dentro do bloco Subjetivo/Objetivo do SOAP abaixo. Cada consulta salva vira uma evolução clínica no prontuário do paciente.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="evo-open">+ Nova consulta / evolução</button></div>` : `
+    <form id="formEvolucao" data-act-submit="save-evolucao">
+      <div class="disclaimer" style="margin-bottom:14px;"><b>Checklist pré-consulta (lembrete):</b> ${CHECKLIST_PRE.join(' · ')}</div>
+
+      <h3>Acolhimento e anamnese farmacêutica</h3>
+      <div class="grid2">
+        <div class="field"><label>Motivo da consulta / queixa principal</label><textarea name="motivo" rows="2">${esc(draft.motivo||'')}</textarea></div>
+        <div class="field"><label>Expectativa do paciente / objetivo do atendimento</label><textarea name="expectativa" rows="2">${esc(draft.expectativa||'')}</textarea></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>História da condição (início, duração, evolução, intensidade)</label><textarea name="historiaCondicao" rows="2">${esc(draft.historiaCondicao||'')}</textarea></div>
+        <div class="field"><label>Fatores desencadeantes / melhora / piora / sintomas associados</label><textarea name="fatores" rows="2">${esc(draft.fatores||'')}</textarea></div>
+      </div>
+      <div class="field"><label>Tratamentos anteriores e resposta</label><textarea name="tratamentosAnteriores" rows="2">${esc(draft.tratamentosAnteriores||'')}</textarea></div>
+
+      <h3 style="margin-top:14px;">SOAP</h3>
+      <div class="soap-block">
+        <h4>S — Subjetivo</h4>
+        <textarea name="s" rows="3" placeholder="Queixas, sintomas, relato do paciente, percepção sobre tratamento, dificuldades, adesão, eventos adversos percebidos...">${esc(draft.s||'')}</textarea>
+      </div>
+      <div class="soap-block">
+        <h4>O — Objetivo</h4>
+        <textarea name="o" rows="3" placeholder="Sinais vitais, exames, parâmetros bioquímicos, medidas antropométricas, dados clínicos, medicamentos, informações documentais...">${esc(draft.o||'')}</textarea>
+      </div>
+      <div class="soap-block">
+        <h4>A — Avaliação</h4>
+        <textarea name="a" rows="3" placeholder="Problemas identificados, hipóteses, PRMs, resultados negativos associados a medicamentos, avaliação da farmacoterapia, riscos, necessidades do paciente...">${esc(draft.a||'')}</textarea>
+      </div>
+      <div class="soap-block">
+        <h4>P — Plano</h4>
+        <textarea name="pl" rows="3" placeholder="Intervenção, orientação, educação, encaminhamento, monitorização, metas, retorno, acompanhamento...">${esc(draft.pl||'')}</textarea>
+      </div>
+      <div class="field"><label>Data do retorno sugerido</label><input type="date" name="retorno" value="${esc(draft.retorno||'')}"></div>
+
+      <div class="disclaimer" style="margin-top:10px;"><b>Checklist de alta do atendimento (lembrete):</b> ${CHECKLIST_ALTA.join(' · ')}</div>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="submit">${state.editing.evoId?'Salvar alterações':'Salvar evolução'}</button>
+        <button class="btn" type="button" data-act="evo-cancel">Cancelar</button>
+      </div>
+    </form>`}
+  </div>
+
+  <div class="card">
+    <h2>Evoluções registradas (${list.length})</h2>
+    ${list.length? list.slice().reverse().map(e=>`
+      <div class="soap-block">
+        <h4>${fmtDate(e.data)} ${e.retorno?`· retorno sugerido: ${fmtDate(e.retorno)}`:''}</h4>
+        <p class="sub" style="margin:0 0 6px;"><b>Motivo:</b> ${esc(e.motivo||'—')}</p>
+        <p style="font-size:.8rem;margin:2px 0;"><b>S:</b> ${esc(e.s||'—')}</p>
+        <p style="font-size:.8rem;margin:2px 0;"><b>O:</b> ${esc(e.o||'—')}</p>
+        <p style="font-size:.8rem;margin:2px 0;"><b>A:</b> ${esc(e.a||'—')}</p>
+        <p style="font-size:.8rem;margin:2px 0;"><b>P:</b> ${esc(e.pl||'—')}</p>
+        <div class="btn-row"><button type="button" class="btn btn-sm" data-act="evo-edit:${e.id}">Editar</button><button type="button" class="btn btn-sm btn-danger" data-act="evo-del:${e.id}">Excluir</button></div>
+      </div>
+    `).join('') : '<div class="empty-state">Nenhuma evolução registrada ainda.</div>'}
+  </div>`;
+}
+
+/* ---- FARMACOTERAPIA (histórico de medicamentos) ---- */
+function tabMedicamentos(p){
+  const list=p.medicamentos||[];
+  const ed = state.editing.medId ? list.find(m=>m.id===state.editing.medId) : null;
+  const showForm = state.editing.medOpen || ed;
+  return `
+  <div class="card">
+    <h2>Histórico farmacoterapêutico</h2>
+    <p class="sub">Medicamentos prescritos, automedicação, fitoterápicos, suplementos, vitaminas e produtos naturais.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="med-open">+ Adicionar medicamento</button></div>` : `
+    <form id="formMedicamento" data-act-submit="save-medicamento">
+      <div class="grid3">
+        <div class="field"><label>Princípio ativo</label><input name="principioAtivo" value="${esc(ed?.principioAtivo||'')}"></div>
+        <div class="field"><label>Nome comercial</label><input name="nomeComercial" value="${esc(ed?.nomeComercial||'')}"></div>
+        <div class="field"><label>Categoria</label><select name="categoria">
+          ${['Prescrito','Automedicação','Fitoterápico','Suplemento','Vitamina','Produto natural','Uso eventual'].map(c=>`<option ${ed?.categoria===c?'selected':''}>${c}</option>`).join('')}
+        </select></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Apresentação</label><input name="apresentacao" value="${esc(ed?.apresentacao||'')}"></div>
+        <div class="field"><label>Concentração</label><input name="concentracao" value="${esc(ed?.concentracao||'')}"></div>
+        <div class="field"><label>Forma farmacêutica</label><input name="formaFarmaceutica" value="${esc(ed?.formaFarmaceutica||'')}"></div>
+        <div class="field"><label>Via</label><input name="via" value="${esc(ed?.via||'')}"></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Dose</label><input name="dose" value="${esc(ed?.dose||'')}"></div>
+        <div class="field"><label>Frequência</label><input name="frequencia" value="${esc(ed?.frequencia||'')}"></div>
+        <div class="field"><label>Horário</label><input name="horario" value="${esc(ed?.horario||'')}"></div>
+        <div class="field"><label>Duração</label><input name="duracao" value="${esc(ed?.duracao||'')}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Indicação</label><input name="indicacao" value="${esc(ed?.indicacao||'')}"></div>
+        <div class="field"><label>Prescritor</label><input name="prescritor" value="${esc(ed?.prescritor||'')}"></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Data de início</label><input type="date" name="dataInicio" value="${esc(ed?.dataInicio||'')}"></div>
+        <div class="field"><label>Data de suspensão</label><input type="date" name="dataSuspensao" value="${esc(ed?.dataSuspensao||'')}"></div>
+        <div class="field"><label>Motivo da suspensão</label><input name="motivoSuspensao" value="${esc(ed?.motivoSuspensao||'')}"></div>
+        <div class="field"><label>${dicLink('Adesão','adesao')}</label><select name="adesao">
+          <option value="">Não avaliada</option>
+          ${['Boa','Parcial','Baixa'].map(a=>`<option ${ed?.adesao===a?'selected':''}>${a}</option>`).join('')}
+        </select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Dificuldades de administração</label><input name="dificuldades" value="${esc(ed?.dificuldades||'')}"></div>
+        <div class="field"><label>Efeitos adversos percebidos</label><input name="efeitosAdversos" value="${esc(ed?.efeitosAdversos||'')}"></div>
+      </div>
+      <div class="field"><label>Observações</label><textarea name="observacoes" rows="2">${esc(ed?.observacoes||'')}</textarea></div>
+      <div class="field"><label><input type="checkbox" style="width:auto;display:inline-block;" name="ativo" ${ed?.ativo!==false?'checked':''}> Medicamento ativo (em uso atualmente)</label></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="submit">${ed?'Salvar alterações':'Adicionar'}</button>
+        <button class="btn" type="button" data-act="med-cancel">Cancelar</button>
+      </div>
+    </form>`}
+  </div>
+  <div class="card">
+    <h2>Medicamentos registrados (${list.length})</h2>
+    ${list.length? `<div class="table-wrap"><table><tr><th>Medicamento</th><th>Dose/Freq.</th><th>Indicação</th><th>Adesão</th><th>Status</th><th>Ações</th></tr>
+      ${list.map(m=>`<tr>
+        <td><b>${esc(m.principioAtivo||m.nomeComercial||'—')}</b>${m.nomeComercial&&m.principioAtivo?`<br><span class="sub" style="margin:0;">${esc(m.nomeComercial)}</span>`:''}</td>
+        <td>${esc(m.dose||'—')} ${esc(m.frequencia||'')}</td>
+        <td>${esc(m.indicacao||'—')}</td>
+        <td>${m.adesao?`<span class="pill ${m.adesao==='Boa'?'pill-ok':m.adesao==='Baixa'?'pill-danger':'pill-warn'}">${esc(m.adesao)}</span>`:'—'}</td>
+        <td>${m.ativo!==false?'<span class="pill pill-ok">Ativo</span>':'<span class="pill pill-muted">Suspenso</span>'}</td>
+        <td><button type="button" class="btn btn-sm" data-act="med-edit:${m.id}">Editar</button>
+        <button type="button" class="btn btn-sm btn-danger" data-act="med-del:${m.id}">Excluir</button></td>
+      </tr>`).join('')}
+    </table></div>` : '<div class="empty-state">Nenhum medicamento registrado ainda.</div>'}
+    <p class="sub" style="margin-top:8px;">Base CMED/ANVISA integrada ainda não disponível no FarmaPrática para autopreenchimento — cadastro manual. Use o <a class="dic-link" href="../farmadesk/" target="_blank" rel="noopener">Guia de Dispensação</a> e o Bulário para consultar informações regulatórias do medicamento.</p>
+  </div>`;
+}
+/* ---- MAI — ÍNDICE DE ADEQUAÇÃO DE MEDICAMENTOS ---- */
+const MAI_CRITERIOS=[
+  ['indicado','É indicado?'],['efetivo','É efetivo?'],['seguro','É seguro?'],
+  ['posologia','Posologia e duração adequadas?'],['uso','Usa corretamente?'],
+  ['interacao','Tem interação relevante?'],['agrava','Agrava problema de saúde?'],
+  ['duplicidade','Está em duplicidade?'],['financeiro','É financeiramente viável?']
+];
+function maiCalc(m){
+  const crit=m.criterios||{};
+  const vals=MAI_CRITERIOS.map(c=>crit[c[0]]||'');
+  const avaliados=vals.filter(v=>v!=='').length;
+  const naoConf=vals.filter(v=>v==='x').length;
+  const semInfo=vals.filter(v=>v==='?').length;
+  const pct=avaliados? Math.round(((avaliados-naoConf-semInfo)/avaliados)*100) : null;
+  let classe='—',cor='pill-muted';
+  if(avaliados>0){
+    if(naoConf===0&&semInfo===0){classe='🟢 Adequado';cor='pill-ok';}
+    else if(naoConf<=1){classe='🟡 Requer atenção';cor='pill-warn';}
+    else if(naoConf<=2){classe='🟠 Problemas relevantes';cor='pill-danger';}
+    else{classe='🔴 Alta prioridade';cor='pill-danger';}
+  }
+  return {avaliados,naoConf,semInfo,pct,classe,cor};
+}
+function maiCritButtons(idx,key,val){
+  const opts=[['ok','✓'],['x','X'],['?','?']];
+  return `<div class="mai-crit">${opts.map(o=>`<button type="button" data-act="mai-crit:${idx}|${key}|${o[0]}" class="${val===o[0]?('sel-'+o[0]):''}">${o[1]}</button>`).join('')}</div>`;
+}
+function analiseAutomaticaMAI(meds){
+  let naoConfTotal=0; const problemas=[]; let encaminhar=false, monitorar=false;
+  meds.forEach(m=>{
+    const crit=m.criterios||{};
+    Object.values(crit).forEach(v=>{ if(v==='x') naoConfTotal++; });
+    const nome=m.nome||'Medicamento';
+    if(crit.indicado==='x') problemas.push(`${nome}: sem indicação clara registrada.`);
+    if(crit.efetivo==='x') problemas.push(`${nome}: efetividade questionável.`);
+    if(crit.seguro==='x'){ problemas.push(`${nome}: possível problema de segurança.`); encaminhar=true; }
+    if(crit.posologia==='x'){ problemas.push(`${nome}: posologia/duração possivelmente inadequada.`); monitorar=true; }
+    if(crit.uso==='x') problemas.push(`${nome}: uso incorreto relatado/observado.`);
+    if(crit.interacao==='x'){ problemas.push(`${nome}: interação relevante identificada.`); monitorar=true; }
+    if(crit.agrava==='x'){ problemas.push(`${nome}: pode agravar outro problema de saúde.`); encaminhar=true; }
+    if(crit.duplicidade==='x') problemas.push(`${nome}: possível duplicidade terapêutica.`);
+    if(crit.financeiro==='x') problemas.push(`${nome}: possível problema de acesso/custo.`);
+  });
+  return {total:meds.length,naoConfTotal,problemas,encaminhar,monitorar};
+}
+function tabMAI(p){
+  const avals=p.maiAvaliacoes||[];
+  let draft;
+  if(state.editing.maiId){ draft = avals.find(a=>a.id===state.editing.maiId); }
+  else { if(!state.editing.maiDraft) state.editing.maiDraft={subjetivo:'',objetivo:'',medicamentos:[]}; draft=state.editing.maiDraft; }
+  draft.medicamentos = draft.medicamentos||[];
+
+  const rows = draft.medicamentos.map((m,idx)=>{
+    const c=maiCalc(m);
+    return `
+    <tr data-mai-row="${idx}">
+      <td><input data-mai-nome="${idx}" value="${esc(m.nome||'')}" placeholder="Nome do medicamento" style="min-width:150px;"></td>
+      ${MAI_CRITERIOS.map(([key])=>`<td>${maiCritButtons(idx,key,(m.criterios||{})[key])}</td>`).join('')}
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="mai-del-med:${idx}">✕</button></td>
+    </tr>
+    <tr class="mai-just-row"><td colspan="${MAI_CRITERIOS.length+2}">
+      <input data-mai-just="${idx}" placeholder="Justificativa para os X / ? marcados acima (opcional)" value="${esc(m.justificativa||'')}">
+      <div style="margin-top:6px;"><span class="pill ${c.cor}">${c.classe}</span>
+      <span class="sub" style="margin-left:8px;">${c.avaliados}/9 critérios avaliados · ${c.naoConf} não conformidade(s) · ${c.semInfo} sem informação${c.pct!=null?` · Índice adaptado do FarmaPrática: ${c.pct}%`:''}</span></div>
+    </td></tr>`;
+  }).join('');
+
+  const analise=analiseAutomaticaMAI(draft.medicamentos);
+
+  return `
+  <div class="disclaimer">
+    <b>Avaliação de Adequação da Farmacoterapia — instrumento adaptado</b><br>
+    Referência metodológica: <b>Medication Appropriateness Index (MAI)</b> — Hanlon JT, Schmader KE, Samsa GP, Weinberger M, Uttech KM, Lewis IK, Cohen HJ, Feussner JR. A method for assessing drug therapy appropriateness. Journal of Clinical Epidemiology. 1992;45(10):1045-1051. DOI: 10.1016/0895-4356(92)90144-C.<br>
+    O MAI original é um instrumento baseado em critérios implícitos, aplicado por avaliador treinado. A pontuação aqui apresentada é uma <b>adaptação operacional do FarmaPrática</b> para uso clínico e educacional — não é o escore validado original nem deve ser citada como tal.
+  </div>
+  <div class="card">
+    <h2>${state.editing.maiId?'Editar avaliação':'Nova avaliação de adequação'} — ${fmtDate(draft.data||todayISO())}</h2>
+    <div class="grid2">
+      <div class="field"><label>Subjetivo</label><textarea id="maiSubjetivo" rows="3" placeholder="Queixas, percepção do paciente, sintomas, dificuldades, adesão, efeitos adversos, objetivos terapêuticos...">${esc(draft.subjetivo||'')}</textarea></div>
+      <div class="field"><label>Objetivo</label><textarea id="maiObjetivo" rows="3" placeholder="Sinais vitais, exames laboratoriais, diagnósticos, parâmetros clínicos, medicamentos, dados antropométricos...">${esc(draft.objetivo||'')}</textarea></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Medicamento</th>${MAI_CRITERIOS.map(([,label])=>`<th>${label}</th>`).join('')}<th></th></tr>
+        ${rows || `<tr><td colspan="${MAI_CRITERIOS.length+2}" class="empty-state">Nenhum medicamento adicionado a esta avaliação.</td></tr>`}
+      </table>
+    </div>
+    <p class="sub" style="margin-top:8px;">Clique nos botões de cada critério: <b>✓</b> conforme · <b>X</b> não conformidade · <b>?</b> informação insuficiente.</p>
+    <div class="btn-row">
+      <button type="button" class="btn btn-sm" data-act="mai-add-med">+ Adicionar medicamento</button>
+      <button type="button" class="btn btn-primary" data-act="mai-save">${state.editing.maiId?'Salvar alterações':'Salvar avaliação'}</button>
+      ${state.editing.maiId?'<button type="button" class="btn" data-act="mai-cancel">Cancelar edição</button>':''}
+    </div>
+  </div>
+  <div class="card">
+    <h2>Análise automática da farmacoterapia</h2>
+    <p><b>Medicamentos avaliados:</b> ${analise.total}</p>
+    <p><b>Critérios com não conformidade:</b> ${analise.naoConfTotal}</p>
+    <p><b>Problemas identificados:</b></p>
+    ${analise.problemas.length? `<ul>${analise.problemas.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="sub">Nenhum problema identificado até o momento.</p>'}
+    <p><b>Necessidade de encaminhamento:</b> ${analise.encaminhar?'Sim — avaliar critérios marcados acima':'Não indicada, com base nos dados atuais'}</p>
+    <p><b>Necessidade de monitoramento:</b> ${analise.monitorar?'Sim':'Não indicada, com base nos dados atuais'}</p>
+    <p class="sub">Síntese gerada automaticamente a partir dos critérios marcados — apoio à decisão, não substitui avaliação farmacêutica.</p>
+  </div>
+  <div class="card">
+    <h2>Avaliações anteriores (${avals.length})</h2>
+    ${avals.length? avals.slice().reverse().map(a=>`<div class="soap-block"><h4>${fmtDate(a.data)}</h4><p class="sub" style="margin:0 0 6px;">${(a.medicamentos||[]).length} medicamento(s) avaliado(s)</p>
+      <div class="btn-row"><button type="button" class="btn btn-sm" data-act="mai-edit:${a.id}">Ver/editar</button><button type="button" class="btn btn-sm btn-danger" data-act="mai-del-aval:${a.id}">Excluir</button></div></div>`).join('') : '<div class="empty-state">Nenhuma avaliação salva ainda.</div>'}
+  </div>`;
+}
+
+/* ---- CONCILIAÇÃO MEDICAMENTOSA ---- */
+function tabConciliacao(p){
+  const list=p.conciliacoes||[];
+  if(!state.editing.concItens) state.editing.concItens = state.editing.concId ? (list.find(c=>c.id===state.editing.concId)?.itens||[]).slice() : [];
+  const itens=state.editing.concItens;
+  const showForm = state.editing.concOpen;
+  return `
+  <div class="card">
+    <h2>Conciliação medicamentosa</h2>
+    <p class="sub">Compare medicamentos usados antes, atuais, nova prescrição, pós-alta e o que o paciente relata usar — identifique discrepâncias.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="conc-open">+ Nova conciliação</button></div>` : `
+    <div class="table-wrap"><table>
+      <tr><th>Medicamento</th><th>Antes</th><th>Atual</th><th>Nova prescrição</th><th>Relato do paciente</th><th>Discrepância</th><th>Classificação</th><th></th></tr>
+      ${itens.map((it,idx)=>`<tr>
+        <td><input data-conc-f="medicamento" data-conc-i="${idx}" value="${esc(it.medicamento||'')}" style="min-width:120px;"></td>
+        <td><input data-conc-f="antes" data-conc-i="${idx}" value="${esc(it.antes||'')}" style="min-width:90px;"></td>
+        <td><input data-conc-f="atual" data-conc-i="${idx}" value="${esc(it.atual||'')}" style="min-width:90px;"></td>
+        <td><input data-conc-f="novaPrescricao" data-conc-i="${idx}" value="${esc(it.novaPrescricao||'')}" style="min-width:90px;"></td>
+        <td><input data-conc-f="relato" data-conc-i="${idx}" value="${esc(it.relato||'')}" style="min-width:90px;"></td>
+        <td><input data-conc-f="discrepancia" data-conc-i="${idx}" placeholder="Ex.: omissão, duplicidade..." value="${esc(it.discrepancia||'')}" style="min-width:120px;"></td>
+        <td><select data-conc-f="classificacao" data-conc-i="${idx}" style="min-width:150px;">
+          <option value="">—</option>
+          ${['Intencional','Não intencional','Necessita confirmação'].map(c=>`<option ${it.classificacao===c?'selected':''}>${c}</option>`).join('')}
+        </select></td>
+        <td><button type="button" class="btn btn-sm btn-danger" data-act="conc-del-item:${idx}">✕</button></td>
+      </tr>`).join('') || `<tr><td colspan="8" class="empty-state">Nenhum item adicionado.</td></tr>`}
+    </table></div>
+    <div class="btn-row"><button type="button" class="btn btn-sm" data-act="conc-add-item">+ Adicionar item</button></div>
+    <div class="field" style="margin-top:12px;"><label>Registro de contato com prescritor (se houver)</label><textarea id="concContato" rows="2">${esc(state.editing.concContato||'')}</textarea></div>
+    <div class="btn-row">
+      <button type="button" class="btn btn-primary" data-act="conc-save">${state.editing.concId?'Salvar alterações':'Salvar conciliação'}</button>
+      <button type="button" class="btn" data-act="conc-cancel">Cancelar</button>
+    </div>`}
+  </div>
+  <div class="card">
+    <h2>Conciliações registradas (${list.length})</h2>
+    ${list.length? list.slice().reverse().map(c=>`<div class="soap-block"><h4>${fmtDate(c.data)} — ${(c.itens||[]).length} item(ns)</h4>
+      ${(c.itens||[]).filter(i=>i.discrepancia).length? `<p class="sub" style="margin:0 0 6px;">Discrepâncias: ${(c.itens||[]).filter(i=>i.discrepancia).map(i=>esc(i.medicamento||'—')+' ('+esc(i.classificacao||'não classificada')+')').join(', ')}</p>` : ''}
+      <div class="btn-row"><button type="button" class="btn btn-sm" data-act="conc-edit:${c.id}">Ver/editar</button><button type="button" class="btn btn-sm btn-danger" data-act="conc-del:${c.id}">Excluir</button></div>
+    </div>`).join('') : '<div class="empty-state">Nenhuma conciliação registrada ainda.</div>'}
+  </div>`;
+}
+
+/* ---- ACOMPANHAMENTO (metas + rastreamentos/POCT + gráfico simples) ---- */
+const RASTREIO_TIPOS=['Pressão arterial','Glicemia capilar','Colesterol/perfil lipídico','Temperatura','Frequência cardíaca','Frequência respiratória','Oximetria','Peso','Antropometria (circunf. abdominal)','Bioimpedância','HbA1c','Outro'];
+function tabAcompanhamento(p){
+  const metas=p.acompanhamentos||[];
+  const showMetaForm=state.editing.metaOpen;
+  const rast=(p.rastreamentos||[]).slice().sort((a,b)=>a.data.localeCompare(b.data));
+  const showRastForm=state.editing.rastOpen;
+
+  function sparkline(tipo){
+    const pontos = rast.filter(r=>r.tipo===tipo && !isNaN(parseFloat(r.resultado))).slice(-12);
+    if(pontos.length<2) return '<p class="sub">Dados insuficientes para gráfico (mínimo 2 registros numéricos).</p>';
+    const vals=pontos.map(r=>parseFloat(r.resultado));
+    const min=Math.min(...vals), max=Math.max(...vals);
+    const range=(max-min)||1;
+    const w=320,h=70,pad=6;
+    const pts=vals.map((v,i)=>{
+      const x=pad+(i/(vals.length-1))*(w-2*pad);
+      const y=h-pad-((v-min)/range)*(h-2*pad);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:340px;height:70px;display:block;">
+      <polyline points="${pts}" fill="none" stroke="var(--c-indigo)" stroke-width="2"/>
+      ${vals.map((v,i)=>{ const x=pad+(i/(vals.length-1))*(w-2*pad); const y=h-pad-((v-min)/range)*(h-2*pad); return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="var(--c-indigo)"/>`; }).join('')}
+    </svg>
+    <p class="sub" style="margin-top:2px;">Últimos ${vals.length} registros — mín. ${min} · máx. ${max} · último: ${vals[vals.length-1]}</p>`;
+  }
+  const tiposComDados = [...new Set(rast.map(r=>r.tipo))];
+
+  return `
+  <div class="card">
+    <h2>Metas e objetivos do acompanhamento farmacoterapêutico</h2>
+    ${!showMetaForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="meta-open">+ Nova meta/condição acompanhada</button></div>` : `
+    <form id="formMeta" data-act-submit="save-meta">
+      <div class="grid2">
+        <div class="field"><label>Condição acompanhada</label><input name="condicao" required></div>
+        <div class="field"><label>Medicamentos envolvidos</label><input name="medicamentos"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Objetivos terapêuticos / metas</label><textarea name="metas" rows="2"></textarea></div>
+        <div class="field"><label>Parâmetros monitorados</label><input name="parametros" placeholder="Ex.: PA, glicemia, peso..."></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Frequência de acompanhamento</label><input name="frequencia" placeholder="Ex.: mensal"></div>
+        <div class="field"><label>Data do próximo retorno</label><input type="date" name="proximoRetorno"></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar meta</button><button class="btn" type="button" data-act="meta-cancel">Cancelar</button></div>
+    </form>`}
+    ${metas.length? metas.map(m=>`<div class="soap-block"><h4>${esc(m.condicao)}</h4>
+      <p class="sub" style="margin:2px 0;">Metas: ${esc(m.metas||'—')} · Parâmetros: ${esc(m.parametros||'—')} · Frequência: ${esc(m.frequencia||'—')} · Próximo retorno: ${fmtDate(m.proximoRetorno)}</p>
+      <div class="btn-row"><button type="button" class="btn btn-sm btn-danger" data-act="meta-del:${m.id}">Excluir</button></div></div>`).join('') : '<div class="empty-state" style="margin-top:10px;">Nenhuma meta registrada.</div>'}
+  </div>
+
+  <div class="card">
+    <h2>Rastreamento em saúde (Point-of-Care Testing)</h2>
+    <p class="sub">Diferencie sempre: <b>rastreamento</b> (triagem em população assintomática), <b>monitoramento</b> (acompanhamento de condição já diagnosticada) e <b>diagnóstico</b> (ato médico) — resultado isolado de teste de triagem não deve ser apresentado como diagnóstico definitivo.</p>
+    ${!showRastForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="rast-open">+ Novo registro</button></div>` : `
+    <form id="formRastreio" data-act-submit="save-rastreio">
+      <div class="grid3">
+        <div class="field"><label>Tipo</label><select name="tipo" required>${RASTREIO_TIPOS.map(t=>`<option>${t}</option>`).join('')}</select></div>
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}" required></div>
+        <div class="field"><label>Horário</label><input type="time" name="horario"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Resultado (valor numérico quando aplicável)</label><input name="resultado" placeholder="Ex.: 128/82 ou 98"></div>
+        <div class="field"><label>Unidade</label><input name="unidade" placeholder="Ex.: mmHg, mg/dL, kg..."></div>
+        <div class="field"><label>Equipamento</label><input name="equipamento"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Condições prévias (jejum, repouso, medicação recente...)</label><input name="condicoesPrevias"></div>
+        <div class="field"><label>Interpretação</label><input name="interpretacao"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Conduta</label><input name="conduta"></div>
+        <div class="field"><label>Encaminhamento</label><input name="encaminhamento"></div>
+      </div>
+      <div class="field"><label>Observações</label><textarea name="obs" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar registro</button><button class="btn" type="button" data-act="rast-cancel">Cancelar</button></div>
+    </form>`}
+    <div class="table-wrap" style="margin-top:12px;"><table><tr><th>Data</th><th>Tipo</th><th>Resultado</th><th>Interpretação</th><th></th></tr>
+      ${rast.length? rast.slice().reverse().map(r=>`<tr><td>${fmtDate(r.data)}</td><td>${esc(r.tipo)}</td><td>${esc(r.resultado||'—')} ${esc(r.unidade||'')}</td><td>${esc(r.interpretacao||'—')}</td>
+        <td><button type="button" class="btn btn-sm btn-danger" data-act="rast-del:${r.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty-state">Nenhum registro ainda.</td></tr>'}
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>Evolução gráfica</h2>
+    ${tiposComDados.length? tiposComDados.map(t=>`<div style="margin-bottom:14px;"><h3>${esc(t)}</h3>${sparkline(t)}</div>`).join('') : '<div class="empty-state">Registre aferições acima para gerar gráficos de evolução (pressão arterial, glicemia, peso, IMC, colesterol, LDL, HbA1c, frequência cardíaca, saturação e outros).</div>'}
+  </div>`;
+}
+/* ---- PLANO DE CUIDADO ---- */
+const PLANO_STATUS=['Não iniciado','Em andamento','Concluído','Suspenso','Necessita revisão'];
+function tabCuidado(p){
+  const list=p.planosCuidado||[];
+  const ed = state.editing.cuidadoId ? list.find(x=>x.id===state.editing.cuidadoId) : null;
+  const showForm = state.editing.cuidadoOpen || ed;
+  return `
+  <div class="card">
+    <h2>Plano de cuidado</h2>
+    <p class="sub">Modelo: identificar → avaliar → planejar → intervir → monitorar → reavaliar. Retorne ao ciclo sempre que necessário.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="cuidado-open">+ Novo item do plano</button></div>` : `
+    <form id="formCuidado" data-act-submit="save-cuidado">
+      <div class="grid2">
+        <div class="field"><label>Problema</label><textarea name="problema" rows="2" required>${esc(ed?.problema||'')}</textarea></div>
+        <div class="field"><label>Objetivo</label><textarea name="objetivo" rows="2">${esc(ed?.objetivo||'')}</textarea></div>
+      </div>
+      <div class="field"><label>Intervenção</label><textarea name="intervencao" rows="2">${esc(ed?.intervencao||'')}</textarea></div>
+      <div class="grid3">
+        <div class="field"><label>Responsável</label><input name="responsavel" value="${esc(ed?.responsavel||'')}"></div>
+        <div class="field"><label>Prazo</label><input name="prazo" value="${esc(ed?.prazo||'')}"></div>
+        <div class="field"><label>Data de reavaliação</label><input type="date" name="dataReavaliacao" value="${esc(ed?.dataReavaliacao||'')}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Parâmetro de monitoramento</label><input name="parametroMonitoramento" value="${esc(ed?.parametroMonitoramento||'')}"></div>
+        <div class="field"><label>Meta</label><input name="meta" value="${esc(ed?.meta||'')}"></div>
+      </div>
+      <div class="field"><label>Status</label><select name="status">${PLANO_STATUS.map(s=>`<option ${ed?.status===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">${ed?'Salvar alterações':'Adicionar ao plano'}</button><button class="btn" type="button" data-act="cuidado-cancel">Cancelar</button></div>
+    </form>`}
+  </div>
+  <div class="card">
+    <h2>Itens do plano (${list.length})</h2>
+    ${list.length? `<div class="table-wrap"><table><tr><th>Problema</th><th>Objetivo</th><th>Responsável</th><th>Reavaliação</th><th>Status</th><th></th></tr>
+      ${list.map(c=>`<tr><td>${esc(c.problema)}</td><td>${esc(c.objetivo||'—')}</td><td>${esc(c.responsavel||'—')}</td><td>${fmtDate(c.dataReavaliacao)}</td>
+      <td><span class="pill ${c.status==='Concluído'?'pill-ok':c.status==='Necessita revisão'?'pill-danger':c.status==='Suspenso'?'pill-muted':'pill-info'}">${esc(c.status||'—')}</span></td>
+      <td><button type="button" class="btn btn-sm" data-act="cuidado-edit:${c.id}">Editar</button><button type="button" class="btn btn-sm btn-danger" data-act="cuidado-del:${c.id}">Excluir</button></td></tr>`).join('')}
+    </table></div>` : '<div class="empty-state">Nenhum item de plano de cuidado ainda.</div>'}
+  </div>`;
+}
+
+/* ---- PROCEDIMENTOS (vacinação + administração de medicamentos) ---- */
+function tabProcedimentos(p){
+  const vac=p.vacinas||[];
+  const adm=p.administracoes||[];
+  const showVac=state.editing.vacOpen;
+  const showAdm=state.editing.admOpen;
+  return `
+  <div class="card">
+    <h2>Vacinação</h2>
+    ${!showVac? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="vac-open">+ Registrar dose</button></div>` : `
+    <form id="formVacina" data-act-submit="save-vacina">
+      <div class="grid3">
+        <div class="field"><label>Vacina</label><input name="vacina" required></div>
+        <div class="field"><label>Fabricante</label><input name="fabricante"></div>
+        <div class="field"><label>Lote</label><input name="lote"></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Validade</label><input type="date" name="validade"></div>
+        <div class="field"><label>Dose</label><input name="dose" placeholder="Ex.: 1ª dose, reforço..."></div>
+        <div class="field"><label>Via</label><input name="via"></div>
+        <div class="field"><label>Local de aplicação</label><input name="local"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}" required></div>
+        <div class="field"><label>Profissional</label><input name="profissional"></div>
+        <div class="field"><label>Próxima dose</label><input type="date" name="proximaDose"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Intercorrências</label><input name="intercorrencias"></div>
+        <div class="field"><label>Eventos adversos</label><input name="eventosAdversos"></div>
+      </div>
+      <div class="field"><label>Orientações</label><textarea name="orientacoes" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button><button class="btn" type="button" data-act="vac-cancel">Cancelar</button></div>
+    </form>`}
+    <div class="table-wrap" style="margin-top:10px;"><table><tr><th>Vacina</th><th>Dose</th><th>Data</th><th>Próxima dose</th><th></th></tr>
+      ${vac.length? vac.slice().reverse().map(v=>`<tr><td>${esc(v.vacina)}</td><td>${esc(v.dose||'—')}</td><td>${fmtDate(v.data)}</td><td>${fmtDate(v.proximaDose)}</td>
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="vac-del:${v.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty-state">Nenhuma dose registrada.</td></tr>'}
+    </table></div>
+    <p class="sub" style="margin-top:6px;">Consulte sempre o calendário/normas vigentes (PNI/Ministério da Saúde) — a legislação de vacinação não é fixada no código desta ferramenta.</p>
+  </div>
+
+  <div class="card">
+    <h2>Administração de medicamentos e procedimentos</h2>
+    <p class="sub">Inclui injetáveis, treinamento de dispositivos (canetas de insulina, inaladores, espaçadores) e demais técnicas, conforme habilitação e legislação vigente.</p>
+    ${!showAdm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="adm-open">+ Registrar procedimento</button></div>` : `
+    <form id="formAdm" data-act-submit="save-adm">
+      <div class="grid3">
+        <div class="field"><label>Medicamento/procedimento</label><input name="medicamento" required></div>
+        <div class="field"><label>Concentração</label><input name="concentracao"></div>
+        <div class="field"><label>Dose</label><input name="dose"></div>
+      </div>
+      <div class="grid4">
+        <div class="field"><label>Via</label><input name="via"></div>
+        <div class="field"><label>Lote</label><input name="lote"></div>
+        <div class="field"><label>Validade</label><input type="date" name="validade"></div>
+        <div class="field"><label>Local</label><input name="local"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}" required></div>
+        <div class="field"><label>Horário</label><input type="time" name="horario"></div>
+        <div class="field"><label>Profissional</label><input name="profissional"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Indicação</label><input name="indicacao"></div>
+        <div class="field"><label>Intercorrência</label><input name="intercorrencia"></div>
+      </div>
+      <div class="field"><label>Orientação (treinamento de dispositivo, técnica...)</label><textarea name="orientacao" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button><button class="btn" type="button" data-act="adm-cancel">Cancelar</button></div>
+    </form>`}
+    <div class="table-wrap" style="margin-top:10px;"><table><tr><th>Medicamento/procedimento</th><th>Via</th><th>Data</th><th>Profissional</th><th></th></tr>
+      ${adm.length? adm.slice().reverse().map(a=>`<tr><td>${esc(a.medicamento)}</td><td>${esc(a.via||'—')}</td><td>${fmtDate(a.data)}</td><td>${esc(a.profissional||'—')}</td>
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="adm-del:${a.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty-state">Nenhum procedimento registrado.</td></tr>'}
+    </table></div>
+  </div>`;
+}
+
+/* ---- EDUCAÇÃO EM SAÚDE + CESSAÇÃO TABÁGICA ---- */
+const EDU_TEMAS=['Adesão ao tratamento','Uso correto de medicamentos','Armazenamento','Descarte de medicamentos','Alimentação','Atividade física','Sono','Controle de fatores de risco','Prevenção','Automonitoramento','Uso racional de medicamentos'];
+const TABAG_FASES=['Preparação','Intervenção','Acompanhamento','Prevenção de recaída'];
+function tabEducacao(p){
+  const list=p.educacoes||[];
+  const showForm=state.editing.eduOpen;
+  p.tabagismo = p.tabagismo || {};
+  const tg=p.tabagismo;
+  const regs=(tg.registros||[]).slice().sort((a,b)=>a.data.localeCompare(b.data));
+  return `
+  <div class="card">
+    <h2>Educação em saúde</h2>
+    <p class="sub">Planos educativos personalizados por tema, com registro de compreensão e plano de reforço.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="edu-open">+ Novo registro educativo</button></div>` : `
+    <form id="formEdu" data-act-submit="save-edu">
+      <div class="grid2">
+        <div class="field"><label>Tema</label><select name="tema">${EDU_TEMAS.map(t=>`<option>${t}</option>`).join('')}</select></div>
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}"></div>
+      </div>
+      <div class="field"><label>Orientação fornecida</label><textarea name="orientacao" rows="2"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Material entregue</label><input name="materialEntregue"></div>
+        <div class="field"><label>Compreensão do paciente</label><select name="compreensao">${['Boa','Parcial','Baixa'].map(c=>`<option>${c}</option>`).join('')}</select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Dúvidas identificadas</label><input name="duvidas"></div>
+        <div class="field"><label>Plano de reforço</label><input name="planoReforco"></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button><button class="btn" type="button" data-act="edu-cancel">Cancelar</button></div>
+    </form>`}
+    ${list.length? list.slice().reverse().map(e=>`<div class="soap-block"><h4>${esc(e.tema)} — ${fmtDate(e.data)}</h4><p class="sub" style="margin:2px 0;">${esc(e.orientacao||'—')}</p>
+      <div class="btn-row"><button type="button" class="btn btn-sm btn-danger" data-act="edu-del:${e.id}">Excluir</button></div></div>`).join('') : '<div class="empty-state" style="margin-top:10px;">Nenhum registro educativo ainda.</div>'}
+  </div>
+
+  <div class="card">
+    <h2>Cessação tabágica</h2>
+    <form id="formTabagismo" data-act-submit="save-tabagismo">
+      <div class="grid3">
+        <div class="field"><label>${dicLink('Status tabágico','automedicacao')}</label><select name="status">
+          ${['Não fumante','Ex-fumante','Fumante — quer parar','Fumante — sem intenção no momento'].map(s=>`<option ${tg.status===s?'selected':''}>${s}</option>`).join('')}
+        </select></div>
+        <div class="field"><label>Quantidade (cigarros/dia)</label><input name="quantidade" value="${esc(tg.quantidade||'')}"></div>
+        <div class="field"><label>Tempo de uso</label><input name="tempoUso" value="${esc(tg.tempoUso||'')}"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Grau de dependência</label><input name="dependencia" value="${esc(tg.dependencia||'')}" placeholder="Ex.: Fagerström"></div>
+        <div class="field"><label>Tentativas anteriores</label><input name="tentativasAnteriores" value="${esc(tg.tentativasAnteriores||'')}"></div>
+        <div class="field"><label>Motivação (0-10)</label><input type="number" min="0" max="10" name="motivacao" value="${esc(tg.motivacao||'')}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Gatilhos</label><input name="gatilhos" value="${esc(tg.gatilhos||'')}"></div>
+        <div class="field"><label>Estratégias combinadas</label><input name="estrategias" value="${esc(tg.estrategias||'')}"></div>
+      </div>
+      <div class="field"><label>Fase atual do protocolo</label><select name="fase">${TABAG_FASES.map(f=>`<option ${tg.fase===f?'selected':''}>${f}</option>`).join('')}</select></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button></div>
+    </form>
+    <p class="sub" style="margin-top:10px;">Protocolo: Preparação → Intervenção → Acompanhamento → Prevenção de recaída.</p>
+    <div class="btn-row"><button type="button" class="btn btn-sm" data-act="tabreg-open">+ Registrar acompanhamento</button></div>
+    ${state.editing.tabregOpen? `
+    <form id="formTabReg" data-act-submit="save-tabreg" style="margin-top:10px;">
+      <div class="grid3">
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}"></div>
+        <div class="field"><label>Fase</label><select name="fase">${TABAG_FASES.map(f=>`<option>${f}</option>`).join('')}</select></div>
+        <div class="field"><label>Abstinência desde</label><input type="date" name="abstinenciaDesde"></div>
+      </div>
+      <div class="field"><label>Observações</label><textarea name="obs" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar</button><button class="btn" type="button" data-act="tabreg-cancel">Cancelar</button></div>
+    </form>` : ''}
+    <div class="table-wrap" style="margin-top:10px;"><table><tr><th>Data</th><th>Fase</th><th>Observações</th><th></th></tr>
+      ${regs.length? regs.slice().reverse().map(r=>`<tr><td>${fmtDate(r.data)}</td><td>${esc(r.fase||'—')}</td><td>${esc(r.obs||'—')}</td>
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="tabreg-del:${r.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="4" class="empty-state">Nenhum registro ainda.</td></tr>'}
+    </table></div>
+  </div>`;
+}
+/* ---- PRM / INTERVENÇÃO FARMACÊUTICA / FARMACOVIGILÂNCIA (RAM) ---- */
+const PRM_CATEGORIAS=['Necessidade','Efetividade','Segurança','Adesão','Administração','Interação','Monitoramento','Acesso','Outros'];
+const INTERV_RESULTADOS=[['aceita','Aceita'],['parcial','Parcialmente aceita'],['recusada','Recusada'],['pendente','Pendente'],['sem retorno','Sem retorno']];
+function tabPRM(p){
+  const prms=p.prms||[];
+  const intervs=p.intervencoes||[];
+  const rams=p.ram||[];
+  const showPrm=state.editing.prmOpen;
+  const showInterv=state.editing.intervOpen;
+  const showRam=state.editing.ramOpen;
+  return `
+  <div class="card">
+    <h2>${dicLink('Problemas Relacionados a Medicamentos (PRM)','prm')}</h2>
+    ${!showPrm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="prm-open">+ Novo PRM</button></div>` : `
+    <form id="formPRM" data-act-submit="save-prm">
+      <div class="grid2">
+        <div class="field"><label>Medicamento envolvido</label><input name="medicamento" required></div>
+        <div class="field"><label>Categoria</label><select name="categoria">${PRM_CATEGORIAS.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      </div>
+      <div class="field"><label>Problema</label><textarea name="problema" rows="2" required></textarea></div>
+      <div class="field"><label>Causa</label><textarea name="causa" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar PRM</button><button class="btn" type="button" data-act="prm-cancel">Cancelar</button></div>
+    </form>`}
+    <div class="table-wrap" style="margin-top:10px;"><table><tr><th>Data</th><th>Medicamento</th><th>Categoria</th><th>Problema</th><th></th></tr>
+      ${prms.length? prms.slice().reverse().map(x=>`<tr><td>${fmtDate(x.data)}</td><td>${esc(x.medicamento)}</td><td>${esc(x.categoria)}</td><td>${esc(x.problema)}</td>
+      <td><button type="button" class="btn btn-sm" data-act="interv-from-prm:${x.id}">Gerar intervenção</button>
+      <button type="button" class="btn btn-sm btn-danger" data-act="prm-del:${x.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty-state">Nenhum PRM registrado.</td></tr>'}
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>Intervenção farmacêutica</h2>
+    ${!showInterv? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="interv-open">+ Nova intervenção</button></div>` : `
+    <form id="formInterv" data-act-submit="save-interv">
+      <div class="grid2">
+        <div class="field"><label>Problema identificado</label><textarea name="problema" rows="2" required>${esc(state.editing.intervDraft?.problema||'')}</textarea></div>
+        <div class="field"><label>Medicamento envolvido</label><input name="medicamento" value="${esc(state.editing.intervDraft?.medicamento||'')}"></div>
+      </div>
+      <div class="field"><label>Causa</label><input name="causa" value="${esc(state.editing.intervDraft?.causa||'')}"></div>
+      <div class="field"><label>Intervenção realizada</label><textarea name="intervencao" rows="2"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Profissional envolvido</label><input name="profissional"></div>
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Resposta obtida</label><input name="resposta"></div>
+        <div class="field"><label>Resultado</label><select name="resultado">${INTERV_RESULTADOS.map(([v,l])=>`<option value="${v}">${l}</option>`).join('')}</select></div>
+      </div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar intervenção</button><button class="btn" type="button" data-act="interv-cancel">Cancelar</button></div>
+    </form>`}
+    <div class="table-wrap" style="margin-top:10px;"><table><tr><th>Data</th><th>Problema</th><th>Medicamento</th><th>Resultado</th><th></th></tr>
+      ${intervs.length? intervs.slice().reverse().map(x=>{
+        const rl=INTERV_RESULTADOS.find(r=>r[0]===x.resultado);
+        return `<tr><td>${fmtDate(x.data)}</td><td>${esc(x.problema)}</td><td>${esc(x.medicamento||'—')}</td>
+        <td><span class="pill ${x.resultado==='aceita'?'pill-ok':x.resultado==='recusada'?'pill-danger':'pill-warn'}">${rl?rl[1]:esc(x.resultado||'—')}</span></td>
+        <td><button type="button" class="btn btn-sm btn-danger" data-act="interv-del:${x.id}">✕</button></td></tr>`;
+      }).join('') : '<tr><td colspan="5" class="empty-state">Nenhuma intervenção registrada.</td></tr>'}
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>Farmacovigilância — suspeita de reação adversa (RAM)</h2>
+    ${!showRam? `<div class="btn-row"><button type="button" class="btn btn-danger" data-act="ram-open">🚩 Notificar / registrar suspeita de RAM</button></div>` : `
+    <form id="formRAM" data-act-submit="save-ram">
+      <div class="grid2">
+        <div class="field"><label>${dicLink('Medicamento suspeito','ram')}</label><input name="medicamentoSuspeito" required></div>
+        <div class="field"><label>Reação observada</label><input name="reacao" required></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Início</label><input type="date" name="inicio"></div>
+        <div class="field"><label>Evolução</label><input name="evolucao"></div>
+        <div class="field"><label>Gravidade</label><select name="gravidade">${['Leve','Moderada','Grave','Grave/Fatal'].map(g=>`<option>${g}</option>`).join('')}</select></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Desfecho</label><input name="desfecho"></div>
+        <div class="field"><label>Medicamentos concomitantes</label><input name="medicamentosConcomitantes"></div>
+      </div>
+      <div class="field"><label>Ação realizada</label><textarea name="acaoRealizada" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar registro</button><button class="btn" type="button" data-act="ram-cancel">Cancelar</button></div>
+    </form>`}
+    <p class="sub">Para notificação oficial, utilize também o sistema VigiMed/Notivisa da Anvisa. Este registro é interno ao Consultório.</p>
+    <div class="table-wrap"><table><tr><th>Data</th><th>Medicamento</th><th>Reação</th><th>Gravidade</th><th></th></tr>
+      ${rams.length? rams.slice().reverse().map(r=>`<tr><td>${fmtDate(r.inicio)}</td><td>${esc(r.medicamentoSuspeito)}</td><td>${esc(r.reacao)}</td>
+      <td><span class="pill ${r.gravidade&&r.gravidade.indexOf('Grave')===0?'pill-danger':'pill-warn'}">${esc(r.gravidade||'—')}</span></td>
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="ram-del:${r.id}">✕</button></td></tr>`).join('') : '<tr><td colspan="5" class="empty-state">Nenhuma suspeita registrada.</td></tr>'}
+    </table></div>
+  </div>`;
+}
+
+/* ---- ENCAMINHAMENTO + CONTRARREFERÊNCIA ---- */
+const ENC_MOTIVOS=['Red flag / sinal de alerta','Suspeita diagnóstica','Ausência de resposta terapêutica','Agravamento do quadro','Alteração laboratorial relevante','Reação adversa a medicamento','Necessidade de ajuste prescritivo','Necessidade de diagnóstico','Necessidade de atendimento médico','Necessidade de outro profissional'];
+function tabEncaminhamento(p){
+  const list=p.encaminhamentos||[];
+  const showForm=state.editing.encOpen;
+  return `
+  <div class="card">
+    <h2>Encaminhamento farmacêutico</h2>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="enc-open">+ Novo encaminhamento</button></div>` : `
+    <form id="formEnc" data-act-submit="save-enc">
+      <div class="grid2">
+        <div class="field"><label>Motivo</label><select name="motivo">${ENC_MOTIVOS.map(m=>`<option>${m}</option>`).join('')}</select></div>
+        <div class="field"><label>Data</label><input type="date" name="data" value="${todayISO()}"></div>
+      </div>
+      <div class="field"><label>Resumo clínico / achados</label><textarea name="resumoClinico" rows="2"></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Medicamentos em uso</label><input name="medicamentos"></div>
+        <div class="field"><label>Exames relevantes</label><input name="exames"></div>
+      </div>
+      <div class="field"><label>Problema identificado</label><textarea name="problemaIdentificado" rows="2"></textarea></div>
+      <div class="field"><label>Solicitação ao profissional</label><textarea name="solicitacao" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar encaminhamento</button><button class="btn" type="button" data-act="enc-cancel">Cancelar</button></div>
+    </form>`}
+  </div>
+  <div class="card">
+    <h2>Encaminhamentos registrados (${list.length})</h2>
+    ${list.length? list.slice().reverse().map(e=>`
+    <div class="soap-block">
+      <h4>${fmtDate(e.data)} — ${esc(e.motivo)}</h4>
+      <p class="sub" style="margin:2px 0;">${esc(e.problemaIdentificado||'—')}</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn-sm" data-act="doc-print-enc:${e.id}">🖨️ Gerar documento</button>
+        <button type="button" class="btn btn-sm" data-act="contraref-toggle:${e.id}">${e.contrarreferencia&&e.contrarreferencia.profissional? 'Ver contrarreferência':'+ Registrar contrarreferência'}</button>
+        <button type="button" class="btn btn-sm btn-danger" data-act="enc-del:${e.id}">Excluir</button>
+      </div>
+      ${state.editing.contrarefOpenId===e.id? `
+      <form id="formContraref-${e.id}" data-act-submit="save-contraref:${e.id}" style="margin-top:10px;">
+        <div class="grid2">
+          <div class="field"><label>Profissional</label><input name="profissional" value="${esc(e.contrarreferencia?.profissional||'')}"></div>
+          <div class="field"><label>Data</label><input type="date" name="data" value="${esc(e.contrarreferencia?.data||'')}"></div>
+        </div>
+        <div class="field"><label>Orientação recebida</label><textarea name="orientacaoRecebida" rows="2">${esc(e.contrarreferencia?.orientacaoRecebida||'')}</textarea></div>
+        <div class="grid2">
+          <div class="field"><label>Alteração terapêutica</label><input name="alteracaoTerapeutica" value="${esc(e.contrarreferencia?.alteracaoTerapeutica||'')}"></div>
+          <div class="field"><label>Diagnóstico informado</label><input name="diagnosticoInformado" value="${esc(e.contrarreferencia?.diagnosticoInformado||'')}"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Plano compartilhado</label><input name="planoCompartilhado" value="${esc(e.contrarreferencia?.planoCompartilhado||'')}"></div>
+          <div class="field"><label>Próxima etapa</label><input name="proximaEtapa" value="${esc(e.contrarreferencia?.proximaEtapa||'')}"></div>
+        </div>
+        <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar contrarreferência</button></div>
+      </form>` : ''}
+    </div>`).join('') : '<div class="empty-state">Nenhum encaminhamento registrado ainda.</div>'}
+  </div>`;
+}
+
+/* ---- PRESCRIÇÃO FARMACÊUTICA ---- */
+const PRESC_TIPOS=['Terapia não farmacológica','MIP (medicamento isento de prescrição)','Fitoterápico/planta medicinal','Suplemento/produto autorizado','Terapia farmacológica sujeita a prescrição médica'];
+function tabPrescricao(p){
+  const list=p.prescricoes||[];
+  const showForm=state.editing.prescOpen;
+  return `
+  <div class="card">
+    <h2>Prescrição farmacêutica</h2>
+    <p class="sub">Documentação da prescrição dentro dos limites legais e regulatórios vigentes (Resolução CFF nº 586/2013 e normas posteriores). Um medicamento sujeito a prescrição médica nunca pode ser sugerido como de livre prescrição pelo farmacêutico — o fundamento normativo é obrigatório nesse caso.</p>
+    ${!showForm? `<div class="btn-row"><button type="button" class="btn btn-primary" data-act="presc-open">+ Nova prescrição</button></div>` : `
+    <form id="formPresc" data-act-submit="save-presc">
+      <div class="grid2">
+        <div class="field"><label>Tipo</label><select name="tipo" id="prescTipo">${PRESC_TIPOS.map(t=>`<option>${t}</option>`).join('')}</select></div>
+        <div class="field"><label>Produto / terapia</label><input name="produto" required></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Posologia</label><input name="posologia"></div>
+        <div class="field"><label>Duração</label><input name="duracao"></div>
+      </div>
+      <div id="prescFundamentoWrap" class="disclaimer hidden">
+        <b>Obrigatório para medicamento sujeito a prescrição médica:</b> informe abaixo o diagnóstico prévio, protocolo/diretriz/programa ou acordo de prática colaborativa e o fundamento normativo aplicável. Sem esse preenchimento, a prescrição não deve ser emitida.
+        <div class="grid2" style="margin-top:8px;">
+          <div class="field"><label>Diagnóstico prévio / protocolo / diretriz / programa</label><input name="protocolo"></div>
+          <div class="field"><label>Fundamento normativo aplicável *</label><input name="fundamentoNormativo" id="prescFundamento"></div>
+        </div>
+      </div>
+      <div class="field"><label>Observações</label><textarea name="observacao" rows="2"></textarea></div>
+      <div class="btn-row"><button class="btn btn-primary" type="submit">Salvar prescrição</button><button class="btn" type="button" data-act="presc-cancel">Cancelar</button></div>
+    </form>`}
+  </div>
+  <div class="card">
+    <h2>Prescrições registradas (${list.length})</h2>
+    ${list.length? `<div class="table-wrap"><table><tr><th>Data</th><th>Tipo</th><th>Produto</th><th>Fundamento normativo</th><th></th></tr>
+      ${list.slice().reverse().map(x=>`<tr><td>${fmtDate(x.data)}</td><td>${esc(x.tipo)}</td><td>${esc(x.produto)}</td><td>${esc(x.fundamentoNormativo||'—')}</td>
+      <td><button type="button" class="btn btn-sm" data-act="doc-print-presc:${x.id}">🖨️</button><button type="button" class="btn btn-sm btn-danger" data-act="presc-del:${x.id}">✕</button></td></tr>`).join('')}
+    </table></div>` : '<div class="empty-state">Nenhuma prescrição registrada ainda.</div>'}
+  </div>`;
+}
+
+/* ---- DOCUMENTOS ---- */
+function tabDocumentos(p){
+  return `
+  <div class="card">
+    <h2>Documentos clínicos</h2>
+    <p class="sub">Geração e impressão de documentos a partir dos dados registrados deste paciente.</p>
+    <div class="btn-row">
+      <button type="button" class="btn" data-act="doc-print:prontuario">🖨️ Prontuário completo</button>
+      <button type="button" class="btn" data-act="doc-print:mai">🖨️ Última avaliação de adequação (MAI)</button>
+      <button type="button" class="btn" data-act="doc-print:cuidado">🖨️ Plano de cuidado</button>
+      <button type="button" class="btn" data-act="doc-print:declaracao">🖨️ Declaração de atendimento</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Backup dos dados</h2>
+    <div class="btn-row">
+      <button type="button" class="btn" data-act="export-json">⬇️ Exportar todos os dados (.json)</button>
+    </div>
+  </div>`;
+}
+
+/* ---- LINHA DO TEMPO ---- */
+function tabLinha(p){
+  const eventos=[];
+  (p.evolucoes||[]).forEach(e=>eventos.push({data:e.data,titulo:'Consulta / evolução SOAP',desc:e.motivo||'',cat:'consulta'}));
+  (p.rastreamentos||[]).forEach(r=>eventos.push({data:r.data,titulo:'Rastreamento — '+r.tipo,desc:(r.resultado||'')+' '+(r.unidade||''),cat:'rastreamento'}));
+  (p.intervencoes||[]).forEach(i=>eventos.push({data:i.data,titulo:'Intervenção farmacêutica',desc:i.problema||'',cat:'intervencao'}));
+  (p.maiAvaliacoes||[]).forEach(a=>eventos.push({data:a.data,titulo:'Avaliação de adequação (MAI)',desc:(a.medicamentos||[]).length+' medicamento(s)',cat:'mai'}));
+  (p.conciliacoes||[]).forEach(c=>eventos.push({data:c.data,titulo:'Conciliação medicamentosa',desc:(c.itens||[]).length+' item(ns)',cat:'conciliacao'}));
+  (p.encaminhamentos||[]).forEach(e=>eventos.push({data:e.data,titulo:'Encaminhamento',desc:e.motivo||'',cat:'encaminhamento'}));
+  (p.vacinas||[]).forEach(v=>eventos.push({data:v.data,titulo:'Vacinação — '+v.vacina,desc:v.dose||'',cat:'procedimento'}));
+  (p.administracoes||[]).forEach(a=>eventos.push({data:a.data,titulo:'Procedimento — '+a.medicamento,desc:a.via||'',cat:'procedimento'}));
+  (p.prms||[]).forEach(x=>eventos.push({data:x.data,titulo:'PRM registrado',desc:x.problema||'',cat:'prm'}));
+  eventos.sort((a,b)=>(b.data||'').localeCompare(a.data||''));
+  const cats=[...new Set(eventos.map(e=>e.cat))];
+  const filtro = state.editing.linhaFiltro||'';
+  const filtrados = filtro? eventos.filter(e=>e.cat===filtro) : eventos;
+  return `
+  <div class="card">
+    <h2>Linha do tempo</h2>
+    <div class="chip-row">
+      <button type="button" class="chip" style="${!filtro?'border-color:var(--c-indigo);color:var(--c-indigo);':''}" data-act="linha-filtro:">Todos</button>
+      ${cats.map(c=>`<button type="button" class="chip" style="${filtro===c?'border-color:var(--c-indigo);color:var(--c-indigo);':''}" data-act="linha-filtro:${c}">${esc(c)}</button>`).join('')}
+    </div>
+    <div class="timeline" style="margin-top:16px;">
+      ${filtrados.length? filtrados.map(e=>`<div class="tl-item"><div class="tl-date">${fmtDate(e.data)}</div><div class="tl-title">${esc(e.titulo)}</div><div class="tl-desc">${esc(e.desc)}</div></div>`).join('') : '<div class="empty-state">Nenhum evento registrado ainda para este paciente.</div>'}
+    </div>
+  </div>`;
+}
+
+/* ================= DOCUMENTOS / IMPRESSÃO ================= */
+function cabecalhoDoc(){
+  const cfg=DB.config||{};
+  const prof=cfg.profissional||{}, est=cfg.estabelecimento||{};
+  return `<div style="border-bottom:2px solid #c81a2e;padding-bottom:8px;margin-bottom:14px;">
+    <div style="font-weight:800;font-size:1.1rem;">FarmaPrática — Consultório Farmacêutico</div>
+    <div style="font-size:.82rem;">${esc(est.nome||'Estabelecimento não informado')} ${est.cnpj?(' · CNPJ '+esc(est.cnpj)):''}</div>
+    <div style="font-size:.82rem;">${esc(est.endereco||'')}</div>
+    <div style="font-size:.82rem;">Farmacêutico responsável: ${esc(prof.nome||'—')} ${prof.crf?(' · CRF '+esc(prof.crf)):''}</div>
+    <div style="font-size:.75rem;color:#555;">Documento gerado em ${fmtDate(todayISO())}. Ferramenta de apoio à documentação clínica — não substitui julgamento profissional, protocolos institucionais, diretrizes oficiais ou avaliação médica.</div>
+  </div>`;
+}
+function docProntuario(p){
+  const evos=(p.evolucoes||[]).slice().reverse();
+  return cabecalhoDoc()+`<h3>Prontuário — ${esc(p.nome)}</h3>
+  <p><b>Nascimento:</b> ${fmtDate(p.nascimento)} (${calcIdade(p.nascimento)}) · <b>Sexo:</b> ${esc(p.sexo||'—')} · <b>Contato:</b> ${esc(p.contato||'—')}</p>
+  <p><b>Doenças:</b> ${esc(p.historico?.doencas||'—')} · <b>Alergias:</b> ${esc(p.historico?.alergias||'—')}</p>
+  <h4>Farmacoterapia atual</h4>
+  <table border="1" cellpadding="5" style="border-collapse:collapse;width:100%;font-size:.82rem;"><tr><th>Medicamento</th><th>Dose</th><th>Indicação</th><th>Status</th></tr>
+  ${(p.medicamentos||[]).map(m=>`<tr><td>${esc(m.principioAtivo||m.nomeComercial||'—')}</td><td>${esc(m.dose||'—')} ${esc(m.frequencia||'')}</td><td>${esc(m.indicacao||'—')}</td><td>${m.ativo!==false?'Ativo':'Suspenso'}</td></tr>`).join('') || '<tr><td colspan="4">Nenhum medicamento registrado.</td></tr>'}
+  </table>
+  <h4>Evoluções (SOAP)</h4>
+  ${evos.length? evos.map(e=>`<div style="margin-bottom:10px;"><b>${fmtDate(e.data)}</b><br>S: ${esc(e.s||'—')}<br>O: ${esc(e.o||'—')}<br>A: ${esc(e.a||'—')}<br>P: ${esc(e.pl||'—')}</div>`).join('') : '<p>Nenhuma evolução registrada.</p>'}`;
+}
+function docMAI(p, av){
+  if(!av) return cabecalhoDoc()+'<p>Nenhuma avaliação de adequação registrada para este paciente.</p>';
+  return cabecalhoDoc()+`<h3>Avaliação de Adequação da Farmacoterapia (MAI adaptado) — ${esc(p.nome)}</h3>
+  <p style="font-size:.78rem;">Adaptado de Hanlon JT, Schmader KE, Samsa GP, Weinberger M, Uttech KM, Lewis IK, Cohen HJ, Feussner JR. J Clin Epidemiol. 1992;45(10):1045-1051. <b>Índice adaptado do FarmaPrática</b> — não é o escore original validado.</p>
+  <p><b>Data:</b> ${fmtDate(av.data)}</p>
+  <p><b>Subjetivo:</b> ${esc(av.subjetivo||'—')}</p>
+  <p><b>Objetivo:</b> ${esc(av.objetivo||'—')}</p>
+  <table border="1" cellpadding="5" style="border-collapse:collapse;width:100%;font-size:.78rem;"><tr><th>Medicamento</th>${MAI_CRITERIOS.map(([,l])=>`<th>${l}</th>`).join('')}<th>Classificação</th></tr>
+  ${(av.medicamentos||[]).map(m=>{ const c=maiCalc(m); const crit=m.criterios||{};
+    return `<tr><td>${esc(m.nome||'—')}</td>${MAI_CRITERIOS.map(([k])=>`<td style="text-align:center;">${crit[k]==='ok'?'✓':crit[k]==='x'?'X':crit[k]==='?'?'?':'—'}</td>`).join('')}<td>${c.classe}</td></tr>`;
+  }).join('')}</table>`;
+}
+function docCuidado(p){
+  const list=p.planosCuidado||[];
+  return cabecalhoDoc()+`<h3>Plano de Cuidado — ${esc(p.nome)}</h3>
+  <table border="1" cellpadding="5" style="border-collapse:collapse;width:100%;font-size:.8rem;"><tr><th>Problema</th><th>Objetivo</th><th>Intervenção</th><th>Responsável</th><th>Prazo</th><th>Meta</th><th>Status</th></tr>
+  ${list.map(c=>`<tr><td>${esc(c.problema)}</td><td>${esc(c.objetivo||'—')}</td><td>${esc(c.intervencao||'—')}</td><td>${esc(c.responsavel||'—')}</td><td>${esc(c.prazo||'—')}</td><td>${esc(c.meta||'—')}</td><td>${esc(c.status||'—')}</td></tr>`).join('') || '<tr><td colspan="7">Nenhum item de plano de cuidado registrado.</td></tr>'}
+  </table>`;
+}
+function docDeclaracao(p){
+  return cabecalhoDoc()+`<h3>Declaração de Atendimento</h3>
+  <p>Declaro, para os devidos fins, que o(a) paciente <b>${esc(p.nome)}</b>, nascido(a) em ${fmtDate(p.nascimento)}, foi atendido(a) nesta data em consulta farmacêutica no âmbito do Consultório Farmacêutico.</p>
+  <p style="margin-top:40px;">_______________________________________<br>Farmacêutico(a) responsável — ${esc(DB.config?.profissional?.nome||'—')} ${DB.config?.profissional?.crf?('CRF '+esc(DB.config.profissional.crf)):''}</p>`;
+}
+function docEncaminhamento(p,e){
+  return cabecalhoDoc()+`<h3>Encaminhamento Farmacêutico — ${esc(p.nome)}</h3>
+  <p><b>Data:</b> ${fmtDate(e.data)} · <b>Motivo:</b> ${esc(e.motivo)}</p>
+  <p><b>Resumo clínico / achados:</b> ${esc(e.resumoClinico||'—')}</p>
+  <p><b>Medicamentos em uso:</b> ${esc(e.medicamentos||'—')}</p>
+  <p><b>Exames relevantes:</b> ${esc(e.exames||'—')}</p>
+  <p><b>Problema identificado:</b> ${esc(e.problemaIdentificado||'—')}</p>
+  <p><b>Solicitação ao profissional:</b> ${esc(e.solicitacao||'—')}</p>
+  <p style="margin-top:30px;">_______________________________________<br>Farmacêutico(a) responsável — ${esc(DB.config?.profissional?.nome||'—')} ${DB.config?.profissional?.crf?('CRF '+esc(DB.config.profissional.crf)):''}</p>`;
+}
+function docPrescricao(p,x){
+  return cabecalhoDoc()+`<h3>Prescrição Farmacêutica — ${esc(p.nome)}</h3>
+  <p><b>Data:</b> ${fmtDate(x.data)} · <b>Tipo:</b> ${esc(x.tipo)}</p>
+  <p><b>Produto/terapia:</b> ${esc(x.produto)}</p>
+  <p><b>Posologia:</b> ${esc(x.posologia||'—')} · <b>Duração:</b> ${esc(x.duracao||'—')}</p>
+  ${x.fundamentoNormativo?`<p><b>Fundamento normativo:</b> ${esc(x.fundamentoNormativo)}</p><p><b>Diagnóstico/protocolo:</b> ${esc(x.protocolo||'—')}</p>`:''}
+  <p>${esc(x.observacao||'')}</p>
+  <p style="margin-top:30px;">_______________________________________<br>${esc(DB.config?.profissional?.nome||'—')} ${DB.config?.profissional?.crf?('CRF '+esc(DB.config.profissional.crf)):''}</p>`;
+}
+function imprimirDocumento(html,titulo){
+  const win=window.open('','_blank');
+  if(!win){ alert('Não foi possível abrir a janela de impressão. Verifique se o navegador está bloqueando pop-ups.'); return; }
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(titulo)}</title><style>body{font-family:Arial,sans-serif;color:#111;padding:24px;line-height:1.5;}h3,h4{font-family:Arial,sans-serif;}table{margin-top:8px;}</style></head><body>${html}<script>window.onload=function(){window.print();};<\/script></body></html>`);
+  win.document.close();
+}
+
+/* ================= EXPORT / IMPORT / CLEAR ================= */
+function exportJSON(){
+  const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='consultorio_farmapratica_backup_'+todayISO()+'.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function importJSONFile(file){
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      const parsed=JSON.parse(ev.target.result);
+      if(!parsed || !Array.isArray(parsed.pacientes)) throw new Error('Formato inválido');
+      if(!confirm('Importar este backup vai substituir todos os dados atuais desta ferramenta neste navegador. Deseja continuar?')) return;
+      DB=Object.assign(defaultDB(),parsed);
+      save();
+      state.view='dashboard'; state.pacienteId=null; state.editing={};
+      renderAll();
+      alert('Backup importado com sucesso.');
+    }catch(err){ alert('Não foi possível importar este arquivo: '+err.message); }
+  };
+  reader.readAsText(file);
+}
+
+/* ================= HANDLERS GLOBAIS (delegação de eventos) ================= */
+function currentMaiDraft(p){
+  if(state.editing.maiId) return (p.maiAvaliacoes||[]).find(a=>a.id===state.editing.maiId);
+  if(!state.editing.maiDraft) state.editing.maiDraft={subjetivo:'',objetivo:'',medicamentos:[]};
+  return state.editing.maiDraft;
+}
+function pushClinicoRastreio(p,tipo,valor,unidade){
+  const num=parseFloat(valor);
+  if(valor===undefined||valor===null||valor===''||isNaN(num)) return;
+  p.rastreamentos=p.rastreamentos||[];
+  p.rastreamentos.push({id:uid(),tipo,data:todayISO(),resultado:String(num),unidade:unidade||''});
+}
+
+function handleGlobalClick(e){
+  const el=e.target.closest('[data-act]');
+  if(!el) return;
+  const raw=el.getAttribute('data-act');
+  const idx=raw.indexOf(':');
+  const verb= idx===-1? raw : raw.slice(0,idx);
+  const rest= idx===-1? '' : raw.slice(idx+1);
+  const p=pacAtual();
+
+  switch(verb){
+    /* ---- navegação ---- */
+    case 'nav': e.preventDefault(); navTo(rest); if(window.innerWidth<=900 && window.closeMobileMenu) window.closeMobileMenu(); return;
+
+    /* ---- pacientes ---- */
+    case 'abrir-pac': e.preventDefault(); state.pacienteId=rest; state.view='paciente'; state.pacTab='ficha'; state.editing={}; renderAll(); return;
+    case 'edit-pac': { e.preventDefault(); const pp=DB.pacientes.find(x=>x.id===rest); state.editing.pacienteForm=Object.assign({},pp); state.editing._editPacId=rest; renderAll(); return; }
+    case 'cancel-edit-pac': e.preventDefault(); state.editing.pacienteForm=null; state.editing._editPacId=null; renderAll(); return;
+    case 'del-pac': e.preventDefault(); if(confirm('Excluir este paciente e todos os seus registros? Esta ação não pode ser desfeita.')){ DB.pacientes=DB.pacientes.filter(x=>x.id!==rest); if(state.pacienteId===rest){ state.pacienteId=null; state.view='pacientes'; } save(); renderAll(); } return;
+
+    /* ---- agenda ---- */
+    case 'edit-agenda': e.preventDefault(); state.editing.agendaId=rest; renderAll(); return;
+    case 'cancel-edit-agenda': e.preventDefault(); state.editing.agendaId=null; renderAll(); return;
+    case 'del-agenda': e.preventDefault(); if(confirm('Excluir este agendamento?')){ DB.agenda=(DB.agenda||[]).filter(a=>a.id!==rest); save(); renderAll(); } return;
+
+    /* ---- base regulatória ---- */
+    case 'edit-norma': e.preventDefault(); state.editing.normaId=parseInt(rest,10); renderAll(); return;
+    case 'cancel-edit-norma': e.preventDefault(); state.editing.normaId=null; renderAll(); return;
+    case 'del-norma': e.preventDefault(); if(confirm('Excluir esta norma?')){ DB.regulatorio.splice(parseInt(rest,10),1); save(); renderAll(); } return;
+
+    /* ---- config / dados ---- */
+    case 'export-json': e.preventDefault(); exportJSON(); return;
+    case 'clear-all': e.preventDefault(); if(confirm('Apagar TODOS os dados desta ferramenta neste navegador? Esta ação não pode ser desfeita. Considere exportar um backup antes.')){ DB=defaultDB(); save(); state.view='dashboard'; state.pacienteId=null; state.editing={}; renderAll(); } return;
+
+    /* ---- consulta / evolução ---- */
+    case 'evo-open': e.preventDefault(); state.editing.evoOpen=true; state.editing.evoId=null; renderAll(); return;
+    case 'evo-cancel': e.preventDefault(); state.editing.evoOpen=false; state.editing.evoId=null; renderAll(); return;
+    case 'evo-edit': e.preventDefault(); state.editing.evoOpen=true; state.editing.evoId=rest; renderAll(); return;
+    case 'evo-del': e.preventDefault(); if(confirm('Excluir esta evolução?')){ p.evolucoes=(p.evolucoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- farmacoterapia ---- */
+    case 'med-open': e.preventDefault(); state.editing.medOpen=true; state.editing.medId=null; renderAll(); return;
+    case 'med-cancel': e.preventDefault(); state.editing.medOpen=false; state.editing.medId=null; renderAll(); return;
+    case 'med-edit': e.preventDefault(); state.editing.medOpen=true; state.editing.medId=rest; renderAll(); return;
+    case 'med-del': e.preventDefault(); if(confirm('Excluir este medicamento do histórico?')){ p.medicamentos=(p.medicamentos||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- MAI ---- */
+    case 'mai-add-med': { e.preventDefault(); const d=currentMaiDraft(p); d.medicamentos.push({nome:'',criterios:{},justificativa:''}); renderAll(); return; }
+    case 'mai-del-med': { e.preventDefault(); const d=currentMaiDraft(p); d.medicamentos.splice(parseInt(rest,10),1); renderAll(); return; }
+    case 'mai-crit': {
+      e.preventDefault();
+      const [i,key,val]=rest.split('|');
+      const d=currentMaiDraft(p);
+      const m=d.medicamentos[parseInt(i,10)];
+      if(!m) return;
+      m.criterios=m.criterios||{};
+      m.criterios[key] = (m.criterios[key]===val) ? '' : val;
+      renderAll();
+      return;
+    }
+    case 'mai-save': {
+      e.preventDefault();
+      const d=currentMaiDraft(p);
+      const subEl=document.getElementById('maiSubjetivo'), objEl=document.getElementById('maiObjetivo');
+      d.subjetivo = subEl? subEl.value : (d.subjetivo||'');
+      d.objetivo = objEl? objEl.value : (d.objetivo||'');
+      p.maiAvaliacoes=p.maiAvaliacoes||[];
+      if(state.editing.maiId){
+        // já está referenciado dentro de p.maiAvaliacoes (mesma referência de objeto)
+      } else {
+        d.id=uid(); d.data=todayISO();
+        p.maiAvaliacoes.push(d);
+      }
+      state.editing.maiId=null; state.editing.maiDraft=null;
+      save(); renderAll();
+      return;
+    }
+    case 'mai-cancel': e.preventDefault(); state.editing.maiId=null; state.editing.maiDraft=null; renderAll(); return;
+    case 'mai-edit': e.preventDefault(); state.editing.maiId=rest; state.editing.maiDraft=null; renderAll(); return;
+    case 'mai-del-aval': e.preventDefault(); if(confirm('Excluir esta avaliação de adequação?')){ p.maiAvaliacoes=(p.maiAvaliacoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- conciliação ---- */
+    case 'conc-open': e.preventDefault(); state.editing.concOpen=true; state.editing.concId=null; state.editing.concItens=[]; state.editing.concContato=''; renderAll(); return;
+    case 'conc-add-item': e.preventDefault(); state.editing.concItens.push({}); renderAll(); return;
+    case 'conc-del-item': e.preventDefault(); state.editing.concItens.splice(parseInt(rest,10),1); renderAll(); return;
+    case 'conc-save': {
+      e.preventDefault();
+      const contatoEl=document.getElementById('concContato');
+      const contato = contatoEl? contatoEl.value : '';
+      p.conciliacoes=p.conciliacoes||[];
+      if(state.editing.concId){
+        const c=p.conciliacoes.find(x=>x.id===state.editing.concId);
+        if(c){ c.itens=state.editing.concItens; c.contatoPrescritor=contato; }
+      } else {
+        p.conciliacoes.push({id:uid(),data:todayISO(),itens:state.editing.concItens,contatoPrescritor:contato});
+      }
+      state.editing.concOpen=false; state.editing.concId=null; state.editing.concItens=null; state.editing.concContato='';
+      save(); renderAll();
+      return;
+    }
+    case 'conc-cancel': e.preventDefault(); state.editing.concOpen=false; state.editing.concId=null; state.editing.concItens=null; renderAll(); return;
+    case 'conc-edit': e.preventDefault(); { const c=(p.conciliacoes||[]).find(x=>x.id===rest); state.editing.concOpen=true; state.editing.concId=rest; state.editing.concItens=c?(c.itens||[]).map(i=>Object.assign({},i)):[]; state.editing.concContato=c?c.contatoPrescritor||'':''; renderAll(); } return;
+    case 'conc-del': e.preventDefault(); if(confirm('Excluir esta conciliação?')){ p.conciliacoes=(p.conciliacoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- acompanhamento: metas ---- */
+    case 'meta-open': e.preventDefault(); state.editing.metaOpen=true; renderAll(); return;
+    case 'meta-cancel': e.preventDefault(); state.editing.metaOpen=false; renderAll(); return;
+    case 'meta-del': e.preventDefault(); if(confirm('Excluir esta meta?')){ p.acompanhamentos=(p.acompanhamentos||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- acompanhamento: rastreamento ---- */
+    case 'rast-open': e.preventDefault(); state.editing.rastOpen=true; renderAll(); return;
+    case 'rast-cancel': e.preventDefault(); state.editing.rastOpen=false; renderAll(); return;
+    case 'rast-del': e.preventDefault(); if(confirm('Excluir este registro?')){ p.rastreamentos=(p.rastreamentos||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- plano de cuidado ---- */
+    case 'cuidado-open': e.preventDefault(); state.editing.cuidadoOpen=true; state.editing.cuidadoId=null; renderAll(); return;
+    case 'cuidado-cancel': e.preventDefault(); state.editing.cuidadoOpen=false; state.editing.cuidadoId=null; renderAll(); return;
+    case 'cuidado-edit': e.preventDefault(); state.editing.cuidadoOpen=true; state.editing.cuidadoId=rest; renderAll(); return;
+    case 'cuidado-del': e.preventDefault(); if(confirm('Excluir este item do plano de cuidado?')){ p.planosCuidado=(p.planosCuidado||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- procedimentos: vacina ---- */
+    case 'vac-open': e.preventDefault(); state.editing.vacOpen=true; renderAll(); return;
+    case 'vac-cancel': e.preventDefault(); state.editing.vacOpen=false; renderAll(); return;
+    case 'vac-del': e.preventDefault(); if(confirm('Excluir este registro de vacina?')){ p.vacinas=(p.vacinas||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- procedimentos: administração ---- */
+    case 'adm-open': e.preventDefault(); state.editing.admOpen=true; renderAll(); return;
+    case 'adm-cancel': e.preventDefault(); state.editing.admOpen=false; renderAll(); return;
+    case 'adm-del': e.preventDefault(); if(confirm('Excluir este procedimento?')){ p.administracoes=(p.administracoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- educação / tabagismo ---- */
+    case 'edu-open': e.preventDefault(); state.editing.eduOpen=true; renderAll(); return;
+    case 'edu-cancel': e.preventDefault(); state.editing.eduOpen=false; renderAll(); return;
+    case 'edu-del': e.preventDefault(); if(confirm('Excluir este registro educativo?')){ p.educacoes=(p.educacoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+    case 'tabreg-open': e.preventDefault(); state.editing.tabregOpen=true; renderAll(); return;
+    case 'tabreg-cancel': e.preventDefault(); state.editing.tabregOpen=false; renderAll(); return;
+    case 'tabreg-del': e.preventDefault(); if(confirm('Excluir este registro?')){ p.tabagismo.registros=(p.tabagismo.registros||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- PRM / intervenção / RAM ---- */
+    case 'prm-open': e.preventDefault(); state.editing.prmOpen=true; renderAll(); return;
+    case 'prm-cancel': e.preventDefault(); state.editing.prmOpen=false; renderAll(); return;
+    case 'prm-del': e.preventDefault(); if(confirm('Excluir este PRM?')){ p.prms=(p.prms||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+    case 'interv-from-prm': { e.preventDefault(); const prm=(p.prms||[]).find(x=>x.id===rest); state.editing.intervOpen=true; state.editing.intervDraft=prm?{problema:prm.problema,medicamento:prm.medicamento,causa:prm.causa}:{}; renderAll(); return; }
+    case 'interv-open': e.preventDefault(); state.editing.intervOpen=true; state.editing.intervDraft={}; renderAll(); return;
+    case 'interv-cancel': e.preventDefault(); state.editing.intervOpen=false; state.editing.intervDraft=null; renderAll(); return;
+    case 'interv-del': e.preventDefault(); if(confirm('Excluir esta intervenção?')){ p.intervencoes=(p.intervencoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+    case 'ram-open': e.preventDefault(); state.editing.ramOpen=true; renderAll(); return;
+    case 'ram-cancel': e.preventDefault(); state.editing.ramOpen=false; renderAll(); return;
+    case 'ram-del': e.preventDefault(); if(confirm('Excluir este registro de suspeita de RAM?')){ p.ram=(p.ram||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+
+    /* ---- encaminhamento / contrarreferência ---- */
+    case 'enc-open': e.preventDefault(); state.editing.encOpen=true; renderAll(); return;
+    case 'enc-cancel': e.preventDefault(); state.editing.encOpen=false; renderAll(); return;
+    case 'enc-del': e.preventDefault(); if(confirm('Excluir este encaminhamento?')){ p.encaminhamentos=(p.encaminhamentos||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+    case 'contraref-toggle': e.preventDefault(); state.editing.contrarefOpenId = (state.editing.contrarefOpenId===rest? null : rest); renderAll(); return;
+    case 'doc-print-enc': { e.preventDefault(); const enc=(p.encaminhamentos||[]).find(x=>x.id===rest); if(enc) imprimirDocumento(docEncaminhamento(p,enc),'Encaminhamento — '+p.nome); return; }
+
+    /* ---- prescrição ---- */
+    case 'presc-open': e.preventDefault(); state.editing.prescOpen=true; renderAll(); return;
+    case 'presc-cancel': e.preventDefault(); state.editing.prescOpen=false; renderAll(); return;
+    case 'presc-del': e.preventDefault(); if(confirm('Excluir esta prescrição?')){ p.prescricoes=(p.prescricoes||[]).filter(x=>x.id!==rest); save(); renderAll(); } return;
+    case 'doc-print-presc': { e.preventDefault(); const pr=(p.prescricoes||[]).find(x=>x.id===rest); if(pr) imprimirDocumento(docPrescricao(p,pr),'Prescrição — '+p.nome); return; }
+
+    /* ---- documentos ---- */
+    case 'doc-print': {
+      e.preventDefault();
+      if(rest==='prontuario') imprimirDocumento(docProntuario(p),'Prontuário — '+p.nome);
+      else if(rest==='mai') imprimirDocumento(docMAI(p,(p.maiAvaliacoes||[]).slice(-1)[0]),'Avaliação de adequação — '+p.nome);
+      else if(rest==='cuidado') imprimirDocumento(docCuidado(p),'Plano de cuidado — '+p.nome);
+      else if(rest==='declaracao') imprimirDocumento(docDeclaracao(p),'Declaração de atendimento — '+p.nome);
+      return;
+    }
+
+    /* ---- linha do tempo ---- */
+    case 'linha-filtro': e.preventDefault(); state.editing.linhaFiltro=rest; renderAll(); return;
+  }
+}
+
+function handleGlobalInput(e){
+  const t=e.target;
+  if(t.dataset && t.dataset.concF!==undefined){
+    const i=parseInt(t.dataset.concI,10);
+    const arr=state.editing.concItens;
+    if(arr && arr[i]) arr[i][t.dataset.concF]=t.value;
+    return;
+  }
+  if(t.dataset && t.dataset.maiNome!==undefined){
+    const p=pacAtual(); if(!p) return;
+    const d=currentMaiDraft(p);
+    const m=d.medicamentos[parseInt(t.dataset.maiNome,10)];
+    if(m) m.nome=t.value;
+    return;
+  }
+  if(t.dataset && t.dataset.maiJust!==undefined){
+    const p=pacAtual(); if(!p) return;
+    const d=currentMaiDraft(p);
+    const m=d.medicamentos[parseInt(t.dataset.maiJust,10)];
+    if(m) m.justificativa=t.value;
+    return;
+  }
+}
+function handleGlobalChange(e){
+  const t=e.target;
+  if(t.id==='prescTipo'){
+    const wrap=document.getElementById('prescFundamentoWrap');
+    if(wrap) wrap.classList.toggle('hidden', t.value!==PRESC_TIPOS[PRESC_TIPOS.length-1]);
+  }
+  if(t.id==='importFile' && t.files && t.files[0]){
+    importJSONFile(t.files[0]);
+    t.value='';
+  }
+  handleGlobalInput(e);
+}
+
+function handleGlobalSubmit(e){
+  const form=e.target;
+  const raw=form.getAttribute('data-act-submit');
+  if(!raw) return;
+  e.preventDefault();
+  const idx=raw.indexOf(':');
+  const verb= idx===-1? raw : raw.slice(0,idx);
+  const rest= idx===-1? '' : raw.slice(idx+1);
+  const fd=new FormData(form);
+  const g=(name)=> (fd.get(name)==null? '' : String(fd.get(name)));
+  const p=pacAtual();
+
+  switch(verb){
+    case 'save-paciente': {
+      const obj={
+        nome:g('nome'), nascimento:g('nascimento'), sexo:g('sexo'), contato:g('contato'),
+        profissao:g('profissao'), cuidador:g('cuidador')
+      };
+      if(state.editing._editPacId){
+        const existing=DB.pacientes.find(x=>x.id===state.editing._editPacId);
+        if(existing) Object.assign(existing,obj);
+      } else {
+        Object.assign(obj,{
+          id:uid(), clinico:{}, historico:{}, medicamentos:[], evolucoes:[], maiAvaliacoes:[],
+          conciliacoes:[], acompanhamentos:[], rastreamentos:[], planosCuidado:[], vacinas:[],
+          administracoes:[], educacoes:[], tabagismo:{registros:[]}, prms:[], intervencoes:[],
+          encaminhamentos:[], prescricoes:[], ram:[]
+        });
+        DB.pacientes.push(obj);
+      }
+      state.editing.pacienteForm=null; state.editing._editPacId=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-agenda': {
+      const obj={pacienteId:g('pacienteId'),data:g('data'),tipo:g('tipo'),obs:g('obs')};
+      DB.agenda=DB.agenda||[];
+      if(state.editing.agendaId){ const ex=DB.agenda.find(a=>a.id===state.editing.agendaId); if(ex) Object.assign(ex,obj); }
+      else { obj.id=uid(); DB.agenda.push(obj); }
+      state.editing.agendaId=null; save(); renderAll();
+      return;
+    }
+    case 'save-norma': {
+      const obj={norma:g('norma'),data:g('data'),vigencia:g('vigencia'),escopo:g('escopo'),tema:g('tema'),alteracoes:g('alteracoes'),fonte:g('fonte')};
+      DB.regulatorio=DB.regulatorio||NORMAS_PADRAO.map(n=>Object.assign({},n));
+      if(state.editing.normaId!=null){ DB.regulatorio[state.editing.normaId]=obj; }
+      else { DB.regulatorio.push(obj); }
+      state.editing.normaId=null; save(); renderAll();
+      return;
+    }
+    case 'save-config': {
+      DB.config = DB.config || {profissional:{},estabelecimento:{}};
+      DB.config.profissional = {nome:g('profNome'), crf:g('profCrf')};
+      DB.config.estabelecimento = {nome:g('estabNome'), cnpj:g('estabCnpj'), endereco:g('estabEndereco')};
+      save(); renderAll();
+      return;
+    }
+    case 'save-identificacao': {
+      if(!p) return;
+      p.nome=g('nome'); p.nascimento=g('nascimento'); p.sexo=g('sexo'); p.contato=g('contato'); p.profissao=g('profissao'); p.cuidador=g('cuidador');
+      save(); renderAll();
+      return;
+    }
+    case 'save-clinico': {
+      if(!p) return;
+      p.clinico={peso:g('peso'),altura:g('altura'),circAbd:g('circAbd'),pa:g('pa'),fc:g('fc'),fr:g('fr'),temp:g('temp'),sato2:g('sato2'),glicemia:g('glicemia'),outros:g('outros')};
+      pushClinicoRastreio(p,'Peso',p.clinico.peso,'kg');
+      pushClinicoRastreio(p,'Glicemia capilar',p.clinico.glicemia,'mg/dL');
+      pushClinicoRastreio(p,'Frequência cardíaca',p.clinico.fc,'bpm');
+      pushClinicoRastreio(p,'Temperatura',p.clinico.temp,'°C');
+      pushClinicoRastreio(p,'Oximetria',p.clinico.sato2,'%');
+      pushClinicoRastreio(p,'Antropometria (circunf. abdominal)',p.clinico.circAbd,'cm');
+      save(); renderAll();
+      return;
+    }
+    case 'save-historico': {
+      if(!p) return;
+      p.historico={doencas:g('doencas'),alergias:g('alergias'),cirurgias:g('cirurgias'),hospitalizacoes:g('hospitalizacoes'),familiares:g('familiares'),alimentacao:g('alimentacao'),atividadeFisica:g('atividadeFisica'),sono:g('sono'),tabagismo:g('tabagismo'),alcool:g('alcool'),medicamentosoResumo:g('medicamentosoResumo')};
+      save(); renderAll();
+      return;
+    }
+    case 'save-evolucao': {
+      if(!p) return;
+      p.evolucoes=p.evolucoes||[];
+      const campos={motivo:g('motivo'),expectativa:g('expectativa'),historiaCondicao:g('historiaCondicao'),fatores:g('fatores'),tratamentosAnteriores:g('tratamentosAnteriores'),s:g('s'),o:g('o'),a:g('a'),pl:g('pl'),retorno:g('retorno')};
+      if(state.editing.evoId){ const ex=p.evolucoes.find(x=>x.id===state.editing.evoId); if(ex) Object.assign(ex,campos); }
+      else { p.evolucoes.push(Object.assign({id:uid(),data:todayISO()},campos)); }
+      state.editing.evoOpen=false; state.editing.evoId=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-medicamento': {
+      if(!p) return;
+      p.medicamentos=p.medicamentos||[];
+      const campos={principioAtivo:g('principioAtivo'),nomeComercial:g('nomeComercial'),categoria:g('categoria'),apresentacao:g('apresentacao'),concentracao:g('concentracao'),formaFarmaceutica:g('formaFarmaceutica'),via:g('via'),dose:g('dose'),frequencia:g('frequencia'),horario:g('horario'),duracao:g('duracao'),indicacao:g('indicacao'),prescritor:g('prescritor'),dataInicio:g('dataInicio'),dataSuspensao:g('dataSuspensao'),motivoSuspensao:g('motivoSuspensao'),adesao:g('adesao'),dificuldades:g('dificuldades'),efeitosAdversos:g('efeitosAdversos'),observacoes:g('observacoes'),ativo:fd.get('ativo')==='on'};
+      if(state.editing.medId){ const ex=p.medicamentos.find(x=>x.id===state.editing.medId); if(ex) Object.assign(ex,campos); }
+      else { p.medicamentos.push(Object.assign({id:uid()},campos)); }
+      state.editing.medOpen=false; state.editing.medId=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-meta': {
+      if(!p) return;
+      p.acompanhamentos=p.acompanhamentos||[];
+      p.acompanhamentos.push({id:uid(),condicao:g('condicao'),medicamentos:g('medicamentos'),metas:g('metas'),parametros:g('parametros'),frequencia:g('frequencia'),proximoRetorno:g('proximoRetorno')});
+      state.editing.metaOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-rastreio': {
+      if(!p) return;
+      p.rastreamentos=p.rastreamentos||[];
+      p.rastreamentos.push({id:uid(),tipo:g('tipo'),data:g('data')||todayISO(),horario:g('horario'),resultado:g('resultado'),unidade:g('unidade'),equipamento:g('equipamento'),condicoesPrevias:g('condicoesPrevias'),interpretacao:g('interpretacao'),conduta:g('conduta'),encaminhamento:g('encaminhamento'),obs:g('obs')});
+      state.editing.rastOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-cuidado': {
+      if(!p) return;
+      p.planosCuidado=p.planosCuidado||[];
+      const campos={problema:g('problema'),objetivo:g('objetivo'),intervencao:g('intervencao'),responsavel:g('responsavel'),prazo:g('prazo'),dataReavaliacao:g('dataReavaliacao'),parametroMonitoramento:g('parametroMonitoramento'),meta:g('meta'),status:g('status')};
+      if(state.editing.cuidadoId){ const ex=p.planosCuidado.find(x=>x.id===state.editing.cuidadoId); if(ex) Object.assign(ex,campos); }
+      else { p.planosCuidado.push(Object.assign({id:uid()},campos)); }
+      state.editing.cuidadoOpen=false; state.editing.cuidadoId=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-vacina': {
+      if(!p) return;
+      p.vacinas=p.vacinas||[];
+      p.vacinas.push({id:uid(),vacina:g('vacina'),fabricante:g('fabricante'),lote:g('lote'),validade:g('validade'),dose:g('dose'),via:g('via'),local:g('local'),data:g('data')||todayISO(),profissional:g('profissional'),intercorrencias:g('intercorrencias'),eventosAdversos:g('eventosAdversos'),orientacoes:g('orientacoes'),proximaDose:g('proximaDose')});
+      state.editing.vacOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-adm': {
+      if(!p) return;
+      p.administracoes=p.administracoes||[];
+      p.administracoes.push({id:uid(),medicamento:g('medicamento'),concentracao:g('concentracao'),dose:g('dose'),via:g('via'),lote:g('lote'),validade:g('validade'),data:g('data')||todayISO(),horario:g('horario'),local:g('local'),profissional:g('profissional'),indicacao:g('indicacao'),intercorrencia:g('intercorrencia'),orientacao:g('orientacao')});
+      state.editing.admOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-edu': {
+      if(!p) return;
+      p.educacoes=p.educacoes||[];
+      p.educacoes.push({id:uid(),tema:g('tema'),data:g('data')||todayISO(),orientacao:g('orientacao'),materialEntregue:g('materialEntregue'),compreensao:g('compreensao'),duvidas:g('duvidas'),planoReforco:g('planoReforco')});
+      state.editing.eduOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-tabagismo': {
+      if(!p) return;
+      p.tabagismo=p.tabagismo||{registros:[]};
+      Object.assign(p.tabagismo,{status:g('status'),quantidade:g('quantidade'),tempoUso:g('tempoUso'),dependencia:g('dependencia'),tentativasAnteriores:g('tentativasAnteriores'),motivacao:g('motivacao'),gatilhos:g('gatilhos'),estrategias:g('estrategias'),fase:g('fase')});
+      save(); renderAll();
+      return;
+    }
+    case 'save-tabreg': {
+      if(!p) return;
+      p.tabagismo=p.tabagismo||{registros:[]};
+      p.tabagismo.registros=p.tabagismo.registros||[];
+      p.tabagismo.registros.push({id:uid(),data:g('data')||todayISO(),fase:g('fase'),abstinenciaDesde:g('abstinenciaDesde'),obs:g('obs')});
+      state.editing.tabregOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-prm': {
+      if(!p) return;
+      p.prms=p.prms||[];
+      p.prms.push({id:uid(),data:todayISO(),medicamento:g('medicamento'),categoria:g('categoria'),problema:g('problema'),causa:g('causa')});
+      state.editing.prmOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-interv': {
+      if(!p) return;
+      p.intervencoes=p.intervencoes||[];
+      p.intervencoes.push({id:uid(),data:g('data')||todayISO(),problema:g('problema'),medicamento:g('medicamento'),causa:g('causa'),intervencao:g('intervencao'),profissional:g('profissional'),resposta:g('resposta'),resultado:g('resultado')});
+      state.editing.intervOpen=false; state.editing.intervDraft=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-ram': {
+      if(!p) return;
+      p.ram=p.ram||[];
+      p.ram.push({id:uid(),medicamentoSuspeito:g('medicamentoSuspeito'),reacao:g('reacao'),inicio:g('inicio'),evolucao:g('evolucao'),gravidade:g('gravidade'),desfecho:g('desfecho'),medicamentosConcomitantes:g('medicamentosConcomitantes'),acaoRealizada:g('acaoRealizada')});
+      state.editing.ramOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-enc': {
+      if(!p) return;
+      p.encaminhamentos=p.encaminhamentos||[];
+      p.encaminhamentos.push({id:uid(),data:g('data')||todayISO(),motivo:g('motivo'),resumoClinico:g('resumoClinico'),medicamentos:g('medicamentos'),exames:g('exames'),problemaIdentificado:g('problemaIdentificado'),solicitacao:g('solicitacao'),contrarreferencia:{}});
+      state.editing.encOpen=false;
+      save(); renderAll();
+      return;
+    }
+    case 'save-contraref': {
+      if(!p) return;
+      const enc=(p.encaminhamentos||[]).find(x=>x.id===rest);
+      if(enc){ enc.contrarreferencia={profissional:g('profissional'),data:g('data'),orientacaoRecebida:g('orientacaoRecebida'),alteracaoTerapeutica:g('alteracaoTerapeutica'),diagnosticoInformado:g('diagnosticoInformado'),planoCompartilhado:g('planoCompartilhado'),proximaEtapa:g('proximaEtapa')}; }
+      state.editing.contrarefOpenId=null;
+      save(); renderAll();
+      return;
+    }
+    case 'save-presc': {
+      if(!p) return;
+      const tipo=g('tipo'); const fundamento=g('fundamentoNormativo');
+      if(tipo===PRESC_TIPOS[PRESC_TIPOS.length-1] && !fundamento.trim()){
+        alert('Para medicamento sujeito a prescrição médica, o fundamento normativo aplicável é obrigatório. A ferramenta não permite registrar esta prescrição sem essa informação.');
+        return;
+      }
+      p.prescricoes=p.prescricoes||[];
+      p.prescricoes.push({id:uid(),data:todayISO(),tipo,produto:g('produto'),posologia:g('posologia'),duracao:g('duracao'),protocolo:g('protocolo'),fundamentoNormativo:fundamento,observacao:g('observacao')});
+      state.editing.prescOpen=false;
+      save(); renderAll();
+      return;
+    }
+  }
+}
+
+/* ---------------- Boot ---------------- */
+document.addEventListener('DOMContentLoaded', function(){
+  initTheme();
+  const toggle=document.getElementById('mobileNavToggle');
+  const backdrop=document.getElementById('sidebarBackdrop');
+  const sidebar=document.getElementById('sidebar');
+  function closeMobileMenu(){ sidebar.classList.remove('open'); backdrop.classList.remove('show'); }
+  window.closeMobileMenu = closeMobileMenu;
+  if(toggle) toggle.addEventListener('click', ()=>{ sidebar.classList.add('open'); backdrop.classList.add('show'); });
+  if(backdrop) backdrop.addEventListener('click', closeMobileMenu);
+
+  document.addEventListener('click', handleGlobalClick);
+  document.addEventListener('submit', handleGlobalSubmit);
+  document.addEventListener('input', handleGlobalInput);
+  document.addEventListener('change', handleGlobalChange);
+
+  renderAll();
+});
+</script>
+</body>
+</html>
