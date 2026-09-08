@@ -45,29 +45,46 @@ label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:4px;font-w
 @media(max-width:760px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
 .hidden{display:none!important;}
 
-/* ===== Header ===== */
+/* ===== Header (padrão FarmaPrática — mesmo modelo do Checklist de Rotina e Autoinspeção / Consulta por Medicamentos de Controle Especial) ===== */
 .topbar-app{
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;row-gap:8px;
-  padding:10px 20px;background:var(--panel);border-bottom:3px solid rgba(228,23,44,.4);
-  position:relative;z-index:50;
+  font-family:var(--font-body);
+  display:grid;grid-template-columns:var(--sidebar-w) 1fr;align-items:center;
+  min-height:84px;padding:20px 40px 20px 0;
+  background:linear-gradient(120deg,var(--sidebar-bg),var(--panel) 140%);
+  border-bottom:2px solid rgba(228,23,44,.35);position:relative;z-index:50;
+  box-shadow:0 2px 24px rgba(0,0,0,.2);
 }
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none;}
-.brand img{width:36px;height:36px;object-fit:contain;display:block;}
-.brand-text h1{font-family:var(--font-display);font-size:.95rem;margin:0;color:var(--text);font-weight:800;line-height:1.1;}
-.brand-text p{font-size:.64rem;color:var(--muted);margin:1px 0 0;line-height:1.2;}
-.titulo-wrap{flex:1 1 240px;text-align:center;min-width:0;}
-.titulo-wrap h2{font-family:var(--font-display);font-weight:800;font-size:1.05rem;margin:0;color:var(--text);letter-spacing:.01em;}
-.titulo-wrap span{display:block;font-size:.68rem;font-weight:500;color:var(--muted);margin-top:2px;}
-.topbar-right{display:flex;align-items:center;gap:8px;flex:none;margin-left:auto;}
-.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card2);display:flex;align-items:center;justify-content:center;color:var(--text);flex:none;}
-.theme-toggle svg{width:17px;height:17px;}
+.topbar-app .logo-wrap{grid-column:1;display:flex;align-items:center;padding-left:40px;}
+.topbar-app .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
+.topbar-home-mobile{display:none;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand img{width:50px;height:50px;object-fit:contain;display:block;}
+.brand-text h1{font-size:25px;font-weight:800;letter-spacing:-.3px;line-height:1.1;margin:0;color:var(--text);}
+.brand-text h1 span{color:var(--red);}
+.brand-text p{font-size:12.5px;color:var(--muted);font-weight:400;margin:2px 0 0;white-space:nowrap;}
+.topbar-app .titulo-central{grid-column:2;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;}
+.topbar-app .titulo-principal{font-size:1rem;font-weight:800;white-space:normal;letter-spacing:.4px;max-width:100%;line-height:1.25;}
+.topbar-app .titulo-descricao{font-size:.74rem;color:var(--muted);margin-top:2px;white-space:nowrap;}
+.topbar-actions{position:absolute;right:40px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px;}
+.theme-toggle{width:40px;height:40px;border-radius:9px;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;color:var(--text);flex:none;transition:background-color .15s ease,border-color .15s ease;}
+.theme-toggle:hover{background:var(--card2);}
+.theme-toggle svg{width:18px;height:18px;}
 .mobile-nav-toggle{display:none;}
 @media(max-width:900px){
-  .topbar-app{padding:8px 12px;}
-  .brand-text{display:none;}
-  .brand img{width:30px;height:30px;}
-  .titulo-wrap h2{font-size:.86rem;}
-  .titulo-wrap span{display:none;}
+  .topbar-app{grid-template-columns:1fr;grid-template-rows:auto auto;padding:8px 14px;position:relative;}
+  .topbar-app .logo-wrap{display:none;}
+  .topbar-home-mobile{
+    display:flex;align-items:center;justify-content:center;position:absolute;left:14px;top:10px;
+    width:34px;height:34px;border-radius:9px;border:1px solid var(--border);background:var(--panel);
+    color:var(--muted);text-decoration:none;z-index:2;
+  }
+  .topbar-home-mobile svg{width:17px;height:17px;}
+  .topbar-home-mobile:hover{color:var(--text);border-color:var(--red);}
+  .topbar-app .titulo-central{grid-column:1;padding:0 44px;}
+  .topbar-app .titulo-principal{font-size:1.08rem;white-space:normal;text-shadow:0 1px 0 rgba(255,255,255,.7),0 3px 10px rgba(23,26,32,.22);}
+  body.dark .topbar-app .titulo-principal{text-shadow:0 1px 0 rgba(0,0,0,.5),0 6px 18px rgba(0,0,0,.45);}
+  .topbar-app .titulo-descricao{font-size:.64rem;white-space:normal;}
+  .topbar-actions{position:static;transform:none;grid-column:1;justify-content:center;flex-wrap:wrap;row-gap:8px;margin-top:10px;}
 }
 
 /* ===== Integration strip ===== */
@@ -199,19 +216,25 @@ th{font-size:.66rem;text-transform:uppercase;letter-spacing:.03em;color:var(--mu
 <body>
 
 <header class="topbar-app">
-  <a href="../" class="brand">
-    <img src="logo.png" alt="FarmaPrática">
-    <div class="brand-text">
-      <h1>FarmaPrática</h1>
-      <p>Plataforma para Rotina, Gestão e Cuidado Farmacêutico</p>
-    </div>
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
   </a>
-  <div class="titulo-wrap">
-    <h2>CONSULTÓRIO FARMACÊUTICO</h2>
-    <span>Cuidado farmacêutico clínico — atendimento, documentação e acompanhamento</span>
+  <div class="logo-wrap">
+    <a href="../" title="Voltar para a página inicial do FarmaPrática">
+      <div class="brand">
+        <img src="logo.png" alt="FarmaPrática">
+        <div class="brand-text">
+          <h1>Farma<span>Prática</span></h1>
+          <p>Plataforma para Rotina, Gestão e<br>Cuidado Farmacêutico</p>
+        </div>
+      </div>
+    </a>
   </div>
-  <div class="topbar-right">
-    <a href="../" class="btn btn-sm" title="Início do FarmaPrática">🏠 Início</a>
+  <div class="titulo-central">
+    <div class="titulo-principal">CONSULTÓRIO FARMACÊUTICO</div>
+    <div class="titulo-descricao">Cuidado farmacêutico clínico — atendimento, documentação e acompanhamento</div>
+  </div>
+  <div class="topbar-actions">
     <button class="theme-toggle" id="themeToggle" title="Alternar tema" aria-label="Alternar tema" type="button"></button>
   </div>
 </header>
