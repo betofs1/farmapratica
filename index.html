@@ -1975,6 +1975,69 @@
     background:var(--card-bg);border:1px solid var(--card-border);
     color:var(--text-gray);
   }
+  /* ============ PREVIA - melhorias visuais/estruturais (itens 2, 3, 4 + secao FERRAMENTAS) ============ */
+  .tools-hub-header h2{font-size:24px;letter-spacing:1.5px;}
+  .tools-hub-header h2 .hub-accent-word{color:var(--red);}
+  .hub-header-divider{
+    width:56px;height:3px;margin:12px auto 0;border-radius:3px;
+    background:linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+  @media (max-width:640px){
+    .tools-hub-header h2{font-size:17px;}
+    .hub-header-divider{width:40px;height:2px;margin-top:8px;}
+  }
+
+  .fav-list .fav-empty strong{display:block;color:var(--text-gray);font-size:13.5px;margin-bottom:3px;}
+  .notes-empty{
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    border:1px dashed var(--card-border);border-radius:11px;padding:16px 10px;
+  }
+  .notes-empty svg{width:24px;height:24px;color:var(--text-gray-dim);}
+  .notes-empty strong{display:block;color:var(--text-gray);font-size:13.5px;}
+
+  @media (max-width:760px){
+    .institutional-banner{position:relative;overflow:hidden;}
+    .institutional-banner::after{
+      content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+      background:radial-gradient(120% 90% at 85% 0%, rgba(228,23,44,.20), transparent 60%);
+      animation:heroGlowDrift 11s ease-in-out infinite;
+    }
+    .institutional-banner > *{position:relative;z-index:1;}
+  }
+
+  .site-footer{
+    border-top:1px solid var(--card-border);
+    margin-top:8px;padding:36px 40px 22px;
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;
+  }
+  .site-footer .footer-brand p{font-size:12.5px;color:var(--text-gray-dim);line-height:1.6;max-width:280px;margin:8px auto 0;}
+  .site-footer h4{
+    font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--text-gray);margin-bottom:12px;
+  }
+  .site-footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;padding:0;margin:0;}
+  .site-footer a{font-size:13px;color:var(--text-gray-dim);text-decoration:none;transition:color .15s ease;}
+  .site-footer a:hover{color:var(--red);}
+  .footer-bottom{
+    border-top:1px solid var(--card-border);
+    margin:0 40px;padding:16px 0 26px;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+    font-size:12px;color:var(--text-gray-dim);
+  }
+  .footer-bottom .footer-socials{display:flex;gap:10px;}
+  .footer-bottom .footer-socials a{
+    width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-gray-dim);
+  }
+  .footer-bottom .footer-socials a:hover{color:var(--red);border-color:var(--red);}
+  .footer-bottom .footer-socials svg{width:16px;height:16px;}
+  @media (max-width:900px){
+    .site-footer{grid-template-columns:1fr 1fr;padding:28px 20px 16px;}
+    .footer-bottom{margin:0 20px;padding-bottom:96px;}
+  }
+  @media (max-width:520px){
+    .site-footer{grid-template-columns:1fr;gap:22px;}
+  }
 </style>
 </head>
 <body>
@@ -2172,8 +2235,9 @@
     <!-- Ferramentas Farmacêuticas — nova seção central, protagonista da página -->
     <section class="tools-hub-section" id="panel-mais">
       <div class="tools-hub-header">
-        <h2><span class="hub-sparkle">✦</span> FERRAMENTAS<span class="hub-sparkle">✦</span></h2>
-        <p>Tudo que você precisa para uma rotina mais segura, ágil e baseada em evidências.</p>
+        <h2><span class="hub-sparkle">✦</span> FERRAMENTAS <span class="hub-accent-word">FARMACÊUTICAS</span><span class="hub-sparkle">✦</span></h2>
+        <div class="hub-header-divider"></div>
+        <p>Escolha uma ferramenta abaixo e tenha mais agilidade, segurança e respaldo técnico na sua rotina de balcão.</p>
       </div>
       <div class="tools-hub-grid">
 
@@ -2441,7 +2505,37 @@
   </div>
 </main>
 
-<footer>© 2026 FarmaPrática. Todos os direitos reservados.</footer>
+<footer class="site-footer">
+  <div class="footer-brand">
+    <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;">Farma<span style="color:var(--red);">Prática</span></h3>
+    <p>Ferramentas farmacêuticas reunidas em um só lugar, para decisões mais rápidas e seguras no balcão.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Ferramentas</h4>
+    <ul>
+      <li><a href="farmadesk/">Guia de Dispensação</a></li>
+      <li><a href="medinter/">Substituição de Medicamentos</a></li>
+      <li><a href="dosespediatricas/">Calculadora de Doses</a></li>
+      <li><a href="receitas/">Conferência de Receitas</a></li>
+      <li><a href="bulario/">Bulário Farmacêutico</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Institucional</h4>
+    <ul>
+      <li><a href="#" onclick="openAboutModal();return false;">Sobre o FarmaPrática</a></li>
+      <li><a href="mailto:contato@farmapratica.com.br">Contato por e-mail</a></li>
+      <li><a href="https://wa.me/5584900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 FarmaPrática. Todos os direitos reservados. Idealizado por Valberto Ferreira | CRF-RN 7652.</span>
+  <div class="footer-socials">
+    <a href="https://instagram.com/farmapratica" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="mailto:contato@farmapratica.com.br" title="E-mail" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></a>
+  </div>
+</div>
 
 <!-- Menu inferior (mobile) — botões genéricos por enquanto, funcionalidade a definir -->
 <nav class="bottom-nav" id="bottom-nav" aria-label="Navegação principal">
@@ -2545,6 +2639,7 @@
   var BG_LEVEL_KEY_LIGHT = 'fp-bg-level-light';
   var BG_LEVEL_DEFAULT = 50;
   var BG_LEVEL_MAX_DARK_MIX = 0.6; // acima de 50, nunca mistura mais que 60% preto — "mais escuro", não necessariamente preto
+  var BG_LEVEL_MAX_LIGHT_MIX_DARKTHEME = 0.3; // no tema escuro, abaixo de 50 nunca mistura mais que 30% branco (clareia o roxo/azul/etc. levemente, sem lavar pra branco)
   var currentPaletteName = {dark: BG_THEME_DEFAULT_DARK, light: BG_THEME_DEFAULT_LIGHT};
   function getBgLevel(isLight){
     var key = isLight ? BG_LEVEL_KEY_LIGHT : BG_LEVEL_KEY_DARK;
@@ -2558,10 +2653,11 @@
     }catch(e){}
     return v;
   }
-  function shadeCssColor(hex, level){
+  function shadeCssColor(hex, level, isLight){
     if(level === BG_LEVEL_DEFAULT) return hex;
     if(level < BG_LEVEL_DEFAULT){
-      var ratioLight = Math.round((BG_LEVEL_DEFAULT - level) / BG_LEVEL_DEFAULT * 100);
+      var maxLightMix = isLight ? 1 : BG_LEVEL_MAX_LIGHT_MIX_DARKTHEME;
+      var ratioLight = Math.round((BG_LEVEL_DEFAULT - level) / BG_LEVEL_DEFAULT * maxLightMix * 100);
       return 'color-mix(in srgb, ' + hex + ' ' + (100 - ratioLight) + '%, #ffffff ' + ratioLight + '%)';
     }
     var ratioDark = Math.round((level - BG_LEVEL_DEFAULT) / BG_LEVEL_DEFAULT * BG_LEVEL_MAX_DARK_MIX * 100);
@@ -2592,15 +2688,15 @@
     currentPaletteName[isLight ? 'light' : 'dark'] = name;
     var level = getBgLevel(isLight);
     var s = document.body.style;
-    s.setProperty('--bg', shadeCssColor(p.bg, level));
-    s.setProperty('--bg-panel', shadeCssColor(p.bgPanel, level));
-    s.setProperty('--card-bg', shadeCssColor(p.cardBg, level));
-    s.setProperty('--card-border', shadeCssColor(p.cardBorder, level));
-    s.setProperty('--card-hover-bg', shadeCssColor(p.cardHoverBg, level));
-    s.setProperty('--placeholder-border', shadeCssColor(p.placeholderBorder, level));
-    s.setProperty('--sidebar-bg', shadeCssColor(p.sidebarBg, level));
-    s.setProperty('--sidebar-border', shadeCssColor(p.sidebarBorder, level));
-    s.setProperty('--sidebar-hover', shadeCssColor(p.sidebarHover, level));
+    s.setProperty('--bg', shadeCssColor(p.bg, level, isLight));
+    s.setProperty('--bg-panel', shadeCssColor(p.bgPanel, level, isLight));
+    s.setProperty('--card-bg', shadeCssColor(p.cardBg, level, isLight));
+    s.setProperty('--card-border', shadeCssColor(p.cardBorder, level, isLight));
+    s.setProperty('--card-hover-bg', shadeCssColor(p.cardHoverBg, level, isLight));
+    s.setProperty('--placeholder-border', shadeCssColor(p.placeholderBorder, level, isLight));
+    s.setProperty('--sidebar-bg', shadeCssColor(p.sidebarBg, level, isLight));
+    s.setProperty('--sidebar-border', shadeCssColor(p.sidebarBorder, level, isLight));
+    s.setProperty('--sidebar-hover', shadeCssColor(p.sidebarHover, level, isLight));
     var groupId = isLight ? 'color-theme-options-light' : 'color-theme-options-dark';
     var group = document.getElementById(groupId);
     if(group){
@@ -3127,7 +3223,7 @@
     var list = loadFavorites();
     var container = document.getElementById('fav-list');
     if(!list.length){
-      container.innerHTML = '<div class="fav-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Nenhum favorito ainda. Favorite itens nas ferramentas para vê-los aqui.</div>';
+      container.innerHTML = '<div class="fav-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><strong>Nenhum favorito ainda</strong>Favorite itens em qualquer ferramenta para vê-los aqui.</div>';
       return;
     }
     container.innerHTML = list.map(function(f){
@@ -3480,7 +3576,7 @@
     updateNotesSidebarDot(list.length);
     var container = document.getElementById('notes-list');
     if(!list.length){
-      container.innerHTML = '<div class="notes-empty">Nenhuma nota ainda. Crie lembretes ou checklists rápidos para sua rotina.</div>';
+      container.innerHTML = '<div class="notes-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><strong>Nenhuma nota ainda</strong>Crie lembretes ou checklists rápidos para sua rotina.</div>';
       return;
     }
     container.innerHTML = list.map(function(n){
