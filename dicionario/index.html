@@ -25,7 +25,7 @@
     --amber: #f59e0b;
     --green-ok: #3fb87f;
     --sky-ok: #38bdf8;
-    --sidebar-w: 330px;
+    --sidebar-w: 460px;
     --hover-tint: #585d65;
 
     --cat-red:#ef5b76;        --cat-red-glow:rgba(239,91,118,.22);
@@ -294,10 +294,12 @@
   .term-block h5{ font-family:'Inter',sans-serif; font-size:.74rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 9px; color:var(--text-dim); display:flex; align-items:center; gap:7px; }
   .term-block h5 svg{ width:14px; height:14px; color:var(--red-bright); }
   .term-block p{ margin:0; font-size:.9rem; line-height:1.68; color:var(--text-gray); }
-  [data-min-nivel]{ display:none; }
-  .nivel-rapido [data-min-nivel="rapido"]{ display:block; }
-  .nivel-completo [data-min-nivel="rapido"], .nivel-completo [data-min-nivel="completo"]{ display:block; }
-  .nivel-estudo [data-min-nivel]{ display:block; }
+  /* Oculta por padrão os blocos acima do nível "Rápido"; !important garante que
+     isso vença qualquer display:flex/block já definido na própria classe do bloco
+     (ex.: .callout usa display:flex — sem !important aqui, o bloco ficava sempre
+     visível em qualquer nível, o que fazia "Completo" e "Estudo" parecerem iguais). */
+  .nivel-rapido [data-min-nivel="completo"], .nivel-rapido [data-min-nivel="estudo"]{ display:none !important; }
+  .nivel-completo [data-min-nivel="estudo"]{ display:none !important; }
 
   .callout{ border-radius:13px; padding:15px 18px; display:flex; gap:12px; align-items:flex-start; }
   .callout svg{ width:19px; height:19px; flex-shrink:0; margin-top:1px; }
@@ -318,6 +320,14 @@
   .cascata-arrow{ margin-left:13px; width:1px; height:14px; background:var(--border); }
   .cascata-tags{ display:flex; flex-wrap:wrap; gap:7px; }
   .cascata-tags span{ background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:4px 11px; font-size:.78rem; font-weight:600; }
+
+  .glossario-grupo{ margin-top:14px; }
+  .glossario-grupo:first-of-type{ margin-top:10px; }
+  .glossario-grupo-titulo{ font-size:.7rem; text-transform:uppercase; letter-spacing:.5px; font-weight:800; color:var(--cc,var(--red-bright)); margin-bottom:8px; }
+  .glossario-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }
+  .glossario-item{ display:flex; align-items:baseline; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:8px 11px; }
+  .glossario-item .gi-sigla{ font-size:.79rem; font-weight:800; color:var(--text); flex-shrink:0; }
+  .glossario-item .gi-significado{ font-size:.79rem; color:var(--text-gray); line-height:1.4; }
 
   .chips-wrap{ display:flex; flex-wrap:wrap; gap:8px; }
   .chip-link{ padding:7px 13px; border-radius:20px; background:var(--panel); border:1px solid var(--border); font-size:.79rem; font-weight:700; cursor:pointer; color:var(--text); display:inline-flex; align-items:center; gap:6px; }
@@ -481,6 +491,8 @@ let state = { view:'inicio', termoId:null, categoriaId:null, comparacaoId:null, 
 let historico = [];
 let acIndex = -1;
 let acResultsCache = [];
+const MAX_HISTORICO = 5;
+function isMobile(){ return window.innerWidth <= 800; }
 
 const CATEGORY_EMOJI = {
   'farmacologia-geral':'🧪', 'farmacodinamica':'🧬', 'farmacocinetica':'⏳', 'interacoes':'🔗',
@@ -579,7 +591,7 @@ function loadHistorico(){
 function addHistorico(id){
   historico = historico.filter(x=>x!==id);
   historico.unshift(id);
-  historico = historico.slice(0,10);
+  historico = historico.slice(0,MAX_HISTORICO);
   try{ localStorage.setItem('farmadic-historico', JSON.stringify(historico)); }catch(e){}
 }
 
@@ -690,7 +702,7 @@ function renderSidebar(){
   let html = '';
   if(historico.length){
     html += '<div class="pinned-group"><div class="pinned-head">'+icon('history')+' Consultados recentemente</div><div class="chip-mini-grid">';
-    historico.slice(0,6).forEach(id=>{
+    historico.slice(0,MAX_HISTORICO).forEach(id=>{
       const t = getTerm(id);
       if(t) html += '<span class="chip-mini" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>';
     });
@@ -748,36 +760,35 @@ function breadcrumb(items){
 const TERMOS_DESTAQUE = ['agonista','antagonista','biodisponibilidade','meia-vida','cyp3a4','ram','pro-farmaco','uso-off-label','sindrome-serotoninergica','indice-terapeutico'];
 
 function viewInicio(){
-  let html = '<div class="home-hero"><h2>'+icon('book')+' <span class="brand-word">Dicionário Farma<span>Prática</span></span></h2>' +
-    '<p>Consulta técnica, didática e rápida de termos de Farmacologia, Farmácia Clínica, Farmacotécnica, Toxicologia, Legislação e demais áreas da prática farmacêutica — com definição, explicação simplificada, aplicação prática e termos relacionados.</p></div>';
-
-  html += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('bulb')+'</div>' +
-    '<p>Cada verbete responde não só "o que significa", mas "por que isso importa para o farmacêutico": conecta definição, mecanismo, exemplo prático e termos relacionados. Use o alternador de nível (⚡ Rápido / 📚 Completo / 🎓 Estudo) em cada termo para controlar a profundidade do conteúdo.</p></div>';
+  let html = '<div class="intro-banner"><div class="intro-banner-icon">'+icon('bulb')+'</div>' +
+    '<p>Use o alternador de nível (⚡ Rápido / 📚 Completo / 🎓 Estudo) em cada termo para controlar a profundidade do conteúdo</p></div>';
 
   html += '<div class="home-search-big"><div class="search-box">'+icon('search')+
     '<input autocomplete="off" placeholder="Pesquise um termo, sigla, sinônimo, mecanismo ou classe farmacológica..." oninput="syncHomeSearch(this.value)" onkeydown="onSearchKeydown(event)" value="'+esc(state.search)+'">' +
-    '</div><div id="ac-drop-home" class="autocomplete-drop"></div>' +
-    '<div class="exemplos-line"><b>Experimente:</b> ' + TERMOS_DESTAQUE.slice(0,6).map(id=>{ const t=getTerm(id); return t?'<span class="chip-mini" style="display:inline-block;margin:3px 4px 0 0;" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>':''; }).join('') + '</div></div>';
+    '</div><div id="ac-drop-home" class="autocomplete-drop"></div></div>';
 
-  html += '<div class="section-title">'+icon('target')+' Termos em destaque</div><div class="quick-grid">';
+  let destaqueSection = '<div class="section-title">'+icon('target')+' Termos em destaque</div><div class="quick-grid">';
   TERMOS_DESTAQUE.forEach(id=>{
     const t = getTerm(id); if(!t) return;
     const cat = getCat(t.categoria);
-    html += '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+id+'\')"><span class="qc-dot"></span><span>'+esc(t.termo)+'</span></div>';
+    destaqueSection += '<div class="quick-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+id+'\')"><span class="qc-dot"></span><span>'+esc(t.termo)+'</span></div>';
   });
-  html += '</div>';
+  destaqueSection += '</div>';
 
-  html += '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div><div class="tiles-grid">';
+  let categoriasSection = '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div><div class="tiles-grid">';
   DATA.categorias.forEach(cat=>{
     const n = termosDaCategoria(cat.id).length;
-    html += '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">' +
+    categoriasSection += '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">' +
       '<div class="ct-icon">'+catEmoji(cat.id)+'</div><h4>'+esc(cat.nome)+'</h4><div class="ct-count">'+n+' termo'+(n===1?'':'s')+'</div></div>';
   });
-  html += '</div>';
+  categoriasSection += '</div>';
+
+  // No mobile, "Categorias" vem antes de "Termos em destaque"; no desktop a ordem é invertida.
+  html += isMobile() ? (categoriasSection + destaqueSection) : (destaqueSection + categoriasSection);
 
   if(historico.length){
     html += '<div class="section-title">'+icon('history')+' Consultados recentemente</div><div class="historico-line">';
-    historico.slice(0,10).forEach(id=>{
+    historico.slice(0,MAX_HISTORICO).forEach(id=>{
       const t = getTerm(id); if(!t) return;
       html += '<span class="chip-mini" onclick="abrirTermo(\''+id+'\')">'+esc(t.termo)+'</span>';
     });
@@ -814,6 +825,20 @@ function renderCascata(t){
   return html;
 }
 
+function renderGlossario(t){
+  if(!t.glossario || !t.glossario.length) return '';
+  let html = '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('layers')+' '+esc(t.glossarioTitulo||'Glossário')+'</h5>';
+  t.glossario.forEach(grupo=>{
+    html += '<div class="glossario-grupo"><div class="glossario-grupo-titulo">'+esc(grupo.titulo)+'</div><div class="glossario-grid">';
+    (grupo.itens||[]).forEach(item=>{
+      html += '<div class="glossario-item"><span class="gi-sigla">'+esc(item.sigla)+'</span><span class="gi-significado">'+esc(item.significado)+'</span></div>';
+    });
+    html += '</div></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
 function chipLink(id, cor){
   const t = getTerm(id);
   if(!t) return '';
@@ -845,6 +870,8 @@ function viewTermo(id){
   html += '<div class="term-body nivel-'+state.nivel+'">';
 
   html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('book')+' Definição</h5><p>'+esc(t.definicao)+'</p></div>';
+
+  html += renderGlossario(t);
 
   if(t.explicacaoSimplificada){
     html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('bulb')+' Explicação Simplificada</h5><p>'+esc(t.explicacaoSimplificada)+'</p></div>';
@@ -898,7 +925,8 @@ function viewCategoria(catId){
   const cat = getCat(catId);
   if(!cat) return viewInicio();
   const terms = termosDaCategoria(catId);
-  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:cat.nome}]);
+  let html = '<button class="btn-voltar-mobile" onclick="setView(\'inicio\')">'+icon('back')+' Voltar</button>';
+  html += breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:cat.nome}]);
   html += '<div class="home-hero"><h2 '+ccStyle(cat.cor)+' style="color:var(--cc)">'+catEmoji(catId)+' '+esc(cat.nome)+'</h2>' +
     '<p>'+esc(cat.descricao||'')+'</p></div>';
   if(terms.length===0){
@@ -980,6 +1008,14 @@ document.addEventListener('click', function(ev){
   const wraps = ['global-search','ac-drop-sidebar','ac-drop-home'];
   const inside = wraps.some(id=>{ const el=document.getElementById(id); return el && el.contains(ev.target); });
   if(!inside) hideAutocomplete();
+});
+let _eraMobile = isMobile();
+window.addEventListener('resize', function(){
+  const agoraMobile = isMobile();
+  if(agoraMobile !== _eraMobile){
+    _eraMobile = agoraMobile;
+    if(state.view==='inicio') renderMain();
+  }
 });
 
 fetch('dicionario.json').then(r=>r.json()).then(data=>{
