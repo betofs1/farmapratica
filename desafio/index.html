@@ -396,6 +396,7 @@
       border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:700; cursor:pointer;
     }
     .btn-voltar-mobile svg{ width:14px; height:14px; }
+    .intro-banner{ display:none; }
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
@@ -809,8 +810,7 @@ function statsResumo(){
 
 function viewInicio(){
   const st = statsResumo();
-  let h = '<div class="home-hero"><h2>'+icon('target')+'<span class="brand-word">Desafio <span>Clínico</span></span></h2>';
-  h += '<p>Pratique o raciocínio clínico farmacêutico com casos progressivos, quiz e flashcards — da queixa à conduta, passando pelos sinais de alerta.</p></div>';
+  let h = '';
 
   h += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('info')+'</div>'+
     '<p>Conteúdo educacional de apoio ao raciocínio clínico farmacêutico — não substitui avaliação médica, protocolo institucional ou julgamento clínico individualizado diante de cada paciente real.</p></div>';
