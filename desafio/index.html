@@ -278,7 +278,13 @@
   .player-progress .pp-seg.done{ background:var(--red-bright); }
   .player-progress .pp-seg.current{ background:var(--sky-ok); }
   .player-title{ font-family:'Inter',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); font-weight:800; margin-bottom:8px; }
+  .player-title-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap; }
   .player-texto{ font-size:1rem; line-height:1.7; color:var(--text); margin-bottom:22px; }
+  .btn-voltar-etapa{ display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:8px; border:1px solid var(--border);
+    background:transparent; color:var(--text-dim); font-size:.68rem; font-weight:700; cursor:pointer; transition:.14s ease; flex-shrink:0; white-space:nowrap; }
+  .btn-voltar-etapa:hover{ border-color:var(--red-bright); color:var(--text); }
+  .btn-voltar-etapa svg{ width:12px; height:12px; }
+  .icon-flip{ transform:rotate(180deg); }
   .opcoes-list{ display:flex; flex-direction:column; gap:10px; }
   .opcao-btn{
     text-align:left; padding:13px 16px; border-radius:11px; border:1px solid var(--border); background:var(--panel);
@@ -673,7 +679,7 @@ function abrirCaso(id){
     }
   });
   state.casoId = id; state.casoStepIndex = 0; state.casoPontosGanhos = 0; state.casoPontosMax = max;
-  state.casoAcertosComp = []; state.casoRespostaAtual = null;
+  state.casoAcertosComp = []; state.casoRespostaAtual = null; state.casoRespostasPorEtapa = {};
   setView('caso');
 }
 function selecionarOpcaoCaso(idxOpcao){
@@ -682,6 +688,7 @@ function selecionarOpcaoCaso(idxOpcao){
   const etapa = caso.etapas[state.casoStepIndex];
   const opcao = etapa.opcoes[idxOpcao];
   state.casoRespostaAtual = idxOpcao;
+  state.casoRespostasPorEtapa[state.casoStepIndex] = idxOpcao;
   state.casoPontosGanhos += (opcao.pontos||0);
   if(opcao.tipo === 'acerto'){
     registrarAcertoCompetencia(etapa.competencia);
@@ -689,14 +696,23 @@ function selecionarOpcaoCaso(idxOpcao){
   }
   renderMain();
 }
+function irParaEtapaCaso(novoIndex){
+  state.casoStepIndex = novoIndex;
+  const respostaSalva = state.casoRespostasPorEtapa[novoIndex];
+  state.casoRespostaAtual = (respostaSalva !== undefined) ? respostaSalva : null;
+  renderMain();
+}
+function voltarEtapaCaso(){
+  if(state.casoStepIndex <= 0) return;
+  irParaEtapaCaso(state.casoStepIndex - 1);
+}
 function avancarEtapaCaso(){
   const caso = CASO_BY_ID[state.casoId];
-  state.casoStepIndex++;
-  state.casoRespostaAtual = null;
-  if(state.casoStepIndex >= caso.etapas.length){
+  const novoIndex = state.casoStepIndex + 1;
+  if(novoIndex >= caso.etapas.length){
     finalizarCaso();
   }else{
-    renderMain();
+    irParaEtapaCaso(novoIndex);
   }
 }
 function finalizarCaso(){
@@ -934,7 +950,11 @@ function viewCasoPlayer(){
     const cls = i<state.casoStepIndex ? 'done' : (i===state.casoStepIndex ? 'current' : '');
     return '<div class="pp-seg '+cls+'"></div>';
   }).join('')+'</div>';
-  h += '<div class="player-title">'+esc(etapa.titulo)+' · Etapa '+(state.casoStepIndex+1)+' de '+caso.etapas.length+'</div>';
+  h += '<div class="player-title-row"><div class="player-title">'+esc(etapa.titulo)+' · Etapa '+(state.casoStepIndex+1)+' de '+caso.etapas.length+'</div>';
+  if(state.casoStepIndex > 0){
+    h += '<button class="btn-voltar-etapa" onclick="voltarEtapaCaso()">'+icon('chev','icon-flip')+'Etapa anterior</button>';
+  }
+  h += '</div>';
   h += '<div class="player-texto">'+esc(etapa.texto)+'</div>';
 
   if(etapa.tipo === 'info'){
