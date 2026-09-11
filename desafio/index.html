@@ -312,6 +312,18 @@
   .resumo-block{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:15px 19px; }
   .resumo-block h5{ font-family:'Inter',sans-serif; font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 7px; color:var(--text-dim); }
   .resumo-block p{ margin:0; font-size:.88rem; line-height:1.65; color:var(--text-gray); }
+  .revisao-block h5{ display:flex; align-items:center; gap:7px; color:var(--erro); font-size:.76rem; }
+  .revisao-block h5 svg{ width:14px; height:14px; }
+  .revisao-block.revisao-perfeito h5{ color:var(--acerto); }
+  .revisao-item{ padding:12px 0; border-top:1px solid var(--border); }
+  .revisao-item:first-of-type{ border-top:none; padding-top:0; }
+  .revisao-etapa-titulo{ font-weight:800; font-size:.85rem; color:var(--text); margin-bottom:8px; }
+  .revisao-errada, .revisao-correta{ border-radius:9px; padding:9px 13px; font-size:.85rem; line-height:1.55; margin-bottom:7px; }
+  .revisao-errada{ background:var(--erro-glow); border:1px solid var(--erro); color:var(--text); }
+  .revisao-errada strong{ color:var(--erro); }
+  .revisao-correta{ background:var(--acerto-glow); border:1px solid var(--acerto); color:var(--text); margin-bottom:0; }
+  .revisao-correta strong{ color:var(--acerto); }
+  .revisao-correta-fb{ display:block; margin-top:4px; color:var(--text-gray); font-size:.82rem; }
   .score-banner{ display:flex; align-items:center; gap:16px; background:linear-gradient(120deg,var(--card),var(--panel)); border:1px solid var(--red-bright); border-radius:15px; padding:20px 24px; max-width:760px; margin-bottom:18px; }
   .score-banner .sb-num{ font-family:'Inter',sans-serif; font-size:2.1rem; font-weight:800; color:var(--red-bright); }
   .score-banner .sb-label{ font-size:.8rem; color:var(--text-dim); }
@@ -982,6 +994,38 @@ function viewCasoPlayer(){
   return h;
 }
 
+function revisaoErrosCaso(caso){
+  const itens = [];
+  caso.etapas.forEach((etapa, idx) => {
+    if(etapa.tipo !== 'decisao') return;
+    const escolhidaIdx = state.casoRespostasPorEtapa[idx];
+    if(escolhidaIdx === undefined) return;
+    const escolhida = etapa.opcoes[escolhidaIdx];
+    if(escolhida.tipo === 'acerto') return;
+    const correta = etapa.opcoes.find(o => o.tipo === 'acerto');
+    itens.push({ titulo: etapa.titulo, escolhida, correta });
+  });
+  return itens;
+}
+function revisaoCasoHtml(caso){
+  const itens = revisaoErrosCaso(caso);
+  const totalDecisoes = caso.etapas.filter(e => e.tipo === 'decisao').length;
+  if(itens.length === 0){
+    return '<div class="resumo-block revisao-block revisao-perfeito"><h5>'+icon('check')+'Revisão das etapas</h5>'+
+      '<p>Você escolheu a opção correta em todas as '+totalDecisoes+' etapas de decisão deste caso. Excelente raciocínio clínico!</p></div>';
+  }
+  let h = '<div class="resumo-block revisao-block"><h5>'+icon('alert')+'Pontos a revisar ('+itens.length+' de '+totalDecisoes+' etapas de decisão)</h5>';
+  h += itens.map(it =>
+    '<div class="revisao-item">'+
+      '<div class="revisao-etapa-titulo">'+esc(it.titulo)+'</div>'+
+      '<div class="revisao-errada"><strong>Sua resposta: </strong>'+esc(it.escolhida.texto)+'</div>'+
+      '<div class="revisao-correta"><strong>Resposta correta: </strong>'+esc(it.correta.texto)+
+        '<span class="revisao-correta-fb">'+esc(it.correta.feedback)+'</span></div>'+
+    '</div>'
+  ).join('');
+  h += '</div>';
+  return h;
+}
 function viewCasoResumo(){
   const caso = CASO_BY_ID[state.casoId];
   const cat = getCat(caso.categoria);
@@ -992,6 +1036,7 @@ function viewCasoResumo(){
     '<div style="font-weight:800">'+state.casoPontosGanhos+' de '+state.casoPontosMax+' pontos possíveis</div></div></div>';
   h += '<div class="home-hero"><h2>'+icon('book')+'Aprenda com o caso</h2><p>'+esc(caso.titulo)+'</p></div>';
   h += '<div class="resumo-grid">';
+  h += revisaoCasoHtml(caso);
   h += resumoBlock('Condição', rf.condicao);
   h += resumoBlock('Sinais importantes', rf.sinaisImportantes);
   if(rf.medicamentos) h += resumoBlock('Medicamentos envolvidos', rf.medicamentos);
