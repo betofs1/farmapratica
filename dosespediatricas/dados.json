@@ -11,7 +11,8 @@
   "Outros",
   "Respiratório / Broncodilatadores",
   "Oftalmológicos",
-  "Otológicos"
+  "Otológicos",
+  "Emergência"
  ],
  "farmacos": [
   {
@@ -25,7 +26,7 @@
      "max": 15
     },
     "vezesDia": 5,
-    "doseMaximaDoseMg": 750,
+    "doseMaximaDoseMg": 1000,
     "doseMaximaDiaMg": 3000
    },
    "idadeMinimaMeses": 0,
@@ -99,8 +100,8 @@
      "max": 15
     },
     "vezesDia": 4,
-    "doseMaximaDoseMg": 500,
-    "doseMaximaDiaMg": 2000
+    "doseMaximaDoseMg": 1000,
+    "doseMaximaDiaMg": 4000
    },
    "idadeMinimaMeses": 3,
    "formulacoes": [
@@ -326,7 +327,8 @@
     }
    ],
    "observacoesExtras": [
-    "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo."
+    "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo.",
+    "PEDB registra faixa específica de 40-50 mg/kg/dia para Otite Média Aguda (dentro da faixa geral 20-50 mg/kg/dia já usada aqui) e admite fracionamento em 8/8h ou 12/12h conforme a apresentação (12/12h mais usada com a suspensão 400 mg/5 mL)."
    ],
    "fonte": "Bula ANVISA / SBP",
    "nomesComerciais": [
@@ -365,7 +367,7 @@
      "max": 45
     },
     "fracionamento": 2,
-    "doseMaximaDiaMg": 1750
+    "doseMaximaDiaMg": 2000
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
@@ -650,11 +652,17 @@
    "categoria": "Anti-histamínicos",
    "doseBase": {
     "tipo": "faixa_fixa",
+    "faixasPorIdade": true,
     "faixas": [
      {
-      "pesoMaxKg": 999,
+      "idadeMaxMeses": 71,
       "doseMg": 5,
-      "descricao": "2-6 anos: 2,5-5 mg/dia | ≥6 anos: 5-10 mg/dia (ajustar pela idade)"
+      "descricao": "2 a 6 anos: 5 mg 1x/dia (ou 2,5 mg 2x/dia)"
+     },
+     {
+      "idadeMaxMeses": 9999,
+      "doseMg": 10,
+      "descricao": "≥ 6 anos: 10 mg 1x/dia"
      }
     ]
    },
@@ -683,7 +691,7 @@
     }
    ],
    "observacoesExtras": [
-    "Dose fixa por faixa etária, não por peso — confirmar faixa exata na bula antes de dispensar."
+    "Corrigido em 11/09/2026: a faixa de dose passou a variar por idade (2-6 anos: 5 mg/dia | ≥ 6 anos: 10 mg/dia), conforme a própria bula já citada como fonte. Antes, a estrutura de dados aplicava 5 mg para qualquer idade acima de 2 anos, o que poderia subdosar crianças ≥6 anos."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -723,6 +731,16 @@
    },
    "idadeMinimaMeses": 24,
    "formulacoes": [
+    {
+     "tipo": "gotas",
+     "rotulo": "Solução oral gotas 2,8 mg/mL (0,1 mg/gota) — apresentação concentrada",
+     "viaTexto": "via oral a cada 8 horas",
+     "mgPorGota": 0.1,
+     "apresentacaoTexto": "frasco gotejador",
+     "restricoes": [
+      "ATENÇÃO: não confundir com a solução/xarope 0,4 mg/mL do SUS — a solução de 2,8 mg/mL é sete vezes mais concentrada. Conferir sempre o rótulo antes de orientar a posologia em gotas."
+     ]
+    },
     {
      "tipo": "liquido",
      "rotulo": "Xarope 2 mg/5 mL (0,4 mg/mL)",
@@ -824,40 +842,82 @@
    "nome": "Ambroxol",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "mgkg_dia",
-    "doseMgKg": {
-     "min": 1.2,
-     "max": 1.6
-    },
-    "fracionamento": 2,
-    "doseMaximaDiaMg": 90
+    "tipo": "individualizado"
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
-     "rotulo": "Xarope infantil 3 mg/mL",
-     "viaTexto": "via oral a cada 12 horas",
+     "rotulo": "Solução oral 15 mg/5 mL - Xarope",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 3,
-     "apresentacaoTexto": "frasco com 100 mL"
+     "apresentacaoTexto": "frasco com 100 mL",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 23,
+       "texto": "2,5 mL, 2x/dia (15 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 71,
+       "texto": "2,5 mL, 3x/dia (22,5 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 144,
+       "texto": "5 mL, 3x/dia (45 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "A partir de 13 anos, usar a apresentação de 30 mg/5 mL: 5 mL, 3x/dia (90 mg/dia)"
+      }
+     ]
     },
     {
      "tipo": "liquido",
-     "rotulo": "Xarope adulto 6 mg/mL",
-     "viaTexto": "via oral a cada 12 horas",
+     "rotulo": "Solução oral 30 mg/5 mL - Xarope",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 6,
-     "apresentacaoTexto": "frasco com 100 mL"
+     "apresentacaoTexto": "frasco com 100 mL",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Até 12 anos, usar a apresentação de 15 mg/5 mL (xarope pediátrico)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "5 mL, 3x/dia (90 mg/dia)"
+      }
+     ]
     },
     {
      "tipo": "comprimido",
      "rotulo": "Comprimido 30 mg",
-     "viaTexto": "via oral a cada 12 horas",
+     "viaTexto": "via oral, conforme faixa etária",
      "mgPorComprimido": 30,
-     "apresentacaoTexto": "cartela com 20 comprimidos"
+     "apresentacaoTexto": "cartela com 20 comprimidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Não indicado até os 12 anos — usar apresentação líquida"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido, 3x/dia (90 mg/dia)"
+      }
+     ]
+    },
+    {
+     "tipo": "inalatoria",
+     "rotulo": "Solução inalatória 7,5 mg/mL",
+     "viaTexto": "via inalatória, em 1 a 2 inalações por dia",
+     "concentracaoMgMl": 7.5,
+     "apresentacaoTexto": "administrar 2 a 3 mL por inalação",
+     "restricoes": [
+      "Uso menos comum na prática brasileira atual; confirmar disponibilidade do nebulizador/apresentação antes de orientar."
+     ]
     }
    ],
    "observacoesExtras": [
-    "Atentar para apresentação infantil vs. adulto (concentrações diferentes)."
+    "A bula também permite calcular a dose do xarope pediátrico à razão de 0,5 mg de ambroxol por quilograma de peso corpóreo, 3 vezes ao dia — método alternativo ao cálculo por faixa etária usado nesta calculadora."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -881,48 +941,84 @@
    "fontesAdulto": [
     "Bula ANVISA Cloridrato de Ambroxol (Farmace) — xarope adulto 6 mg/mL: 'Adultos e crianças acima de 12 anos: 5 mL por via oral, 3 vezes ao dia' (15 mL/dia = 90 mg/dia) — https://farmace.com.br/wp-content/uploads/2024/03/cloridrato_ambroxol_paciente.pdf",
     "Bula Cloridrato de Ambroxol (Drogasil, xarope) — https://www.drogasil.com.br/bulas/cloridrato-de-ambroxol"
-   ]
+   ],
+   "somenteIdade": true
   },
   {
    "id": "bromexina",
    "nome": "Bromexina",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "faixa_fixa",
-    "faixas": [
-     {
-      "pesoMaxKg": 20,
-      "doseMg": 2,
-      "descricao": "2-6 anos (até ~20 kg)"
-     },
-     {
-      "pesoMaxKg": 999,
-      "doseMg": 4,
-      "descricao": "6-12 anos"
-     }
-    ]
+    "tipo": "individualizado"
    },
-   "idadeMinimaMeses": 24,
+   "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
-     "rotulo": "Xarope 4 mg/5 mL (0,8 mg/mL)",
-     "viaTexto": "via oral, 3x/dia",
+     "rotulo": "Solução oral 4 mg/5 mL - Xarope infantil",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 0.8,
-     "apresentacaoTexto": "frasco com 120 mL"
+     "apresentacaoTexto": "frasco com 120 mL",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 23,
+       "alerta": true,
+       "texto": "Bula não estabelece dose para menores de 2 anos. Uso nessa faixa etária não deve ser feito sem avaliação médica individual — não há dose padronizada a calcular aqui."
+      },
+      {
+       "idadeMaxMeses": 71,
+       "texto": "2,5 mL (2 mg), 3x/dia (6 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 144,
+       "texto": "5 mL (4 mg), 3x/dia (12 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "10 mL (8 mg), 3x/dia (24 mg/dia)"
+      }
+     ]
+    },
+    {
+     "tipo": "liquido",
+     "rotulo": "Xarope adulto 8 mg/5 mL (1,6 mg/mL)",
+     "viaTexto": "via oral, conforme faixa etária",
+     "concentracaoMgMl": 1.6,
+     "apresentacaoTexto": "frasco com 120 mL",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Até 12 anos, usar a apresentação infantil (4 mg/5 mL)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "5 mL (8 mg), 3x/dia (24 mg/dia)"
+      }
+     ]
     },
     {
      "tipo": "comprimido",
      "rotulo": "Comprimido 8 mg",
-     "viaTexto": "via oral, 3x/dia",
+     "viaTexto": "via oral, conforme faixa etária",
      "mgPorComprimido": 8,
-     "apresentacaoTexto": "cartela com 20 comprimidos"
+     "apresentacaoTexto": "cartela com 20 comprimidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Não indicado até os 12 anos — usar apresentação líquida"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido, 3x/dia (24 mg/dia)"
+      }
+     ]
     }
    ],
    "observacoesExtras": [
-    "Dose orientativa por faixa etária; confirmar na bula."
+    "Bula não estabelece dose para menores de 2 anos — a calculadora exibe um alerta nessa faixa etária em vez de uma dose calculada.",
+    "Uso em nebulização (diluído em SF) existe na literatura mas está fora do escopo desta calculadora, que cobre apenas a via oral."
    ],
-   "fonte": "Bula ANVISA",
+   "fonte": "Bula ANVISA (Medley/Sanofi)",
    "nomesComerciais": [
     "Bisolvon",
     "Broncatar",
@@ -942,8 +1038,10 @@
    },
    "doseMaximaDiaAdultoMg": 24,
    "fontesAdulto": [
-    "Bula ANVISA Bisolvon (Sanofi) — 'Adultos e adolescentes acima de 12 anos: 5 mL (8 mg) [xarope adulto] ou 4 mL (8 mg) [gotas], 3 vezes ao dia' / 'Adultos e adolescentes acima de 12 anos: 24 mg/dia' — https://img.drogasil.com.br/raiadrogasil_bula/Bissolvon.pdf"
-   ]
+    "Bula ANVISA Bisolvon (Sanofi) — 'Adultos e adolescentes acima de 12 anos: 5 mL (8 mg) [xarope adulto] ou 4 mL (8 mg) [gotas], 3 vezes ao dia' / 'Adultos e adolescentes acima de 12 anos: 24 mg/dia' — https://img.drogasil.com.br/raiadrogasil_bula/Bissolvon.pdf",
+    "Bula ANVISA (paciente) Cloridrato de Bromexina — https://bkt-prd-grupopanvel-datalake-documents.s3.amazonaws.com/bulas/anomesdia=20260129/codigo_item=95261/bula_paciente.pdf"
+   ],
+   "somenteIdade": true
   },
   {
    "id": "domperidona",
@@ -1484,35 +1582,72 @@
    "nome": "Acetilcisteína",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "mgkg_dia",
-    "doseMgKg": {
-     "min": 9,
-     "max": 15
-    },
-    "fracionamento": 3,
-    "doseMaximaDiaMg": 600
+    "tipo": "individualizado"
    },
-   "idadeMinimaMeses": 24,
+   "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
      "rotulo": "Xarope pediátrico 20 mg/mL",
-     "viaTexto": "via oral a cada 8 horas",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 20,
-     "apresentacaoTexto": "frasco com 120 mL + copo dosador"
+     "apresentacaoTexto": "frasco com 120 mL + copo dosador",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 23,
+       "alerta": true,
+       "texto": "Bula não estabelece dose para menores de 2 anos. Uso nessa faixa etária não deve ser feito sem avaliação médica individual — não há dose padronizada a calcular aqui."
+      },
+      {
+       "idadeMaxMeses": 47,
+       "texto": "5 mL (100 mg), 2 a 3 vezes ao dia (200–300 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "5 mL (100 mg), 3 a 4 vezes ao dia (300–400 mg/dia) — a partir de 13 anos, considerar a apresentação de adulto (xarope 40 mg/mL, 600 mg 1x/dia)"
+      }
+     ]
     },
     {
      "tipo": "comprimido",
      "rotulo": "Envelope/sachê 200 mg",
-     "viaTexto": "via oral a cada 8 horas",
+     "viaTexto": "via oral, conforme faixa etária",
      "mgPorComprimido": 200,
-     "apresentacaoTexto": "envelope de 200 mg (uso ≥ 2 anos)"
+     "apresentacaoTexto": "envelope de 200 mg (uso ≥ 2 anos)",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Não indicado até os 12 anos — usar apresentação líquida (xarope pediátrico)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 envelope (200 mg), 2 a 3 vezes ao dia (400–600 mg/dia)"
+      }
+     ]
+    },
+    {
+     "tipo": "liquido",
+     "rotulo": "Solução oral 40 mg/mL - Xarope adulto",
+     "viaTexto": "via oral, conforme faixa etária",
+     "concentracaoMgMl": 40,
+     "apresentacaoTexto": "frasco com 120 mL + copo dosador",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "texto": "Não indicado até os 12 anos — usar apresentação de xarope pediátrico (20 mg/mL)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "15 mL (600 mg), 1 vez ao dia, de preferência à noite"
+      }
+     ]
     }
    ],
    "observacoesExtras": [
-    "Aprovação de bula para ≥ 2 anos considera dose fixa de 200 mg a cada 8 horas (600 mg/dia); a critério médico pode ser dobrada.",
+    "Bula não estabelece dose para menores de 2 anos — a calculadora exibe um alerta nessa faixa etária em vez de uma dose calculada.",
     "Não associar com antitussígenos — a redução do reflexo da tosse pode causar acúmulo de secreções.",
-    "Contém sorbitol — cautela em diabéticos e intolerância hereditária à frutose."
+    "Contém sorbitol — cautela em diabéticos e intolerância hereditária à frutose.",
+    "Esta calculadora cobre apenas a posologia mucolítica/expectorante oral. NÃO inclui o protocolo antídoto de intoxicação por paracetamol (ex.: 140 mg/kg ataque + 70 mg/kg 4/4h, ou esquema IV), que usa doses muito maiores e exige manejo hospitalar especializado — não deve ser calculado por esta ferramenta."
    ],
    "fonte": "Bula ANVISA (Eurofarma/EMS/Geolab)",
    "nomesComerciais": [
@@ -1536,7 +1671,8 @@
    "fontesAdulto": [
     "Bula Fluimucil (Zambon) comprimido efervescente/granulado/xarope — 'comprimido de 600 mg: 1 vez ao dia, de preferência à noite'; 'comprimido de 200 mg: 2 a 3 vezes ao dia'; 'As doses descritas a seguir poderão ser aumentadas até o dobro a critério médico' — https://consultaremedios.com.br/fluimucil/bula",
     "Bulário Zambon (documentos oficiais) — https://databaseprodotti.zambon.com/sites/default/files/product_downloads/FLUIMUCIL%20COM%20EFERV%20-%20PACIENTE.pdf"
-   ]
+   ],
+   "somenteIdade": true
   },
   {
    "id": "acebrofilina",
@@ -1591,7 +1727,8 @@
    ],
    "observacoesExtras": [
     "Sem dose máxima estabelecida pelo fabricante para as faixas etárias descritas.",
-    "Dose de 2 a 3 anos calculada por peso (2 mg/kg/dia); demais faixas seguem dose fixa por idade, conforme bula."
+    "Dose de 2 a 3 anos calculada por peso (2 mg/kg/dia); demais faixas seguem dose fixa por idade, conforme bula.",
+    "Cross-check em 11/09/2026: o relatório de referência apresenta, para as faixas de 3-6 e 6-12 anos, doses totais/dia (25 mg e 50 mg) que resultam de um erro aritmético interno do próprio documento — ele usa o rótulo 'mg/5 mL' do produto como se fosse a dose da tomada de 5-10 mL, sem multiplicar corretamente pelo volume administrado. Refazendo o cálculo pela concentração real (xarope pediátrico 5 mg/mL): 3-6 anos = 5 mL (25 mg) 12/12h = 50 mg/dia; 6-12 anos = 10 mL (50 mg) 12/12h = 100 mg/dia — exatamente os valores já registrados nesta base. Mantido sem alteração."
    ],
    "fonte": "Bula ANVISA (Ache/Eurofarma/Cimed/Geolab)",
    "nomesComerciais": [
@@ -1645,7 +1782,8 @@
    ],
    "observacoesExtras": [
     "Contraindicado para menores de 2 anos.",
-    "Dose máxima diária não deve ultrapassar 30 mL de xarope (equivalente a ~180 mg)."
+    "Dose máxima diária não deve ultrapassar 30 mL de xarope (equivalente a ~180 mg).",
+    "Cross-check em 11/09/2026: o relatório de referência cita a dose adulta como '10 mL (30 mg) 3x/dia = 90 mg/dia', mas isso contradiz a própria concentração informada no mesmo documento (30 mg/5 mL = 6 mg/mL, na qual 10 mL correspondem a 60 mg, não 30 mg). Mantidos os valores já registrados (60 mg/dose, 3x/dia, 180 mg/dia), consistentes com a concentração do xarope, com o teto pediátrico (30 mL/dia = 180 mg) e com a bula Aché/Antux já citada nesta base."
    ],
    "fonte": "Bula ANVISA (Aché/EMS)",
    "nomesComerciais": [
@@ -1717,7 +1855,8 @@
    ],
    "observacoesExtras": [
     "Contraindicado em tosse produtiva (com catarro), insuficiência respiratória grave e asma.",
-    "Cada administração é feita 4 vezes ao dia — dose exibida refere-se a cada tomada."
+    "Cada administração é feita 4 vezes ao dia — dose exibida refere-se a cada tomada.",
+    "Cross-check em 11/09/2026 com relatório baseado na bula Aché: valores por faixa (2-3a: 3,75-7,5 mg; >3a/3-12a: 15 mg; >=12a/adulto: 30 mg, todos 4x/dia) conferem exatamente com os já registrados nesta base."
    ],
    "fonte": "Bula ANVISA (Biosintética/Prati-Donaduzzi)",
    "nomesComerciais": [
@@ -2281,28 +2420,45 @@
    "nome": "Guaifenesina",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "mgkg_dia",
-    "doseMgKg": {
-     "min": 8,
-     "max": 12
-    },
-    "fracionamento": 4,
-    "doseMaximaDiaMg": 1200
+    "tipo": "faixa_fixa",
+    "faixasPorIdade": true,
+    "faixas": [
+     {
+      "idadeMaxMeses": 72,
+      "doseMg": 66.7,
+      "fracionamento": 1,
+      "descricao": "2 a 6 anos (5 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
+     },
+     {
+      "idadeMaxMeses": 144,
+      "doseMg": 100,
+      "fracionamento": 1,
+      "descricao": "6 a 12 anos (7,5 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
+     },
+     {
+      "idadeMaxMeses": 9999,
+      "doseMg": 200,
+      "fracionamento": 1,
+      "descricao": "≥ 12 anos / adultos (15 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
+     }
+    ]
    },
    "idadeMinimaMeses": 24,
    "formulacoes": [
     {
      "tipo": "liquido",
-     "rotulo": "Xarope 20 mg/mL (100 mg/5 mL)",
-     "viaTexto": "via oral a cada 6 horas",
-     "concentracaoMgMl": 20,
-     "apresentacaoTexto": "frasco com 100 ou 120 mL"
+     "rotulo": "Xarope Transpulmin 13,3 mg/mL (200 mg/15 mL)",
+     "viaTexto": "via oral, a cada 4 a 6 horas (até 6x/dia)",
+     "concentracaoMgMl": 13.3,
+     "apresentacaoTexto": "frasco com copo/colher dosadora"
     }
    ],
    "observacoesExtras": [
-    "Valores de referência geral (expectorante); confirmar posologia exata na bula do produto específico dispensado, pois pode variar entre fabricantes."
+    "Modelo revisado em 11/09/2026 (era fórmula genérica de 8-12 mg/kg/dia; passou a dose fixa por faixa etária) com base na bula Transpulmin (Zambon/ANVISA): 5 mL (66,7 mg) 2-6 anos, 7,5 mL (100 mg) 6-12 anos e 15 mL (200 mg) ≥12 anos/adultos, a cada 4-6 horas.",
+    "Existe também apresentação infantil concentrada (Transpulmin Infantil, 6,67 mg/mL — metade da concentração) com posologia própria e ligeiramente diferente (ex.: 7,5 mL/50 mg para 2-6 anos); para maior precisão, priorizar o xarope 13,3 mg/mL (única formulação usada no cálculo desta base).",
+    "Doses máximas diárias por faixa (referência do fabricante, não aplicadas automaticamente por esta ferramenta): 600 mg/dia (2-6 anos), 1200 mg/dia (6-12 anos), 2400 mg/dia (≥12 anos/adultos)."
    ],
-   "fonte": "Bula de fabricante (referência geral) — confirmar produto específico",
+   "fonte": "Bula ANVISA Transpulmin (Zambon)",
    "nomesComerciais": [
     "Transpulmin",
     "Frenotosse",
@@ -2322,7 +2478,7 @@
    },
    "doseMaximaDiaAdultoMg": 2400,
    "fontesAdulto": [
-    "Bula Transpulmin Xarope (adulto) — 'Adultos e crianças maiores de 12 anos: 15 mL (200 mg) a cada 4 horas. O limite máximo diário de administração do medicamento para adultos e crianças maiores de 12 anos é de 2400 mg/dia' — https://drconsulta.com/conteudo/transpulmin-xarope-bula/",
+    "Bula Transpulmin Xarope (Zambon) — 'Adultos e crianças maiores de 12 anos: 15 mL (200 mg) a cada 4 horas. O limite máximo diário de administração do medicamento para adultos e crianças maiores de 12 anos é de 2400 mg/dia' — https://drconsulta.com/conteudo/transpulmin-xarope-bula/",
     "Bula Guaifenesina (Drogasil) — mesmo esquema '15 mL (200 mg) a cada 4 horas', máximo 2400 mg/dia — https://www.drogasil.com.br/bulas/guaifenesina"
    ]
   },
@@ -3221,6 +3377,16 @@
    "idadeMinimaMeses": 0,
    "formulacoes": [
     {
+     "tipo": "nebulizacao",
+     "rotulo": "Solução para nebulização 5 mg/mL",
+     "viaTexto": "via inalatória (nebulização), a cada 6 horas conforme necessidade",
+     "concentracaoMgMl": 5,
+     "apresentacaoTexto": "diluir 0,5 mL (10 gotas) em SF 0,9% até completar 2,5 mL",
+     "restricoes": [
+      "Via preferencial em crise aguda por início de ação mais rápido; usar sob supervisão."
+     ]
+    },
+    {
      "tipo": "liquido",
      "rotulo": "Xarope 2 mg/5 mL (0,4 mg/mL)",
      "viaTexto": "via oral a cada 6-8 horas",
@@ -3233,7 +3399,7 @@
      "viaTexto": "via inalatória, conforme crise",
      "mgPorGota": null,
      "apresentacaoTexto": "frasco com espaçador e máscara (uso preferencial em crianças < 5 anos)",
-     "textoDoseFixo": "1-2 jatos (100-200 mcg), a cada 4-6 horas, com espaçador e máscara facial",
+     "textoDoseFixo": "1-2 jatos (100-200 mcg), a cada 6 horas, com espaçador e máscara facial",
      "restricoes": [
       "Via inalatória (spray/nebulização) é preferível à via oral para o tratamento de crises agudas, por início de ação mais rápido e menos efeitos adversos."
      ]
@@ -3820,6 +3986,141 @@
    "fontesAdulto": [
     "Bula ANVISA de associação neomicina + polimixina B + fluocinolona (+ lidocaína) solução otológica, ex. Otosylase (Geolab), equivalente genérico de Otosynalar — 'três ou quatro gotas instiladas na orelha, 2 a 4 vezes ao dia', indicado para uso adulto e pediátrico sem distinção posológica por idade; recomendação de restringir uso em crianças 'a um curto período de tempo e à menor quantidade possível' — https://www.geolab.com.br/wp-content/uploads/2021/05/OTOSYLASE-Bula-Profissional.pdf"
    ]
+  },
+  {
+   "id": "adrenalina",
+   "nome": "Adrenalina (Epinefrina)",
+   "categoria": "Emergência",
+   "doseBase": {
+    "tipo": "mgkg_dose",
+    "doseMgKg": {
+     "min": 0.01,
+     "max": 0.01
+    },
+    "vezesDia": 1,
+    "doseMaximaDoseMg": 0.3
+   },
+   "idadeMinimaMeses": 0,
+   "formulacoes": [
+    {
+     "tipo": "injetavel",
+     "rotulo": "Solução injetável IM/SC 1 mg/mL (1:1000)",
+     "viaTexto": "intramuscular no vasto lateral da coxa (via preferencial) ou subcutânea",
+     "concentracaoMgMl": 1,
+     "apresentacaoTexto": "ampola com 1 mL",
+     "restricoes": [
+      "Uso de emergência (anafilaxia/choque anafilático); administrar imediatamente diante de suspeita clínica, sem aguardar confirmação laboratorial."
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "Dose por evento (não diária) — repetir a cada 5 a 15 minutos conforme resposta clínica, sem número fixo de repetições estabelecido pela fonte.",
+    "Acionar suporte de emergência (SAMU 192) em paralelo à administração.",
+    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização; a faixa de 0,01 mg/kg/dose (máx. 0,3 mg) é, porém, consistente com diretrizes consagradas (SBP/AAP) para anafilaxia pediátrica."
+   ],
+   "fonte": "PEDB (pedb.com.br)",
+   "nomesComerciais": [
+    "Adrenalina",
+    "Epinefrina"
+   ],
+   "doseAdulto": {
+    "modo": "mesma_pediatrica"
+   },
+   "fontesAdulto": [
+    "PEDB (pedb.com.br) — dose única de referência 0,3-0,5 mg IM não diferenciada explicitamente pela fonte"
+   ]
+  },
+  {
+   "id": "butilbrometo_escopolamina",
+   "nome": "Butilbrometo de Escopolamina",
+   "categoria": "Gastrointestinal",
+   "doseBase": {
+    "tipo": "individualizado"
+   },
+   "idadeMinimaMeses": 0,
+   "formulacoes": [
+    {
+     "tipo": "gotas",
+     "rotulo": "Solução oral gotas 10 mg/mL",
+     "viaTexto": "via oral, repetir até 3 vezes ao dia",
+     "mgPorGota": null,
+     "apresentacaoTexto": "frasco gotejador",
+     "textoDoseFixo": "20 gotas por tomada, repetir até 3x/dia conforme necessidade"
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Drágea 10 mg",
+     "viaTexto": "via oral, de 3 a 5 vezes ao dia",
+     "mgPorComprimido": 10,
+     "apresentacaoTexto": "cartela de drágeas",
+     "textoDoseFixo": "1 a 2 drágeas por tomada, de 3 a 5 vezes ao dia"
+    },
+    {
+     "tipo": "injetavel",
+     "rotulo": "Solução injetável 20 mg/mL",
+     "viaTexto": "uso institucional — confirmar protocolo e faixa etária na bula do produto dispensado",
+     "concentracaoMgMl": 20,
+     "apresentacaoTexto": "ampola",
+     "restricoes": [
+      "Uso predominantemente hospitalar/pronto atendimento; o PEDB não detalha dose específica por peso para esta apresentação."
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "O PEDB não fornece fórmula mg/kg para este fármaco nem discrimina claramente as doses pediátrica e adulta — confirmar idade mínima e dose exata na bula do produto dispensado antes de orientar.",
+    "Indicado para cólicas gastrointestinais (espasmos da musculatura lisa).",
+    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização."
+   ],
+   "fonte": "PEDB (pedb.com.br)",
+   "nomesComerciais": [
+    "Buscopan"
+   ],
+   "doseAdulto": {
+    "modo": "mesma_pediatrica"
+   }
+  },
+  {
+   "id": "dexametasona",
+   "nome": "Dexametasona",
+   "categoria": "Outros",
+   "doseBase": {
+    "tipo": "individualizado"
+   },
+   "idadeMinimaMeses": 0,
+   "formulacoes": [
+    {
+     "tipo": "liquido",
+     "rotulo": "Solução oral 0,1 mg/mL (Elixir)",
+     "viaTexto": "via oral, a cada 6 horas",
+     "concentracaoMgMl": 0.1,
+     "apresentacaoTexto": "frasco",
+     "textoDoseFixo": "Exemplo de referência do PEDB: 12,5 mL (1,25 mg) por tomada, a cada 6 horas — ajustar conforme peso e indicação clínica."
+    },
+    {
+     "tipo": "injetavel",
+     "rotulo": "Solução injetável 2 mg/mL (ampola)",
+     "viaTexto": "intramuscular ou endovenoso, dividido em 2 a 3 doses",
+     "concentracaoMgMl": 2,
+     "apresentacaoTexto": "ampola",
+     "textoDoseFixo": "Exemplo de referência do PEDB: 2 mL (4 mg) por dia, dividido em 2 a 3 doses.",
+     "restricoes": [
+      "Uso predominantemente hospitalar/pronto atendimento."
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "O PEDB não detalha a fórmula mg/kg para este fármaco; a dose de dexametasona varia bastante conforme a indicação clínica (ex.: crupe: dose única 0,15-0,6 mg/kg; uso anti-inflamatório geral: doses menores e fracionadas). Confirmar protocolo específico antes de orientar.",
+    "Fármaco de uso restrito — sujeito a retenção de receita conforme legislação vigente (RDC/Portaria SVS/MS 344/98, se aplicável à apresentação).",
+    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização; fórmula mg/kg não fornecida pela fonte."
+   ],
+   "fonte": "PEDB (pedb.com.br)",
+   "nomesComerciais": [
+    "Decadron",
+    "Oradexon"
+   ],
+   "doseAdulto": {
+    "modo": "mesma_pediatrica"
+   }
   }
  ]
 }

@@ -801,6 +801,21 @@
   .sub-lista li.restricao{
     color: #f0a5a5;
   }
+  .linha-principal.alerta-idade{
+    color: #f0a5a5;
+    font-weight:600;
+    align-items:flex-start;
+    background: rgba(240,165,165,.08);
+    border: 1px solid rgba(240,165,165,.3);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .linha-principal.alerta-idade .icon{
+    flex-shrink:0;
+    width:18px;
+    height:18px;
+    margin-top:1px;
+  }
   .f-fixo{ color: var(--text); }
   .f-var{ color: #7fa8c9; }
 
@@ -1934,7 +1949,7 @@ function renderConteudo(){
 
     <div class="secao-titulo"><span class="icon">${ICONS.paciente}</span>Dados do paciente</div>
     <div class="peso-bar">
-      <div class="peso-field">
+      ${f.somenteIdade ? '' : `<div class="peso-field">
         <div class="field-icon"><span class="icon">${ICONS.peso}</span></div>
         <div class="field-inputs">
           <label>Peso</label>
@@ -1943,7 +1958,7 @@ function renderConteudo(){
             <span>kg</span>
           </div>
         </div>
-      </div>
+      </div>`}
       <div class="peso-field">
         <div class="field-icon"><span class="icon">${ICONS.idade}</span></div>
         <div class="field-inputs">
@@ -1986,10 +2001,13 @@ function renderConteudo(){
     btnComerciais.addEventListener('click', () => abrirComerciais(f));
   }
 
-  document.getElementById('peso').addEventListener('input', e => {
-    pesoAtual = parseFloat(e.target.value) || 0;
-    calcularEExibir();
-  });
+  const campoPeso = document.getElementById('peso');
+  if(campoPeso){
+    campoPeso.addEventListener('input', e => {
+      pesoAtual = parseFloat(e.target.value) || 0;
+      calcularEExibir();
+    });
+  }
   document.getElementById('idade').addEventListener('input', e => {
     idadeAtual = parseFloat(e.target.value) || 0;
     calcularEExibir();
@@ -2294,6 +2312,7 @@ function calcularEExibir(){
     let valorTexto = '-';
     let subItens = [];
     let formulaCompleta = null;
+    let textoAlerta = null;
 
     if(form.faixasTextoPeso){
       if(peso <= 0){
@@ -2307,7 +2326,11 @@ function calcularEExibir(){
         valorTexto = 'informe a idade';
       } else {
         const tier = form.faixasTexto.find(t => idadeMeses <= t.idadeMaxMeses) || form.faixasTexto[form.faixasTexto.length-1];
-        valorTexto = tier.texto;
+        if(tier.alerta){
+          textoAlerta = tier.texto;
+        } else {
+          valorTexto = tier.texto;
+        }
       }
     } else if(form.textoDoseFixo){
       valorTexto = form.textoDoseFixo;
@@ -2375,7 +2398,7 @@ function calcularEExibir(){
     (form.restricoes||[]).forEach(r => subItens.push({tipo:'restricao', texto:r}));
 
     const icone = ICONS[form.tipo] || ICONS.comprimido;
-    const temValorCalculado = valorTexto && !['informe o peso', 'informe a idade', '00'].includes(valorTexto);
+    const temValorCalculado = !textoAlerta && valorTexto && !['informe o peso', 'informe a idade', '00'].includes(valorTexto);
     const prefixoInstrucao = temValorCalculado ? '<span class="instrucao-verbo">Administrar</span> ' : '';
 
     card.innerHTML = `
@@ -2384,7 +2407,10 @@ function calcularEExibir(){
         <h3>${form.rotulo}</h3>
         ${temValorCalculado ? `<button class="btn-copiar-dose no-print" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button>` : ''}
       </div>
-      <div class="linha-principal">${prefixoInstrucao}<span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>
+      ${textoAlerta
+        ? `<div class="linha-principal alerta-idade"><span class="icon">${ICONS.observacao}</span><span>${textoAlerta}</span></div>`
+        : `<div class="linha-principal">${prefixoInstrucao}<span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>`
+      }
       ${subItens.length ? `<ul class="sub-lista">
         ${subItens.map(i => `<li class="${i.tipo}">${i.texto}</li>`).join('')}
       </ul>` : ''}
