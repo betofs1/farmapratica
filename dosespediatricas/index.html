@@ -2314,7 +2314,9 @@ function calcularEExibir(){
     let formulaCompleta = null;
     let textoAlerta = null;
 
-    if(form.faixasTextoPeso){
+    if(f.bloquearAbaixoIdadeMinima && f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses){
+      textoAlerta = f.textoAlertaIdadeMinima || `Não há posologia estabelecida em bula para menores de ${formatarIdadeMinima(f.idadeMinimaMeses)}. Reavaliar indicação clínica.`;
+    } else if(form.faixasTextoPeso){
       if(peso <= 0){
         valorTexto = 'informe o peso';
       } else {

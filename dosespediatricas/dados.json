@@ -1686,25 +1686,25 @@
       "idadeMaxMeses": 36,
       "mgPorKg": 2,
       "fracionamento": 2,
-      "descricao": "2 a 3 anos"
+      "descricao": "2 a 3 anos (calculada por peso)"
      },
      {
       "idadeMaxMeses": 72,
-      "doseMg": 50,
+      "doseMg": 25,
       "fracionamento": 2,
-      "descricao": "3 a 6 anos (dose fixa ~50 mg/dia)"
+      "descricao": "3 a 6 anos (½ copo-dosador do xarope pediátrico = 5 mL = 25 mg, a cada 12 horas → 50 mg/dia)"
      },
      {
       "idadeMaxMeses": 144,
-      "doseMg": 100,
+      "doseMg": 50,
       "fracionamento": 2,
-      "descricao": "6 a 12 anos (dose fixa ~100 mg/dia)"
+      "descricao": "6 a 12 anos (1 copo-dosador do xarope pediátrico = 10 mL = 50 mg, a cada 12 horas → 100 mg/dia)"
      },
      {
       "idadeMaxMeses": 9999,
-      "doseMg": 200,
+      "doseMg": 100,
       "fracionamento": 2,
-      "descricao": "≥ 12 anos / adultos (dose fixa ~200 mg/dia)"
+      "descricao": "≥ 12 anos / adultos (1 copo-dosador do xarope adulto = 10 mL = 100 mg, a cada 12 horas → 200 mg/dia)"
      }
     ]
    },
@@ -1715,20 +1715,20 @@
      "rotulo": "Xarope pediátrico 5 mg/mL",
      "viaTexto": "via oral a cada 12 horas",
      "concentracaoMgMl": 5,
-     "apresentacaoTexto": "frasco com 120 mL + copo dosador (uso até ~12 anos)"
+     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso pediátrico, até 12 anos)"
     },
     {
      "tipo": "liquido",
      "rotulo": "Xarope adulto 10 mg/mL",
      "viaTexto": "via oral a cada 12 horas",
      "concentracaoMgMl": 10,
-     "apresentacaoTexto": "frasco com 120 mL (uso ≥ 12 anos)"
+     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso a partir de 12 anos)"
     }
    ],
    "observacoesExtras": [
-    "Sem dose máxima estabelecida pelo fabricante para as faixas etárias descritas.",
-    "Dose de 2 a 3 anos calculada por peso (2 mg/kg/dia); demais faixas seguem dose fixa por idade, conforme bula.",
-    "Cross-check em 11/09/2026: o relatório de referência apresenta, para as faixas de 3-6 e 6-12 anos, doses totais/dia (25 mg e 50 mg) que resultam de um erro aritmético interno do próprio documento — ele usa o rótulo 'mg/5 mL' do produto como se fosse a dose da tomada de 5-10 mL, sem multiplicar corretamente pelo volume administrado. Refazendo o cálculo pela concentração real (xarope pediátrico 5 mg/mL): 3-6 anos = 5 mL (25 mg) 12/12h = 50 mg/dia; 6-12 anos = 10 mL (50 mg) 12/12h = 100 mg/dia — exatamente os valores já registrados nesta base. Mantido sem alteração."
+    "Faixa de 2 a 3 anos calculada por peso (2 mg/kg/dia, dividido em 2 administrações a cada 12 horas); as demais faixas etárias seguem dose fixa por idade, padronizada em copo-dosador, conforme bula.",
+    "Segurança e eficácia não estabelecidas para menores de 2 anos — bula não define posologia para essa faixa etária.",
+    "Sem dose máxima diária adicional estabelecida pelo fabricante além do teto de adulto (200 mg/dia)."
    ],
    "fonte": "Bula ANVISA (Ache/Eurofarma/Cimed/Geolab)",
    "nomesComerciais": [
@@ -1748,7 +1748,9 @@
    "doseMaximaDiaAdultoMg": 200,
    "fontesAdulto": [
     "Bula paciente Brondilat (Aché), xarope adulto 10 mg/mL — 'Xarope Adulto: 1 copo dosador (10 mL) a cada 12 horas' (10 mL = 100 mg; 200 mg/dia) — https://www.ache.com.br/arquivos/bula-paciente-brondilat.pdf"
-   ]
+   ],
+   "bloquearAbaixoIdadeMinima": true,
+   "textoAlertaIdadeMinima": "Segurança e eficácia não estabelecidas para menores de 2 anos — a bula não define posologia para essa faixa etária. Não administrar sem orientação médica específica."
   },
   {
    "id": "levodropropizina",
