@@ -18,12 +18,14 @@
   --ok:#158a3d; --warn:#b3730a; --danger:#c81a2e; --info:#2563eb;
   --font-display:'Sora',Arial,sans-serif; --font-body:'Inter',Arial,sans-serif;
   --radius:12px; --sidebar-w:250px; --header-h:64px;
+  --mai-head-bg:#dbe6f2; --mai-head-text:#1c2733;
 }
 body.dark{
   /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
   --bg:#2b2d31; --panel:#35373c; --card:#38383e; --card2:#414247; --border:#48494f;
   --text:#e7ebf0; --muted:#9aa4b2; --sidebar-bg:#221f24; --sidebar-border:#48494f;
   --c-indigo:#818cf8; --c-indigo-dark:#6366f1; --c-indigo-glow:rgba(129,140,248,.2);
+  --mai-head-bg:#39485c; --mai-head-text:#e7ebf0;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
@@ -188,12 +190,45 @@ th{font-size:.66rem;text-transform:uppercase;letter-spacing:.03em;color:var(--mu
 .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
 .chip{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:.72rem;}
 
-.mai-crit{display:inline-flex;gap:3px;}
-.mai-crit button{width:27px;height:27px;border-radius:6px;border:1px solid var(--border);background:var(--card2);font-weight:800;font-size:.78rem;color:var(--muted);}
-.mai-crit button.sel-ok{background:rgba(21,138,61,.18);color:var(--ok);border-color:var(--ok);}
-.mai-crit button.sel-x{background:rgba(200,26,46,.18);color:var(--danger);border-color:var(--danger);}
-.mai-crit button.sel-q{background:rgba(179,115,10,.18);color:var(--warn);border-color:var(--warn);}
-.mai-just-row td{background:var(--panel);}
+.mai-crit-toggle{width:30px;height:30px;border-radius:7px;border:1.5px solid var(--border);background:var(--card2);font-weight:800;font-size:.85rem;color:var(--muted);cursor:pointer;transition:transform .1s ease,border-color .15s ease;}
+.mai-crit-toggle:hover{border-color:var(--c-indigo);}
+.mai-crit-toggle:active{transform:scale(.92);}
+.mai-crit-toggle.v-ok{background:rgba(21,138,61,.18);color:var(--ok);border-color:var(--ok);}
+.mai-crit-toggle.v-x{background:rgba(200,26,46,.18);color:var(--danger);border-color:var(--danger);}
+.mai-crit-toggle.v-q{background:rgba(179,115,10,.18);color:var(--warn);border-color:var(--warn);}
+.mai-just-row td{background:var(--panel);border-top:none;padding:8px 12px 12px;}
+.mai-just-row input{width:100%;border:1px solid var(--border);background:var(--card2);border-radius:6px;padding:6px 8px;font-size:.75rem;color:var(--text);}
+.mai-status-line{margin-top:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+
+/* ---- Tabela MAI estilo checklist — cabeçalho destacado, colunas de critério verticais ---- */
+.mai-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--card);}
+.mai-table{width:100%;border-collapse:collapse;font-size:.8rem;}
+.mai-table th,.mai-table td{border:1px solid var(--border);padding:0;}
+.mai-table thead th{background:var(--mai-head-bg);color:var(--mai-head-text);font-weight:800;text-align:center;vertical-align:bottom;padding:8px 4px;font-size:.68rem;line-height:1.25;}
+.mai-table thead th.mai-th-med{text-align:left;vertical-align:middle;width:210px;min-width:170px;padding:10px 12px;font-size:.85rem;text-transform:none;letter-spacing:0;}
+.mai-table thead th.mai-th-crit{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;width:34px;height:190px;text-transform:none;letter-spacing:0;font-size:.72rem;padding:10px 4px;}
+.mai-table thead th.mai-th-del{width:34px;}
+.mai-table tbody td{vertical-align:middle;padding:6px 8px;}
+.mai-nome-cell{position:relative;}
+.mai-nome-cell input{width:100%;border:1px solid transparent;background:transparent;font-weight:700;font-size:.85rem;padding:6px 4px;color:var(--text);border-radius:6px;}
+.mai-nome-cell input:focus{border-color:var(--c-indigo);background:var(--card2);outline:none;}
+.mai-crit-cell{text-align:center;}
+
+.mai-suggest-box{position:absolute;left:0;right:0;top:100%;z-index:30;background:var(--card);border:1px solid var(--border);border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.25);max-height:220px;overflow-y:auto;display:none;margin-top:3px;}
+.mai-suggest-box.show{display:block;}
+.mai-suggest-item{display:block;width:100%;text-align:left;padding:7px 10px;background:none;border:none;cursor:pointer;font-family:inherit;}
+.mai-suggest-item:hover{background:var(--card2);}
+.mai-suggest-item b{font-size:.8rem;color:var(--text);display:block;font-weight:700;}
+.mai-suggest-item span{font-size:.68rem;color:var(--muted);}
+.mai-suggest-empty{padding:9px 10px;font-size:.75rem;color:var(--muted);}
+
+.mai-summary-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+details.mai-info,details.mai-so,details.mai-problemas{border:1px solid var(--border);border-radius:9px;padding:10px 14px;margin-bottom:14px;background:var(--card2);}
+details.mai-info summary,details.mai-so summary,details.mai-problemas summary{cursor:pointer;font-weight:700;font-size:.8rem;color:var(--text);}
+details.mai-info[open],details.mai-so[open],details.mai-problemas[open]{padding-bottom:14px;}
+details.mai-so[open] summary{margin-bottom:2px;}
+details.mai-problemas ul{margin:10px 0 0;padding-left:20px;}
+details.mai-problemas li{font-size:.8rem;margin-bottom:4px;}
 
 .timeline{position:relative;padding-left:24px;}
 .timeline:before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--border);}
@@ -273,6 +308,40 @@ function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).s
 function todayISO(){ return new Date().toISOString().slice(0,10); }
 function fmtDate(iso){ if(!iso) return '—'; const p=iso.split('-'); return p.length===3? `${p[2]}/${p[1]}/${p[0]}` : iso; }
 function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function normalizar(s){ return String(s==null?'':s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim(); }
+
+/* ---- Base CMED/ANVISA (mesmo arquivo consumido pelo Medicamentos Equivalentes) ---- */
+let MED_DB=[];
+let medDbState='idle'; // idle | loading | ready | error
+async function carregarMedDB(){
+  if(medDbState==='loading'||medDbState==='ready') return;
+  medDbState='loading';
+  try{
+    const r=await fetch('../medinter/medicamentos.json');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const payload=await r.json();
+    MED_DB = Array.isArray(payload) ? payload : (payload.medicamentos||[]);
+    medDbState='ready';
+  }catch(e){
+    console.error('Erro ao carregar base CMED/ANVISA (medicamentos.json):', e);
+    medDbState='error';
+  }
+}
+function buscarSugestoesMed(q){
+  const qn=normalizar(q);
+  if(qn.length<2 || medDbState!=='ready') return [];
+  const vistos=new Set(), out=[];
+  for(let i=0;i<MED_DB.length && out.length<8;i++){
+    const m=MED_DB[i];
+    if(!m || !m.nome) continue;
+    if(normalizar(m.nome).indexOf(qn)===-1) continue;
+    const key=normalizar(m.nome)+'||'+normalizar(m.principio||'');
+    if(vistos.has(key)) continue;
+    vistos.add(key);
+    out.push({nome:m.nome, principio:m.principio||''});
+  }
+  return out;
+}
 function calcIdade(nasc){
   if(!nasc) return '—';
   const b=new Date(nasc+'T00:00:00'), t=new Date();
@@ -1060,9 +1129,37 @@ function maiCalc(m){
   }
   return {avaliados,naoConf,semInfo,pct,classe,cor};
 }
-function maiCritButtons(idx,key,val){
-  const opts=[['ok','✓'],['x','X'],['?','?']];
-  return `<div class="mai-crit">${opts.map(o=>`<button type="button" data-act="mai-crit:${idx}|${key}|${o[0]}" class="${val===o[0]?('sel-'+o[0]):''}">${o[1]}</button>`).join('')}</div>`;
+const MAI_CRIT_CLASS={ok:'v-ok', x:'v-x', '?':'v-q'};
+const MAI_CRIT_ICON={ok:'✓', x:'✕', '?':'?'};
+function maiCritToggle(idx,key,val,label){
+  val = val || '';
+  const cls = MAI_CRIT_CLASS[val] || '';
+  const icon = MAI_CRIT_ICON[val] || '';
+  return `<button type="button" class="mai-crit-toggle ${cls}" data-act="mai-crit-cycle:${idx}|${key}" title="${esc(label)}" aria-label="${esc(label)}">${icon}</button>`;
+}
+function renderMaiSuggestBox(idx,val){
+  const box=document.querySelector('.mai-suggest-box[data-mai-suggest="'+idx+'"]');
+  if(!box) return;
+  const q=(val||'').trim();
+  if(q.length<2){ box.classList.remove('show'); box.innerHTML=''; return; }
+  if(medDbState==='loading'){
+    box.innerHTML='<div class="mai-suggest-empty">Carregando base CMED/ANVISA…</div>';
+    box.classList.add('show');
+    return;
+  }
+  if(medDbState==='error'){
+    box.innerHTML='<div class="mai-suggest-empty">Não foi possível carregar a base CMED/ANVISA — cadastro manual.</div>';
+    box.classList.add('show');
+    return;
+  }
+  const results=buscarSugestoesMed(q);
+  if(!results.length){
+    box.innerHTML='<div class="mai-suggest-empty">Nenhuma sugestão encontrada — cadastro manual.</div>';
+    box.classList.add('show');
+    return;
+  }
+  box.innerHTML = results.map(r=>`<button type="button" class="mai-suggest-item" data-act="mai-pick:${idx}|${encodeURIComponent(r.nome)}"><b>${esc(r.nome)}</b>${r.principio?`<span>${esc(r.principio)}</span>`:''}</button>`).join('');
+  box.classList.add('show');
 }
 function analiseAutomaticaMAI(meds){
   let naoConfTotal=0; const problemas=[]; let encaminhar=false, monitorar=false;
@@ -1089,57 +1186,74 @@ function tabMAI(p){
   else { if(!state.editing.maiDraft) state.editing.maiDraft={subjetivo:'',objetivo:'',medicamentos:[]}; draft=state.editing.maiDraft; }
   draft.medicamentos = draft.medicamentos||[];
 
+  if(medDbState==='idle') carregarMedDB();
+
   const rows = draft.medicamentos.map((m,idx)=>{
     const c=maiCalc(m);
     return `
     <tr data-mai-row="${idx}">
-      <td><input data-mai-nome="${idx}" value="${esc(m.nome||'')}" placeholder="Nome do medicamento" style="min-width:150px;"></td>
-      ${MAI_CRITERIOS.map(([key])=>`<td>${maiCritButtons(idx,key,(m.criterios||{})[key])}</td>`).join('')}
-      <td><button type="button" class="btn btn-sm btn-danger" data-act="mai-del-med:${idx}">✕</button></td>
+      <td class="mai-nome-cell">
+        <input data-mai-nome="${idx}" value="${esc(m.nome||'')}" placeholder="Nome do medicamento" autocomplete="off">
+        <div class="mai-suggest-box" data-mai-suggest="${idx}"></div>
+      </td>
+      ${MAI_CRITERIOS.map(([key,label])=>`<td class="mai-crit-cell">${maiCritToggle(idx,key,(m.criterios||{})[key],label)}</td>`).join('')}
+      <td><button type="button" class="btn btn-sm btn-danger" data-act="mai-del-med:${idx}" title="Remover medicamento">✕</button></td>
     </tr>
     <tr class="mai-just-row"><td colspan="${MAI_CRITERIOS.length+2}">
-      <input data-mai-just="${idx}" placeholder="Justificativa para os X / ? marcados acima (opcional)" value="${esc(m.justificativa||'')}">
-      <div style="margin-top:6px;"><span class="pill ${c.cor}">${c.classe}</span>
-      <span class="sub" style="margin-left:8px;">${c.avaliados}/9 critérios avaliados · ${c.naoConf} não conformidade(s) · ${c.semInfo} sem informação${c.pct!=null?` · Índice adaptado do FarmaPrática: ${c.pct}%`:''}</span></div>
+      <input data-mai-just="${idx}" placeholder="Justificativa para os itens marcados com ✕ ou ? (opcional)" value="${esc(m.justificativa||'')}">
+      <div class="mai-status-line"><span class="pill ${c.cor}">${c.classe}</span>
+      <span class="sub">${c.avaliados}/9 avaliados · ${c.naoConf} não conformidade(s) · ${c.semInfo} sem informação${c.pct!=null?` · índice adaptado: ${c.pct}%`:''}</span></div>
     </td></tr>`;
   }).join('');
 
   const analise=analiseAutomaticaMAI(draft.medicamentos);
 
   return `
-  <div class="disclaimer">
-    <b>Avaliação de Adequação da Farmacoterapia — instrumento adaptado</b><br>
-    Referência metodológica: <b>Medication Appropriateness Index (MAI)</b> — Hanlon JT, Schmader KE, Samsa GP, Weinberger M, Uttech KM, Lewis IK, Cohen HJ, Feussner JR. A method for assessing drug therapy appropriateness. Journal of Clinical Epidemiology. 1992;45(10):1045-1051. DOI: 10.1016/0895-4356(92)90144-C.<br>
-    O MAI original é um instrumento baseado em critérios implícitos, aplicado por avaliador treinado. A pontuação aqui apresentada é uma <b>adaptação operacional do FarmaPrática</b> para uso clínico e educacional — não é o escore validado original nem deve ser citada como tal.
-  </div>
+  <details class="mai-info">
+    <summary>ℹ️ Sobre este instrumento — Índice de Adequação de Medicamentos (MAI), adaptado</summary>
+    <div class="sub" style="margin-top:8px;line-height:1.5;">
+      Referência metodológica: <b>Medication Appropriateness Index (MAI)</b> — Hanlon JT, Schmader KE, Samsa GP, Weinberger M, Uttech KM, Lewis IK, Cohen HJ, Feussner JR. A method for assessing drug therapy appropriateness. Journal of Clinical Epidemiology. 1992;45(10):1045-1051. DOI: 10.1016/0895-4356(92)90144-C.<br>
+      O MAI original é um instrumento baseado em critérios implícitos, aplicado por avaliador treinado. A pontuação aqui apresentada é uma <b>adaptação operacional do FarmaPrática</b> para uso clínico e educacional — não é o escore validado original nem deve ser citada como tal.
+    </div>
+  </details>
   <div class="card">
     <h2>${state.editing.maiId?'Editar avaliação':'Nova avaliação de adequação'} — ${fmtDate(draft.data||todayISO())}</h2>
-    <div class="grid2">
-      <div class="field"><label>Subjetivo</label><textarea id="maiSubjetivo" rows="3" placeholder="Queixas, percepção do paciente, sintomas, dificuldades, adesão, efeitos adversos, objetivos terapêuticos...">${esc(draft.subjetivo||'')}</textarea></div>
-      <div class="field"><label>Objetivo</label><textarea id="maiObjetivo" rows="3" placeholder="Sinais vitais, exames laboratoriais, diagnósticos, parâmetros clínicos, medicamentos, dados antropométricos...">${esc(draft.objetivo||'')}</textarea></div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <tr><th>Medicamento</th>${MAI_CRITERIOS.map(([,label])=>`<th>${label}</th>`).join('')}<th></th></tr>
+    <div class="mai-table-wrap">
+      <table class="mai-table">
+        <thead><tr>
+          <th class="mai-th-med">Medicamento</th>
+          ${MAI_CRITERIOS.map(([,label])=>`<th class="mai-th-crit">${label}</th>`).join('')}
+          <th class="mai-th-del"></th>
+        </tr></thead>
+        <tbody>
         ${rows || `<tr><td colspan="${MAI_CRITERIOS.length+2}" class="empty-state">Nenhum medicamento adicionado a esta avaliação.</td></tr>`}
+        </tbody>
       </table>
     </div>
-    <p class="sub" style="margin-top:8px;">Clique nos botões de cada critério: <b>✓</b> conforme · <b>X</b> não conformidade · <b>?</b> informação insuficiente.</p>
+    <p class="sub" style="margin-top:8px;">Clique em cada célula para alternar: <b>✓</b> conforme · <b>✕</b> não conformidade · <b>?</b> informação insuficiente. Digite o nome do medicamento para ver sugestões da base CMED/ANVISA.</p>
     <div class="btn-row">
       <button type="button" class="btn btn-sm" data-act="mai-add-med">+ Adicionar medicamento</button>
       <button type="button" class="btn btn-primary" data-act="mai-save">${state.editing.maiId?'Salvar alterações':'Salvar avaliação'}</button>
       ${state.editing.maiId?'<button type="button" class="btn" data-act="mai-cancel">Cancelar edição</button>':''}
     </div>
+    <details class="mai-so"${(draft.subjetivo||draft.objetivo)?' open':''}>
+      <summary>+ Notas clínicas (Subjetivo/Objetivo)</summary>
+      <div class="grid2" style="margin-top:10px;">
+        <div class="field"><label>Subjetivo</label><textarea id="maiSubjetivo" rows="3" placeholder="Queixas, percepção do paciente, sintomas, dificuldades, adesão, efeitos adversos, objetivos terapêuticos...">${esc(draft.subjetivo||'')}</textarea></div>
+        <div class="field"><label>Objetivo</label><textarea id="maiObjetivo" rows="3" placeholder="Sinais vitais, exames laboratoriais, diagnósticos, parâmetros clínicos, medicamentos, dados antropométricos...">${esc(draft.objetivo||'')}</textarea></div>
+      </div>
+    </details>
   </div>
   <div class="card">
     <h2>Análise automática da farmacoterapia</h2>
-    <p><b>Medicamentos avaliados:</b> ${analise.total}</p>
-    <p><b>Critérios com não conformidade:</b> ${analise.naoConfTotal}</p>
-    <p><b>Problemas identificados:</b></p>
-    ${analise.problemas.length? `<ul>${analise.problemas.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="sub">Nenhum problema identificado até o momento.</p>'}
-    <p><b>Necessidade de encaminhamento:</b> ${analise.encaminhar?'Sim — avaliar critérios marcados acima':'Não indicada, com base nos dados atuais'}</p>
-    <p><b>Necessidade de monitoramento:</b> ${analise.monitorar?'Sim':'Não indicada, com base nos dados atuais'}</p>
-    <p class="sub">Síntese gerada automaticamente a partir dos critérios marcados — apoio à decisão, não substitui avaliação farmacêutica.</p>
+    <div class="mai-summary-row">
+      <span class="pill pill-muted">${analise.total} medicamento(s)</span>
+      <span class="pill ${analise.naoConfTotal>0?'pill-danger':'pill-ok'}">${analise.naoConfTotal} não conformidade(s)</span>
+      <span class="pill ${analise.encaminhar?'pill-danger':'pill-muted'}">${analise.encaminhar?'Encaminhamento sugerido':'Sem encaminhamento sugerido'}</span>
+      <span class="pill ${analise.monitorar?'pill-warn':'pill-muted'}">${analise.monitorar?'Monitoramento sugerido':'Sem monitoramento sugerido'}</span>
+    </div>
+    ${analise.problemas.length? `<details class="mai-problemas" style="margin-top:10px;margin-bottom:0;"><summary>Ver ${analise.problemas.length} problema(s) identificado(s)</summary><ul>${analise.problemas.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>` : '<p class="sub" style="margin-top:8px;">Nenhum problema identificado até o momento.</p>'}
+    <p class="sub" style="margin-top:8px;">Síntese gerada automaticamente a partir dos critérios marcados — apoio à decisão, não substitui avaliação farmacêutica.</p>
   </div>
   <div class="card">
     <h2>Avaliações anteriores (${avals.length})</h2>
@@ -1818,6 +1932,9 @@ function pushClinicoRastreio(p,tipo,valor,unidade){
 }
 
 function handleGlobalClick(e){
+  if(!e.target.closest('.mai-nome-cell')){
+    document.querySelectorAll('.mai-suggest-box.show').forEach(b=>b.classList.remove('show'));
+  }
   const el=e.target.closest('[data-act]');
   if(!el) return;
   const raw=el.getAttribute('data-act');
@@ -1865,14 +1982,26 @@ function handleGlobalClick(e){
     /* ---- MAI ---- */
     case 'mai-add-med': { e.preventDefault(); const d=currentMaiDraft(p); d.medicamentos.push({nome:'',criterios:{},justificativa:''}); renderAll(); return; }
     case 'mai-del-med': { e.preventDefault(); const d=currentMaiDraft(p); d.medicamentos.splice(parseInt(rest,10),1); renderAll(); return; }
-    case 'mai-crit': {
+    case 'mai-crit-cycle': {
       e.preventDefault();
-      const [i,key,val]=rest.split('|');
+      const [i,key]=rest.split('|');
       const d=currentMaiDraft(p);
       const m=d.medicamentos[parseInt(i,10)];
       if(!m) return;
       m.criterios=m.criterios||{};
-      m.criterios[key] = (m.criterios[key]===val) ? '' : val;
+      const ordem=['','ok','x','?'];
+      const atual=m.criterios[key]||'';
+      m.criterios[key] = ordem[(ordem.indexOf(atual)+1)%ordem.length];
+      renderAll();
+      return;
+    }
+    case 'mai-pick': {
+      e.preventDefault();
+      const sep=rest.indexOf('|');
+      const i=rest.slice(0,sep), nome=decodeURIComponent(rest.slice(sep+1));
+      const d=currentMaiDraft(p);
+      const m=d.medicamentos[parseInt(i,10)];
+      if(m) m.nome=nome;
       renderAll();
       return;
     }
@@ -2004,9 +2133,14 @@ function handleGlobalInput(e){
   }
   if(t.dataset && t.dataset.maiNome!==undefined){
     const p=pacAtual(); if(!p) return;
+    const idxNum=parseInt(t.dataset.maiNome,10);
     const d=currentMaiDraft(p);
-    const m=d.medicamentos[parseInt(t.dataset.maiNome,10)];
+    const m=d.medicamentos[idxNum];
     if(m) m.nome=t.value;
+    if(medDbState==='idle') carregarMedDB();
+    const val=t.value;
+    clearTimeout(window.__maiSuggestTimer);
+    window.__maiSuggestTimer=setTimeout(()=>renderMaiSuggestBox(idxNum,val),120);
     return;
   }
   if(t.dataset && t.dataset.maiJust!==undefined){
