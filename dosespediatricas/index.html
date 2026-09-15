@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Paleta idêntica à página inicial (INDEX) do FarmaPrática — grafite médio/escuro */
-    --header: linear-gradient(180deg, color-mix(in srgb, #5a5f66 84%, #000 10%) 0%, color-mix(in srgb, #5a5f66 88%, #000 14%) 100%);
-    --bg: #5a5f66;
-    --panel: #4a4e55;
-    --sidebar: #454951;
-    --card: #4f545c;
-    --card-hover: #585d65;
-    --border: #63686f;
+    /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
+    --header: linear-gradient(180deg, color-mix(in srgb, #2b2d31 84%, #000 10%) 0%, color-mix(in srgb, #2b2d31 88%, #000 14%) 100%);
+    --bg: #2b2d31;
+    --panel: #35373c;
+    --sidebar: #221f24;
+    --card: #38383e;
+    --card-hover: #414247;
+    --border: #48494f;
     --red-dark: #a10f1f;
     --red: #e4172c;
     --red-bright: #e4172c;
@@ -2167,6 +2167,15 @@ function calcularEExibir(){
     usarRegimeAdulto = true;
     transicaoPorPeso = true;
   }
+  // Alguns fármacos definem em bula um corte de idade próprio para o regime de
+  // adulto (dose fixa), mais baixo que os 18 anos padrão — ex.: bulas que definem
+  // "adultos e crianças acima de 12 anos" com posologia fixa, sem faixa de
+  // transição por peso entre 12 e 18 anos. idadeRegimeAdultoMeses permite esse
+  // corte por fármaco, independente de idadeLimitePediatricaAnos (que só afeta a
+  // classificação exibida no banner, não o regime de cálculo).
+  if(!usarRegimeAdulto && f.idadeRegimeAdultoMeses != null && idadeInformada && idadeMeses >= f.idadeRegimeAdultoMeses){
+    usarRegimeAdulto = true;
+  }
   atualizarBannerPaciente(faixaClinica, idadeAtual, idadeUnidade);
 
   // ----- calcular dose base (mg por administração) -----
@@ -2176,16 +2185,18 @@ function calcularEExibir(){
   const db = f.doseBase;
   const da = f.doseAdulto;
 
-  if(peso > 0){
-    if(usarRegimeAdulto && da && da.modo === 'fixa'){
-      regimeUsado = 'adulto';
-      let doseMin = da.doseMg.min, doseMax = da.doseMg.max;
-      dose = { min: doseMin, max: doseMax, capApplied:false };
-      dose.formulaBase = [seg(
-        'Dose fixa de adulto (posologia não calculada por peso)',
-        `→ ${doseMin === doseMax ? formatarMg(doseMax) : formatarMg(doseMin)+'–'+formatarMg(doseMax)} por administração${da.doseMaximaDiaMg ? ' (máx. ' + formatarMg(da.doseMaximaDiaMg) + '/dia)' : ''}`
-      )];
-    } else if(usarRegimeAdulto && da && da.modo === 'mgkg'){
+  // A dose fixa de adulto não depende do peso — fica fora do gate "peso > 0"
+  // abaixo, que existe para as demais formas de cálculo (por kg).
+  if(usarRegimeAdulto && da && da.modo === 'fixa'){
+    regimeUsado = 'adulto';
+    let doseMin = da.doseMg.min, doseMax = da.doseMg.max;
+    dose = { min: doseMin, max: doseMax, capApplied:false };
+    dose.formulaBase = [seg(
+      'Dose fixa de adulto (posologia não calculada por peso)',
+      `→ ${doseMin === doseMax ? formatarMg(doseMax) : formatarMg(doseMin)+'–'+formatarMg(doseMax)} por administração${da.doseMaximaDiaMg ? ' (máx. ' + formatarMg(da.doseMaximaDiaMg) + '/dia)' : ''}`
+    )];
+  } else if(peso > 0){
+    if(usarRegimeAdulto && da && da.modo === 'mgkg'){
       regimeUsado = 'adulto';
       let doseMin = da.doseMgKg.min * peso;
       let doseMax = da.doseMgKg.max * peso;
@@ -2330,20 +2341,53 @@ function calcularEExibir(){
         const tier = form.faixasTexto.find(t => idadeMeses <= t.idadeMaxMeses) || form.faixasTexto[form.faixasTexto.length-1];
         if(tier.alerta){
           textoAlerta = tier.texto;
+        } else if(tier.mgPorKg){
+          // Sub-faixa calculada por peso dentro de uma formulação majoritariamente
+          // baseada em texto fixo por idade (ex.: uma única faixa etária cuja bula
+          // define a posologia em mg/kg, enquanto as demais faixas são dose fixa).
+          if(peso <= 0){
+            valorTexto = 'informe o peso';
+          } else {
+            const frac = tier.fracionamento || 1;
+            const diaMg = tier.mgPorKg * peso;
+            const doseAdmin = diaMg / frac;
+            const sufixoFreq = tier.frequenciaTexto ? ` ${tier.frequenciaTexto}` : '';
+            if(form.concentracaoMgMl){
+              const ml = doseAdmin / form.concentracaoMgMl;
+              valorTexto = `${arred(ml)} mL${sufixoFreq}`;
+              formulaCompleta = [seg(
+                `Enquadrar na faixa (${tier.descricao || 'calculada por peso'}) e calcular: peso × ${tier.mgPorKg} mg/kg/dia`,
+                `→ ${peso} kg × ${tier.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(doseAdmin)} mg por administração ÷ ${form.concentracaoMgMl} mg/mL = ${arred(ml)} mL`
+              )];
+            } else {
+              valorTexto = `${arred(doseAdmin)} mg${sufixoFreq}`;
+              formulaCompleta = [seg(
+                `Enquadrar na faixa (${tier.descricao || 'calculada por peso'}) e calcular: peso × ${tier.mgPorKg} mg/kg/dia`,
+                `→ ${peso} kg × ${tier.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(doseAdmin)} mg por administração`
+              )];
+            }
+          }
         } else {
           valorTexto = tier.texto;
         }
       }
     } else if(form.textoDoseFixo){
       valorTexto = form.textoDoseFixo;
-    } else if(peso <= 0){
-      valorTexto = '00';
     } else if(form.tipo === 'gotas' && form.calculoEspecial === 'gotas_por_kg'){
-      const gMin = Math.round(peso * 1);
-      const gMax = Math.round(peso * 2);
-      valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
-      formulaCompleta = [seg('Calcular o número de gotas: peso × 1–2 gotas/kg', `→ ${peso} kg × 1–2 gotas/kg = ${gMin}–${gMax} gotas`)];
+      // Regra prática (gotas/kg) tem prioridade sobre uma eventual dose fixa de
+      // adulto: essas apresentações são de uso pediátrico e a regra depende do peso.
+      if(peso <= 0){
+        valorTexto = '00';
+      } else {
+        const gMin = Math.round(peso * 1);
+        const gMax = Math.round(peso * 2);
+        valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
+        formulaCompleta = [seg('Calcular o número de gotas: peso × 1–2 gotas/kg', `→ ${peso} kg × 1–2 gotas/kg = ${gMin}–${gMax} gotas`)];
+      }
     } else if(dose){
+      // 'dose' já pode estar calculada sem depender do peso (ex.: dose fixa de
+      // adulto) — verificar antes do gate "peso <= 0" abaixo, para não bloquear
+      // indevidamente um valor que já está pronto.
       const doseMin = form.doseMaximaPorDoseMg ? Math.min(dose.min, form.doseMaximaPorDoseMg) : dose.min;
       const doseMax = form.doseMaximaPorDoseMg ? Math.min(dose.max, form.doseMaximaPorDoseMg) : dose.max;
 
@@ -2382,6 +2426,8 @@ function calcularEExibir(){
         valorTexto = `${arred(doseMin)} – ${arred(doseMax)} mg`;
         formulaCompleta = dose.formulaBase || null;
       }
+    } else if(peso <= 0){
+      valorTexto = '00';
     }
 
     // dose máxima por dose (texto)

@@ -16,10 +16,11 @@
      idênticos entre todas as ferramentas do site.
   =================================================================== */
   :root{
-    --bg:#5a5f66;--panel:#4a4e55;--sidebar:#454951;--card:#4f545c;--card-hover:#585d65;
-    --border:#63686f;--accent:#e4172c;--accent-bright:#ec4052;--accent-glow:rgba(228,23,44,.22);
+    /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
+    --bg:#2b2d31;--panel:#35373c;--sidebar:#221f24;--card:#38383e;--card-hover:#414247;
+    --border:#48494f;--accent:#e4172c;--accent-bright:#ec4052;--accent-glow:rgba(228,23,44,.22);
     --accent-dark:#a10f1f;--text:#f5f5f4;--text-dim:#a7abb1;--text-gray:#d2d5d9;
-    --amber:#f59e0b;--hover-tint:#585d65;--radius:10px;
+    --amber:#f59e0b;--hover-tint:#414247;--radius:10px;
   }
   body.light{
     --bg:#eceef1;--panel:#f6f7f9;--sidebar:#e2e5e9;--card:#ffffff;--card-hover:#f1f2f5;
@@ -337,6 +338,114 @@
     .results-panel{width:100%;padding:18px;min-height:0;}
     .interacao-head{flex-direction:column;}
     .interacao-badge{align-self:flex-start;}
+  }
+
+  /* ===================================================================
+     Efeitos 3D / sombras — modo escuro (paleta grafite)
+  =================================================================== */
+  body:not(.light) .topbar-app{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 4px 24px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+  }
+  body:not(.light) .theme-toggle{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 2px 6px rgba(0,0,0,.25);
+  }
+  body:not(.light) .theme-toggle:hover{
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset, 0 3px 10px rgba(0,0,0,.35);
+  }
+  body:not(.light) .db-pill{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 2px 8px rgba(0,0,0,.25);
+  }
+  body:not(.light) .sidebar-panel{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 10px 30px -8px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.3);
+  }
+  body:not(.light) .med-row{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.2);
+  }
+  body:not(.light) .med-row:focus-within{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 4px 14px var(--accent-glow);
+  }
+  body:not(.light) .autocomplete-list{
+    box-shadow:0 14px 34px -8px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.35);
+  }
+  body:not(.light) .btn-add-chip{
+    box-shadow:0 3px 10px var(--accent-glow), 0 1px 0 rgba(255,255,255,.15) inset;
+  }
+  body:not(.light) .btn-ver-resultado.ativo{
+    box-shadow:0 5px 18px var(--accent-glow), 0 1px 0 rgba(255,255,255,.12) inset;
+  }
+  body:not(.light) .results-panel{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 26px -10px rgba(0,0,0,.4);
+  }
+  body:not(.light) .recente-item{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 2px 8px rgba(0,0,0,.2);
+    transition:border-color .15s,background .15s,box-shadow .15s,transform .15s;
+  }
+  body:not(.light) .recente-item:hover{
+    box-shadow:0 6px 18px -4px rgba(0,0,0,.4);
+    transform:translateY(-2px);
+  }
+  body:not(.light) .interacao-card{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 3px 12px rgba(0,0,0,.25);
+  }
+  body:not(.light) .bloco-conduta,
+  body:not(.light) .bloco-balcao{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+  }
+  body:not(.light) .diferencial-box,
+  body:not(.light) .disclaimer{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 2px 8px rgba(0,0,0,.2);
+  }
+
+  /* ===================================================================
+     Efeitos 3D / sombras — modo claro
+  =================================================================== */
+  body.light .topbar-app{
+    box-shadow:0 4px 20px rgba(23,26,32,.08), 0 1px 3px rgba(23,26,32,.06);
+  }
+  body.light .theme-toggle{
+    box-shadow:0 2px 6px rgba(23,26,32,.06);
+  }
+  body.light .theme-toggle:hover{
+    box-shadow:0 3px 10px rgba(23,26,32,.1);
+  }
+  body.light .db-pill{
+    box-shadow:0 2px 8px rgba(23,26,32,.05);
+  }
+  body.light .sidebar-panel{
+    box-shadow:0 10px 30px -8px rgba(23,26,32,.12), 0 2px 8px rgba(23,26,32,.06);
+  }
+  body.light .med-row{
+    box-shadow:0 2px 6px rgba(23,26,32,.05);
+  }
+  body.light .med-row:focus-within{
+    box-shadow:0 4px 14px var(--accent-glow);
+  }
+  body.light .autocomplete-list{
+    box-shadow:0 14px 34px -8px rgba(23,26,32,.16), 0 4px 12px rgba(23,26,32,.08);
+  }
+  body.light .btn-add-chip{
+    box-shadow:0 3px 10px var(--accent-glow);
+  }
+  body.light .btn-ver-resultado.ativo{
+    box-shadow:0 5px 18px var(--accent-glow);
+  }
+  body.light .results-panel{
+    box-shadow:0 8px 26px -10px rgba(23,26,32,.1);
+  }
+  body.light .recente-item{
+    box-shadow:0 2px 8px rgba(23,26,32,.05);
+    transition:border-color .15s,background .15s,box-shadow .15s,transform .15s;
+  }
+  body.light .recente-item:hover{
+    box-shadow:0 6px 18px -4px rgba(23,26,32,.14);
+    transform:translateY(-2px);
+  }
+  body.light .interacao-card{
+    box-shadow:0 3px 12px rgba(23,26,32,.06);
+  }
+  body.light .diferencial-box,
+  body.light .disclaimer{
+    box-shadow:0 2px 8px rgba(23,26,32,.05);
   }
 </style>
 </head>

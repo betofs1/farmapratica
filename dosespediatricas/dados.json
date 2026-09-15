@@ -1679,54 +1679,60 @@
    "nome": "Acebrofilina",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "faixa_fixa",
-    "faixasPorIdade": true,
-    "faixas": [
-     {
-      "idadeMaxMeses": 36,
-      "mgPorKg": 2,
-      "fracionamento": 2,
-      "descricao": "2 a 3 anos (calculada por peso)"
-     },
-     {
-      "idadeMaxMeses": 72,
-      "doseMg": 25,
-      "fracionamento": 2,
-      "descricao": "3 a 6 anos (½ copo-dosador do xarope pediátrico = 5 mL = 25 mg, a cada 12 horas → 50 mg/dia)"
-     },
-     {
-      "idadeMaxMeses": 144,
-      "doseMg": 50,
-      "fracionamento": 2,
-      "descricao": "6 a 12 anos (1 copo-dosador do xarope pediátrico = 10 mL = 50 mg, a cada 12 horas → 100 mg/dia)"
-     },
-     {
-      "idadeMaxMeses": 9999,
-      "doseMg": 100,
-      "fracionamento": 2,
-      "descricao": "≥ 12 anos / adultos (1 copo-dosador do xarope adulto = 10 mL = 100 mg, a cada 12 horas → 200 mg/dia)"
-     }
-    ]
+    "tipo": "individualizado"
    },
    "idadeMinimaMeses": 24,
    "formulacoes": [
     {
      "tipo": "liquido",
      "rotulo": "Xarope pediátrico 5 mg/mL",
-     "viaTexto": "via oral a cada 12 horas",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 5,
-     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso pediátrico, até 12 anos)"
+     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso pediátrico, de 2 a 11 anos)",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 36,
+       "mgPorKg": 2,
+       "fracionamento": 2,
+       "descricao": "2 a 3 anos",
+       "frequenciaTexto": "a cada 12 horas"
+      },
+      {
+       "idadeMaxMeses": 72,
+       "texto": "5 mL (½ copo-dosador) a cada 12 horas (50 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 143,
+       "texto": "10 mL (1 copo-dosador) a cada 12 horas (100 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "alerta": true,
+       "texto": "A partir de 12 anos, utilizar o Xarope Adulto (10 mg/mL): 10 mL (1 copo-dosador) a cada 12 horas."
+      }
+     ]
     },
     {
      "tipo": "liquido",
      "rotulo": "Xarope adulto 10 mg/mL",
-     "viaTexto": "via oral a cada 12 horas",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 10,
-     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso a partir de 12 anos)"
+     "apresentacaoTexto": "frasco com 120 mL + copo-dosador (uso a partir de 12 anos)",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Indicado a partir de 12 anos. Para essa idade, utilizar o Xarope Pediátrico (5 mg/mL) na faixa etária correspondente."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "10 mL (1 copo-dosador) a cada 12 horas (200 mg/dia)"
+      }
+     ]
     }
    ],
    "observacoesExtras": [
-    "Faixa de 2 a 3 anos calculada por peso (2 mg/kg/dia, dividido em 2 administrações a cada 12 horas); as demais faixas etárias seguem dose fixa por idade, padronizada em copo-dosador, conforme bula.",
+    "Faixa de 2 a 3 anos calculada por peso (2 mg/kg/dia, dividido em 2 administrações a cada 12 horas, com o Xarope Pediátrico); as demais faixas etárias seguem dose fixa em copo-dosador, conforme bula.",
     "Segurança e eficácia não estabelecidas para menores de 2 anos — bula não define posologia para essa faixa etária.",
     "Sem dose máxima diária adicional estabelecida pelo fabricante além do teto de adulto (200 mg/dia)."
    ],
@@ -1754,7 +1760,7 @@
   },
   {
    "id": "levodropropizina",
-   "nome": "Levodropropizina",
+   "nome": "Levodropropizina (ANTUX®)",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
     "tipo": "mgkg_dose",
@@ -1776,22 +1782,22 @@
     },
     {
      "tipo": "gotas",
-     "rotulo": "Solução oral (gotas) 30 mg/mL (1,5 mg/gota)",
-     "viaTexto": "via oral, até 3x/dia (intervalo mínimo de 6h)",
-     "mgPorGota": 1.5,
-     "apresentacaoTexto": "frasco gotejador"
+     "rotulo": "Solução oral (gotas) 30 mg/mL (1 mg/gota)",
+     "viaTexto": "via oral, até 3x/dia, preferencialmente entre as refeições",
+     "mgPorGota": 1,
+     "apresentacaoTexto": "frasco gotejador (30 gotas/mL); dose máxima diária de 120 gotas",
+     "doseMaximaPorDoseMg": 40,
+     "diluicaoTexto": "Diluir em um pouco de água antes de administrar."
     }
    ],
    "observacoesExtras": [
     "Contraindicado para menores de 2 anos.",
-    "Dose máxima diária não deve ultrapassar 30 mL de xarope (equivalente a ~180 mg).",
-    "Cross-check em 11/09/2026: o relatório de referência cita a dose adulta como '10 mL (30 mg) 3x/dia = 90 mg/dia', mas isso contradiz a própria concentração informada no mesmo documento (30 mg/5 mL = 6 mg/mL, na qual 10 mL correspondem a 60 mg, não 30 mg). Mantidos os valores já registrados (60 mg/dose, 3x/dia, 180 mg/dia), consistentes com a concentração do xarope, com o teto pediátrico (30 mL/dia = 180 mg) e com a bula Aché/Antux já citada nesta base."
+    "Dose pediátrica calculada por peso (1 mg/kg/dose, até 3x/dia, dose diária total de 3 mg/kg) — válida tanto para o xarope quanto para as gotas.",
+    "Atenção: a apresentação em gotas tem teto diário menor que o xarope — máximo de 120 gotas/dia (120 mg/dia); o xarope permite até 30 mL/dia (180 mg/dia)."
    ],
-   "fonte": "Bula ANVISA (Aché/EMS)",
+   "fonte": "Bula ANVISA — Antux (Aché)",
    "nomesComerciais": [
-    "Antux",
-    "Percof",
-    "Zyplo"
+    "Antux"
    ],
    "doseAdulto": {
     "modo": "fixa",
@@ -1805,60 +1811,67 @@
    "doseMaximaDiaAdultoMg": 180,
    "fontesAdulto": [
     "Bula paciente Antux xarope (Aché) — 'Adultos: 10 mL (um copo dosador), três vezes ao dia, com intervalo não inferior a 6 horas entre as doses' (10 mL = 60 mg; 30 mL/dia = 180 mg/dia) — https://www.ache.com.br/wp-content/uploads/application/pdf/bula-paciente-antux-xarope.pdf"
-   ]
+   ],
+   "idadeRegimeAdultoMeses": 145
   },
   {
    "id": "dropropizina",
    "nome": "Dropropizina",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "faixa_fixa",
-    "faixasPorIdade": true,
-    "faixas": [
-     {
-      "idadeMaxMeses": 36,
-      "doseMg": {
-       "min": 3.75,
-       "max": 7.5
-      },
-      "fracionamento": 1,
-      "descricao": "2 a 3 anos (2,5–5 mL do xarope 1,5 mg/mL)"
-     },
-     {
-      "idadeMaxMeses": 144,
-      "doseMg": 15,
-      "fracionamento": 1,
-      "descricao": "acima de 3 anos (10 mL do xarope 1,5 mg/mL)"
-     },
-     {
-      "idadeMaxMeses": 9999,
-      "doseMg": 30,
-      "fracionamento": 1,
-      "descricao": "≥ 12 anos / adultos (10 mL do xarope adulto 3 mg/mL)"
-     }
-    ]
+    "tipo": "individualizado"
    },
-   "idadeMinimaMeses": 24,
+   "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
      "rotulo": "Xarope pediátrico 1,5 mg/mL",
-     "viaTexto": "via oral, 4x/dia",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 1.5,
-     "apresentacaoTexto": "frasco com 120 mL + seringa dosadora (uso até ~12 anos)"
+     "apresentacaoTexto": "frasco com seringa dosadora",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 23,
+       "alerta": true,
+       "texto": "Bula não estabelece dose para menores de 2 anos. Uso nessa faixa etária não deve ser feito sem avaliação médica individual — não há dose padronizada a calcular aqui."
+      },
+      {
+       "idadeMaxMeses": 36,
+       "texto": "2,5 mL a 5 mL (¼ a ½ seringa dosadora), 4 vezes ao dia (15–30 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 144,
+       "texto": "10 mL (1 seringa dosadora), 4 vezes ao dia (60 mg/dia)"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "alerta": true,
+       "texto": "Indicado até 12 anos. Acima de 12 anos, utilizar o Xarope Adulto (3 mg/mL)."
+      }
+     ]
     },
     {
      "tipo": "liquido",
      "rotulo": "Xarope adulto 3 mg/mL",
-     "viaTexto": "via oral, 4x/dia",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 3,
-     "apresentacaoTexto": "frasco com 120 mL + copo dosador (uso ≥ 12 anos)"
+     "apresentacaoTexto": "frasco com copo dosador",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 144,
+       "alerta": true,
+       "texto": "Indicado para maiores de 12 anos. Até os 12 anos, utilizar o Xarope Pediátrico (1,5 mg/mL)."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "10 mL (1 copo dosador), 4 vezes ao dia (120 mg/dia)"
+      }
+     ]
     }
    ],
    "observacoesExtras": [
     "Contraindicado em tosse produtiva (com catarro), insuficiência respiratória grave e asma.",
-    "Cada administração é feita 4 vezes ao dia — dose exibida refere-se a cada tomada.",
-    "Cross-check em 11/09/2026 com relatório baseado na bula Aché: valores por faixa (2-3a: 3,75-7,5 mg; >3a/3-12a: 15 mg; >=12a/adulto: 30 mg, todos 4x/dia) conferem exatamente com os já registrados nesta base."
+    "Segurança e eficácia não estabelecidas para menores de 2 anos — bula não define posologia para essa faixa etária."
    ],
    "fonte": "Bula ANVISA (Biosintética/Prati-Donaduzzi)",
    "nomesComerciais": [
@@ -1880,7 +1893,8 @@
    "doseMaximaDiaAdultoMg": 120,
    "fontesAdulto": [
     "Bula profissional Vibral Xarope Adulto (Abbott) — 'Adultos e crianças acima de 12 anos: 1 copo-medida (10 mL), 4 vezes ao dia' (xarope adulto 3 mg/mL = 30 mg/dose; 120 mg/dia) — https://dam.abbott.com/pt-br/documents/pdfs/nossas-bulas/v/BU-21-vibral-bula-profissional-final.pdf"
-   ]
+   ],
+   "somenteIdade": true
   },
   {
    "id": "betametasona",
@@ -2422,43 +2436,40 @@
    "nome": "Guaifenesina",
    "categoria": "Antitussivos / Mucolíticos",
    "doseBase": {
-    "tipo": "faixa_fixa",
-    "faixasPorIdade": true,
-    "faixas": [
-     {
-      "idadeMaxMeses": 72,
-      "doseMg": 66.7,
-      "fracionamento": 1,
-      "descricao": "2 a 6 anos (5 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
-     },
-     {
-      "idadeMaxMeses": 144,
-      "doseMg": 100,
-      "fracionamento": 1,
-      "descricao": "6 a 12 anos (7,5 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
-     },
-     {
-      "idadeMaxMeses": 9999,
-      "doseMg": 200,
-      "fracionamento": 1,
-      "descricao": "≥ 12 anos / adultos (15 mL do xarope 13,3 mg/mL, a cada 4-6 horas)"
-     }
-    ]
+    "tipo": "individualizado"
    },
-   "idadeMinimaMeses": 24,
+   "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
      "rotulo": "Xarope Transpulmin 13,3 mg/mL (200 mg/15 mL)",
-     "viaTexto": "via oral, a cada 4 a 6 horas (até 6x/dia)",
+     "viaTexto": "via oral, conforme faixa etária",
      "concentracaoMgMl": 13.3,
-     "apresentacaoTexto": "frasco com copo/colher dosadora"
+     "apresentacaoTexto": "frasco com copo/colher dosadora",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 23,
+       "alerta": true,
+       "texto": "Bula não estabelece dose para menores de 2 anos. Uso nessa faixa etária não deve ser feito sem avaliação médica individual — não há dose padronizada a calcular aqui."
+      },
+      {
+       "idadeMaxMeses": 72,
+       "texto": "5 mL (66,7 mg), a cada 4 horas — máximo de 600 mg/dia"
+      },
+      {
+       "idadeMaxMeses": 144,
+       "texto": "7,5 mL (100 mg), a cada 4 horas — máximo de 1200 mg/dia"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "15 mL (200 mg), a cada 4 horas — máximo de 2400 mg/dia"
+      }
+     ]
     }
    ],
    "observacoesExtras": [
-    "Modelo revisado em 11/09/2026 (era fórmula genérica de 8-12 mg/kg/dia; passou a dose fixa por faixa etária) com base na bula Transpulmin (Zambon/ANVISA): 5 mL (66,7 mg) 2-6 anos, 7,5 mL (100 mg) 6-12 anos e 15 mL (200 mg) ≥12 anos/adultos, a cada 4-6 horas.",
-    "Existe também apresentação infantil concentrada (Transpulmin Infantil, 6,67 mg/mL — metade da concentração) com posologia própria e ligeiramente diferente (ex.: 7,5 mL/50 mg para 2-6 anos); para maior precisão, priorizar o xarope 13,3 mg/mL (única formulação usada no cálculo desta base).",
-    "Doses máximas diárias por faixa (referência do fabricante, não aplicadas automaticamente por esta ferramenta): 600 mg/dia (2-6 anos), 1200 mg/dia (6-12 anos), 2400 mg/dia (≥12 anos/adultos)."
+    "Existe também apresentação infantil concentrada (Transpulmin Infantil, 6,67 mg/mL — metade da concentração) com posologia própria e ligeiramente diferente; para maior precisão, esta base usa apenas o xarope 13,3 mg/mL.",
+    "Segurança e eficácia não estabelecidas para menores de 2 anos — bula não define posologia para essa faixa etária."
    ],
    "fonte": "Bula ANVISA Transpulmin (Zambon)",
    "nomesComerciais": [
@@ -2473,7 +2484,7 @@
     "modo": "fixa",
     "doseMg": {
      "min": 200,
-     "max": 400
+     "max": 200
     },
     "vezesDia": 6,
     "doseMaximaDiaMg": 2400
@@ -2482,7 +2493,8 @@
    "fontesAdulto": [
     "Bula Transpulmin Xarope (Zambon) — 'Adultos e crianças maiores de 12 anos: 15 mL (200 mg) a cada 4 horas. O limite máximo diário de administração do medicamento para adultos e crianças maiores de 12 anos é de 2400 mg/dia' — https://drconsulta.com/conteudo/transpulmin-xarope-bula/",
     "Bula Guaifenesina (Drogasil) — mesmo esquema '15 mL (200 mg) a cada 4 horas', máximo 2400 mg/dia — https://www.drogasil.com.br/bulas/guaifenesina"
-   ]
+   ],
+   "somenteIdade": true
   },
   {
    "id": "omeprazol",

@@ -10,10 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#5a5f66;--panel:#4a4e55;--sidebar:#454951;--card:#4f545c;--card-hover:#585d65;
-    --border:#63686f;--accent:#e4172c;--accent-bright:#ec4052;--accent-glow:rgba(228,23,44,.22);
-    --accent-dark:#a10f1f;--text:#f5f5f4;--text-dim:#a7abb1;--text-gray:#d2d5d9;
-    --amber:#f59e0b;--hover-tint:#585d65;--radius:10px;
+    --bg:#2b2d31;--panel:#35373c;--sidebar:#221f24;--card:#38383e;--card-hover:#414247;
+    --border:#48494f;--accent:#e4172c;--accent-bright:#ff3b50;--accent-glow:rgba(228,23,44,.30);
+    --accent-dark:#a10f1f;--text:#f4f5f7;--text-dim:#9aa0a8;--text-gray:#ced2d8;
+    --amber:#f59e0b;--hover-tint:#414247;--radius:10px;
   }
   body.light{
     --bg:#eceef1;--panel:#f6f7f9;--sidebar:#e2e5e9;--card:#ffffff;--card-hover:#f1f2f5;
@@ -314,6 +314,109 @@
        do desktop já colapsa para 1 coluna aqui na prática, mas fixamos explicitamente
        para evitar 2 colunas espremidas em telas ~430-480px). */
     .card-expand-detail{grid-template-columns:1fr;}
+  }
+
+  /* ----- Modo escuro: profundidade extra (sombras em camadas + leve efeito
+     de superfície 3D). Tudo escopado em body:not(.light) — o modo claro
+     mantém exatamente as sombras/gradientes originais, sem alteração. ----- */
+  body:not(.light){
+    background-image:
+      radial-gradient(900px 560px at 12% -12%,rgba(228,23,44,.10),transparent 60%),
+      radial-gradient(760px 520px at 105% -6%,rgba(245,158,11,.05),transparent 55%),
+      radial-gradient(1100px 760px at 50% 115%,rgba(59,130,246,.04),transparent 60%);
+  }
+  body:not(.light) .topbar-app{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 10px 30px rgba(0,0,0,.5);
+    background-image:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 60%);
+  }
+  body:not(.light) .search-section{
+    background-image:linear-gradient(155deg,rgba(255,255,255,.035),rgba(255,255,255,0) 45%);
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -14px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);
+  }
+  body:not(.light) .suggestions-box{
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 20px 45px -10px rgba(0,0,0,.65),0 4px 14px rgba(0,0,0,.5);
+  }
+  body:not(.light) .filter-row,
+  body:not(.light) .filter-row-apres{
+    background-image:linear-gradient(155deg,rgba(255,255,255,.03),rgba(255,255,255,0) 50%);
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 20px rgba(0,0,0,.35);
+  }
+  body:not(.light) .card-resumida{
+    background-image:linear-gradient(155deg,rgba(255,255,255,.025),rgba(255,255,255,0) 45%);
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 6px 16px rgba(0,0,0,.35);
+    transition:border-color .15s,box-shadow .2s,background .15s,transform .15s;
+  }
+  body:not(.light) .card-resumida:hover{
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 34px -10px rgba(228,23,44,.25),0 6px 16px rgba(0,0,0,.45);
+    transform:translateY(-2px);
+  }
+  body:not(.light) .state-box{
+    background-image:linear-gradient(155deg,rgba(255,255,255,.03),rgba(255,255,255,0) 45%);
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 18px 40px -14px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.4);
+  }
+  body:not(.light) #searchBtn{
+    box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 8px 20px var(--accent-glow),0 2px 6px rgba(0,0,0,.35);
+  }
+  body:not(.light) #searchBtn:hover{
+    box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 10px 26px var(--accent-glow),0 3px 8px rgba(0,0,0,.4);
+  }
+  body:not(.light) #searchInput{
+    box-shadow:inset 0 1px 3px rgba(0,0,0,.35);
+  }
+  body:not(.light) #searchInput:focus{
+    box-shadow:inset 0 1px 3px rgba(0,0,0,.35),0 0 0 3px rgba(228,23,44,.2);
+  }
+  body:not(.light) .db-pill{
+    box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 4px 10px rgba(0,0,0,.3);
+  }
+  body:not(.light) .theme-toggle{
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 2px 6px rgba(0,0,0,.3);
+  }
+
+  /* ----- Modo claro: mesmo espírito de profundidade (sombras em camadas +
+     leve elevação/3D), calibrado mais suave para combinar com fundo claro.
+     Cores do modo claro seguem exatamente as mesmas de antes. ----- */
+  body.light .topbar-app{
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 26px rgba(23,26,32,.10),0 2px 6px rgba(23,26,32,.06);
+  }
+  body.light .search-section{
+    box-shadow:0 18px 36px -16px rgba(23,26,32,.16),0 4px 12px rgba(23,26,32,.08);
+  }
+  body.light .suggestions-box{
+    box-shadow:0 20px 40px -12px rgba(23,26,32,.18),0 4px 14px rgba(23,26,32,.10);
+  }
+  body.light .filter-row,
+  body.light .filter-row-apres{
+    box-shadow:0 8px 18px rgba(23,26,32,.08);
+  }
+  body.light .card-resumida{
+    box-shadow:0 4px 12px rgba(23,26,32,.06);
+    transition:border-color .15s,box-shadow .2s,background .15s,transform .15s;
+  }
+  body.light .card-resumida:hover{
+    box-shadow:0 16px 30px -12px rgba(212,21,42,.16),0 6px 14px rgba(23,26,32,.10);
+    transform:translateY(-2px);
+  }
+  body.light .state-box{
+    box-shadow:0 18px 36px -16px rgba(23,26,32,.16),0 4px 12px rgba(23,26,32,.08);
+  }
+  body.light #searchBtn{
+    box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 8px 18px var(--accent-glow),0 2px 6px rgba(23,26,32,.12);
+  }
+  body.light #searchBtn:hover{
+    box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 22px var(--accent-glow),0 3px 8px rgba(23,26,32,.14);
+  }
+  body.light #searchInput{
+    box-shadow:inset 0 1px 2px rgba(23,26,32,.06);
+  }
+  body.light #searchInput:focus{
+    box-shadow:inset 0 1px 2px rgba(23,26,32,.06),0 0 0 3px rgba(212,21,42,.14);
+  }
+  body.light .db-pill{
+    box-shadow:0 4px 10px rgba(23,26,32,.05);
+  }
+  body.light .theme-toggle{
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 2px 6px rgba(23,26,32,.05);
   }
 </style>
 </head>
