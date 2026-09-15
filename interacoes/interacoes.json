@@ -2430,5 +2430,147 @@
     "conduta": "Risco menor que com AINE tradicional; ainda assim, orientar moderação em uso regular concomitante.",
     "acaoBalcao": "Mencionar que o risco é menor que com AINE tradicional, mas não nulo.",
     "fonte": "Farmacologia clínica estabelecida; bulas de AINEs/dipirona"
+  },
+  {
+    "id": "INT160",
+    "medicamentoA": "doac",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Os anticoagulantes orais diretos (DOACs) são substratos da glicoproteína-P e, em graus variados, do CYP3A4. Os antifúngicos azólicos sistêmicos são inibidores potentes de ambas as vias, elevando significativamente a exposição ao DOAC e o risco de sangramento.",
+    "conduta": "Evitar associação com itraconazol/voriconazol/cetoconazol quando possível (inibição mais potente); com fluconazol, considerar redução de dose conforme bula do DOAC específico.",
+    "acaoBalcao": "Perguntar sobre uso de DOAC antes de dispensar antifúngico oral sistêmico; reforçar sinais de sangramento a observar.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT161",
+    "medicamentoA": "doac",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "O ritonavir (isolado ou como potencializador no Paxlovid) é um potente inibidor da glicoproteína-P e do CYP3A4, elevando substancialmente os níveis de rivaroxabana/apixabana/edoxabana (dabigatrana depende só de P-gp, mas também é afetada). Interação documentada em bula, com recomendação frequente de evitar a associação.",
+    "conduta": "Evitar associação quando possível; se o uso de Paxlovid for necessário, avaliar com o prescritor pausa temporária ou troca por outro anticoagulante durante o curso de 5 dias.",
+    "acaoBalcao": "Perguntar sobre uso de DOAC antes de dispensar ritonavir/Paxlovid — uma das interações mais críticas e comumente esquecidas dessa combinação.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT162",
+    "medicamentoA": "doac",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos potentes (rifampicina, carbamazepina, fenitoína, fenobarbital, erva-de-são-joão, efavirenz, griseofulvina) aumentam a expressão da glicoproteína-P e do CYP3A4, reduzindo significativamente os níveis do DOAC e o risco de falha terapêutica (trombose/AVC), em vez de sangramento.",
+    "conduta": "Evitar associação quando possível; se inevitável, considerar anticoagulante alternativo (ex. varfarina, com monitorização de INR) durante o uso do indutor.",
+    "acaoBalcao": "Perguntar sobre uso de DOAC antes de dispensar qualquer indutor enzimático; alertar que a preocupação aqui é perda de proteção, não sangramento.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT163",
+    "medicamentoA": "doac",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Efeito aditivo sobre o risco de sangramento: o AINE soma o dano à mucosa gastrointestinal e a leve disfunção plaquetária ao efeito anticoagulante do DOAC.",
+    "conduta": "Evitar uso regular de AINE; preferir paracetamol para dor/febre em pacientes anticoagulados quando possível.",
+    "acaoBalcao": "Perguntar sobre uso de anticoagulante antes de recomendar AINE de venda livre.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT164",
+    "medicamentoA": "doac",
+    "medicamentoB": "aine_coxibe",
+    "gravidade": "leve",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Risco de sangramento aditivo menor que com AINE tradicional (coxibes preservam a função plaquetária mediada pela COX-1), mas ainda presente pelo efeito sobre a mucosa gastrointestinal.",
+    "conduta": "Risco menor que com AINE tradicional; ainda assim, uso regular deve ser conversado com o prescritor.",
+    "acaoBalcao": "Mencionar que o risco é menor que com AINE tradicional, mas não nulo.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT165",
+    "medicamentoA": "doac",
+    "medicamentoB": "antidepressivo_serotoninergico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Antidepressivos serotoninérgicos (ISRS, IRSN, tricíclicos, atípicos) reduzem a captação de serotonina pelas plaquetas, prejudicando a agregação plaquetária; somado ao efeito anticoagulante do DOAC, aumenta o risco de sangramento.",
+    "conduta": "Observar sinais de sangramento (equimoses, gengivorragia, melena) quando a associação for necessária; não costuma exigir suspensão, mas justifica atenção.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo antes de dispensar DOAC pela primeira vez, e vice-versa.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT166",
+    "medicamentoA": "doac",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "A amiodarona inibe a glicoproteína-P (e, em menor grau, o CYP3A4), elevando os níveis do DOAC — interação especialmente relevante para dabigatrana, cuja bula recomenda redução de dose em alguns cenários quando associada à amiodarona.",
+    "conduta": "Observar sinais de sangramento; consultar bula do DOAC específico quanto à necessidade de ajuste de dose com amiodarona.",
+    "acaoBalcao": "Perguntar sobre uso de amiodarona antes de dispensar DOAC.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT167",
+    "medicamentoA": "doac",
+    "medicamentoB": "aas",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Combinação frequentemente usada de forma intencional (ex. pós-implante de stent, dupla proteção antitrombótica), mas com risco de sangramento substancialmente maior que qualquer um dos dois fármacos isoladamente — mesmo padrão de risco já mapeado para varfarina+AAS.",
+    "conduta": "Quando prescrita deliberadamente, geralmente é por tempo limitado e com reavaliação programada; confirmar que o paciente está ciente dos sinais de alerta de sangramento.",
+    "acaoBalcao": "Não presumir erro de prescrição — mas sempre reforçar os sinais de sangramento a observar e confirmar que a associação é intencional/monitorada.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
+  },
+  {
+    "id": "INT168",
+    "medicamentoA": "vitamina_k",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "A vitamina K é o substrato da via que a varfarina bloqueia; sua suplementação (ou grandes variações na ingestão dietética de vegetais verde-escuros) antagoniza diretamente o efeito anticoagulante, podendo reduzir o INR e o efeito terapêutico. É também o antídoto usado clinicamente em caso de superdosagem/sangramento por varfarina.",
+    "conduta": "Orientar consistência na ingestão de alimentos ricos em vitamina K (não evitar por completo, apenas manter padrão estável); suplementação só sob orientação médica com monitorização de INR.",
+    "acaoBalcao": "Perguntar sobre mudanças recentes na dieta (aumento de vegetais verde-escuros) ou início de suplemento multivitamínico em pacientes com INR alterado.",
+    "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
   }
 ]

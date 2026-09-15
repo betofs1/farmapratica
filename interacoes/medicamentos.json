@@ -2833,5 +2833,60 @@
       "nistatina_sistemica"
     ],
     "aliases": []
+  },
+  {
+    "id": "rivaroxabana",
+    "nome": "Rivaroxabana",
+    "classeTerapeutica": [
+      "rivaroxabana",
+      "doac"
+    ],
+    "aliases": [
+      "xarelto"
+    ]
+  },
+  {
+    "id": "apixabana",
+    "nome": "Apixabana",
+    "classeTerapeutica": [
+      "apixabana",
+      "doac"
+    ],
+    "aliases": [
+      "eliquis"
+    ]
+  },
+  {
+    "id": "dabigatrana",
+    "nome": "Dabigatrana",
+    "classeTerapeutica": [
+      "dabigatrana",
+      "doac"
+    ],
+    "aliases": [
+      "pradaxa"
+    ]
+  },
+  {
+    "id": "edoxabana",
+    "nome": "Edoxabana",
+    "classeTerapeutica": [
+      "edoxabana",
+      "doac"
+    ],
+    "aliases": [
+      "lixiana"
+    ]
+  },
+  {
+    "id": "vitamina_k",
+    "nome": "Vitamina K (Fitomenadiona)",
+    "classeTerapeutica": [
+      "vitamina_k"
+    ],
+    "aliases": [
+      "fitomenadiona",
+      "kanakion"
+    ]
   }
 ]
