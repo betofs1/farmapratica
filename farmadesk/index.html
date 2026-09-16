@@ -2121,8 +2121,13 @@ function setCount(value, _total, suffix){
   animateCountTo(numEl, value);
 }
 
+function normalizeSearchText(s){
+  return (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove acentos
+}
 function render(filter){
-  const q = (filter || '').trim().toLowerCase();
+  const q = normalizeSearchText((filter || '').trim());
 
   // Estado inicial: nenhum sistema selecionado e sem busca → painel de boas-vindas
   if(!activeSystem && !q){
@@ -2176,7 +2181,7 @@ function render(filter){
     // Busca global — ignora filtro de sistema, busca em título, conteúdo e sinônimos (tags)
     filtered = filtered.filter(c => {
       const tagsTxt = Array.isArray(c.tags) ? c.tags.join(' ') : (c.tags || '');
-      return (c.title + ' ' + tagsTxt + ' ' + (c.html||'').replace(/<[^>]+>/g,' ')).toLowerCase().includes(q);
+      return normalizeSearchText(c.title + ' ' + tagsTxt + ' ' + (c.html||'').replace(/<[^>]+>/g,' ')).includes(q);
     });
   } else if(activeSystem && activeSystem !== 'all'){
     filtered = filtered.filter(c => c.systemSlug === activeSystem);
