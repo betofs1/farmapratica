@@ -47,6 +47,7 @@ com os campos abaixo (todos os já cadastrados servem de modelo/exemplo):
 | `sigla` | string | sigla/abreviação usual |
 | `sinonimos` | string[] | outros nomes pelos quais o exame é conhecido |
 | `categoria` | string | precisa bater com um `id` existente em `"categorias"` |
+| `ambiente` | string | `"hospitalar"`, `"drogaria"` ou `"ambos"` — usado pelo filtro de ambiente do cabeçalho (ver seção própria abaixo) |
 | `grupo` | string | subgrupo dentro da categoria (aparece como rótulo na sidebar) |
 | `sistema` | string | sistema fisiológico avaliado |
 | `amostraTipo` | string | tipo de amostra, versão curta (aparece nos indicadores/chips) |
@@ -93,19 +94,73 @@ indigo, lime, magenta, yellow, brown, petrol, slate, gray`) e um `"icone"`
 um ícone novo, adicione a chave/path SVG em `ICONS` antes de referenciá-la
 aqui).
 
-## Estado atual do conteúdo (v1.0 — 05/09/2026)
+## Filtro de ambiente (Hospitalar / Drogaria / Todos)
 
-20 exames com todos os campos completos, cobrindo os itens listados como
-"Consulta Rápida"/"Mais Consultados": Hemograma, Glicemia de Jejum, HbA1c,
-Colesterol Total, HDL, LDL, Triglicerídeos, Creatinina, Ureia, TGO, TGP,
-GGT, TSH, T4 Livre, Vitamina D, Vitamina B12, Ferritina, PCR, Sódio e
-Potássio. As demais categorias (Marcadores Cardíacos, Imunologia,
-Infectologia, Coagulação, Urinálise, Parasitologia, Microbiologia,
-Gasometria, Fezes, Imagem, Marcadores Tumorais, Endocrinologia além de
-TSH/T4L) estão estruturadas na navegação, mas ainda sem exames — próximos
-candidatos naturais: CK/CK-MB e Troponina (cardíacos), Sorologias virais e
-VDRL (infectologia), TAP/RNI e TTPA (coagulação), EAS/Urina tipo I
-(urinálise), Cálcio, Magnésio e PTH (vitaminas/minerais e endocrinologia).
+O cabeçalho da ferramenta tem um seletor com três opções — **Todos os
+ambientes** (padrão), **Somente Hospitalar** e **Somente Drogaria** — que
+filtra a navegação (sidebar, grade de categorias e busca) pelos exames
+relevantes em cada ambiente de atuação farmacêutica.
+
+Cada exame carrega o campo `"ambiente"` com um destes valores:
+
+- `"hospitalar"`: exame de uso/monitorização tipicamente restrito ao
+  ambiente hospitalar (ex.: exige infusão contínua monitorada, curva de
+  calibração de laboratório de referência, ou é usado predominantemente em
+  contexto de internação/emergência).
+- `"drogaria"`: exame tipicamente acompanhado no contexto de farmácia
+  comunitária/ambulatorial.
+- `"ambos"`: exame relevante nos dois ambientes — é o valor padrão para
+  a maioria dos exames de rotina (hemograma, glicemia, lipidograma, função
+  renal/hepática, hormônios etc.).
+
+Ao filtrar por **Hospitalar**, aparecem os exames com `ambiente` igual a
+`"hospitalar"` ou `"ambos"`; ao filtrar por **Drogaria**, aparecem os
+exames com `"drogaria"` ou `"ambos"`. **Todos os ambientes** ignora o
+campo e mostra tudo, sendo o comportamento padrão ao abrir a página.
+
+Classificação atual (05/09 a 17/09/2026): os 20 exames originais e G6PD e
+TP/RNI foram marcados como `"ambos"`; TTPA, Contagem de Reticulócitos,
+Atividade Anti-Fator Xa e Dosagem de D-Dímero foram marcados como
+`"hospitalar"`, por serem exames de monitorização mais especializada
+(infusão hospitalar, curva de calibração de laboratório de referência).
+Nenhum exame está marcado como exclusivamente `"drogaria"` ainda — a
+classificação deve ser revisada/ajustada conforme o usuário indicar ao
+adicionar novos exames.
+
+## Estado atual do conteúdo (atualizado em 17/09/2026)
+
+35 exames com todos os campos completos. Aos 20 originais — cobrindo os
+itens listados como "Consulta Rápida"/"Mais Consultados": Hemograma,
+Glicemia de Jejum, HbA1c, Colesterol Total, HDL, LDL, Triglicerídeos,
+Creatinina, Ureia, TGO, TGP, GGT, TSH, T4 Livre, Vitamina D, Vitamina B12,
+Ferritina, PCR, Sódio e Potássio — somaram-se, em 17/09/2026, 6 exames na
+categoria Hematologia (a pedido do usuário, ao lado do Hemograma Completo,
+mesmo tratando-se em parte de exames de coagulação): Tempo de Protrombina
+(TP/RNI), Tempo de Tromboplastina Parcial Ativada (TTPA), Contagem de
+Reticulócitos, Atividade Anti-Fator Xa, Atividade da G6PD e Dosagem de
+D-Dímero.
+
+Ainda em 17/09/2026, a categoria Bioquímica passou a ter 9 exames próprios:
+Ácido Úrico, Fosfatase Alcalina, Bilirrubinas Totais e Frações, Lactato
+Desidrogenase (LDH), Creatinoquinase Total (CK), Amilase, Lipase, Cálcio
+Total e Magnésio. O usuário pediu originalmente 19 exames bioquímicos, mas
+11 deles já existiam como páginas próprias em categorias mais específicas
+(Glicose/Glicemia de Jejum, Ureia e Creatinina em Função Renal; TGO, TGP e
+GGT em Função Hepática; Colesterol Total, HDL e Triglicerídeos em
+Lipidograma; Sódio e Potássio em Eletrólitos) — para não duplicar
+conteúdo, ficou definido (decisão explícita do usuário) manter esses 11
+exames apenas em suas categorias originais, e adicionar à Bioquímica
+somente os 9 exames que ainda não tinham página. Os cruzamentos
+("correlatos") de TGO, TGP, GGT, Vitamina D, Triglicerídeos, Contagem de
+Reticulócitos e G6PD foram atualizados para apontar, como links
+clicáveis, para os novos exames de Bioquímica e Hematologia correlatos.
+
+As demais categorias (Marcadores Cardíacos, Imunologia, Infectologia,
+Coagulação, Urinálise, Parasitologia, Microbiologia, Gasometria, Fezes,
+Imagem, Marcadores Tumorais, Endocrinologia além de TSH/T4L) estão
+estruturadas na navegação, mas ainda sem exames — próximos candidatos
+naturais: CK-MB e Troponina (cardíacos), Sorologias virais e VDRL
+(infectologia), EAS/Urina tipo I (urinálise), PTH (endocrinologia).
 
 Todo o conteúdo clínico (valores de referência, causas de alteração,
 interferentes, medicamentos relacionados) foi redigido com base em

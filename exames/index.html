@@ -151,7 +151,14 @@
   .balcao-toggle svg{ width:16px; height:16px; flex-shrink:0; }
   .balcao-toggle:hover{ background:var(--hover-tint); color:var(--text); }
   .balcao-toggle.active{ background: rgba(245,158,11,.14); border-color:var(--amber); color:var(--amber); }
-  @media (max-width:980px){ .balcao-toggle .bl-label{ display:none; } .balcao-toggle{ padding:0 9px; } .topbar-actions{ right:14px; gap:6px; } }
+  .ambiente-toggle{
+    height:38px; padding:0 12px; border-radius:9px; border:1px solid var(--border);
+    background:var(--panel); color:var(--text); font-size:.72rem; font-weight:700;
+    cursor:pointer; outline:none; white-space:nowrap; flex-shrink:0;
+    transition:border-color .15s ease;
+  }
+  .ambiente-toggle:hover, .ambiente-toggle:focus{ border-color:var(--red-bright); }
+  @media (max-width:980px){ .balcao-toggle .bl-label{ display:none; } .balcao-toggle{ padding:0 9px; } .topbar-actions{ right:14px; gap:6px; } .ambiente-toggle{ font-size:.66rem; padding:0 8px; } }
 
   .app-body{ display:flex; flex:1; min-height:0; }
 
@@ -490,6 +497,11 @@
     <div class="titulo-descricao">Consulta rápida a valores de referência, interpretação clínica e interações com medicamentos</div>
   </div>
   <div class="topbar-actions">
+    <select class="ambiente-toggle" id="ambiente-select" onchange="onAmbienteChange(this.value)" title="Filtrar exames pelo ambiente de uso">
+      <option value="todos">Todos os ambientes</option>
+      <option value="hospitalar">Somente Hospitalar</option>
+      <option value="drogaria">Somente Drogaria</option>
+    </select>
     <button class="balcao-toggle" id="balcao-btn" onclick="toggleModoBalcao()" title="Modo Balcão: consulta ultra-resumida em poucos segundos">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span class="bl-label">Modo Balcão</span>
@@ -532,7 +544,7 @@
 
 <script>
 let DATA = {categorias:[], glossario:[], exames:[]};
-let state = { view:'inicio', categoria:null, exameId:null, openCats:new Set(['mais-consultados']), search:'' };
+let state = { view:'inicio', categoria:null, exameId:null, openCats:new Set(['mais-consultados']), search:'', ambiente:'todos' };
 let modoBalcao = false;
 let favoritos = new Set();
 let historico = [];
@@ -575,6 +587,7 @@ function loadStorage(){
   try{ historico = JSON.parse(localStorage.getItem('farmalab-historico')||'[]'); }catch(e){ historico = []; }
   try{ comparadorData = JSON.parse(localStorage.getItem('farmalab-comparador')||'{}'); }catch(e){ comparadorData = {}; }
   try{ modoBalcao = localStorage.getItem('farmalab-balcao')==='1'; }catch(e){ modoBalcao=false; }
+  try{ state.ambiente = localStorage.getItem('farmalab-ambiente')||'todos'; }catch(e){ state.ambiente='todos'; }
 }
 function saveFavoritos(){ localStorage.setItem('farmalab-favoritos', JSON.stringify([...favoritos])); }
 function saveHistorico(){ localStorage.setItem('farmalab-historico', JSON.stringify(historico)); }
@@ -590,7 +603,9 @@ function toggleModoBalcao(){
 
 function getExame(id){ return DATA.exames.find(e=>e.id===id); }
 function getCategoria(id){ return DATA.categorias.find(c=>c.id===id); }
-function examesDaCategoria(catId){ return DATA.exames.filter(e=>e.categoria===catId); }
+function passaAmbiente(e){ if(state.ambiente==='todos') return true; const amb = e.ambiente||'ambos'; return amb===state.ambiente || amb==='ambos'; }
+function onAmbienteChange(v){ state.ambiente=v; localStorage.setItem('farmalab-ambiente', v); renderSidebar(); renderMain(); }
+function examesDaCategoria(catId){ return DATA.exames.filter(e=>e.categoria===catId && passaAmbiente(e)); }
 function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
 
 function toggleFavorito(id, ev){
@@ -620,6 +635,7 @@ function buscaGlobal(q){
   const nq = normaliza(q);
   if(!nq) return {exames:[], calcs:[], termos:[]};
   const exames = DATA.exames.filter(e=>{
+    if(!passaAmbiente(e)) return false;
     const campos = [e.nome, e.sigla, (e.sinonimos||[]).join(' '), e.sistema, e.grupo,
       getCategoria(e.categoria)?.nome,
       (e.condicoesClinicas?.aumentado||[]).join(' '), (e.condicoesClinicas?.reduzido||[]).join(' '),
@@ -747,7 +763,7 @@ function renderMain(){
 }
 
 function renderInicio(){
-  const rapidos = DATA.exames.filter(e=>e.consultaRapida).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+  const rapidos = DATA.exames.filter(e=>e.consultaRapida && passaAmbiente(e)).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
   let html = '<div class="intro-banner"><span class="intro-banner-icon">'+icon('flask')+'</span>'+
     '<p>Consulte exames laboratoriais, valores de referência, interpretação de resultados, interferentes e relações com medicamentos. Apoio técnico à prática farmacêutica, sem substituir avaliação clínica ou laudo laboratorial.</p></div>';
 
@@ -1095,6 +1111,7 @@ function calcularRAC(){
 /* ---------------- Init ---------------- */
 function init(){
   loadStorage();
+  document.getElementById('ambiente-select').value = state.ambiente;
   document.getElementById('balcao-btn').classList.toggle('active', modoBalcao);
   renderSidebar();
   renderMain();

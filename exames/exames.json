@@ -54,6 +54,7 @@
       "sigla":"HMG",
       "sinonimos":["Eritrograma","Leucograma","Plaquetometria","CBC"],
       "categoria":"hematologia",
+      "ambiente":"ambos",
       "grupo":"Série vermelha, branca e plaquetas",
       "sistema":"Hematopoiético",
       "amostraTipo":"Sangue total (EDTA)",
@@ -99,8 +100,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não é necessário jejum, exceto se coletado junto com outros exames que exijam.","Evitar exercício físico intenso nas horas anteriores à coleta."]},
       "amostra":{"tipo":"Sangue total","tubo":"Tampa roxa (EDTA)","armazenamento":"Temperatura ambiente, processar em até 2h (idealmente); refrigerado se atraso","rejeicao":["Coágulos visíveis no tubo","Volume insuficiente (proporção sangue/anticoagulante inadequada)","Hemólise importante"]},
-      "correlatos":["ferritina","vitamina-b12","pcr"],
-      "correlatosTexto":["Reticulócitos","Ferro sérico e transferrina","Eletroforese de hemoglobina"],
+      "correlatos":["ferritina","vitamina-b12","pcr","reticulocitos"],
+      "correlatosTexto":["Ferro sérico e transferrina","Eletroforese de hemoglobina"],
       "alertas":["Hemoglobina muito baixa (geralmente <7–8 g/dL) ou queda aguda e sintomática merece avaliação médica prioritária.","Neutropenia grave (neutrófilos muito baixos) associada a febre é uma emergência (neutropenia febril).","Plaquetas muito baixas com sangramento espontâneo requerem encaminhamento imediato.","Achados sugestivos de blastos ou alterações morfológicas graves no laudo merecem avaliação hematológica."],
       "observacoes":"O hemograma deve sempre ser interpretado em conjunto (as três séries) e correlacionado com sintomas, história clínica e medicamentos em uso.",
       "fontes":["Sociedade Brasileira de Patologia Clínica/Medicina Laboratorial (SBPC/ML)","Williams Hematology","Organização Mundial da Saúde – critérios de anemia"]
@@ -112,6 +113,7 @@
       "sigla":"GLIC",
       "sinonimos":["Glicose sérica","Glicemia basal"],
       "categoria":"metabolismo",
+      "ambiente":"ambos",
       "grupo":"Controle glicêmico",
       "sistema":"Metabolismo dos carboidratos",
       "amostraTipo":"Soro/Plasma (fluoreto)",
@@ -163,6 +165,7 @@
       "sigla":"HbA1c",
       "sinonimos":["A1c","Hemoglobina A1c"],
       "categoria":"metabolismo",
+      "ambiente":"ambos",
       "grupo":"Controle glicêmico",
       "sistema":"Metabolismo dos carboidratos",
       "amostraTipo":"Sangue total (EDTA)",
@@ -215,6 +218,7 @@
       "sigla":"CT",
       "sinonimos":["Colesterol sérico"],
       "categoria":"lipidograma",
+      "ambiente":"ambos",
       "grupo":"Perfil lipídico",
       "sistema":"Metabolismo lipídico/cardiovascular",
       "amostraTipo":"Soro/Plasma",
@@ -264,6 +268,7 @@
       "sigla":"HDL",
       "sinonimos":["Colesterol \"bom\"","Lipoproteína de alta densidade"],
       "categoria":"lipidograma",
+      "ambiente":"ambos",
       "grupo":"Perfil lipídico",
       "sistema":"Metabolismo lipídico/cardiovascular",
       "amostraTipo":"Soro/Plasma",
@@ -314,6 +319,7 @@
       "sigla":"LDL",
       "sinonimos":["Colesterol \"ruim\"","Lipoproteína de baixa densidade"],
       "categoria":"lipidograma",
+      "ambiente":"ambos",
       "grupo":"Perfil lipídico",
       "sistema":"Metabolismo lipídico/cardiovascular",
       "amostraTipo":"Soro/Plasma",
@@ -366,6 +372,7 @@
       "sigla":"TG",
       "sinonimos":["Triglicérides"],
       "categoria":"lipidograma",
+      "ambiente":"ambos",
       "grupo":"Perfil lipídico",
       "sistema":"Metabolismo lipídico/cardiovascular",
       "amostraTipo":"Soro/Plasma",
@@ -405,8 +412,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é mais obrigatório, mas pode ser solicitado em casos específicos (ex.: triglicerídeos muito alterados).","Evitar álcool nas 72h anteriores.","Evitar refeição copiosa horas antes da coleta."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela ou verde (heparina)","armazenamento":"Refrigerado se atraso","rejeicao":["Amostra grosseiramente lipêmica pode limitar métodos automatizados"]},
-      "correlatos":["colesterol-total","hdl","ldl","glicemia-jejum"],
-      "correlatosTexto":["Apolipoproteína B","Lipase/amilase (se suspeita de pancreatite)"],
+      "correlatos":["colesterol-total","hdl","ldl","glicemia-jejum","lipase","amilase"],
+      "correlatosTexto":["Apolipoproteína B"],
       "alertas":["Triglicerídeos ≥ 500 mg/dL, especialmente ≥ 1000 mg/dL, aumentam o risco de pancreatite aguda e merecem avaliação médica prioritária.","Elevações extremas em criança ou jovem sugerem investigar causa genética."],
       "observacoes":"Em pacientes com triglicerídeos muito elevados, o cálculo do LDL pela fórmula de Friedewald deixa de ser confiável, sendo necessária dosagem direta.",
       "fontes":["Sociedade Brasileira de Cardiologia (SBC) – Atualização da Diretriz Brasileira de Dislipidemias"]
@@ -418,6 +425,7 @@
       "sigla":"CREAT",
       "sinonimos":["Creatinina sérica"],
       "categoria":"funcao-renal",
+      "ambiente":"ambos",
       "grupo":"Filtração glomerular",
       "sistema":"Renal",
       "amostraTipo":"Soro/Plasma",
@@ -467,6 +475,7 @@
       "sigla":"UREIA",
       "sinonimos":["BUN (nitrogênio ureico, quando expresso dessa forma)"],
       "categoria":"funcao-renal",
+      "ambiente":"ambos",
       "grupo":"Filtração glomerular",
       "sistema":"Renal/hepático",
       "amostraTipo":"Soro/Plasma",
@@ -515,6 +524,7 @@
       "sigla":"TGO/AST",
       "sinonimos":["Transaminase glutâmico-oxalacética","Aspartato aminotransferase"],
       "categoria":"funcao-hepatica",
+      "ambiente":"ambos",
       "grupo":"Enzimas hepáticas",
       "sistema":"Hepático/muscular",
       "amostraTipo":"Soro/Plasma",
@@ -551,8 +561,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar exercício físico intenso nas 24h anteriores.","Não interrompa medicamentos por conta própria."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
-      "correlatos":["tgp","ggt"],
-      "correlatosTexto":["Bilirrubinas","Fosfatase alcalina","INR/TP (função de síntese hepática)"],
+      "correlatos":["tgp","ggt","bilirrubinas","fosfatase-alcalina","tp-rni"],
+      "correlatosTexto":[],
       "alertas":["Elevação muito acentuada (várias vezes o limite superior) sugere lesão hepática aguda grave e merece avaliação médica prioritária.","Suspeita de hepatotoxicidade medicamentosa deve ser comunicada ao prescritor; não suspender o medicamento por conta própria."],
       "observacoes":"Deve sempre ser avaliada em conjunto com a TGP/ALT: a razão entre as duas ajuda a sugerir a causa provável da alteração.",
       "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)"]
@@ -564,6 +574,7 @@
       "sigla":"TGP/ALT",
       "sinonimos":["Transaminase glutâmico-pirúvica","Alanina aminotransferase"],
       "categoria":"funcao-hepatica",
+      "ambiente":"ambos",
       "grupo":"Enzimas hepáticas",
       "sistema":"Hepático",
       "amostraTipo":"Soro/Plasma",
@@ -599,8 +610,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Não interrompa medicamentos por conta própria."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
-      "correlatos":["tgo","ggt"],
-      "correlatosTexto":["Bilirrubinas","Fosfatase alcalina","Ultrassonografia abdominal (esteatose)"],
+      "correlatos":["tgo","ggt","bilirrubinas","fosfatase-alcalina"],
+      "correlatosTexto":["Ultrassonografia abdominal (esteatose)"],
       "alertas":["Elevação persistente, mesmo que discreta, merece investigação (ex.: rastreio de esteatose hepática, hepatites virais).","Elevação acentuada e aguda sugere lesão hepática significativa e encaminhamento médico."],
       "observacoes":"É o marcador de escolha para rastreio inicial de doença hepática gordurosa não alcoólica, hoje uma das causas mais comuns de alteração de transaminases.",
       "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)"]
@@ -612,6 +623,7 @@
       "sigla":"GGT",
       "sinonimos":["Gama-GT","γ-GT"],
       "categoria":"funcao-hepatica",
+      "ambiente":"ambos",
       "grupo":"Enzimas hepáticas / colestase",
       "sistema":"Hepatobiliar",
       "amostraTipo":"Soro/Plasma",
@@ -648,8 +660,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar consumo de álcool nas 48–72h anteriores, quando possível."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
-      "correlatos":["tgo","tgp"],
-      "correlatosTexto":["Fosfatase alcalina","Bilirrubinas"],
+      "correlatos":["tgo","tgp","fosfatase-alcalina","bilirrubinas"],
+      "correlatosTexto":[],
       "alertas":["GGT muito elevada associada a icterícia ou prurido sugere colestase e merece avaliação médica.","Elevação isolada e persistente pode indicar consumo de álcool não relatado; abordar com sensibilidade."],
       "observacoes":"Usada em conjunto com a fosfatase alcalina para confirmar origem hepatobiliar de uma elevação, já que a fosfatase alcalina também tem origem óssea.",
       "fontes":["Sociedade Brasileira de Hepatologia"]
@@ -661,6 +673,7 @@
       "sigla":"TSH",
       "sinonimos":["Tireotrofina"],
       "categoria":"hormonios",
+      "ambiente":"ambos",
       "grupo":"Eixo tireoidiano",
       "sistema":"Endócrino (hipófise/tireoide)",
       "amostraTipo":"Soro/Plasma",
@@ -710,6 +723,7 @@
       "sigla":"T4 Livre",
       "sinonimos":["FT4","T4L"],
       "categoria":"hormonios",
+      "ambiente":"ambos",
       "grupo":"Eixo tireoidiano",
       "sistema":"Endócrino (tireoide)",
       "amostraTipo":"Soro/Plasma",
@@ -759,6 +773,7 @@
       "sigla":"25(OH)D",
       "sinonimos":["Vitamina D total","Calcidiol"],
       "categoria":"vitaminas-minerais",
+      "ambiente":"ambos",
       "grupo":"Vitaminas lipossolúveis",
       "sistema":"Metabolismo ósseo/mineral",
       "amostraTipo":"Soro/Plasma",
@@ -796,8 +811,8 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Informar uso de suplementos vitamínicos e medicamentos anticonvulsivantes."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Proteger da luz; estável refrigerado por alguns dias","rejeicao":["Hemólise intensa"]},
-      "correlatos":[],
-      "correlatosTexto":["Cálcio total e iônico","Fósforo","PTH (paratormônio)","Fosfatase alcalina"],
+      "correlatos":["calcio","fosfatase-alcalina"],
+      "correlatosTexto":["Cálcio iônico","Fósforo","PTH (paratormônio)"],
       "alertas":["Deficiência grave associada a dor óssea, fraqueza muscular ou fraturas de fragilidade merece avaliação médica.","Suspeita de intoxicação por vitamina D (hipercalcemia associada) é uma condição que exige avaliação médica prioritária."],
       "observacoes":"O rastreio populacional em pessoas assintomáticas e sem fatores de risco não é recomendado pelas diretrizes atuais: a dosagem deve ser direcionada a grupos de risco.",
       "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","Endocrine Society Clinical Practice Guideline"]
@@ -809,6 +824,7 @@
       "sigla":"B12",
       "sinonimos":["Cobalamina"],
       "categoria":"vitaminas-minerais",
+      "ambiente":"ambos",
       "grupo":"Vitaminas hidrossolúveis",
       "sistema":"Hematopoiético/neurológico",
       "amostraTipo":"Soro/Plasma",
@@ -857,6 +873,7 @@
       "sigla":"FERR",
       "sinonimos":[],
       "categoria":"vitaminas-minerais",
+      "ambiente":"ambos",
       "grupo":"Metabolismo do ferro",
       "sistema":"Metabolismo do ferro/fase aguda",
       "amostraTipo":"Soro/Plasma",
@@ -907,6 +924,7 @@
       "sigla":"PCR",
       "sinonimos":["CRP","Proteína C reativa"],
       "categoria":"marcadores-inflamatorios",
+      "ambiente":"ambos",
       "grupo":"Fase aguda",
       "sistema":"Resposta inflamatória sistêmica",
       "amostraTipo":"Soro/Plasma",
@@ -957,6 +975,7 @@
       "sigla":"Na⁺",
       "sinonimos":["Natremia"],
       "categoria":"eletrolitos",
+      "ambiente":"ambos",
       "grupo":"Eletrólitos séricos",
       "sistema":"Equilíbrio hidroeletrolítico",
       "amostraTipo":"Soro/Plasma",
@@ -1005,6 +1024,7 @@
       "sigla":"K⁺",
       "sinonimos":["Calemia","Potassemia"],
       "categoria":"eletrolitos",
+      "ambiente":"ambos",
       "grupo":"Eletrólitos séricos",
       "sistema":"Equilíbrio hidroeletrolítico/cardíaco",
       "amostraTipo":"Soro/Plasma",
@@ -1046,6 +1066,784 @@
       "alertas":["Potássio muito alterado (geralmente <2,5 ou >6,0 mEq/L), especialmente com alterações no ECG ou sintomas (fraqueza muscular, palpitações), é uma emergência médica.","Antes de agir sobre um potássio alterado, sempre descartar hemólise/erro pré-analítico como causa, especialmente se o resultado não bate com o quadro clínico."],
       "observacoes":"É um dos eletrólitos mais sensíveis a erro pré-analítico (hemólise, demora no processamento), um resultado alterado sem explicação clínica deve, sempre que possível, ser reconferido antes de qualquer conduta.",
       "fontes":["Sociedade Brasileira de Nefrologia (SBN)","Sociedade Brasileira de Cardiologia (manejo de hipercalemia)"]
+    },
+
+    {
+      "id":"tp-rni",
+      "nome":"Tempo de Protrombina (TP/RNI)",
+      "sigla":"TP/RNI",
+      "sinonimos":["Tempo de Protrombina","Razão Normalizada Internacional","INR","Atividade de Protrombina","Coagulograma (TP)"],
+      "categoria":"hematologia",
+      "ambiente":"ambos",
+      "grupo":"Coagulação",
+      "sistema":"Hemostasia / Coagulação",
+      "amostraTipo":"Plasma citratado",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Avalia a via extrínseca e comum da coagulação (fatores VII, X, V, II e fibrinogênio), sendo o parâmetro clássico para monitorar o efeito dos antagonistas da vitamina K (varfarina). O resultado é expresso também como RNI (Razão Normalizada Internacional), que corrige a variabilidade entre reagentes e laboratórios (via ISI), permitindo comparar resultados obtidos em locais diferentes.",
+      "finalidade":"Monitoramento terapêutico da varfarina (anticoagulação oral), avaliação da função de síntese hepática (fatores de coagulação produzidos no fígado), triagem pré-operatória de coagulopatias e avaliação da via extrínseca/comum.",
+      "valoresReferencia":[
+        {"parametro":"TP (atividade)","faixa":"70 – 100","unidade":"%","obs":"Também expresso em segundos (cerca de 11–13,5 s); referência varia conforme o reagente do laboratório"},
+        {"parametro":"RNI/INR (sem anticoagulante)","faixa":"0,8 – 1,2","unidade":"","obs":"Padronizado pelo ISI do reagente, permite comparação entre laboratórios"},
+        {"parametro":"RNI-alvo em uso de varfarina (maioria das indicações)","faixa":"2,0 – 3,0","unidade":"","obs":"Fibrilação atrial não valvar, tromboembolismo venoso, cardiopatia isquêmica"},
+        {"parametro":"RNI-alvo em uso de varfarina (próteses valvares mecânicas/alto risco)","faixa":"2,5 – 3,5","unidade":"","obs":"Depende do tipo e da posição da prótese valvar"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"RNI/TP elevado indica maior tempo de coagulação e maior risco hemorrágico.",
+        "causas":["Uso de varfarina/antagonistas da vitamina K (efeito terapêutico ou supraterapêutico)","Deficiência de vitamina K (desnutrição, colestase, uso prolongado de antibióticos de amplo espectro)","Insuficiência hepática (redução da síntese dos fatores II, VII, IX, X)","Coagulação intravascular disseminada (CIVD)","Deficiências congênitas ou adquiridas de fatores da via extrínseca/comum"],
+        "examesApoio":["ttpa","d-dimero","tgo","tgp"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"TP/RNI abaixo do normal tem pouca relevância clínica isolada; não é usado como marcador diagnóstico de trombose.",
+        "causas":["Suplementação excessiva de vitamina K","Erro pré-analítico (amostra subcitratada ou mal coletada)"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Uso de varfarina","Hepatopatia crônica/insuficiência hepática","Deficiência de vitamina K","Coagulação intravascular disseminada"],
+        "reduzido":["Suplementação excessiva de vitamina K (sem relevância diagnóstica isolada)"]
+      },
+      "medicamentos":{
+        "aumentam":["Varfarina e outros antagonistas da vitamina K (efeito terapêutico esperado, monitorado por este exame)","Amiodarona, metronidazol, fluconazol e sulfametoxazol-trimetoprima (potencializam o efeito da varfarina por inibição do CYP2C9)","Antibióticos de amplo espectro em uso prolongado (reduzem a síntese intestinal de vitamina K pela flora bacteriana)","AINEs e ácido acetilsalicílico (efeito hemostático aditivo, aumentando risco de sangramento sem necessariamente alterar o RNI)"],
+        "reduzem":["Fitomenadiona/vitamina K1 (usada justamente para reverter RNI supraterapêutico)","Rifampicina, carbamazepina, fenobarbital e fenitoína (indução do CYP2C9, reduzem o efeito da varfarina)","Colestiramina (reduz a absorção intestinal da varfarina)"],
+        "interferem":["Uso concomitante de heparina pode alterar levemente o TP conforme o reagente utilizado"]
+      },
+      "interferentes":[
+        {"fator":"Proporção sangue/citrato inadequada (tubo mal preenchido)","efeito":"Falso alargamento do TP/RNI"},
+        {"fator":"Hematócrito muito alto ou muito baixo","efeito":"Excesso ou insuficiência relativa de citrato, alterando o resultado"},
+        {"fator":"Consumo recente de alimentos ricos em vitamina K (vegetais verde-escuros) em uso de varfarina","efeito":"Pode reduzir o RNI, mascarando parcialmente o efeito da dose vigente"},
+        {"fator":"Amostra hemolisada ou coagulada","efeito":"Resultado não confiável, requer nova coleta"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Informar ao laboratório o horário da última dose de varfarina e demais medicamentos em uso.","Evitar coleta em cateter com heparina residual."]},
+      "amostra":{"tipo":"Plasma citratado","tubo":"Tampa azul-clara (citrato de sódio 3,2%)","armazenamento":"Centrifugar e separar o plasma em até 1–2h; manter refrigerado se houver atraso","rejeicao":["Tubo com volume insuficiente ou proporção sangue/citrato incorreta","Amostra coagulada","Hemólise importante","Atraso no processamento além do limite do laboratório"]},
+      "correlatos":["ttpa","d-dimero","hemograma"],
+      "correlatosTexto":["Fatores de coagulação isolados (II, VII, IX, X)","Atividade da proteína C e S (rastreio de trombofilia)"],
+      "alertas":["RNI supraterapêutico (geralmente >5, sem sangramento) ou qualquer RNI com sangramento ativo exige conduta imediata — orientar suspensão de doses e/ou administração de vitamina K oral conforme protocolo, e encaminhar para avaliação médica em caso de sangramento.","RNI persistentemente abaixo do alvo terapêutico sugere risco de evento trombótico e necessidade de reavaliação da dose e da adesão.","O início ou a suspensão de qualquer medicamento que interaja com a varfarina exige monitorização mais frequente do RNI nas semanas seguintes."],
+      "observacoes":"O alvo de RNI deve ser individualizado conforme a indicação clínica. Ajustes de dose de varfarina seguem tipicamente nomogramas semanais, evitando mudanças bruscas. Para pacientes elegíveis, anticoagulantes orais diretos dispensam monitorização laboratorial de rotina, mas quem já está em uso de varfarina continua necessitando de RNI periódico.",
+      "fontes":["Sociedade Brasileira de Cardiologia — Diretriz de Fibrilação Atrial","American College of Chest Physicians (CHEST) — Antithrombotic Therapy Guidelines","Bulário/monografia de varfarina sódica (ANVISA)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"ttpa",
+      "nome":"Tempo de Tromboplastina Parcial Ativada (TTPA)",
+      "sigla":"TTPA",
+      "sinonimos":["aPTT","PTTa","Tempo de Tromboplastina Parcial"],
+      "categoria":"hematologia",
+      "ambiente":"hospitalar",
+      "grupo":"Coagulação",
+      "sistema":"Hemostasia / Coagulação",
+      "amostraTipo":"Plasma citratado",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Avalia a via intrínseca e comum da coagulação (fatores XII, XI, IX, VIII, X, V, II e fibrinogênio). É o exame clássico para monitorar a terapia com heparina não fracionada (HNF) em infusão contínua e para triagem de coagulopatias da via intrínseca.",
+      "finalidade":"Monitoramento da anticoagulação com heparina não fracionada em infusão contínua, triagem de coagulopatias da via intrínseca (hemofilias, inibidores) e avaliação pré-operatória.",
+      "valoresReferencia":[
+        {"parametro":"TTPA","faixa":"25 – 35","unidade":"segundos","obs":"Referência varia conforme o reagente do laboratório"},
+        {"parametro":"Razão paciente/controle em uso de HNF","faixa":"1,5 – 2,5","unidade":"","obs":"Faixa-alvo típica para anticoagulação terapêutica; sempre seguir o nomograma institucional vigente"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"TTPA prolongado indica maior tempo de coagulação pela via intrínseca/comum.",
+        "causas":["Uso de heparina não fracionada","Deficiência dos fatores VIII, IX, XI ou XII (hemofilias A e B, deficiência de fator XI)","Presença de inibidores/anticoagulante lúpico","Doença hepática grave","Coagulação intravascular disseminada","Deficiência de vitamina K (também prolonga o TTPA em graus variados)"],
+        "examesApoio":["tp-rni","d-dimero"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"TTPA encurtado tem pouca relevância clínica isolada.",
+        "causas":["Coleta inadequada com ativação precoce da amostra","Elevação do fator VIII como reagente de fase aguda","Estados protrombóticos (achado inespecífico, não diagnóstico)"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hemofilia A e B","Deficiência de fator XI ou XII","Anticoagulante lúpico/síndrome antifosfolípide","Doença de von Willebrand (formas graves)","Coagulação intravascular disseminada"],
+        "reduzido":["Fase inicial de estados protrombóticos (achado inespecífico)"]
+      },
+      "medicamentos":{
+        "aumentam":["Heparina não fracionada (efeito terapêutico esperado, monitorado por este exame)","Argatrobana e outros inibidores diretos da trombina","Heparina de baixo peso molecular em doses altas (efeito parcial sobre o TTPA)"],
+        "reduzem":["Sulfato de protamina (antídoto da heparina não fracionada)","Concentrados de fator VIII/IX (correção em hemofilias)"],
+        "interferem":["Contaminação da amostra com heparina residual de cateter (falso prolongamento)"]
+      },
+      "interferentes":[
+        {"fator":"Coleta em cateter heparinizado ou linha com heparina residual","efeito":"Prolongamento falso do TTPA"},
+        {"fator":"Hematócrito muito elevado (>55%)","efeito":"Excesso relativo de citrato falseia o resultado"},
+        {"fator":"Demora no processamento/centrifugação","efeito":"Ativação de fatores lábeis, alterando o tempo medido"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Coletar preferencialmente por punção venosa direta, evitando cateteres heparinizados.","Informar horário da última dose/ajuste de heparina."]},
+      "amostra":{"tipo":"Plasma citratado","tubo":"Tampa azul-clara (citrato de sódio 3,2%)","armazenamento":"Processar rapidamente; refrigerar se houver atraso na centrifugação","rejeicao":["Amostra coletada em linha com heparina residual","Volume insuficiente no tubo","Amostra coagulada ou hemolisada"]},
+      "correlatos":["tp-rni","d-dimero","hemograma","anti-xa"],
+      "correlatosTexto":["Dosagem de fator VIII/IX","Anticoagulante lúpico"],
+      "alertas":["TTPA muito prolongado (acima de 2,5x o controle) com sangramento ativo é emergência — orientar redução/suspensão da infusão de heparina e considerar protamina conforme protocolo médico.","TTPA subterapêutico sustentado durante infusão de HNF aumenta o risco de falha da anticoagulação (ex.: recorrência de tromboembolismo).","Sempre correlacionar com o nomograma institucional vigente, pois a faixa-alvo pode variar conforme o reagente do laboratório."],
+      "observacoes":"Em muitas instituições, a monitorização de heparina de baixo peso molecular e de anticoagulantes orais diretos é preferencialmente feita pela atividade anti-Xa, não pelo TTPA, que tem sensibilidade limitada para esses fármacos.",
+      "fontes":["American Society of Hematology (ASH) — Guidelines for Management of Venous Thromboembolism","Sociedade Brasileira de Cardiologia","Goodman & Gilman — As Bases Farmacológicas da Terapêutica"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"reticulocitos",
+      "nome":"Contagem de Reticulócitos",
+      "sigla":"Retic",
+      "sinonimos":["Reticulócitos","Índice de Produção Reticulocitária","IPR"],
+      "categoria":"hematologia",
+      "ambiente":"hospitalar",
+      "grupo":"Série vermelha",
+      "sistema":"Hematopoiético",
+      "amostraTipo":"Sangue total (EDTA)",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Quantifica os reticulócitos — hemácias jovens que ainda contêm resíduos de RNA — refletindo a atividade eritropoética recente da medula óssea. É um marcador precoce da resposta medular, útil tanto na investigação diagnóstica de anemias quanto no acompanhamento terapêutico.",
+      "finalidade":"Avaliação da resposta medular a tratamentos de anemia (ferro, vitamina B12, ácido fólico, eritropoetina), diferenciação entre anemias hipoproliferativas e hiperproliferativas, e monitoramento de toxicidade medular por medicamentos.",
+      "valoresReferencia":[
+        {"parametro":"Reticulócitos (relativo)","faixa":"0,5 – 2,0","unidade":"%","obs":"Deve ser corrigido pelo hematócrito do paciente (índice de reticulócitos corrigido)"},
+        {"parametro":"Reticulócitos (absoluto)","faixa":"25.000 – 100.000","unidade":"/mm³","obs":"A contagem absoluta é mais confiável que a relativa em vigência de anemia"},
+        {"parametro":"Índice de Produção Reticulocitária (IPR)","faixa":"> 3","unidade":"","obs":"IPR >3 sugere resposta medular adequada (hemólise/perda sanguínea); IPR <2 sugere produção medular inadequada"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Reticulocitose indica aumento da produção medular, geralmente como resposta compensatória.",
+        "causas":["Resposta terapêutica à reposição de ferro, vitamina B12 ou ácido fólico (pico entre o 5º e o 10º dia de tratamento)","Hemólise (autoimune, induzida por medicamento, hemoglobinopatias)","Hemorragia aguda","Uso de eritropoetina"],
+        "examesApoio":["hemograma","ferritina","vitamina-b12"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Reticulocitopenia indica produção medular inadequada frente à demanda do organismo.",
+        "causas":["Aplasia ou hipoplasia medular (quimioterápicos, imunossupressores, cloranfenicol)","Anemia ferropriva ou carencial ainda não tratada","Doença renal crônica (deficiência de eritropoetina)","Infiltração medular (neoplasias, mielofibrose)","Infecção por parvovírus B19"],
+        "examesApoio":["hemograma","ferritina"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Anemia hemolítica","Hemorragia aguda","Resposta inicial ao tratamento de anemia carencial"],
+        "reduzido":["Aplasia medular","Anemia ferropriva não tratada","Doença renal crônica","Síndromes mielodisplásicas"]
+      },
+      "medicamentos":{
+        "aumentam":["Eritropoetina e agentes estimuladores da eritropoiese","Reposição de ferro (oral ou endovenoso), vitamina B12 e ácido fólico, quando há resposta terapêutica"],
+        "reduzem":["Quimioterápicos citotóxicos e imunossupressores (mielossupressão)","Cloranfenicol (aplasia medular idiossincrásica)","Metotrexato em doses antineoplásicas","Interferons (mielossupressão)"],
+        "interferem":["Transfusão sanguínea recente pode reduzir a contagem relativa de reticulócitos do próprio paciente por diluição"]
+      },
+      "interferentes":[
+        {"fator":"Transfusão sanguínea recente","efeito":"Falsa redução da contagem relativa, por diluição com hemácias transfundidas maduras"},
+        {"fator":"Amostra antiga sem refrigeração adequada (>24h)","efeito":"Maturação in vitro reduz a contagem"},
+        {"fator":"Presença de crioaglutininas ou corpos de Heinz","efeito":"Pode interferir na contagem automatizada, exigindo contagem manual"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Idealmente solicitado junto com hemograma completo, para cálculo do índice corrigido.","Informar transfusões recentes ao laboratório."]},
+      "amostra":{"tipo":"Sangue total","tubo":"Tampa roxa (EDTA)","armazenamento":"Processar em até 6–24h; manter refrigerado se houver atraso","rejeicao":["Amostra coagulada","Volume insuficiente","Amostra muito antiga para processamento confiável"]},
+      "correlatos":["hemograma","ferritina","vitamina-b12","bilirrubinas","ldh"],
+      "correlatosTexto":["Haptoglobina","Eletroforese de hemoglobina"],
+      "alertas":["Reticulocitopenia persistente após 10–14 dias de reposição adequada de ferro/B12/folato sugere má adesão, má absorção, diagnóstico incorreto ou causa concomitante — reavaliar.","Queda abrupta de reticulócitos em paciente em uso de medicamento mielotóxico pode preceder pancitopenia — atenção redobrada.","Reticulocitose importante com queda simultânea de hemoglobina sugere hemólise ativa, que merece avaliação médica."],
+      "observacoes":"O pico reticulocitário após reposição adequada de ferro EV ou de vitamina B12/folato costuma anteceder a elevação da hemoglobina, sendo por isso o parâmetro mais precoce para confirmar resposta terapêutica, antes de aguardar semanas pela normalização da hemoglobina.",
+      "fontes":["Williams Hematology","SBPC/ML — Recomendações para hemograma e reticulócitos","Hoffbrand — Fundamentos em Hematologia"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"anti-xa",
+      "nome":"Atividade Anti-Fator Xa",
+      "sigla":"Anti-Xa",
+      "sinonimos":["Anti-Fator Xa","Heparina Anti-Xa","Atividade Anti-Xa"],
+      "categoria":"hematologia",
+      "ambiente":"hospitalar",
+      "grupo":"Coagulação",
+      "sistema":"Hemostasia / Coagulação",
+      "amostraTipo":"Plasma citratado",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Mede a capacidade do plasma do paciente de inibir o fator Xa ativado, refletindo diretamente a atividade anticoagulante de heparinas (não fracionada e de baixo peso molecular) e de inibidores diretos do fator Xa, com maior especificidade que o TTPA para esses fármacos.",
+      "finalidade":"Ajuste posológico de heparina de baixo peso molecular (HBPM) em populações especiais, monitorização de heparina não fracionada quando o TTPA não é confiável, e quantificação da exposição a anticoagulantes orais diretos (DOACs) em situações de emergência ou antes de procedimentos.",
+      "valoresReferencia":[
+        {"parametro":"Anti-Xa — profilaxia com HBPM","faixa":"0,2 – 0,5","unidade":"UI/mL","obs":"Coleta no pico, cerca de 4h após a dose"},
+        {"parametro":"Anti-Xa — tratamento com HBPM (2x/dia)","faixa":"0,6 – 1,0","unidade":"UI/mL","obs":"Coleta no pico, cerca de 4h após a dose"},
+        {"parametro":"Anti-Xa — tratamento com HBPM (1x/dia)","faixa":"1,0 – 2,0","unidade":"UI/mL","obs":"Coleta no pico, cerca de 4h após a dose"},
+        {"parametro":"Anti-Xa — heparina não fracionada em infusão contínua","faixa":"0,3 – 0,7","unidade":"UI/mL","obs":"Alternativa ao TTPA, especialmente quando este não é confiável (ex.: anticoagulante lúpico)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Atividade anti-Xa elevada indica maior exposição/efeito anticoagulante, com risco hemorrágico aumentado.",
+        "causas":["Dose de HBPM/HNF acima da necessária para o paciente","Acúmulo por insuficiência renal, sobretudo com HBPM (clearance de creatinina <30 mL/min)","Uso concomitante de inibidor direto do fator Xa (rivaroxabana, apixabana, edoxabana) em dose terapêutica recente"],
+        "examesApoio":["creatinina","hemograma"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Atividade anti-Xa abaixo do alvo sugere subanticoagulação, com risco de falha terapêutica (trombose).",
+        "causas":["Dose insuficiente de HBPM/HNF para o peso e a função renal do paciente","Baixa adesão ou coleta fora do horário de pico","Aumento do volume de distribuição (obesidade mórbida, gestação) sem o devido ajuste de dose"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Insuficiência renal com acúmulo de HBPM","Superdosagem de heparina ou de DOAC"],
+        "reduzido":["Subdosagem de anticoagulante em obesidade mórbida ou gestação","Tromboembolismo venoso recorrente por anticoagulação inadequada"]
+      },
+      "medicamentos":{
+        "aumentam":["Enoxaparina e outras heparinas de baixo peso molecular (efeito terapêutico esperado, monitorado por este exame)","Heparina não fracionada","Fondaparinux","Rivaroxabana, apixabana e edoxabana (o exame quantifica a exposição, mas não substitui testes específicos calibrados para cada DOAC quando disponíveis)"],
+        "reduzem":["Sulfato de protamina (reverte parcialmente HBPM/HNF)","Andexanet alfa (antídoto específico para inibidores do fator Xa, quando disponível)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Horário de coleta em relação à dose (fora do pico de 4h)","efeito":"Resultado não reflete o pico real, dificultando a interpretação"},
+        {"fator":"Curva de calibração inadequada (específica para HBPM, HNF ou DOAC)","efeito":"Resultado pode não refletir com precisão o fármaco em uso, se a curva do laboratório não for a correta"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Registrar com precisão o horário da última dose do anticoagulante e o horário da coleta.","Informar ao laboratório qual anticoagulante está em uso, pois a curva de calibração difere entre HBPM, HNF e DOACs."]},
+      "amostra":{"tipo":"Plasma citratado","tubo":"Tampa azul-clara (citrato de sódio 3,2%)","armazenamento":"Processar rapidamente, centrifugação em até 1–2h","rejeicao":["Coleta fora do horário informado, sem registro","Amostra coagulada ou hemolisada","Volume insuficiente"]},
+      "correlatos":["ttpa","tp-rni","creatinina"],
+      "correlatosTexto":["Dosagem específica calibrada para DOACs (quando disponível)","Tempo de trombina diluído (para dabigatrana)"],
+      "alertas":["Atividade anti-Xa muito elevada com sangramento ativo, ou antes de procedimento invasivo de urgência, exige avaliação médica imediata para decisão sobre reversão ou adiamento.","Em obesidade mórbida, gestação e clearance de creatinina abaixo de 30 mL/min, a farmacocinética da HBPM é imprevisível — priorizar a monitorização por anti-Xa nesses grupos.","O resultado deve sempre ser interpretado junto ao horário exato da coleta em relação à dose administrada."],
+      "observacoes":"Este exame não está amplamente disponível em todos os laboratórios — geralmente é restrito a laboratórios hospitalares ou de referência, dada a necessidade de curvas de calibração específicas.",
+      "fontes":["American Society of Hematology (ASH) — Guidelines for VTE Management","Sociedade Brasileira de Cardiologia — Diretriz de Antitrombóticos","Bulário de enoxaparina/rivaroxabana/apixabana (ANVISA)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"g6pd",
+      "nome":"Atividade da Glicose-6-Fosfato Desidrogenase (G6PD)",
+      "sigla":"G6PD",
+      "sinonimos":["Deficiência de G6PD","Favismo","Triagem de G6PD"],
+      "categoria":"hematologia",
+      "ambiente":"ambos",
+      "grupo":"Enzimologia eritrocitária",
+      "sistema":"Hematopoiético / Metabolismo eritrocitário",
+      "amostraTipo":"Sangue total (EDTA)",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Quantifica a atividade da enzima G6PD nas hemácias, essencial para a proteção celular contra o estresse oxidativo. Sua deficiência, ligada ao cromossomo X e mais comum em homens, predispõe à hemólise aguda diante de agentes oxidantes, infecções ou determinados alimentos (favismo).",
+      "finalidade":"Triagem prévia à prescrição/dispensação de fármacos com alto potencial oxidante, investigação de anemia hemolítica aguda após exposição a agentes oxidantes, e triagem em populações de maior prevalência antes de programas de tratamento (ex.: malária, hanseníase).",
+      "valoresReferencia":[
+        {"parametro":"Atividade de G6PD (método quantitativo)","faixa":"Normal: acima de 60% da atividade média de referência do laboratório","unidade":"%","obs":"Deficiência intermediária: 10–60%; deficiência grave: abaixo de 10%. Pontos de corte variam por método/laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Atividade elevada não tem relevância clínica estabelecida na prática habitual.",
+        "causas":["Reticulocitose importante — hemácias jovens têm maior atividade enzimática e podem mascarar uma deficiência leve/moderada em vigência de hemólise ou sangramento recente"],
+        "examesApoio":["reticulocitos"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Atividade reduzida confirma deficiência de G6PD, com risco de hemólise diante de estresse oxidativo.",
+        "causas":["Deficiência congênita de G6PD (herança ligada ao X)","Variantes enzimáticas de gravidade variável (ex.: classe A-, variante Mediterrânea, entre outras)"],
+        "examesApoio":["hemograma","reticulocitos"]
+      },
+      "condicoesClinicas":{
+        "aumentado":[],
+        "reduzido":["Deficiência de G6PD (favismo)","Crise hemolítica aguda induzida por fármaco oxidante","Icterícia neonatal por deficiência de G6PD"]
+      },
+      "medicamentos":{
+        "aumentam":[],
+        "reduzem":[],
+        "interferem":["Primaquina e tafenoquina (antimaláricos) — principal causa de hemólise grave em pacientes deficientes","Dapsona (hanseníase, profilaxia de pneumocistose) — risco de hemólise dose-dependente","Sulfametoxazol-trimetoprima e outras sulfonamidas","Nitrofurantoína","Rasburicase (contraindicada em deficiência de G6PD)","Azul de metileno e fenazopiridina"]
+      },
+      "interferentes":[
+        {"fator":"Transfusão sanguínea ou reticulocitose intensa recente","efeito":"Pode mascarar deficiência leve/moderada, pois hemácias jovens ou transfundidas têm atividade enzimática mais alta"},
+        {"fator":"Realização do exame durante crise hemolítica aguda","efeito":"Resultado pode ser falsamente normal, pois as hemácias mais deficientes já foram hemolisadas — repetir 2–3 meses após a crise"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Idealmente solicitado fora de crise hemolítica aguda e sem transfusão recente, para evitar resultado falso-normal.","Informar história familiar e etnia de risco, quando pertinente."]},
+      "amostra":{"tipo":"Sangue total","tubo":"Tampa roxa (EDTA)","armazenamento":"Processar conforme protocolo do laboratório; evitar hemólise na coleta","rejeicao":["Amostra hemolisada","Volume insuficiente","Coleta durante transfusão em andamento"]},
+      "correlatos":["hemograma","reticulocitos","bilirrubinas","ldh"],
+      "correlatosTexto":["Haptoglobina","Teste genético para variantes de G6PD (casos selecionados)"],
+      "alertas":["Antes de dispensar ou administrar primaquina/tafenoquina, dapsona ou rasburicase, confirmar a triagem de G6PD sempre que disponível, especialmente em populações de maior prevalência (afrodescendentes, populações do Mediterrâneo, Sudeste Asiático e África).","Deficiência confirmada contraindica ou exige extrema cautela com os fármacos oxidantes listados — encaminhar ao prescritor a decisão de substituição terapêutica.","Crise hemolítica aguda (icterícia, urina escura, fadiga) após exposição a fármaco oxidante em paciente não triado é emergência médica."],
+      "observacoes":"Os fármacos listados não alteram a atividade enzimática em si, mas seu uso em pacientes com deficiência confirmada é o principal motivo prático para solicitar este exame antes da prescrição ou dispensação.",
+      "fontes":["Organização Mundial da Saúde (OMS) — orientações sobre primaquina e G6PD","Ministério da Saúde — Guia de Tratamento da Malária no Brasil","Protocolo Clínico e Diretrizes Terapêuticas da Hanseníase (dapsona)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"d-dimero",
+      "nome":"Dosagem de D-Dímero",
+      "sigla":"D-dímero",
+      "sinonimos":["D-Dimer","Produto de degradação da fibrina"],
+      "categoria":"hematologia",
+      "ambiente":"hospitalar",
+      "grupo":"Coagulação",
+      "sistema":"Hemostasia / Coagulação",
+      "amostraTipo":"Plasma citratado",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Marcador de degradação da fibrina reticulada, gerado quando um coágulo é formado e posteriormente lisado (fibrinólise). É amplamente utilizado como teste de exclusão para tromboembolismo venoso, dado seu alto valor preditivo negativo, e também como marcador de ativação da coagulação em diversas condições sistêmicas.",
+      "finalidade":"Exclusão de tromboembolismo venoso (TVP/TEP) em pacientes de baixa probabilidade clínica, apoio à decisão sobre duração da anticoagulação em tromboembolismo venoso não provocado, e rastreio de consumo hemostático em coagulação intravascular disseminada.",
+      "valoresReferencia":[
+        {"parametro":"D-dímero","faixa":"Abaixo de 0,50","unidade":"µg/mL FEU (ou <500 ng/mL)","obs":"Ponto de corte varia por método (ELISA, imunoturbidimétrico) e pode ser ajustado pela idade em pacientes acima de 50 anos (idade × 10 µg/L)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"A elevação indica maior atividade de formação e degradação de fibrina, mas é um achado pouco específico.",
+        "causas":["Tromboembolismo venoso (trombose venosa profunda, embolia pulmonar)","Cirurgia recente, trauma ou gestação","Neoplasias malignas ativas","Infecção/sepse e estados inflamatórios sistêmicos","Coagulação intravascular disseminada","Idade avançada (elevação fisiológica progressiva)"],
+        "examesApoio":["tp-rni","ttpa","hemograma"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"D-dímero dentro da normalidade tem alto valor preditivo negativo para tromboembolismo venoso agudo em pacientes de baixa/moderada probabilidade clínica.",
+        "causas":["Ausência de trombose ativa — principal utilidade do exame, para descartar tromboembolismo venoso"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Trombose venosa profunda","Tromboembolismo pulmonar","Coagulação intravascular disseminada","Neoplasias malignas ativas","Pós-operatório recente","Gestação (elevação fisiológica progressiva)"],
+        "reduzido":["Ausência de processo trombótico/fibrinolítico ativo"]
+      },
+      "medicamentos":{
+        "aumentam":["Trombolíticos como alteplase e tenecteplase (elevam agudamente por lise do coágulo)","Terapia estrogênica e contraceptivos hormonais combinados (aumentam o risco trombótico basal, podendo elevar indiretamente)"],
+        "reduzem":["Anticoagulantes em uso terapêutico eficaz podem reduzir progressivamente o D-dímero ao longo do tratamento, refletindo a resolução do trombo"],
+        "interferem":["Fator reumatoide elevado e hiperbilirrubinemia podem gerar resultados falso-positivos em alguns métodos"]
+      },
+      "interferentes":[
+        {"fator":"Idade avançada","efeito":"Elevação progressiva fisiológica, reduzindo a especificidade do teste — recomenda-se ajustar o ponto de corte pela idade em maiores de 50 anos"},
+        {"fator":"Gestação","efeito":"Elevação fisiológica progressiva ao longo da gestação, limitando a utilidade do exame para exclusão de tromboembolismo venoso nesse contexto"},
+        {"fator":"Tabagismo, cirurgia recente, trauma, câncer ativo ou infecção","efeito":"Elevam o D-dímero sem necessariamente indicar tromboembolismo agudo, reduzindo a especificidade"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Interpretar sempre em conjunto com a probabilidade clínica pré-teste (ex.: escore de Wells)."]},
+      "amostra":{"tipo":"Plasma citratado","tubo":"Tampa azul-clara (citrato de sódio 3,2%)","armazenamento":"Processar rapidamente, conforme protocolo do laboratório","rejeicao":["Amostra coagulada","Volume insuficiente","Amostra hemolisada"]},
+      "correlatos":["tp-rni","ttpa","hemograma"],
+      "correlatosTexto":["Escore de probabilidade clínica de Wells (TVP/TEP)","Angiotomografia de artérias pulmonares (confirmatório)","Ultrassonografia com doppler venoso (confirmatório)"],
+      "alertas":["D-dímero elevado isoladamente não confirma tromboembolismo venoso — exige confirmação por exame de imagem; já um resultado normal em paciente de baixa probabilidade clínica tem alto valor para descartar o evento agudo.","Em tromboembolismo venoso não provocado, D-dímero normal cerca de 1 mês após a suspensão do anticoagulante favorece a decisão de não reiniciar terapia prolongada; níveis persistentemente elevados sugerem maior risco de recidiva.","Elevação acentuada e progressiva associada a queda de plaquetas e alargamento de TP/TTPA sugere coagulação intravascular disseminada, quadro grave que exige avaliação médica imediata."],
+      "observacoes":"O uso mais consolidado do D-dímero é para EXCLUIR tromboembolismo venoso em pacientes de baixa probabilidade clínica — não deve ser solicitado indiscriminadamente em pacientes de alta probabilidade, nos quais um resultado normal não afasta o diagnóstico com segurança.",
+      "fontes":["American College of Chest Physicians (CHEST) — Antithrombotic Therapy for VTE Disease","Sociedade Brasileira de Cardiologia — Diretriz de Tromboembolismo Pulmonar","American Society of Hematology (ASH) — Guidelines for VTE Management"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"acido-urico",
+      "nome":"Ácido Úrico",
+      "sigla":"AU",
+      "sinonimos":["Uricemia","Urato sérico"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Metabolismo purínico",
+      "sistema":"Metabólico / Renal",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Produto final do catabolismo das purinas, filtrado e parcialmente reabsorvido pelos rins. É usado principalmente na investigação e monitorização da gota e da hiperuricemia, além de ter relevância em síndrome metabólica e em algumas nefropatias e neoplasias com alto turnover celular.",
+      "finalidade":"Diagnóstico e monitorização de gota/hiperuricemia, ajuste de terapia hipouricemiante (alopurinol, febuxostate), avaliação de risco de síndrome de lise tumoral, e investigação de litíase renal por ácido úrico.",
+      "valoresReferencia":[
+        {"parametro":"Ácido úrico (homens)","faixa":"3,5 – 7,2","unidade":"mg/dL","obs":"Valores-alvo terapêuticos na gota costumam ser mais baixos que o limite superior de referência"},
+        {"parametro":"Ácido úrico (mulheres)","faixa":"2,6 – 6,0","unidade":"mg/dL","obs":"Aumenta após a menopausa, aproximando-se dos valores masculinos"},
+        {"parametro":"Alvo terapêutico na gota (terapia hipouricemiante)","faixa":"Abaixo de 6,0 (ou abaixo de 5,0 em tofos/gota grave)","unidade":"mg/dL","obs":"Meta de tratamento, não valor de referência laboratorial"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hiperuricemia pode ser assintomática ou associada a crises de gota, litíase e outras condições.",
+        "causas":["Gota e hiperuricemia primária (superprodução ou subexcreção renal de urato)","Síndrome metabólica, obesidade e resistência à insulina","Insuficiência renal crônica (redução da excreção)","Síndrome de lise tumoral e doenças mieloproliferativas (alto turnover celular)","Dieta rica em purinas e consumo excessivo de álcool/frutose"],
+        "examesApoio":["creatinina","glicemia-jejum"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipouricemia é menos comum e geralmente tem menor relevância clínica isolada.",
+        "causas":["Uso de fármacos uricosúricos/hipouricemiantes em dose elevada","Síndrome de Fanconi e outras tubulopatias renais","Doença hepática grave (redução da síntese)"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Gota","Síndrome metabólica","Insuficiência renal crônica","Síndrome de lise tumoral","Pré-eclâmpsia (elevação leve a moderada)"],
+        "reduzido":["Síndrome de Fanconi","Uso de uricosúricos em dose alta","Hepatopatia grave"]
+      },
+      "medicamentos":{
+        "aumentam":["Diuréticos tiazídicos e de alça (reduzem a excreção renal de urato)","Ácido acetilsalicílico em baixas doses (efeito antiuricosúrico paradoxal)","Ciclosporina e outros imunossupressores","Pirazinamida e etambutol (tratamento de tuberculose)","Quimioterápicos citotóxicos (lise tumoral)"],
+        "reduzem":["Alopurinol e febuxostate (inibidores da xantina oxidase)","Probenecida e benzbromarona (uricosúricos)","Losartana (discreto efeito uricosúrico, diferente dos demais BRA)","Fenofibrato (discreto efeito uricosúrico)"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Jejum prolongado ou dieta cetogênica","efeito":"Pode elevar o ácido úrico por competição na excreção tubular com corpos cetônicos"},
+        {"fator":"Consumo de álcool e alimentos ricos em purinas nas 24h anteriores","efeito":"Eleva transitoriamente o resultado"},
+        {"fator":"Exercício físico intenso recente","efeito":"Pode elevar por aumento do turnover de nucleotídeos"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é obrigatório, mas pode ser solicitado em conjunto com outros exames metabólicos.","Evitar consumo excessivo de álcool e alimentos ricos em purinas (vísceras, frutos do mar) nas 24h anteriores."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; centrifugar e refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["creatinina","glicemia-jejum"],
+      "correlatosTexto":["Urina de 24h para ácido úrico (avaliação de super/subexcretores)","Análise do líquido sinovial (diagnóstico definitivo de gota)"],
+      "alertas":["Início de terapia hipouricemiante pode desencadear crise aguda de gota nas primeiras semanas — orientar sobre profilaxia (colchicina ou AINE em baixa dose) e não suspender o hipouricemiante durante a crise já em curso.","Elevação acentuada e aguda, especialmente em paciente oncológico iniciando quimioterapia, pode indicar síndrome de lise tumoral — encaminhamento urgente.","Ajustar dose de alopurinol conforme função renal, pelo risco de síndrome de hipersensibilidade ao alopurinol em doses inadequadas."],
+      "observacoes":"O tratamento da gota tem dois pilares farmacológicos distintos — controle da crise aguda (AINEs, colchicina, corticoides) e terapia hipouricemiante de manutenção (alopurinol, febuxostate) — que não devem ser confundidos; a meta terapêutica deve ser reavaliada com dosagens periódicas de ácido úrico.",
+      "fontes":["Sociedade Brasileira de Reumatologia — Diretriz de Gota","American College of Rheumatology (ACR) — Guideline for the Management of Gout","Goodman & Gilman — As Bases Farmacológicas da Terapêutica"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"fosfatase-alcalina",
+      "nome":"Fosfatase Alcalina",
+      "sigla":"FA",
+      "sinonimos":["ALP","Fosfatase Alcalina Total"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas hepatobiliares e ósseas",
+      "sistema":"Hepatobiliar / Ósseo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Enzima presente principalmente no fígado (canalículos biliares), ossos, e em menor grau intestino e placenta. Sua elevação sugere colestase (obstrução biliar) ou aumento da atividade osteoblástica, sendo necessário correlacionar com outros marcadores (GGT para origem hepática, cálcio/fósforo para origem óssea) para identificar a fonte.",
+      "finalidade":"Investigação de colestase e doenças hepatobiliares, avaliação de doenças ósseas com aumento do turnover (Paget, metástases ósseas, fraturas em consolidação), e monitorização de hepatotoxicidade medicamentosa.",
+      "valoresReferencia":[
+        {"parametro":"Fosfatase alcalina (adultos)","faixa":"40 – 129","unidade":"U/L","obs":"Valores mais altos são normais em crianças e adolescentes (crescimento ósseo) e no 3º trimestre da gestação (origem placentária)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode ter origem hepatobiliar ou óssea, exigindo correlação com GGT e cálcio/fósforo.",
+        "causas":["Colestase intra ou extra-hepática (obstrução de vias biliares, colelitíase, colangite)","Doença de Paget óssea","Metástases ósseas e alguns tumores primários ósseos","Fraturas em consolidação e hiperparatireoidismo","Hepatotoxicidade medicamentosa colestática","Gestação (3º trimestre, origem placentária, fisiológica)"],
+        "examesApoio":["ggt","tgo","tgp"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipofosfatasemia é rara, mas pode ter relevância diagnóstica em condições específicas.",
+        "causas":["Hipofosfatasia (doença genética rara)","Deficiência de zinco ou magnésio (cofatores enzimáticos)","Desnutrição grave","Hipotireoidismo"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Colestase/obstrução biliar","Doença de Paget","Metástases ósseas","Hiperparatireoidismo","Hepatite colestática induzida por medicamento"],
+        "reduzido":["Hipofosfatasia","Desnutrição grave","Hipotireoidismo"]
+      },
+      "medicamentos":{
+        "aumentam":["Anticonvulsivantes indutores enzimáticos (fenitoína, carbamazepina, fenobarbital)","Contraceptivos orais e outros estrogênios","Antibióticos com potencial colestático (amoxicilina-clavulanato, macrolídeos)","Clorpromazina e outros antipsicóticos com hepatotoxicidade colestática","Esteroides anabolizantes"],
+        "reduzem":["Terapia com bisfosfonatos e denosumabe (reduzem o turnover ósseo, diminuindo a fração óssea da FA)","Suplementação de zinco/magnésio em deficiência confirmada"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Refeição gordurosa recente","efeito":"Pode elevar transitoriamente a fração intestinal em indivíduos do grupo sanguíneo O/B secretores"},
+        {"fator":"Gestação (3º trimestre)","efeito":"Elevação fisiológica por origem placentária"},
+        {"fator":"Idade (crianças/adolescentes em crescimento)","efeito":"Valores fisiologicamente mais altos pela atividade osteoblástica aumentada"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é obrigatório, mas idealmente de 4h para evitar interferência da fração intestinal.","Informar gestação e uso de medicamentos hepatotóxicos ou que afetam o metabolismo ósseo."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["ggt","tgo","tgp"],
+      "correlatosTexto":["Fracionamento de isoenzimas da fosfatase alcalina (óssea vs. hepática)","Cálcio e fósforo séricos","5'-nucleotidase (confirma origem hepatobiliar)"],
+      "alertas":["Elevação isolada de FA sem elevação de GGT sugere origem óssea, não hepática — investigar cálcio, fósforo e PTH antes de atribuir a causa ao fígado.","Elevação após início de novo medicamento, associada a icterícia ou prurido, sugere hepatotoxicidade colestática — suspender o agente suspeito e encaminhar avaliação médica.","Em uso de bisfosfonatos/denosumabe para osteoporose, queda esperada da FA confirma resposta terapêutica ao tratamento antirreabsortivo."],
+      "observacoes":"A elevação de FA sempre deve ser interpretada junto à GGT: se ambas estão altas, a origem é predominantemente hepatobiliar; se só a FA está alta, com GGT normal, a origem provável é óssea.",
+      "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)","Sociedade Brasileira de Endocrinologia e Metabologia — Doença de Paget"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"bilirrubinas",
+      "nome":"Bilirrubinas Totais e Frações",
+      "sigla":"BT/BD/BI",
+      "sinonimos":["Bilirrubina Total","Bilirrubina Direta","Bilirrubina Indireta","BbT"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas hepatobiliares e ósseas",
+      "sistema":"Hepatobiliar / Hematopoiético",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Produto da degradação do heme, metabolizado pelo fígado. A fração indireta (não conjugada) reflete produção/captação hepática, enquanto a fração direta (conjugada) reflete a capacidade de excreção biliar. A relação entre as frações ajuda a diferenciar icterícia hemolítica, hepatocelular e obstrutiva/colestática.",
+      "finalidade":"Investigação de icterícia (diferenciação entre causas pré-hepáticas, hepáticas e pós-hepáticas), monitorização de hepatopatias e hepatotoxicidade medicamentosa, e acompanhamento de icterícia neonatal.",
+      "valoresReferencia":[
+        {"parametro":"Bilirrubina total","faixa":"0,3 – 1,2","unidade":"mg/dL","obs":""},
+        {"parametro":"Bilirrubina direta (conjugada)","faixa":"0,0 – 0,3","unidade":"mg/dL","obs":"Elevação sugere colestase/obstrução biliar"},
+        {"parametro":"Bilirrubina indireta (não conjugada)","faixa":"0,2 – 0,9","unidade":"mg/dL","obs":"Elevação isolada sugere hemólise ou distúrbio de conjugação (ex.: síndrome de Gilbert)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação da bilirrubina total gera icterícia; a fração predominante orienta a investigação etiológica.",
+        "causas":["Predomínio indireto: hemólise, síndrome de Gilbert, eritropoiese ineficaz, reabsorção de grandes hematomas","Predomínio direto: colestase intra-hepática, obstrução biliar extra-hepática (colelitíase, neoplasia), hepatite colestática induzida por medicamento","Padrão misto: hepatite viral ou tóxica, cirrose descompensada"],
+        "examesApoio":["tgo","tgp","ggt","fosfatase-alcalina","hemograma"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida.",
+        "causas":["Achado sem significado clínico na maioria dos contextos"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Síndrome de Gilbert (hiperbilirrubinemia indireta benigna, comum e assintomática)","Anemia hemolítica","Hepatite viral ou induzida por medicamento","Colelitíase/obstrução biliar","Cirrose hepática descompensada","Icterícia neonatal"],
+        "reduzido":[]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas e alguns antibióticos com potencial hepatotóxico/colestático (amoxicilina-clavulanato, eritromicina)","Rifampicina (pode competir pela captação hepática, elevando a fração indireta transitoriamente)","Paracetamol em superdosagem (hepatotoxicidade)","Isoniazida, metildopa e antirretrovirais com potencial de hepatite medicamentosa","Contraceptivos orais e esteroides anabolizantes (padrão colestático)"],
+        "reduzem":["Fenobarbital (indutor enzimático, historicamente usado para reduzir bilirrubina indireta em hiperbilirrubinemias benignas, uso pouco frequente atualmente)"],
+        "interferem":["Amostra exposta à luz (fototransformação da bilirrubina, reduzindo o valor medido)","Hemólise na coleta pode falsear a leitura"]
+      },
+      "interferentes":[
+        {"fator":"Exposição da amostra à luz","efeito":"Degradação fotoquímica da bilirrubina, reduzindo falsamente o resultado — proteger a amostra da luz"},
+        {"fator":"Jejum prolongado (acima de 48h)","efeito":"Pode elevar a bilirrubina indireta, especialmente em pacientes com síndrome de Gilbert"},
+        {"fator":"Hemólise na amostra","efeito":"Pode falsear o resultado tanto por interferência espectrofotométrica quanto por liberação de hemoglobina"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum não é obrigatório, mas jejum prolongado pode elevar artificialmente a bilirrubina indireta.","Proteger a amostra da luz até o processamento."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador), protegido da luz","armazenamento":"Proteger da luz; processar o quanto antes","rejeicao":["Amostra hemolisada","Amostra exposta à luz por tempo prolongado","Volume insuficiente"]},
+      "correlatos":["tgo","tgp","ggt","fosfatase-alcalina","hemograma"],
+      "correlatosTexto":["Urobilinogênio urinário","Reticulócitos (diferencial de hemólise)","Ultrassonografia de vias biliares (investigação de obstrução)"],
+      "alertas":["Icterícia de início agudo com bilirrubina direta elevada e dor abdominal sugere obstrução biliar aguda (ex.: coledocolitíase) — encaminhamento para avaliação de urgência.","Elevação após introdução de novo medicamento hepatotóxico exige suspensão do agente suspeito e avaliação médica, especialmente se acompanhada de aumento de transaminases.","Hiperbilirrubinemia indireta isolada, leve, sem outras alterações, é compatível com síndrome de Gilbert — condição benigna, mas deve ser diferenciada de hemólise antes de tranquilizar o paciente."],
+      "observacoes":"A síndrome de Gilbert (hiperbilirrubinemia indireta leve, benigna, presente em até 5-10% da população) é a causa mais comum de bilirrubina levemente alterada em exames de rotina sem outras anormalidades — não requer tratamento, mas deve ser diferenciada de causas hemolíticas.",
+      "fontes":["Sociedade Brasileira de Hepatologia","American Association for the Study of Liver Diseases (AASLD)","Harrison's Principles of Internal Medicine"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"ldh",
+      "nome":"Lactato Desidrogenase",
+      "sigla":"LDH",
+      "sinonimos":["DHL","Lactato Desidrogenase Sérica"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas teciduais / marcadores de lesão celular",
+      "sistema":"Multissistêmico",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Enzima intracelular amplamente distribuída (coração, fígado, músculo, hemácias, rins, pulmão, tecido tumoral), liberada na corrente sanguínea diante de lesão ou destruição celular de praticamente qualquer origem. É um marcador sensível, porém pouco específico, sendo usado como triagem inicial e em conjunto com outros exames direcionados.",
+      "finalidade":"Investigação de hemólise, marcador prognóstico e de monitorização em oncologia (especialmente linfomas e tumores germinativos), triagem de lesão tecidual (muscular, hepática, pulmonar) e apoio na investigação de derrames pleurais/ascite (critérios de Light).",
+      "valoresReferencia":[
+        {"parametro":"LDH","faixa":"120 – 246","unidade":"U/L","obs":"Referência varia conforme o método analítico do laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação inespecífica indica lesão/destruição celular de alguma origem, exigindo correlação clínica.",
+        "causas":["Hemólise (intravascular ou extravascular)","Neoplasias, especialmente linfomas e tumores germinativos (marcador de carga tumoral/prognóstico)","Infarto agudo do miocárdio e lesão muscular esquelética (rabdomiólise)","Hepatite aguda e outras lesões hepáticas","Pneumonia, especialmente por Pneumocystis jirovecii","Anemia megaloblástica (eritropoiese ineficaz)"],
+        "examesApoio":["hemograma","tgo","reticulocitos","ck-total"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida.",
+        "causas":["Achado sem significado clínico na maioria dos contextos"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Anemia hemolítica","Linfomas e outras neoplasias hematológicas","Infarto agudo do miocárdio","Rabdomiólise","Hepatite aguda","Pneumonia por Pneumocystis jirovecii"],
+        "reduzido":[]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas (em caso de miopatia/rabdomiólise associada)","Quimioterápicos citotóxicos (lise tumoral e celular)","Metformina (raramente, em contexto de acidose lática)","Álcool em uso crônico/abusivo (hepatotoxicidade)"],
+        "reduzem":[],
+        "interferem":["Hemólise na coleta eleva falsamente o resultado, já que as hemácias são ricas em LDH"]
+      },
+      "interferentes":[
+        {"fator":"Hemólise na coleta ou no transporte da amostra","efeito":"Elevação falsa acentuada, pois hemácias contêm grande quantidade de LDH"},
+        {"fator":"Exercício físico intenso recente","efeito":"Elevação transitória por liberação muscular"},
+        {"fator":"Demora no processamento da amostra","efeito":"Hemólise in vitro progressiva, elevando falsamente o resultado"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar exercício físico intenso nas horas anteriores à coleta.","Evitar hemólise na coleta e processar a amostra rapidamente."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Processar rapidamente para minimizar hemólise in vitro","rejeicao":["Amostra hemolisada","Volume insuficiente","Amostra com atraso excessivo no processamento"]},
+      "correlatos":["hemograma","tgo","reticulocitos","ck-total"],
+      "correlatosTexto":["Haptoglobina (diferencial de hemólise)","Beta-2-microglobulina (oncologia)","Análise de líquido pleural/ascítico (critérios de Light)"],
+      "alertas":["LDH muito elevado associado a outros sinais de hemólise (queda de haptoglobina, reticulocitose, icterícia indireta) merece investigação de anemia hemolítica.","Em pacientes oncológicos, elevação progressiva de LDH pode indicar maior carga tumoral ou progressão de doença — acompanhar em conjunto com a equipe oncológica.","Por ser um marcador pouco específico, um LDH isoladamente alterado sem outros achados não deve, sozinho, motivar investigação extensa — correlacionar sempre com o quadro clínico."],
+      "observacoes":"Por sua baixa especificidade, o LDH funciona melhor como exame de triagem ou de acompanhamento longitudinal (ex.: resposta a quimioterapia) do que como exame diagnóstico isolado.",
+      "fontes":["Harrison's Principles of Internal Medicine","Sociedade Brasileira de Oncologia Clínica","Henry's Clinical Diagnosis and Management by Laboratory Methods"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"ck-total",
+      "nome":"Creatinoquinase Total",
+      "sigla":"CK",
+      "sinonimos":["CPK","Creatina Quinase","CK-Total"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas teciduais / marcadores de lesão celular",
+      "sistema":"Muscular / Cardiovascular",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Enzima presente principalmente no músculo esquelético, mas também no miocárdio e no cérebro, liberada na corrente sanguínea diante de lesão da fibra muscular. É o exame de referência para monitorização de miopatia induzida por estatina e para triagem de rabdomiólise.",
+      "finalidade":"Monitorização de miopatia/miosite induzida por estatina e outros fármacos, triagem e acompanhamento de rabdomiólise, e avaliação de lesão muscular por exercício intenso, trauma ou doenças neuromusculares.",
+      "valoresReferencia":[
+        {"parametro":"CK total (homens)","faixa":"38 – 174","unidade":"U/L","obs":"Valores mais altos são esperados em atletas e após exercício intenso"},
+        {"parametro":"CK total (mulheres)","faixa":"26 – 140","unidade":"U/L","obs":""},
+        {"parametro":"Limiar de suspeita de rabdomiólise","faixa":"Acima de 5x o limite superior da normalidade (ou acima de 1000)","unidade":"U/L","obs":"Rabdomiólise grave geralmente definida por CK acima de 5.000–10.000 U/L, com risco de lesão renal aguda"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação indica lesão de fibra muscular, de intensidade variável conforme a magnitude.",
+        "causas":["Miopatia/miosite induzida por estatina ou outros fármacos","Exercício físico intenso ou incomum (elevação benigna, transitória)","Rabdomiólise (trauma, imobilização prolongada, convulsões, uso de drogas ilícitas)","Infarto agudo do miocárdio (fração CK-MB elevada)","Doenças neuromusculares (distrofias, miosites autoimunes)","Injeções intramusculares recentes"],
+        "examesApoio":["creatinina","tgo","ldh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Valores baixos não têm relevância clínica estabelecida na maioria dos contextos.",
+        "causas":["Baixa massa muscular (sarcopenia, imobilidade prolongada)","Achado sem significado clínico na maioria dos casos"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Miopatia por estatina","Rabdomiólise","Infarto agudo do miocárdio","Distrofias musculares e miosites autoimunes","Hipotireoidismo (elevação leve a moderada)"],
+        "reduzido":["Sarcopenia/baixa massa muscular (sem significado patológico isolado)"]
+      },
+      "medicamentos":{
+        "aumentam":["Estatinas, especialmente em doses altas ou associadas a interações (fibratos, macrolídeos, antifúngicos azólicos, ciclosporina)","Fibratos (isoladamente ou em associação com estatina)","Colchicina em superdosagem ou com função renal reduzida","Antipsicóticos (associados à síndrome neuroléptica maligna)","Corticoides em uso prolongado (miopatia esteroide, geralmente com CK normal ou pouco elevada — atenção ao diagnóstico diferencial)"],
+        "reduzem":["Suspensão do agente causador, em caso de miopatia medicamentosa confirmada — normalização gradual da CK após a suspensão"],
+        "interferem":["Injeção intramuscular recente (de qualquer medicamento) eleva a CK, mimetizando lesão muscular patológica"]
+      },
+      "interferentes":[
+        {"fator":"Exercício físico intenso ou incomum nas 24–72h anteriores","efeito":"Elevação significativa e prolongada, podendo levar dias para normalizar"},
+        {"fator":"Injeção intramuscular recente","efeito":"Eleva a CK no local da aplicação, podendo confundir a interpretação"},
+        {"fator":"Etnia afrodescendente","efeito":"Valores basais de CK fisiologicamente mais altos, sem significado patológico"},
+        {"fator":"Imobilização prolongada ou convulsões recentes","efeito":"Pode elevar por lesão muscular associada"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar exercício físico intenso e injeções intramusculares nas 48–72h anteriores à coleta, quando o objetivo é avaliar miopatia medicamentosa.","Informar histórico de trauma, convulsões ou imobilização recente."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["creatinina","tgo","ldh"],
+      "correlatosTexto":["CK-MB e troponina (diferencial de origem cardíaca)","Mioglobina sérica e urinária (rabdomiólise aguda)","Eletrólitos, especialmente potássio (complicação da rabdomiólise)"],
+      "alertas":["CK muito elevada (acima de 10x o limite superior), especialmente com mialgia intensa, fraqueza muscular e urina escura, sugere rabdomiólise — risco de lesão renal aguda, requer avaliação médica urgente e hidratação.","Em uso de estatina com mialgia e CK elevada, orientar suspensão temporária conforme protocolo e reavaliação médica antes de reintroduzir ou trocar a estatina.","CK normal não exclui miopatia leve por estatina — sintomas musculares relevantes merecem avaliação clínica mesmo com CK dentro da normalidade."],
+      "observacoes":"Elevações leves e assintomáticas de CK em uso de estatina, sem sintomas musculares, geralmente não requerem suspensão do tratamento — a decisão deve considerar magnitude da elevação, sintomas associados e risco cardiovascular do paciente.",
+      "fontes":["Sociedade Brasileira de Cardiologia — Diretriz de Dislipidemia","American College of Cardiology/American Heart Association — Statin Safety Guidelines","Goodman & Gilman — As Bases Farmacológicas da Terapêutica"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"amilase",
+      "nome":"Amilase",
+      "sigla":"AMS",
+      "sinonimos":["Amilase Sérica","Alfa-amilase"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas pancreáticas",
+      "sistema":"Pancreático / Digestivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Enzima digestiva produzida principalmente pelo pâncreas exócrino e pelas glândulas salivares, responsável pela quebra de carboidratos complexos. É usada, junto com a lipase, na investigação de pancreatite aguda, embora tenha menor especificidade pancreática que a lipase.",
+      "finalidade":"Investigação diagnóstica de pancreatite aguda (em conjunto com a lipase), avaliação de doenças das glândulas salivares (parotidite, cálculos salivares) e triagem de dor abdominal aguda de origem pancreática.",
+      "valoresReferencia":[
+        {"parametro":"Amilase total","faixa":"28 – 100","unidade":"U/L","obs":"Referência varia conforme o método; elevação acima de 3x o limite superior é o critério clássico para pancreatite aguda"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere pancreatite aguda ou acometimento de glândulas salivares, mas tem especificidade limitada.",
+        "causas":["Pancreatite aguda (elevação acima de 3x o limite superior, junto com dor abdominal característica)","Parotidite (caxumba) e outras doenças de glândulas salivares","Obstrução de ducto pancreático (cálculo, tumor)","Insuficiência renal (redução da depuração)","Macroamilasemia (elevação persistente e benigna, sem doença pancreática)"],
+        "examesApoio":["lipase","creatinina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução é rara e pode indicar insuficiência pancreática exócrina avançada.",
+        "causas":["Pancreatite crônica avançada com insuficiência exócrina","Fibrose cística com comprometimento pancreático"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Pancreatite aguda","Parotidite","Obstrução biliopancreática","Insuficiência renal","Macroamilasemia"],
+        "reduzido":["Pancreatite crônica avançada","Fibrose cística"]
+      },
+      "medicamentos":{
+        "aumentam":["Azatioprina e mercaptopurina (pancreatite medicamentosa)","Ácido valproico (pancreatite medicamentosa)","Diuréticos tiazídicos e furosemida (associados a pancreatite medicamentosa, com menor frequência)","Corticoides (associação com pancreatite descrita, embora controversa)","Análogos do GLP-1 (elevação leve descrita; pancreatite é evento adverso raro)"],
+        "reduzem":[],
+        "interferem":["Hiperlipidemia acentuada (triglicerídeos muito altos) pode falsear a leitura por turbidez da amostra"]
+      },
+      "interferentes":[
+        {"fator":"Hipertrigliceridemia acentuada","efeito":"Pode subestimar falsamente a amilase por interferência óptica na amostra lipêmica"},
+        {"fator":"Insuficiência renal","efeito":"Reduz a depuração da amilase, elevando o valor basal sem necessariamente indicar doença pancreática ativa"},
+        {"fator":"Consumo recente de álcool","efeito":"Pode elevar a amilase mesmo sem pancreatite clínica estabelecida"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Idealmente coletado o mais próximo possível do início da dor abdominal, pois a amilase pode normalizar em 3–5 dias mesmo com pancreatite em curso."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Amostra lipêmica extrema (pode exigir diluição ou método alternativo)","Volume insuficiente"]},
+      "correlatos":["lipase","creatinina"],
+      "correlatosTexto":["Tomografia computadorizada de abdome (confirmação/estadiamento de pancreatite)","Triglicerídeos (pancreatite por hipertrigliceridemia)","Cálcio sérico (hipercalcemia como causa de pancreatite)"],
+      "alertas":["Dor abdominal aguda intensa com amilase e/ou lipase elevadas acima de 3x o limite superior é fortemente sugestiva de pancreatite aguda — encaminhamento de urgência.","Amilase pode normalizar em poucos dias mesmo com pancreatite em evolução — um valor normal não descarta o diagnóstico se o quadro clínico teve início há mais de 3–5 dias; a lipase permanece elevada por mais tempo.","Investigar hipertrigliceridemia grave e hipercalcemia como causas de pancreatite em pacientes sem etiologia biliar ou alcoólica evidente."],
+      "observacoes":"A lipase é geralmente preferida à amilase para o diagnóstico de pancreatite aguda por ter maior sensibilidade e especificidade e permanecer elevada por mais tempo, mas a solicitação conjunta dos dois exames ainda é comum na prática clínica.",
+      "fontes":["Colégio Americano de Gastroenterologia (ACG) — Guideline for Acute Pancreatitis","Sociedade Brasileira de Gastroenterologia","Harrison's Principles of Internal Medicine"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"lipase",
+      "nome":"Lipase",
+      "sigla":"LPS",
+      "sinonimos":["Lipase Sérica","Lipase Pancreática"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Enzimas pancreáticas",
+      "sistema":"Pancreático / Digestivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Enzima produzida quase exclusivamente pelo pâncreas exócrino, responsável pela digestão de triglicerídeos. É o exame de escolha para o diagnóstico de pancreatite aguda, por ter maior sensibilidade e especificidade que a amilase e permanecer elevada por mais tempo durante o quadro.",
+      "finalidade":"Diagnóstico de pancreatite aguda (exame de primeira escolha, junto ou no lugar da amilase), avaliação de insuficiência pancreática exócrina crônica, e apoio ao ajuste de reposição enzimática pancreática.",
+      "valoresReferencia":[
+        {"parametro":"Lipase","faixa":"13 – 60","unidade":"U/L","obs":"Elevação acima de 3x o limite superior é o critério clássico para pancreatite aguda; referência varia conforme o método"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação, especialmente acima de 3x o limite superior, é altamente sugestiva de pancreatite aguda.",
+        "causas":["Pancreatite aguda (biliar, alcoólica, medicamentosa, por hipertrigliceridemia, pós-CPRE)","Obstrução de ducto pancreático (cálculo, tumor, estenose)","Insuficiência renal (redução da depuração)","Perfuração ou obstrução intestinal (elevação leve a moderada, menos específica)"],
+        "examesApoio":["amilase","creatinina","triglicerideos"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução pode indicar insuficiência pancreática exócrina avançada.",
+        "causas":["Pancreatite crônica avançada com destruição do parênquima pancreático","Fibrose cística com comprometimento pancreático"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Pancreatite aguda","Obstrução de ducto pancreático","Insuficiência renal"],
+        "reduzido":["Pancreatite crônica avançada com insuficiência exócrina","Fibrose cística"]
+      },
+      "medicamentos":{
+        "aumentam":["Azatioprina e mercaptopurina (pancreatite medicamentosa)","Ácido valproico (pancreatite medicamentosa)","Análogos do GLP-1 e inibidores da DPP-4 (associação com pancreatite descrita como evento adverso raro)","Diuréticos tiazídicos e furosemida","Corticoides (associação descrita, menos consistente que outros agentes)"],
+        "reduzem":["Reposição enzimática pancreática não altera a lipase sérica — é usada para tratar a insuficiência exócrina, não para normalizar este exame"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Insuficiência renal","efeito":"Reduz a depuração da lipase, elevando o valor basal sem necessariamente indicar pancreatite ativa"},
+        {"fator":"Amostra hemolisada","efeito":"Pode interferir no método de dosagem, dependendo da técnica utilizada"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Idealmente coletado próximo ao início dos sintomas, embora a lipase permaneça elevada por mais tempo que a amilase durante a pancreatite aguda."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["amilase","creatinina","triglicerideos"],
+      "correlatosTexto":["Tomografia computadorizada de abdome (confirmação/estadiamento de pancreatite)","Cálcio sérico (hipercalcemia como causa de pancreatite)","Elastase fecal (avaliação de insuficiência pancreática exócrina crônica)"],
+      "alertas":["Lipase acima de 3x o limite superior, associada a dor abdominal característica, confirma o diagnóstico de pancreatite aguda mesmo sem exame de imagem — encaminhamento de urgência.","Investigar hipertrigliceridemia grave (acima de 1000 mg/dL) e uso recente de álcool ou de medicamentos associados a pancreatite como possíveis etiologias.","Elevações leves e crônicas, sem quadro clínico de pancreatite aguda, podem ocorrer em insuficiência renal e geralmente não indicam doença pancreática ativa."],
+      "observacoes":"A lipase é atualmente preferida à amilase como exame isolado para diagnóstico de pancreatite aguda pelas diretrizes de gastroenterologia, por sua maior sensibilidade, especificidade e janela diagnóstica mais longa.",
+      "fontes":["Colégio Americano de Gastroenterologia (ACG) — Guideline for Acute Pancreatitis","Sociedade Brasileira de Gastroenterologia","Harrison's Principles of Internal Medicine"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"calcio",
+      "nome":"Cálcio Total",
+      "sigla":"Ca",
+      "sinonimos":["Calcemia","Cálcio Sérico Total"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Eletrólitos e minerais",
+      "sistema":"Metabólico Ósseo / Endócrino",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Mineral essencial para função neuromuscular, coagulação e saúde óssea, regulado principalmente pelo paratormônio (PTH) e pela vitamina D. O cálcio total inclui a fração livre (ionizada, biologicamente ativa) e a fração ligada à albumina, por isso deve ser corrigido pela albumina sérica em pacientes hipoalbuminêmicos.",
+      "finalidade":"Investigação de hiper e hipocalcemia, monitorização de doenças osteometabólicas (osteoporose, hiperparatireoidismo), ajuste de reposição de cálcio e vitamina D, e monitorização de fármacos que afetam o metabolismo do cálcio.",
+      "valoresReferencia":[
+        {"parametro":"Cálcio total","faixa":"8,5 – 10,5","unidade":"mg/dL","obs":"Deve ser corrigido pela albumina sérica quando esta estiver alterada: Ca corrigido = Ca medido + 0,8 × (4,0 − albumina do paciente)"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipercalcemia pode ser assintomática ou causar sintomas neuromusculares, renais e gastrointestinais.",
+        "causas":["Hiperparatireoidismo primário (causa mais comum em ambulatório)","Neoplasias malignas (hipercalcemia de malignidade, por metástases ósseas ou produção de PTHrP)","Excesso de suplementação de cálcio e/ou vitamina D","Imobilização prolongada","Doenças granulomatosas (sarcoidose, tuberculose)"],
+        "examesApoio":["fosfatase-alcalina","creatinina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipocalcemia pode causar sintomas neuromusculares (parestesias, tetania, espasmos).",
+        "causas":["Hipoparatireoidismo (pós-cirúrgico ou idiopático)","Deficiência de vitamina D","Insuficiência renal crônica (redução da ativação de vitamina D e retenção de fósforo)","Hipomagnesemia grave (suprime a secreção de PTH)","Pancreatite aguda grave"],
+        "examesApoio":["vitamina-d","magnesio","creatinina"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Hiperparatireoidismo primário","Hipercalcemia de malignidade","Sarcoidose e outras doenças granulomatosas","Excesso de suplementação de cálcio/vitamina D"],
+        "reduzido":["Hipoparatireoidismo","Deficiência de vitamina D","Insuficiência renal crônica","Hipomagnesemia grave"]
+      },
+      "medicamentos":{
+        "aumentam":["Suplementos de cálcio e vitamina D em dose excessiva","Diuréticos tiazídicos (reduzem a excreção renal de cálcio)","Lítio (pode causar hipercalcemia por alteração da sensibilidade da paratireoide ao cálcio)","Vitamina A em altas doses","Teriparatida e outros análogos de PTH"],
+        "reduzem":["Bisfosfonatos e denosumabe (podem causar hipocalcemia, especialmente se houver deficiência de vitamina D não corrigida previamente)","Diuréticos de alça (furosemida — aumentam a excreção renal de cálcio)","Corticoides em uso prolongado (reduzem a absorção intestinal de cálcio)","Cinacalcete (reduz o cálcio ao suprimir a secreção de PTH)"],
+        "interferem":["Estase venosa prolongada durante a coleta pode elevar falsamente o cálcio total"]
+      },
+      "interferentes":[
+        {"fator":"Hipoalbuminemia","efeito":"Reduz o cálcio total medido sem necessariamente refletir queda do cálcio ionizado (biologicamente ativo) — sempre corrigir pela albumina"},
+        {"fator":"Estase venosa prolongada (torniquete)","efeito":"Hemoconcentração local, elevando falsamente o resultado"},
+        {"fator":"Uso de contraste iodado com EDTA recente","efeito":"Pode quelar o cálcio e reduzir falsamente o resultado"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Jejum geralmente não é obrigatório, mas pode ser solicitado junto de outros exames metabólicos.","Evitar torniquete prolongado durante a coleta.","Informar a dosagem de albumina sérica recente, se disponível, para permitir a correção do valor."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; evitar contaminação com anticoagulantes quelantes (EDTA, citrato)","rejeicao":["Amostra coletada em tubo com EDTA ou citrato (quelam o cálcio)","Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["fosfatase-alcalina","vitamina-d","magnesio","creatinina"],
+      "correlatosTexto":["PTH (paratormônio) — essencial para investigar a causa de hiper/hipocalcemia","Cálcio ionizado (fração biologicamente ativa, mais precisa que o total em certos contextos)","Fósforo sérico"],
+      "alertas":["Hipercalcemia acentuada (geralmente acima de 14 mg/dL) com sintomas neurológicos, cardíacos ou renais é emergência médica (crise hipercalcêmica).","Hipocalcemia sintomática (parestesias periorais, espasmos, sinal de Chvostek/Trousseau positivo) requer avaliação e reposição, geralmente com correção concomitante de magnésio se este estiver baixo.","Antes de iniciar bisfosfonato ou denosumabe, corrigir deficiência de vitamina D e garantir cálcio adequado para reduzir o risco de hipocalcemia induzida pelo tratamento."],
+      "observacoes":"O cálcio total deve sempre ser interpretado corrigido pela albumina sérica; em dúvida ou em pacientes críticos, o cálcio ionizado é a medida mais confiável da fração biologicamente ativa.",
+      "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia","Endocrine Society — Guideline for Primary Hyperparathyroidism","Harrison's Principles of Internal Medicine"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"magnesio",
+      "nome":"Magnésio",
+      "sigla":"Mg",
+      "sinonimos":["Magnesemia","Magnésio Sérico"],
+      "categoria":"bioquimica",
+      "ambiente":"ambos",
+      "grupo":"Eletrólitos e minerais",
+      "sistema":"Metabólico / Cardiovascular / Neuromuscular",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Cátion intracelular essencial, cofator de centenas de reações enzimáticas, com papel importante na função neuromuscular e cardíaca. A magnesemia sérica reflete de forma imperfeita o magnésio corporal total, já que a maior parte do magnésio é intracelular/ósseo.",
+      "finalidade":"Investigação de hipo e hipermagnesemia, monitorização de terapia com diuréticos e inibidores da bomba de prótons em uso prolongado, ajuste de reposição de magnésio, e avaliação de arritmias e distúrbios neuromusculares.",
+      "valoresReferencia":[
+        {"parametro":"Magnésio sérico","faixa":"1,7 – 2,2","unidade":"mg/dL","obs":"Equivalente a aproximadamente 1,4 – 1,8 mEq/L, conforme a unidade do laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hipermagnesemia é rara em pacientes com função renal normal e geralmente relacionada a excesso de aporte.",
+        "causas":["Insuficiência renal avançada (redução da excreção)","Uso excessivo de antiácidos ou laxantes contendo magnésio, especialmente com função renal reduzida","Sulfato de magnésio intravenoso em dose elevada (ex.: eclâmpsia)","Insuficiência adrenal"],
+        "examesApoio":["creatinina"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Hipomagnesemia é relativamente comum e pode causar arritmias e distúrbios neuromusculares, além de dificultar a correção de hipocalemia e hipocalcemia associadas.",
+        "causas":["Uso prolongado de diuréticos tiazídicos ou de alça","Uso prolongado de inibidores da bomba de prótons (IBP)","Diarreia crônica e má absorção intestinal","Alcoolismo crônico","Cetoacidose diabética em tratamento (redistribuição intracelular)","Uso de aminoglicosídeos e alguns quimioterápicos (cisplatina)"],
+        "examesApoio":["potassio","calcio"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Insuficiência renal avançada","Uso excessivo de laxantes/antiácidos com magnésio"],
+        "reduzido":["Uso prolongado de IBP ou diuréticos","Alcoolismo crônico","Diarreia crônica","Cetoacidose diabética"]
+      },
+      "medicamentos":{
+        "aumentam":["Antiácidos e laxantes contendo hidróxido ou sulfato de magnésio, especialmente com função renal reduzida","Sulfato de magnésio intravenoso (uso terapêutico, ex.: pré-eclâmpsia/eclâmpsia, torsades de pointes)"],
+        "reduzem":["Inibidores da bomba de prótons em uso prolongado (acima de 1 ano, especialmente combinados a diuréticos)","Diuréticos tiazídicos e de alça","Aminoglicosídeos (gentamicina, amicacina)","Cisplatina e outros quimioterápicos à base de platina","Anfotericina B"],
+        "interferem":[]
+      },
+      "interferentes":[
+        {"fator":"Hemólise na coleta","efeito":"Eleva falsamente o resultado, pois as hemácias contêm magnésio intracelular"},
+        {"fator":"Coleta logo após infusão de sulfato de magnésio","efeito":"Reflete o pico da infusão, não o estado basal — aguardar intervalo adequado quando possível"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Evitar hemólise na coleta.","Informar uso de diuréticos, IBP em uso prolongado e suplementos/antiácidos contendo magnésio."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; evitar hemólise","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["potassio","calcio","creatinina"],
+      "correlatosTexto":["Magnésio urinário de 24h (avaliação de perda renal vs. extrarrenal)","Eletrocardiograma (arritmias associadas a hipomagnesemia grave)"],
+      "alertas":["Hipomagnesemia grave (geralmente abaixo de 1,0–1,2 mg/dL) pode causar arritmias graves, incluindo torsades de pointes, e dificulta a correção de hipocalemia/hipocalcemia refratárias — corrigir o magnésio antes ou junto desses eletrólitos.","Em uso prolongado de IBP (acima de 1 ano) com sintomas neuromusculares inexplicados (cãibras, tremores, arritmias), considerar dosagem de magnésio.","Hipermagnesemia sintomática (hiporreflexia, depressão respiratória) é mais comum em pacientes com insuficiência renal recebendo sulfato de magnésio ou laxantes/antiácidos contendo magnésio — ajustar dose ou suspender conforme função renal."],
+      "observacoes":"A hipomagnesemia costuma ser subdiagnosticada por não ser solicitada rotineiramente; deve ser considerada em pacientes com hipocalemia ou hipocalcemia refratárias à reposição isolada desses eletrólitos, e em uso prolongado de IBP ou diuréticos.",
+      "fontes":["Sociedade Brasileira de Nefrologia","Kidney Disease: Improving Global Outcomes (KDIGO)","Goodman & Gilman — As Bases Farmacológicas da Terapêutica"],
+      "dataAtualizacao":"2026-09-17"
     }
   ]
 }
