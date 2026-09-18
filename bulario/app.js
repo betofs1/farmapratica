@@ -44,7 +44,7 @@
   --------------------------------------------------------------------- */
   const LS_FAV = "fp-bulario-favoritos";
   const LS_HIST = "fp-bulario-recentes";
-  const HIST_MAX = 8;
+  const HIST_MAX = 10;
 
   function getFavoritos() {
     try {
@@ -166,9 +166,37 @@
   --------------------------------------------------------------------- */
   const app = $("#app-view");
 
+  // Pilha de navegação interna: permite o botão "Voltar" do cabeçalho
+  // funcionar sem depender do botão voltar do navegador. Cada mudança de
+  // hash que não veio do próprio botão "Voltar" empilha o hash anterior.
+  let NAV_STACK = [];
+  let NAV_ULTIMO_HASH = null;
+  let NAV_INDO_PARA_TRAS = false;
+
+  function atualizarBotaoVoltar() {
+    const btn = $("#btn-topo-voltar");
+    if (btn) btn.disabled = NAV_STACK.length === 0;
+  }
+
+  function voltarPagina() {
+    if (!NAV_STACK.length) return;
+    const hashAnterior = NAV_STACK.pop();
+    NAV_INDO_PARA_TRAS = true;
+    location.hash = hashAnterior;
+  }
+  window.voltarPagina = voltarPagina;
+
   function route() {
     const hash = decodeURIComponent(location.hash || "");
+    const hashAtual = hash || "#/";
     window.scrollTo({ top: 0 });
+    if (NAV_INDO_PARA_TRAS) {
+      NAV_INDO_PARA_TRAS = false;
+    } else if (NAV_ULTIMO_HASH !== null && NAV_ULTIMO_HASH !== hashAtual) {
+      NAV_STACK.push(NAV_ULTIMO_HASH);
+    }
+    NAV_ULTIMO_HASH = hashAtual;
+    atualizarBotaoVoltar();
     if (hash.startsWith("#/grupo/")) {
       const id = hash.replace("#/grupo/", "");
       renderGrupo(id);
@@ -197,12 +225,20 @@
     return `<div class="tag-row">${tags.map((t) => `<span class="tag-chip">${esc(t)}</span>`).join("")}</div>`;
   }
 
+  // Uma ficha é considerada "completa" quando já foi pesquisada e escrita
+  // (mecanismo de ação preenchido é o campo mais confiável como indicador,
+  // pois é o primeiro a ser preenchido na revisão manual de cada fármaco).
+  function fichaCompleta(m) {
+    return !!(m && m.mecanismoAcao);
+  }
+
   function medItemButton(medId) {
     const m = MEDICAMENTOS[medId];
     if (!m) return "";
     const fav = isFavorito(medId) ? "star-on" : "";
+    const completo = fichaCompleta(m);
     return `
-      <button class="med-item" data-med="${medId}" onclick="irPara('#/medicamento/${medId}')">
+      <button class="med-item${completo ? " med-item-completo" : ""}" data-med="${medId}" onclick="irPara('#/medicamento/${medId}')">
         <span class="med-item-main">
           <span class="med-item-nome">${esc(m.nomeGenerico)}</span>
           <span class="med-item-sub">${esc(m.classeTerapeutica || "")}</span>
@@ -225,9 +261,10 @@
      VIEW: Home (grupos + favoritos + recentes)
   --------------------------------------------------------------------- */
   function renderHome(filtroGrupo) {
-    setTituloTopo("Bulário Farmacêutico", "Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada.");
+    const totalMedicamentos = Object.keys(MEDICAMENTOS).length;
+    setTituloTopo("Bulário Farmacêutico", `Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. ${totalMedicamentos.toLocaleString("pt-BR")} medicamentos catalogados.`);
     const favs = getFavoritos().filter((id) => MEDICAMENTOS[id]);
-    const recentes = getRecentes().filter((id) => MEDICAMENTOS[id]);
+    const recentes = getRecentes().filter((id) => MEDICAMENTOS[id]).slice(0, 10);
 
     const gruposFiltrados = filtroGrupo
       ? GRUPOS.filter((g) => normalize(g.nome).includes(normalize(filtroGrupo)))
@@ -243,6 +280,12 @@
               </section>`
             : ""
         }
+        <section class="quick-section">
+          <h2>Grupos Farmacológicos</h2>
+          <div class="grupos-grid" id="grupos-grid">
+            ${gruposFiltrados.map(grupoCard).join("") || `<p class="empty-msg">Nenhum grupo encontrado para esse filtro.</p>`}
+          </div>
+        </section>
         ${
           recentes.length
             ? `<section class="quick-section">
@@ -251,12 +294,6 @@
               </section>`
             : ""
         }
-        <section class="quick-section">
-          <h2>Grupos Farmacológicos</h2>
-          <div class="grupos-grid" id="grupos-grid">
-            ${gruposFiltrados.map(grupoCard).join("") || `<p class="empty-msg">Nenhum grupo encontrado para esse filtro.</p>`}
-          </div>
-        </section>
       </div>`;
   }
 
@@ -323,7 +360,7 @@
           <button class="comercial-item" onclick="irPara('#/medicamento/${c.medId}')">
             <span class="comercial-nome">${esc(c.nome)}</span>
             <span class="comercial-seta" aria-hidden="true">→</span>
-            <span class="comercial-generico">${esc(m.principioAtivo)}</span>
+            <span class="comercial-generico">${esc(m.principioAtivo || m.nomeGenerico)}</span>
           </button>`;
       });
       html += `</div></section>`;
@@ -370,35 +407,48 @@
 
   function secoesFicha(m) {
     const secoes = [];
+    // Registros ainda sem ficha farmacoterapêutica completa não trazem
+    // alertasFarmaceuticos/referencias/ultimaAtualizacao próprios — usamos
+    // o aviso padrão definido uma única vez (AVISO_FICHA_PENDENTE) em vez de
+    // repeti-lo em cada um dos milhares de registros.
+    const alertas = (m.alertasFarmaceuticos && m.alertasFarmaceuticos.length) ? m.alertasFarmaceuticos : [AVISO_FICHA_PENDENTE];
+    const referencias = (m.referencias && m.referencias.length) ? m.referencias : null;
+    const ultimaAtualizacao = m.ultimaAtualizacao || null;
 
-    secoes.push({
-      id: "nomes-comerciais",
-      titulo: "Nomes Comerciais",
-      html: `
-        ${m.nomesComerciais && m.nomesComerciais.referencia ? `<p><strong>Referência:</strong> ${esc(m.nomesComerciais.referencia)}</p>` : ""}
-        ${m.nomesComerciais && m.nomesComerciais.similares && m.nomesComerciais.similares.length ? `<p><strong>Similares/genéricos de marca:</strong> ${m.nomesComerciais.similares.map(esc).join(", ")}</p>` : ""}
-      `,
-    });
+    if (m.nomesComerciais && (m.nomesComerciais.referencia || (m.nomesComerciais.similares && m.nomesComerciais.similares.length))) {
+      secoes.push({
+        id: "nomes-comerciais",
+        titulo: "Nomes Comerciais",
+        html: `
+          ${m.nomesComerciais.referencia ? `<p><strong>Referência:</strong> ${esc(m.nomesComerciais.referencia)}</p>` : ""}
+          ${m.nomesComerciais.similares && m.nomesComerciais.similares.length ? `<p><strong>Similares/genéricos de marca:</strong> ${m.nomesComerciais.similares.map(esc).join(", ")}</p>` : ""}
+        `,
+      });
+    }
 
-    secoes.push({
-      id: "generico-farmacia-popular",
-      titulo: "Genérico / Farmácia Popular",
-      html: `
-        <p><strong>Medicamento genérico disponível:</strong> ${m.generico ? "Sim" : "Não"}</p>
-        <p><strong>Medicamento similar disponível:</strong> ${m.similar ? "Sim" : "Não"}</p>
-        <p><strong>Disponível no Programa Farmácia Popular:</strong> ${m.farmaciaPopular ? "Sim" : "Não"}</p>
-      `,
-    });
+    if (m.generico !== undefined || m.similar !== undefined || m.farmaciaPopular !== undefined) {
+      secoes.push({
+        id: "generico-farmacia-popular",
+        titulo: "Genérico / Farmácia Popular",
+        html: `
+          <p><strong>Medicamento genérico disponível:</strong> ${m.generico ? "Sim" : "Não"}</p>
+          <p><strong>Medicamento similar disponível:</strong> ${m.similar ? "Sim" : "Não"}</p>
+          <p><strong>Disponível no Programa Farmácia Popular:</strong> ${m.farmaciaPopular ? "Sim" : "Não"}</p>
+        `,
+      });
+    }
 
-    secoes.push({
-      id: "classe",
-      titulo: "Classe Terapêutica e Farmacológica",
-      html: `
-        ${m.classeTerapeutica ? `<p><strong>Classe terapêutica:</strong> ${esc(m.classeTerapeutica)}</p>` : ""}
-        ${m.classeFarmacologica ? `<p><strong>Classe farmacológica:</strong> ${esc(m.classeFarmacologica)}</p>` : ""}
-        ${m.subclasse ? `<p><strong>Subclasse:</strong> ${esc(m.subclasse)}</p>` : ""}
-      `,
-    });
+    if (m.classeTerapeutica || m.classeFarmacologica || m.subclasse) {
+      secoes.push({
+        id: "classe",
+        titulo: "Classe Terapêutica e Farmacológica",
+        html: `
+          ${m.classeTerapeutica ? `<p><strong>Classe${m.classes && m.classes.length > 1 ? "s terapêuticas" : " terapêutica"}:</strong> ${esc(m.classeTerapeutica)}</p>` : ""}
+          ${m.classeFarmacologica ? `<p><strong>Classe farmacológica:</strong> ${esc(m.classeFarmacologica)}</p>` : ""}
+          ${m.subclasse ? `<p><strong>Subclasse:</strong> ${esc(m.subclasse)}</p>` : ""}
+        `,
+      });
+    }
 
     if (m.mecanismoAcao) {
       secoes.push({ id: "mecanismo", titulo: "Mecanismo de Ação", html: `<p>${esc(m.mecanismoAcao)}</p>` });
@@ -497,11 +547,11 @@
       });
     }
 
-    if (m.alertasFarmaceuticos && m.alertasFarmaceuticos.length) {
+    if (alertas && alertas.length) {
       secoes.push({
         id: "alertas",
         titulo: "Alertas Farmacêuticos",
-        html: `<div class="alerta-box"><h3>⚠️ Alertas Farmacêuticos</h3>${listaOuTexto(m.alertasFarmaceuticos)}</div>`,
+        html: `<div class="alerta-box${(!m.alertasFarmaceuticos || !m.alertasFarmaceuticos.length) ? " alerta-box-info" : ""}"><h3>⚠️ ${(!m.alertasFarmaceuticos || !m.alertasFarmaceuticos.length) ? "Ficha em Revisão" : "Alertas Farmacêuticos"}</h3>${listaOuTexto(alertas)}</div>`,
       });
     }
 
@@ -566,11 +616,11 @@
       });
     }
 
-    if (m.referencias && m.referencias.length) {
+    if (referencias && referencias.length) {
       secoes.push({
         id: "referencias",
         titulo: "Referências Bibliográficas",
-        html: `${listaOuTexto(m.referencias)}<p class="texto-dim"><strong>Última atualização:</strong> ${esc(m.ultimaAtualizacao || NAO_DISPONIVEL)}</p>`,
+        html: `${listaOuTexto(referencias)}<p class="texto-dim"><strong>Última atualização:</strong> ${esc(ultimaAtualizacao || NAO_DISPONIVEL)}</p>`,
       });
     }
 

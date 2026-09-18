@@ -710,7 +710,7 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum, mas prefira horário padronizado em acompanhamentos seriados.","Se em uso de levotiroxina, muitos serviços recomendam coletar antes da dose matinal; seguir orientação do médico/laboratório.","Suspender suplementos com biotina alguns dias antes, se orientado, sem suspender medicamentos prescritos por conta própria."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
-      "correlatos":["t4-livre"],
+      "correlatos":["t4-livre","t3-total"],
       "correlatosTexto":["T3 livre","Anti-TPO e anti-tireoglobulina"],
       "alertas":["TSH muito alterado (muito alto ou suprimido), sobretudo com sintomas (fadiga extrema, taquicardia, perda de peso, edema), merece avaliação médica.","Uso de biotina deve sempre ser informado ao laboratório antes da coleta."],
       "observacoes":"Deve ser interpretado sempre em conjunto com o T4 livre para caracterizar o tipo de disfunção tireoidiana (primária, subclínica, etc.).",
@@ -760,7 +760,7 @@
       ],
       "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Se em uso de levotiroxina, seguir orientação sobre coleta antes ou depois da dose, conforme o serviço.","Informar uso de suplementos com biotina."]},
       "amostra":{"tipo":"Soro ou plasma","tubo":"Tampa vermelha/amarela","armazenamento":"Estável em temperatura ambiente por algumas horas","rejeicao":["Hemólise intensa"]},
-      "correlatos":["tsh"],
+      "correlatos":["tsh","t3-total"],
       "correlatosTexto":["T3 livre","Anti-TPO"],
       "alertas":["Alterações importantes de T4 livre associadas a sintomas relevantes merecem avaliação médica para ajuste terapêutico."],
       "observacoes":"A interpretação isolada do T4 livre sem o TSH tem valor limitado; os dois devem sempre ser avaliados em conjunto.",
@@ -1843,6 +1843,430 @@
       "alertas":["Hipomagnesemia grave (geralmente abaixo de 1,0–1,2 mg/dL) pode causar arritmias graves, incluindo torsades de pointes, e dificulta a correção de hipocalemia/hipocalcemia refratárias — corrigir o magnésio antes ou junto desses eletrólitos.","Em uso prolongado de IBP (acima de 1 ano) com sintomas neuromusculares inexplicados (cãibras, tremores, arritmias), considerar dosagem de magnésio.","Hipermagnesemia sintomática (hiporreflexia, depressão respiratória) é mais comum em pacientes com insuficiência renal recebendo sulfato de magnésio ou laxantes/antiácidos contendo magnésio — ajustar dose ou suspender conforme função renal."],
       "observacoes":"A hipomagnesemia costuma ser subdiagnosticada por não ser solicitada rotineiramente; deve ser considerada em pacientes com hipocalemia ou hipocalcemia refratárias à reposição isolada desses eletrólitos, e em uso prolongado de IBP ou diuréticos.",
       "fontes":["Sociedade Brasileira de Nefrologia","Kidney Disease: Improving Global Outcomes (KDIGO)","Goodman & Gilman — As Bases Farmacológicas da Terapêutica"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"t3-total",
+      "nome":"Tri-iodotironina Total",
+      "sigla":"T3",
+      "sinonimos":["T3","T3 Total","Triiodotironina Total"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo tireoidiano",
+      "sistema":"Endócrino",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Hormônio tireoidiano mais potente biologicamente, produzido majoritariamente pela conversão periférica de T4 (desiodação) e, em menor parte, por secreção direta da tireoide. A fração total mede o hormônio ligado a proteínas carreadoras (TBG, albumina, transtirretina) somado à fração livre.",
+      "finalidade":"Diagnóstico e monitoramento de hipertireoidismo, especialmente tireotoxicose isolada por T3 (T3-toxicose), e diferenciação de tireotoxicose factícia por uso não supervisionado de fórmulas emagrecedoras contendo T3.",
+      "valoresReferencia":[
+        {"parametro":"T3 total (adultos)","faixa":"80 – 200","unidade":"ng/dL","obs":"Equivalente a aproximadamente 1,2 – 3,1 nmol/L; referência varia conforme o método do laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere hipertireoidismo, sendo especialmente relevante quando isolada (T3-toxicose), com TSH suprimido e T4 livre ainda normal.",
+        "causas":["Doença de Graves e bócio nodular tóxico","T3-toxicose isolada (fase inicial de hipertireoidismo)","Tireoidite subaguda em fase de liberação hormonal","Uso não supervisionado de liotironina ou fórmulas emagrecedoras contendo T3 (tireotoxicose factícia)"],
+        "examesApoio":["tsh","t4-livre"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução pode indicar hipotireoidismo ou, mais comumente, doença sistêmica não tireoidiana que reduz a conversão periférica de T4 em T3.",
+        "causas":["Hipotireoidismo (T3 costuma ser o último parâmetro a cair)","Síndrome do eutireoidiano doente / low T3 syndrome (doença sistêmica aguda grave)","Desnutrição e jejum prolongado","Uso de amiodarona, propranolol em dose alta ou corticoides em dose alta (reduzem a conversão periférica T4→T3)"],
+        "examesApoio":["tsh","t4-livre"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Doença de Graves","T3-toxicose isolada","Tireoidite subaguda","Tireotoxicose factícia"],
+        "reduzido":["Hipotireoidismo","Síndrome do eutireoidiano doente","Desnutrição grave"]
+      },
+      "medicamentos":{
+        "aumentam":["Liotironina exógena (uso terapêutico ou não supervisionado)","Fórmulas emagrecedoras manipuladas contendo T3, usadas sem prescrição/acompanhamento","Amiodarona (na fase inicial, pode induzir tireotoxicose amiodarona-induzida tipo 1 ou 2)"],
+        "reduzem":["Propranolol e outros betabloqueadores em dose alta (bloqueiam a conversão periférica de T4 em T3)","Amiodarona (uso crônico, efeito supressor predominante sobre a conversão periférica)","Corticoides em dose alta","Propiltiouracila (inibe a desiodase periférica, além da síntese tireoidiana)"],
+        "interferem":["Biotina em altas doses pode interferir em imunoensaios que utilizam tecnologia estreptavidina-biotina, causando resultado falsamente alterado"]
+      },
+      "interferentes":[
+        {"fator":"Alterações nas proteínas carreadoras (TBG)","efeito":"Gestação e uso de estrogênios elevam a TBG e, consequentemente, o T3 total, sem necessariamente refletir alteração da fração livre biologicamente ativa"},
+        {"fator":"Uso de biotina em suplementos ou altas doses","efeito":"Pode interferir no imunoensaio, gerando resultado falsamente alterado — suspender conforme orientação do laboratório antes da coleta"},
+        {"fator":"Doença sistêmica aguda grave","efeito":"Reduz a conversão periférica de T4 em T3 (low T3 syndrome), sem indicar disfunção tireoidiana primária"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Informar uso de biotina em altas doses — pode ser necessário suspender 48h antes da coleta, conforme orientação do laboratório.","Informar uso de amiodarona, betabloqueadores em dose alta ou corticoides em dose alta."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["tsh","t4-livre"],
+      "correlatosTexto":["T3 livre","Anti-TPO e anti-tireoglobulina (etiologia autoimune)"],
+      "alertas":["T3-toxicose isolada (T3 alto com TSH suprimido e T4 livre ainda normal) pode representar a fase inicial de um hipertireoidismo — repetir T3 e T4 livre em 4–6 semanas para confirmar a evolução.","Suspeitar de tireotoxicose factícia em paciente com sintomas de hipertireoidismo e uso de fórmulas manipuladas emagrecedoras não identificadas — investigar ativamente o uso na anamnese farmacêutica.","A síndrome do eutireoidiano doente (T3 baixo em contexto de doença sistêmica aguda) não deve ser tratada com reposição hormonal — é um mecanismo adaptativo, não uma disfunção tireoidiana primária."],
+      "observacoes":"Quando disponível, o T3 livre é preferível ao T3 total por sofrer menos influência das proteínas carreadoras; o T3 total, porém, continua sendo amplamente utilizado e sensível para detectar a T3-toxicose isolada.",
+      "fontes":["Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","American Thyroid Association (ATA) — Guidelines for Hyperthyroidism","Harrison's Principles of Internal Medicine"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"cortisol",
+      "nome":"Cortisol Sérico (Basal)",
+      "sigla":"Cortisol",
+      "sinonimos":["Cortisol Basal","Cortisol Plasmático","Cortisolemia"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo hipotálamo-hipófise-adrenal",
+      "sistema":"Endócrino",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Principal glicocorticoide produzido pelo córtex adrenal sob estímulo do ACTH hipofisário. Apresenta ritmo circadiano marcante, com pico próximo ao despertar (7–9h) e nadir à noite, por isso o horário da coleta é determinante para a interpretação correta do resultado.",
+      "finalidade":"Avaliação de insuficiência adrenal (primária ou secundária) e de síndrome de Cushing, e monitoramento da supressão do eixo hipotálamo-hipófise-adrenal (HHA) por corticoterapia crônica, exógena ou tópica/inalatória em dose alta.",
+      "valoresReferencia":[
+        {"parametro":"Cortisol matinal (7h–9h)","faixa":"5 – 25","unidade":"mcg/dL","obs":"Equivalente a aproximadamente 138 – 690 nmol/L; horário de coleta é essencial para a interpretação"},
+        {"parametro":"Cortisol vespertino/noturno (16h–20h)","faixa":"2 – 14","unidade":"mcg/dL","obs":"Fisiologicamente mais baixo que o matinal, pelo ritmo circadiano"},
+        {"parametro":"Cortisol pós-estímulo com ACTH (cosintropina), 30–60 min","faixa":"Acima de 18 – 20 (conforme método)","unidade":"mcg/dL","obs":"Valor de corte do teste dinâmico que exclui insuficiência adrenal primária; não é valor de referência basal"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode ser fisiológica (estresse agudo, gestação) ou indicar síndrome de Cushing endógena ou exógena.",
+        "causas":["Síndrome de Cushing endógena (adenoma hipofisário produtor de ACTH, tumor adrenal, produção ectópica de ACTH)","Uso crônico de corticoide exógeno (síndrome de Cushing iatrogênica)","Estresse agudo grave (doença crítica, cirurgia, trauma)","Gestação e uso de estrogênios (elevam a proteína carreadora CBG, elevando o cortisol total sem necessariamente refletir a fração livre)"],
+        "examesApoio":[]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução sugere insuficiência adrenal, que pode ser primária (Addison) ou secundária à supressão do eixo HHA por corticoterapia crônica.",
+        "causas":["Insuficiência adrenal primária (doença de Addison)","Insuficiência adrenal secundária por supressão do eixo HHA (uso crônico de corticoide exógeno, inclusive tópico/inalatório em dose alta)","Hipopituitarismo (redução de ACTH)","Suspensão abrupta de corticoterapia crônica sem desmame adequado"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Síndrome de Cushing endógena ou iatrogênica","Estresse agudo grave","Gestação"],
+        "reduzido":["Insuficiência adrenal primária (Addison)","Insuficiência adrenal secundária por corticoterapia crônica","Hipopituitarismo"]
+      },
+      "medicamentos":{
+        "aumentam":["Estrogênios e contraceptivos orais combinados (elevam a globulina carreadora CBG, elevando o cortisol total medido)","Corticoides sintéticos com reação cruzada no imunoensaio, dependendo do método utilizado pelo laboratório"],
+        "reduzem":["Uso crônico de corticoides exógenos, inclusive tópicos/inalatórios em dose alta (supressão do eixo HHA por feedback negativo)","Etomidato (inibe a esteroidogênese adrenal, uso restrito a anestesia/sedação)","Rifampicina, fenitoína e carbamazepina (indutores do CYP3A4, aceleram o metabolismo hepático do cortisol)","Megestrol em uso prolongado (efeito glicocorticoide-símile com supressão do eixo)"],
+        "interferem":["Coleta fora do horário padrão (7h–9h) altera drasticamente o resultado devido ao ritmo circadiano, podendo simular insuficiência adrenal ou Cushing"]
+      },
+      "interferentes":[
+        {"fator":"Horário da coleta","efeito":"Fator determinante — o cortisol varia várias vezes ao longo do dia pelo ritmo circadiano; sempre registrar o horário exato na requisição"},
+        {"fator":"Estresse agudo da própria punção venosa ou de doença concomitante","efeito":"Pode elevar o resultado, dificultando a interpretação de insuficiência adrenal em paciente hospitalizado/crítico"},
+        {"fator":"Gestação ou uso de estrogênio","efeito":"Eleva a CBG, aumentando o cortisol total sem necessariamente refletir a fração livre biologicamente ativa"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum, mas a coleta deve ser padronizada no horário — idealmente entre 7h e 9h da manhã.","Evitar estresse físico ou emocional agudo antes da coleta.","Informar uso de corticoides (inclusive tópicos ou inalatórios em dose alta) e de estrogênios/contraceptivos."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Registrar o horário exato da coleta na requisição; estável em temperatura ambiente por algumas horas","rejeicao":["Amostra sem horário de coleta registrado","Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":[],
+      "correlatosTexto":["ACTH plasmático","Teste de estímulo com ACTH (cosintropina)","Teste de supressão com dexametasona (rastreio de Cushing)"],
+      "alertas":["A suspensão abrupta de corticoterapia crônica sem desmame gradual (tapering) pode precipitar crise addisoniana aguda — orientar sempre a redução progressiva da dose.","Cortisol matinal isoladamente baixo é sugestivo de insuficiência adrenal, mas requer confirmação com teste dinâmico (estímulo com ACTH) antes de firmar o diagnóstico.","Em paciente crítico ou séptico, o eixo HHA está frequentemente alterado pela doença aguda — interpretar o resultado com cautela e em conjunto com a equipe médica."],
+      "observacoes":"Sempre registrar o horário exato da coleta ao interpretar o resultado, dado o ritmo circadiano marcante do cortisol; o cortisol salivar noturno é uma alternativa não invasiva usada em alguns protocolos de rastreio de síndrome de Cushing.",
+      "fontes":["Endocrine Society — Clinical Practice Guideline for Adrenal Insufficiency","Endocrine Society — Clinical Practice Guideline for Cushing's Syndrome","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"estradiol",
+      "nome":"Estradiol (E2)",
+      "sigla":"E2",
+      "sinonimos":["E2","Estradiol Sérico","17-beta-estradiol"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo gonadal",
+      "sistema":"Endócrino / Reprodutivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Principal estrogênio circulante, produzido pelos ovários em mulheres na menacme, pela placenta na gestação e, em menor quantidade, por conversão periférica (tecido adiposo, testículos) em homens. Varia amplamente conforme fase do ciclo menstrual, uso de hormônios exógenos e contexto reprodutivo, por isso não existe um único valor de referência aplicável a todos os casos.",
+      "finalidade":"Monitoramento de terapia de reposição hormonal (TRH) no climatério, acompanhamento de hormonoterapia de afirmação de gênero feminilizante, monitorização de estimulação ovariana controlada em reprodução assistida, e avaliação da eficácia de inibidores da aromatase em neoplasias de mama.",
+      "valoresReferencia":[
+        {"parametro":"Mulheres — fase folicular","faixa":"20 – 150","unidade":"pg/mL","obs":"Varia conforme o dia do ciclo"},
+        {"parametro":"Mulheres — pico ovulatório","faixa":"150 – 750","unidade":"pg/mL","obs":""},
+        {"parametro":"Mulheres — fase lútea","faixa":"30 – 450","unidade":"pg/mL","obs":""},
+        {"parametro":"Mulheres — pós-menopausa","faixa":"Abaixo de 30","unidade":"pg/mL","obs":""},
+        {"parametro":"Homens adultos","faixa":"10 – 40","unidade":"pg/mL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode ser terapêutica (TRH, hormonoterapia, estimulação ovariana) ou, mais raramente, patológica.",
+        "causas":["Terapia de reposição hormonal (TRH) no climatério","Hormonoterapia de afirmação de gênero feminilizante","Estimulação ovariana controlada em reprodução assistida","Gestação (elevação fisiológica progressiva)","Tumores produtores de estrogênio (raro)"],
+        "examesApoio":["progesterona","lh","fsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução sugere falência ovariana, menopausa ou supressão hormonal terapêutica.",
+        "causas":["Menopausa e falência ovariana primária","Falência ovariana induzida por quimioterapia ou radioterapia","Uso de inibidores da aromatase (anastrozol, letrozol, exemestano)","Hipogonadismo hipogonadotrófico (central)"],
+        "examesApoio":["lh","fsh"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Uso de TRH ou hormonoterapia feminilizante","Gestação","Estimulação ovariana controlada"],
+        "reduzido":["Menopausa","Falência ovariana primária ou induzida por quimio/radioterapia","Uso de inibidor de aromatase"]
+      },
+      "medicamentos":{
+        "aumentam":["Estrogênios exógenos orais ou transdérmicos (TRH, contraceptivos, hormonoterapia feminilizante)","Gonadotrofinas recombinantes usadas em estimulação ovariana controlada (folitropina alfa/beta)"],
+        "reduzem":["Inibidores da aromatase (anastrozol, letrozol, exemestano)","Agonistas e antagonistas de GnRH (supressão gonadal)","Tamoxifeno (bloqueia o receptor de estrogênio — mecanismo diferente de reduzir a síntese; não costuma reduzir o E2 sérico diretamente, mas antagoniza seu efeito)"],
+        "interferem":["Amostra hemolisada pode interferir no imunoensaio, dependendo do método utilizado"]
+      },
+      "interferentes":[
+        {"fator":"Fase do ciclo menstrual","efeito":"Fator determinante para a interpretação — o mesmo valor pode ser normal ou anormal dependendo do dia do ciclo"},
+        {"fator":"Uso recente de contraceptivo hormonal ou TRH","efeito":"Altera significativamente o resultado, mascarando a produção endógena"},
+        {"fator":"Gestação","efeito":"Eleva progressivamente o estradiol ao longo dos trimestres, por produção placentária"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Informar a fase do ciclo menstrual e o uso de hormônios exógenos (TRH, contraceptivos, hormonoterapia).","Em protocolos de reprodução assistida, seguir o cronograma de coleta específico definido pela clínica."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["progesterona","lh","fsh"],
+      "correlatosTexto":["Ultrassonografia transvaginal (monitorização folicular)"],
+      "alertas":["Em uso de TRH, elevação excessiva do estradiol aumenta o risco de tromboembolismo venoso e de eventos cardiovasculares — respeitar sempre a menor dose eficaz.","Em estimulação ovariana controlada, elevação rápida e acentuada do estradiol é sinal de alerta para Síndrome de Hiperestimulação Ovariana (SHO) — acompanhamento conjunto com a equipe de reprodução assistida é essencial.","Em uso de inibidor de aromatase, a supressão adequada do E2 é parâmetro de adesão e eficácia terapêutica no tratamento adjuvante do câncer de mama."],
+      "observacoes":"A interpretação do estradiol depende sempre do contexto clínico completo (sexo, fase do ciclo, uso de hormônios exógenos, objetivo do tratamento) — um valor de referência único não se aplica a todos os cenários.",
+      "fontes":["American Society for Reproductive Medicine (ASRM)","Endocrine Society — Menopausal Hormone Therapy Guideline","Endocrine Society — Gender-Affirming Hormone Therapy Guideline","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"progesterona",
+      "nome":"Progesterona",
+      "sigla":"P4",
+      "sinonimos":["P4","Progesterona Sérica"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo gonadal",
+      "sistema":"Endócrino / Reprodutivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Hormônio produzido pelo corpo lúteo após a ovulação e, na gestação, também pela placenta. Sua elevação na fase lútea confirma que houve ovulação naquele ciclo, e sua ação sobre o endométrio é essencial para a implantação e manutenção da gestação inicial, além de proteger o endométrio da ação proliferativa isolada do estrogênio.",
+      "finalidade":"Confirmação de ovulação, suporte de fase lútea em protocolos de fertilidade, e adequação de esquema de proteção endometrial em mulheres não histerectomizadas em uso de terapia de reposição hormonal com estrogênio.",
+      "valoresReferencia":[
+        {"parametro":"Fase folicular","faixa":"Abaixo de 1,5","unidade":"ng/mL","obs":""},
+        {"parametro":"Fase lútea (pico médio, confirma ovulação)","faixa":"3 – 25","unidade":"ng/mL","obs":"Coleta idealmente 7 dias antes da menstruação esperada"},
+        {"parametro":"Gestação — 1º trimestre","faixa":"10 – 44","unidade":"ng/mL","obs":""},
+        {"parametro":"Pós-menopausa","faixa":"Abaixo de 1,0","unidade":"ng/mL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação na fase lútea é fisiológica e confirma ovulação; também esperada na gestação e no suporte com progestágeno exógeno.",
+        "causas":["Fase lútea normal (confirma ovulação)","Gestação","Uso de progestágenos exógenos (suporte de fase lútea, TRH)"],
+        "examesApoio":["estradiol"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução pode indicar anovulação, insuficiência de fase lútea ou ameaça de abortamento em gestação inicial.",
+        "causas":["Anovulação","Insuficiência de fase lútea","Ameaça de abortamento (queda em gestação inicial)","Menopausa"],
+        "examesApoio":["estradiol"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Fase lútea normal/ovulação confirmada","Gestação","Suporte com progestágeno exógeno"],
+        "reduzido":["Anovulação","Insuficiência de fase lútea","Ameaça de abortamento","Menopausa"]
+      },
+      "medicamentos":{
+        "aumentam":["Progesterona micronizada, didrogesterona e outros progestágenos exógenos usados em suporte de fase lútea ou TRH"],
+        "reduzem":["Agonistas de GnRH (supressão do eixo gonadal)","Antiprogestágenos (mifepristona)"],
+        "interferem":["Amostra hemolisada pode interferir no imunoensaio"]
+      },
+      "interferentes":[
+        {"fator":"Dia do ciclo em que a coleta foi realizada","efeito":"Fundamental — idealmente coletada cerca de 7 dias antes da menstruação esperada (por exemplo, 'dia 21' em ciclo de 28 dias)"},
+        {"fator":"Uso de progestágeno exógeno recente","efeito":"Eleva o resultado, mascarando a produção endógena de progesterona"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Registrar a data da última menstruação e o dia do ciclo na requisição.","Em suporte de fertilização, seguir o protocolo específico definido pela clínica."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["estradiol"],
+      "correlatosTexto":["Beta-hCG (confirmação de gestação)","Ultrassonografia transvaginal"],
+      "alertas":["Em TRH com estrogênio, mulheres não histerectomizadas devem sempre receber progestágeno concomitante para proteção endometrial — a ausência dessa combinação é erro de conduta grave, com risco de hiperplasia e adenocarcinoma de endométrio.","Queda de progesterona em gestação inicial associada a sangramento vaginal requer avaliação médica urgente pelo risco de abortamento.","A dosagem isolada de progesterona não deve ser usada como único critério de confirmação de ovulação sem correlação com o dia do ciclo em que foi coletada."],
+      "observacoes":"Uma única dosagem de progesterona elevada na fase lútea é o método mais simples e amplamente usado na prática clínica para confirmar que houve ovulação naquele ciclo.",
+      "fontes":["American Society for Reproductive Medicine (ASRM)","Federação Brasileira das Associações de Ginecologia e Obstetrícia (FEBRASGO)","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"testosterona-total",
+      "nome":"Testosterona Total",
+      "sigla":"T",
+      "sinonimos":["Testosterona Sérica Total","Testosterona Total Sérica"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo gonadal",
+      "sistema":"Endócrino / Reprodutivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Principal andrógeno circulante, produzido pelas células de Leydig nos testículos (homens) e, em menor quantidade, pelos ovários e adrenais (mulheres). A fração total inclui o hormônio ligado à SHBG e à albumina, além da fração livre biologicamente mais ativa. Apresenta ritmo circadiano, com pico matinal.",
+      "finalidade":"Diagnóstico e monitoramento da terapia de reposição de testosterona (TRT) no hipogonadismo masculino e na hormonoterapia masculinizante, e investigação de hiperandrogenismo em mulheres.",
+      "valoresReferencia":[
+        {"parametro":"Homens adultos","faixa":"264 – 916","unidade":"ng/dL","obs":"Variação ampla conforme método e idade; coleta idealmente pela manhã (7h–10h), pelo ritmo circadiano"},
+        {"parametro":"Mulheres adultas","faixa":"8 – 60","unidade":"ng/dL","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação pode ser terapêutica (TRT, hormonoterapia masculinizante) ou indicar uso não prescrito de anabolizantes ou hiperandrogenismo em mulheres.",
+        "causas":["Terapia de reposição de testosterona (TRT)","Hormonoterapia de afirmação de gênero masculinizante","Uso não prescrito de esteroides anabolizantes","Síndrome do ovário policístico e outras causas de hiperandrogenismo em mulheres","Tumores produtores de andrógeno (raro)"],
+        "examesApoio":["lh","fsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução sugere hipogonadismo masculino, primário ou secundário, ou supressão por fármacos/comorbidades.",
+        "causas":["Hipogonadismo primário (falência testicular)","Hipogonadismo secundário (disfunção hipotálamo-hipofisária)","Uso crônico de opioides (supressão do eixo hipotálamo-hipófise-gonadal)","Envelhecimento fisiológico e obesidade"],
+        "examesApoio":["lh","fsh"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Uso de TRT ou hormonoterapia masculinizante","Uso de esteroides anabolizantes","Síndrome do ovário policístico"],
+        "reduzido":["Hipogonadismo masculino primário ou secundário","Uso crônico de opioides","Obesidade"]
+      },
+      "medicamentos":{
+        "aumentam":["Ésteres de testosterona injetáveis (cipionato, enantato, undecanoato)","Gel ou adesivo transdérmico de testosterona","Esteroides anabolizantes de uso não prescrito"],
+        "reduzem":["Opioides em uso crônico (supressão do eixo hipotálamo-hipófise-gonadal)","Agonistas de GnRH usados no câncer de próstata (gosserrelina, leuprorrelina — castração química)","Espironolactona (bloqueio do receptor androgênico e inibição da esteroidogênese, usada em hormonoterapia feminilizante)","Cetoconazol em dose alta (inibe a esteroidogênese adrenal e gonadal)"],
+        "interferem":["Coleta fora do horário matinal pode subestimar o valor, pelo ritmo circadiano"]
+      },
+      "interferentes":[
+        {"fator":"Horário da coleta","efeito":"Fundamental — pico matinal; coletar idealmente entre 7h e 10h"},
+        {"fator":"Exercício físico intenso recente","efeito":"Pode elevar transitoriamente o resultado"},
+        {"fator":"Obesidade","efeito":"Reduz a SHBG, alterando a relação entre testosterona total e livre — a testosterona total pode subestimar o estado androgênico real nesses pacientes"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Coletar preferencialmente entre 7h e 10h da manhã, pelo ritmo circadiano.","Não exige jejum.","Em suspeita de hipogonadismo, confirmar com uma segunda dosagem em outro dia antes de firmar o diagnóstico."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["lh","fsh"],
+      "correlatosTexto":["Testosterona livre/biodisponível","SHBG (globulina ligadora de hormônios sexuais)","PSA (antes e durante a TRT)","Hematócrito/hemograma (rastreio de policitemia)"],
+      "alertas":["Em uso de TRT, hematócrito acima de 54% é critério clássico para suspensão temporária ou redução de dose, pelo risco de eventos trombóticos — monitorar hemograma periodicamente.","Elevação desproporcional do PSA durante a TRT exige avaliação urológica antes de dar continuidade ao tratamento.","Piora da apneia obstrutiva do sono é evento adverso conhecido da TRT e deve ser investigada ativamente.","O diagnóstico de hipogonadismo deve sempre combinar sintomas clínicos com pelo menos duas dosagens de testosterona baixas, coletadas pela manhã em dias diferentes."],
+      "observacoes":"A testosterona total pode não refletir adequadamente o estado androgênico em homens obesos ou com alterações de proteínas carreadoras (SHBG reduzida) — nesses casos, a testosterona livre ou biodisponível é mais informativa.",
+      "fontes":["Endocrine Society — Testosterone Therapy in Men with Hypogonadism Guideline","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)","Sociedade Brasileira de Urologia"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"prolactina",
+      "nome":"Prolactina",
+      "sigla":"PRL",
+      "sinonimos":["PRL","Prolactina Sérica"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo hipofisário",
+      "sistema":"Endócrino",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Hormônio produzido pela hipófise anterior, cuja principal função fisiológica é estimular a lactação. Sua secreção é tonicamente inibida pela dopamina — por isso, fármacos antagonistas do receptor D2 são uma das causas mais comuns de hiperprolactinemia na prática clínica.",
+      "finalidade":"Investigação de galactorreia, amenorreia, disfunção erétil/infertilidade, e rastreio ou monitoramento de hiperprolactinemia induzida por fármacos ou por prolactinoma.",
+      "valoresReferencia":[
+        {"parametro":"Mulheres não gestantes","faixa":"4,8 – 23,3","unidade":"ng/mL","obs":"Valores fisiologicamente mais altos na gestação e lactação"},
+        {"parametro":"Homens","faixa":"4,0 – 15,2","unidade":"ng/mL","obs":"Referência varia conforme o método do laboratório"}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Hiperprolactinemia tem causas fisiológicas, medicamentosas e patológicas, sendo essencial excluir causas medicamentosas antes de investigar prolactinoma.",
+        "causas":["Prolactinoma (adenoma hipofisário produtor de prolactina)","Hiperprolactinemia induzida por fármacos (antipsicóticos, antieméticos, alguns antidepressivos)","Hipotireoidismo primário não tratado (TRH elevado estimula a secreção de prolactina)","Gestação e lactação (fisiológico)","Estresse da própria punção venosa (elevação leve e transitória)"],
+        "examesApoio":["tsh"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução tem relevância clínica limitada na maioria dos contextos, exceto no uso terapêutico de agonistas dopaminérgicos.",
+        "causas":["Uso de agonistas dopaminérgicos (cabergolina, bromocriptina)","Síndrome de Sheehan (necrose hipofisária pós-parto), geralmente associada a pan-hipopituitarismo"],
+        "examesApoio":[]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Prolactinoma","Hiperprolactinemia medicamentosa","Hipotireoidismo primário não tratado","Gestação/lactação"],
+        "reduzido":["Uso de agonista dopaminérgico","Hipopituitarismo (Síndrome de Sheehan)"]
+      },
+      "medicamentos":{
+        "aumentam":["Antipsicóticos com alta afinidade pelo receptor D2 (risperidona, haloperidol, sulpirida, amissulprida — mais que aripiprazol ou quetiapina)","Antieméticos antagonistas D2 (metoclopramida, domperidona)","Antidepressivos, em menor grau (ISRS, tricíclicos)","Verapamil","Estrogênios em dose alta"],
+        "reduzem":["Agonistas dopaminérgicos (cabergolina, bromocriptina), usados no tratamento de prolactinoma e hiperprolactinemia"],
+        "interferem":["Estresse da coleta ou manipulação mamária recente pode elevar transitoriamente o resultado"]
+      },
+      "interferentes":[
+        {"fator":"Estresse da punção venosa","efeito":"Pode elevar transitoriamente o resultado — considerar repetir a dosagem se o valor estiver levemente alterado sem outra explicação"},
+        {"fator":"Manipulação mamária ou relação sexual recente","efeito":"Pode elevar a prolactina antes da coleta"},
+        {"fator":"Sono e ritmo circadiano","efeito":"Há picos de secreção noturnos — idealmente coletar pela manhã, em repouso"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Coletar preferencialmente pela manhã, após repouso de 20–30 minutos.","Evitar estresse físico ou emocional e manipulação mamária nas horas anteriores à coleta.","Não exige jejum."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["tsh"],
+      "correlatosTexto":["Ressonância magnética de sela túrcica (investigação de prolactinoma)","Teste de macroprolactina (exclui hiperprolactinemia por macroprolactina, sem relevância clínica)"],
+      "alertas":["Antes de investigar prolactinoma, é essencial excluir causas medicamentosas — a intervenção farmacêutica de trocar o antipsicótico agressor (por exemplo, risperidona/haloperidol por aripiprazol/quetiapina, de menor afinidade D2) costuma normalizar a prolactina sem necessidade de investigação por imagem.","Elevações muito acentuadas (acima de 200 ng/mL) são mais sugestivas de prolactinoma que de causa medicamentosa.","Hipotireoidismo primário não tratado é causa reversível de hiperprolactinemia e deve ser sempre descartado (dosar TSH) antes de avançar para investigação por imagem."],
+      "observacoes":"Interromper ou trocar o fármaco suspeito e redosar a prolactina após algumas semanas é conduta padrão antes de avançar para investigação por imagem, quando clinicamente seguro fazê-lo.",
+      "fontes":["Endocrine Society — Clinical Practice Guideline for Hyperprolactinemia","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"lh",
+      "nome":"Hormônio Luteinizante",
+      "sigla":"LH",
+      "sinonimos":["LH","Luteotrofina"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo gonadal",
+      "sistema":"Endócrino / Reprodutivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Gonadotrofina hipofisária que, em mulheres, desencadeia a ovulação (pico de LH) e estimula a produção de progesterona pelo corpo lúteo; em homens, estimula as células de Leydig a produzir testosterona. Deve sempre ser interpretado em conjunto com o FSH e o contexto clínico/ciclo menstrual.",
+      "finalidade":"Diferenciação entre hipogonadismo hipergonadotrófico (primário) e hipogonadotrófico (secundário/central), monitoramento de bloqueio hormonal com análogos de GnRH, e programação da indução de ovulação em protocolos de fertilidade.",
+      "valoresReferencia":[
+        {"parametro":"Mulheres — fase folicular","faixa":"2 – 12","unidade":"UI/L","obs":""},
+        {"parametro":"Mulheres — pico ovulatório","faixa":"14 – 96","unidade":"UI/L","obs":""},
+        {"parametro":"Mulheres — fase lútea","faixa":"1 – 12","unidade":"UI/L","obs":""},
+        {"parametro":"Mulheres — pós-menopausa","faixa":"15 – 62","unidade":"UI/L","obs":""},
+        {"parametro":"Homens adultos","faixa":"1,5 – 9,3","unidade":"UI/L","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere falência gonadal primária (ovariana ou testicular) ou representa o pico ovulatório fisiológico.",
+        "causas":["Menopausa e falência ovariana primária","Hipogonadismo primário masculino (falência testicular)","Síndrome do ovário policístico (relação LH/FSH tipicamente aumentada)","Pico ovulatório (fisiológico, no meio do ciclo)"],
+        "examesApoio":["fsh","estradiol","testosterona-total"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução sugere hipogonadismo hipogonadotrófico (central) ou supressão terapêutica do eixo gonadal.",
+        "causas":["Hipogonadismo hipogonadotrófico (disfunção hipotálamo-hipofisária)","Uso de análogos de GnRH em supressão gonadal (câncer de próstata, endometriose, puberdade precoce)","Uso de contraceptivos hormonais"],
+        "examesApoio":["fsh","estradiol","testosterona-total"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Menopausa","Falência gonadal primária","Síndrome do ovário policístico"],
+        "reduzido":["Hipogonadismo hipogonadotrófico","Bloqueio hormonal com análogo de GnRH"]
+      },
+      "medicamentos":{
+        "aumentam":["Citrato de clomifeno (estimula o eixo hipotálamo-hipófise-gonadal)","Agonistas de GnRH na fase inicial de uso (efeito 'flare-up' transitório antes da supressão)"],
+        "reduzem":["Agonistas de GnRH em uso contínuo (gosserrelina, leuprorrelina — supressão/castração química)","Antagonistas de GnRH (degarelix — supressão rápida, sem efeito flare-up)","Contraceptivos hormonais combinados","Andrógenos exógenos (feedback negativo sobre o eixo)"],
+        "interferem":["hCG usado em indução de ovulação pode gerar reação cruzada em alguns imunoensaios de LH, dependendo do método"]
+      },
+      "interferentes":[
+        {"fator":"Fase do ciclo menstrual","efeito":"Fundamental para a interpretação — o mesmo valor pode ser normal ou indicar pico ovulatório dependendo do dia do ciclo"},
+        {"fator":"Uso de contraceptivos hormonais ou análogos de GnRH","efeito":"Suprime o LH, mascarando a atividade gonadal endógena"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Registrar a fase do ciclo menstrual e o uso de medicamentos hormonais na requisição."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["fsh","estradiol","testosterona-total"],
+      "correlatosTexto":["hCG (indução de ovulação)"],
+      "alertas":["Em terapia de supressão gonadal com agonistas de GnRH (câncer de próstata avançado, endometriose), confirmar a queda do LH a níveis de castração é parâmetro de eficácia terapêutica — LH não suprimido pode indicar falha de adesão à aplicação injetável.","A relação LH/FSH elevada (acima de 2–3:1) é um critério de apoio, não isolado, para síndrome do ovário policístico.","Em protocolos de fertilidade, o momento exato do pico de LH orienta a programação da coleta de óvulos ou da relação sexual programada."],
+      "observacoes":"LH e FSH devem sempre ser interpretados em conjunto e correlacionados com a fase do ciclo menstrual ou com o contexto de bloqueio hormonal em curso.",
+      "fontes":["American Society for Reproductive Medicine (ASRM)","Endocrine Society — GnRH Analog Therapy Guidelines","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
+      "dataAtualizacao":"2026-09-17"
+    },
+
+    {
+      "id":"fsh",
+      "nome":"Hormônio Folículo-Estimulante",
+      "sigla":"FSH",
+      "sinonimos":["FSH","Folitropina"],
+      "categoria":"hormonios",
+      "ambiente":"ambos",
+      "grupo":"Eixo gonadal",
+      "sistema":"Endócrino / Reprodutivo",
+      "amostraTipo":"Soro",
+      "consultaRapida":false,
+      "favoritoPadrao":false,
+      "descricao":"Gonadotrofina hipofisária que estimula o crescimento folicular ovariano em mulheres e a espermatogênese em homens. É o marcador hormonal basal mais utilizado na avaliação de reserva ovariana e de falência gonadal, embora hoje o AMH seja considerado um marcador complementar com maior valor preditivo em alguns contextos.",
+      "finalidade":"Avaliação de reserva ovariana, diagnóstico de falência ovariana prematura e menopausa, investigação de infertilidade masculina relacionada à espermatogênese, e monitoramento de estimulação ovariana controlada.",
+      "valoresReferencia":[
+        {"parametro":"Mulheres — fase folicular (dia 2–5 do ciclo)","faixa":"3,5 – 12,5","unidade":"UI/L","obs":"Dosagem de referência para avaliação de reserva ovariana"},
+        {"parametro":"Mulheres — pico ovulatório","faixa":"4,7 – 21,5","unidade":"UI/L","obs":""},
+        {"parametro":"Mulheres — fase lútea","faixa":"1,7 – 7,7","unidade":"UI/L","obs":""},
+        {"parametro":"Mulheres — pós-menopausa","faixa":"25,8 – 134,8","unidade":"UI/L","obs":""},
+        {"parametro":"Homens adultos","faixa":"1,5 – 12,4","unidade":"UI/L","obs":""}
+      ],
+      "interpretacaoAlta":{
+        "resumo":"Elevação sugere falência gonadal primária, seja ovariana (menopausa, reserva diminuída) ou testicular.",
+        "causas":["Menopausa e falência ovariana primária","Reserva ovariana diminuída","Hipogonadismo primário masculino (dano testicular, quimioterapia ou radioterapia prévia)"],
+        "examesApoio":["lh","estradiol"]
+      },
+      "interpretacaoBaixa":{
+        "resumo":"Redução sugere hipogonadismo hipogonadotrófico (central) ou supressão hormonal terapêutica.",
+        "causas":["Hipogonadismo hipogonadotrófico (disfunção hipotálamo-hipofisária)","Uso de contraceptivos hormonais","Uso de análogos de GnRH em supressão"],
+        "examesApoio":["lh","estradiol"]
+      },
+      "condicoesClinicas":{
+        "aumentado":["Menopausa","Falência ovariana prematura","Dano testicular"],
+        "reduzido":["Hipogonadismo hipogonadotrófico","Uso de contraceptivo hormonal"]
+      },
+      "medicamentos":{
+        "aumentam":["Citrato de clomifeno (estimula a liberação de FSH endógeno)","Gonadotrofinas recombinantes exógenas usadas terapeuticamente em estimulação ovariana (folitropina alfa/beta) — podem ser detectadas pelo imunoensaio, dependendo da reatividade cruzada do método"],
+        "reduzem":["Contraceptivos hormonais combinados","Agonistas e antagonistas de GnRH em supressão contínua","Andrógenos exógenos (feedback negativo em homens)"],
+        "interferem":["Uso recente de gonadotrofina exógena pode ser detectado pelo imunoensaio, dependendo da especificidade do método utilizado"]
+      },
+      "interferentes":[
+        {"fator":"Dia do ciclo menstrual","efeito":"Fundamental — para avaliação de reserva ovariana, a dosagem deve idealmente ser feita entre o 2º e o 5º dia do ciclo"},
+        {"fator":"Uso de contraceptivos hormonais ou indutores de ovulação","efeito":"Altera significativamente o resultado, mascarando a produção endógena"}
+      ],
+      "preparo":{"jejumNecessario":false,"tempoJejumHoras":0,"observacoes":["Não exige jejum.","Para avaliação de reserva ovariana, coletar idealmente entre o 2º e o 5º dia do ciclo menstrual."]},
+      "amostra":{"tipo":"Soro","tubo":"Tampa amarela ou vermelha (sem anticoagulante, com ou sem gel separador)","armazenamento":"Estável em temperatura ambiente por algumas horas; refrigerar se houver atraso","rejeicao":["Amostra hemolisada","Volume insuficiente"]},
+      "correlatos":["lh","estradiol"],
+      "correlatosTexto":["Hormônio Anti-Mülleriano (AMH — avaliação de reserva ovariana)","Contagem de folículos antrais (ultrassonografia)","Espermograma (avaliação de fertilidade masculina)"],
+      "alertas":["FSH elevado, especialmente acima de 25 UI/L de forma persistente em mulher com menos de 40 anos, sugere falência ovariana prematura e deve ser investigado/confirmado.","Durante estimulação ovariana controlada, a titulação da dose de gonadotrofina recombinante é guiada pela resposta folicular (ultrassonografia) e pelo estradiol, não apenas pelo FSH isolado.","Em homens com azoospermia, FSH elevado sugere origem testicular (não obstrutiva), enquanto FSH normal ou baixo sugere causa obstrutiva ou central."],
+      "observacoes":"O hormônio anti-mülleriano (AMH) tem hoje maior valor preditivo para reserva ovariana que o FSH basal isolado, mas o FSH ainda é amplamente utilizado por ser mais acessível e consolidado na prática clínica.",
+      "fontes":["American Society for Reproductive Medicine (ASRM) — Female Reproductive Aging","Endocrine Society","Sociedade Brasileira de Endocrinologia e Metabologia (SBEM)"],
       "dataAtualizacao":"2026-09-17"
     }
   ]

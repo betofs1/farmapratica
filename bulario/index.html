@@ -145,15 +145,17 @@
     position:absolute; right:40px; top:50%; transform:translateY(-50%);
     display:flex; align-items:center; gap:10px; flex-shrink:0;
   }
-  .theme-toggle{
+  .theme-toggle, .topbar-icon-btn{
     display:flex; align-items:center; justify-content:center;
     width:40px; height:40px; border-radius:9px;
     border:1px solid var(--border); background:transparent; color:var(--text);
-    cursor:pointer; transition: background-color .15s ease, border-color .15s ease;
+    cursor:pointer; transition: background-color .15s ease, border-color .15s ease, opacity .15s ease;
+    text-decoration:none;
   }
-  .theme-toggle:hover{ background:var(--hover-tint); }
-  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle:hover, .topbar-icon-btn:hover{ background:var(--hover-tint); }
+  .theme-toggle svg, .topbar-icon-btn svg{ width:18px; height:18px; }
   .theme-toggle .icon-moon{ display:none; }
+  .topbar-icon-btn:disabled{ opacity:.35; cursor:default; pointer-events:none; }
 
   @media (max-width:800px){
     .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
@@ -258,6 +260,18 @@
   .med-item-fav{ font-size:1.05rem; color:var(--border); flex-shrink:0; }
   .med-item-fav.star-on{ color:var(--amber); }
 
+  /* Medicamento com ficha farmacoterapêutica completa (mecanismo de ação,
+     posologia, interações etc. já pesquisados e revisados) — destacado
+     visualmente dos que ainda têm apenas nome/classe (ficha em revisão). */
+  .med-item.med-item-completo{
+    border-color:var(--accent);
+    background:linear-gradient(135deg, var(--accent-glow), var(--card) 60%);
+    box-shadow: 0 0 0 1px var(--accent), 0 2px 8px var(--accent-glow);
+  }
+  .med-item.med-item-completo:hover{ background:linear-gradient(135deg, var(--accent-glow), var(--card-hover) 60%); }
+  .med-item-completo .med-item-sub{ color:var(--accent-dark); }
+  body.light .med-item-completo .med-item-sub{ color:var(--accent); }
+
   .empty-msg{ color:var(--text-dim); font-size:.9rem; }
 
   /* ================= Grupo / subclasses (Nível 2) ================= */
@@ -337,7 +351,8 @@
   .ficha-sidebar a.ativo{ color:var(--accent); border-left-color:var(--accent); font-weight:700; }
 
   .ficha-conteudo{ min-width:0; }
-  .ficha-secao{ padding-bottom:26px; margin-bottom:26px; border-bottom:1px solid var(--border); scroll-margin-top:14px; }
+  .ficha-secao{ padding-bottom:26px; margin-bottom:26px; border-bottom:1px solid var(--border); scroll-margin-top:14px; overflow-wrap:break-word; word-break:break-word; }
+  .ficha-secao a{ overflow-wrap:break-word; word-break:break-word; }
   .ficha-secao:last-of-type{ border-bottom:0; }
   .ficha-secao h2{ font-size:1.02rem; margin:0 0 12px; color:var(--accent); }
   .ficha-secao h3{ font-size:.88rem; margin:16px 0 8px; }
@@ -371,6 +386,8 @@
     border:1px solid var(--sev-moderada); border-radius:12px; padding:16px 18px;
   }
   .alerta-box h3{ margin:0 0 10px; color:var(--sev-moderada); }
+  .alerta-box-info{ background: linear-gradient(135deg, var(--accent-glow), transparent); border-color:var(--accent); }
+  .alerta-box-info h3{ color:var(--accent-dark); }
 
   .tabela-monitoramento{ width:100%; border-collapse:collapse; font-size:.84rem; }
   .tabela-monitoramento th, .tabela-monitoramento td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
@@ -422,9 +439,15 @@
   </div>
   <div class="titulo-central">
     <div class="titulo-principal">BULÁRIO FARMACÊUTICO</div>
-    <div class="titulo-descricao">Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada.</div>
+    <div class="titulo-descricao">Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. 2.258 medicamentos catalogados.</div>
   </div>
   <div class="topbar-actions">
+    <button class="topbar-icon-btn" id="btn-topo-voltar" onclick="voltarPagina()" title="Voltar" aria-label="Voltar" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="topbar-icon-btn" onclick="irPara('#/')" title="Início do Bulário" aria-label="Início do Bulário">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+    </button>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
@@ -455,7 +478,7 @@
 </main>
 
 <footer class="rodape-aviso">
-  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Base inicial com 24 medicamentos, revisada em 08/09/2026 — em expansão contínua.</p>
+  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Catálogo com 2.258 fármacos, classificados por classe terapêutica em 17 grupos e 541 subclasses — fichas farmacoterapêuticas completas (mecanismo de ação, posologia, interações, contraindicações etc.) em expansão e revisão manual contínuas, medicamento por medicamento.</p>
 </footer>
 
 <script src="data.js"></script>

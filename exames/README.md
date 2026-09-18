@@ -129,7 +129,7 @@ adicionar novos exames.
 
 ## Estado atual do conteúdo (atualizado em 17/09/2026)
 
-35 exames com todos os campos completos. Aos 20 originais — cobrindo os
+43 exames com todos os campos completos. Aos 20 originais — cobrindo os
 itens listados como "Consulta Rápida"/"Mais Consultados": Hemograma,
 Glicemia de Jejum, HbA1c, Colesterol Total, HDL, LDL, Triglicerídeos,
 Creatinina, Ureia, TGO, TGP, GGT, TSH, T4 Livre, Vitamina D, Vitamina B12,
@@ -155,12 +155,23 @@ somente os 9 exames que ainda não tinham página. Os cruzamentos
 Reticulócitos e G6PD foram atualizados para apontar, como links
 clicáveis, para os novos exames de Bioquímica e Hematologia correlatos.
 
+Também em 17/09/2026, a categoria Hormônios recebeu 8 exames novos, além
+dos 2 que já existiam (TSH e T4 Livre, mantidos sem alteração): Tri-
+iodotironina Total (T3), Cortisol Sérico, Estradiol (E2), Progesterona,
+Testosterona Total, Prolactina, LH e FSH — cobrindo o eixo tireoidiano, o
+eixo hipotálamo-hipófise-adrenal e o eixo gonadal, com foco em condutas
+farmacêuticas como titulação de levotiroxina/antitireoidianos, desmame de
+corticoterapia crônica, ajuste de TRH e de reposição de testosterona,
+manejo de hiperprolactinemia induzida por antipsicóticos e monitorização
+de estimulação ovariana. TSH e T4 Livre passaram a referenciar T3 Total
+como correlato clicável.
+
 As demais categorias (Marcadores Cardíacos, Imunologia, Infectologia,
 Coagulação, Urinálise, Parasitologia, Microbiologia, Gasometria, Fezes,
-Imagem, Marcadores Tumorais, Endocrinologia além de TSH/T4L) estão
-estruturadas na navegação, mas ainda sem exames — próximos candidatos
-naturais: CK-MB e Troponina (cardíacos), Sorologias virais e VDRL
-(infectologia), EAS/Urina tipo I (urinálise), PTH (endocrinologia).
+Imagem, Marcadores Tumorais, Endocrinologia) estão estruturadas na
+navegação, mas ainda sem exames — próximos candidatos naturais: CK-MB e
+Troponina (cardíacos), Sorologias virais e VDRL (infectologia), EAS/Urina
+tipo I (urinálise), PTH e AMH (endocrinologia).
 
 Todo o conteúdo clínico (valores de referência, causas de alteração,
 interferentes, medicamentos relacionados) foi redigido com base em
