@@ -508,6 +508,8 @@
     <button class="filter-apres-btn"        data-f="outros_apres" onclick="setFiltroApres('outros_apres',this)">➕ Outros</button>
   </div>
 
+  <div class="filter-row-apres" id="filterRowDose" style="display:none"></div>
+
   <div class="status-bar" id="statusBar"></div>
   <div id="results"></div>
 
@@ -582,6 +584,7 @@ async function carregarDB() {
       DB_META.fonte = m.fonte || "CMED/ANVISA";
     }
     DB_META.total = DB.length;
+    eqPrepararDB(DB);
     dbReady = true;
     updateDBUI("online");
     var __deepMed = new URLSearchParams(location.search).get("med");
@@ -631,7 +634,7 @@ const QUICK_DEFAULT = ["Diosmina + Hesperidina","Omeprazol","Amoxicilina","Dipir
 const HIST_KEY = "farma_hist_v1";
 const HIST_MAX = 12;
 
-let allResults = [], filtroAtivo = "todos", viewMode = "resumida";
+let allResults = [], filtroAtivo = "todos", viewMode = "resumida", filtroDose = null;
 
 function getHist() {
   try { return JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); } catch(e) { return []; }
@@ -755,7 +758,7 @@ function clearSearch() {
   document.getElementById("results").innerHTML = "";
   document.getElementById("filterRow").style.display = "none";
     document.getElementById("filterRowApres").style.display = "none";
-    document.getElementById("filterRowApres").style.display = "none";
+    document.getElementById("filterRowDose").style.display = "none";
   renderWelcome();
 }
 
@@ -773,6 +776,7 @@ async function doSearch() {
 
   setLoading(true);
   filtroAtivo = "todos";
+  filtroDose = null;
   filtroApres = [];
   document.querySelectorAll(".filter-btn").forEach(b => {
     b.className = "filter-btn" + (b.dataset.t==="todos" ? " fa" : "");
@@ -788,6 +792,139 @@ async function doSearch() {
   renderResults(raw);
 }
 
+// ── Equivalência exata (composição + dose + forma farmacêutica) ───────────────
+const _EQ_SINON = [
+  [/\bclatrato de (.+?) betaciclodextrina\b/g, "$1"],
+  [/\bde sodio\b/g, "sodico"], [/\bde potassio\b/g, "potassico"],
+  [/\bde calcio\b/g, "calcico"], [/\bde magnesio\b/g, "magnesico"],
+  [/\bmagnesio\b/g, "magnesico"],
+  [/\bclorfenamina\b/g, "clorfeniramina"],
+  [/\bbrometo de n-?butilescopolamina\b/g, "butilbrometo de escopolamina"],
+];
+const _EQ_HIDRAT = /\b(?:(?:mono|di|tri|tetra|penta|hexa|hepta|hemi|sesqui)-?h?idratad[oa]|anidr[oa]|micronizad[oa])\b/g;
+
+function eqComponente(p) {
+  let s = normalizar(p).replace(_EQ_HIDRAT, " ");
+  _EQ_SINON.forEach(([re, rep]) => { s = s.replace(re, rep); });
+  return s.replace(/\s+/g, " ").trim();
+}
+function eqComposicao(principio) {
+  const set = new Set((principio || "").split(";").map(eqComponente).filter(Boolean));
+  return [...set].sort();
+}
+function eqNumero(t) {
+  t = t.trim();
+  if (t.includes(",")) t = t.replace(/\./g, "").replace(",", ".");
+  else if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, "");
+  const v = parseFloat(t);
+  return isNaN(v) ? null : v;
+}
+function eqUnidade(u) {
+  u = (u || "").toUpperCase().replace(/\s+/g, "").replace(/µG|UG/g, "MCG");
+  let [num, den] = u.split("/");
+  let f = 1;
+  if (num === "G") { num = "MG"; f = 1000; }
+  else if (num === "MCG") { num = "MG"; f = 0.001; }
+  else if (num === "KG") { num = "MG"; f = 1e6; }
+  if (den !== undefined) {
+    const dm = den.match(/^(\d+(?:[.,]\d+)?)?(.*)$/);
+    const q = dm[1] ? eqNumero(dm[1]) : 1;
+    let du = dm[2];
+    if (du === "L") { du = "ML"; f /= 1000 * q; } else if (du === "G" ) { f /= q; } else f /= q;
+    return { u: num + "/" + du, f };
+  }
+  return { u: num, f };
+}
+const _EQ_UNID = /^(?:MG|MCG|µG|UG|G|KG|UI|U|KUI|MUI|MEQ|MMOL|ML|L|%|UFC|GV|NG)?(?:\/\d*(?:[.,]\d+)?(?:MG|MCG|ML|G|L|DOSE|DIA|H|24H|KG|CM2|JATO|ACION|GOTA|GT|CAP|COM))?$/;
+function eqDose(apres) {
+  let a = " " + (apres || "").toUpperCase() + " ";
+  a = a.replace(/([()+])/g, " $1 ")
+       .replace(/(\d)(?=[A-Zµ%])/g, "$1 ")
+       .replace(/\/\s*(\d+(?:[.,]\d+)?)?\s*(MG|MCG|ML|G|L|DOSE|DIA|H|KG)\b/g, "/$1$2")
+       .replace(/\s+/g, " ").trim();
+  const toks = a.split(" ");
+  const doses = [];
+  let pend = [], i = 0, depth = 0, lastWasNum = false, ignorar = false;
+  for (; i < toks.length; i++) {
+    const t = toks[i];
+    if (t === "(") {
+      // grupo entre parênteses com unidade dentro = equivalência (ex.: "1 MG (50 KUI)") → ignora
+      const fecha = toks.indexOf(")", i);
+      if (fecha > 0 && doses.length + pend.length > 0 && toks.slice(i + 1, fecha).some(x => /[A-Z]/.test(x))) { i = fecha; continue; }
+      depth++; lastWasNum = false; continue;
+    }
+    if (t === ")") { depth = Math.max(0, depth - 1); lastWasNum = false; continue; }
+    if (t === "+") { lastWasNum = false; continue; }
+    if (/^\d+(?:[.,]\d+)*$/.test(t)) {
+      if (lastWasNum && /^\d{3}$/.test(t) && pend.length) { pend[pend.length - 1] += t; continue; }
+      pend.push(t); lastWasNum = true; continue;
+    }
+    if (/[A-Z%µ]/.test(t) && _EQ_UNID.test(t) && pend.length) {
+      const { u, f } = eqUnidade(t);
+      pend.forEach(n => { const v = eqNumero(n); if (v !== null) doses.push(Number((v * f).toPrecision(8)) + " " + u); });
+      pend = []; lastWasNum = false; continue;
+    }
+    break;
+  }
+  pend.forEach(n => { const v = eqNumero(n); if (v !== null) doses.push(String(v)); });
+  return { doses: doses.sort(), forma: toks.slice(i).join(" ") };
+}
+function eqForma(formaTxt) {
+  const a = " " + (formaTxt + " ").split(/\s(?:CT|CX|FR|BL|ENV|BG|STR|BOLS|AMP|FA|SER|TB|POTE|BD)\s/)[0] + " ";
+  const has = re => re.test(a);
+  let base;
+  if (has(/\s(INJ|INFUS|INJETAVEL|INJETÁVEL)[\s\/]/)) base = "INJ";
+  else if (has(/\s(COM|COMP|CP|DRG)\s/)) base = "COM";
+  else if (has(/\s(CAP|CAPS)\s/)) base = "CAP";
+  else {
+    const t = (a.match(/\s(SOL|SUS|SUSP|XPE|ELX|EMU|CREM|CR|POM|STT|DEPOT|ESMALTE|PAS|GEL|PO|PÓ|GRAN|AER|SPR|ADES|SUP|OVL|ÓVULO|OVULO|PAST|GOMA|LOC|XAMP|SAB|ESM|FILM|ENEMA|IMPL|LIQ|OLEO|ÓLEO|FLUIDO)\s/) || [, "?"])[1];
+    const via = (a.match(/\s(OR|OFT|NAS|OTO|DERM|VAG|TOP|INAL|RET|BUC|SUBL|CAPI|DENT)\s/) || [, ""])[1];
+    base = t.replace("SUSP", "SUS").replace("PÓ", "PO").replace(/^CR$/, "CREM").replace(/^PAS$/, "PAST") + (via ? "-" + via : "");
+  }
+  const mods = [];
+  const lib = a.match(/\sLIB\s+(PROL|RETARD|MOD|CONTROL|ESTEND|REPET|RET)/);
+  if (lib) mods.push("LIB-" + (lib[1] === "RET" ? "RETARD" : lib[1]));
+  ["ORODISP", "EFERV", "EFEV", "MAST", "SUBL", "DISP", "BUC", "VAG", "GASTRO"].forEach(k => {
+    if (new RegExp("\\s" + k + "\\s").test(a)) mods.push(k === "EFEV" ? "EFERV" : k);
+  });
+  return base + (mods.length ? "+" + [...new Set(mods)].sort().join("+") : "");
+}
+// Calcula e memoriza assinatura de equivalência de cada registro
+function eqPrepararDB(db) {
+  const compPorProduto = new Map();
+  db.forEach(m => {
+    const comp = eqComposicao(m.principio);
+    const k = m.nome.trim().toUpperCase() + "||" + (m.laboratorio || "").trim();
+    const prev = compPorProduto.get(k);
+    if (!prev || comp.length > prev.length) compPorProduto.set(k, comp);
+  });
+  db.forEach(m => {
+    let comp = eqComposicao(m.principio);
+    const { doses, forma } = eqDose(m.apresentacao);
+    let reparado = false;
+    // Registro com composição incompleta na CMED: tenta recuperar do mesmo produto
+    if (doses.length > comp.length) {
+      const alt = compPorProduto.get(m.nome.trim().toUpperCase() + "||" + (m.laboratorio || "").trim());
+      if (alt && alt.length >= doses.length && comp.every(c => alt.includes(c))) { comp = alt; reparado = true; }
+    }
+    m._eqComp = comp;
+    m._eqDoses = doses;
+    m._eqForma = eqForma(forma);
+    m._eqIncompleto = doses.length > comp.length;
+    m._eqReparado = reparado;
+    m._eqKey = m._eqIncompleto ? null : comp.join(" + ") + " | " + (doses.join(" + ") || "?") + " | " + m._eqForma;
+  });
+}
+const _EQ_FORMA_LBL = { COM:"Comprimido", CAP:"Cápsula", INJ:"Injetável", "SOL-OR":"Solução oral", "SUS-OR":"Suspensão oral", "PO-OR":"Pó p/ susp./sol. oral", XPE:"Xarope", "SOL-OFT":"Colírio", "CREM-DERM":"Creme", "POM-DERM":"Pomada", GEL:"Gel" };
+const _EQ_MOD_LBL = { "LIB-PROL":"lib. prolongada", "LIB-RETARD":"lib. retardada", "LIB-MOD":"lib. modificada", "LIB-CONTROL":"lib. controlada", ORODISP:"orodispersível", EFERV:"efervescente", MAST:"mastigável", SUBL:"sublingual", DISP:"dispersível", BUC:"bucal", VAG:"vaginal" };
+function eqRotuloDose(m) {
+  if (!m._eqDoses || !m._eqDoses.length) return "Dose não informada";
+  const d = m._eqDoses.map(x => x.replace(/^([\d.]+)/, n => String(Number(n)).replace(".", ",")).replace(" MG", " mg").replace(" MCG", " mcg").replace("/ML", "/mL")).join(" + ");
+  const [base, ...mods] = (m._eqForma || "").split("+");
+  const f = (_EQ_FORMA_LBL[base] || base.replace("-", " ").toLowerCase()) + (mods.length ? " " + mods.map(x => _EQ_MOD_LBL[x] || x.toLowerCase()).join(" ") : "");
+  return d + " · " + f;
+}
+
 function isMS(query) {
   // Considera busca por MS: somente dígitos (e pontos/hífens opcionais), mínimo 8 dígitos
   return /^[\d.\-]{8,}$/.test(query.trim()) && query.replace(/\D/g,"").length >= 8;
@@ -796,6 +933,21 @@ function isMS(query) {
 function searchDB(query) {
   const qn = normalizar(query);
   const qDigits = query.replace(/\D/g,"");
+  const ordemTipo = ["etico","similar","generico","biologico","fitoterapico","homeopatico","outros"];
+  const ordTipo = t => { const k = ordemTipo.indexOf(t); return k < 0 ? 99 : k; };
+
+  // Equivalentes = mesma composição (princípios ativos), mesma dose e mesma forma farmacêutica
+  function expandirEquivalentes(diretos) {
+    const chaves = new Set(diretos.map(m => m._eqKey).filter(Boolean));
+    const vistos = new Set(diretos);
+    const extras = [];
+    if (!chaves.size) return extras;
+    for (const m of DB) {
+      if (vistos.has(m) || !m._eqKey || !chaves.has(m._eqKey)) continue;
+      extras.push(m);
+    }
+    return extras;
+  }
 
   // Busca por número MS: match exato pelo registro
   if (isMS(query)) {
@@ -804,84 +956,34 @@ function searchDB(query) {
       return reg === qDigits || reg.includes(qDigits);
     });
     if (msHits.length) {
-      // Marca o(s) hit(s) MS como _msExact para separação visual
-      const expanded = [];
-      const princExatos = new Set();
-      msHits.forEach(m => {
-        expanded.push({ ...m, _exact: true, _matchScore: 0, _msExact: true });
-        m.principio.split(/[;,]/).forEach(p => {
-          const pn = normalizar(p.trim());
-          if (pn.length >= 4) princExatos.add(pn);
-        });
-      });
-      // Expande pelo princípio ativo para mostrar equivalentes
-      const vistos = new Set(msHits.map(m => m.nome + "||" + m.laboratorio));
-      for (const m of DB) {
-        const key = m.nome + "||" + m.laboratorio;
-        if (vistos.has(key)) continue;
-        const pn = normalizar(m.principio);
-        for (const p of princExatos) {
-          if (p.length >= 5 && pn.includes(p)) {
-            expanded.push({ ...m, _exact: false, _matchScore: 0, _msExact: false });
-            vistos.add(key);
-            break;
-          }
-        }
-      }
-      const ordemTipo = ["etico","similar","generico","biologico","fitoterapico","homeopatico","outros"];
+      const expanded = msHits.map(m => ({ ...m, _exact: true, _matchScore: 0, _msExact: true }));
+      expandirEquivalentes(msHits).forEach(m => expanded.push({ ...m, _exact: false, _matchScore: 0, _msExact: false }));
       expanded.sort((a,b) => {
         if (a._msExact !== b._msExact) return a._msExact ? -1 : 1;
-        return (ordemTipo.indexOf(a.tipo)||99) - (ordemTipo.indexOf(b.tipo)||99);
+        return ordTipo(a.tipo) - ordTipo(b.tipo);
       });
       return expanded;
     }
   }
 
   const terms = qn.split(/[\s+,]+/).filter(t => t.length >= 3);
+  if (!terms.length) return [];
 
-  // Passo 1: hits diretos
-  const exact = [];
-  const principiosExatos = new Set();
-
+  // Passo 1: hits diretos (nome, princípio ativo, laboratório ou registro)
+  const diretos = [];
   for (const m of DB) {
     const haystack = normalizar(m.nome + " " + m.principio + " " + m.laboratorio + " " + (m.registro||""));
-    if (terms.every(t => haystack.includes(t))) {
-      exact.push({ ...m, _exact: normalizar(m.nome).includes(qn), _matchScore: 0 });
-      m.principio.split(/[;,]/).forEach(p => {
-        const pn = normalizar(p.trim());
-        if (pn.length >= 4) principiosExatos.add(pn);
-      });
-    }
+    if (terms.every(t => haystack.includes(t))) diretos.push(m);
   }
-  if (!exact.length) return [];
+  if (!diretos.length) return [];
 
-  // Passo 2: expande com score de equivalência
-  // score 0 = composição idêntica (equivalente direto)
-  // score 1 = composição parcial (variante — ex: Dipirona+Cafeína quando buscou Dipirona+Butilescopolamina)
-  const allHits = [...exact];
-  const nomesVistos = new Set(exact.map(m => m.nome + "||" + m.laboratorio));
+  // Passo 2: acrescenta SOMENTE equivalentes exatos (composição + dose + forma)
+  const allHits = diretos.map(m => ({ ...m, _exact: normalizar(m.nome).includes(qn), _matchScore: 0 }));
+  expandirEquivalentes(diretos).forEach(m => allHits.push({ ...m, _exact: false, _matchScore: 0 }));
 
-  for (const m of DB) {
-    const key = m.nome + "||" + m.laboratorio;
-    if (nomesVistos.has(key)) continue;
-    const princN = normalizar(m.principio);
-    let matchCount = 0;
-    for (const p of principiosExatos) {
-      if (p.length >= 5 && princN.includes(p)) matchCount++;
-    }
-    if (matchCount > 0) {
-      const score = matchCount >= principiosExatos.size ? 0 : 1;
-      allHits.push({ ...m, _exact: false, _matchScore: score });
-      nomesVistos.add(key);
-    }
-  }
-
-  // Ordena: exato por nome → equivalentes diretos (score 0) → variantes (score 1)
-  const ordemTipo = ["etico","similar","generico","biologico","fitoterapico","homeopatico","outros"];
   allHits.sort((a,b) => {
     if (a._exact !== b._exact) return a._exact ? -1 : 1;
-    if ((a._matchScore||0) !== (b._matchScore||0)) return (a._matchScore||0) - (b._matchScore||0);
-    return (ordemTipo.indexOf(a.tipo)||99) - (ordemTipo.indexOf(b.tipo)||99);
+    return ordTipo(a.tipo) - ordTipo(b.tipo);
   });
   return allHits;
 }
@@ -940,8 +1042,28 @@ function setFiltroApres(forma, btn) {
   renderCards();
 }
 
+function renderFiltroDose() {
+  const row = document.getElementById("filterRowDose");
+  const cont = new Map();
+  allResults.forEach(m => { const k = eqRotuloDose(m); cont.set(k, (cont.get(k)||0) + 1); });
+  if (cont.size < 2) { row.style.display = "none"; row.innerHTML = ""; return; }
+  const esc = t => t.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+  let h = `<span class="filter-label">Dosagem:</span><button class="filter-apres-btn${filtroDose===null?" fa-all":""}" onclick="setFiltroDose(null)">Todas</button>`;
+  [...cont.keys()].sort((a,b)=>a.localeCompare(b,"pt-BR",{numeric:true})).forEach(k => {
+    h += `<button class="filter-apres-btn${filtroDose===k?" active":""}" data-dose="${esc(k)}" onclick="setFiltroDose(this.dataset.dose)">${esc(k)}</button>`;
+  });
+  row.innerHTML = h;
+  row.style.display = "flex";
+}
+function setFiltroDose(k) {
+  filtroDose = k;
+  renderFiltroDose();
+  renderCards();
+}
+
 function filteredResults() {
   let list = filtroAtivo==="todos" ? allResults : allResults.filter(m=>m.tipo===filtroAtivo);
+  if (filtroDose !== null) list = list.filter(m => eqRotuloDose(m) === filtroDose);
   if (filtroApres.length > 0) list = list.filter(m => matchApres(m));
   return list;
 }
@@ -1002,7 +1124,7 @@ function setLoading(v) {
     document.getElementById("results").innerHTML = "";
     document.getElementById("filterRow").style.display = "none";
     document.getElementById("filterRowApres").style.display = "none";
-    document.getElementById("filterRowApres").style.display = "none";
+    document.getElementById("filterRowDose").style.display = "none";
   }
 }
 
@@ -1010,7 +1132,7 @@ function renderWelcome() {
   document.getElementById("results").innerHTML = `<div class="state-box">
     <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
     <div class="state-title">Busque por nome comercial ou princípio ativo</div>
-    <div class="state-desc">A busca expande automaticamente pelo princípio ativo<br>e retorna Éticos, Similares e Genéricos disponíveis</div>
+    <div class="state-desc">A busca retorna apenas equivalentes com os mesmos princípios ativos,<br>a mesma dose e a mesma forma farmacêutica (Éticos, Similares e Genéricos)</div>
   </div>`;
 }
 
@@ -1028,7 +1150,7 @@ function renderResults(query) {
     document.getElementById("statusBar").innerHTML = `<span class="status-text">Nenhum resultado para <em style="font-style:normal;font-weight:700;color:var(--blue-dark)">"${query}"</em></span>`;
     document.getElementById("filterRow").style.display = "none";
     document.getElementById("filterRowApres").style.display = "none";
-    document.getElementById("filterRowApres").style.display = "none";
+    document.getElementById("filterRowDose").style.display = "none";
     document.getElementById("results").innerHTML = `<div class="state-box">
       <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
       <div class="state-title">Nenhum medicamento encontrado</div>
@@ -1044,10 +1166,11 @@ function renderResults(query) {
       ${gcnt.similar ?`<span class="count-chip chip-s">${gcnt.similar} Similar${gcnt.similar>1?"es":""}</span>`:""}
       ${gcnt.generico?`<span class="count-chip chip-g">${gcnt.generico} Genérico${gcnt.generico>1?"s":""}</span>`:""}
       ${gcnt.outros  ?`<span class="count-chip chip-o">${gcnt.outros} Outro${gcnt.outros>1?"s":""}</span>`:""}
-    </div>`;
+    </div>
+    <span class="status-text" style="flex-basis:100%;font-size:11.5px;opacity:.8">Equivalentes listados somente com os mesmos princípios ativos, a mesma dose e a mesma forma farmacêutica.</span>`;
   document.getElementById("filterRow").style.display = "flex";
   document.getElementById("filterRowApres").style.display = "flex";
-  document.getElementById("filterRowApres").style.display = "flex";
+  renderFiltroDose();
   renderCards();
 }
 
@@ -1252,6 +1375,7 @@ function cardResumidoHTML(m, msExact) {
         <span class="exp-label">Laboratório</span>
         <span class="exp-val">${m.laboratorio||"—"}</span>
       </div>
+      ${m._eqIncompleto ? `<div class="exp-field" style="grid-column:1/-1"><span class="exp-label" style="color:var(--amber)">⚠ Composição incompleta na tabela CMED</span><span class="exp-val" style="font-size:12px">A apresentação informa mais doses do que princípios ativos cadastrados. Este registro não é usado para sugerir equivalentes — confira a bula/registro.</span></div>` : ""}
       ${regHtml}${classeHtml}${tarjaHtml}${apHtml}${precoHtml}
       ${hospHtml}
     </div>

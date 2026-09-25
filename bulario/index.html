@@ -295,6 +295,14 @@
     background:var(--accent-glow); color:var(--accent); border-radius:999px;
     padding:2px 9px; font-size:.72rem; font-weight:800;
   }
+  .contador-completos{
+    display:inline-flex; align-items:center; gap:5px; margin-top:5px;
+    background:var(--accent-glow); color:var(--accent); border-radius:999px;
+    padding:3px 12px; font-size:.72rem; font-weight:800; white-space:nowrap;
+  }
+  @media (max-width:800px){
+    .contador-completos{ font-size:.66rem; padding:2px 10px; }
+  }
   .subclasse-itens{ display:none; padding:12px 14px 14px; }
   .subclasse-bloco.aberto .subclasse-itens{ display:block; }
   .subclasse-bloco.aberto .subclasse-header{ border-bottom:1px solid var(--border); }
@@ -440,6 +448,7 @@
   <div class="titulo-central">
     <div class="titulo-principal">BULÁRIO FARMACÊUTICO</div>
     <div class="titulo-descricao">Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. 2.258 medicamentos catalogados.</div>
+    <div class="contador-completos" id="contador-completos" title="Medicamentos com ficha farmacoterapêutica completa (mecanismo de ação, posologia, interações etc.) sobre o total do catálogo">Carregando...</div>
   </div>
   <div class="topbar-actions">
     <button class="topbar-icon-btn" id="btn-topo-voltar" onclick="voltarPagina()" title="Voltar" aria-label="Voltar" disabled>

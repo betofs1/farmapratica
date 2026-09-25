@@ -63,14 +63,49 @@
   function isFavorito(id) {
     return getFavoritos().includes(id);
   }
+
+  // Sincroniza com o painel de Favoritos da página inicial do FarmaPrática
+  // (- INDEX/index.html), que lê a chave compartilhada "fp_favoritos_hub"
+  // do localStorage (mesma origem) — mesmo padrão usado por medinter,
+  // farmadesk, dosespediatricas e consultacontrolados.
+  function syncFavoritoNoHub(id, label, adicionado) {
+    try {
+      const HUB_KEY = "fp_favoritos_hub";
+      const raw = localStorage.getItem(HUB_KEY);
+      let list = raw ? JSON.parse(raw) : [];
+      const hubId = "bulario-" + id;
+      if (adicionado) {
+        if (!list.some((f) => f.id === hubId)) {
+          list.push({
+            id: hubId,
+            label: label,
+            source: "bulario",
+            sourceLabel: "Bulário Farmacêutico",
+            href: "bulario/#/medicamento/" + encodeURIComponent(id),
+          });
+        }
+      } else {
+        list = list.filter((f) => f.id !== hubId);
+      }
+      localStorage.setItem(HUB_KEY, JSON.stringify(list));
+    } catch (e) {
+      /* localStorage indisponível — segue sem sincronizar */
+    }
+  }
+
   function toggleFavorito(id) {
     let favs = getFavoritos();
+    let adicionado;
     if (favs.includes(id)) {
       favs = favs.filter((f) => f !== id);
+      adicionado = false;
     } else {
       favs.unshift(id);
+      adicionado = true;
     }
     setFavoritos(favs);
+    const m = MEDICAMENTOS[id];
+    syncFavoritoNoHub(id, m ? m.nomeGenerico : id, adicionado);
     return isFavorito(id);
   }
 
@@ -719,6 +754,16 @@
     if (d) d.textContent = descricao || "";
   }
 
+  // Contador persistente no cabeçalho (independente da rota atual) com o
+  // progresso de preenchimento das fichas farmacoterapêuticas completas.
+  function atualizarContadorCompletos() {
+    const el = $("#contador-completos");
+    if (!el) return;
+    const total = Object.keys(MEDICAMENTOS).length;
+    const completos = Object.values(MEDICAMENTOS).filter(fichaCompleta).length;
+    el.textContent = `${completos.toLocaleString("pt-BR")} de ${total.toLocaleString("pt-BR")} catalogados`;
+  }
+
   function initBusca() {
     const inputMed = $("#busca-medicamento");
     const inputGrupo = $("#busca-grupo");
@@ -776,6 +821,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     buildSearchIndex();
     initBusca();
+    atualizarContadorCompletos();
     route();
   });
 })();
