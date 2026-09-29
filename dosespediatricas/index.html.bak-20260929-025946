@@ -2308,10 +2308,6 @@ function calcularEExibir(){
   if(f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses){
     avisoIdade = `Idade informada abaixo da idade mínima orientada (${formatarIdadeMinima(f.idadeMinimaMeses)}). Reavaliar indicação.`;
   }
-  // Quando o fármaco trava o cálculo abaixo da idade mínima (bloquearAbaixoIdadeMinima),
-  // nenhuma dose é de fato calculada — usado abaixo para não exibir uma observação de
-  // "dose calculada" (mg/kg) contraditória junto do alerta de bloqueio nos cards.
-  const idadeBloqueada = !!(f.bloquearAbaixoIdadeMinima && f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses);
 
   // ----- render formulações -----
   // Em regime de adulto, oculta apresentações em "gotas" quando o fármaco também tem
@@ -2529,7 +2525,7 @@ function calcularEExibir(){
   // ----- observações -----
   const obsItens = [];
 
-  if(dose && infoMgKg && peso > 0 && !idadeBloqueada){
+  if(dose && infoMgKg && peso > 0){
     const mediaDose = (dose.min + dose.max) / 2;
     const mgkgCalc = arred(mediaDose / peso);
     const unidadeTxt = infoMgKg.unidade === 'dia' ? 'mg/kg/dia' : 'mg/kg/dose';

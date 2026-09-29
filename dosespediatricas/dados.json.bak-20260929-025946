@@ -310,7 +310,7 @@
      "max": 50
     },
     "fracionamento": 3,
-    "doseMaximaDiaMg": 2000
+    "doseMaximaDiaMg": 1750
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
@@ -338,9 +338,7 @@
    ],
    "observacoesExtras": [
     "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo.",
-    "PEDB registra faixa específica de 40-50 mg/kg/dia para Otite Média Aguda (dentro da faixa geral 20-50 mg/kg/dia já usada aqui) e admite fracionamento em 8/8h ou 12/12h conforme a apresentação (12/12h mais usada com a suspensão 400 mg/5 mL).",
-    "Bula (atualização): dose máxima pediátrica de 150 mg/kg/dia (não se aplica na prática dentro da faixa <40 kg, cujo teto natural pela fórmula de 50 mg/kg/dia é 2.000 mg/dia aos 40 kg); crianças >40 kg podem usar posologia de adulto (250-500 mg VO a cada 8 horas).",
-    "Bula (atualização): esquema alternativo de adulto — 875 mg VO a cada 12 horas (1.750 mg/dia), dentro do teto de 3 g/dia. Profilaxia de endocardite bacteriana: 2 g VO em dose única, 1 hora antes do procedimento (não calculado automaticamente)."
+    "PEDB registra faixa específica de 40-50 mg/kg/dia para Otite Média Aguda (dentro da faixa geral 20-50 mg/kg/dia já usada aqui) e admite fracionamento em 8/8h ou 12/12h conforme a apresentação (12/12h mais usada com a suspensão 400 mg/5 mL)."
    ],
    "fonte": "Bula ANVISA / SBP",
    "nomesComerciais": [
@@ -359,14 +357,13 @@
      "max": 500
     },
     "vezesDia": 3,
-    "doseMaximaDiaMg": 3000
+    "doseMaximaDiaMg": 6000
    },
-   "doseMaximaDiaAdultoMg": 3000,
+   "doseMaximaDiaAdultoMg": 6000,
    "fontesAdulto": [
     "Bula ANVISA — Amoxil (cápsulas), GSK Brasil, profissional de saúde",
     "Bula ANVISA — Amoxil (pó para suspensão oral), GSK Brasil, 10/2025",
-    "Drugs.com Amoxicillin Dosage Guide",
-    "Bula ANVISA — atualização de posologia fornecida pelo usuário (29/09/2026)"
+    "Drugs.com Amoxicillin Dosage Guide"
    ]
   },
   {
@@ -376,8 +373,8 @@
    "doseBase": {
     "tipo": "mgkg_dia",
     "doseMgKg": {
-     "min": 20,
-     "max": 50
+     "min": 25,
+     "max": 45
     },
     "fracionamento": 2,
     "doseMaximaDiaMg": 2000
@@ -400,10 +397,7 @@
     }
    ],
    "observacoesExtras": [
-    "Dose calculada com base no componente amoxicilina; observar dose máxima de clavulanato na bula.",
-    "Bula (atualização): faixa geral de 20-50 mg/kg/dia de amoxicilina por via oral a cada 8 horas (dose máxima teórica de 150 mg/kg/dia, não vinculante na prática pediátrica). O cálculo abaixo usa fracionamento a cada 12 horas, compatível com a apresentação 'BD' (400 mg + 57 mg/5 mL) cadastrada.",
-    "Bula (atualização): esquema alternativo de adulto — 875 mg + 125 mg VO a cada 12 horas (1.750 mg/dia de amoxicilina).",
-    "Via endovenosa (não contemplada nesta calculadora): adultos 1 g + 200 mg a cada 6-8 horas; crianças 25-45 mg/kg/dia de amoxicilina, fracionado a cada 6, 8 ou 12 horas."
+    "Dose calculada com base no componente amoxicilina; observar dose máxima de clavulanato na bula."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -419,16 +413,15 @@
     "modo": "fixa",
     "doseMg": {
      "min": 500,
-     "max": 500
+     "max": 875
     },
-    "vezesDia": 3,
+    "vezesDia": 2,
     "doseMaximaDiaMg": 1750
    },
    "doseMaximaDiaAdultoMg": 1750,
    "fontesAdulto": [
     "Bula ANVISA — Clavulin BD (875+125 mg comprimidos), GSK Brasil, profissional de saúde",
-    "Drugs.com Amoxicillin/Clavulanate Dosage Guide",
-    "Bula ANVISA — atualização de posologia fornecida pelo usuário (29/09/2026)"
+    "Drugs.com Amoxicillin/Clavulanate Dosage Guide"
    ]
   },
   {
@@ -462,9 +455,7 @@
     }
    ],
    "observacoesExtras": [
-    "Esquema clássico: 10 mg/kg no 1º dia, 5 mg/kg do 2º ao 5º dia (1x/dia). Cálculo refere-se ao 1º dia.",
-    "Bula (atualização): indicação de DST (Chlamydia trachomatis, Neisseria gonorrhoeae, cancro mole): 1 g VO em dose única (adultos) — não calculado automaticamente.",
-    "Via endovenosa disponível como alternativa à via oral no esquema de 3 dias (mesma dose), não contemplada nesta calculadora."
+    "Esquema clássico: 10 mg/kg no 1º dia, 5 mg/kg do 2º ao 5º dia (1x/dia). Cálculo refere-se ao 1º dia."
    ],
    "fonte": "Bula ANVISA / SBP",
    "nomesComerciais": [
@@ -500,7 +491,7 @@
      "max": 50
     },
     "fracionamento": 4,
-    "doseMaximaDiaMg": 2000
+    "doseMaximaDiaMg": 4000
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
@@ -520,8 +511,7 @@
     }
    ],
    "observacoesExtras": [
-    "Bula (atualização): em quadros mais graves, a dose pode ser aumentada para 50-100 mg/kg/dia a cada 6 horas — porém a dose máxima diária permanece em 2 g/dia mesmo nesse esquema (confirmado em bula).",
-    "Profilaxia de endocardite bacteriana (adultos): 2 g VO em dose única, 1 hora antes do procedimento — não calculado automaticamente."
+    "Em infecções graves, doses de até 100 mg/kg/dia podem ser usadas — confirmar protocolo."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -555,8 +545,8 @@
    "doseBase": {
     "tipo": "mgkg_dia",
     "doseMgKg": {
-     "min": 6,
-     "max": 6
+     "min": 8,
+     "max": 10
     },
     "fracionamento": 2,
     "doseMaximaDiaMg": 320
@@ -579,11 +569,7 @@
     }
    ],
    "observacoesExtras": [
-    "Dose calculada com base no componente trimetoprima (TMP). Contraindicado abaixo de 2 meses.",
-    "Bula (atualização): dose usual pediátrica por via oral revisada para 6 mg/kg/dia de TMP, fracionada a cada 12 horas.",
-    "Profilaxia de Pneumocystis jirovecii — adultos: 400 mg + 80 mg VO 1x/dia (80 mg/dia de TMP); crianças: 150 mg/m²/dia de TMP, fracionado em 2 doses, 3 dias consecutivos por semana (dose por superfície corporal — não calculada automaticamente).",
-    "Nocardiose (adultos): 800 mg + 160 mg VO a cada 6-8 horas por cerca de 3 meses — regime prolongado de alta dose, não calculado automaticamente.",
-    "Meningite (via endovenosa, adultos e crianças): 10-20 mg/kg/dia de TMP, fracionado a cada 6-12 horas — via não contemplada nesta calculadora."
+    "Dose calculada com base no componente trimetoprima (TMP). Contraindicado abaixo de 2 meses."
    ],
    "fonte": "Bula ANVISA / SBP",
    "nomesComerciais": [
@@ -2159,10 +2145,7 @@
     }
    ],
    "observacoesExtras": [
-    "Crianças com menos de 12 anos devem usar a suspensão pediátrica, não o comprimido.",
-    "Bula (atualização): dose de adulto varia por indicação — bronquite/sinusite: 500 mg VO a cada 12 horas (1 g/dia); faringoamigdalite/piodermite: 250 mg VO a cada 12 horas (500 mg/dia) por 10 dias; profilaxia de endocardite: 500 mg VO em dose única, 1 hora antes do procedimento.",
-    "Comprimido de liberação prolongada (não cadastrado nas apresentações acima): 500-1.000 mg VO 1x/dia, conforme indicação — uso restrito a ≥ 12 anos.",
-    "Via endovenosa: 1 g/dia lento, fracionado em 2 doses de 500 mg, por 7-14 dias (ou conversão para via oral) — não contemplada nesta calculadora."
+    "Crianças com menos de 12 anos devem usar a suspensão pediátrica, não o comprimido."
    ],
    "fonte": "Bula ANVISA (Klaricid/EMS)",
    "nomesComerciais": [
@@ -2220,11 +2203,7 @@
    ],
    "observacoesExtras": [
     "Dose expressa em Unidades Internacionais (UI), não em mg — cálculo automático de volume não se aplica.",
-    "Investigar histórico de alergia a penicilinas antes da administração.",
-    "Bula (atualização): dose usual de adulto para infecções estreptocócicas = 1.200.000 UI IM em dose única (mesma dose da faixa ≥ 27 kg acima).",
-    "Bula (atualização) — Sífilis primária, secundária e latente recorrente (adultos): 2.400.000 UI IM em dose única (1.200.000 UI em cada nádega).",
-    "Bula (atualização) — Sífilis terciária, latente tardia ou de duração incerta (adultos): 2.400.000 UI IM (1.200.000 UI em cada nádega), repetida semanalmente por 3 doses (total 7.200.000 UI).",
-    "Bula (atualização) — Sífilis primária, secundária ou latente em crianças < 2 anos: 50.000 UI/kg IM (não calculado automaticamente — dose diverge do esquema por faixa de peso acima, específico para sífilis)."
+    "Investigar histórico de alergia a penicilinas antes da administração."
    ],
    "fonte": "Bula ANVISA (Benzetacil/Eurofarma)",
    "nomesComerciais": [
@@ -2267,9 +2246,7 @@
    ],
    "observacoesExtras": [
     "Contraindicado em neonatos com menos de 1 mês (risco de anemia hemolítica por imaturidade enzimática).",
-    "Indicado para infecção urinária baixa; não atinge níveis terapêuticos adequados em pielonefrite.",
-    "Bula (atualização) — tabela de referência pediátrica por peso (ITU), compatível com a fórmula de 5-7 mg/kg/dia usada no cálculo: 7-12 kg → 12,5 mg a cada 6h; 12-22 kg → 25 mg a cada 6h; 22-31 kg → 37,5 mg a cada 6h; 31-42 kg → 50 mg a cada 6h; > 42 kg → 50-100 mg a cada 6h (posologia de adulto).",
-    "Profilaxia de infecção urinária de repetição (adultos): 50-100 mg VO 1x/dia por 6-12 meses — não calculado automaticamente (regime de dose única diária, diferente do esquema de tratamento a cada 6 horas)."
+    "Indicado para infecção urinária baixa; não atinge níveis terapêuticos adequados em pielonefrite."
    ],
    "fonte": "Bula ANVISA (Macrodantina/genéricos)",
    "nomesComerciais": [
@@ -2300,8 +2277,8 @@
    "doseBase": {
     "tipo": "mgkg_dia",
     "doseMgKg": {
-     "min": 25,
-     "max": 50
+     "min": 30,
+     "max": 30
     },
     "fracionamento": 2,
     "doseMaximaDiaMg": 2000
@@ -2324,11 +2301,7 @@
     }
    ],
    "observacoesExtras": [
-    "Cefalosporina de 1ª geração; boa opção para impetigo e infecções de pele/partes moles sensíveis.",
-    "Bula (atualização): faixa geral pediátrica revisada para 25-50 mg/kg/dia (antes cadastrada como valor único de 30 mg/kg/dia), fracionada a cada 12 horas. Dose máxima geral: 2 g/dia.",
-    "Bula (atualização) — Faringite/amigdalite estreptocócica (crianças): 30 mg/kg/dia em dose única ou fracionada a cada 12 horas, mínimo 10 dias. Dose máxima diária de 1 g/dia (teto mais restritivo que o geral de 2 g/dia).",
-    "Bula (atualização) — Infecção do trato urinário (crianças): 30 mg/kg/dia em dose única ou fracionada a cada 12 horas, por 7-10 dias. Dose máxima diária de 2 g/dia.",
-    "Bula (atualização) — Adultos: faringite/amigdalite estreptocócica: 1 g/dia em dose única ou fracionada a cada 12 horas, mínimo 10 dias. ITU complicada: 2 g/dia fracionado a cada 12 horas, por 7-10 dias."
+    "Cefalosporina de 1ª geração; boa opção para impetigo e infecções de pele/partes moles sensíveis."
    ],
    "fonte": "Bula ANVISA (genéricos)",
    "nomesComerciais": [
@@ -2366,7 +2339,7 @@
      "max": 50
     },
     "fracionamento": 4,
-    "doseMaximaDiaMg": 4000
+    "doseMaximaDiaMg": 2000
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
@@ -2386,10 +2359,7 @@
     }
    ],
    "observacoesExtras": [
-    "Alternativa em alergia a betalactâmicos; associada a estenose hipertrófica do piloro em uso neonatal precoce — cautela em < 2 semanas de vida.",
-    "Bula (atualização): dose máxima pediátrica revisada de 2 g/dia para 4 g/dia (confirmado em bula: \"não exceder 4 g/dia\"). Em casos graves, a dose usual pode ser dobrada — respeitar sempre o teto de 4 g/dia.",
-    "Bula (atualização) — indicações pediátricas com teto mais restritivo que o geral: clamídia (conjuntivite/pneumonia/anogenital < 45 kg) e coqueluche ≥ 6 meses — 50 ou 10 mg/kg/dose, respectivamente, com dose máxima diária de 2 g/dia (não 4 g/dia).",
-    "Bula (atualização) — indicações específicas de adulto (não calculadas automaticamente): amebíase intestinal 250 mg VO a cada 6h por 14 dias; acne vulgar 250-500 mg VO a cada 12h por 4-8 semanas; cancroide 500 mg VO a cada 8h por 7 dias; coqueluche/clamídia/uretrite 500 mg VO a cada 6h por 7 dias; donovanose/LGV 500 mg VO a cada 6h por 21 dias; impetigo 250 mg VO a cada 6h por 7 dias; profilaxia de endocardite 1 g VO 1h antes do procedimento + 500 mg 6h depois; pneumonia por legionella 1-4 g/dia fracionado em 2-4 doses."
+    "Alternativa em alergia a betalactâmicos; associada a estenose hipertrófica do piloro em uso neonatal precoce — cautela em < 2 semanas de vida."
    ],
    "fonte": "Bula ANVISA (genéricos)",
    "nomesComerciais": [
@@ -2485,9 +2455,7 @@
     "Bula do fabricante — solução oral (gotas) Nimesulida 50 mg/mL: 1 gota (2,5 mg)/kg, 2x/dia, uso a partir de 12 anos incluindo adultos (dados fornecidos pelo farmacêutico responsável pela base).",
     "Bula ANVISA — comprimidos/cápsulas/comprimidos orodispersíveis/supositórios: dose usual de 50-100 mg 2x/dia, máx. 200 mg/dia; cápsula de liberação prolongada 200 mg 1x/dia.",
     "Bula ANVISA — NISULID® (Aché) comprimidos e comprimido dispersível 100 mg (ache.com.br/.../bula-paciente-nisulid-dispersivel-comprimidos.pdf)."
-   ],
-   "bloquearAbaixoIdadeMinima": true,
-   "textoAlertaIdadeMinima": "Não é possível aferir a posologia para menores de 12 anos completos — uso contraindicado no Brasil por determinação da ANVISA, devido ao risco de hepatotoxicidade grave."
+   ]
   },
   {
    "id": "guaifenesina",

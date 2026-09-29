@@ -440,6 +440,23 @@
     return `<div class="reacao-freq"><h4>${esc(titulo)}</h4><ul>${lista.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`;
   }
 
+  // Bolinha colorida de risco em Gestação/Lactação. Gestação usa as
+  // categorias clássicas FDA (A/B/C/D/X); Lactação usa as Categorias de
+  // Risco em Lactação de Hale (L1-L5), padrão clínico real para esse uso —
+  // ambas mapeadas para a mesma escala visual verde→vermelho. Campos
+  // opcionais (gestacaoCategoria/lactacaoCategoria): fichas antigas sem eles
+  // simplesmente não mostram a bolinha (retorno ""), sem quebrar nada.
+  const RISCO_CORES_GESTACAO = { A: "verde", B: "verde", C: "amarelo", D: "laranja", X: "vermelho" };
+  const RISCO_CORES_LACTACAO = { L1: "verde", L2: "verde", L3: "amarelo", L4: "laranja", L5: "vermelho" };
+
+  function riscoDotHtml(categoria, tipo) {
+    if (!categoria) return "";
+    const mapa = tipo === "lactacao" ? RISCO_CORES_LACTACAO : RISCO_CORES_GESTACAO;
+    const cor = mapa[categoria];
+    if (!cor) return "";
+    return ` <span class="risco-dot risco-dot-${cor}" title="Categoria ${esc(categoria)}" aria-hidden="true"></span><span class="risco-label">Categoria ${esc(categoria)}</span>`;
+  }
+
   function secoesFicha(m) {
     const secoes = [];
     // Registros ainda sem ficha farmacoterapêutica completa não trazem
@@ -455,8 +472,8 @@
         id: "nomes-comerciais",
         titulo: "Nomes Comerciais",
         html: `
-          ${m.nomesComerciais.referencia ? `<p><strong>Referência:</strong> ${esc(m.nomesComerciais.referencia)}</p>` : ""}
-          ${m.nomesComerciais.similares && m.nomesComerciais.similares.length ? `<p><strong>Similares/genéricos de marca:</strong> ${m.nomesComerciais.similares.map(esc).join(", ")}</p>` : ""}
+          ${m.nomesComerciais.referencia ? `<p><strong>Medicamento referência:</strong> ${esc(m.nomesComerciais.referencia)}</p>` : ""}
+          ${m.nomesComerciais.similares && m.nomesComerciais.similares.length ? `<p><strong>Similares:</strong> ${m.nomesComerciais.similares.map(esc).join(", ")}</p>` : ""}
         `,
       });
     }
@@ -620,10 +637,10 @@
     }
 
     if (m.gestacao) {
-      secoes.push({ id: "gestacao", titulo: "🤰 Gestação", html: `<p>${esc(m.gestacao)}</p>` });
+      secoes.push({ id: "gestacao", titulo: "🤰 Gestação", tituloExtra: riscoDotHtml(m.gestacaoCategoria, "gestacao"), html: `<p>${esc(m.gestacao)}</p>` });
     }
     if (m.lactacao) {
-      secoes.push({ id: "lactacao", titulo: "🤱 Lactação", html: `<p>${esc(m.lactacao)}</p>` });
+      secoes.push({ id: "lactacao", titulo: "🤱 Lactação", tituloExtra: riscoDotHtml(m.lactacaoCategoria, "lactacao"), html: `<p>${esc(m.lactacao)}</p>` });
     }
 
     const especiais = [
@@ -698,7 +715,7 @@
             </ul>
           </aside>
           <div class="ficha-conteudo">
-            ${secoes.map((s) => `<section id="sec-${s.id}" class="ficha-secao"><h2>${esc(s.titulo)}</h2>${s.html}</section>`).join("")}
+            ${secoes.map((s) => `<section id="sec-${s.id}" class="ficha-secao"><h2>${esc(s.titulo)}${s.tituloExtra || ""}</h2>${s.html}</section>`).join("")}
             <p class="aviso-secao-final">Alguma informação desta ficha não estava disponível na base consultada? Ela foi omitida em vez de presumida — consulte sempre a bula vigente e o julgamento clínico.</p>
           </div>
         </div>

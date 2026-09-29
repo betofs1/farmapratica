@@ -384,6 +384,20 @@
   .interacao-item p{ margin:0 0 4px; font-size:.85rem; }
   .interacao-par{ font-weight:800; font-size:.86rem !important; }
 
+  /* Bolinha de risco em Gestação/Lactação (categorias FDA A-X / Hale L1-L5) */
+  .risco-dot{
+    display:inline-block; width:11px; height:11px; border-radius:50%;
+    margin-left:9px; vertical-align:middle; border:1px solid rgba(0,0,0,.18);
+  }
+  .risco-dot-verde{ background:var(--sev-menor); }
+  .risco-dot-amarelo{ background:var(--sev-moderada); }
+  .risco-dot-laranja{ background:var(--g-orange); }
+  .risco-dot-vermelho{ background:var(--sev-grave); }
+  .risco-label{
+    font-size:.68rem; font-weight:600; margin-left:6px; vertical-align:middle;
+    color:var(--text-dim); text-transform:none; letter-spacing:0;
+  }
+
   .reacao-freq{ display:inline-block; vertical-align:top; width:48%; margin:0 2% 14px 0; }
   .reacao-freq h4{ margin-top:0; }
   .reacao-graves{ width:100%; background:var(--sev-grave-bg); border-radius:8px; padding:10px 14px; }

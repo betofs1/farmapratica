@@ -76,16 +76,28 @@ partir de `descricao`, `valoresReferencia`, `interpretacaoAlta/Baixa`,
 
 ## Categorias
 
-O array `"categorias"` no topo do `exames.json` define as 23 categorias
+O array `"categorias"` no topo do `exames.json` define as 22 categorias
 fixas da ferramenta (Hematologia, Bioquímica, Hormônios, Lipidograma,
 Glicemia e Metabolismo, Função Renal, Função Hepática, Eletrólitos,
 Marcadores Cardíacos, Marcadores Inflamatórios, Imunologia, Infectologia,
 Coagulação, Endocrinologia, Vitaminas e Minerais, Marcadores Tumorais,
 Urinálise, Parasitologia, Microbiologia, Gasometria, Exames de Fezes,
-Imagem e Complementares, Outros). Categorias sem nenhum exame cadastrado
-continuam aparecendo na barra lateral, com contador "0" e uma mensagem
-"Nenhum exame cadastrado ainda nesta categoria" — isso é proposital
-(mostra o escopo completo da ferramenta e convida a expandir o conteúdo).
+Outros). Categorias sem nenhum exame cadastrado continuam aparecendo na
+barra lateral, com contador "0" e uma mensagem "Nenhum exame cadastrado
+ainda nesta categoria" — isso é proposital (mostra o escopo completo da
+ferramenta e convida a expandir o conteúdo). Desde 28/09/2026, apenas
+"Outros" (catch-all) permanece nesse estado; todas as demais têm ao menos
+1 exame cadastrado.
+
+**Categoria removida em 28/09/2026:** "Imagem e Complementares" (exames de
+imagem: USG, RX, TC, RM, ECG) foi retirada da ferramenta após pesquisa da
+base regulatória — a Resolução CFF nº 585/2013, que define as atribuições
+clínicas do farmacêutico, autoriza apenas a solicitação de **exames
+laboratoriais** para monitorização da farmacoterapia (Art. 11, XI) e
+determinação de parâmetros bioquímicos/fisiológicos (Art. 12, XIV); não há
+previsão de solicitação/interpretação de exames de imagem na prática
+clínica farmacêutica brasileira. Nenhum exame estava vinculado a essa
+categoria, então a remoção não afetou nenhum registro existente.
 
 Cada categoria tem um campo `"cor"` (nome de uma paleta pré-definida no
 CSS: `red, blue, purple, amber, green, sky, crimson, orange, cyan, teal,
@@ -127,51 +139,96 @@ Nenhum exame está marcado como exclusivamente `"drogaria"` ainda — a
 classificação deve ser revisada/ajustada conforme o usuário indicar ao
 adicionar novos exames.
 
-## Estado atual do conteúdo (atualizado em 17/09/2026)
+## Estado atual do conteúdo (atualizado em 28/09/2026)
 
-43 exames com todos os campos completos. Aos 20 originais — cobrindo os
-itens listados como "Consulta Rápida"/"Mais Consultados": Hemograma,
-Glicemia de Jejum, HbA1c, Colesterol Total, HDL, LDL, Triglicerídeos,
-Creatinina, Ureia, TGO, TGP, GGT, TSH, T4 Livre, Vitamina D, Vitamina B12,
-Ferritina, PCR, Sódio e Potássio — somaram-se, em 17/09/2026, 6 exames na
-categoria Hematologia (a pedido do usuário, ao lado do Hemograma Completo,
-mesmo tratando-se em parte de exames de coagulação): Tempo de Protrombina
-(TP/RNI), Tempo de Tromboplastina Parcial Ativada (TTPA), Contagem de
-Reticulócitos, Atividade Anti-Fator Xa, Atividade da G6PD e Dosagem de
-D-Dímero.
+**142 exames** com todos os campos completos, distribuídos em 21 das 22
+categorias (apenas "Outros" permanece vazia, propositalmente, como
+catch-all). Contagem por categoria: Infectologia 17, Hormônios 16,
+Imunologia 12, Hematologia 11, Glicemia e Metabolismo 10, Bioquímica 9,
+Lipidograma 9, Função Renal 9, Marcadores Tumorais 8, Vitaminas e Minerais
+8, Endocrinologia 6, Função Hepática 6, Marcadores Cardíacos 6, Eletrólitos
+5, Marcadores Inflamatórios 3, Exames de Fezes 2, Coagulação 1, Urinálise
+1, Parasitologia 1, Microbiologia 1, Gasometria 1.
 
-Ainda em 17/09/2026, a categoria Bioquímica passou a ter 9 exames próprios:
-Ácido Úrico, Fosfatase Alcalina, Bilirrubinas Totais e Frações, Lactato
-Desidrogenase (LDH), Creatinoquinase Total (CK), Amilase, Lipase, Cálcio
-Total e Magnésio. O usuário pediu originalmente 19 exames bioquímicos, mas
-11 deles já existiam como páginas próprias em categorias mais específicas
-(Glicose/Glicemia de Jejum, Ureia e Creatinina em Função Renal; TGO, TGP e
-GGT em Função Hepática; Colesterol Total, HDL e Triglicerídeos em
-Lipidograma; Sódio e Potássio em Eletrólitos) — para não duplicar
-conteúdo, ficou definido (decisão explícita do usuário) manter esses 11
-exames apenas em suas categorias originais, e adicionar à Bioquímica
-somente os 9 exames que ainda não tinham página. Os cruzamentos
-("correlatos") de TGO, TGP, GGT, Vitamina D, Triglicerídeos, Contagem de
-Reticulócitos e G6PD foram atualizados para apontar, como links
-clicáveis, para os novos exames de Bioquímica e Hematologia correlatos.
+Histórico de 05/09 a 17/09/2026 (43 exames): 20 exames originais de
+Consulta Rápida (Hemograma, Glicemia de Jejum, HbA1c, Colesterol Total,
+HDL, LDL, Triglicerídeos, Creatinina, Ureia, TGO, TGP, GGT, TSH, T4 Livre,
+Vitamina D, Vitamina B12, Ferritina, PCR, Sódio e Potássio) + 6 exames de
+Hematologia/coagulação (TP/RNI, TTPA, Reticulócitos, Anti-Fator Xa, G6PD,
+D-Dímero) + 9 exames de Bioquímica (Ácido Úrico, Fosfatase Alcalina,
+Bilirrubinas, LDH, CK Total, Amilase, Lipase, Cálcio, Magnésio) + 8 exames
+de Hormônios (T3 Total, Cortisol, Estradiol, Progesterona, Testosterona
+Total, Prolactina, LH, FSH).
 
-Também em 17/09/2026, a categoria Hormônios recebeu 8 exames novos, além
-dos 2 que já existiam (TSH e T4 Livre, mantidos sem alteração): Tri-
-iodotironina Total (T3), Cortisol Sérico, Estradiol (E2), Progesterona,
-Testosterona Total, Prolactina, LH e FSH — cobrindo o eixo tireoidiano, o
-eixo hipotálamo-hipófise-adrenal e o eixo gonadal, com foco em condutas
-farmacêuticas como titulação de levotiroxina/antitireoidianos, desmame de
-corticoterapia crônica, ajuste de TRH e de reposição de testosterona,
-manejo de hiperprolactinemia induzida por antipsicóticos e monitorização
-de estimulação ovariana. TSH e T4 Livre passaram a referenciar T3 Total
-como correlato clicável.
+**Rodada de 28/09/2026 (+94 exames, de 43 para 137):** a pedido do
+usuário, que forneceu uma lista de referência com 17 categorias clínicas
+(~150 itens), foram identificados os exames genuinamente ausentes,
+deduplicando itens citados em múltiplas categorias (ex.: Ferritina,
+Fosfatase Alcalina, TGO/AST, Fibrinogênio, CK Total/CK-MB, Proteínas
+Totais, Albumina, Vitamina D, Cálcio Total já existiam ou foram
+cadastrados uma única vez na categoria mais relevante). Decisão explícita
+do usuário: manter a estrutura de dados atual (schema de categoria única
+por exame, sem tags multicategoria e sem campo/badge de "valor
+calculado"), usando a lista apenas como referência para identificar
+lacunas. Exames adicionados em 8 lotes:
 
-As demais categorias (Marcadores Cardíacos, Imunologia, Infectologia,
-Coagulação, Urinálise, Parasitologia, Microbiologia, Gasometria, Fezes,
-Imagem, Marcadores Tumorais, Endocrinologia) estão estruturadas na
-navegação, mas ainda sem exames — próximos candidatos naturais: CK-MB e
-Troponina (cardíacos), Sorologias virais e VDRL (infectologia), EAS/Urina
-tipo I (urinálise), PTH e AMH (endocrinologia).
+- **Lote 1** (11): VLDL, Colesterol Não-HDL, Apo A1, Apo B, Lp(a)
+  (Lipidograma) + Troponina I, Troponina T, CK-MB, BNP, NT-proBNP,
+  Mioglobina (Marcadores Cardíacos — categoria nova)
+- **Lote 2** (12): Ferro Sérico, Transferrina, CTLF, IST (Hematologia) +
+  Glicemia Pós-Prandial, Glicemia Casual, TOTG, Frutosamina, Insulina,
+  Peptídeo C, HOMA-IR, HOMA-β (Glicemia e Metabolismo)
+- **Lote 3** (16): T4 Total, T3 Livre, Tireoglobulina, Anti-TPO, Anti-Tg,
+  TRAb (Hormônios) + Albumina, Proteínas Totais, Relação A/G (Função
+  Hepática) + TFGe, Cistatina C, Clearance de Creatinina, RACU,
+  Microalbuminúria, Proteinúria isolada, Proteinúria de 24h (Função Renal)
+- **Lote 4** (13): EAS/Urina Tipo I — painel combinado (Urinálise —
+  categoria nova) + Cloro, Cálcio Ionizado, Fósforo, PTH (Eletrólitos/
+  Endocrinologia) + Fibrinogênio (Coagulação — categoria nova) + PCR
+  Ultrassensível, VHS (Marcadores Inflamatórios) + Ácido Fólico, Vitamina
+  A, Vitamina E, Vitamina B1, Vitamina B6 (Vitaminas e Minerais)
+- **Lote 5** (9): Eletroforese de Proteínas, IgG, IgA, IgM (Imunologia —
+  categoria nova) + Testosterona Livre, SHBG, ACTH, DHEA-S, IGF-1
+  (Endocrinologia — categoria nova)
+- **Lote 6** (17): painel completo de Sorologia/Infectologia (categoria
+  nova) — HBsAg, Anti-HBs, Anti-HBc Total, Anti-HBc IgM, Anti-HCV, HIV
+  1/2, Carga Viral HIV, VDRL, FTA-ABS, Toxoplasma IgG/IgM, Dengue NS1/IgM/
+  IgG, CMV IgG/IgM, EBV, Rubéola IgG/IgM
+- **Lote 7** (8): painel de Autoimunidade — FAN, Fator Reumatoide,
+  Anti-CCP, Anti-DNA nativo, Anti-Ro/SSA, Anti-La/SSB, C3, C4 (Imunologia)
+- **Lote 8** (8): painel de Marcadores Tumorais (categoria nova) — PSA
+  Total, PSA Livre, CEA, CA 19-9, CA 125, CA 15-3, AFP, Beta-hCG. **Todos
+  os 8 exames carregam, no campo `alertas`, o aviso clínico obrigatório
+  (pedido explícito do usuário): são indicados primariamente para
+  acompanhamento terapêutico/reavaliação de recidiva em paciente já
+  diagnosticado, não para rastreamento populacional/diagnóstico primário
+  isolado.**
+
+Cruzamentos (`correlatos`) de Creatinina, Ureia e Fosfatase Alcalina foram
+atualizados para apontar como links clicáveis para EAS, RACU, Clearance de
+Creatinina e Fósforo, promovendo textos que antes ficavam apenas em
+`correlatosTexto`.
+
+**Lote 9 — categorias zeradas (28/09/2026, +5 exames, de 137 para 142):**
+durante a rodada acima, o usuário notou pelo app que várias categorias
+ficariam com 0 exames mesmo após os 8 lotes (Parasitologia, Microbiologia,
+Gasometria, Exames de Fezes — nenhuma constava na lista de referência
+original) e pediu para completá-las, mas **somente com exames que
+realmente participam da rotina do farmacêutico** — o que motivou a
+pesquisa regulatória da Resolução CFF 585/2013 (ver seção "Categorias"
+acima) e a remoção da categoria "Imagem e Complementares". Exames
+adicionados, todos escolhidos por relevância direta ao acompanhamento
+farmacoterapêutico:
+
+- Parasitológico de Fezes (EPF) — Parasitologia — acompanhamento de
+  antiparasitários (albendazol, mebendazol, secnidazol)
+- Urocultura com Antibiograma — Microbiologia — ajuste racional de
+  antibioticoterapia conforme perfil de sensibilidade
+- Gasometria Arterial — Gasometria (`ambiente: hospitalar`) — equilíbrio
+  ácido-base para farmacêuticos hospitalares/UTI
+- Sangue Oculto nas Fezes e Calprotectina Fecal — Exames de Fezes — risco
+  de sangramento por AINEs/AAS/anticoagulantes e monitorização de doença
+  inflamatória intestinal (mesalazina, biológicos)
 
 Todo o conteúdo clínico (valores de referência, causas de alteração,
 interferentes, medicamentos relacionados) foi redigido com base em
