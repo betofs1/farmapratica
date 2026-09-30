@@ -734,7 +734,9 @@
         ev.preventDefault();
         const target = document.getElementById(a.dataset.target);
         if (target) {
-          const y = target.getBoundingClientRect().top + window.scrollY - 14;
+          const header = document.querySelector(".search-bar-row");
+          const headerH = header ? header.getBoundingClientRect().height : 0;
+          const y = target.getBoundingClientRect().top + window.scrollY - headerH - 14;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
       });
