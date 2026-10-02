@@ -2888,5 +2888,265 @@
       "fitomenadiona",
       "kanakion"
     ]
+  },
+  {
+    "id": "alisquireno",
+    "nome": "Alisquireno",
+    "classeTerapeutica": [
+      "alisquireno",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "rasilez"
+    ]
+  },
+  {
+    "id": "sacubitril_valsartana",
+    "nome": "Sacubitril + Valsartana",
+    "classeTerapeutica": [
+      "sacubitril_valsartana",
+      "bra",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "entresto"
+    ]
+  },
+  {
+    "id": "perindopril",
+    "nome": "Perindopril",
+    "classeTerapeutica": [
+      "perindopril",
+      "ieca",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "coversyl"
+    ]
+  },
+  {
+    "id": "irbesartana",
+    "nome": "Irbesartana",
+    "classeTerapeutica": [
+      "irbesartana",
+      "bra",
+      "anti_hipertensivo"
+    ],
+    "aliases": [
+      "aprovel",
+      "avapro"
+    ]
+  },
+  {
+    "id": "ciclosporina",
+    "nome": "Ciclosporina",
+    "classeTerapeutica": [
+      "ciclosporina"
+    ],
+    "aliases": [
+      "sandimmun",
+      "neoral",
+      "ciclosporina a"
+    ]
+  },
+  {
+    "id": "acido_folico",
+    "nome": "Ácido Fólico",
+    "classeTerapeutica": [
+      "acido_folico"
+    ],
+    "aliases": [
+      "folacin"
+    ]
+  },
+  {
+    "id": "vitamina_d",
+    "nome": "Vitamina D (Colecalciferol)",
+    "classeTerapeutica": [
+      "vitamina_d"
+    ],
+    "aliases": [
+      "colecalciferol",
+      "depura",
+      "addera d3"
+    ]
+  },
+  {
+    "id": "vitamina_e",
+    "nome": "Vitamina E (Tocoferol)",
+    "classeTerapeutica": [
+      "vitamina_e"
+    ],
+    "aliases": [
+      "tocoferol"
+    ]
+  },
+  {
+    "id": "vitamina_a",
+    "nome": "Vitamina A (Retinol)",
+    "classeTerapeutica": [
+      "vitamina_a"
+    ],
+    "aliases": [
+      "retinol"
+    ]
+  },
+  {
+    "id": "piridoxina",
+    "nome": "Piridoxina (Vitamina B6)",
+    "classeTerapeutica": [
+      "piridoxina"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "amicacina",
+    "nome": "Amicacina",
+    "classeTerapeutica": [
+      "aminoglicosideo"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "alopurinol",
+    "nome": "Alopurinol",
+    "classeTerapeutica": [
+      "alopurinol"
+    ],
+    "aliases": [
+      "zyloric"
+    ]
+  },
+  {
+    "id": "azatioprina",
+    "nome": "Azatioprina",
+    "classeTerapeutica": [
+      "azatioprina"
+    ],
+    "aliases": [
+      "imuran"
+    ]
+  },
+  {
+    "id": "isoniazida",
+    "nome": "Isoniazida",
+    "classeTerapeutica": [
+      "isoniazida"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "cloranfenicol",
+    "nome": "Cloranfenicol",
+    "classeTerapeutica": [
+      "cloranfenicol"
+    ],
+    "aliases": [
+      "quemicetina"
+    ]
+  },
+  {
+    "id": "bromocriptina",
+    "nome": "Bromocriptina",
+    "classeTerapeutica": [
+      "bromocriptina",
+      "dopaminergico_parkinson"
+    ],
+    "aliases": [
+      "parlodel"
+    ]
+  },
+  {
+    "id": "dissulfiram",
+    "nome": "Dissulfiram",
+    "classeTerapeutica": [
+      "dissulfiram"
+    ],
+    "aliases": [
+      "antabuse"
+    ]
+  },
+  {
+    "id": "linezolida",
+    "nome": "Linezolida",
+    "classeTerapeutica": [
+      "linezolida",
+      "imao_b"
+    ],
+    "aliases": [
+      "zyvox"
+    ]
+  },
+  {
+    "id": "bisacodil",
+    "nome": "Bisacodil",
+    "classeTerapeutica": [
+      "laxante"
+    ],
+    "aliases": [
+      "dulcolax"
+    ]
+  },
+  {
+    "id": "cilostazol",
+    "nome": "Cilostazol",
+    "classeTerapeutica": [
+      "cilostazol"
+    ],
+    "aliases": [
+      "pletal"
+    ]
+  },
+  {
+    "id": "propafenona",
+    "nome": "Propafenona",
+    "classeTerapeutica": [
+      "propafenona"
+    ],
+    "aliases": [
+      "ritmonorm"
+    ]
+  },
+  {
+    "id": "sucralfato",
+    "nome": "Sucralfato",
+    "classeTerapeutica": [
+      "sucralfato"
+    ],
+    "aliases": []
+  },
+  {
+    "id": "enoxaparina",
+    "nome": "Enoxaparina",
+    "classeTerapeutica": [
+      "heparina"
+    ],
+    "aliases": [
+      "clexane",
+      "heparina de baixo peso molecular"
+    ]
+  },
+  {
+    "id": "ondansetrona",
+    "nome": "Ondansetrona",
+    "classeTerapeutica": [
+      "ondansetrona",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "vonau",
+      "nausedron"
+    ]
+  },
+  {
+    "id": "tamoxifeno",
+    "nome": "Tamoxifeno",
+    "classeTerapeutica": [
+      "tamoxifeno",
+      "prolonga_qt"
+    ],
+    "aliases": [
+      "nolvadex"
+    ]
   }
 ]
