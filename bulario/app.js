@@ -663,7 +663,7 @@
         titulo: "Tipo de Receituário e Dispensação",
         html: `
           ${m.tipoReceituario ? `<p><strong>Tipo de receituário:</strong> ${esc(m.tipoReceituario)}</p>` : ""}
-          ${m.dispensacao ? `<p><strong>Sujeito a controle especial:</strong> ${m.dispensacao.controleEspecial ? "Sim" : "Não"}</p><p><strong>Retenção de receita:</strong> ${m.dispensacao.retencaoReceita ? "Sim" : "Não"}</p><p><strong>Condições de dispensação:</strong> ${esc(m.dispensacao.condicoes)}</p>` : ""}
+          ${m.dispensacao ? ((typeof m.dispensacao === "object" && !Array.isArray(m.dispensacao)) ? `<p><strong>Sujeito a controle especial:</strong> ${m.dispensacao.controleEspecial ? "Sim" : "Não"}</p><p><strong>Retenção de receita:</strong> ${m.dispensacao.retencaoReceita ? "Sim" : "Não"}</p><p><strong>Condições de dispensação:</strong> ${esc(m.dispensacao.condicoes)}</p>` : `<p><strong>Condições de dispensação:</strong></p>${listaOuTexto(m.dispensacao)}`) : ""}
         `,
       });
     }
