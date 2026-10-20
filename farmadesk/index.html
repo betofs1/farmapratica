@@ -41,7 +41,11 @@
   body{transition:background-color .2s ease, color .2s ease;}
   body.light header.top{
     background:linear-gradient(135deg,#f6f7f9 0%,#f1f2f5 55%,#eceef1 160%);
-    box-shadow:0 4px 18px rgba(0,0,0,0.06);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
   }
   body.light .brand-text h1,
   body.light .brand-text p,
@@ -63,6 +67,12 @@
     border-color:rgba(0,0,0,0.16);
   }
   body.light .theme-toggle-top:hover{background:rgba(0,0,0,0.09);}
+  body.light .home-btn-top{
+    background:rgba(0,0,0,0.045);
+    color:#201d1e;
+    border-color:rgba(0,0,0,0.16);
+  }
+  body.light .home-btn-top:hover{background:rgba(0,0,0,0.09);}
   body.light .study-counter{
     background:rgba(0,0,0,0.045);
     color:#201d1e;
@@ -88,7 +98,12 @@
     position:sticky;
     top:0;
     z-index:50;
-    box-shadow:0 4px 18px rgba(0,0,0,0.5);
+    border-radius:0 0 20px 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
     border-bottom:2px solid rgba(228,23,44,.35);
   }
   .top-row{
@@ -254,6 +269,18 @@
     transition:background-color .15s ease;
   }
   .theme-toggle-top:hover{background:rgba(255,255,255,0.12);}
+  .home-btn-top{
+    display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;padding:0;border-radius:8px;
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.22);
+    cursor:pointer;flex:none;
+    text-decoration:none;
+    transition:background-color .15s ease;
+  }
+  .home-btn-top:hover{background:rgba(255,255,255,0.12);}
+  .home-btn-top svg{width:17px;height:17px;flex-shrink:0;}
   .theme-toggle-top svg{width:17px;height:17px;flex-shrink:0;}
   .theme-toggle-top .icon-moon{display:none;}
   body.light .theme-toggle-top .icon-sun{display:none;}
@@ -1412,6 +1439,7 @@
     .brand-text p{font-size:10px; line-height:1.35;}
     .top-actions{gap:6px; flex-shrink:0;}
     .theme-toggle-top{width:32px; height:32px;}
+    .home-btn-top{width:32px; height:32px;}
     .quick-mode-btn .btn-top-label{display:none;}
     .quick-mode-btn{padding:0; width:32px; height:32px; justify-content:center;}
     .quick-mode-btn svg{margin:0;}
@@ -1474,6 +1502,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         <b id="studyCounterNum">0</b><span class="study-counter-label">&nbsp;esta semana</span>
       </div>
+      <a href="../" class="home-btn-top" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
       <button class="theme-toggle-top" type="button" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>

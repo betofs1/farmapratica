@@ -827,11 +827,14 @@
   }
 
   /* ---------------------------------------------------------------------
-     Tema (claro/escuro) — inicia sempre em modo claro, como as demais
-     ferramentas do FarmaPrática.
+     Tema (claro/escuro) — 20/10/2026: inicia sempre em modo escuro por
+     padrão. A preferência salva em localStorage('farmapratica-theme') é
+     lida de volta logo após a abertura do <body> (script inline no HTML),
+     e este toggle grava a escolha para as próximas visitas.
   --------------------------------------------------------------------- */
   window.toggleTheme = function () {
     document.body.classList.toggle("light");
+    try{ localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
   };
 
   /* ---------------------------------------------------------------------

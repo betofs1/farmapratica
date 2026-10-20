@@ -42,13 +42,16 @@
   .topbar-app{
     display:flex;align-items:center;justify-content:space-between;position:relative;
     min-height:84px;flex-shrink:0;padding:20px 40px;background:var(--sidebar);
-    border-bottom:2px solid rgba(228,23,44,.35);box-shadow:0 2px 20px rgba(0,0,0,.15);z-index:3;gap:16px;
+    border-bottom:2px solid rgba(228,23,44,.35);border-radius:0 0 20px 20px;box-shadow:0 2px 20px rgba(0,0,0,.15);z-index:3;gap:16px;
   }
   .logo-wrap a{display:flex;align-items:center;text-decoration:none;color:inherit;}
   /* Botão "início" exclusivo do cabeçalho mobile — oculto por padrão, só
      aparece dentro do @media(max-width:768px) abaixo (mesmo padrão usado
      em medinter/checklist/receitas/consultacontrolados/dosespediatricas). */
   .topbar-home-mobile{ display:none; }
+  .home-btn-desktop{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .home-btn-desktop:hover{ background:var(--hover-tint); border-color:var(--red); }
+  .home-btn-desktop svg{ width:18px; height:18px; }
   .brand{display:flex;align-items:center;gap:14px;}
   .brand img{width:50px;height:50px;object-fit:contain;}
   .brand-text h1{font-size:25px;font-weight:800;letter-spacing:-.3px;line-height:1.1;margin:0;color:var(--text);}
@@ -318,6 +321,7 @@
   @media(max-width:768px){
     .topbar-app{gap:8px;padding:10px 14px;flex-wrap:wrap;row-gap:8px;position:relative;}
     .logo-wrap{display:none;}
+    .home-btn-desktop{ display:none; }
     .topbar-home-mobile{
       display:flex;align-items:center;justify-content:center;
       position:absolute;left:14px;top:10px;
@@ -450,7 +454,8 @@
 </style>
 </head>
 
-<body class="light">
+<body>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 <div class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
@@ -475,6 +480,7 @@
       <div class="db-dot"></div>
       <span id="dbLabel">Carregando…</span>
     </div>
+    <a href="../" class="home-btn-desktop" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
@@ -1107,10 +1113,9 @@ function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
-// Decisão de produto já padronizada nas demais ferramentas do FarmaPrática:
-// a página sempre inicia em modo claro, independente da preferência salva
-// em sessões anteriores. toggleTheme() continua funcionando normalmente
-// durante a sessão.
+// 20/10/2026: a página agora inicia em modo escuro por padrão, lendo de
+// volta a preferência salva (script inline logo após o <body>) — a chave é
+// compartilhada com as demais ferramentas do FarmaPrática.
 
 /* ===================== db-pill (contador do cabeçalho) ===================== */
 function atualizarDbLabel(){

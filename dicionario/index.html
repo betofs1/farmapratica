@@ -6,7 +6,7 @@
 <title>FarmaPrática | Dicionário Farmacêutico</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
@@ -94,7 +94,7 @@
   html,body{ height:100%; }
   body{
     margin:0;
-    font-family:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background:
       radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
       radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
@@ -122,11 +122,26 @@
     padding:20px 40px 20px 0;
     background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
     border-bottom:2px solid rgba(228,23,44,.35);
+    border-radius: 0 0 20px 20px;
     position:relative;
-    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
     z-index:3;
   }
+  body.light .topbar-app{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
+  }
   .topbar-home-mobile{ display:none; }
+  .home-btn-desktop{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .home-btn-desktop:hover{ background:var(--hover-tint); border-color:var(--red); }
+  .home-btn-desktop svg{ width:18px; height:18px; }
   .sidebar-close-mobile{ display:none; }
   .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left:40px; }
   .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
@@ -149,7 +164,7 @@
 
   /* ---------- Sidebar ---------- */
   .sidebar{
-    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     width:var(--sidebar-w); flex-shrink:0;
     background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
     border-right:1px solid var(--border);
@@ -161,7 +176,7 @@
   .search-box{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:8px 10px; transition:border-color .15s ease, box-shadow .15s ease; }
   .search-box:focus-within{ border-color:var(--red-bright); box-shadow:0 0 0 3px var(--red-glow); }
   .search-box svg{ width:16px; height:16px; color:var(--text-dim); flex-shrink:0; }
-  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Manrope',sans-serif; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Inter',sans-serif; }
   .clear-btn{ display:none; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; flex-shrink:0; background:var(--hover-tint); border:none; color:var(--text-dim); font-size:.7rem; cursor:pointer; line-height:1; padding:0; }
   .clear-btn.visivel{ display:flex; }
   .clear-btn:hover{ background:var(--red-bright); color:#fff; }
@@ -288,7 +303,7 @@
   .level-toggle{ display:flex; gap:4px; background:var(--panel); border:1px solid var(--border); border-radius:11px; padding:4px; flex-shrink:0; }
   .level-btn{ display:flex; align-items:center; gap:6px; padding:8px 13px; border-radius:8px; border:none; background:transparent; color:var(--text-dim); font-size:.74rem; font-weight:700; cursor:pointer; white-space:nowrap; }
   .level-btn:hover{ color:var(--text); }
-  .level-btn.active{ background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; }
+  .level-btn.active{ background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 10px var(--red-glow); }
 
   .term-body{ margin-top:22px; display:flex; flex-direction:column; gap:20px; max-width:920px; }
   .term-block{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:16px 20px; }
@@ -299,8 +314,7 @@
      isso vença qualquer display:flex/block já definido na própria classe do bloco
      (ex.: .callout usa display:flex — sem !important aqui, o bloco ficava sempre
      visível em qualquer nível, o que fazia "Completo" e "Estudo" parecerem iguais). */
-  .nivel-rapido [data-min-nivel="completo"], .nivel-rapido [data-min-nivel="estudo"]{ display:none !important; }
-  .nivel-completo [data-min-nivel="estudo"]{ display:none !important; }
+  .nivel-rapido [data-min-nivel="completo"]{ display:none !important; }
 
   .callout{ border-radius:13px; padding:15px 18px; display:flex; gap:12px; align-items:flex-start; }
   .callout svg{ width:19px; height:19px; flex-shrink:0; margin-top:1px; }
@@ -376,6 +390,7 @@
   @media (max-width:800px){
     .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
     .logo-wrap{ display:none; }
+    .home-btn-desktop{ display:none; }
     .topbar-home-mobile{
       display:flex; align-items:center; justify-content:center; position:absolute; left:14px; top:10px;
       width:34px; height:34px; border-radius:9px; border:1px solid var(--border); background:var(--panel);
@@ -423,7 +438,8 @@
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
 </head>
-<body class="light">
+<body>
+<script>try{ if(localStorage.getItem('farmadic-tema')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <header class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Página inicial">
@@ -448,6 +464,7 @@
     <div class="titulo-descricao">Consulta técnica e didática de termos de farmacologia, farmácia clínica e prática profissional</div>
   </div>
   <div class="topbar-actions">
+    <a href="../" class="home-btn-desktop" title="Página inicial" aria-label="Página inicial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -597,7 +614,10 @@ function addHistorico(id){
 }
 
 /* ---------------- Tema / navegação básica ---------------- */
-function toggleTheme(){ document.body.classList.toggle('light'); }
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  try{ localStorage.setItem('farmadic-tema', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+}
 function abrirMenuMobile(){ document.body.classList.add('mobile-menu-only'); }
 function fecharMenuMobile(){ document.body.classList.remove('mobile-menu-only'); }
 function focarBuscaMobile(){ abrirMenuMobile(); setTimeout(()=>document.getElementById('global-search').focus(), 50); }
@@ -762,7 +782,7 @@ const TERMOS_DESTAQUE = ['agonista','antagonista','biodisponibilidade','meia-vid
 
 function viewInicio(){
   let html = '<div class="intro-banner"><div class="intro-banner-icon">'+icon('bulb')+'</div>' +
-    '<p>Use o alternador de nível (⚡ Rápido / 📚 Completo / 🎓 Estudo) em cada termo para controlar a profundidade do conteúdo</p></div>';
+    '<p>Use o alternador de nível (⚡ Rápido / 📚 Completo) em cada termo para controlar a profundidade do conteúdo</p></div>';
 
   html += '<div class="home-search-big"><div class="search-box">'+icon('search')+
     '<input autocomplete="off" placeholder="Pesquise um termo, sigla, sinônimo, mecanismo ou classe farmacológica..." oninput="syncHomeSearch(this.value)" onkeydown="onSearchKeydown(event)" value="'+esc(state.search)+'">' +
@@ -865,7 +885,7 @@ function viewTermo(id){
     html += '<div class="sinonimos-line"><b>Sinônimos:</b> '+t.sinonimos.map(esc).join(', ')+'</div>';
   }
   html += '</div>';
-  html += '<div class="level-toggle">'+nivelBtn('rapido','Rápido','⚡')+nivelBtn('completo','Completo','📚')+nivelBtn('estudo','Estudo','🎓')+'</div>';
+  html += '<div class="level-toggle">'+nivelBtn('rapido','Rápido','⚡')+nivelBtn('completo','Completo','📚')+'</div>';
   html += '</div>';
 
   html += '<div class="term-body nivel-'+state.nivel+'">';
@@ -890,11 +910,11 @@ function viewTermo(id){
     html += '<div class="callout callout-saber" data-min-nivel="completo">'+icon('bulb')+'<p><b>💡 Você Precisa Saber:</b> '+esc(t.vocePrecisaSaber)+'</p></div>';
   }
   if(t.atencao){
-    html += '<div class="callout callout-atencao" data-min-nivel="estudo">'+icon('alert')+'<p><b>⚠️ Atenção:</b> '+esc(t.atencao)+'</p></div>';
+    html += '<div class="callout callout-atencao" data-min-nivel="completo">'+icon('alert')+'<p><b>⚠️ Atenção:</b> '+esc(t.atencao)+'</p></div>';
   }
 
   if(t.naoConfunda && t.naoConfunda.length){
-    html += '<div class="naoconfunda-box" data-min-nivel="estudo"><h5>'+icon('swap')+' Não Confunda</h5>';
+    html += '<div class="naoconfunda-box" data-min-nivel="completo"><h5>'+icon('swap')+' Não Confunda</h5>';
     t.naoConfunda.forEach(cid=>{
       const c = getComp(cid); if(!c) return;
       const outros = c.termos.filter(x=>x!==id).map(x=>{const ot=getTerm(x); return ot?ot.termo:x;}).join(' × ');

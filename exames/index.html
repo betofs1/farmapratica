@@ -6,7 +6,7 @@
 <title>FarmaPrática | Exames Laboratoriais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
@@ -92,7 +92,7 @@
   html,body{ height:100%; }
   body{
     margin:0;
-    font-family:'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background:
       radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
       radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
@@ -121,10 +121,25 @@
     background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
     border-bottom:2px solid rgba(228,23,44,.35);
     position:relative;
-    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    border-radius: 0 0 20px 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
     z-index:3;
   }
+  body.light .topbar-app{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
+  }
   .topbar-home-mobile{ display:none; }
+  .home-btn-desktop{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .home-btn-desktop:hover{ background:var(--hover-tint); border-color:var(--red); }
+  .home-btn-desktop svg{ width:18px; height:18px; }
   .sidebar-close-mobile{ display:none; }
   .logo-wrap{ grid-column:1; display:flex; align-items:center; padding-left:40px; }
   .logo-wrap a{ display:flex; align-items:center; text-decoration:none; color:inherit; }
@@ -164,7 +179,7 @@
 
   /* ---------- Sidebar ---------- */
   .sidebar{
-    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     width:var(--sidebar-w); flex-shrink:0;
     background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
     border-right:1px solid var(--border);
@@ -176,7 +191,7 @@
   .search-box{ display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:9px; padding:8px 10px; transition:border-color .15s ease, box-shadow .15s ease; }
   .search-box:focus-within{ border-color:var(--red-bright); box-shadow:0 0 0 3px var(--red-glow); }
   .search-box svg{ width:16px; height:16px; color:var(--text-dim); flex-shrink:0; }
-  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Manrope',sans-serif; }
+  .search-box input{ background:transparent; border:none; outline:none; color:var(--text); font-size:.83rem; width:100%; font-family:'Inter',sans-serif; }
   .clear-btn{ display:none; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; flex-shrink:0; background:var(--hover-tint); border:none; color:var(--text-dim); font-size:.7rem; cursor:pointer; line-height:1; padding:0; }
   .clear-btn.visivel{ display:flex; }
   .clear-btn:hover{ background:var(--red-bright); color:#fff; }
@@ -424,6 +439,7 @@
   @media (max-width:800px){
     .topbar-app{ grid-template-columns:1fr; grid-template-rows:auto auto; padding:8px 14px; position:relative; }
     .logo-wrap{ display:none; }
+    .home-btn-desktop{ display:none; }
     .topbar-home-mobile{
       display:flex; align-items:center; justify-content:center; position:absolute; left:14px; top:10px;
       width:34px; height:34px; border-radius:9px; border:1px solid var(--border); background:var(--panel);
@@ -472,7 +488,8 @@
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
 </head>
-<body class="light">
+<body>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <header class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Página inicial">
@@ -506,6 +523,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span class="bl-label">Modo Balcão</span>
     </button>
+    <a href="../" class="home-btn-desktop" title="Página inicial" aria-label="Página inicial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -593,7 +611,7 @@ function saveFavoritos(){ localStorage.setItem('farmalab-favoritos', JSON.string
 function saveHistorico(){ localStorage.setItem('farmalab-historico', JSON.stringify(historico)); }
 function saveComparador(){ localStorage.setItem('farmalab-comparador', JSON.stringify(comparadorData)); }
 
-function toggleTheme(){ document.body.classList.toggle('light'); }
+function toggleTheme(){ document.body.classList.toggle('light'); try{ localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){} }
 function toggleModoBalcao(){
   modoBalcao = !modoBalcao;
   localStorage.setItem('farmalab-balcao', modoBalcao?'1':'0');

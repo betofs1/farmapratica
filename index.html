@@ -309,16 +309,24 @@
     justify-content:space-between;
     padding:24px 40px;
     background:linear-gradient(180deg, color-mix(in srgb, var(--bg) 84%, #000 10%) 0%, color-mix(in srgb, var(--bg) 88%, #000 14%) 100%);
-    border-bottom:1px solid rgba(255,255,255,.06);
-    box-shadow:0 10px 28px -10px rgba(0,0,0,.45);
+    border-bottom:2px solid rgba(228,23,44,.35);
+    border-radius: 0 0 20px 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
     position:relative;
     z-index:2;
     transition:background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
   body.light header{
     background:linear-gradient(180deg, #dfe2e6 0%, #d3d7dc 100%);
-    border-bottom:1px solid #cfd3d8;
-    box-shadow:0 4px 16px -10px rgba(35,40,48,.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
   }
   .brand{
     display:flex;
@@ -336,6 +344,25 @@
     height:50px;
     flex-shrink:0;
     isolation:isolate; /* contém o mix-blend-mode do brilho ao próprio logo, sem vazar para o fundo do cabeçalho */
+  }
+  /* 20/10/2026: anel de "ping" pulsante atrás do logo — um toque a mais de
+     vida no efeito neon, sutil e no mesmo vermelho da marca, lembrando um
+     sinal/pulso (alinhado ao tema de saúde da FarmaPrática), sem alterar
+     as camadas de brilho/sheen já existentes. */
+  .logo-neon-wrap::after{
+    content:'';
+    position:absolute;
+    inset:-6px;
+    z-index:0;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(228,23,44,.5) 0%, rgba(228,23,44,0) 72%);
+    opacity:0;
+    transform:scale(.7);
+    animation:logoNeonPing 4.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  body.light .logo-neon-wrap::after{
+    background:radial-gradient(circle, rgba(228,23,44,.3) 0%, rgba(228,23,44,0) 72%);
   }
   .logo-neon-wrap .logo-img{
     position:relative;
@@ -402,10 +429,15 @@
     0%{ background-position:0% 50%; }
     100%{ background-position:200% 50%; }
   }
+  @keyframes logoNeonPing{
+    0%,68%,100%{ opacity:0; transform:scale(.7); }
+    34%{ opacity:.6; transform:scale(1.3); }
+  }
   @media (prefers-reduced-motion:reduce){
     .logo-neon-wrap .logo-img,
     .logo-neon-glow,
-    .logo-neon-sheen{ animation:none !important; } 
+    .logo-neon-sheen,
+    .logo-neon-wrap::after{ animation:none !important; } 
   }
   .brand-text h1{
     font-size:25px;

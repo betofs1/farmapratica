@@ -7,7 +7,7 @@
 <title>FarmaPrática | Consulta de Controlados</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
@@ -111,7 +111,7 @@
   html,body{ height:100%; }
   body{
     margin:0;
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background:
       radial-gradient(900px 500px at 15% -10%, rgba(239,91,107,.045), transparent 60%),
       radial-gradient(700px 500px at 100% 0%, rgba(245,158,11,.025), transparent 55%),
@@ -136,8 +136,20 @@
     background: linear-gradient(120deg, var(--sidebar), var(--panel) 140%);
     border-bottom: 2px solid rgba(228,23,44,.35);
     position: relative;
-    box-shadow: 0 2px 24px rgba(0,0,0,.2);
+    border-radius: 0 0 20px 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
     z-index: 3;
+  }
+  body.light .topbar-app{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
   }
   .theme-toggle{
     display:flex;
@@ -259,6 +271,9 @@
      só aparece dentro do @media(max-width:800px) mais abaixo (mesmo padrão já
      usado no Checklist de Rotina). */
   .topbar-home-mobile{ display:none; }
+  .home-btn-desktop{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .home-btn-desktop:hover{ background:var(--hover-tint); border-color:var(--red); }
+  .home-btn-desktop svg{ width:18px; height:18px; }
   .brand{ display:flex; align-items:center; gap:14px; }
   .brand img{ width:50px; height:50px; }
   .brand-text h1{ font-size:25px; font-weight:800; letter-spacing:-0.3px; line-height:1.1; margin:0; color: var(--text); }
@@ -275,6 +290,7 @@
        navegação que o logo tinha. */
     .topbar-app{ grid-template-columns: 1fr; grid-template-rows: auto auto; padding: 8px 14px; position:relative; }
     .topbar-app .logo-wrap{ display:none; }
+    .home-btn-desktop{ display:none; }
     .topbar-home-mobile{
       display:flex; align-items:center; justify-content:center;
       position:absolute; left:14px; top:10px;
@@ -303,7 +319,7 @@
 
   /* ---------- Sidebar ---------- */
   .sidebar{
-    font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     width: var(--sidebar-w);
     flex-shrink:0;
     background: linear-gradient(180deg, var(--sidebar), var(--bg) 130%);
@@ -687,7 +703,8 @@
   }
 </style>
 </head>
-<body class="light">
+<body>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <div class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
@@ -713,6 +730,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
       <span class="dm-label">Modo Detalhado</span>
     </button>
+    <a href="../" class="home-btn-desktop" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
@@ -7901,9 +7919,10 @@
 
 <script>
 // ---------- Tema claro/escuro ----------
-// A ferramenta sempre inicia no tema claro (<body class="light"> no HTML),
-// independente do que estiver salvo no localStorage de sessões anteriores —
-// só o alternador de tema (toggleTheme, abaixo) muda o tema durante a sessão.
+// 20/10/2026: a ferramenta agora inicia no modo escuro por padrão; a
+// preferência salva no localStorage é lida de volta logo no carregamento
+// (script inline após o <body>), então quem já tinha escolhido o claro
+// continua vendo claro nas próximas visitas.
 function toggleTheme(){
   document.body.classList.toggle('light');
   localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
