@@ -300,22 +300,11 @@
   .sinonimos-line{ font-size:.78rem; color:var(--text-dim); margin-top:8px; }
   .sinonimos-line b{ color:var(--text-gray); font-weight:700; }
 
-  .level-toggle{ display:flex; gap:4px; background:var(--panel); border:1px solid var(--border); border-radius:11px; padding:4px; flex-shrink:0; }
-  .level-btn{ display:flex; align-items:center; gap:6px; padding:8px 13px; border-radius:8px; border:none; background:transparent; color:var(--text-dim); font-size:.74rem; font-weight:700; cursor:pointer; white-space:nowrap; }
-  .level-btn:hover{ color:var(--text); }
-  .level-btn.active{ background:linear-gradient(135deg,var(--red-dark),var(--red)); color:#fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 3px 10px var(--red-glow); }
-
   .term-body{ margin-top:22px; display:flex; flex-direction:column; gap:20px; max-width:920px; }
   .term-block{ background:var(--card); border:1px solid var(--border); border-radius:13px; padding:16px 20px; }
   .term-block h5{ font-family:'Inter',sans-serif; font-size:.74rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 9px; color:var(--text-dim); display:flex; align-items:center; gap:7px; }
   .term-block h5 svg{ width:14px; height:14px; color:var(--red-bright); }
   .term-block p{ margin:0; font-size:.9rem; line-height:1.68; color:var(--text-gray); }
-  /* Oculta por padrão os blocos acima do nível "Rápido"; !important garante que
-     isso vença qualquer display:flex/block já definido na própria classe do bloco
-     (ex.: .callout usa display:flex — sem !important aqui, o bloco ficava sempre
-     visível em qualquer nível, o que fazia "Completo" e "Estudo" parecerem iguais). */
-  .nivel-rapido [data-min-nivel="completo"]{ display:none !important; }
-
   .callout{ border-radius:13px; padding:15px 18px; display:flex; gap:12px; align-items:flex-start; }
   .callout svg{ width:19px; height:19px; flex-shrink:0; margin-top:1px; }
   .callout p{ margin:0; font-size:.87rem; line-height:1.6; }
@@ -417,8 +406,6 @@
     .app-body{ overflow-y:auto; }
     .main{ padding:18px 16px 90px; }
     .term-head{ flex-direction:column; }
-    .level-toggle{ width:100%; }
-    .level-btn{ flex:1; justify-content:center; }
     .bottom-nav{
       display:flex; position:fixed; bottom:0; left:0; right:0; height:60px; background:var(--sidebar);
       border-top:1px solid var(--border); z-index:20; box-shadow:0 -4px 16px rgba(0,0,0,.2);
@@ -643,11 +630,6 @@ function abrirCategoria(id){
 function abrirComparacao(id){
   setView('comparacao', {comparacaoId:id});
 }
-function setNivel(n){
-  state.nivel = n;
-  renderMain();
-}
-
 /* ---------------- Busca / autocomplete ---------------- */
 function clearSearch(){
   state.search = '';
@@ -782,7 +764,7 @@ const TERMOS_DESTAQUE = ['agonista','antagonista','biodisponibilidade','meia-vid
 
 function viewInicio(){
   let html = '<div class="intro-banner"><div class="intro-banner-icon">'+icon('bulb')+'</div>' +
-    '<p>Use o alternador de nível (⚡ Rápido / 📚 Completo) em cada termo para controlar a profundidade do conteúdo</p></div>';
+    '<p>Cada verbete já traz a ficha completa — definição, explicação simplificada, aplicação prática, atenção e termos relacionados.</p></div>';
 
   html += '<div class="home-search-big"><div class="search-box">'+icon('search')+
     '<input autocomplete="off" placeholder="Pesquise um termo, sigla, sinônimo, mecanismo ou classe farmacológica..." oninput="syncHomeSearch(this.value)" onkeydown="onSearchKeydown(event)" value="'+esc(state.search)+'">' +
@@ -817,10 +799,6 @@ function viewInicio(){
   }
 
   return html;
-}
-
-function nivelBtn(n, label, emoji){
-  return '<button class="level-btn'+(state.nivel===n?' active':'')+'" onclick="setNivel(\''+n+'\')">'+emoji+' '+label+'</button>';
 }
 
 function renderCascata(t){
@@ -885,10 +863,9 @@ function viewTermo(id){
     html += '<div class="sinonimos-line"><b>Sinônimos:</b> '+t.sinonimos.map(esc).join(', ')+'</div>';
   }
   html += '</div>';
-  html += '<div class="level-toggle">'+nivelBtn('rapido','Rápido','⚡')+nivelBtn('completo','Completo','📚')+'</div>';
   html += '</div>';
 
-  html += '<div class="term-body nivel-'+state.nivel+'">';
+  html += '<div class="term-body nivel-completo">';
 
   html += '<div class="term-block" data-min-nivel="rapido"><h5>'+icon('book')+' Definição</h5><p>'+esc(t.definicao)+'</p></div>';
 
