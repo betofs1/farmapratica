@@ -152,33 +152,100 @@ def parsear_xls(xls_path):
     ext = xls_path.suffix.lower()
     print(f"  Processando {ext.upper()}...")
     try:
-        # ── Lê planilha conforme extensão ────────────────────────────────────
+        # ── Lê planilha(s) conforme extensão ──────────────────────────────────
+        # A ANVISA passou a publicar esse arquivo com mais de uma aba (ex.:
+        # "Cabeçalho" + "Lista PMC"), então não é seguro assumir que a tabela
+        # de dados está na primeira aba / aba ativa — procuramos a aba certa
+        # pelo nome e, se não achar, pelo conteúdo (linha com >=10 células
+        # preenchidas = provável cabeçalho de tabela).
+        def _sheet_tem_cabecalho(linhas, limite=50):
+            for row in linhas[:limite]:
+                preenchidas = sum(1 for v in row if v is not None and str(v).strip() not in ("", "nan"))
+                if preenchidas >= 10:
+                    return True
+            return False
+
+        data_publicacao = None
+
         if ext == ".xlsx":
             from openpyxl import load_workbook as _lw
             wb = _lw(str(xls_path), read_only=True, data_only=True)
-            ws = wb.active
-            rows_raw = list(ws.iter_rows(values_only=True))
+            nomes_abas = wb.sheetnames
+
+            # Varre todas as abas em busca da data de publicação (pode estar
+            # numa aba de metadados separada da aba de dados).
+            for nome in nomes_abas:
+                ws_meta = wb[nome]
+                for i, row in enumerate(ws_meta.iter_rows(values_only=True)):
+                    if i >= 20:
+                        break
+                    for v in row:
+                        if v and "Publicada" in str(v):
+                            m = re.search(r"(\d{2}/\d{2}/\d{4})", str(v))
+                            if m:
+                                data_publicacao = m.group(1)
+                    if data_publicacao:
+                        break
+                if data_publicacao:
+                    break
+
+            # Escolhe a aba com a tabela de dados: prioriza nomes conhecidos,
+            # depois cai para a primeira aba cujo conteúdo pareça uma tabela.
+            preferidas = [n for n in nomes_abas if any(k in n.lower() for k in ("pmc", "lista", "dados", "preco", "preço"))]
+            ordem = preferidas + [n for n in nomes_abas if n not in preferidas]
+            rows_raw = None
+            aba_usada = None
+            for nome in ordem:
+                candidato = list(wb[nome].iter_rows(values_only=True))
+                if _sheet_tem_cabecalho(candidato):
+                    rows_raw = candidato
+                    aba_usada = nome
+                    break
+            if rows_raw is None:
+                aba_usada = wb.active.title
+                rows_raw = list(wb.active.iter_rows(values_only=True))
+            print(f"  Aba usada: {aba_usada!r} (abas no arquivo: {nomes_abas})")
         else:
             import xlrd as _xlrd
             wb2 = _xlrd.open_workbook(str(xls_path))
-            ws2 = wb2.sheet_by_index(0)
-            rows_raw = [[ws2.cell_value(r,c) for c in range(ws2.ncols)] for r in range(ws2.nrows)]
+            nomes_abas = wb2.sheet_names()
+
+            for nome in nomes_abas:
+                ws_meta = wb2.sheet_by_name(nome)
+                for i in range(min(20, ws_meta.nrows)):
+                    for c in range(ws_meta.ncols):
+                        v = ws_meta.cell_value(i, c)
+                        if v and "Publicada" in str(v):
+                            m = re.search(r"(\d{2}/\d{2}/\d{4})", str(v))
+                            if m:
+                                data_publicacao = m.group(1)
+                    if data_publicacao:
+                        break
+                if data_publicacao:
+                    break
+
+            preferidas = [n for n in nomes_abas if any(k in n.lower() for k in ("pmc", "lista", "dados", "preco", "preço"))]
+            ordem = preferidas + [n for n in nomes_abas if n not in preferidas]
+            rows_raw = None
+            aba_usada = None
+            for nome in ordem:
+                ws2 = wb2.sheet_by_name(nome)
+                candidato = [[ws2.cell_value(r, c) for c in range(ws2.ncols)] for r in range(ws2.nrows)]
+                if _sheet_tem_cabecalho(candidato):
+                    rows_raw = candidato
+                    aba_usada = nome
+                    break
+            if rows_raw is None:
+                ws2 = wb2.sheet_by_index(0)
+                aba_usada = nomes_abas[0]
+                rows_raw = [[ws2.cell_value(r, c) for c in range(ws2.ncols)] for r in range(ws2.nrows)]
+            print(f"  Aba usada: {aba_usada!r} (abas no arquivo: {nomes_abas})")
 
         print(f"  Planilha: {len(rows_raw)} linhas")
 
-        # ── Extrai data de publicação (linha com "Publicada em") ──────────────
-        data_publicacao = None
-        for row in rows_raw[:10]:
-            for v in row:
-                if v and "Publicada" in str(v):
-                    m = re.search(r"(\d{2}/\d{2}/\d{4})", str(v))
-                    if m:
-                        data_publicacao = m.group(1)
-                        print(f"  Data CMED: {data_publicacao}")
-                        break
-            if data_publicacao:
-                break
-        if not data_publicacao:
+        if data_publicacao:
+            print(f"  Data CMED: {data_publicacao}")
+        else:
             data_publicacao = datetime.now().strftime("%d/%m/%Y")
             print(f"  Data não encontrada, usando hoje: {data_publicacao}")
 

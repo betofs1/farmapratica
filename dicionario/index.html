@@ -10,7 +10,7 @@
 <style>
   :root{
     /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
-    --bg: #2b2d31;
+    --bg: #34363a;
     --panel: #35373c;
     --sidebar: #221f24;
     --card: #38383e;
@@ -154,6 +154,8 @@
   .titulo-principal{ font-size:1.15rem; font-weight:800; letter-spacing:.3px; max-width:100%; line-height:1.25; display:flex; align-items:center; gap:8px; }
   .titulo-principal svg{ width:20px; height:20px; color:var(--red-bright); flex-shrink:0; }
   .titulo-descricao{ font-size:.76rem; color:var(--text-dim); margin-top:3px; max-width:560px; }
+  .termo-count-badge{ display:inline-flex; align-items:center; gap:6px; margin-top:7px; padding:3px 11px; border-radius:999px; background:var(--red-glow); border:1px solid rgba(228,23,44,.35); color:var(--red-bright); font-size:.72rem; font-weight:700; letter-spacing:.02em; }
+  .termo-count-badge svg{ width:13px; height:13px; }
   .topbar-actions{ position:absolute; right:40px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .theme-toggle{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
   .theme-toggle:hover{ background:var(--hover-tint); }
@@ -222,10 +224,11 @@
   }
   .chip-mini:hover{ border-color:var(--red-bright); color:var(--text); transform:translateY(-1px); }
 
+  .cat-header-wrap{ position:relative; margin:14px 0 5px; }
   .cat-header{
     display:flex; align-items:center; gap:9px; width:100%; text-align:left;
     background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
-    border-radius:9px; padding:9px 11px; margin:8px 0 5px; cursor:pointer;
+    border-radius:9px; padding:9px 11px; margin:0; cursor:pointer;
     font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; font-weight:800; color:var(--text-gray);
     transition:transform .12s ease, box-shadow .12s ease;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.18);
@@ -236,6 +239,17 @@
   .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
   .cat-header .cat-chevron{ flex-shrink:0; width:13px; height:13px; transition:transform .2s ease; opacity:.75; color:var(--cc,var(--text-dim)); }
   .cat-header.aberto .cat-chevron{ transform:rotate(90deg); }
+  .cat-quiz-btn{
+    position:absolute; top:-9px; right:12px; z-index:2;
+    display:flex; align-items:center; gap:4px;
+    background:linear-gradient(180deg,var(--red-bright),var(--red-dark));
+    color:#fff; font-size:.6rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+    padding:3px 10px; border-radius:20px; border:none; cursor:pointer;
+    box-shadow:0 2px 7px var(--red-glow), 0 1px 3px rgba(0,0,0,.35);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cat-quiz-btn svg{ width:10px; height:10px; }
+  .cat-quiz-btn:hover{ transform:translateY(-1px) scale(1.04); box-shadow:0 4px 11px var(--red-glow); }
   .cat-body{ display:none; padding:2px 0 8px 4px; }
   .cat-body.aberto{ display:block; }
   .cat-body-empty{ font-size:.72rem; color:var(--text-dim); padding:6px 10px 10px; font-style:italic; }
@@ -245,6 +259,54 @@
   .term-item .item-dot{ width:6px; height:6px; border-radius:50%; background:var(--cc, var(--red-bright)); flex-shrink:0; }
   .term-item .item-nome{ flex:1; min-width:0; font-size:.79rem; font-weight:600; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .term-item .item-sigla{ font-size:.64rem; color:var(--text-dim); flex-shrink:0; }
+
+  /* ---------- Quiz ---------- */
+  .quiz-head{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
+  .quiz-head h2{ font-family:'Inter',sans-serif; font-size:1.3rem; font-weight:800; margin:0; display:flex; align-items:center; gap:9px; }
+  .quiz-head h2 svg{ width:22px; height:22px; color:var(--red-bright); flex-shrink:0; }
+  .quiz-progress-bar{ height:6px; border-radius:20px; background:var(--card); border:1px solid var(--border); overflow:hidden; max-width:620px; margin:0 auto 26px; }
+  .quiz-progress-fill{ height:100%; background:linear-gradient(90deg,var(--red-bright),var(--red)); border-radius:20px; transition:width .25s ease; }
+  .quiz-progress-label{ text-align:center; font-size:.76rem; color:var(--text-dim); font-weight:700; margin:-14px 0 16px; }
+  .quiz-card-stage{ perspective:1600px; max-width:620px; margin:0 auto; }
+  .quiz-card{ position:relative; height:300px; cursor:pointer; transition:transform .5s cubic-bezier(.4,.15,.2,1); transform-style:preserve-3d; }
+  .quiz-card.flipped{ transform:rotateY(180deg); }
+  .quiz-card-face{
+    position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    border-radius:18px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:30px 34px; overflow-y:auto;
+  }
+  .quiz-card-front{
+    background:linear-gradient(145deg, var(--card), var(--panel)); border:1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 14px 34px rgba(0,0,0,.28);
+  }
+  .quiz-card-front .quiz-icon{ width:34px; height:34px; color:var(--red-bright); margin-bottom:14px; opacity:.85; }
+  .quiz-card-front .quiz-pergunta{ font-size:1.14rem; font-weight:700; color:var(--text); line-height:1.5; }
+  .quiz-card-front .quiz-pergunta b{ color:var(--red-bright); }
+  .quiz-card-front .quiz-hint{ margin-top:18px; font-size:.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; font-weight:700; }
+  .quiz-card-back{
+    transform:rotateY(180deg); background:linear-gradient(145deg, var(--red-dark), var(--red)); color:#fff;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 14px 34px var(--red-glow);
+  }
+  .quiz-card-back .quiz-termo{ font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; opacity:.85; margin-bottom:8px; }
+  .quiz-card-back .quiz-def{ font-size:.92rem; line-height:1.56; font-weight:500; }
+  .quiz-actions{ display:flex; align-items:center; justify-content:center; gap:10px; max-width:620px; margin:22px auto 0; flex-wrap:wrap; }
+  .quiz-btn{
+    display:flex; align-items:center; gap:7px; padding:10px 18px; border-radius:11px; border:1px solid var(--border);
+    background:linear-gradient(180deg, var(--card-hover), var(--panel)); color:var(--text-gray); font-size:.8rem; font-weight:700;
+    cursor:pointer; transition:transform .12s ease, color .12s ease, border-color .12s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 2px 6px rgba(0,0,0,.14);
+  }
+  .quiz-btn svg{ width:15px; height:15px; }
+  .quiz-btn:hover:not(:disabled){ color:var(--text); transform:translateY(-1px); border-color:var(--red-bright); }
+  .quiz-btn:disabled{ opacity:.4; cursor:not-allowed; }
+  .quiz-btn.primario{ background:linear-gradient(180deg,var(--red-bright),var(--red-dark)); color:#fff; border-color:transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 3px 10px var(--red-glow); }
+  .quiz-btn.primario:hover{ transform:translateY(-1px); }
+  .quiz-sair-link{ display:block; text-align:center; margin-top:18px; font-size:.78rem; color:var(--text-dim); cursor:pointer; text-decoration:underline; }
+  .quiz-sair-link:hover{ color:var(--red-bright); }
+  .quiz-done{ max-width:520px; margin:40px auto 0; text-align:center; }
+  .quiz-done .quiz-done-icon{ width:56px; height:56px; color:var(--green-ok); margin:0 auto 16px; }
+  .quiz-done h3{ font-family:'Inter',sans-serif; font-size:1.3rem; font-weight:800; margin:0 0 8px; }
+  .quiz-done p{ color:var(--text-dim); font-size:.9rem; margin:0 0 24px; }
 
   /* ---------- Main ---------- */
   .main{ flex:1; min-width:0; overflow-y:auto; padding:28px 34px 60px; }
@@ -421,6 +483,11 @@
       border:1px solid var(--border); background:var(--panel); color:var(--text-dim); font-size:.78rem; font-weight:700; cursor:pointer;
     }
     .btn-voltar-mobile svg{ width:14px; height:14px; }
+    .quiz-card{ height:260px; }
+    .quiz-card-face{ padding:22px 20px; }
+    .quiz-card-front .quiz-pergunta{ font-size:1rem; }
+    .quiz-actions{ gap:8px; }
+    .quiz-btn{ padding:9px 14px; font-size:.76rem; }
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
@@ -449,6 +516,7 @@
       DICIONÁRIO FARMACÊUTICO
     </div>
     <div class="titulo-descricao">Consulta técnica e didática de termos de farmacologia, farmácia clínica e prática profissional</div>
+    <div class="termo-count-badge" id="termo-count-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span id="termo-count-num">—</span> termos no banco</div>
   </div>
   <div class="topbar-actions">
     <a href="../" class="home-btn-desktop" title="Página inicial" aria-label="Página inicial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
@@ -522,7 +590,9 @@ const ICONS = {
   back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
   chev:'<polyline points="9 18 15 12 9 6"/>',
   layers:'<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
-  info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/>'
+  info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/>',
+  cards:'<rect x="4" y="7" width="13" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2"/>',
+  check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
 };
 function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
 
@@ -630,6 +700,114 @@ function abrirCategoria(id){
 function abrirComparacao(id){
   setView('comparacao', {comparacaoId:id});
 }
+/* ---------------- Quiz (modo revisão estilo flashcard) ---------------- */
+let quizSession = null;
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+function iniciarQuiz(catId){
+  const terms = termosDaCategoria(catId);
+  if(!terms.length) return;
+  quizSession = { catId:catId, ids:shuffleArray(terms.map(t=>t.id)), idx:0, flipped:false, done:false };
+  setView('quiz', {categoriaId:catId});
+}
+function quizFlip(){
+  if(!quizSession || quizSession.done) return;
+  quizSession.flipped = !quizSession.flipped;
+  renderMain();
+}
+function quizNext(){
+  if(!quizSession || quizSession.done) return;
+  if(quizSession.idx < quizSession.ids.length-1){
+    quizSession.idx++;
+    quizSession.flipped = false;
+    renderMain();
+  } else {
+    quizSession.done = true;
+    renderMain();
+  }
+}
+function quizPrev(){
+  if(!quizSession || quizSession.done || quizSession.idx<=0) return;
+  quizSession.idx--;
+  quizSession.flipped = false;
+  renderMain();
+}
+function quizReembaralhar(){
+  if(!quizSession) return;
+  const catId = quizSession.catId;
+  const terms = termosDaCategoria(catId);
+  quizSession = { catId:catId, ids:shuffleArray(terms.map(t=>t.id)), idx:0, flipped:false, done:false };
+  renderMain();
+}
+function quizSair(){
+  const catId = quizSession ? quizSession.catId : state.categoriaId;
+  quizSession = null;
+  abrirCategoria(catId);
+}
+document.addEventListener('keydown', function(ev){
+  if(state.view!=='quiz' || !quizSession) return;
+  const tag = (document.activeElement && document.activeElement.tagName) || '';
+  if(tag==='INPUT' || tag==='TEXTAREA') return;
+  if(ev.key===' ' || ev.key==='Enter'){ ev.preventDefault(); quizFlip(); }
+  else if(ev.key==='ArrowRight'){ quizNext(); }
+  else if(ev.key==='ArrowLeft'){ quizPrev(); }
+  else if(ev.key==='Escape'){ quizSair(); }
+});
+function viewQuiz(){
+  if(!quizSession) return viewInicio();
+  const cat = (DATA.categorias||[]).find(c=>c.id===quizSession.catId);
+  const catNome = cat ? cat.nome : 'Categoria';
+  let html = breadcrumb([
+    {label:'Início', href:"setView('inicio')"},
+    {label:catNome, href:"abrirCategoria('"+quizSession.catId+"')"},
+    {label:'Quiz'}
+  ]);
+  const total = quizSession.ids.length;
+  if(quizSession.done){
+    html += '<div class="quiz-done">' +
+      '<div class="quiz-done-icon">'+icon('check')+'</div>' +
+      '<h3>Quiz concluído!</h3>' +
+      '<p>Você revisou '+total+' termo'+(total===1?'':'s')+' de <b>'+esc(catNome)+'</b>.</p>' +
+      '<div class="quiz-actions">' +
+      '<button class="quiz-btn primario" onclick="quizReembaralhar()">'+icon('swap')+' Refazer o quiz</button>' +
+      '<button class="quiz-btn" onclick="quizSair()">'+icon('back')+' Voltar à categoria</button>' +
+      '</div></div>';
+    return html;
+  }
+  const id = quizSession.ids[quizSession.idx];
+  const t = getTerm(id);
+  if(!t){ quizNext(); return '<div></div>'; }
+  const pct = Math.round(((quizSession.idx)/total)*100);
+  html += '<div class="quiz-head"><h2>'+icon('cards')+'Quiz — '+esc(catNome)+'</h2></div>';
+  html += '<div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:'+pct+'%"></div></div>';
+  html += '<div class="quiz-progress-label">Card '+(quizSession.idx+1)+' de '+total+'</div>';
+  html += '<div class="quiz-card-stage"><div class="quiz-card'+(quizSession.flipped?' flipped':'')+'" onclick="quizFlip()">' +
+    '<div class="quiz-card-face quiz-card-front">' + icon('target','quiz-icon') +
+      '<div class="quiz-pergunta">Qual a definição de <b>'+esc(t.termo)+(t.sigla?' ('+esc(t.sigla)+')':'')+'</b>?</div>' +
+      '<div class="quiz-hint">Clique no card para ver a resposta</div>' +
+    '</div>' +
+    '<div class="quiz-card-face quiz-card-back">' +
+      '<div class="quiz-termo">'+esc(t.termo)+(t.sigla?' ('+esc(t.sigla)+')':'')+'</div>' +
+      '<div class="quiz-def">'+esc(t.definicao||'')+'</div>' +
+    '</div>' +
+  '</div></div>';
+  html += '<div class="quiz-actions">' +
+    '<button class="quiz-btn" onclick="quizPrev()"'+(quizSession.idx===0?' disabled':'')+'>'+icon('back')+' Anterior</button>' +
+    '<button class="quiz-btn primario" onclick="quizFlip()">'+icon('cards')+' Virar card</button>' +
+    '<button class="quiz-btn" onclick="quizNext()">'+(quizSession.idx===total-1?'Finalizar':'Próximo')+' <span style="display:inline-flex;transform:scaleX(-1)">'+icon('back')+'</span></button>' +
+    '</div>';
+  html += '<div class="quiz-actions" style="margin-top:10px;">' +
+    '<button class="quiz-btn" onclick="quizReembaralhar()">'+icon('swap')+' Embaralhar novamente</button>' +
+    '</div>';
+  html += '<span class="quiz-sair-link" onclick="quizSair()">Sair do quiz e voltar à categoria</span>';
+  return html;
+}
 /* ---------------- Busca / autocomplete ---------------- */
 function clearSearch(){
   state.search = '';
@@ -714,11 +892,16 @@ function renderSidebar(){
   DATA.categorias.forEach(cat=>{
     const terms = termosDaCategoria(cat.id);
     const aberto = state.openCats.has(cat.id);
+    html += '<div class="cat-header-wrap">';
     html += '<button class="cat-header'+(aberto?' aberto':'')+'" '+ccStyle(cat.cor)+' onclick="toggleCat(\''+cat.id+'\')">' +
       '<span class="cat-emoji">'+catEmoji(cat.id)+'</span>' +
       '<span class="cat-nome">'+esc(cat.nome)+'</span>' +
       '<span class="cat-count">'+terms.length+'</span>' +
       icon('chev','cat-chevron') + '</button>';
+    if(terms.length>0){
+      html += '<button class="cat-quiz-btn" onclick="event.stopPropagation(); iniciarQuiz(\''+cat.id+'\')" title="Testar estes termos no modo Quiz">'+icon('cards')+'QUIZ</button>';
+    }
+    html += '</div>';
     html += '<div class="cat-body'+(aberto?' aberto':'')+'" id="catbody-'+cat.id+'">';
     if(terms.length===0){
       html += '<div class="cat-body-empty">Nenhum termo cadastrado ainda nesta categoria.</div>';
@@ -747,6 +930,7 @@ function renderMain(){
   else if(state.view==='naoconfunda') el.innerHTML = viewNaoConfundaLista();
   else if(state.view==='comparacao') el.innerHTML = viewComparacao(state.comparacaoId);
   else if(state.view==='buscaResultados') el.innerHTML = viewBuscaResultados(state.search);
+  else if(state.view==='quiz') el.innerHTML = viewQuiz();
   else el.innerHTML = viewInicio();
 }
 
@@ -1021,6 +1205,7 @@ fetch('dicionario.json').then(r=>r.json()).then(data=>{
   DATA.categorias.forEach(c=>CAT_BY_ID[c.id]=c);
   DATA.termos.forEach(t=>TERM_BY_ID[t.id]=t);
   DATA.comparacoes.forEach(c=>COMP_BY_ID[c.id]=c);
+  const tcEl = document.getElementById('termo-count-num'); if(tcEl) tcEl.textContent = DATA.termos.length;
   loadHistorico();
   const paramTermo = new URLSearchParams(window.location.search).get('termo');
   if(paramTermo && TERM_BY_ID[paramTermo]){

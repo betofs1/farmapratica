@@ -7046,6 +7046,2417 @@
         "Glossário de Termos Técnicos Utilizados em Doenças Tropicais e Negligenciadas – Conselho Federal de Farmácia (CFF), 2024"
       ],
       "atencao": "A vulnerabilidade pode ser social, econômica, biológica (ex.: gestantes, imunossuprimidos) e geográfica (acesso limitado a serviços de saúde) simultaneamente — estratégias de saúde pública eficazes precisam considerar essas dimensões combinadas, não isoladamente."
+    },
+    {
+      "id": "farmacologia",
+      "termo": "Farmacologia",
+      "categoria": "farmacologia-geral",
+      "sinonimos": [],
+      "definicao": "Ciência que estuda a origem, as propriedades físico-químicas, os mecanismos de ação, os efeitos bioquímicos e fisiológicos e as aplicações terapêuticas das substâncias que interagem com os sistemas vivos.",
+      "explicacaoSimplificada": "É a ciência que estuda como os fármacos agem no organismo e como o organismo reage a eles — a base teórica de toda a prática farmacêutica.",
+      "aplicacaoPratica": "Divide-se tradicionalmente em farmacocinética (o que o organismo faz com o fármaco) e farmacodinâmica (o que o fármaco faz no organismo); essa divisão orienta a análise de prescrições, interações e ajustes posológicos na rotina clínica.",
+      "atencao": "'Farmacologia' é o nome da ciência; 'fármaco' é o objeto de estudo dessa ciência — os dois termos não são intercambiáveis.",
+      "termosRelacionados": [
+        "farmaco",
+        "farmacocinetica",
+        "farmacodinamica",
+        "farmacoterapia"
+      ],
+      "fontes": [
+        "Farmacologia Básica e Clínica (Katzung)",
+        "Goodman & Gilman — As Bases Farmacológicas da Terapêutica"
+      ]
+    },
+    {
+      "id": "farmacoterapia",
+      "termo": "Farmacoterapia",
+      "categoria": "farmacoterapia",
+      "sinonimos": [],
+      "definicao": "Ramo da farmacologia e da prática clínica que trata do uso terapêutico racional de medicamentos para prevenir, tratar ou curar doenças e agravos à saúde, envolvendo a seleção, a prescrição, a dispensação e o acompanhamento da terapia medicamentosa.",
+      "explicacaoSimplificada": "É o uso dos medicamentos no tratamento das doenças — escolher o remédio certo, na dose certa, pelo tempo certo, para cada paciente.",
+      "aplicacaoPratica": "A revisão da farmacoterapia e o seguimento farmacoterapêutico, conduzidos pelo farmacêutico, visam identificar problemas relacionados a medicamentos e otimizar os resultados clínicos do tratamento.",
+      "atencao": "Farmacoterapia não se limita à escolha do fármaco: inclui posologia, via de administração, duração do tratamento, monitorização e os ajustes necessários conforme a resposta do paciente.",
+      "termosRelacionados": [
+        "revisao-farmacoterapia",
+        "seguimento-farmacoterapeutico",
+        "uso-racional-medicamentos"
+      ],
+      "fontes": [
+        "Pharmacotherapy: A Pathophysiologic Approach (DiPiro)"
+      ]
+    },
+    {
+      "id": "farmacognosia",
+      "termo": "Farmacognosia",
+      "categoria": "farmacologia-geral",
+      "sinonimos": [],
+      "definicao": "Ramo da farmacologia que estuda as substâncias com potencial terapêutico de origem natural — vegetal, animal, microbiana ou mineral —, incluindo sua identificação, composição química, obtenção, padronização e aplicação como fármacos ou matéria-prima para a produção de medicamentos.",
+      "explicacaoSimplificada": "É o estudo dos remédios que vêm da natureza — principalmente plantas —, desde a identificação da espécie até a extração dos princípios ativos usados em medicamentos.",
+      "aplicacaoPratica": "Fundamenta a avaliação da qualidade e da segurança de fitoterápicos e plantas medicinais dispensados em farmácias, incluindo a identificação de adulterações e a padronização de extratos vegetais.",
+      "atencao": "Farmacognosia não é sinônimo de fitoterapia: a farmacognosia estuda a origem e a composição da matéria-prima natural, enquanto a fitoterapia trata do uso terapêutico dos fitoterápicos já formulados.",
+      "termosRelacionados": [
+        "fitofarmaco",
+        "farmacotecnica"
+      ],
+      "fontes": [
+        "Farmacognosia: da Planta ao Medicamento (Simões et al.)"
+      ]
+    },
+    {
+      "id": "farmacotecnica",
+      "termo": "Farmacotécnica",
+      "categoria": "farmacotecnica",
+      "sinonimos": [
+        "Tecnologia Farmacêutica"
+      ],
+      "definicao": "Ramo da farmácia que aplica princípios científicos e tecnológicos ao desenvolvimento, à formulação, à manipulação e ao controle de qualidade das formas farmacêuticas, transformando o fármaco em um medicamento seguro, estável e eficaz.",
+      "explicacaoSimplificada": "É a parte da farmácia que cuida de transformar o princípio ativo em um medicamento de fato — comprimido, xarope, pomada etc. —, garantindo que ele seja estável, seguro e funcione como esperado.",
+      "aplicacaoPratica": "Orienta decisões técnicas na manipulação magistral e na avaliação de formas farmacêuticas industrializadas, como a escolha de excipientes, o sistema de liberação e os testes de estabilidade e controle de qualidade.",
+      "atencao": "A escolha inadequada da forma farmacêutica ou do excipiente pode comprometer a biodisponibilidade do fármaco, mesmo quando o princípio ativo e a dose estão corretos.",
+      "termosRelacionados": [
+        "forma-farmaceutica",
+        "estabilidade-farmaceutica",
+        "validacao",
+        "excipiente"
+      ],
+      "fontes": [
+        "Formas Farmacêuticas & Sistemas de Liberação de Fármacos (Ansel)"
+      ]
+    },
+    {
+      "id": "farmacoepidemiologia",
+      "termo": "Farmacoepidemiologia",
+      "categoria": "saude-publica",
+      "sinonimos": [],
+      "definicao": "Área que aplica métodos epidemiológicos ao estudo do uso, dos efeitos e dos padrões de utilização de medicamentos em grandes populações, permitindo identificar riscos, benefícios e tendências de prescrição não detectáveis em ensaios clínicos individuais.",
+      "explicacaoSimplificada": "É o estudo de como os medicamentos são usados e quais efeitos eles causam, olhando para populações inteiras, não só para pacientes individuais.",
+      "aplicacaoPratica": "Fundamenta estudos de utilização de medicamentos, estudos de farmacovigilância pós-comercialização e políticas públicas de assistência farmacêutica, como a definição de listas de medicamentos essenciais.",
+      "atencao": "Não confundir com farmacovigilância: a farmacoepidemiologia é o método de pesquisa populacional; a farmacovigilância é o sistema de monitoramento contínuo de reações adversas, que frequentemente utiliza esse método.",
+      "termosRelacionados": [
+        "farmacovigilancia-termo",
+        "uso-racional-medicamentos"
+      ],
+      "fontes": [
+        "Pharmacoepidemiology (Strom, Kimmel, Hennessy)"
+      ]
+    },
+    {
+      "id": "farmacogenomica",
+      "termo": "Farmacogenômica",
+      "categoria": "farmacocinetica",
+      "sinonimos": [],
+      "definicao": "Área que estuda a influência do conjunto do genoma de um indivíduo — e não apenas de genes isolados — sobre a resposta aos medicamentos, buscando identificar perfis genéticos amplos associados à eficácia e à toxicidade farmacológica.",
+      "explicacaoSimplificada": "É uma visão mais ampla da farmacogenética: em vez de olhar um gene por vez, estuda todo o genoma da pessoa para prever como ela vai responder aos medicamentos.",
+      "aplicacaoPratica": "Orienta o desenvolvimento de terapias personalizadas (medicina de precisão) e painéis genômicos usados para prever resposta a quimioterápicos e outros medicamentos de margem terapêutica estreita.",
+      "atencao": "Farmacogenômica e farmacogenética  são usadas como sinônimos na prática, mas tecnicamente a farmacogenética estuda genes isolados, enquanto a farmacogenômica analisa o genoma como um todo.",
+      "termosRelacionados": [
+        "farmacogenetica"
+      ],
+      "fontes": [
+        "CPIC — Clinical Pharmacogenetics Implementation Consortium"
+      ]
+    },
+    {
+      "id": "toxicologia",
+      "termo": "Toxicologia",
+      "categoria": "toxicologia",
+      "sinonimos": [],
+      "definicao": "Ciência que estuda os efeitos nocivos de substâncias químicas — fármacos, xenobióticos, venenos e poluentes — sobre os organismos vivos, incluindo os mecanismos de toxicidade, o diagnóstico, o tratamento e a prevenção das intoxicações.",
+      "explicacaoSimplificada": "É a ciência que estuda os efeitos tóxicos (venenoso) das substâncias sobre o corpo, e como prevenir, identificar e tratar uma intoxicação.",
+      "aplicacaoPratica": "Fundamenta a atuação do farmacêutico na orientação sobre o uso seguro de medicamentos e produtos químicos, no reconhecimento de sinais de intoxicação e no suporte a centros de informação toxicológica.",
+      "atencao": "O princípio clássico da toxicologia, atribuído a Paracelso, é que 'a dose faz o veneno' — qualquer substância pode ser tóxica dependendo da dose, da via de exposição e da suscetibilidade individual.",
+      "termosRelacionados": [
+        "toxicidade",
+        "xenobiotico"
+      ],
+      "fontes": [
+        "Toxicologia (Klaassen)"
+      ]
+    },
+    {
+      "id": "fitofarmaco",
+      "termo": "Fitofármaco",
+      "categoria": "farmacologia-geral",
+      "sinonimos": [],
+      "definicao": "Fármaco obtido exclusivamente de matérias-primas ativas vegetais, cuja eficácia e segurança são validadas por meio de levantamentos etnofarmacológicos, documentação tecnocientífica ou evidências clínicas, podendo compor fitoterápicos (produtos acabados padronizados) ou ser utilizado como derivado isolado de planta.",
+      "explicacaoSimplificada": "É o princípio ativo que vem de uma planta — a base química dos medicamentos fitoterápicos.",
+      "aplicacaoPratica": "Na dispensação de fitoterápicos, é importante verificar o registro na Anvisa, a padronização do teor de marcadores ativos e possíveis interações entre fitofármacos e medicamentos convencionais.",
+      "atencao": "Produtos à base de plantas não registrados ou não padronizados não oferecem garantia de teor, pureza ou ausência de contaminantes — orientar o paciente a preferir produtos com registro sanitário.",
+      "termosRelacionados": [
+        "farmacognosia",
+        "farmaco"
+      ],
+      "fontes": [
+        "Farmacognosia: da Planta ao Medicamento (Simões et al.)",
+        "ANVISA — Guia de Orientação para Registro de Medicamento Fitoterápico"
+      ]
+    },
+    {
+      "id": "farmacocinetica",
+      "termo": "Farmacocinética",
+      "categoria": "farmacocinetica",
+      "sinonimos": [],
+      "definicao": "Ramo da farmacologia que estuda o percurso do fármaco no organismo ao longo do tempo, abrangendo os processos de absorção, distribuição, metabolismo e excreção (sigla ADME), e que determina a relação entre a dose administrada e a concentração do fármaco nos tecidos e no plasma.",
+      "explicacaoSimplificada": "É o que o corpo faz com o medicamento: como ele entra, se espalha, é transformado e eliminado — resumido na sigla ADME (Absorção, Distribuição, Metabolismo, Excreção).",
+      "aplicacaoPratica": "Compreender a farmacocinética de um fármaco permite prever o tempo de início e a duração do efeito, ajustar doses em insuficiência renal ou hepática e antecipar interações medicamentosas por competição metabólica.",
+      "atencao": "Não confundir com farmacodinâmica: a farmacocinética descreve o que o organismo faz com o fármaco; a farmacodinâmica descreve o que o fármaco faz no organismo.",
+      "termosRelacionados": [
+        "absorcao",
+        "distribuicao",
+        "metabolismo-farmacocinetico",
+        "excrecao",
+        "farmacodinamica"
+      ],
+      "fontes": [
+        "Farmacologia Básica e Clínica (Katzung)"
+      ]
+    },
+    {
+      "id": "metabolismo-hepatico",
+      "termo": "Metabolismo Hepático",
+      "categoria": "farmacocinetica",
+      "sinonimos": [],
+      "definicao": "Processo de biotransformação dos fármacos que ocorre predominantemente no fígado, por meio de reações enzimáticas de fase I (oxidação, redução, hidrólise — principalmente pelo sistema citocromo P450) e de fase II (conjugação), convertendo o fármaco em metabólitos geralmente mais hidrossolúveis e mais facilmente excretáveis.",
+      "explicacaoSimplificada": "É a transformação que o fígado faz no medicamento, usando enzimas  como as do citocromo P450), deixando-o mais fácil de ser eliminado pelo corpo — ou, em alguns casos, ativando-o.",
+      "aplicacaoPratica": "É a principal via de interações medicamentosas farmacocinéticas, por indução ou inibição de enzimas do citocromo P450 (ex.: inibidores de CYP3A4 aumentando os níveis plasmáticos de outros fármacos metabolizados pela mesma enzima).",
+      "atencao": "Em pacientes com insuficiência hepática, o metabolismo de muitos fármacos está reduzido, exigindo ajuste de dose para evitar acúmulo e toxicidade — o oposto do que ocorre com pró-fármacos, cuja ativação depende do metabolismo hepático.",
+      "termosRelacionados": [
+        "metabolismo-farmacocinetico",
+        "efeito-primeira-passagem",
+        "interacao-farmacocinetica"
+      ],
+      "fontes": [
+        "Farmacologia Básica e Clínica (Katzung)"
+      ]
+    },
+    {
+      "id": "farmacodinamica",
+      "termo": "Farmacodinâmica",
+      "categoria": "farmacodinamica",
+      "sinonimos": [],
+      "definicao": "Ramo da farmacologia que estuda os mecanismos de ação dos fármacos sobre o organismo, incluindo a interação com receptores e outros alvos biológicos, a relação entre concentração e efeito (dose-resposta) e os determinantes da eficácia, potência e toxicidade farmacológica.",
+      "explicacaoSimplificada": "É o que o medicamento faz no corpo: como ele se liga aos receptores e provoca os efeitos terapêuticos (e também os efeitos adversos).",
+      "aplicacaoPratica": "Entender a farmacodinâmica de um fármaco permite prever e explicar efeitos terapêuticos, efeitos adversos dose-dependentes e interações farmacodinâmicas (sinergismo, antagonismo) entre medicamentos usados simultaneamente.",
+      "atencao": "Não confundir com farmacocinética: a farmacodinâmica descreve o que o fármaco faz no organismo; a farmacocinética descreve o que o organismo faz com o fármaco.",
+      "termosRelacionados": [
+        "receptor",
+        "agonista",
+        "antagonista",
+        "eficacia",
+        "potencia",
+        "farmacocinetica"
+      ],
+      "fontes": [
+        "Goodman & Gilman — As Bases Farmacológicas da Terapêutica"
+      ]
+    },
+    {
+      "id": "interacao-medicamentosa",
+      "termo": "Interação Medicamentosa",
+      "categoria": "interacoes",
+      "sinonimos": [],
+      "definicao": "Modificação do efeito de um fármaco — em intensidade, duração ou tipo de resposta — causada pela administração concomitante de outro fármaco, alimento, planta medicinal ou substância, podendo ser classificada como farmacocinética, farmacodinâmica ou físico-química (incompatibilidade).",
+      "explicacaoSimplificada": "É quando um medicamento altera o efeito de outro (ou de um alimento), podendo aumentar, reduzir ou mudar a ação esperada do tratamento.",
+      "aplicacaoPratica": "A triagem de interações medicamentosas na dispensação e na análise de prescrições é uma das principais barreiras de segurança do farmacêutico contra eventos adversos evitáveis, especialmente em pacientes polimedicados.",
+      "atencao": "Nem toda interação medicamentosa é clinicamente relevante — a gravidade depende da margem terapêutica dos fármacos envolvidos, da dose, do tempo de uso concomitante e de fatores individuais do paciente.",
+      "termosRelacionados": [
+        "interacao-farmacocinetica",
+        "interacao-farmacodinamica",
+        "polimedicacao",
+        "antagonismo-farmacologico-interacao"
+      ],
+      "fontes": [
+        "Farmacologia Básica e Clínica (Katzung)"
+      ]
+    },
+    {
+      "id": "toxicidade",
+      "termo": "Toxicidade",
+      "categoria": "toxicologia",
+      "sinonimos": [],
+      "definicao": "Capacidade de uma substância de causar dano estrutural ou funcional a um organismo vivo, cuja intensidade depende da dose, da via de exposição, do tempo de exposição e de fatores individuais de suscetibilidade.",
+      "explicacaoSimplificada": "É a capacidade de uma substância fazer mal ao organismo — quanto maior a toxicidade, menor a dose necessária para causar dano.",
+      "aplicacaoPratica": "A toxicidade orienta a definição da dose máxima segura, do índice terapêutico e das classes de risco de medicamentos e produtos químicos, além de fundamentar a conduta frente a intoxicações agudas e crônicas.",
+      "atencao": "A toxicidade específica de órgão (hepatotoxicidade, nefrotoxicidade, neurotoxicidade, cardiotoxicidade) deve ser monitorada de forma dirigida, já que o mesmo fármaco pode ser seguro para um órgão e tóxico para outro, dependendo da dose e do tempo de uso.",
+      "termosRelacionados": [
+        "hepatotoxicidade",
+        "nefrotoxicidade",
+        "neurotoxicidade",
+        "cardiotoxicidade",
+        "indice-terapeutico"
+      ],
+      "fontes": [
+        "Toxicologia (Klaassen)"
+      ]
+    },
+    {
+      "id": "qualidade",
+      "termo": "Qualidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Grau em que um conjunto de características inerentes a um medicamento atende aos requisitos e especificações estabelecidos, garantindo identidade, teor, pureza e desempenho adequados para o uso a que se destina.",
+      "explicacaoSimplificada": "É o quanto um medicamento realmente corresponde ao que deveria ser — na quantidade certa de princípio ativo, livre de contaminantes e funcionando como esperado.",
+      "aplicacaoPratica": "Um comprimido com qualidade apresenta teor, dissolução e uniformidade de dose dentro dos limites especificados; a qualidade é o resultado final que todo o sistema de Controle de Qualidade e Garantia da Qualidade busca assegurar.",
+      "atencao": "Qualidade é o atributo do produto (o resultado); Controle de Qualidade é a atividade de verificação; Garantia da Qualidade é o sistema que assegura esse resultado de forma consistente — os três termos são frequentemente confundidos em prova.",
+      "termosRelacionados": [
+        "controle-qualidade-termo",
+        "garantia-qualidade",
+        "especificacao-farmacopeica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "garantia-qualidade",
+      "termo": "Garantia da Qualidade (GQ)",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Sistema abrangente de ações planejadas e sistemáticas, que engloba todos os aspectos que influenciam a qualidade, destinado a assegurar que os medicamentos sejam consistentemente produzidos e controlados conforme os padrões de qualidade apropriados ao uso pretendido.",
+      "explicacaoSimplificada": "É o sistema geral que organiza tudo — documentação, treinamento, validação, Boas Práticas de Fabricação e Controle de Qualidade — para garantir que o medicamento sempre saia com a qualidade esperada.",
+      "aplicacaoPratica": "A Garantia da Qualidade engloba o Controle de Qualidade (que analisa amostras) como uma de suas partes, mas vai além, cobrindo documentação, qualificação de equipamentos, validação de processos e treinamento de pessoal.",
+      "atencao": "Não confundir com Controle de Qualidade: o CQ é uma atividade pontual de verificação (analisar, medir); a GQ é o sistema organizacional mais amplo que inclui o CQ e também a prevenção de desvios.",
+      "termosRelacionados": [
+        "controle-qualidade-termo",
+        "boas-praticas-fabricacao",
+        "qualidade",
+        "validacao"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "amostragem",
+      "termo": "Amostragem",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Processo de seleção de uma quantidade representativa de unidades de um lote, segundo plano estatístico definido, destinada à realização de ensaios de controle de qualidade.",
+      "explicacaoSimplificada": "É a retirada de algumas unidades de um lote de medicamentos, de forma planejada, para representar o lote inteiro nos testes de qualidade.",
+      "aplicacaoPratica": "Retirar comprimidos de diferentes pontos (início, meio e fim) de um lote de produção para análise, de modo que a amostra reflita de fato a variabilidade real do lote.",
+      "atencao": "Uma amostragem mal planejada (ex.: retirar unidades só do início do lote) pode não detectar heterogeneidades reais do processo, comprometendo a validade de todo o resultado do Controle de Qualidade.",
+      "termosRelacionados": [
+        "controle-qualidade-termo",
+        "uniformidade-dose"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "identidade",
+      "termo": "Identidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Ensaio que confirma que a substância analisada corresponde de fato ao princípio ativo ou material declarado, por meio de métodos físico-químicos, cromatográficos ou espectroscópicos característicos.",
+      "explicacaoSimplificada": "É o teste que responde à pergunta 'isso é realmente o que deveria ser?' — confirma que o pó ou comprimido contém o princípio ativo declarado, e não outro.",
+      "aplicacaoPratica": "Confirmar, por espectroscopia de infravermelho ou cromatografia, que um lote rotulado como paracetamol realmente contém paracetamol, e não outra substância por erro de rotulagem ou contaminação cruzada.",
+      "atencao": "O ensaio de identidade é qualitativo (confirma 'o que é'), diferente do ensaio de teor, que é quantitativo (confirma 'quanto tem') — os dois são complementares e exigidos juntos na liberação de um lote.",
+      "termosRelacionados": [
+        "teor",
+        "especificacao-farmacopeica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "teor",
+      "termo": "Teor",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Quantidade de princípio ativo presente em uma amostra, expressa geralmente como porcentagem da quantidade declarada no rótulo.",
+      "explicacaoSimplificada": "É a quantidade real de princípio ativo que o comprimido (ou outra forma farmacêutica) contém, comparada com o que está escrito na embalagem.",
+      "aplicacaoPratica": "Determinar por cromatografia líquida (HPLC) a quantidade de princípio ativo presente em um comprimido e compará-la com os limites de especificação (ex.: 95–105% do declarado).",
+      "atencao": "Um teor fora da especificação pode indicar tanto um problema de fabricação (erro de pesagem, degradação) quanto, se detectado após o uso, risco de subdosagem ou sobredosagem para o paciente.",
+      "termosRelacionados": [
+        "identidade",
+        "pureza",
+        "especificacao-farmacopeica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "pureza",
+      "termo": "Pureza",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Grau de ausência de substâncias estranhas ou impurezas indesejáveis (produtos de degradação, resíduos de síntese, contaminantes) em um princípio ativo ou medicamento, dentro dos limites estabelecidos.",
+      "explicacaoSimplificada": "É o quanto uma substância está livre de 'contaminações' ou impurezas que não deveriam estar ali.",
+      "aplicacaoPratica": "Determinar por HPLC as impurezas relacionadas ao princípio ativo em um lote, comparando o resultado com os limites máximos permitidos na farmacopeia ou no dossiê de registro.",
+      "atencao": "Impurezas podem ser mais tóxicas que o próprio princípio ativo, mesmo em baixas concentrações — por isso a pureza é controlada com limites frequentemente mais rígidos que o teor do próprio fármaco.",
+      "termosRelacionados": [
+        "teor",
+        "limite-quantificacao",
+        "limite-deteccao"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "uniformidade-dose",
+      "termo": "Uniformidade de Dose",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Ensaio que verifica se as unidades individuais de um lote (comprimidos, cápsulas etc.) apresentam quantidade de princípio ativo dentro de uma faixa estreita em torno do valor declarado, garantindo consistência entre unidades.",
+      "explicacaoSimplificada": "Verifica se cada comprimido do lote tem, individualmente, aproximadamente a mesma quantidade de princípio ativo — não basta a média estar certa, cada unidade precisa estar dentro da faixa.",
+      "aplicacaoPratica": "Analisar individualmente 10 (ou mais) comprimidos de um mesmo lote para verificar a variação de conteúdo entre eles, especialmente crítico em formulações de baixa dosagem ou fármacos de margem terapêutica estreita.",
+      "atencao": "A uniformidade de dose é diferente do teor médio do lote: um lote pode ter teor médio correto e, ainda assim, falhar na uniformidade se unidades individuais variarem muito entre si (algumas subdosadas, outras sobredosadas).",
+      "termosRelacionados": [
+        "teor",
+        "amostragem",
+        "indice-terapeutico"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "desintegracao",
+      "termo": "Desintegração",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Ensaio que determina o tempo necessário para que uma forma farmacêutica sólida se fragmente em partículas menores, sob condições padronizadas de agitação e meio, sem necessariamente implicar a dissolução completa do princípio ativo.",
+      "explicacaoSimplificada": "Mede quanto tempo o comprimido leva para se quebrar/esfarelar em pedaços menores — é só a quebra física, não a liberação do fármaco no sangue.",
+      "aplicacaoPratica": "Avaliar, em aparelho de desintegração padronizado, quanto tempo um comprimido leva para se fragmentar completamente em determinado meio líquido e temperatura.",
+      "atencao": "Não confundir com dissolução: desintegração é a quebra física da forma farmacêutica; dissolução é a liberação do princípio ativo no meio — um comprimido pode se desintegrar rapidamente e ainda assim dissolver mal, ou vice-versa.",
+      "termosRelacionados": [
+        "dissolucao",
+        "forma-farmaceutica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "qualificacao",
+      "termo": "Qualificação",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Demonstração documentada de que instalações, equipamentos, sistemas ou utilidades estão corretamente instalados, operam conforme especificado e apresentam desempenho adequado ao uso pretendido.",
+      "explicacaoSimplificada": "É a comprovação de que um equipamento ou sistema (não um método) está funcionando corretamente e é adequado para o que vai ser usado.",
+      "aplicacaoPratica": "Qualificar uma balança analítica (verificando calibração, exatidão e linearidade dela própria) antes de utilizá-la em ensaios de Controle de Qualidade.",
+      "atencao": "Não confundir com validação: qualificação se refere a equipamentos, instalações e sistemas; validação se refere a métodos e processos — um método de HPLC é validado, o cromatógrafo usado nele é qualificado.",
+      "termosRelacionados": [
+        "validacao",
+        "boas-praticas-fabricacao"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 166/2017 — Validação de Métodos Analíticos"
+      ]
+    },
+    {
+      "id": "exatidao",
+      "termo": "Exatidão",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Grau de concordância entre o resultado obtido por um método analítico e o valor verdadeiro ou aceito como referência, geralmente expresso como percentual de recuperação.",
+      "explicacaoSimplificada": "Mostra o quanto o resultado de um método está próximo do valor real/verdadeiro daquilo que está sendo medido.",
+      "aplicacaoPratica": "Um método determina 100,1 mg de princípio ativo em uma amostra cujo valor de referência certificado é 100 mg — a pequena diferença indica alta exatidão do método.",
+      "atencao": "Exatidão não é o mesmo que precisão: um método pode ser preciso (resultados próximos entre si) e ainda assim impreciso quanto à exatidão (todos sistematicamente afastados do valor verdadeiro) — e vice-versa.",
+      "termosRelacionados": [
+        "precisao",
+        "robustez"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology",
+        "RDC Anvisa nº 166/2017 — Validação de Métodos Analíticos"
+      ]
+    },
+    {
+      "id": "precisao",
+      "termo": "Precisão",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Grau de concordância entre resultados obtidos em medições repetidas de uma mesma amostra, independentemente de estarem próximos do valor verdadeiro; avaliada nos níveis de repetibilidade, precisão intermediária e reprodutibilidade.",
+      "explicacaoSimplificada": "Mostra o quanto resultados repetidos de uma mesma análise ficam parecidos entre si — não importa se estão certos, importa se são consistentes.",
+      "aplicacaoPratica": "Cinco análises da mesma amostra, pelo mesmo método, apresentam resultados muito próximos entre si — isso indica boa precisão do método, mesmo antes de confirmar a exatidão.",
+      "atencao": "Precisão não garante exatidão: resultados podem ser altamente concordantes entre si e, ainda assim, estarem todos igualmente afastados do valor verdadeiro (erro sistemático).",
+      "termosRelacionados": [
+        "exatidao",
+        "repetibilidade",
+        "precisao-intermediaria",
+        "reprodutibilidade"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology",
+        "RDC Anvisa nº 166/2017 — Validação de Métodos Analíticos"
+      ]
+    },
+    {
+      "id": "repetibilidade",
+      "termo": "Repetibilidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Nível de precisão obtido sob as mesmas condições de operação — mesmo analista, mesmo equipamento, mesmo método e curto intervalo de tempo.",
+      "explicacaoSimplificada": "É a precisão testada da forma mais controlada possível: a mesma pessoa, com o mesmo equipamento, repetindo a análise logo em seguida.",
+      "aplicacaoPratica": "Um mesmo analista realiza seis determinações consecutivas da mesma amostra, no mesmo equipamento, no mesmo dia, para avaliar a repetibilidade do método.",
+      "atencao": "A repetibilidade é o nível mais 'fácil' de se obter bons resultados, por eliminar fontes de variação externas — um método repetível não garante automaticamente boa precisão intermediária ou reprodutibilidade.",
+      "termosRelacionados": [
+        "precisao",
+        "precisao-intermediaria",
+        "reprodutibilidade"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "precisao-intermediaria",
+      "termo": "Precisão Intermediária",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Nível de precisão que avalia a concordância de resultados dentro do mesmo laboratório, considerando variações como diferentes dias, analistas ou equipamentos.",
+      "explicacaoSimplificada": "É a precisão testada variando alguns fatores (dia, analista, equipamento), mas ainda dentro do mesmo laboratório.",
+      "aplicacaoPratica": "O mesmo método é executado por analistas diferentes, em dias diferentes, dentro do mesmo laboratório, para verificar se o resultado se mantém consistente mesmo com essas variações internas.",
+      "atencao": "Precisão intermediária fica entre a repetibilidade (mesmas condições) e a reprodutibilidade (laboratórios diferentes) — avalia a robustez do método frente a variações do dia a dia dentro de um mesmo laboratório.",
+      "termosRelacionados": [
+        "repetibilidade",
+        "reprodutibilidade",
+        "precisao"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "reprodutibilidade",
+      "termo": "Reprodutibilidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Nível de precisão obtido em condições diferentes, geralmente entre laboratórios distintos, avaliando a transferência de um método analítico entre diferentes locais.",
+      "explicacaoSimplificada": "É a precisão testada entre laboratórios diferentes — verifica se o método funciona igual quando outro laboratório o executa.",
+      "aplicacaoPratica": "Dois laboratórios diferentes realizam o mesmo método analítico validado, com equipamentos e analistas próprios, para confirmar que o método é transferível e confiável fora do laboratório de origem.",
+      "atencao": "A reprodutibilidade só é avaliada quando o método será usado em mais de um laboratório (ex.: estudos colaborativos, transferência de tecnologia) — nem toda validação de método exige esse nível de precisão.",
+      "termosRelacionados": [
+        "precisao",
+        "precisao-intermediaria",
+        "repetibilidade"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "robustez",
+      "termo": "Robustez",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Capacidade de um método analítico de permanecer confiável e inalterado diante de pequenas variações deliberadas em suas condições operacionais (ex.: pH, temperatura, fluxo, lote de coluna).",
+      "explicacaoSimplificada": "Mostra se o método continua dando resultados confiáveis mesmo quando pequenos detalhes do processo mudam um pouco.",
+      "aplicacaoPratica": "Alterar levemente o pH da fase móvel, o fluxo ou a temperatura de um método de HPLC e verificar que o resultado da análise não é significativamente afetado.",
+      "atencao": "Robustez não deve ser confundida com precisão: a robustez testa a tolerância do método a pequenas variações deliberadas nas condições analíticas; a precisão testa a concordância entre repetições sem alterar essas condições.",
+      "termosRelacionados": [
+        "exatidao",
+        "precisao",
+        "linearidade"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "seletividade-analitica",
+      "termo": "Seletividade/Especificidade Analítica",
+      "categoria": "controle-qualidade",
+      "sinonimos": [
+        "Especificidade Analítica"
+      ],
+      "definicao": "Capacidade de um método analítico de determinar o analito de interesse de forma inequívoca, mesmo na presença de outros componentes da amostra, como excipientes, impurezas e produtos de degradação.",
+      "explicacaoSimplificada": "É a capacidade do método de 'enxergar' exatamente o princípio ativo que está procurando, sem se confundir com outras substâncias presentes na amostra.",
+      "aplicacaoPratica": "Quantificar corretamente o princípio ativo de um comprimido mesmo na presença de excipientes, corantes e produtos de degradação que também estão na matriz da amostra.",
+      "atencao": "Não confundir com a 'Seletividade' farmacodinâmica (capacidade de um fármaco agir preferencialmente sobre um tipo de receptor): aqui o termo descreve uma propriedade do método analítico, em contexto de validação de métodos, não de ação farmacológica.",
+      "termosRelacionados": [
+        "linearidade",
+        "robustez",
+        "exatidao"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "linearidade",
+      "termo": "Linearidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Capacidade de um método analítico de produzir resultados diretamente proporcionais à concentração do analito dentro de uma faixa determinada.",
+      "explicacaoSimplificada": "Mostra se, ao dobrar a quantidade da substância, a resposta do método também dobra de forma proporcional — uma reta quando colocada em gráfico.",
+      "aplicacaoPratica": "Preparar soluções em diferentes concentrações conhecidas e verificar que a resposta analítica (ex.: área do pico cromatográfico) aumenta proporcionalmente, com coeficiente de correlação adequado.",
+      "atencao": "A linearidade só é válida dentro da faixa (intervalo) estudada — não se deve extrapolar o método para concentrações fora da faixa validada sem nova avaliação.",
+      "termosRelacionados": [
+        "faixa",
+        "exatidao",
+        "robustez"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "faixa",
+      "termo": "Faixa (Intervalo)",
+      "categoria": "controle-qualidade",
+      "sinonimos": [
+        "Intervalo Analítico"
+      ],
+      "definicao": "Intervalo entre os níveis inferior e superior de concentração do analito para os quais foi demonstrado que o método analítico apresenta exatidão, precisão e linearidade adequadas.",
+      "explicacaoSimplificada": "É a 'faixa de uso' validada do método — os limites de concentração dentro dos quais ele é confiável.",
+      "aplicacaoPratica": "Um método é validado para concentrações de 50% a 150% da concentração nominal do princípio ativo, cobrindo tanto possíveis desvios de teor quanto estudos de dissolução em diferentes pontos do tempo.",
+      "atencao": "Resultados obtidos fora da faixa validada de um método não têm a mesma confiabilidade demonstrada na validação, mesmo que o método pareça funcionar — exige nova avaliação para extensão da faixa.",
+      "termosRelacionados": [
+        "linearidade",
+        "exatidao",
+        "precisao"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "limite-deteccao",
+      "termo": "Limite de Detecção (LD)",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Menor quantidade de analito em uma amostra que pode ser detectada, mas não necessariamente quantificada com exatidão e precisão adequadas.",
+      "explicacaoSimplificada": "É a menor quantidade de uma substância que o método consegue perceber que está presente, mesmo sem conseguir dizer com precisão quanto tem.",
+      "aplicacaoPratica": "Detectar a presença de uma impureza em concentração muito baixa em um lote, mesmo que o método ainda não seja capaz de quantificá-la com confiabilidade nesse nível.",
+      "atencao": "O limite de detecção é sempre numericamente menor que o limite de quantificação do mesmo método — detectar 'que existe' é um requisito menos exigente do que quantificar 'quanto existe' com confiabilidade.",
+      "termosRelacionados": [
+        "limite-quantificacao",
+        "pureza"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "limite-quantificacao",
+      "termo": "Limite de Quantificação (LQ)",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Menor quantidade de analito em uma amostra que pode ser determinada quantitativamente, com precisão e exatidão adequadas, sob as condições experimentais estabelecidas.",
+      "explicacaoSimplificada": "É a menor quantidade de uma substância que o método consegue não só detectar, mas medir de forma confiável.",
+      "aplicacaoPratica": "Quantificar com confiabilidade uma impureza presente em concentração muito baixa em um lote, dentro do limite máximo estabelecido para essa impureza.",
+      "atencao": "Particularmente relevante na análise de impurezas e produtos de degradação, onde os limites regulatórios aceitáveis costumam ser muito baixos — o método precisa ter limite de quantificação inferior a esses limites para ser adequado.",
+      "termosRelacionados": [
+        "limite-deteccao",
+        "pureza"
+      ],
+      "fontes": [
+        "ICH Q2(R1) — Validation of Analytical Procedures: Text and Methodology"
+      ]
+    },
+    {
+      "id": "nao-conformidade",
+      "termo": "Não Conformidade",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Falha em atender a um requisito, especificação ou critério de qualidade estabelecido para um produto, processo ou sistema.",
+      "explicacaoSimplificada": "É quando algo (um lote, um processo, um resultado) não atende ao que foi definido como aceitável.",
+      "aplicacaoPratica": "Um lote de comprimidos apresenta teor de princípio ativo abaixo do limite especificado — essa não conformidade impede a liberação do lote até investigação da causa raiz.",
+      "atencao": "Toda não conformidade exige investigação de causa raiz e registro documentado (não apenas o descarte do lote), pois pode indicar falha sistêmica no processo que afetaria outros lotes.",
+      "termosRelacionados": [
+        "especificacao-farmacopeica",
+        "qualidade"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "amostra-retencao",
+      "termo": "Amostra de Retenção",
+      "categoria": "controle-qualidade",
+      "sinonimos": [],
+      "definicao": "Amostra representativa de um lote de medicamento, mantida em condições adequadas de armazenamento por período definido após a fabricação, para possibilitar avaliações futuras relacionadas à qualidade do lote.",
+      "explicacaoSimplificada": "É uma parte do lote guardada de propósito, para que seja possível investigar o produto depois, caso surja alguma dúvida ou reclamação sobre ele.",
+      "aplicacaoPratica": "Guardar unidades de um lote de medicamento por tempo determinado após sua fabricação, permitindo reanálise em caso de reclamação, desvio de qualidade identificado no mercado ou investigação regulatória.",
+      "atencao": "Amostra de retenção não deve ser confundida com amostra de referência/padrão de trabalho usada em rotina analítica: a amostra de retenção é do próprio lote comercializado, guardada especificamente para investigações futuras daquele lote.",
+      "termosRelacionados": [
+        "qualidade",
+        "nao-conformidade"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "farmacia-clinica-disciplina",
+      "termo": "Farmácia Clínica",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Área da prática farmacêutica orientada ao cuidado direto do paciente, em que o farmacêutico aplica conhecimentos clínicos para otimizar a farmacoterapia, prevenir problemas relacionados a medicamentos e promover desfechos de saúde, atuando em articulação com a equipe multiprofissional.",
+      "explicacaoSimplificada": "É o farmacêutico trabalhando junto da equipe de saúde e do paciente, focado em garantir que os medicamentos façam o efeito esperado com o mínimo de risco.",
+      "aplicacaoPratica": "Em uma enfermaria hospitalar, o farmacêutico clínico revisa diariamente as prescrições, identifica uma dose de antibiótico inadequada para a função renal do paciente e sugere o ajuste ao médico antes da próxima administração.",
+      "atencao": "Farmácia clínica não se limita ao ambiente hospitalar: também é praticada em farmácias comunitárias, ambulatórios e atenção primária, sempre com foco em cuidado centrado no paciente.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "atencao-farmaceutica",
+        "seguimento-farmacoterapeutico",
+        "intervencao-farmaceutica"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia - Resolução CFF nº 585/2013"
+      ]
+    },
+    {
+      "id": "comissao-farmacia-terapeutica",
+      "termo": "Comissão de Farmácia e Terapêutica (CFT)",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "CFT"
+      ],
+      "definicao": "Órgão colegiado multiprofissional, geralmente vinculado a um hospital ou serviço de saúde, responsável por selecionar e padronizar os medicamentos utilizados na instituição, elaborar protocolos terapêuticos e promover o uso racional de medicamentos.",
+      "explicacaoSimplificada": "É o grupo de profissionais (médicos, farmacêuticos, enfermeiros) que decide quais medicamentos a instituição vai usar e como.",
+      "aplicacaoPratica": "A CFT de um hospital avalia a inclusão de um novo anticoagulante oral na lista padronizada, comparando custo-efetividade com as opções já disponíveis antes de aprovar sua compra.",
+      "atencao": "A CFT é a instância formal que define a padronização de medicamentos da instituição — decisões individuais de prescritores fora dessa lista caracterizam uso de medicamento não padronizado.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "padronizacao-medicamentos",
+        "medicamento-nao-padronizado",
+        "farmacoeconomia"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia",
+        "Ministério da Saúde"
+      ]
+    },
+    {
+      "id": "centro-informacao-medicamentos",
+      "termo": "Centro de Informação sobre Medicamentos (CIM)",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [
+        "CIM (informação sobre medicamentos)"
+      ],
+      "definicao": "Serviço farmacêutico especializado em fornecer informação técnico-científica independente e atualizada sobre medicamentos a profissionais de saúde, pacientes e instituições, apoiando decisões clínicas e de gestão.",
+      "explicacaoSimplificada": "É um serviço que responde dúvidas técnicas sobre medicamentos (doses, interações, compatibilidade) com base em evidência científica.",
+      "aplicacaoPratica": "Um médico liga para o CIM do hospital perguntando se é seguro administrar dois medicamentos na mesma via intravenosa; o farmacêutico do CIM pesquisa e responde com base em estudos de compatibilidade.",
+      "atencao": "A sigla CIM também é usada em microbiologia para Concentração Inibitória Mínima — são conceitos completamente diferentes; o contexto da frase evita a confusão.",
+      "naoConfunda": [
+        "cim"
+      ],
+      "termosRelacionados": [
+        "atencao-farmaceutica",
+        "farmacia-clinica-disciplina"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "padronizacao-medicamentos",
+      "termo": "Padronização de Medicamentos",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [],
+      "definicao": "Processo de seleção de medicamentos que comporão a lista oficial de uma instituição ou sistema de saúde, com base em critérios de eficácia, segurança, custo-efetividade e necessidade epidemiológica, visando racionalizar o uso e a gestão do estoque.",
+      "explicacaoSimplificada": "É decidir, com critérios técnicos, quais medicamentos vão estar disponíveis em um hospital, farmácia pública ou rede de saúde.",
+      "aplicacaoPratica": "A padronização de medicamentos de um hospital inclui apenas um representante de cada classe terapêutica, reduzindo a variedade de itens em estoque e facilitando a gestão.",
+      "atencao": "RENAME e REMUME são exemplos de listas padronizadas nos níveis nacional e municipal do SUS, mas a padronização também ocorre em instituições privadas e hospitais.",
+      "naoConfunda": [
+        "rename",
+        "remume"
+      ],
+      "termosRelacionados": [
+        "comissao-farmacia-terapeutica",
+        "medicamento-nao-padronizado",
+        "rename",
+        "remume"
+      ],
+      "fontes": [
+        "Ministério da Saúde"
+      ]
+    },
+    {
+      "id": "medicamento-nao-padronizado",
+      "termo": "Medicamento Não Padronizado",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [],
+      "definicao": "Medicamento prescrito que não consta na lista oficial de padronização da instituição ou do sistema de saúde, exigindo justificativa técnica e, geralmente, processo específico de aquisição ou autorização para dispensação.",
+      "explicacaoSimplificada": "É um remédio que o médico pediu, mas que não está na lista normal daquele hospital ou serviço de saúde.",
+      "aplicacaoPratica": "Um médico solicita um antibiótico não padronizado para um caso de resistência bacteriana; a farmácia hospitalar aciona o processo de aquisição excepcional após avaliação da CFT.",
+      "atencao": "A solicitação de medicamento não padronizado deve ser sempre justificada clinicamente e avaliada pela Comissão de Farmácia e Terapêutica, para não comprometer a racionalidade da gestão.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "padronizacao-medicamentos",
+        "comissao-farmacia-terapeutica"
+      ],
+      "fontes": [
+        "Ministério da Saúde"
+      ]
+    },
+    {
+      "id": "farmacoeconomia",
+      "termo": "Farmacoeconomia",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "Economia da saúde aplicada a medicamentos"
+      ],
+      "definicao": "Disciplina que aplica métodos de análise econômica (custo-efetividade, custo-utilidade, custo-benefício, custo-minimização) à avaliação de medicamentos e intervenções em saúde, subsidiando decisões de incorporação, padronização e financiamento.",
+      "explicacaoSimplificada": "É comparar o custo e o benefício de diferentes medicamentos para decidir qual vale mais a pena usar.",
+      "aplicacaoPratica": "Antes de incorporar um medicamento de alto custo ao SUS, a CONITEC realiza uma análise farmacoeconômica comparando seu custo-efetividade com o tratamento padrão já disponível.",
+      "atencao": "Farmacoeconomia não significa escolher sempre o medicamento mais barato, mas o que oferece a melhor relação entre custo e resultado clínico.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "comissao-farmacia-terapeutica",
+        "medicamento-alto-custo"
+      ],
+      "fontes": [
+        "CONITEC - Ministério da Saúde"
+      ]
+    },
+    {
+      "id": "validacao-prescricao",
+      "termo": "Validação da Prescrição",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [
+        "Análise farmacêutica da prescrição"
+      ],
+      "definicao": "Processo clínico-farmacêutico de análise crítica da prescrição médica quanto à adequação da dose, via, frequência, duração, indicação, interações, contraindicações e compatibilidade com o perfil do paciente, antes da dispensação ou preparo do medicamento.",
+      "explicacaoSimplificada": "É o farmacêutico checar se a receita está correta e segura antes de o medicamento ser entregue ou preparado.",
+      "aplicacaoPratica": "Ao validar uma prescrição de vancomicina, o farmacêutico identifica que a dose não foi ajustada para a função renal do paciente e contata o prescritor antes da liberação do medicamento.",
+      "atencao": "A validação da prescrição é uma etapa obrigatória do ciclo da assistência farmacêutica em ambiente hospitalar, distinta da simples conferência administrativa de dados cadastrais.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "intervencao-farmaceutica",
+        "revisao-farmacoterapia",
+        "erro-medicacao"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia - Resolução CFF nº 585/2013"
+      ]
+    },
+    {
+      "id": "aprazamento",
+      "termo": "Aprazamento",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Definição dos horários de administração dos medicamentos prescritos, de modo a respeitar os intervalos posológicos corretos, otimizar a farmacocinética e evitar incompatibilidades com outros medicamentos ou com a alimentação.",
+      "explicacaoSimplificada": "É marcar os horários exatos em que cada medicamento deve ser administrado ao paciente.",
+      "aplicacaoPratica": "A enfermagem apraza a administração de um antibiótico de 8 em 8 horas, distribuindo os horários para manter o intervalo correto ao longo das 24 horas, mesmo em mudanças de turno.",
+      "atencao": "Um aprazamento incorreto pode comprometer o intervalo terapêutico entre as doses, reduzindo a eficácia (intervalos muito longos) ou aumentando o risco de toxicidade (intervalos muito curtos).",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "posologia",
+        "janela-terapeutica",
+        "erro-medicacao"
+      ],
+      "fontes": [
+        "Conselho Federal de Enfermagem",
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "dispensacao-individualizada",
+      "termo": "Dispensação Individualizada",
+      "categoria": "dispensacao",
+      "sinonimos": [
+        "Dispensação por dose unitária"
+      ],
+      "definicao": "Sistema de dispensação em que os medicamentos são preparados e fornecidos de forma personalizada para cada paciente, em doses e horários específicos, geralmente por período definido (24 horas), em contraposição à dispensação coletiva por estoque em unidades de internação.",
+      "explicacaoSimplificada": "Em vez de mandar uma caixa inteira de remédio para a enfermaria, a farmácia separa exatamente a dose que cada paciente vai usar.",
+      "aplicacaoPratica": "A farmácia hospitalar monta diariamente os medicamentos de cada paciente em saquinhos individuais identificados com nome, leito e horário de administração, dentro do sistema de dose unitária.",
+      "atencao": "A dispensação individualizada reduz erros de medicação e perdas por vencimento em comparação com o sistema de estoque coletivo por unidade de internação.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "dispensacao-descentralizada",
+        "erro-dispensacao",
+        "erro-medicacao"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "queixa-tecnica",
+      "termo": "Queixa Técnica",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [],
+      "definicao": "Notificação relativa a uma suspeita de alteração ou irregularidade de um produto, relacionada a aspectos de qualidade técnica (embalagem, rotulagem, características físicas, odor, cor) que não resulta necessariamente em dano à saúde do paciente.",
+      "explicacaoSimplificada": "É quando algo parece errado no próprio produto (embalagem, cor, cheiro), mas sem necessariamente ter feito mal a alguém ainda.",
+      "aplicacaoPratica": "Um farmacêutico percebe que um lote de comprimidos apresenta coloração diferente do habitual e registra uma queixa técnica junto à ANVISA/Notivisa, independentemente de ter havido reação no paciente.",
+      "atencao": "Diferente da notificação de RAM, a queixa técnica foca no produto (desvio de qualidade), não na resposta clínica do paciente — ambas podem, porém, ser notificadas em conjunto.",
+      "naoConfunda": [
+        "nao-conformidade"
+      ],
+      "termosRelacionados": [
+        "nao-conformidade",
+        "tecnovigilancia",
+        "notificacao-ram"
+      ],
+      "fontes": [
+        "Anvisa - Notivisa"
+      ]
+    },
+    {
+      "id": "medicamento-alta-vigilancia",
+      "termo": "Medicamento de Alta Vigilância",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Medicamento potencialmente perigoso",
+        "High-alert medication"
+      ],
+      "definicao": "Medicamento que apresenta risco aumentado de causar dano significativo ao paciente quando utilizado em erro, ainda que a frequência desse erro não seja necessariamente maior que a de outros medicamentos — exige barreiras de segurança adicionais em todas as etapas do processo de medicação.",
+      "explicacaoSimplificada": "São remédios que, se usados errado, podem causar um dano muito grave — por isso exigem cuidado redobrado, mesmo que o erro em si seja raro.",
+      "aplicacaoPratica": "Insulina, opioides, anticoagulantes e eletrólitos concentrados são classificados como medicamentos de alta vigilância e, por isso, armazenados separadamente e conferidos em dupla checagem antes da administração.",
+      "atencao": "Medicamento de alta vigilância não é sinônimo de medicamento de baixo índice terapêutico: a classificação de alta vigilância considera a gravidade do dano potencial do erro, não apenas a margem entre dose eficaz e tóxica.",
+      "naoConfunda": [
+        "medicamento-baixo-indice-terapeutico"
+      ],
+      "termosRelacionados": [
+        "dupla-checagem",
+        "eletrolitos-concentrados",
+        "seguranca-processo-medicacao"
+      ],
+      "fontes": [
+        "ISMP Brasil - Instituto para Práticas Seguras no Uso de Medicamentos"
+      ]
+    },
+    {
+      "id": "medicamento-nome-semelhante",
+      "termo": "Medicamento com Nome Semelhante",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Medicamento SALN (Sound-Alike)"
+      ],
+      "definicao": "Medicamento cujo nome apresenta grafia ou pronúncia semelhante à de outro medicamento, aumentando o risco de troca acidental durante a prescrição, dispensação ou administração.",
+      "explicacaoSimplificada": "São remédios com nomes parecidos que podem ser confundidos um com o outro.",
+      "aplicacaoPratica": "Os nomes Losartana e Loratadina são frequentemente apontados como exemplo de medicamentos com nome semelhante, exigindo atenção redobrada na leitura da prescrição e na seleção na farmácia.",
+      "atencao": "Estratégias como o uso de letras maiúsculas destacadas (Tall Man Lettering) e a separação física no estoque ajudam a reduzir o risco de troca entre medicamentos com nome semelhante.",
+      "naoConfunda": [
+        "medicamento-aparencia-semelhante"
+      ],
+      "termosRelacionados": [
+        "medicamento-aparencia-semelhante",
+        "erro-dispensacao",
+        "erro-medicacao"
+      ],
+      "fontes": [
+        "ISMP Brasil"
+      ]
+    },
+    {
+      "id": "medicamento-aparencia-semelhante",
+      "termo": "Medicamento com Aparência Semelhante",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Medicamento LASA (Look-Alike)"
+      ],
+      "definicao": "Medicamento cuja embalagem, rótulo ou forma farmacêutica apresenta aparência visual semelhante à de outro produto, aumentando o risco de troca acidental, especialmente em armazenamento próximo.",
+      "explicacaoSimplificada": "São remédios que parecem muito iguais por fora (embalagem, cor, formato), o que pode levar a trocas por engano.",
+      "aplicacaoPratica": "Duas ampolas de medicamentos diferentes, do mesmo fabricante e com embalagens quase idênticas, são armazenadas em prateleiras separadas e sinalizadas para reduzir o risco de troca.",
+      "atencao": "Juntos, os conceitos de nome semelhante e aparência semelhante formam a categoria internacionalmente conhecida como medicamentos LASA/SALN, prioritária nos protocolos de segurança do paciente.",
+      "naoConfunda": [
+        "medicamento-nome-semelhante"
+      ],
+      "termosRelacionados": [
+        "medicamento-nome-semelhante",
+        "erro-dispensacao",
+        "medicamento-alta-vigilancia"
+      ],
+      "fontes": [
+        "ISMP Brasil"
+      ]
+    },
+    {
+      "id": "dupla-checagem",
+      "termo": "Dupla Checagem",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Double check",
+        "Checagem dupla independente"
+      ],
+      "definicao": "Procedimento de segurança em que dois profissionais, de forma independente, verificam separadamente os elementos críticos da prescrição e do preparo de um medicamento antes de sua administração, reduzindo a probabilidade de erro não detectado.",
+      "explicacaoSimplificada": "É quando duas pessoas diferentes confirmam, cada uma por si, que o remédio certo está sendo dado na dose e no paciente certos.",
+      "aplicacaoPratica": "Antes de administrar insulina intravenosa, dois enfermeiros conferem de forma independente o medicamento, a dose, a via e o paciente, assinando ambos a dupla checagem no prontuário.",
+      "atencao": "A dupla checagem só é eficaz quando feita de forma verdadeiramente independente; se o segundo profissional apenas confirma o que o primeiro disse, sem verificar por si mesmo, a barreira de segurança perde efetividade.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "medicamento-alta-vigilancia",
+        "seguranca-processo-medicacao",
+        "erro-medicacao"
+      ],
+      "fontes": [
+        "ISMP Brasil"
+      ]
+    },
+    {
+      "id": "gerenciamento-risco",
+      "termo": "Gerenciamento de Risco (em Saúde)",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Risk management"
+      ],
+      "definicao": "Conjunto sistemático de atividades de identificação, avaliação, prevenção e mitigação de riscos associados ao uso de medicamentos e a processos assistenciais, com monitoramento contínuo da efetividade das medidas adotadas.",
+      "explicacaoSimplificada": "É o processo de identificar o que pode dar errado no cuidado com medicamentos e agir antes que isso aconteça.",
+      "aplicacaoPratica": "Após identificar múltiplos quase erros envolvendo eletrólitos concentrados, o serviço de farmácia implementa um plano de gerenciamento de risco que inclui armazenamento segregado e dupla checagem obrigatória.",
+      "atencao": "O gerenciamento de risco é um ciclo contínuo (identificar, avaliar, mitigar, monitorar), não uma ação isolada após um evento adverso já ocorrido.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "seguranca-paciente",
+        "sinal-seguranca",
+        "medicamento-alta-vigilancia"
+      ],
+      "fontes": [
+        "Anvisa",
+        "OMS"
+      ]
+    },
+    {
+      "id": "seguranca-processo-medicacao",
+      "termo": "Segurança do Processo de Medicação",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [],
+      "definicao": "Conjunto de práticas voltadas a prevenir, identificar e mitigar erros em cada etapa do processo de uso de medicamentos — prescrição, transcrição, dispensação, preparo, administração e monitorização —, reduzindo o risco de dano ao paciente.",
+      "explicacaoSimplificada": "É garantir que, em cada passo do caminho do remédio até o paciente, não haja falhas que coloquem a pessoa em risco.",
+      "aplicacaoPratica": "Um hospital implementa prescrição eletrônica, dupla checagem e código de barras na administração como barreiras de segurança do processo de medicação, cada uma cobrindo uma etapa diferente do fluxo.",
+      "atencao": "A segurança do processo de medicação é mais específica do que a segurança do paciente em geral, pois foca exclusivamente nas etapas do ciclo de uso de medicamentos.",
+      "naoConfunda": [
+        "seguranca-paciente"
+      ],
+      "termosRelacionados": [
+        "seguranca-paciente",
+        "erro-medicacao",
+        "dupla-checagem",
+        "codigo-barras-bidimensional"
+      ],
+      "fontes": [
+        "ISMP Brasil",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "dose-maxima",
+      "termo": "Dose Máxima",
+      "categoria": "farmacoterapia",
+      "sinonimos": [
+        "Dose máxima recomendada"
+      ],
+      "definicao": "Maior quantidade de um fármaco que pode ser administrada em uma única dose ou em um intervalo de tempo definido, sem que o risco de toxicidade supere o benefício terapêutico esperado, conforme estabelecido em bula ou literatura técnica.",
+      "explicacaoSimplificada": "É a maior quantidade do remédio que pode ser usada sem passar para o campo da toxicidade.",
+      "aplicacaoPratica": "Ao validar uma prescrição de paracetamol, o farmacêutico verifica se a soma das doses diárias não excede a dose máxima recomendada de 4 g/dia para adultos, evitando hepatotoxicidade.",
+      "atencao": "A dose máxima pode variar conforme idade, função renal/hepática e indicação terapêutica — não é um valor fixo e universal para todos os pacientes.",
+      "naoConfunda": [
+        "dose-toxica",
+        "indice-terapeutico"
+      ],
+      "termosRelacionados": [
+        "ajuste-posologico",
+        "indice-terapeutico",
+        "posologia"
+      ],
+      "fontes": [
+        "Bulário Eletrônico - Anvisa"
+      ]
+    },
+    {
+      "id": "ajuste-posologico",
+      "termo": "Ajuste Posológico",
+      "categoria": "farmacoterapia",
+      "sinonimos": [
+        "Ajuste de dose"
+      ],
+      "definicao": "Modificação da dose, do intervalo entre as doses ou de ambos, em relação ao regime padrão, para adequar a farmacoterapia a características específicas do paciente, como função renal ou hepática, idade, peso ou interações medicamentosas.",
+      "explicacaoSimplificada": "É mudar a dose ou o intervalo do remédio para se adequar à situação específica daquele paciente.",
+      "aplicacaoPratica": "Em um paciente com insuficiência renal, o farmacêutico clínico recomenda o ajuste posológico de um antibiótico de eliminação renal, aumentando o intervalo entre as doses para evitar acúmulo e toxicidade.",
+      "atencao": "O ajuste posológico é especialmente crítico para medicamentos de baixo índice terapêutico e de eliminação predominantemente renal ou hepática.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "dose-maxima",
+        "insuficiencia-renal",
+        "insuficiencia-hepatica",
+        "clearance-renal"
+      ],
+      "fontes": [
+        "Bulário Eletrônico - Anvisa"
+      ]
+    },
+    {
+      "id": "equivalencia-doses",
+      "termo": "Equivalência de Doses",
+      "categoria": "farmacoterapia",
+      "sinonimos": [
+        "Conversão de doses equianalgésicas/equipotentes"
+      ],
+      "definicao": "Determinação da dose de um fármaco que produz efeito terapêutico comparável ao de outro fármaco, geralmente da mesma classe, utilizada principalmente na troca entre medicamentos (ex.: opioides, corticosteroides) para manter a equivalência de efeito.",
+      "explicacaoSimplificada": "É calcular quanto de um remédio equivale ao efeito de outro, usado quando é preciso trocar de um medicamento para outro parecido.",
+      "aplicacaoPratica": "Ao trocar morfina oral por fentanil transdérmico, a equipe utiliza tabelas de equivalência de doses opioides para calcular a dose equianalgésica correta e evitar subdose ou sobredose.",
+      "atencao": "Tabelas de equivalência de doses são estimativas populacionais; a resposta individual pode variar, exigindo monitorização clínica após a conversão.",
+      "naoConfunda": [
+        "intercambialidade"
+      ],
+      "termosRelacionados": [
+        "ajuste-posologico",
+        "intercambialidade"
+      ],
+      "fontes": [
+        "Literatura técnica em farmacologia clínica"
+      ]
+    },
+    {
+      "id": "acesso-expandido",
+      "termo": "Acesso Expandido",
+      "categoria": "legislacao",
+      "sinonimos": [
+        "Expanded access"
+      ],
+      "definicao": "Mecanismo regulatório que permite o uso de medicamento ainda em fase de desenvolvimento clínico, não registrado no país, por paciente com doença grave ou que ameace a vida, sem alternativa terapêutica satisfatória, mediante autorização da autoridade sanitária.",
+      "explicacaoSimplificada": "É uma forma legal de um paciente grave usar um remédio que ainda está sendo testado e não foi aprovado, quando não há outra opção.",
+      "aplicacaoPratica": "Um paciente com doença rara sem tratamento aprovado no Brasil recebe, via programa de acesso expandido autorizado pela Anvisa, um medicamento experimental em fase final de estudos clínicos.",
+      "atencao": "Acesso expandido não deve ser confundido com uso compassivo: o acesso expandido é voltado a um número maior de pacientes dentro de um programa estruturado pelo patrocinador do estudo, enquanto o uso compassivo normalmente atende casos individuais.",
+      "naoConfunda": [
+        "uso-compassivo",
+        "uso-off-label"
+      ],
+      "termosRelacionados": [
+        "uso-compassivo",
+        "uso-medicamento-investigacao"
+      ],
+      "fontes": [
+        "Anvisa - RDC nº 38/2013"
+      ]
+    },
+    {
+      "id": "consentimento-livre-esclarecido",
+      "termo": "Consentimento Livre e Esclarecido",
+      "categoria": "legislacao",
+      "sinonimos": [
+        "Termo de consentimento livre e esclarecido (TCLE)"
+      ],
+      "definicao": "Documento e processo pelo qual o paciente (ou seu responsável legal) é informado, em linguagem acessível, sobre riscos, benefícios e alternativas de um procedimento, tratamento ou pesquisa, manifestando sua concordância voluntária antes da realização.",
+      "explicacaoSimplificada": "É explicar tudo ao paciente sobre o tratamento ou pesquisa e pedir que ele concorde por escrito, de forma livre e informada.",
+      "aplicacaoPratica": "Antes de incluir um paciente em um estudo clínico com um novo medicamento, o pesquisador aplica o termo de consentimento livre e esclarecido, garantindo que o paciente entenda riscos e benefícios antes de aceitar participar.",
+      "atencao": "O consentimento livre e esclarecido deve ser obtido sem coação e pode ser revogado pelo paciente em qualquer momento, sem prejuízo ao seu atendimento.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "uso-medicamento-investigacao",
+        "acesso-expandido"
+      ],
+      "fontes": [
+        "Conselho Nacional de Saúde - Resolução CNS nº 466/2012"
+      ]
+    },
+    {
+      "id": "reconstituicao",
+      "termo": "Reconstituição",
+      "categoria": "farmacotecnica",
+      "sinonimos": [],
+      "definicao": "Processo de adição de um diluente apropriado a um medicamento apresentado na forma sólida (pó ou liofilizado) para a obtenção de uma solução ou suspensão pronta para administração, conforme especificações técnicas do fabricante.",
+      "explicacaoSimplificada": "É misturar um líquido a um pó de remédio para deixá-lo pronto para ser usado.",
+      "aplicacaoPratica": "Um antibiótico em pó liofilizado é reconstituído com água para injeção na quantidade exata indicada em bula, formando uma solução estável por tempo limitado antes de ser administrada.",
+      "atencao": "Após a reconstituição, muitos medicamentos têm estabilidade limitada e exigem condições específicas de armazenamento e prazo máximo de uso — verificar sempre a bula.",
+      "naoConfunda": [
+        "diluicao"
+      ],
+      "termosRelacionados": [
+        "diluicao",
+        "po-liofilizado",
+        "estabilidade-farmaceutica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "diluicao",
+      "termo": "Diluição",
+      "categoria": "farmacotecnica",
+      "sinonimos": [],
+      "definicao": "Processo de redução da concentração de uma solução já preparada, por meio da adição de um diluente apropriado, geralmente para adequar a concentração final à via e à velocidade de administração pretendidas.",
+      "explicacaoSimplificada": "É diminuir a concentração de um medicamento líquido, adicionando mais líquido (diluente) a ele.",
+      "aplicacaoPratica": "Uma solução concentrada de potássio é diluída em um grande volume de soro antes da infusão intravenosa, reduzindo o risco de toxicidade cardíaca associada à infusão rápida de eletrólitos concentrados.",
+      "atencao": "Diluição e reconstituição são etapas distintas: reconstituir transforma um pó em líquido; diluir reduz a concentração de um líquido já preparado — um medicamento reconstituído pode, em seguida, precisar ser diluído.",
+      "naoConfunda": [
+        "reconstituicao"
+      ],
+      "termosRelacionados": [
+        "reconstituicao",
+        "eletrolitos-concentrados",
+        "infusao-continua"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "infusao-intermitente",
+      "termo": "Infusão Intermitente",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Modalidade de administração intravenosa em que o medicamento é infundido em intervalos regulares de tempo (ex.: a cada 8 ou 12 horas), com períodos de pausa entre as infusões, diferente da infusão contínua.",
+      "explicacaoSimplificada": "É dar o remédio na veia por um tempo, parar, e repetir depois, em horários definidos.",
+      "aplicacaoPratica": "Um antibiótico é administrado por infusão intermitente de 30 minutos a cada 8 horas, respeitando o intervalo necessário para manter a concentração plasmática dentro da janela terapêutica.",
+      "atencao": "A velocidade e o tempo de infusão intermitente devem respeitar as recomendações do fabricante — infundir rápido demais pode causar reações como flebite ou síndrome do homem vermelho (em alguns antibióticos).",
+      "naoConfunda": [
+        "infusao-continua"
+      ],
+      "termosRelacionados": [
+        "infusao-continua",
+        "aprazamento",
+        "flebite"
+      ],
+      "fontes": [
+        "Conselho Federal de Enfermagem"
+      ]
+    },
+    {
+      "id": "infusao-continua",
+      "termo": "Infusão Contínua",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Modalidade de administração intravenosa em que o medicamento é infundido de forma ininterrupta durante um período prolongado, em velocidade constante, frequentemente utilizando bomba de infusão, de modo a manter concentração plasmática estável.",
+      "explicacaoSimplificada": "É dar o remédio na veia sem parar, em velocidade constante, por um tempo longo.",
+      "aplicacaoPratica": "Uma solução vasoativa de noradrenalina é administrada em infusão contínua por bomba de infusão, com ajustes de velocidade conforme a resposta da pressão arterial do paciente.",
+      "atencao": "A interrupção abrupta de uma infusão contínua de medicamentos vasoativos pode causar instabilidade hemodinâmica grave — a suspensão deve ser gradual e monitorada.",
+      "naoConfunda": [
+        "infusao-intermitente"
+      ],
+      "termosRelacionados": [
+        "infusao-intermitente",
+        "solucao-vasoativa",
+        "steady-state"
+      ],
+      "fontes": [
+        "Conselho Federal de Enfermagem"
+      ]
+    },
+    {
+      "id": "administracao-enteral",
+      "termo": "Administração Enteral",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Via de administração em que o medicamento é introduzido diretamente no trato gastrintestinal, seja por via oral, seja por sondas (nasogástrica, nasoenteral, gastrostomia), utilizando a capacidade de absorção da mucosa digestiva.",
+      "explicacaoSimplificada": "É dar o remédio pelo sistema digestivo, seja pela boca, seja por uma sonda.",
+      "aplicacaoPratica": "Um paciente impossibilitado de engolir recebe seus medicamentos por administração enteral via sonda nasogástrica, com os comprimidos triturados e dispersos em água, quando a forma farmacêutica permite.",
+      "atencao": "Nem toda forma farmacêutica pode ser triturada ou dispersa para administração por sonda — comprimidos de liberação modificada ou revestimento entérico perdem suas propriedades se fracionados.",
+      "naoConfunda": [
+        "administracao-parenteral",
+        "administracao-por-sonda"
+      ],
+      "termosRelacionados": [
+        "administracao-por-sonda",
+        "via-de-administracao",
+        "liberacao-modificada"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "administracao-parenteral",
+      "termo": "Administração Parenteral",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Via de administração em que o medicamento é introduzido no organismo por meio de injeção, contornando o trato gastrintestinal, incluindo as vias intravenosa, intramuscular, subcutânea e intradérmica, entre outras.",
+      "explicacaoSimplificada": "É dar o remédio por injeção, sem passar pelo estômago ou intestino.",
+      "aplicacaoPratica": "Um paciente em pós-operatório, impossibilitado de usar a via oral, recebe analgésico por via parenteral intravenosa até retomar a dieta.",
+      "atencao": "A via parenteral geralmente tem biodisponibilidade mais previsível e início de ação mais rápido que a via enteral, mas exige técnica asséptica rigorosa para evitar infecções.",
+      "naoConfunda": [
+        "administracao-enteral"
+      ],
+      "termosRelacionados": [
+        "administracao-enteral",
+        "via-de-administracao",
+        "assepsia"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "administracao-por-sonda",
+      "termo": "Administração por Sonda",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Modalidade de administração enteral de medicamentos realizada por meio de dispositivos como sondas nasogástricas, nasoenterais ou estomas de gastrostomia/jejunostomia, exigindo preparo específico das formas farmacêuticas para evitar obstrução do dispositivo.",
+      "explicacaoSimplificada": "É dar o remédio por uma sonda, quando o paciente não pode engolir normalmente.",
+      "aplicacaoPratica": "Antes de administrar um medicamento por sonda, o farmacêutico orienta a trituração do comprimido (se permitido pela forma farmacêutica) e a diluição adequada, seguida de lavagem da sonda com água para evitar obstrução.",
+      "atencao": "Medicamentos de liberação modificada, revestimento entérico ou cápsulas gelatinosas moles geralmente não podem ser triturados para administração por sonda sem perder suas propriedades farmacotécnicas.",
+      "naoConfunda": [
+        "administracao-enteral"
+      ],
+      "termosRelacionados": [
+        "administracao-enteral",
+        "liberacao-modificada",
+        "revestimento-enterico"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "fotossensibilidade",
+      "termo": "Fotossensibilidade (Farmacotécnica)",
+      "categoria": "farmacotecnica",
+      "sinonimos": [
+        "Fotolabilidade"
+      ],
+      "definicao": "Propriedade de um fármaco ou formulação de sofrer degradação química quando exposto à luz, especialmente à radiação ultravioleta, exigindo embalagem opaca, frascos âmbar ou proteção específica durante armazenamento e administração.",
+      "explicacaoSimplificada": "É quando o remédio se degrada (perde qualidade) se ficar exposto à luz.",
+      "aplicacaoPratica": "Uma solução injetável fotossensível é protegida da luz durante a infusão com um envoltório opaco no equipo e no frasco, evitando degradação do princípio ativo durante a administração.",
+      "atencao": "Fotossensibilidade farmacotécnica (degradação do medicamento pela luz) não deve ser confundida com fotossensibilidade cutânea (reação adversa na pele do paciente exposta ao sol durante o uso de certos medicamentos) — são fenômenos diferentes que compartilham o nome.",
+      "naoConfunda": [
+        "estabilidade-farmaceutica"
+      ],
+      "termosRelacionados": [
+        "estabilidade-farmaceutica",
+        "termolabilidade"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)"
+      ]
+    },
+    {
+      "id": "termolabilidade",
+      "termo": "Termolabilidade",
+      "categoria": "farmacotecnica",
+      "sinonimos": [],
+      "definicao": "Propriedade de um fármaco ou formulação de sofrer degradação ou perda de atividade quando exposto a temperaturas fora da faixa recomendada, exigindo condições específicas de conservação, como refrigeração contínua (cadeia fria).",
+      "explicacaoSimplificada": "É quando o remédio perde qualidade se não for mantido na temperatura certa.",
+      "aplicacaoPratica": "Vacinas e insulinas são produtos termolábeis que exigem manutenção da cadeia fria (entre 2°C e 8°C) desde a fabricação até a administração, sob risco de perda de eficácia.",
+      "atencao": "A quebra da cadeia fria de um produto termolábil pode não ser visualmente perceptível, mas comprometer significativamente sua eficácia — por isso o monitoramento contínuo de temperatura é essencial.",
+      "naoConfunda": [
+        "fotossensibilidade"
+      ],
+      "termosRelacionados": [
+        "cadeia-fria",
+        "estabilidade-farmaceutica"
+      ],
+      "fontes": [
+        "Farmacopeia Brasileira, 6ª edição (Anvisa)",
+        "Ministério da Saúde - Programa Nacional de Imunizações"
+      ]
+    },
+    {
+      "id": "flebite",
+      "termo": "Flebite",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [],
+      "definicao": "Inflamação da parede de uma veia, frequentemente associada à administração intravenosa de medicamentos irritantes, soluções hipertônicas ou de pH extremo, ou ao tempo prolongado de permanência do acesso venoso periférico.",
+      "explicacaoSimplificada": "É a inflamação da veia, que pode acontecer quando um remédio na veia irrita o vaso sanguíneo.",
+      "aplicacaoPratica": "Após a infusão rápida de um antibiótico irritante por via periférica, o paciente desenvolve dor, vermelhidão e endurecimento no local da punção, caracterizando flebite, que exige troca do acesso venoso.",
+      "atencao": "Medicamentos com pH muito ácido ou alcalino, alta osmolaridade ou infusão rápida aumentam o risco de flebite — diluição adequada e infusão em velocidade controlada reduzem essa ocorrência.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "infusao-intermitente",
+        "osmolaridade",
+        "solucao-vasoativa"
+      ],
+      "fontes": [
+        "Conselho Federal de Enfermagem"
+      ]
+    },
+    {
+      "id": "depuracao-creatinina",
+      "termo": "Depuração da Creatinina (Clearance de Creatinina)",
+      "categoria": "farmacocinetica",
+      "sinonimos": [
+        "Clearance de creatinina",
+        "ClCr"
+      ],
+      "definicao": "Estimativa da taxa de filtração glomerular obtida a partir da concentração sérica de creatinina (frequentemente pela fórmula de Cockcroft-Gault), amplamente utilizada na prática clínica para estimar a função renal e orientar o ajuste posológico de medicamentos de eliminação renal.",
+      "explicacaoSimplificada": "É um cálculo que estima o quanto os rins estão filtrando, usado para decidir se a dose de um remédio precisa ser ajustada.",
+      "aplicacaoPratica": "Antes de prescrever um anticoagulante de eliminação renal, o farmacêutico clínico calcula a depuração da creatinina pela fórmula de Cockcroft-Gault para confirmar se a dose padrão é segura para aquele paciente.",
+      "atencao": "A depuração da creatinina estimada por fórmula pode não refletir com precisão a função renal real em pacientes com massa muscular muito baixa ou muito alta, obesidade extrema ou função renal instável.",
+      "naoConfunda": [
+        "clearance-renal",
+        "filtracao-glomerular"
+      ],
+      "termosRelacionados": [
+        "ajuste-posologico",
+        "insuficiencia-renal",
+        "clearance-renal"
+      ],
+      "fontes": [
+        "Cockcroft DW, Gault MH. Nephron, 1976"
+      ]
+    },
+    {
+      "id": "insuficiencia-renal",
+      "termo": "Insuficiência Renal",
+      "categoria": "fisiopatologia",
+      "sinonimos": [
+        "Doença renal"
+      ],
+      "definicao": "Condição clínica caracterizada pela perda, aguda ou crônica, da capacidade dos rins de filtrar adequadamente o sangue e excretar substâncias, com impacto direto na farmacocinética de medicamentos eliminados por via renal, exigindo frequentemente ajuste posológico.",
+      "explicacaoSimplificada": "É quando os rins não conseguem filtrar o sangue como deveriam, o que afeta como o corpo elimina os remédios.",
+      "aplicacaoPratica": "Um paciente com insuficiência renal crônica em uso de digoxina tem a dose ajustada e a função renal monitorada periodicamente, pois o acúmulo do fármaco pode causar toxicidade.",
+      "atencao": "Insuficiência renal aguda e crônica têm causas, prognósticos e implicações terapêuticas distintas, embora ambas exijam atenção redobrada à farmacocinética dos medicamentos de eliminação renal.",
+      "naoConfunda": [
+        "injuria-renal-aguda"
+      ],
+      "termosRelacionados": [
+        "injuria-renal-aguda",
+        "depuracao-creatinina",
+        "ajuste-posologico",
+        "clearance-renal"
+      ],
+      "fontes": [
+        "Diretrizes de Nefrologia - Sociedade Brasileira de Nefrologia"
+      ]
+    },
+    {
+      "id": "insuficiencia-hepatica",
+      "termo": "Insuficiência Hepática",
+      "categoria": "fisiopatologia",
+      "sinonimos": [
+        "Disfunção hepática"
+      ],
+      "definicao": "Condição clínica caracterizada pela redução da capacidade funcional do fígado de metabolizar substâncias e sintetizar proteínas, com impacto direto no metabolismo de fármacos de eliminação hepática, exigindo frequentemente ajuste posológico ou escolha de alternativas terapêuticas.",
+      "explicacaoSimplificada": "É quando o fígado não consegue metabolizar substâncias como deveria, o que afeta como o corpo processa os remédios.",
+      "aplicacaoPratica": "Em um paciente com insuficiência hepática grave, o farmacêutico clínico recomenda evitar um medicamento de intenso metabolismo hepático de primeira passagem, sugerindo alternativa com eliminação predominantemente renal.",
+      "atencao": "Diferente da função renal, não existe uma fórmula única e amplamente validada para quantificar a função hepática na prática clínica — escalas como Child-Pugh são usadas como aproximação para ajuste de conduta.",
+      "naoConfunda": [
+        "hepatotoxicidade"
+      ],
+      "termosRelacionados": [
+        "metabolismo-hepatico",
+        "efeito-primeira-passagem",
+        "ajuste-posologico",
+        "hepatotoxicidade"
+      ],
+      "fontes": [
+        "Diretrizes de Hepatologia - Sociedade Brasileira de Hepatologia"
+      ]
+    },
+    {
+      "id": "eletrolitos-concentrados",
+      "termo": "Eletrólitos Concentrados",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Soluções eletrolíticas concentradas"
+      ],
+      "definicao": "Soluções de eletrólitos (como cloreto de potássio, cloreto de sódio hipertônico e sulfato de magnésio) em concentração elevada, que exigem obrigatoriamente diluição antes da administração intravenosa, classificadas como medicamentos de alta vigilância pelo risco de dano grave ou morte se administradas sem diluição.",
+      "explicacaoSimplificada": "São soluções muito concentradas de sais minerais que, se dadas direto na veia sem diluir, podem matar o paciente.",
+      "aplicacaoPratica": "Uma ampola de cloreto de potássio concentrado é armazenada separadamente das demais soluções, com rótulo de alerta, e só é liberada para diluição em bolsa de soro antes de qualquer administração intravenosa.",
+      "atencao": "A administração intravenosa direta (em bolus, sem diluição) de eletrólitos concentrados, especialmente potássio, está entre os erros de medicação mais associados a óbito evitável.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "medicamento-alta-vigilancia",
+        "diluicao",
+        "armazenamento-segregado"
+      ],
+      "fontes": [
+        "ISMP Brasil - Lista de Medicamentos Potencialmente Perigosos"
+      ]
+    },
+    {
+      "id": "nutricao-parenteral",
+      "termo": "Nutrição Parenteral",
+      "categoria": "farmacotecnica",
+      "sinonimos": [
+        "NP"
+      ],
+      "definicao": "Forma de suporte nutricional administrada diretamente na circulação sanguínea, por via intravenosa, composta por macronutrientes (aminoácidos, lipídios, carboidratos), eletrólitos, vitaminas e oligoelementos, indicada quando a via enteral não é possível ou suficiente.",
+      "explicacaoSimplificada": "É alimentar o paciente diretamente pela veia, quando ele não pode receber alimento pelo intestino.",
+      "aplicacaoPratica": "Um paciente com obstrução intestinal prolongada recebe nutrição parenteral manipulada individualmente pela farmácia hospitalar, com composição ajustada às suas necessidades calóricas e eletrolíticas diárias.",
+      "atencao": "A nutrição parenteral é uma formulação complexa e instável, exigindo preparo em capela de fluxo laminar sob técnica asséptica rigorosa e controle de compatibilidade entre seus componentes.",
+      "naoConfunda": [
+        "administracao-enteral"
+      ],
+      "termosRelacionados": [
+        "administracao-parenteral",
+        "estabilidade-farmaceutica",
+        "assepsia"
+      ],
+      "fontes": [
+        "Sociedade Brasileira de Nutrição Parenteral e Enteral (BRASPEN)"
+      ]
+    },
+    {
+      "id": "solucao-vasoativa",
+      "termo": "Solução Vasoativa",
+      "categoria": "farmacia-clinica",
+      "sinonimos": [
+        "Droga vasoativa",
+        "Amina vasoativa"
+      ],
+      "definicao": "Solução contendo fármaco capaz de alterar o tônus vascular e/ou a contratilidade cardíaca (como noradrenalina, dopamina e dobutamina), utilizada em infusão contínua e monitorada para suporte hemodinâmico em pacientes graves.",
+      "explicacaoSimplificada": "É um remédio administrado continuamente na veia para controlar a pressão e o funcionamento do coração em pacientes muito graves.",
+      "aplicacaoPratica": "Em um paciente em choque séptico, a equipe de terapia intensiva inicia infusão contínua de noradrenalina (solução vasoativa) em bomba de infusão, com titulação da dose conforme a resposta da pressão arterial.",
+      "atencao": "Soluções vasoativas exigem monitorização hemodinâmica contínua e, preferencialmente, administração por acesso venoso central, pelo risco de necrose tecidual em caso de extravasamento periférico.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "infusao-continua",
+        "titulacao-dose"
+      ],
+      "fontes": [
+        "Sociedade Brasileira de Terapia Intensiva (AMIB)"
+      ]
+    },
+    {
+      "id": "radiofarmaco",
+      "termo": "Radiofármaco",
+      "categoria": "farmacotecnica",
+      "sinonimos": [],
+      "definicao": "Medicamento que contém, em sua formulação, um radionuclídeo, utilizado para fins diagnósticos (imagem funcional) ou terapêuticos (radioterapia interna), exigindo manuseio, armazenamento e descarte sob normas específicas de radioproteção.",
+      "explicacaoSimplificada": "É um remédio que contém material radioativo, usado em exames de imagem ou em alguns tratamentos.",
+      "aplicacaoPratica": "Um radiofármaco à base de tecnécio-99m é preparado no serviço de medicina nuclear pouco antes da administração ao paciente, devido à curta meia-vida física do radionuclídeo.",
+      "atencao": "O manuseio de radiofármacos exige capacitação específica em radioproteção e equipamentos de proteção individual, além de registro e descarte conforme normas da CNEN (Comissão Nacional de Energia Nuclear).",
+      "naoConfunda": [
+        "meio-contraste"
+      ],
+      "termosRelacionados": [
+        "meio-contraste",
+        "estabilidade-farmaceutica"
+      ],
+      "fontes": [
+        "Comissão Nacional de Energia Nuclear (CNEN)",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "meio-contraste",
+      "termo": "Meio de Contraste",
+      "categoria": "farmacotecnica",
+      "sinonimos": [
+        "Contraste radiológico"
+      ],
+      "definicao": "Substância administrada ao paciente para aumentar a visibilidade de estruturas ou processos internos em exames de imagem (radiografia, tomografia, ressonância), sem finalidade terapêutica farmacológica direta, porém com risco próprio de reações adversas, incluindo nefrotoxicidade.",
+      "explicacaoSimplificada": "É uma substância usada para destacar estruturas do corpo em exames de imagem, não para tratar doenças.",
+      "aplicacaoPratica": "Antes de uma tomografia com meio de contraste iodado, a equipe avalia a função renal do paciente e histórico de alergia, pelo risco de nefropatia induzida por contraste e de reações de hipersensibilidade.",
+      "atencao": "Meios de contraste iodados podem causar nefrotoxicidade, especialmente em pacientes com função renal já comprometida — a hidratação adequada antes e após o exame é uma medida preventiva importante.",
+      "naoConfunda": [
+        "radiofarmaco"
+      ],
+      "termosRelacionados": [
+        "radiofarmaco",
+        "hipersensibilidade",
+        "nefrotoxicidade"
+      ],
+      "fontes": [
+        "Colégio Brasileiro de Radiologia"
+      ]
+    },
+    {
+      "id": "risco-queda-medicamentos",
+      "termo": "Risco de Queda Associado a Medicamentos",
+      "categoria": "farmacovigilancia",
+      "sinonimos": [
+        "Medicamentos que aumentam o risco de queda"
+      ],
+      "definicao": "Potencial de determinadas classes de medicamentos (como benzodiazepínicos, antihipertensivos, hipoglicemiantes e antipsicóticos) de aumentar a probabilidade de quedas, por mecanismos como sedação, hipotensão ortostática, hipoglicemia ou alteração do equilíbrio, especialmente em idosos.",
+      "explicacaoSimplificada": "É quando certos remédios aumentam a chance de a pessoa cair, principalmente por deixá-la sonolenta, com a pressão baixa ou tonta.",
+      "aplicacaoPratica": "Durante o seguimento farmacoterapêutico de um paciente idoso, o farmacêutico identifica o uso de três medicamentos com risco de queda associado e recomenda revisão da farmacoterapia ao médico.",
+      "atencao": "O risco de queda associado a medicamentos é cumulativo — quanto maior o número de fármacos de risco em uso simultâneo (polifarmácia), maior a probabilidade de queda, especialmente em pacientes idosos.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "polimedicacao",
+        "revisao-farmacoterapia",
+        "seguimento-farmacoterapeutico"
+      ],
+      "fontes": [
+        "Sociedade Brasileira de Geriatria e Gerontologia"
+      ]
+    },
+    {
+      "id": "qualificacao-fornecedores",
+      "termo": "Qualificação de Fornecedores",
+      "categoria": "controle-qualidade",
+      "sinonimos": [
+        "Aprovação de fornecedores"
+      ],
+      "definicao": "Processo documentado de avaliação técnica de fornecedores de insumos, matérias-primas ou produtos, com base em critérios de qualidade, regularidade sanitária e capacidade de atendimento, antes de sua inclusão na lista de fornecedores aprovados de uma instituição.",
+      "explicacaoSimplificada": "É verificar, antes de comprar, se o fornecedor atende aos padrões de qualidade e regularidade exigidos.",
+      "aplicacaoPratica": "Antes de firmar contrato com um novo distribuidor de medicamentos, o setor de garantia da qualidade avalia sua autorização de funcionamento, boas práticas de armazenamento e histórico de não conformidades.",
+      "atencao": "A qualificação de fornecedores deve ser periodicamente reavaliada, não sendo um processo único e definitivo — mudanças na regularidade sanitária do fornecedor podem exigir reclassificação.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "garantia-qualidade",
+        "autorizacao-funcionamento",
+        "nao-conformidade"
+      ],
+      "fontes": [
+        "Anvisa - Boas Práticas de Distribuição e Armazenagem"
+      ]
+    },
+    {
+      "id": "programacao-medicamentos",
+      "termo": "Programação de Medicamentos",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "Planejamento de aquisição de medicamentos"
+      ],
+      "definicao": "Etapa do ciclo da assistência farmacêutica em que se estima a quantidade necessária de cada medicamento padronizado para um período futuro, com base em métodos como consumo histórico, perfil epidemiológico ou oferta de serviços, orientando a aquisição.",
+      "explicacaoSimplificada": "É calcular, com antecedência, quanto de cada remédio vai ser necessário comprar para não faltar nem sobrar.",
+      "aplicacaoPratica": "A farmácia municipal realiza a programação anual de medicamentos com base no consumo histórico dos últimos três anos, ajustada por uma campanha de vacinação prevista para o período.",
+      "atencao": "Uma programação de medicamentos mal estimada pode levar tanto à ruptura de estoque (falta) quanto ao excesso com risco de perda por vencimento — ambos os extremos comprometem a assistência farmacêutica.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "estoque-minimo",
+        "estoque-maximo",
+        "ponto-pedido",
+        "ruptura-estoque"
+      ],
+      "fontes": [
+        "Ministério da Saúde - Ciclo da Assistência Farmacêutica"
+      ]
+    },
+    {
+      "id": "dispensario-eletronico",
+      "termo": "Dispensário Eletrônico",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "Armário de dispensação automatizada",
+        "ADC (Automated Dispensing Cabinet)"
+      ],
+      "definicao": "Equipamento informatizado de armazenamento e dispensação de medicamentos, geralmente instalado nas unidades assistenciais, que controla o acesso por senha ou biometria e registra eletronicamente cada retirada, vinculando-a a paciente e prescrição.",
+      "explicacaoSimplificada": "É um armário inteligente que guarda remédios e só libera o item certo, para a pessoa certa, registrando tudo eletronicamente.",
+      "aplicacaoPratica": "Em uma unidade de terapia intensiva, o dispensário eletrônico libera apenas a dose exata de um opioide prescrito, após leitura do código de barras da prescrição, reduzindo o risco de erro de dispensação.",
+      "atencao": "O dispensário eletrônico reduz, mas não elimina, o risco de erro de medicação — a conferência pela equipe assistencial no momento da administração continua sendo indispensável.",
+      "naoConfunda": [
+        "dispensacao-descentralizada"
+      ],
+      "termosRelacionados": [
+        "dispensacao-descentralizada",
+        "erro-dispensacao",
+        "codigo-barras-bidimensional"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "uso-medicamento-investigacao",
+      "termo": "Uso de Medicamento sob Investigação",
+      "categoria": "legislacao",
+      "sinonimos": [
+        "Medicamento experimental",
+        "Investigational drug"
+      ],
+      "definicao": "Utilização de medicamento ainda não registrado pela autoridade sanitária, administrado exclusivamente no contexto de um estudo clínico aprovado, conforme protocolo de pesquisa e mediante consentimento livre e esclarecido do participante.",
+      "explicacaoSimplificada": "É usar um remédio que ainda está sendo testado em pesquisa, dentro das regras de um estudo clínico aprovado.",
+      "aplicacaoPratica": "Em um ensaio clínico de fase III, os participantes recebem o medicamento sob investigação ou placebo, de forma randomizada e cega, conforme o protocolo de pesquisa aprovado pelo comitê de ética.",
+      "atencao": "O uso de medicamento sob investigação em um estudo clínico é diferente do acesso expandido ou do uso compassivo, que ocorrem fora do desenho experimental de um ensaio clínico, geralmente após ele.",
+      "naoConfunda": [
+        "acesso-expandido",
+        "uso-compassivo"
+      ],
+      "termosRelacionados": [
+        "consentimento-livre-esclarecido",
+        "acesso-expandido",
+        "placebo"
+      ],
+      "fontes": [
+        "Conselho Nacional de Saúde - Resolução CNS nº 466/2012"
+      ]
+    },
+    {
+      "id": "medicamento-alto-custo",
+      "termo": "Medicamento de Alto Custo",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "Medicamento especializado"
+      ],
+      "definicao": "Medicamento cujo valor unitário ou de tratamento é elevado em relação à média dos demais, geralmente por tecnologia de produção complexa (biológicos, oncológicos, terapias para doenças raras), exigindo processos diferenciados de gestão, financiamento e acesso.",
+      "explicacaoSimplificada": "É um remédio muito caro, geralmente para doenças raras, graves ou crônicas, que exige um processo especial para ser fornecido.",
+      "aplicacaoPratica": "Um paciente com doença rara é encaminhado ao Componente Especializado da Assistência Farmacêutica para obter, sem custo direto, um medicamento biológico de alto custo mediante protocolo clínico específico.",
+      "atencao": "No SUS, boa parte dos medicamentos de alto custo é fornecida pelo Componente Especializado, do qual o antigo 'Medicamento de Uso Excepcional' é um exemplo histórico — os termos se relacionam, mas alto custo é um conceito mais amplo, aplicável também fora do SUS.",
+      "naoConfunda": [
+        "uso-excepcional"
+      ],
+      "termosRelacionados": [
+        "uso-excepcional",
+        "farmacoeconomia",
+        "medicamento-biologico"
+      ],
+      "fontes": [
+        "Ministério da Saúde - Componente Especializado da Assistência Farmacêutica"
+      ]
+    },
+    {
+      "id": "armazenamento-segregado",
+      "termo": "Armazenamento Segregado",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "Separação física de estoque"
+      ],
+      "definicao": "Prática de manter determinadas categorias de produtos (medicamentos de alta vigilância, substâncias controladas, produtos em quarentena, itens vencidos ou recolhidos) fisicamente separadas das demais, com identificação visual clara, para reduzir risco de erro ou uso indevido.",
+      "explicacaoSimplificada": "É guardar certos remédios separados dos outros, em local identificado, para evitar erro ou mistura.",
+      "aplicacaoPratica": "Os eletrólitos concentrados são mantidos em armazenamento segregado, em local sinalizado e de acesso controlado, separados das demais soluções intravenosas de uso corrente.",
+      "atencao": "O armazenamento segregado é uma das principais barreiras recomendadas para medicamentos de alta vigilância, reduzindo a chance de seleção equivocada no momento da dispensação ou preparo.",
+      "naoConfunda": [
+        "quarentena-estoque"
+      ],
+      "termosRelacionados": [
+        "medicamento-alta-vigilancia",
+        "eletrolitos-concentrados",
+        "quarentena-estoque"
+      ],
+      "fontes": [
+        "ISMP Brasil"
+      ]
+    },
+    {
+      "id": "codigo-barras-bidimensional",
+      "termo": "Código de Barras Bidimensional",
+      "categoria": "gestao-farmaceutica",
+      "sinonimos": [
+        "DataMatrix",
+        "QR Code farmacêutico"
+      ],
+      "definicao": "Código gráfico que armazena informações em duas dimensões (ao contrário do código de barras linear tradicional), capaz de registrar dados como número de lote, data de validade e número de série individual do medicamento, utilizado em sistemas de rastreabilidade.",
+      "explicacaoSimplificada": "É um código (parecido com um QR code) que guarda mais informações que o código de barras comum, usado para rastrear o medicamento.",
+      "aplicacaoPratica": "Cada embalagem de medicamento recebe um código de barras bidimensional com número de série único, permitindo a rastreabilidade da unidade desde a fabricação até a dispensação ao paciente.",
+      "atencao": "O código de barras bidimensional é a tecnologia que viabiliza, na prática, a rastreabilidade de medicamentos exigida por sistemas nacionais de controle, permitindo identificar uma unidade individual, e não apenas o lote.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "rastreabilidade",
+        "sngpc",
+        "dispensario-eletronico"
+      ],
+      "fontes": [
+        "Anvisa - Sistema Nacional de Controle de Medicamentos (SNCM)"
+      ]
+    },
+    {
+      "id": "dispensacao-descentralizada",
+      "termo": "Dispensação Descentralizada",
+      "categoria": "dispensacao",
+      "sinonimos": [],
+      "definicao": "Modelo de dispensação em que o medicamento é disponibilizado próximo ao local de cuidado do paciente (por exemplo, em satélites de farmácia nas unidades de internação), em contraposição ao modelo centralizado em que toda a dispensação parte de uma única farmácia central.",
+      "explicacaoSimplificada": "É ter os remédios disponíveis mais perto de onde o paciente está, em vez de tudo vir de uma farmácia central distante.",
+      "aplicacaoPratica": "Um hospital implementa farmácias-satélite descentralizadas em andares de alta rotatividade, reduzindo o tempo entre a prescrição e a administração do medicamento ao paciente.",
+      "atencao": "A dispensação descentralizada exige controles de qualidade e auditoria equivalentes aos da farmácia central, para não comprometer a rastreabilidade e a segurança do processo de medicação.",
+      "naoConfunda": [
+        "dispensacao-individualizada",
+        "dispensario-eletronico"
+      ],
+      "termosRelacionados": [
+        "dispensacao-individualizada",
+        "dispensario-eletronico",
+        "seguranca-processo-medicacao"
+      ],
+      "fontes": [
+        "Conselho Federal de Farmácia"
+      ]
+    },
+    {
+      "id": "uso-medicamentos-baseado-evidencias",
+      "termo": "Uso de Medicamentos Baseado em Evidências",
+      "categoria": "farmacoterapia",
+      "sinonimos": [
+        "Farmacoterapia baseada em evidências"
+      ],
+      "definicao": "Abordagem que fundamenta as decisões de seleção, prescrição e uso de medicamentos na melhor evidência científica disponível (ensaios clínicos, revisões sistemáticas, metanálises), integrada à experiência clínica e às características e preferências do paciente.",
+      "explicacaoSimplificada": "É escolher e usar os remédios com base no que a ciência mostrou funcionar melhor, e não apenas por costume ou opinião pessoal.",
+      "aplicacaoPratica": "Uma Comissão de Farmácia e Terapêutica baseia a padronização de um novo anti-hipertensivo em revisões sistemáticas e metanálises que comparam seu desfecho clínico com as opções já padronizadas.",
+      "atencao": "O uso de medicamentos baseado em evidências não ignora a individualização terapêutica — a evidência orienta a decisão, mas deve ser ponderada junto às particularidades clínicas de cada paciente.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "farmacoeconomia",
+        "comissao-farmacia-terapeutica",
+        "revisao-farmacoterapia"
+      ],
+      "fontes": [
+        "Medicina Baseada em Evidências - Cochrane"
+      ]
+    },
+    {
+      "id": "autorizacao-especial",
+      "termo": "AE (Autorização Especial)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "AE"
+      ],
+      "definicao": "Autorização emitida pela Anvisa para empresas que fabricam, importam, exportam, distribuem ou comercializam substâncias sujeitas a controle especial (listas da Portaria SVS/MS nº 344/1998), complementar à AFE, específica para operações com essas substâncias.",
+      "explicacaoSimplificada": "É uma autorização extra, além da AFE, exigida para empresas que trabalham com substâncias controladas (como psicotrópicos e entorpecentes).",
+      "aplicacaoPratica": "Uma farmácia que manipula medicamentos com substâncias da lista A1 precisa, além da AFE, de uma AE específica para essa atividade, renovada periodicamente junto à Anvisa.",
+      "atencao": "A AE é exigida por substância/atividade específica, não substitui a AFE — uma empresa pode ter AFE válida e ainda não ter a AE necessária para uma substância controlada específica.",
+      "naoConfunda": [
+        "autorizacao-funcionamento"
+      ],
+      "termosRelacionados": [
+        "autorizacao-funcionamento",
+        "medicamento-controlado"
+      ],
+      "fontes": [
+        "Portaria SVS/MS nº 344/1998",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "licenca-sanitaria",
+      "termo": "Licença Sanitária / Alvará Sanitário",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Alvará Sanitário",
+        "Licença de Funcionamento"
+      ],
+      "definicao": "Documento emitido pelo órgão de vigilância sanitária estadual ou municipal que autoriza o funcionamento de um estabelecimento (como farmácia ou drogaria) em determinado endereço, condicionado ao cumprimento de requisitos sanitários locais, com validade e renovação periódica definidas pela legislação estadual/municipal.",
+      "explicacaoSimplificada": "É a autorização, dada pela vigilância sanitária da prefeitura ou do estado, para que o estabelecimento funcione naquele endereço.",
+      "aplicacaoPratica": "Antes de abrir as portas, uma nova drogaria precisa obter a licença sanitária municipal, que inclui vistoria do estabelecimento pela vigilância sanitária local.",
+      "atencao": "A Licença Sanitária é de competência estadual/municipal e distinta da AFE, que é federal (Anvisa) — um estabelecimento pode precisar das duas simultaneamente, pois regulam esferas diferentes.",
+      "naoConfunda": [
+        "autorizacao-funcionamento"
+      ],
+      "termosRelacionados": [
+        "autorizacao-funcionamento",
+        "responsavel-tecnico"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977",
+        "Legislação sanitária estadual/municipal"
+      ]
+    },
+    {
+      "id": "certificado-boas-praticas",
+      "termo": "Certificado de Boas Práticas (CBP)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "CBP",
+        "Certificado de Conformidade com as BPF"
+      ],
+      "definicao": "Documento emitido pela Anvisa que atesta, após inspeção, que uma linha de produção ou unidade fabril cumpre as Boas Práticas de Fabricação (BPF) vigentes, sendo pré-requisito para a concessão e manutenção do registro de medicamentos fabricados naquela unidade.",
+      "explicacaoSimplificada": "É o documento que comprova, depois de uma inspeção, que a fábrica segue as Boas Práticas de Fabricação.",
+      "aplicacaoPratica": "Antes de registrar um novo medicamento, a empresa precisa comprovar que a linha de produção onde ele será fabricado possui CBP válido para aquela forma farmacêutica.",
+      "atencao": "O CBP tem validade determinada e é específico por linha de produção/forma farmacêutica — não é um certificado único e genérico para toda a fábrica.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "boas-praticas-fabricacao",
+        "registro-sanitario-medicamentos"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 658/2022"
+      ]
+    },
+    {
+      "id": "notificacao-sanitaria",
+      "termo": "Notificação Sanitária",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Regime simplificado de regularização, no qual determinados produtos de baixo risco (como alguns cosméticos de Grau 1) podem ser comercializados mediante simples notificação à Anvisa, sem necessidade de análise prévia e concessão de registro.",
+      "explicacaoSimplificada": "É um jeito mais simples de regularizar produtos de baixo risco — a empresa só avisa a Anvisa que vai vender o produto, sem esperar uma análise prévia.",
+      "aplicacaoPratica": "Um sabonete líquido comum (cosmético Grau 1) é comercializado por notificação sanitária, enquanto um protetor solar (Grau 2, maior risco) exige registro com análise prévia da Anvisa.",
+      "atencao": "A notificação sanitária não dispensa a empresa de cumprir todas as exigências técnicas e de qualidade — a Anvisa pode fiscalizar e exigir adequações a qualquer momento, mesmo sem análise prévia.",
+      "naoConfunda": [
+        "registro-sanitario-medicamentos"
+      ],
+      "termosRelacionados": [
+        "registro-sanitario-medicamentos",
+        "vigilancia-sanitaria-termo"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 07/2015 (cosméticos)"
+      ]
+    },
+    {
+      "id": "dossie-tecnico-regularizacao",
+      "termo": "Dossiê Técnico de Regularização",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Dossiê de Registro"
+      ],
+      "definicao": "Conjunto estruturado de documentos técnicos e científicos exigido pela Anvisa para instruir um processo de registro, notificação, alteração ou renovação de um produto sujeito à vigilância sanitária, demonstrando sua qualidade, segurança e eficácia.",
+      "explicacaoSimplificada": "É a pasta/arquivo completo com todos os documentos e estudos que comprovam que o produto é seguro e de qualidade, exigido para regularizar o produto junto à Anvisa.",
+      "aplicacaoPratica": "O dossiê técnico de registro de um medicamento genérico inclui estudos de bioequivalência, especificações farmacopeicas e dados de estabilidade, entre outros documentos exigidos pela Anvisa.",
+      "atencao": "O conteúdo exigido no dossiê varia conforme a categoria regulatória do produto (medicamento novo, genérico, similar, cosmético, etc.) — não existe um dossiê-padrão único para todos os casos.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "registro-sanitario-medicamentos",
+        "estudo-estabilidade"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "instrucao-normativa",
+      "termo": "Norma Regulamentadora / Instrução Normativa (IN)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "IN",
+        "Norma Regulamentadora"
+      ],
+      "definicao": "Ato normativo editado por um órgão regulador (como a Anvisa) para detalhar, operacionalizar ou esclarecer a aplicação prática de uma resolução (RDC) ou lei, geralmente tratando de aspectos técnicos, prazos ou procedimentos específicos.",
+      "explicacaoSimplificada": "É uma norma mais detalhada que explica como aplicar na prática uma RDC ou uma lei.",
+      "aplicacaoPratica": "Uma RDC estabelece a obrigatoriedade de um novo sistema de rastreamento, e uma Instrução Normativa publicada depois detalha o cronograma de implementação e os formatos técnicos exigidos.",
+      "atencao": "A IN não cria obrigação nova por si só na mesma hierarquia de uma RDC ou lei — ela detalha/operacionaliza uma norma hierarquicamente superior já existente.",
+      "naoConfunda": [
+        "rdc"
+      ],
+      "termosRelacionados": [
+        "rdc",
+        "anvisa"
+      ],
+      "fontes": [
+        "Lei Complementar nº 95/1998"
+      ]
+    },
+    {
+      "id": "bpdf",
+      "termo": "BPDF (Boas Práticas de Distribuição e Fracionamento)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Boas Práticas de Distribuição e Fracionamento"
+      ],
+      "definicao": "Conjunto de normas sanitárias que regulam especificamente as operações de fracionamento (divisão de lotes em quantidades menores) e distribuição de medicamentos e insumos farmacêuticos, complementando as BPDA nos casos em que há fracionamento do produto.",
+      "explicacaoSimplificada": "São as regras específicas para quando um lote de medicamento é dividido (fracionado) em quantidades menores, além das regras de distribuição.",
+      "aplicacaoPratica": "Um distribuidor que fraciona um lote de insumo farmacêutico ativo para atender pedidos menores precisa seguir as BPDF, documentando e rastreando cada fração gerada a partir do lote original.",
+      "atencao": "Não confundir BPDF (fracionamento) com BPDA (armazenagem/distribuição sem fracionamento) — a BPDF é exigida especificamente quando há divisão física do lote, e não em toda operação de distribuição.",
+      "naoConfunda": [
+        "bpda"
+      ],
+      "termosRelacionados": [
+        "bpda",
+        "rastreabilidade"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 430/2020"
+      ]
+    },
+    {
+      "id": "bpfm",
+      "termo": "BPFM (Boas Práticas de Manipulação)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Boas Práticas de Manipulação"
+      ],
+      "definicao": "Conjunto de normas sanitárias que regulam a manipulação de fórmulas magistrais e oficinais em farmácias de manipulação, abrangendo instalações, equipamentos, pessoal, controle de qualidade e documentação do processo de manipulação.",
+      "explicacaoSimplificada": "São as regras de qualidade e segurança para farmácias que preparam fórmulas manipuladas (não industriais).",
+      "aplicacaoPratica": "Uma farmácia de manipulação deve seguir as BPFM ao preparar uma cápsula manipulada, incluindo pesagem calibrada, registro de lote da fórmula e controle de qualidade da matéria-prima utilizada.",
+      "atencao": "As BPFM se aplicam à manipulação magistral/oficinal em farmácia, enquanto as BPF (Boas Práticas de Fabricação) se aplicam à produção industrial em escala — são regimes regulatórios distintos, com normas próprias.",
+      "naoConfunda": [
+        "boas-praticas-fabricacao"
+      ],
+      "termosRelacionados": [
+        "boas-praticas-fabricacao",
+        "responsavel-tecnico"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 67/2007"
+      ]
+    },
+    {
+      "id": "gerenciamento-risco-sanitario",
+      "termo": "Gerenciamento de Risco Sanitário (GRS)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "GRS"
+      ],
+      "definicao": "Abordagem regulatória que prioriza as ações de vigilância sanitária (fiscalização, inspeção, educação) com base no grau de risco que produtos, serviços e estabelecimentos representam à saúde da população, concentrando recursos onde o risco é maior.",
+      "explicacaoSimplificada": "É a estratégia da vigilância sanitária de focar a fiscalização onde o risco à saúde da população é maior.",
+      "aplicacaoPratica": "Um hospital classificado como de alto risco sanitário recebe inspeções mais frequentes da vigilância sanitária do que uma farmácia de pequeno porte classificada como baixo risco.",
+      "atencao": "Gerenciamento de Risco Sanitário (classificação de risco de estabelecimentos/produtos pela vigilância sanitária) é diferente de Gerenciamento de Risco em saúde/farmacovigilância (prevenção de erros de medicação em um processo assistencial específico) — o termo \"risco\" é compartilhado, mas o escopo é outro.",
+      "naoConfunda": [
+        "gerenciamento-risco"
+      ],
+      "termosRelacionados": [
+        "vigilancia-sanitaria-termo",
+        "roteiro-inspecao-sanitaria"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "estudo-estabilidade",
+      "termo": "Estudo de Estabilidade",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Estudo de Estabilidade de Longa Duração",
+        "Estudo de Estabilidade Acelerado"
+      ],
+      "definicao": "Programa estruturado de testes (de longa duração, acelerado e, quando aplicável, de fotoestabilidade), conduzido conforme guias técnicos (ICH Q1A), para determinar como a qualidade de um medicamento varia com o tempo sob a influência de fatores ambientais, definindo seu prazo de validade e condições de armazenamento.",
+      "explicacaoSimplificada": "São os testes feitos ao longo do tempo para descobrir até quando o medicamento continua bom e em que condições ele deve ser guardado.",
+      "aplicacaoPratica": "Para definir a validade de 24 meses de um novo comprimido, o fabricante conduz um estudo de estabilidade de longa duração (condições normais, ao longo de todo esse período) e um estudo acelerado (condições mais extremas, por tempo menor, para estimativa preliminar).",
+      "atencao": "O estudo de estabilidade é o programa de testes que determina o prazo de validade; a Estabilidade (Farmacotécnica) propriamente dita é a característica/propriedade do medicamento que esse estudo avalia — são conceitos relacionados, mas não sinônimos.",
+      "naoConfunda": [
+        "estabilidade-farmaceutica"
+      ],
+      "termosRelacionados": [
+        "estabilidade-farmaceutica",
+        "dossie-tecnico-regularizacao"
+      ],
+      "fontes": [
+        "ICH Q1A(R2)",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "cosmetovigilancia",
+      "termo": "Cosmetovigilância",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Sistema de monitoramento de eventos adversos relacionados ao uso de produtos cosméticos, com coleta, análise e investigação de notificações para identificar riscos à saúde associados a esses produtos e subsidiar ações regulatórias.",
+      "explicacaoSimplificada": "É a farmacovigilância aplicada a cosméticos — o monitoramento de reações e problemas causados por produtos de higiene e beleza.",
+      "aplicacaoPratica": "Um consumidor relata irritação cutânea grave após o uso de um creme cosmético; a notificação à Anvisa, dentro do sistema de cosmetovigilância, pode levar à investigação do lote e, se confirmado o risco, a um recall do produto.",
+      "atencao": "Cosmetovigilância, Farmacovigilância e Nutrivigilância seguem a mesma lógica de monitoramento pós-comercialização, mas são sistemas distintos, cada um voltado a uma categoria de produto (cosméticos, medicamentos e alimentos/suplementos, respectivamente).",
+      "naoConfunda": [
+        "farmacovigilancia-termo",
+        "nutrivigilancia"
+      ],
+      "termosRelacionados": [
+        "farmacovigilancia-termo",
+        "nutrivigilancia",
+        "notivisa"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "nutrivigilancia",
+      "termo": "Nutrivigilância",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Sistema de monitoramento de eventos adversos e queixas técnicas relacionados ao consumo de alimentos, incluindo suplementos alimentares, com coleta e investigação de notificações para subsidiar ações regulatórias de segurança alimentar.",
+      "explicacaoSimplificada": "É a farmacovigilância aplicada a alimentos e suplementos alimentares — o monitoramento de problemas causados por esses produtos.",
+      "aplicacaoPratica": "Vários consumidores relatam mal-estar após o consumo de um suplemento alimentar do mesmo lote; as notificações, registradas no sistema de nutrivigilância, orientam a investigação da Anvisa sobre possível contaminação ou desvio de qualidade.",
+      "atencao": "A nutrivigilância cobre tanto alimentos convencionais quanto suplementos alimentares, categoria que passou a ter regulação própria e mais detalhada da Anvisa a partir de 2018 (RDC nº 243/2018).",
+      "naoConfunda": [
+        "farmacovigilancia-termo",
+        "cosmetovigilancia"
+      ],
+      "termosRelacionados": [
+        "farmacovigilancia-termo",
+        "cosmetovigilancia",
+        "notivisa"
+      ],
+      "fontes": [
+        "Anvisa",
+        "RDC Anvisa nº 243/2018"
+      ]
+    },
+    {
+      "id": "notivisa",
+      "termo": "Notivisa",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Sistema Nacional de Notificações para a Vigilância Sanitária"
+      ],
+      "definicao": "Sistema eletrônico oficial da Anvisa utilizado para o registro e o gerenciamento de notificações de eventos adversos, queixas técnicas e outras ocorrências relacionadas a produtos sujeitos à vigilância sanitária (medicamentos, cosméticos, alimentos, produtos para saúde, entre outros).",
+      "explicacaoSimplificada": "É o sistema online onde se registram as notificações de problemas com produtos regulados pela Anvisa (reações, queixas técnicas, etc.).",
+      "aplicacaoPratica": "Um farmacêutico que identifica uma queixa técnica em um lote de medicamento registra a ocorrência no Notivisa, alimentando o sistema de farmacovigilância/tecnovigilância da Anvisa.",
+      "atencao": "O Notivisa é a ferramenta/sistema onde as notificações são registradas; a Farmacovigilância, a Tecnovigilância, a Cosmetovigilância e a Nutrivigilância são os diferentes programas de monitoramento que utilizam esse sistema para coletar dados.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "farmacovigilancia-termo",
+        "tecnovigilancia",
+        "cosmetovigilancia",
+        "nutrivigilancia"
+      ],
+      "fontes": [
+        "Anvisa - Notivisa"
+      ]
+    },
+    {
+      "id": "recall-recolhimento",
+      "termo": "Recall (Recolhimento de Produto)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Recolhimento de Produto",
+        "Recall Sanitário"
+      ],
+      "definicao": "Procedimento formal de retirada do mercado de um produto que apresenta risco à saúde (desvio de qualidade grave, contaminação, erro de rotulagem, entre outros), determinado pela empresa fabricante/detentora do registro ou pela autoridade sanitária, com comunicação pública e rastreamento dos lotes afetados.",
+      "explicacaoSimplificada": "É a retirada forçada ou voluntária de um produto do mercado, porque ele representa risco à saúde.",
+      "aplicacaoPratica": "Ao identificar contaminação microbiológica em um lote de colírio, a empresa inicia o recall do lote afetado, comunicando distribuidores, farmácias e o público, e orientando o farmacêutico a retirar o produto das prateleiras e orientar pacientes que já o adquiriram.",
+      "atencao": "O recall é diferente da simples devolução de produto ao fornecedor (que pode ocorrer por motivos comerciais ou de vencimento) — o recall é uma ação regulatória formal, acionada por risco à saúde, com rastreamento obrigatório dos lotes.",
+      "naoConfunda": [
+        "devolucao-produto"
+      ],
+      "termosRelacionados": [
+        "alerta-sanitario",
+        "rastreabilidade",
+        "nao-conformidade"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "alerta-sanitario",
+      "termo": "Alerta Sanitário",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Comunicação oficial emitida pela Anvisa (ou outro órgão de vigilância sanitária) para informar rapidamente profissionais de saúde e a população sobre um risco identificado relacionado a um produto ou prática, podendo preceder ou acompanhar um recall.",
+      "explicacaoSimplificada": "É um aviso oficial e rápido da Anvisa sobre um risco relacionado a um produto.",
+      "aplicacaoPratica": "A Anvisa publica um alerta sanitário informando sobre a falsificação de um medicamento específico circulando no mercado, orientando farmacêuticos a verificarem a procedência antes da dispensação.",
+      "atencao": "Um alerta sanitário não implica necessariamente um recall formal do produto — pode ser apenas um aviso informativo sobre um risco identificado, sem necessariamente determinar o recolhimento imediato de lotes.",
+      "naoConfunda": [
+        "recall-recolhimento"
+      ],
+      "termosRelacionados": [
+        "recall-recolhimento",
+        "notivisa"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "auto-infracao-sanitaria",
+      "termo": "Auto de Infração Sanitária (AIS)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "AIS"
+      ],
+      "definicao": "Documento administrativo formal, lavrado pelo agente fiscal da vigilância sanitária, que registra a constatação de uma infração à legislação sanitária durante uma inspeção, dando início ao processo administrativo sanitário que pode resultar em penalidade.",
+      "explicacaoSimplificada": "É o documento que registra oficialmente que uma infração sanitária foi constatada durante uma fiscalização.",
+      "aplicacaoPratica": "Durante uma inspeção, o fiscal da vigilância sanitária constata que a farmácia armazena medicamentos termolábeis fora da cadeia de frio e lavra um Auto de Infração Sanitária, iniciando o processo administrativo correspondente.",
+      "atencao": "O Auto de Infração Sanitária registra a constatação da infração; a penalidade propriamente dita (multa, interdição, cancelamento de licença) é definida posteriormente, no Auto de Imposição de Penalidade, após o processo administrativo garantir direito de defesa.",
+      "naoConfunda": [
+        "auto-imposicao-penalidade"
+      ],
+      "termosRelacionados": [
+        "auto-imposicao-penalidade",
+        "roteiro-inspecao-sanitaria"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977"
+      ]
+    },
+    {
+      "id": "auto-imposicao-penalidade",
+      "termo": "Auto de Imposição de Penalidade (AIP)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "AIP"
+      ],
+      "definicao": "Documento administrativo que formaliza a aplicação de uma sanção sanitária (advertência, multa, interdição, cancelamento de licença/autorização, entre outras previstas em lei) a um estabelecimento ou pessoa, emitido após o processo administrativo decorrente de um Auto de Infração Sanitária.",
+      "explicacaoSimplificada": "É o documento que aplica, de fato, a punição depois que a infração sanitária foi apurada e o processo administrativo concluído.",
+      "aplicacaoPratica": "Após o processo administrativo decorrente do Auto de Infração Sanitária, a vigilância sanitária emite um Auto de Imposição de Penalidade determinando multa ao estabelecimento infrator.",
+      "atencao": "A gradação e o tipo de penalidade (advertência, multa, interdição, cancelamento) dependem da gravidade da infração e de reincidência, conforme previsto na Lei nº 6.437/1977 — não é uma sanção automática e uniforme para toda infração.",
+      "naoConfunda": [
+        "auto-infracao-sanitaria"
+      ],
+      "termosRelacionados": [
+        "auto-infracao-sanitaria",
+        "termo-interdicao-cautelar"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977"
+      ]
+    },
+    {
+      "id": "termo-interdicao-cautelar",
+      "termo": "Termo de Interdição Cautelar",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Interdição Cautelar"
+      ],
+      "definicao": "Medida administrativa de caráter preventivo e temporário, aplicada pela vigilância sanitária para impedir imediatamente a fabricação, distribuição, comercialização ou uso de um produto, equipamento ou estabelecimento, quando há risco iminente à saúde, independentemente da conclusão do processo administrativo sanitário.",
+      "explicacaoSimplificada": "É uma medida de emergência que proíbe imediatamente o uso/venda de algo, por risco iminente à saúde, mesmo antes de o processo terminar.",
+      "aplicacaoPratica": "Ao identificar um lote de medicamento com forte suspeita de contaminação, a vigilância sanitária lavra um Termo de Interdição Cautelar, proibindo imediatamente sua comercialização enquanto a investigação prossegue.",
+      "atencao": "Por ser cautelar, essa medida é aplicada antes da conclusão do processo administrativo, justamente para conter o risco imediatamente — não se confunde com a penalidade final, que só vem após o processo (Auto de Imposição de Penalidade).",
+      "naoConfunda": [
+        "auto-imposicao-penalidade"
+      ],
+      "termosRelacionados": [
+        "apreensao-inutilizacao",
+        "auto-infracao-sanitaria"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977"
+      ]
+    },
+    {
+      "id": "apreensao-inutilizacao",
+      "termo": "Apreensão e Inutilização",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Medidas administrativas sanitárias aplicadas a produtos irregulares, falsificados, com desvio de qualidade grave ou vencidos, consistindo na retirada física do produto de circulação (apreensão) seguida de sua destruição controlada e documentada (inutilização), impedindo seu retorno ao mercado.",
+      "explicacaoSimplificada": "É quando a vigilância sanitária retira um produto irregular de circulação (apreende) e depois o destrói de forma controlada (inutiliza), para garantir que ele não volte a ser vendido.",
+      "aplicacaoPratica": "Ao encontrar medicamentos falsificados durante uma inspeção, a vigilância sanitária apreende o lote e posteriormente determina sua inutilização, com registro documental de todo o processo.",
+      "atencao": "A inutilização deve ser documentada e, em geral, acompanhada por autoridade competente, para garantir que o produto apreendido não seja desviado ou comercializado de forma irregular antes da destruição.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "termo-interdicao-cautelar",
+        "nao-conformidade"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977"
+      ]
+    },
+    {
+      "id": "roteiro-inspecao-sanitaria",
+      "termo": "Roteiro de Inspeção Sanitária",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Check-list de Inspeção Sanitária"
+      ],
+      "definicao": "Instrumento técnico padronizado, utilizado por agentes de vigilância sanitária durante inspeções, que lista os itens, requisitos e critérios a serem verificados em um estabelecimento ou processo, garantindo uniformidade e completude na avaliação.",
+      "explicacaoSimplificada": "É a lista padronizada de itens que o fiscal da vigilância sanitária verifica durante uma inspeção.",
+      "aplicacaoPratica": "Durante a inspeção de uma farmácia, o fiscal segue o roteiro de inspeção sanitária, verificando item a item: responsável técnico presente, condições de armazenamento, escrituração de controlados, entre outros.",
+      "atencao": "O roteiro de inspeção varia conforme o tipo de estabelecimento (farmácia, drogaria, distribuidora, indústria) — não existe um roteiro único e genérico para todos os tipos de inspeção.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "auto-infracao-sanitaria",
+        "gerenciamento-risco-sanitario"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "capa-acao-corretiva-preventiva",
+      "termo": "Ação Corretiva e Preventiva (CAPA)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "CAPA"
+      ],
+      "definicao": "Metodologia estruturada de gestão da qualidade que investiga a causa raiz de uma não conformidade ou desvio, implementa ações corretivas (para eliminar o problema já ocorrido) e ações preventivas (para evitar sua recorrência ou ocorrência em situações semelhantes).",
+      "explicacaoSimplificada": "É o processo de descobrir por que algo deu errado (causa raiz) e agir tanto para corrigir o problema atual quanto para evitar que ele se repita.",
+      "aplicacaoPratica": "Após identificar uma não conformidade recorrente em um lote de comprimidos, a equipe de qualidade abre um CAPA: a ação corretiva ajusta o parâmetro de processo que causou o desvio no lote atual, e a ação preventiva revisa o procedimento operacional padrão para evitar recorrência em lotes futuros.",
+      "atencao": "Uma ação corretiva, isolada, resolve o problema pontual já ocorrido; só o CAPA completo (corretiva + preventiva), com investigação de causa raiz documentada, evita que o mesmo problema volte a se repetir.",
+      "naoConfunda": [
+        "nao-conformidade"
+      ],
+      "termosRelacionados": [
+        "nao-conformidade",
+        "garantia-qualidade"
+      ],
+      "fontes": [
+        "ICH Q10",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "qualificacao-transporte",
+      "termo": "Qualificação de Transporte",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Validação de Transporte"
+      ],
+      "definicao": "Processo documentado que comprova, por meio de estudos (como mapeamento térmico de rotas e veículos), que o sistema de transporte utilizado mantém as condições especificadas (principalmente de temperatura) necessárias para preservar a qualidade do medicamento ou insumo durante o trajeto.",
+      "explicacaoSimplificada": "São os testes que comprovam que o transporte (caminhão, veículo refrigerado etc.) mantém a temperatura e as condições certas durante toda a viagem do produto.",
+      "aplicacaoPratica": "Antes de contratar uma transportadora para distribuir vacinas, a empresa exige um estudo de qualificação de transporte com mapeamento térmico da rota, comprovando que a temperatura permanece dentro da faixa exigida durante todo o percurso.",
+      "atencao": "A qualificação de transporte é uma exigência específica dentro das BPDA, especialmente crítica para produtos termolábeis que dependem da cadeia fria — nem todo transporte de medicamentos precisa do mesmo nível de controle de temperatura.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "bpda",
+        "cadeia-fria",
+        "qualificacao"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 430/2020"
+      ]
+    },
+    {
+      "id": "pgrss",
+      "termo": "PGRSS (Plano de Gerenciamento de Resíduos de Serviços de Saúde)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Plano de Gerenciamento de Resíduos de Serviços de Saúde"
+      ],
+      "definicao": "Documento obrigatório que estabelece as diretrizes de manejo dos resíduos gerados por estabelecimentos de saúde (farmácias, hospitais, clínicas), desde a geração até a destinação final, classificando-os por categoria de risco (biológico, químico, perfurocortante, comum) e definindo procedimentos seguros para cada etapa.",
+      "explicacaoSimplificada": "É o plano obrigatório que define como o estabelecimento vai lidar com o lixo que gera (medicamentos vencidos, agulhas, luvas etc.), de forma segura, desde a geração até o descarte final.",
+      "aplicacaoPratica": "Uma farmácia elabora seu PGRSS classificando medicamentos vencidos como resíduo químico, definindo acondicionamento, coleta e destinação por empresa especializada, conforme a legislação local.",
+      "atencao": "O PGRSS é exigido mesmo em estabelecimentos de pequeno porte, como farmácias e drogarias, não só em hospitais — a ausência do plano é item comumente verificado em inspeções de vigilância sanitária.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "biosseguranca",
+        "descarte-medicamento"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 222/2018",
+        "Resolução CONAMA nº 358/2005"
+      ]
+    },
+    {
+      "id": "biosseguranca",
+      "termo": "Biossegurança",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Conjunto de ações, normas e procedimentos destinados a prevenir, minimizar ou eliminar riscos inerentes às atividades que envolvam agentes biológicos, químicos ou físicos, protegendo a saúde do profissional, do paciente, da comunidade e do meio ambiente.",
+      "explicacaoSimplificada": "São as regras e cuidados para evitar riscos (biológicos, químicos, físicos) nas atividades de saúde, protegendo quem trabalha e quem é atendido.",
+      "aplicacaoPratica": "As normas de biossegurança de uma farmácia incluem o uso de EPI para manipulação de certos produtos, o descarte adequado de perfurocortantes e o PGRSS do estabelecimento.",
+      "atencao": "Biossegurança é um conceito guarda-chuva que engloba, entre outras coisas, o uso correto de EPI/EPC e o gerenciamento de resíduos (PGRSS) — não é sinônimo exclusivo de nenhum desses itens isoladamente.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "epi-epc",
+        "pgrss",
+        "ccih"
+      ],
+      "fontes": [
+        "Ministério da Saúde"
+      ]
+    },
+    {
+      "id": "ccih",
+      "termo": "CCIH (Comissão de Controle de Infecção Hospitalar)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Comissão de Controle de Infecção Hospitalar"
+      ],
+      "definicao": "Comissão multiprofissional, de existência obrigatória em hospitais, responsável por planejar, executar e avaliar ações de prevenção e controle de infecções relacionadas à assistência à saúde, incluindo o uso racional de antimicrobianos.",
+      "explicacaoSimplificada": "É a comissão do hospital responsável por prevenir e controlar infecções hospitalares, incluindo o uso correto de antibióticos.",
+      "aplicacaoPratica": "A CCIH de um hospital elabora o protocolo de profilaxia antimicrobiana cirúrgica e monitora indicadores de infecção relacionados a dispositivos invasivos, como cateteres.",
+      "atencao": "A CCIH tem papel central na política de uso racional de antimicrobianos e no controle de resistência antimicrobiana dentro do hospital — é uma exigência legal, não uma boa prática opcional.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "profilaxia-antimicrobiana",
+        "resistencia-antimicrobiana",
+        "biosseguranca"
+      ],
+      "fontes": [
+        "Portaria MS/SNVS nº 2.616/1998"
+      ]
+    },
+    {
+      "id": "epi-epc",
+      "termo": "EPI / EPC (Equipamento de Proteção Individual e Coletiva)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Equipamento de Proteção Individual",
+        "Equipamento de Proteção Coletiva"
+      ],
+      "definicao": "Equipamentos destinados a proteger a saúde e a segurança do trabalhador — individualmente (EPI, como luvas, máscaras e óculos de proteção, de uso pessoal) ou coletivamente (EPC, como capelas de exaustão e lava-olhos, que protegem todo o ambiente/equipe).",
+      "explicacaoSimplificada": "São os equipamentos de proteção usados no trabalho — individuais (como luvas e máscaras, de uso pessoal) ou coletivos (como uma capela, que protege todo o ambiente).",
+      "aplicacaoPratica": "Ao manipular um produto com potencial irritante, o farmacêutico utiliza EPI (luvas, óculos de proteção) e trabalha sob um EPC (capela de exaustão), somando as duas camadas de proteção.",
+      "atencao": "EPC não substitui EPI, e vice-versa — são camadas complementares de proteção, e a ausência de qualquer uma delas, quando exigida, é item de não conformidade em inspeções de biossegurança.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "biosseguranca"
+      ],
+      "fontes": [
+        "Ministério do Trabalho - NRs"
+      ]
+    },
+    {
+      "id": "pop-procedimento-operacional",
+      "termo": "POP (Procedimento Operacional Padrão)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Procedimento Operacional Padrão"
+      ],
+      "definicao": "Documento escrito que descreve, de forma detalhada e sequencial, como uma atividade ou tarefa deve ser executada, garantindo padronização, rastreabilidade e reprodutibilidade do processo, independentemente de quem o execute.",
+      "explicacaoSimplificada": "É o documento que descreve passo a passo como uma tarefa deve ser feita, para que sempre seja feita da mesma forma, não importa quem a execute.",
+      "aplicacaoPratica": "A farmácia possui um POP para a limpeza e higienização das bancadas de manipulação, detalhando produtos utilizados, frequência e responsável pela execução e registro.",
+      "atencao": "A ausência de POP para atividades críticas (manipulação, limpeza, controle de temperatura) é um dos itens mais comumente apontados em inspeções sanitárias — ter o documento escrito não substitui garantir que ele seja efetivamente seguido e registrado.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "boas-praticas-farmacia",
+        "garantia-qualidade"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "processamento-produtos-saude",
+      "termo": "Processamento de Produtos para Saúde",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Conjunto de etapas (limpeza, desinfecção e/ou esterilização) aplicadas a produtos para saúde reutilizáveis (como instrumentais e alguns equipamentos), com o objetivo de reduzir a carga microbiana a um nível seguro antes de seu reuso.",
+      "explicacaoSimplificada": "É o conjunto de etapas (limpar, desinfetar e/ou esterilizar) para deixar um instrumento ou equipamento reutilizável seguro para usar de novo.",
+      "aplicacaoPratica": "Um instrumental cirúrgico reutilizável passa por limpeza, desinfecção e esterilização antes de retornar ao uso, seguindo protocolo validado de processamento de produtos para saúde.",
+      "atencao": "O método de processamento exigido (desinfecção ou esterilização) depende da classificação de risco do produto para saúde (crítico, semicrítico ou não crítico), conforme seu uso pretendido.",
+      "naoConfunda": [
+        "esterilizacao",
+        "desinfeccao"
+      ],
+      "termosRelacionados": [
+        "esterilizacao",
+        "desinfeccao",
+        "biosseguranca"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "fator-risco-sanitario",
+      "termo": "Fator de Risco Sanitário",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Característica, condição ou prática que aumenta a probabilidade de ocorrência de um dano à saúde relacionado a um produto, processo, serviço ou estabelecimento, utilizada como critério para a classificação e priorização de ações de vigilância sanitária.",
+      "explicacaoSimplificada": "É qualquer característica ou prática que aumenta a chance de um produto ou estabelecimento causar dano à saúde — usado para decidir onde a fiscalização deve focar mais.",
+      "aplicacaoPratica": "A ausência de responsável técnico presente, o armazenamento inadequado de termolábeis e a falta de escrituração de controlados são exemplos de fatores de risco sanitário que elevam a classificação de risco de uma farmácia em inspeções.",
+      "atencao": "A identificação de fatores de risco sanitário é a base do Gerenciamento de Risco Sanitário — é o que permite à vigilância sanitária decidir onde concentrar recursos de fiscalização.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "gerenciamento-risco-sanitario",
+        "roteiro-inspecao-sanitaria"
+      ],
+      "fontes": [
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "vcpaf",
+      "termo": "Vigilância Sanitária de Portos, Aeroportos e Fronteiras (VCPAF)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "VIPAF"
+      ],
+      "definicao": "Segmento da vigilância sanitária responsável pelo controle sanitário de pessoas, cargas, bagagens, meios de transporte e produtos que entram ou saem do território nacional por portos, aeroportos, fronteiras terrestres e recintos alfandegados, prevenindo a introdução e disseminação de doenças e produtos irregulares.",
+      "explicacaoSimplificada": "É a parte da vigilância sanitária que fiscaliza o que entra e sai do país por portos, aeroportos e fronteiras.",
+      "aplicacaoPratica": "Um lote de medicamento importado é retido pela vigilância sanitária de portos, aeroportos e fronteiras para verificação de regularidade antes de ser liberado para distribuição no país.",
+      "atencao": "Essa vigilância atua na entrada/saída do território nacional, de forma complementar à vigilância sanitária exercida dentro do território (estadual/municipal) sobre estabelecimentos já instalados.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "vigilancia-sanitaria-termo",
+        "anvisa"
+      ],
+      "fontes": [
+        "Lei nº 9.782/1999",
+        "Anvisa"
+      ]
+    },
+    {
+      "id": "analise-fiscal",
+      "termo": "Análise Fiscal",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Análise laboratorial realizada por laboratório oficial, a pedido da autoridade sanitária, em amostra de produto apreendida ou coletada durante fiscalização, com o objetivo de verificar sua conformidade com os padrões de qualidade exigidos, podendo subsidiar um processo administrativo sanitário.",
+      "explicacaoSimplificada": "É a análise de laboratório feita a pedido da vigilância sanitária, geralmente em um produto apreendido, para verificar se ele está dentro das normas de qualidade.",
+      "aplicacaoPratica": "Um lote de medicamento suspeito de desvio de qualidade é enviado para análise fiscal em laboratório oficial, cujo resultado confirma teor de princípio ativo fora do especificado, fundamentando o Auto de Infração Sanitária.",
+      "atencao": "A análise fiscal tem caráter formal e pode ser usada como prova em processo administrativo sanitário — difere de uma análise de controle de qualidade de rotina feita pela própria empresa fabricante.",
+      "naoConfunda": [],
+      "termosRelacionados": [
+        "auto-infracao-sanitaria",
+        "nao-conformidade"
+      ],
+      "fontes": [
+        "Lei nº 6.437/1977"
+      ]
+    },
+    {
+      "id": "rotulagem-bula",
+      "termo": "Rotulagem e Bula",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [],
+      "definicao": "Conjunto de informações obrigatórias impressas na embalagem (rotulagem) e no material informativo que acompanha o medicamento (bula), destinadas a identificar o produto e orientar seu uso correto por profissionais de saúde e/ou pacientes, conforme exigências regulatórias específicas.",
+      "explicacaoSimplificada": "É o conjunto de informações que aparecem na embalagem (rotulagem) e na bula do medicamento, exigidas por lei para identificar e orientar o uso do produto.",
+      "aplicacaoPratica": "Antes de dispensar um medicamento, o farmacêutico confere se a rotulagem está íntegra e legível e orienta o paciente com base nas informações da bula, especialmente sobre modo de uso e cuidados.",
+      "atencao": "A bula tem versões distintas — \"Bula do Paciente\" (linguagem acessível) e \"Bula do Profissional de Saúde\" (linguagem técnica) — e a rotulagem deve ser consistente com as informações aprovadas no registro do medicamento.",
+      "naoConfunda": [
+        "bula"
+      ],
+      "termosRelacionados": [
+        "bula",
+        "tarja-medicamento"
+      ],
+      "fontes": [
+        "RDC Anvisa nº 47/2009"
+      ]
+    },
+    {
+      "id": "snvs",
+      "termo": "SNVS (Sistema Nacional de Vigilância Sanitária)",
+      "categoria": "vigilancia-sanitaria",
+      "sinonimos": [
+        "Sistema Nacional de Vigilância Sanitária"
+      ],
+      "definicao": "Conjunto articulado de instituições (Anvisa, vigilâncias sanitárias estaduais, distrital e municipais, além de laboratórios de referência) que atuam de forma integrada e descentralizada na execução das ações de vigilância sanitária em todo o território nacional, sob coordenação da Anvisa.",
+      "explicacaoSimplificada": "É a rede formada pela Anvisa junto com as vigilâncias sanitárias estaduais e municipais, que juntas executam a vigilância sanitária no país.",
+      "aplicacaoPratica": "Uma ação de recall nacional de medicamento é coordenada pela Anvisa, mas sua execução local (retirada efetiva do produto em cada farmácia) depende da atuação das vigilâncias sanitárias estaduais e municipais que compõem o SNVS.",
+      "atencao": "A Anvisa coordena o SNVS, mas não substitui as vigilâncias sanitárias estaduais e municipais, que têm competências próprias e são responsáveis pela fiscalização local (como a emissão de licenças sanitárias).",
+      "naoConfunda": [
+        "anvisa"
+      ],
+      "termosRelacionados": [
+        "anvisa",
+        "vigilancia-sanitaria-termo",
+        "licenca-sanitaria"
+      ],
+      "fontes": [
+        "Lei nº 9.782/1999"
+      ]
     }
   ],
   "comparacoes": [
