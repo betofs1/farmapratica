@@ -2802,7 +2802,8 @@
     medinter:  {label:'Medicamentos Intercambiáveis', color:'#3b82f6'},
     calc:      {label:'Calculadora de Doses', color:'#22c55e'},
     consulta:  {label:'Consulta Controlados',  color:'#f59e0b'},
-    checklist: {label:'Checklist de Rotina',   color:'#06b6d4'}
+    checklist: {label:'Checklist de Rotina',   color:'#06b6d4'},
+    dicionario:{label:'Dicionário Farmacêutico', color:'#6366f1'}
   };
 
   function loadSearchData(){
@@ -2882,6 +2883,24 @@
         return arr.map(function(it){
           return { source:'checklist', nome:it.texto, meta:it.categoria || '', href:'checklist/' };
         });
+      }),
+
+      // dicionario — termos do Dicionário Farmacêutico
+      safeFetchJson('dicionario/dicionario.json').then(function(d){
+        var arr = d && d.termos;
+        if(!arr) return [];
+        var catLabel = {};
+        (d.categorias || []).forEach(function(c){ catLabel[c.id] = c.nome; });
+        return arr.map(function(t){
+          var meta = catLabel[t.categoria] || '';
+          if(t.sigla) meta = meta ? (meta + ' · ' + t.sigla) : t.sigla;
+          return {
+            source:'dicionario',
+            nome: t.termo,
+            meta: meta,
+            href: 'dicionario/?termo=' + encodeURIComponent(t.id)
+          };
+        });
       })
 
     ]).then(function(results){
@@ -2926,7 +2945,7 @@
 
   function renderSearchResults(rawTerm, grouped, totalMatched){
     var box = document.getElementById('search-results');
-    var order = ['guia','medinter','calc','consulta','checklist'];
+    var order = ['guia','medinter','calc','consulta','checklist','dicionario'];
     var html = '';
     var shown = 0;
     order.forEach(function(src){
@@ -3072,6 +3091,7 @@
     consulta:  {label:'Consulta por Controle Especial', icon:'<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h8"/><polyline points="14 2 14 8 20 8"/><circle cx="17" cy="17" r="3"/><line x1="19.5" y1="19.5" x2="22" y2="22"/>'},
     checklist: {label:'Checklist de Rotina',    icon:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>'},
     bulario:   {label:'Bulário Farmacêutico',   icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'},
+    dicionario:{label:'Dicionário Farmacêutico', icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/>'},
     outro:     {label:'Outra ferramenta',       icon:'<path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/>'}
   };
 
@@ -3085,6 +3105,7 @@
     consulta:  '#f59e0b', // âmbar
     checklist: '#06b6d4', // ciano (era verde antes da troca)
     bulario:   '#d946ef', // magenta (mesma identidade visual do Bulário)
+    dicionario:'#6366f1', // índigo (identidade própria do Dicionário Farmacêutico)
     outro:     '#94a3b8'  // cinza neutro
   };
   function hexToRgba(hex, alpha){

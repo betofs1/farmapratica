@@ -422,11 +422,19 @@
 
   /* Categoria view */
   .term-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; }
-  .term-card{ background:var(--card); border:1px solid var(--border); border-left:3px solid var(--cc,var(--red-bright)); border-radius:11px; padding:13px 14px; cursor:pointer; }
+  .term-card{ position:relative; background:var(--card); border:1px solid var(--border); border-left:3px solid var(--cc,var(--red-bright)); border-radius:11px; padding:13px 14px; cursor:pointer; }
   .term-card:hover{ border-color:var(--red-bright); transform:translateY(-2px); }
-  .term-card h4{ margin:0 0 4px; font-size:.88rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .term-card h4{ margin:0 0 4px; font-size:.88rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding-right:26px; }
   .term-card .tc-sigla{ font-size:.68rem; font-weight:700; color:var(--cc,var(--red-bright)); }
   .term-card p{ margin:0; font-size:.76rem; color:var(--text-dim); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* ---------- Botão de favorito (integrado ao hub de favoritos da página inicial) ---------- */
+  .fav-star-btn{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; padding:0; background:var(--red-glow); color:var(--text-dim); border:1px solid rgba(228,23,44,.3); border-radius:9px; cursor:pointer; transition:all .15s; flex-shrink:0; }
+  .fav-star-btn:hover{ background:rgba(228,23,44,.22); color:var(--red-bright); }
+  .fav-star-btn.starred{ background:var(--red-bright); color:#fff; border-color:var(--red-bright); }
+  .fav-star-btn svg{ width:16px; height:16px; display:block; }
+  .fav-star-btn-sm{ position:absolute; top:10px; right:10px; width:24px; height:24px; border-radius:7px; }
+  .fav-star-btn-sm svg{ width:12px; height:12px; }
 
   /* Não confunda grid */
   .nc-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
@@ -605,6 +613,73 @@ function getTerm(id){ return TERM_BY_ID[id]; }
 function getCat(id){ return CAT_BY_ID[id]; }
 function getComp(id){ return COMP_BY_ID[id]; }
 function termosDaCategoria(catId){ return DATA.termos.filter(t=>t.categoria===catId).sort((a,b)=>a.termo.localeCompare(b.termo,'pt-BR')); }
+
+/* ---------------- Favoritos (integrado ao hub de favoritos da página inicial) ---------------- */
+const DIC_FAV_KEY = 'dicionario_favs_v1';
+function getFavsDicionario(){
+  try{ return JSON.parse(localStorage.getItem(DIC_FAV_KEY) || '[]'); }
+  catch(e){ return []; }
+}
+function saveFavsDicionario(favs){
+  try{ localStorage.setItem(DIC_FAV_KEY, JSON.stringify(favs)); }catch(e){}
+}
+function isFavDicionario(id){ return getFavsDicionario().indexOf(id) !== -1; }
+function syncFavToHubDicionario(id, label, catNome, added){
+  try{
+    const HUB_FAV_KEY = 'fp_favoritos_hub';
+    const raw = localStorage.getItem(HUB_FAV_KEY);
+    let list = raw ? JSON.parse(raw) : [];
+    const hubId = 'dicionario-' + id;
+    if(added){
+      if(!list.some(f=>f.id===hubId)){
+        list.push({
+          id: hubId,
+          label: label,
+          source: 'dicionario',
+          sourceLabel: 'Dicionário' + (catNome ? ' · ' + catNome : ''),
+          href: 'dicionario/?termo=' + encodeURIComponent(id)
+        });
+      }
+    } else {
+      list = list.filter(f=>f.id!==hubId);
+    }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+function toggleFavDicionario(id, ev){
+  if(ev){ ev.stopPropagation(); ev.preventDefault(); }
+  const t = getTerm(id); if(!t) return;
+  const cat = getCat(t.categoria);
+  let favs = getFavsDicionario();
+  const idx = favs.indexOf(id);
+  if(idx === -1){
+    favs.push(id);
+    saveFavsDicionario(favs);
+    syncFavToHubDicionario(id, t.termo, cat ? cat.nome : '', true);
+  } else {
+    favs.splice(idx, 1);
+    saveFavsDicionario(favs);
+    syncFavToHubDicionario(id, t.termo, cat ? cat.nome : '', false);
+  }
+  const nowStarred = isFavDicionario(id);
+  document.querySelectorAll('[data-fav-id="'+id+'"]').forEach(btn=>{
+    btn.classList.toggle('starred', nowStarred);
+    btn.title = (nowStarred ? 'Remover dos favoritos' : 'Adicionar aos favoritos') + ' (aparece na página inicial)';
+  });
+}
+function favStarBtn(id, size){
+  const starred = isFavDicionario(id);
+  const cls = 'fav-star-btn' + (size==='sm' ? ' fav-star-btn-sm' : '') + (starred ? ' starred' : '');
+  const titleTxt = (starred ? 'Remover dos favoritos' : 'Adicionar aos favoritos') + ' (aparece na página inicial)';
+  return '<button type="button" class="'+cls+'" data-fav-id="'+id+'" onclick="toggleFavDicionario(\''+id+'\', event)" title="'+titleTxt+'">' +
+    '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>';
+}
+function termCardHTML(t, cat){
+  return '<div class="term-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
+    favStarBtn(t.id, 'sm') +
+    '<h4>'+esc(t.termo)+(t.sigla?' <span class="tc-sigla">('+esc(t.sigla)+')</span>':'')+'</h4>' +
+    '<p>'+esc(t.explicacaoSimplificada||t.definicao)+'</p></div>';
+}
 
 function levenshtein(a, b){
   a = a||''; b = b||'';
@@ -1047,6 +1122,7 @@ function viewTermo(id){
     html += '<div class="sinonimos-line"><b>Sinônimos:</b> '+t.sinonimos.map(esc).join(', ')+'</div>';
   }
   html += '</div>';
+  html += favStarBtn(t.id);
   html += '</div>';
 
   html += '<div class="term-body nivel-completo">';
@@ -1116,9 +1192,7 @@ function viewCategoria(catId){
   } else {
     html += '<div class="term-grid">';
     terms.forEach(t=>{
-      html += '<div class="term-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
-        '<h4>'+esc(t.termo)+(t.sigla?' <span class="tc-sigla">('+esc(t.sigla)+')</span>':'')+'</h4>' +
-        '<p>'+esc(t.explicacaoSimplificada||t.definicao)+'</p></div>';
+      html += termCardHTML(t, cat);
     });
     html += '</div>';
   }
@@ -1169,9 +1243,7 @@ function viewBuscaResultados(q){
     html += '<div class="term-grid">';
     r.termos.forEach(t=>{
       const cat = getCat(t.categoria);
-      html += '<div class="term-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
-        '<h4>'+esc(t.termo)+(t.sigla?' <span class="tc-sigla">('+esc(t.sigla)+')</span>':'')+'</h4>' +
-        '<p>'+esc(t.explicacaoSimplificada||t.definicao)+'</p></div>';
+      html += termCardHTML(t, cat);
     });
     html += '</div>';
   }
