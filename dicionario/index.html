@@ -250,6 +250,16 @@
   }
   .cat-quiz-btn svg{ width:10px; height:10px; }
   .cat-quiz-btn:hover{ transform:translateY(-1px) scale(1.04); box-shadow:0 4px 11px var(--red-glow); }
+  .quiz-home-btn{
+    position:static; display:inline-flex; align-items:center; gap:4px; margin:0 0 12px;
+    background:linear-gradient(180deg,var(--red-bright),var(--red-dark));
+    color:#fff; font-size:.6rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
+    padding:3px 10px; border-radius:20px; border:none; cursor:pointer;
+    box-shadow:0 2px 7px var(--red-glow), 0 1px 3px rgba(0,0,0,.35);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .quiz-home-btn svg{ width:10px; height:10px; }
+  .quiz-home-btn:hover{ transform:translateY(-1px) scale(1.04); box-shadow:0 4px 11px var(--red-glow); }
   .cat-body{ display:none; padding:2px 0 8px 4px; }
   .cat-body.aberto{ display:block; }
   .cat-body-empty{ font-size:.72rem; color:var(--text-dim); padding:6px 10px 10px; font-style:italic; }
@@ -335,14 +345,26 @@
 
   .tiles-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; }
   .cat-tile{
+    position:relative;
     background:var(--card); border:1px solid var(--border); border-top:3px solid var(--cc, var(--red-bright));
     border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
     display:flex; flex-direction:column; gap:8px;
   }
   .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
   .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
-  .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
+  .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; padding-right:46px; }
   .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
+  .ct-quiz-corner{
+    position:absolute; top:9px; right:9px; z-index:2;
+    display:flex; align-items:center; gap:3px;
+    background:linear-gradient(180deg,var(--red-bright),var(--red-dark));
+    color:#fff; font-size:.56rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
+    padding:3px 7px; border-radius:20px; border:none; cursor:pointer;
+    box-shadow:0 2px 6px var(--red-glow), 0 1px 3px rgba(0,0,0,.3);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .ct-quiz-corner svg{ width:8px; height:8px; }
+  .ct-quiz-corner:hover{ transform:scale(1.07); box-shadow:0 3px 9px var(--red-glow); }
 
   .quick-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
   .quick-card{ display:flex; align-items:center; gap:9px; background:var(--card); border:1px solid var(--border); border-radius:11px; padding:11px 12px; cursor:pointer; transition:.14s ease; }
@@ -461,6 +483,14 @@
     .titulo-principal{ font-size:1.02rem; justify-content:center; }
     .titulo-descricao{ display:none; }
     .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
+
+    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
+    .cat-tile{ padding:10px 8px 9px; gap:5px; }
+    .cat-tile .ct-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
+    .cat-tile h4{ font-size:.7rem; line-height:1.25; padding-right:0; }
+    .cat-tile .ct-count{ font-size:.6rem; }
+    .ct-quiz-corner{ top:6px; right:6px; padding:2px 5px; font-size:.48rem; gap:2px; border-radius:16px; }
+    .ct-quiz-corner svg{ width:6px; height:6px; }
 
     .sidebar{
       position:fixed; inset:0; z-index:30; width:100%; height:100%;
@@ -600,7 +630,8 @@ const ICONS = {
   layers:'<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
   info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/>',
   cards:'<rect x="4" y="7" width="13" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2"/>',
-  check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
+  check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+  star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
 };
 function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
 
@@ -666,6 +697,8 @@ function toggleFavDicionario(id, ev){
     btn.classList.toggle('starred', nowStarred);
     btn.title = (nowStarred ? 'Remover dos favoritos' : 'Adicionar aos favoritos') + ' (aparece na página inicial)';
   });
+  if(state.view==='favoritos') renderMain();
+  if(state.view==='inicio') renderMain();
 }
 function favStarBtn(id, size){
   const starred = isFavDicionario(id);
@@ -791,6 +824,12 @@ function iniciarQuiz(catId){
   quizSession = { catId:catId, ids:shuffleArray(terms.map(t=>t.id)), idx:0, flipped:false, done:false };
   setView('quiz', {categoriaId:catId});
 }
+function iniciarQuizFavoritos(){
+  const ids = getFavsDicionario();
+  if(!ids.length) return;
+  quizSession = { catId:'favoritos', ids:shuffleArray(ids), idx:0, flipped:false, done:false };
+  setView('quiz', {categoriaId:'favoritos'});
+}
 function quizFlip(){
   if(!quizSession || quizSession.done) return;
   quizSession.flipped = !quizSession.flipped;
@@ -816,13 +855,20 @@ function quizPrev(){
 function quizReembaralhar(){
   if(!quizSession) return;
   const catId = quizSession.catId;
-  const terms = termosDaCategoria(catId);
-  quizSession = { catId:catId, ids:shuffleArray(terms.map(t=>t.id)), idx:0, flipped:false, done:false };
+  if(catId==='favoritos'){
+    const ids = getFavsDicionario();
+    if(!ids.length){ quizSair(); return; }
+    quizSession = { catId:'favoritos', ids:shuffleArray(ids), idx:0, flipped:false, done:false };
+  } else {
+    const terms = termosDaCategoria(catId);
+    quizSession = { catId:catId, ids:shuffleArray(terms.map(t=>t.id)), idx:0, flipped:false, done:false };
+  }
   renderMain();
 }
 function quizSair(){
   const catId = quizSession ? quizSession.catId : state.categoriaId;
   quizSession = null;
+  if(catId==='favoritos'){ setView('favoritos'); return; }
   abrirCategoria(catId);
 }
 document.addEventListener('keydown', function(ev){
@@ -836,11 +882,14 @@ document.addEventListener('keydown', function(ev){
 });
 function viewQuiz(){
   if(!quizSession) return viewInicio();
-  const cat = (DATA.categorias||[]).find(c=>c.id===quizSession.catId);
-  const catNome = cat ? cat.nome : 'Categoria';
+  const isFav = quizSession.catId==='favoritos';
+  const cat = isFav ? null : (DATA.categorias||[]).find(c=>c.id===quizSession.catId);
+  const catNome = isFav ? 'Favoritos' : (cat ? cat.nome : 'Categoria');
+  const voltarHref = isFav ? "setView('favoritos')" : "abrirCategoria('"+quizSession.catId+"')";
+  const voltarLabel = isFav ? 'Voltar aos favoritos' : 'Voltar à categoria';
   let html = breadcrumb([
     {label:'Início', href:"setView('inicio')"},
-    {label:catNome, href:"abrirCategoria('"+quizSession.catId+"')"},
+    {label:catNome, href:voltarHref},
     {label:'Quiz'}
   ]);
   const total = quizSession.ids.length;
@@ -851,7 +900,7 @@ function viewQuiz(){
       '<p>Você revisou '+total+' termo'+(total===1?'':'s')+' de <b>'+esc(catNome)+'</b>.</p>' +
       '<div class="quiz-actions">' +
       '<button class="quiz-btn primario" onclick="quizReembaralhar()">'+icon('swap')+' Refazer o quiz</button>' +
-      '<button class="quiz-btn" onclick="quizSair()">'+icon('back')+' Voltar à categoria</button>' +
+      '<button class="quiz-btn" onclick="quizSair()">'+icon('back')+' '+voltarLabel+'</button>' +
       '</div></div>';
     return html;
   }
@@ -880,7 +929,7 @@ function viewQuiz(){
   html += '<div class="quiz-actions" style="margin-top:10px;">' +
     '<button class="quiz-btn" onclick="quizReembaralhar()">'+icon('swap')+' Embaralhar novamente</button>' +
     '</div>';
-  html += '<span class="quiz-sair-link" onclick="quizSair()">Sair do quiz e voltar à categoria</span>';
+  html += '<span class="quiz-sair-link" onclick="quizSair()">Sair do quiz e '+(isFav?'voltar aos favoritos':'voltar à categoria')+'</span>';
   return html;
 }
 /* ---------------- Busca / autocomplete ---------------- */
@@ -1006,6 +1055,8 @@ function renderMain(){
   else if(state.view==='comparacao') el.innerHTML = viewComparacao(state.comparacaoId);
   else if(state.view==='buscaResultados') el.innerHTML = viewBuscaResultados(state.search);
   else if(state.view==='quiz') el.innerHTML = viewQuiz();
+  else if(state.view==='quizhub') el.innerHTML = viewQuizHub();
+  else if(state.view==='favoritos') el.innerHTML = viewFavoritosLista();
   else el.innerHTML = viewInicio();
 }
 
@@ -1037,10 +1088,18 @@ function viewInicio(){
   });
   destaqueSection += '</div>';
 
-  let categoriasSection = '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div><div class="tiles-grid">';
+  let categoriasSection = '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div>';
+  categoriasSection += '<div class="tiles-grid">';
+  const nFavsHome = getFavsDicionario().length;
+  const favQuizCorner = nFavsHome>0 ? '<button class="ct-quiz-corner" onclick="event.stopPropagation(); iniciarQuizFavoritos();" title="Testar seus termos favoritos no modo Quiz">'+icon('cards')+'QUIZ</button>' : '';
+  categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#ffb020;--cg:rgba(255,176,32,.18)" onclick="setView(\'favoritos\')">' +
+    favQuizCorner +
+    '<div class="ct-icon">'+icon('star')+'</div><h4>Favoritos</h4><div class="ct-count">'+nFavsHome+' termo'+(nFavsHome===1?'':'s')+' salvo'+(nFavsHome===1?'':'s')+'</div></div>';
   DATA.categorias.forEach(cat=>{
     const n = termosDaCategoria(cat.id).length;
+    const quizCorner = n>0 ? '<button class="ct-quiz-corner" onclick="event.stopPropagation(); iniciarQuiz(\''+cat.id+'\')" title="Testar '+esc(cat.nome)+' no modo Quiz">'+icon('cards')+'QUIZ</button>' : '';
     categoriasSection += '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">' +
+      quizCorner +
       '<div class="ct-icon">'+catEmoji(cat.id)+'</div><h4>'+esc(cat.nome)+'</h4><div class="ct-count">'+n+' termo'+(n===1?'':'s')+'</div></div>';
   });
   categoriasSection += '</div>';
@@ -1205,6 +1264,38 @@ function viewNaoConfundaLista(){
   html += '<div class="nc-grid">';
   DATA.comparacoes.slice().sort((a,b)=>a.titulo.localeCompare(b.titulo,'pt-BR')).forEach(c=>{
     html += '<div class="nc-card" onclick="abrirComparacao(\''+c.id+'\')"><h4>'+esc(c.titulo)+'</h4><p>'+esc(c.resumo)+'</p></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function viewQuizHub(){
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Quiz'}]);
+  html += '<div class="home-hero"><h2>'+icon('cards')+' Quiz</h2><p>Escolha uma categoria para revisar seus termos no modo flashcard — vire o card para conferir a definição e teste seu conhecimento.</p></div>';
+  html += '<div class="tiles-grid">';
+  DATA.categorias.forEach(cat=>{
+    const n = termosDaCategoria(cat.id).length;
+    if(n===0) return;
+    html += '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="iniciarQuiz(\''+cat.id+'\')">' +
+      '<div class="ct-icon">'+catEmoji(cat.id)+'</div><h4>'+esc(cat.nome)+'</h4><div class="ct-count">'+n+' termo'+(n===1?'':'s')+'</div></div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function viewFavoritosLista(){
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Favoritos'}]);
+  html += '<div class="home-hero"><h2>'+icon('star')+' Favoritos</h2><p>Termos marcados com a estrela — ficam salvos neste dispositivo e também aparecem no hub de favoritos da página inicial da FarmaPrática.</p></div>';
+  const ids = getFavsDicionario();
+  const terms = ids.map(id=>getTerm(id)).filter(Boolean);
+  if(!terms.length){
+    html += '<div class="empty-hint">'+icon('info')+'<span>Você ainda não favoritou nenhum termo. Toque na estrela dentro de um verbete para adicioná-lo aqui.</span></div>';
+    return html;
+  }
+  html += '<div class="term-grid">';
+  terms.forEach(t=>{
+    const cat = getCat(t.categoria);
+    if(cat) html += termCardHTML(t, cat);
   });
   html += '</div>';
   return html;
