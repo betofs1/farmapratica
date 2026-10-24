@@ -198,6 +198,9 @@
   .nav-item:hover{ background:var(--card-hover); }
   .nav-item.active{ background:linear-gradient(180deg,var(--red),var(--red-dark)); color:#fff; box-shadow: 0 3px 9px var(--red-glow); }
   .nav-item.active svg{ color:#fff; }
+  .nav-item .nav-count{ font-size:.64rem; font-weight:800; background:var(--hover-tint); color:var(--text-dim); padding:2px 7px; border-radius:20px; flex-shrink:0; }
+  .nav-item.active .nav-count{ background:rgba(255,255,255,.25); color:#fff; }
+  .nav-item .nav-label{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
   .sidebar-list{ flex:1; overflow-y:auto; padding:10px 10px 20px; }
   .sidebar-subheading{ font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--text-dim); padding:10px 8px 6px; }
@@ -432,6 +435,18 @@
     }
     .btn-voltar-mobile svg{ width:14px; height:14px; }
     .intro-banner{ display:none; }
+
+    .quick-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
+    .quick-card{ padding:10px 8px 9px; gap:5px; }
+    .quick-card .qc-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
+    .quick-card h4{ font-size:.68rem; line-height:1.25; }
+    .quick-card p{ display:none; }
+
+    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
+    .cat-tile{ padding:10px 8px 9px; gap:5px; }
+    .cat-tile .ct-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
+    .cat-tile h4{ font-size:.7rem; line-height:1.25; }
+    .cat-tile .ct-count{ font-size:.6rem; }
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
@@ -665,15 +680,17 @@ function renderBottomNav(){
 function renderSidebar(){
   const navItems = [
     {id:'inicio', label:'Início', icon:'home'},
-    {id:'casos', label:'Casos Clínicos', icon:'cases'},
-    {id:'quizConfig', label:'Quiz', icon:'quiz'},
-    {id:'flashConfig', label:'Flashcards', icon:'cards'},
+    {id:'casos', label:'Casos Clínicos', icon:'cases', count:DATA.casos.length},
+    {id:'quizConfig', label:'Quiz', icon:'quiz', count:DATA.quiz.length},
+    {id:'flashConfig', label:'Flashcards', icon:'cards', count:DATA.flashcards.length},
     {id:'conquistas', label:'Conquistas', icon:'trophy'}
   ];
   const activeMap = {categoria:'casos', caso:'casos', casoResumo:'casos', quiz:'quizConfig', quizResultado:'quizConfig', flashcards:'flashConfig'};
   const activeView = activeMap[state.view] || state.view;
   const navHtml = navItems.map(n =>
-    '<button class="nav-item'+(activeView===n.id?' active':'')+'" onclick="setView(\''+n.id+'\')">'+icon(n.icon)+'<span>'+n.label+'</span></button>'
+    '<button class="nav-item'+(activeView===n.id?' active':'')+'" onclick="setView(\''+n.id+'\')">'+icon(n.icon)+
+    (n.count!==undefined ? '<span class="nav-count">'+n.count+'</span>' : '')+
+    '<span class="nav-label">'+n.label+'</span></button>'
   ).join('');
   document.querySelector('.nav-list').innerHTML = navHtml;
 
@@ -860,7 +877,7 @@ function viewInicio(){
   let h = '';
 
   h += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('info')+'</div>'+
-    '<p>Conteúdo educacional de apoio ao raciocínio clínico farmacêutico — não substitui avaliação médica, protocolo institucional ou julgamento clínico individualizado diante de cada paciente real.</p></div>';
+    '<p>Conteúdo educativo para suporte ao raciocínio clínico farmacêutico. Não substitui a conduta médica, os protocolos institucionais nem o julgamento clínico individualizado diante do paciente.</p></div>';
 
   h += '<div class="section-title">'+icon('trophy')+'Seu progresso</div>';
   h += '<div class="stats-grid">'+
