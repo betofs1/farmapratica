@@ -529,6 +529,7 @@
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
   @media (min-width:801px){ .ct-quiz-corner{ display:none; } }
+  @media (min-width:801px){ .cat-header-wrap{ display:flex; align-items:center; gap:8px; } .cat-header{ flex:1; min-width:0; } .cat-quiz-btn{ position:static; flex-shrink:0; top:auto; right:auto; } }
 </style>
 </head>
 <body>
@@ -608,7 +609,7 @@ function isMobile(){ return window.innerWidth <= 800; }
 
 const CATEGORY_EMOJI = {
   'farmacologia-geral':'🧪', 'farmacodinamica':'🧬', 'farmacocinetica':'⏳', 'interacoes':'🔗',
-  'farmacia-clinica':'🏥', 'dispensacao':'🏪', 'farmacoterapia':'💊', 'farmacovigilancia':'⚠️',
+  'farmacia-clinica':'🧑‍⚕️', 'dispensacao':'🏪', 'farmacoterapia':'💊', 'farmacovigilancia':'⚠️',
   'toxicologia':'☠️', 'farmacotecnica':'⚗️', 'controle-qualidade':'✅', 'microbiologia':'🦠',
   'imunologia':'🛡️', 'fisiologia':'❤️', 'fisiopatologia':'🩺', 'semiologia':'📋',
   'legislacao':'⚖️', 'saude-publica':'🌍', 'vigilancia-sanitaria':'👁️', 'gestao-farmaceutica':'📦'
