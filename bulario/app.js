@@ -40,6 +40,22 @@
   }
 
   /* ---------------------------------------------------------------------
+     Mapa medId -> cor do grupo farmacologico (GRUPOS[].cor), usado para
+     colorir a borda esquerda dos cards de medicamento e dos cabecalhos de
+     subclasse, facilitando a identificacao visual rapida por categoria
+     (Rodada 36 - pedido do usuario para deixar os botoes "bem faceis de
+     visualizar", mantendo o toque de cor sutil da Rodada 35).
+  --------------------------------------------------------------------- */
+  const MED_GRUPO_COR = {};
+  (typeof GRUPOS !== "undefined" ? GRUPOS : []).forEach((g) => {
+    (g.subclasses || []).forEach((s) => {
+      (s.medicamentos || []).forEach((medId) => {
+        if (!(medId in MED_GRUPO_COR)) MED_GRUPO_COR[medId] = g.cor;
+      });
+    });
+  });
+
+  /* ---------------------------------------------------------------------
      Armazenamento local (favoritos / histórico)
   --------------------------------------------------------------------- */
   const LS_FAV = "fp-bulario-favoritos";
@@ -272,8 +288,9 @@
     if (!m) return "";
     const fav = isFavorito(medId) ? "star-on" : "";
     const completo = fichaCompleta(m);
+    const cor = MED_GRUPO_COR[medId];
     return `
-      <button class="med-item${completo ? " med-item-completo" : ""}" data-med="${medId}" onclick="irPara('#/medicamento/${medId}')">
+      <button class="med-item${completo ? " med-item-completo" : ""}" data-med="${medId}"${cor ? ` data-cor="${cor}"` : ""} onclick="irPara('#/medicamento/${medId}')">
         <span class="med-item-main">
           <span class="med-item-nome">${esc(m.nomeGenerico)}</span>
           <span class="med-item-sub">${esc(m.classeTerapeutica || "")}</span>
@@ -350,7 +367,7 @@
           ${g.subclasses
             .map(
               (s, i) => `
-            <div class="subclasse-bloco">
+            <div class="subclasse-bloco" data-cor="${g.cor}">
               <button class="subclasse-header" data-open="${i === 0 ? "true" : "false"}" onclick="this.parentElement.classList.toggle('aberto'); this.setAttribute('data-open', this.parentElement.classList.contains('aberto'))">
                 <span>${esc(s.nome)}</span>
                 <span class="subclasse-count">${s.medicamentos.length}</span>

@@ -23,6 +23,7 @@
     --red-glow: rgba(228,23,44,.22);
     --text: #f5f5f4;
     --text-dim: #a7abb1;
+    --med-nome-color: #ffd43b;
     --text-gray: #d2d5d9;
     --amber: #f59e0b;
     --sidebar-w: 300px;
@@ -69,6 +70,7 @@
     --red-glow: rgba(212,21,42,.14);
     --text: #22262c;
     --text-dim: #767c84;
+    --med-nome-color: #a16207;
     --text-gray: #4b5057;
     --amber: #c9790a;
     --hover-tint: #eceef1;
@@ -231,62 +233,64 @@
   .quick-section h2{ font-size:1.02rem; font-weight:800; margin:0 0 14px; }
 
   /* ================= Grid de grupos (Nível 1) ================= */
-  .grupos-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .grupos-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
   .grupo-card{
     position:relative; text-align:left; cursor:pointer;
-    display:flex; flex-direction:column; gap:6px;
+    display:flex; flex-direction:column; gap:4px;
     background: linear-gradient(160deg, var(--card), color-mix(in srgb, var(--card) 88%, black 12%));
-    border:2px solid var(--border); border-left:4px solid var(--gc, var(--accent));
-    border-radius:14px; padding:16px 16px 14px;
-    box-shadow: 0 3px 0 0 color-mix(in srgb, var(--gc, var(--accent)) 45%, rgba(0,0,0,.5)), 0 2px 10px rgba(0,0,0,.12);
+    border:2px solid var(--border); border-left:3px solid var(--gc, var(--accent));
+    border-radius:10px; padding:10px 10px 9px;
+    box-shadow: 0 2px 0 0 color-mix(in srgb, var(--gc, var(--accent)) 45%, rgba(0,0,0,.5)), 0 2px 8px rgba(0,0,0,.12);
     transition: transform .15s ease, box-shadow .15s ease;
     min-width:0;
   }
-  .grupo-card[data-cor="red"]{ --gc:var(--g-red); }
-  .grupo-card[data-cor="green"]{ --gc:var(--g-green); }
-  .grupo-card[data-cor="amber"]{ --gc:var(--g-amber); }
-  .grupo-card[data-cor="magenta"]{ --gc:var(--g-magenta); }
-  .grupo-card[data-cor="blue"]{ --gc:var(--g-blue); }
-  .grupo-card[data-cor="indigo"]{ --gc:var(--g-indigo); }
-  .grupo-card[data-cor="teal"]{ --gc:var(--g-teal); }
-  .grupo-card[data-cor="purple"]{ --gc:var(--g-purple); }
-  .grupo-card[data-cor="orange"]{ --gc:var(--g-orange); }
-  .grupo-card[data-cor="sky"]{ --gc:var(--g-sky); }
-  .grupo-card[data-cor="lime"]{ --gc:var(--g-lime); }
+  [data-cor="red"]{ --gc:var(--g-red); }
+  [data-cor="green"]{ --gc:var(--g-green); }
+  [data-cor="amber"]{ --gc:var(--g-amber); }
+  [data-cor="magenta"]{ --gc:var(--g-magenta); }
+  [data-cor="blue"]{ --gc:var(--g-blue); }
+  [data-cor="indigo"]{ --gc:var(--g-indigo); }
+  [data-cor="teal"]{ --gc:var(--g-teal); }
+  [data-cor="purple"]{ --gc:var(--g-purple); }
+  [data-cor="orange"]{ --gc:var(--g-orange); }
+  [data-cor="sky"]{ --gc:var(--g-sky); }
+  [data-cor="lime"]{ --gc:var(--g-lime); }
   .grupo-card:hover{ transform:translateY(-3px); box-shadow:0 8px 0 0 color-mix(in srgb, var(--gc, var(--accent)) 45%, rgba(0,0,0,.5)), 0 10px 18px rgba(0,0,0,.16); }
   .grupo-card:active{ transform:translateY(1px); }
-  .grupo-card-icone{ font-size:1.5rem; }
-  .grupo-card-nome{ font-family:'Inter',sans-serif; font-weight:700; font-size:.92rem; line-height:1.25; color:var(--text); }
-  .grupo-card-count{ font-size:.72rem; color:var(--text-dim); }
+  .grupo-card-icone{ font-size:1.05rem; }
+  .grupo-card-nome{ font-family:'Inter',sans-serif; font-weight:700; font-size:.72rem; line-height:1.2; color:var(--text); }
+  .grupo-card-count{ font-size:.6rem; color:var(--text-dim); }
 
   /* ================= Listas de medicamentos ================= */
   .med-list-flat{ display:flex; flex-direction:column; gap:8px; }
   .med-item{
     display:flex; align-items:center; justify-content:space-between; gap:10px;
     text-align:left; cursor:pointer; width:100%;
-    background:var(--card); border:1px solid var(--border); border-radius:10px;
-    padding:11px 14px; color:var(--text);
-    box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 2px 6px rgba(0,0,0,.08);
+    background:var(--card); border:1px solid var(--border); border-left:4px solid var(--border);
+    border-radius:9px;
+    padding:11px 14px 11px 12px; color:var(--text);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
     transition: background-color .15s ease, border-color .15s ease, transform .1s ease;
   }
-  .med-item:hover{ background:var(--card-hover); border-color:var(--accent); transform:translateX(2px); }
-  .med-item-main{ display:flex; flex-direction:column; gap:2px; min-width:0; }
-  .med-item-nome{ font-weight:700; font-size:.9rem; }
+  .med-item:hover{ background:var(--card-hover); border-color:var(--gc, var(--accent)); border-left-color:var(--gc, var(--accent)); transform:translateX(2px); }
+  .med-item-main{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .med-item-nome{ font-weight:700; font-size:.9rem; color:var(--med-nome-color); }
   .med-item-sub{ font-size:.72rem; color:var(--text-dim); }
   .med-item-fav{ font-size:1.05rem; color:var(--border); flex-shrink:0; }
   .med-item-fav.star-on{ color:var(--amber); }
 
   /* Medicamento com ficha farmacoterapêutica completa (mecanismo de ação,
-     posologia, interações etc. já pesquisados e revisados) — destacado
-     visualmente dos que ainda têm apenas nome/classe (ficha em revisão). */
+     posologia, interações etc. já pesquisados e revisados). Com o catálogo
+     100% completo (2.268/2.268 desde a Rodada 33/34), esse estado deixou de
+     ser uma exceção visual rara — por isso o destaque foi reduzido a uma
+     faixa de cor discreta na borda esquerda, no lugar do contorno completo +
+     brilho/gradiente magenta que antes envolvia quase 100% dos cards e
+     sobrecarregava a leitura da página inteira. */
   .med-item.med-item-completo{
-    border-color:var(--accent);
-    background:linear-gradient(135deg, var(--accent-glow), var(--card) 60%);
-    box-shadow: 0 0 0 1px var(--accent), 0 2px 8px var(--accent-glow);
+    border-left-color:color-mix(in srgb, var(--gc, var(--accent)) 90%, white 10%);
+    background:color-mix(in srgb, var(--gc, var(--accent)) 13%, var(--card));
   }
-  .med-item.med-item-completo:hover{ background:linear-gradient(135deg, var(--accent-glow), var(--card-hover) 60%); }
-  .med-item-completo .med-item-sub{ color:var(--accent-dark); }
-  body.light .med-item-completo .med-item-sub{ color:var(--accent); }
+  .med-item.med-item-completo:hover{ background:color-mix(in srgb, var(--gc, var(--accent)) 20%, var(--card)); }
 
   .empty-msg{ color:var(--text-dim); font-size:.9rem; }
 
@@ -302,13 +306,15 @@
   .subclasse-bloco{ border:1px solid var(--border); border-radius:12px; overflow:hidden; background:var(--panel); }
   .subclasse-header{
     width:100%; display:flex; align-items:center; justify-content:space-between;
-    padding:13px 16px; background:var(--card); border:0; cursor:pointer;
+    padding:13px 16px 13px 13px;
+    background:color-mix(in srgb, var(--gc, var(--accent)) 7%, var(--card));
+    border:0; border-left:4px solid color-mix(in srgb, var(--gc, var(--accent)) 75%, white 10%); cursor:pointer;
     font-family:'Inter',sans-serif; font-weight:700; font-size:.86rem; color:var(--text);
     text-align:left;
   }
-  .subclasse-header:hover{ background:var(--card-hover); }
+  .subclasse-header:hover{ background:color-mix(in srgb, var(--gc, var(--accent)) 13%, var(--card)); }
   .subclasse-count{
-    background:var(--accent-glow); color:var(--accent); border-radius:999px;
+    background:color-mix(in srgb, var(--gc, var(--accent)) 20%, transparent); color:var(--gc, var(--accent)); border-radius:999px;
     padding:2px 9px; font-size:.72rem; font-weight:800;
   }
   .contador-completos{
@@ -478,8 +484,7 @@
   </div>
   <div class="titulo-central">
     <div class="titulo-principal">BULÁRIO FARMACÊUTICO</div>
-    <div class="titulo-descricao">Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. 2.258 medicamentos catalogados.</div>
-    <div class="contador-completos" id="contador-completos" title="Medicamentos com ficha farmacoterapêutica completa (mecanismo de ação, posologia, interações etc.) sobre o total do catálogo">Carregando...</div>
+    <div class="titulo-descricao">Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. 2.268 medicamentos catalogados.</div>
   </div>
   <div class="topbar-actions">
     <button class="topbar-icon-btn" id="btn-topo-voltar" onclick="voltarPagina()" title="Voltar" aria-label="Voltar" disabled>
@@ -519,7 +524,7 @@
 </main>
 
 <footer class="rodape-aviso">
-  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Catálogo com 2.258 fármacos, classificados por classe terapêutica em 17 grupos e 541 subclasses — fichas farmacoterapêuticas completas (mecanismo de ação, posologia, interações, contraindicações etc.) em expansão e revisão manual contínuas, medicamento por medicamento.</p>
+  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Catálogo com 2.268 fármacos, classificados por classe terapêutica em 17 grupos e 541 subclasses — fichas farmacoterapêuticas completas (mecanismo de ação, posologia, interações, contraindicações etc.) em expansão e revisão manual contínuas, medicamento por medicamento.</p>
 </footer>
 
 <script src="data.js"></script>

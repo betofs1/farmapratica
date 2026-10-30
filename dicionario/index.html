@@ -240,7 +240,7 @@
   .cat-header .cat-chevron{ flex-shrink:0; width:13px; height:13px; transition:transform .2s ease; opacity:.75; color:var(--cc,var(--text-dim)); }
   .cat-header.aberto .cat-chevron{ transform:rotate(90deg); }
   .cat-quiz-btn{
-    position:absolute; top:-9px; right:12px; z-index:2;
+    position:absolute; top:-9px; left:16px; z-index:2;
     display:flex; align-items:center; gap:4px;
     background:linear-gradient(180deg,var(--red-bright),var(--red-dark));
     color:#fff; font-size:.6rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
@@ -351,7 +351,19 @@
     display:flex; flex-direction:column; gap:8px;
   }
   .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
-  .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .cat-tile .ct-icon{
+    width:32px; height:32px; border-radius:10px;
+    background:linear-gradient(145deg, color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), color-mix(in srgb, var(--cc, var(--red-bright)) 9%, transparent));
+    border:1px solid color-mix(in srgb, var(--cc, var(--red-bright)) 32%, transparent);
+    box-shadow:0 3px 10px color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    color:var(--cc, var(--red-bright));
+    display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .cat-tile:hover .ct-icon{
+    transform:scale(1.08) rotate(-3deg);
+    box-shadow:0 6px 16px color-mix(in srgb, var(--cc, var(--red-bright)) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+  }
   .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; padding-right:46px; }
   .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
   .ct-quiz-corner{
@@ -529,7 +541,7 @@
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
   @media (min-width:801px){ .ct-quiz-corner{ display:none; } }
-  @media (min-width:801px){ .cat-header-wrap{ display:flex; align-items:center; gap:8px; } .cat-header{ flex:1; min-width:0; } .cat-quiz-btn{ position:static; flex-shrink:0; top:auto; right:auto; } }
+  @media (min-width:801px){ .cat-header-wrap{ display:flex; align-items:center; gap:8px; } .cat-header{ flex:1; min-width:0; } }
 </style>
 </head>
 <body>
@@ -609,7 +621,7 @@ function isMobile(){ return window.innerWidth <= 800; }
 
 const CATEGORY_EMOJI = {
   'farmacologia-geral':'🧪', 'farmacodinamica':'🧬', 'farmacocinetica':'⏳', 'interacoes':'🔗',
-  'farmacia-clinica':'🧑‍⚕️', 'dispensacao':'🏪', 'farmacoterapia':'💊', 'farmacovigilancia':'⚠️',
+  'farmacia-clinica':'🤝', 'dispensacao':'🏪', 'farmacoterapia':'💊', 'farmacovigilancia':'⚠️',
   'toxicologia':'☠️', 'farmacotecnica':'⚗️', 'controle-qualidade':'✅', 'microbiologia':'🦠',
   'imunologia':'🛡️', 'fisiologia':'❤️', 'fisiopatologia':'🩺', 'semiologia':'📋',
   'legislacao':'⚖️', 'saude-publica':'🌍', 'vigilancia-sanitaria':'👁️', 'gestao-farmaceutica':'📦'

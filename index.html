@@ -1707,7 +1707,11 @@
     display:flex;align-items:center;justify-content:center;gap:14px;
     text-shadow:0 0 18px var(--red-glow);
   }
-  .tools-hub-header h2 .hub-sparkle{color:var(--red);font-size:16px;}
+  .tools-hub-header h2 .hub-sparkle{
+    display:inline-flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .tools-hub-header h2 .hub-pharm-icon{width:30px;height:30px;object-fit:contain;display:block;}
   .tools-hub-header p{
     margin-top:10px;font-size:13.5px;color:var(--text-gray-dim);line-height:1.55;
   }
@@ -1867,7 +1871,7 @@
   @media (max-width:640px){
     .tools-hub-header{max-width:100%;margin:0 auto 14px;}
     .tools-hub-header h2{font-size:15px;letter-spacing:1px;gap:8px;}
-    .tools-hub-header h2 .hub-sparkle{font-size:12px;}
+    .tools-hub-header h2 .hub-pharm-icon{width:20px;height:20px;}
     .tools-hub-header p{font-size:11.5px;margin-top:6px;padding:0 8px;}
     .tools-hub-grid{grid-template-columns:repeat(4, 1fr); max-width:100%; gap:8px;}
   }
@@ -2190,7 +2194,7 @@
     <!-- Ferramentas Farmacêuticas — nova seção central, protagonista da página -->
     <section class="tools-hub-section" id="panel-mais">
       <div class="tools-hub-header">
-        <h2><span class="hub-sparkle">✦</span> FERRAMENTAS <span class="hub-accent-word">FARMACÊUTICAS</span><span class="hub-sparkle">✦</span></h2>
+        <h2><span class="hub-sparkle"><img src="images/icone-farmacia-colorido.png" alt="" class="hub-pharm-icon"></span> FERRAMENTAS <span class="hub-accent-word">FARMACÊUTICAS</span><span class="hub-sparkle"><img src="images/icone-farmacia-colorido.png" alt="" class="hub-pharm-icon"></span></h2>
         <div class="hub-header-divider"></div>
         <p>Escolha uma ferramenta abaixo e tenha mais agilidade, segurança e respaldo técnico na sua rotina de balcão.</p>
       </div>
@@ -2799,11 +2803,16 @@
 
   var SEARCH_SOURCES_META = {
     guia:      {label:'Guia de Dispensação',   color:'#e4172c'},
+    bulario:   {label:'Bulário Farmacêutico',  color:'#c951d6'},
     medinter:  {label:'Medicamentos Intercambiáveis', color:'#3b82f6'},
+    receitas:  {label:'Conferência de Receitas', color:'#a1d651'},
+    interacoes:{label:'Interações Medicamentosas', color:'#5fd651'},
     calc:      {label:'Calculadora de Doses', color:'#22c55e'},
+    exames:    {label:'Exames Laboratoriais', color:'#8751d6'},
     consulta:  {label:'Consulta Controlados',  color:'#f59e0b'},
     checklist: {label:'Checklist de Rotina',   color:'#06b6d4'},
-    dicionario:{label:'Dicionário Farmacêutico', color:'#6366f1'}
+    dicionario:{label:'Dicionário Farmacêutico', color:'#6366f1'},
+    desafio:   {label:'Desafio Clínico',       color:'#d6c951'}
   };
 
   function loadSearchData(){
@@ -2901,6 +2910,77 @@
             href: 'dicionario/?termo=' + encodeURIComponent(t.id)
           };
         });
+      }),
+
+      // bulario — indice leve de medicamentos (gerado a partir de data.js,
+      // 22MB, para nao precisar baixar o arquivo inteiro so para a busca)
+      safeFetchJson('bulario/dados-busca.json').then(function(d){
+        var arr = d && d.medicamentos;
+        if(!arr) return [];
+        return arr.map(function(m){
+          return {
+            source:'bulario',
+            nome: m.nome,
+            meta: m.classe || '',
+            href: 'bulario/#/medicamento/' + encodeURIComponent(m.id)
+          };
+        });
+      }),
+
+      // interacoes — medicamentos cadastrados para checagem de interações
+      safeFetchJson('interacoes/medicamentos.json').then(function(d){
+        if(!d || !d.length) return [];
+        return d.map(function(m){
+          return {
+            source:'interacoes',
+            nome: m.nome,
+            meta: (m.aliases && m.aliases.length) ? m.aliases.join(', ') : '',
+            href: 'interacoes/'
+          };
+        });
+      }),
+
+      // exames — exames laboratoriais e complementares
+      safeFetchJson('exames/exames.json').then(function(d){
+        var arr = d && d.exames;
+        if(!arr) return [];
+        return arr.map(function(e){
+          var meta = e.sigla || '';
+          if(e.sinonimos && e.sinonimos.length) meta = meta ? (meta + ' · ' + e.sinonimos[0]) : e.sinonimos[0];
+          return { source:'exames', nome:e.nome, meta:meta, href:'exames/' };
+        });
+      }),
+
+      // receitas — base CMED de nomes comerciais (nome -> princípio ativo);
+      // base gigante (milhares de apresentações), por isso deduplicada por
+      // nome comercial e capada a poucos resultados por grupo na exibição
+      // (ver PER_GROUP_CAP_OVERRIDE), no mesmo padrão do medinter.
+      safeFetchJson('receitas/medicamentos.json').then(function(d){
+        var arr = d && d.itens;
+        if(!arr) return [];
+        var vistos = {};
+        var out = [];
+        arr.forEach(function(it){
+          if(!it.n || vistos[it.n]) return;
+          vistos[it.n] = true;
+          out.push({ source:'receitas', nome:it.n, meta:it.p || '', href:'receitas/' });
+        });
+        return out;
+      }),
+
+      // desafio — casos clínicos do Desafio Clínico (índice leve, gerado a
+      // partir de desafio.json, 5.5MB)
+      safeFetchJson('desafio/dados-busca.json').then(function(d){
+        var arr = d && d.casos;
+        if(!arr) return [];
+        return arr.map(function(c){
+          return {
+            source:'desafio',
+            nome: c.titulo,
+            meta: c.categoria || '',
+            href: 'desafio/?caso=' + encodeURIComponent(c.id)
+          };
+        });
       })
 
     ]).then(function(results){
@@ -2918,9 +2998,10 @@
 
   var PER_GROUP_CAP = 6;
   var TOTAL_CAP = 20;
-  // Substituição de Medicamentos Equivalentes (medinter) tem uma base gigante de nomes comerciais;
-  // limitar a 2 resultados evita poluir a lista de busca com muitas correspondências parecidas.
-  var PER_GROUP_CAP_OVERRIDE = { medinter: 2 };
+  // Substituição de Medicamentos Equivalentes (medinter) e Conferência de Receitas (receitas)
+  // têm bases gigantes de nomes comerciais; limitar a 2 resultados evita poluir a lista
+  // de busca com muitas correspondências parecidas.
+  var PER_GROUP_CAP_OVERRIDE = { medinter: 2, receitas: 2 };
 
   function runSearch(rawTerm, items){
     var term = normalizeStr(rawTerm);
@@ -2945,7 +3026,7 @@
 
   function renderSearchResults(rawTerm, grouped, totalMatched){
     var box = document.getElementById('search-results');
-    var order = ['guia','medinter','calc','consulta','checklist','dicionario'];
+    var order = ['guia','bulario','medinter','receitas','interacoes','calc','exames','consulta','checklist','dicionario','desafio'];
     var html = '';
     var shown = 0;
     order.forEach(function(src){

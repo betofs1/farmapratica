@@ -247,7 +247,20 @@
     border-radius:12px; padding:14px 14px 12px; cursor:pointer; transition:.15s ease; text-align:left;
   }
   .quick-card:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
-  .quick-card .qc-icon{ width:32px; height:32px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+  .quick-card .qc-icon{
+    width:40px; height:40px; border-radius:13px;
+    background:linear-gradient(145deg, color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), color-mix(in srgb, var(--cc, var(--red-bright)) 9%, transparent));
+    border:1px solid color-mix(in srgb, var(--cc, var(--red-bright)) 32%, transparent);
+    box-shadow:0 3px 10px color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    color:var(--cc, var(--red-bright));
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .quick-card .qc-icon svg{ width:20px; height:20px; stroke-width:2.3; }
+  .quick-card:hover .qc-icon{
+    transform:scale(1.08) rotate(-3deg);
+    box-shadow:0 6px 16px color-mix(in srgb, var(--cc, var(--red-bright)) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+  }
   .quick-card h4{ margin:0; font-size:.88rem; font-weight:800; font-family:'Inter',sans-serif; }
   .quick-card p{ margin:0; font-size:.74rem; color:var(--text-dim); line-height:1.4; }
 
@@ -258,7 +271,19 @@
     display:flex; flex-direction:column; gap:8px;
   }
   .cat-tile:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,.18); border-color:var(--cc); }
-  .cat-tile .ct-icon{ width:30px; height:30px; border-radius:9px; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--red-bright)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .cat-tile .ct-icon{
+    width:32px; height:32px; border-radius:10px;
+    background:linear-gradient(145deg, color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), color-mix(in srgb, var(--cc, var(--red-bright)) 9%, transparent));
+    border:1px solid color-mix(in srgb, var(--cc, var(--red-bright)) 32%, transparent);
+    box-shadow:0 3px 10px color-mix(in srgb, var(--cc, var(--red-bright)) 26%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    color:var(--cc, var(--red-bright));
+    display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .cat-tile:hover .ct-icon{
+    transform:scale(1.08) rotate(-3deg);
+    box-shadow:0 6px 16px color-mix(in srgb, var(--cc, var(--red-bright)) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+  }
   .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
   .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
 
@@ -438,7 +463,8 @@
 
     .quick-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
     .quick-card{ padding:10px 8px 9px; gap:5px; }
-    .quick-card .qc-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
+    .quick-card .qc-icon{ width:32px; height:32px; border-radius:11px; }
+    .quick-card .qc-icon svg{ width:16px; height:16px; }
     .quick-card h4{ font-size:.68rem; line-height:1.25; }
     .quick-card p{ display:none; }
 
