@@ -28,6 +28,7 @@
     --green-ok: #3fb87f;
     --sky-ok: #38bdf8;
     --sidebar-w: 330px;
+    --sidebar-rail-w: 68px;
     --hover-tint: #414247;
     --erro: #ef5b6b;
     --erro-glow: rgba(239,91,107,.16);
@@ -176,7 +177,7 @@
   .stat-pill{ display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:20px; border:1px solid var(--border); background:var(--panel); font-size:.74rem; font-weight:700; color:var(--text-gray); }
   .stat-pill svg{ width:14px; height:14px; color:var(--red-bright); }
 
-  .app-body{ display:flex; flex:1; min-height:0; }
+  .app-body{ display:flex; flex:1; min-height:0; position:relative; }
 
   /* ---------- Sidebar ---------- */
   .sidebar{
@@ -217,6 +218,77 @@
   .cat-header .cat-emoji{ font-size:1rem; flex-shrink:0; }
   .cat-header .cat-nome{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--cc, var(--text-gray)); }
   .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
+
+  /* ---------- Sidebar por hover (desktop), mesmo padrão do Dicionário Farmacêutico (04/11/2026) ---------- */
+  @media (min-width:801px){
+    .sidebar{
+      position:absolute; top:0; left:0; height:100%; width:var(--sidebar-rail-w);
+      overflow:hidden; z-index:20;
+      transition: width .26s cubic-bezier(.22,.85,.32,1), box-shadow .26s ease;
+    }
+    .sidebar:hover, .sidebar:focus-within{
+      width:var(--sidebar-w);
+      box-shadow: 10px 0 40px rgba(0,0,0,.32);
+    }
+    .sidebar-list{ overflow-x:hidden; }
+    .main{ margin-left:var(--sidebar-rail-w); }
+
+    /* recolhida, a faixa só mostra ícones — nenhum bloco pode reservar altura/largura
+       além de opacity:0 (max-height/max-width:0 também), senão deixa vão vazio ou
+       descentraliza o ícone, mesmo problema já corrigido no Dicionário */
+    .sidebar-header{ padding:10px 10px 6px; }
+    .nav-list{ gap:4px; }
+    .nav-item{
+      justify-content:center; gap:0; padding:10px; width:44px; height:40px; margin:0 auto;
+      transition: width .22s ease, padding .22s ease;
+    }
+    .nav-item .nav-label, .nav-item .nav-count{
+      opacity:0; max-width:0; padding:0; margin:0; overflow:hidden; pointer-events:none;
+      transition: opacity .1s ease, max-width .18s ease;
+    }
+    .sidebar:hover .nav-item, .sidebar:focus-within .nav-item{
+      justify-content:flex-start; gap:10px; width:100%; height:auto; margin:0; padding:10px 12px;
+    }
+    .sidebar:hover .nav-item .nav-label, .sidebar:focus-within .nav-item .nav-label{
+      opacity:1; max-width:220px; transition: opacity .18s ease .08s, max-width .22s ease;
+    }
+    .sidebar:hover .nav-item .nav-count, .sidebar:focus-within .nav-item .nav-count{
+      opacity:1; max-width:60px; padding:2px 7px; transition: opacity .18s ease .08s, max-width .22s ease;
+    }
+
+    .sidebar-subheading{
+      opacity:0; max-height:0; padding:0; margin:0; overflow:hidden;
+      transition: opacity .1s ease, max-height .2s ease, padding .2s ease;
+    }
+    .sidebar:hover .sidebar-subheading, .sidebar:focus-within .sidebar-subheading{
+      opacity:1; max-height:40px; padding:10px 8px 6px; margin:0;
+      transition: opacity .18s ease .08s, max-height .22s ease, padding .22s ease;
+    }
+
+    .cat-header{
+      width:44px; height:38px; margin:0 auto 6px; padding:0; border-radius:50%;
+      justify-content:center; gap:0; border-left-width:0;
+      border:1px solid color-mix(in srgb, var(--cc, var(--red-bright)) 38%, var(--border));
+      transition: width .22s ease, height .22s ease, padding .22s ease, border-radius .22s ease;
+    }
+    .cat-header .cat-emoji{ font-size:1.1rem; }
+    .cat-header .cat-nome, .cat-header .cat-count{
+      opacity:0; max-width:0; padding:0; margin:0; overflow:hidden; pointer-events:none;
+      transition: opacity .1s ease, max-width .18s ease;
+    }
+    .sidebar:hover .cat-header, .sidebar:focus-within .cat-header{
+      width:100%; height:auto; margin:0 0 6px; padding:9px 11px; border-radius:9px;
+      justify-content:flex-start; gap:9px;
+      border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
+    }
+    .sidebar:hover .cat-header .cat-emoji, .sidebar:focus-within .cat-header .cat-emoji{ font-size:1rem; }
+    .sidebar:hover .cat-header .cat-nome, .sidebar:focus-within .cat-header .cat-nome{
+      opacity:1; max-width:260px; transition: opacity .18s ease .1s, max-width .22s ease;
+    }
+    .sidebar:hover .cat-header .cat-count, .sidebar:focus-within .cat-header .cat-count{
+      opacity:1; max-width:60px; padding:2px 8px; transition: opacity .18s ease .1s, max-width .22s ease;
+    }
+  }
 
   /* ---------- Main ---------- */
   .main{ flex:1; min-width:0; overflow-y:auto; padding:28px 34px 60px; }
@@ -286,6 +358,37 @@
   }
   .cat-tile h4{ margin:0; font-size:.86rem; font-weight:700; font-family:'Inter',sans-serif; }
   .cat-tile .ct-count{ font-size:.68rem; color:var(--text-dim); }
+
+  /* ---------- Estilo "jogo" nos cartões (desktop), mesmo padrão do Dicionário Farmacêutico (04/11/2026) ---------- */
+  @media (min-width:801px){
+    .stats-grid, .section-title-home{
+      max-width:1320px; margin-left:auto; margin-right:auto;
+    }
+    .quick-grid, .tiles-grid{
+      grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px;
+      max-width:1320px; margin:0 auto;
+    }
+    .quick-card, .cat-tile{
+      text-align:center; align-items:center; gap:10px;
+      padding:22px 14px 18px; border-radius:16px; border-top-width:4px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .quick-card:hover, .cat-tile:hover{ transform:translateY(-5px) scale(1.03); }
+    .quick-card h4, .cat-tile h4{ font-size:.92rem; }
+    .quick-card .qc-icon, .cat-tile .ct-icon{
+      width:56px; height:56px; border-radius:50%; font-size:1.55rem; border-width:2px;
+      box-shadow:0 4px 14px color-mix(in srgb, var(--cc, var(--red-bright)) 32%, transparent), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.12);
+    }
+    .quick-card .qc-icon svg{ width:24px; height:24px; }
+    .quick-card:hover .qc-icon, .cat-tile:hover .ct-icon{ transform:scale(1.12) rotate(-4deg); }
+    .cat-tile .ct-count{
+      font-weight:800; letter-spacing:.3px; color:var(--cc, var(--text-dim));
+      background:var(--cg, var(--hover-tint)); padding:3px 11px; border-radius:20px;
+    }
+  }
+  @media (min-width:801px) and (max-width:1099px){
+    .quick-grid, .tiles-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+  }
 
   .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; align-items:center; }
   .filter-bar select{ background:var(--card); border:1px solid var(--border); color:var(--text); font-size:.78rem; font-weight:700; padding:8px 12px; border-radius:9px; cursor:pointer; }
@@ -461,18 +564,31 @@
     .btn-voltar-mobile svg{ width:14px; height:14px; }
     .intro-banner{ display:none; }
 
-    .quick-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
-    .quick-card{ padding:10px 8px 9px; gap:5px; }
-    .quick-card .qc-icon{ width:32px; height:32px; border-radius:11px; }
-    .quick-card .qc-icon svg{ width:16px; height:16px; }
-    .quick-card h4{ font-size:.68rem; line-height:1.25; }
+    .quick-grid{ grid-template-columns:repeat(3,1fr); gap:10px; }
+    .quick-card{
+      padding:14px 8px 12px; gap:7px; text-align:center; align-items:center;
+      border-radius:14px; border-top-width:3px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .quick-card:active{ transform:scale(.97); }
+    .quick-card .qc-icon{ width:42px; height:42px; border-radius:50%; border-width:1.5px; }
+    .quick-card .qc-icon svg{ width:18px; height:18px; }
+    .quick-card h4{ font-size:.72rem; line-height:1.25; }
     .quick-card p{ display:none; }
 
-    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
-    .cat-tile{ padding:10px 8px 9px; gap:5px; }
-    .cat-tile .ct-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
-    .cat-tile h4{ font-size:.7rem; line-height:1.25; }
-    .cat-tile .ct-count{ font-size:.6rem; }
+    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:10px; }
+    .cat-tile{
+      padding:14px 8px 12px; gap:7px; text-align:center; align-items:center;
+      border-radius:14px; border-top-width:3px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .cat-tile:active{ transform:scale(.97); }
+    .cat-tile .ct-icon{ width:42px; height:42px; font-size:1.15rem; border-radius:50%; border-width:1.5px; }
+    .cat-tile h4{ font-size:.72rem; line-height:1.25; }
+    .cat-tile .ct-count{
+      font-size:.6rem; font-weight:800; letter-spacing:.2px; color:var(--cc, var(--text-dim));
+      background:var(--cg, var(--hover-tint)); padding:2px 9px; border-radius:20px;
+    }
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
 </style>
@@ -905,7 +1021,7 @@ function viewInicio(){
   h += '<div class="intro-banner"><div class="intro-banner-icon">'+icon('info')+'</div>'+
     '<p>Conteúdo educativo para suporte ao raciocínio clínico farmacêutico. Não substitui a conduta médica, os protocolos institucionais nem o julgamento clínico individualizado diante do paciente.</p></div>';
 
-  h += '<div class="section-title">'+icon('trophy')+'Seu progresso</div>';
+  h += '<div class="section-title section-title-home">'+icon('trophy')+'Seu progresso</div>';
   h += '<div class="stats-grid">'+
     '<div class="stat-card"><div class="sc-val">'+st.resolvidos+'/'+st.total+'</div><div class="sc-label">Casos resolvidos</div></div>'+
     '<div class="stat-card"><div class="sc-val">'+progresso.pontosTotais+'</div><div class="sc-label">Pontos</div></div>'+
@@ -913,17 +1029,16 @@ function viewInicio(){
     '<div class="stat-card"><div class="sc-val">'+st.taxa+'%</div><div class="sc-label">Acerto no quiz</div></div>'+
     '</div>';
 
-  h += '<div class="section-title">'+icon('bolt')+'Começar agora</div>';
+  h += '<div class="section-title section-title-home">'+icon('bolt')+'Começar agora</div>';
   h += '<div class="quick-grid">'+
     quickCard('cases','red','Caso Aleatório','Um caso clínico sorteado, do começo ao fim.','iniciarCasoAleatorio()')+
     quickCard('bolt','amber','Desafio Rápido','5 perguntas curtas, direto ao ponto.','iniciarQuizRapido()')+
     quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.','iniciarFlash()')+
+    quickCard('quiz','indigo','Quiz','Banco completo de questões, com filtros por categoria e nível.',"setView('quizConfig')")+
     quickCard('alert','crimson','Sinais de Alerta','Casos focados em reconhecimento de red flags.',"setView('casos',{casosFiltro:{categoria:'todas',nivel:'todos',foco:'sinal-alerta',ambiente:'todos'}})")+
-    quickCard('flask','indigo','Modo Concurso','Questões em estilo de prova.',"iniciarQuizModo('concurso')")+
-    quickCard('target','purple','Modo Difícil','Casos e questões de nível avançado/especialista.',"iniciarQuizModo('dificil')")+
     '</div>';
 
-  h += '<div class="section-title">'+icon('cases')+'Categorias clínicas</div>';
+  h += '<div class="section-title section-title-home">'+icon('cases')+'Categorias clínicas</div>';
   h += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
     const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
     return '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+

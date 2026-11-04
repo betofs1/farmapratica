@@ -632,6 +632,9 @@
 
   /* ---------- Tiles de categoria "estilo jogo" + grade fixa até 6/linha (desktop) — 04/11/2026 ---------- */
   @media (min-width:801px){
+    .section-title-wide{
+      max-width:1320px; margin-left:auto; margin-right:auto;
+    }
     .tiles-grid{
       grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px;
       max-width:1320px; margin:0 auto;
@@ -1223,7 +1226,7 @@ function viewInicio(){
   });
   destaqueSection += '</div>';
 
-  let categoriasSection = '<div class="section-title">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div>';
+  let categoriasSection = '<div class="section-title section-title-wide">'+icon('layers')+' Categorias ('+DATA.termos.length+' termos)</div>';
   categoriasSection += '<div class="tiles-grid">';
   const nFavsHome = getFavsDicionario().length;
   const favQuizCorner = nFavsHome>0 ? '<button class="ct-quiz-corner" onclick="event.stopPropagation(); iniciarQuizFavoritos();" title="Testar seus termos favoritos no modo Quiz">'+icon('cards')+'QUIZ</button>' : '';
