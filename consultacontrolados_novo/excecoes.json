@@ -1,0 +1,65 @@
+{
+  "fenobarbital": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: estes 4 barbitúricos (fenobarbital, metilfenobarbital/prominal, barbital e barbexaclona) são nominalmente excetuados da Notificação de Receita B e devem ser prescritos em Receita de Controle Especial, 2 vias, com a frase obrigatória \"VENDA SOB PRESCRIÇÃO MÉDICA - SÓ PODE SER VENDIDO COM RETENÇÃO DA RECEITA\" na rotulagem/bula. Os demais barbitúricos da Lista B1 (ex.: pentobarbital, secobarbital) NÃO estão citados neste adendo e seguem a regra padrão da B1.",
+    "quantidade_maxima": "Uso como anticonvulsivante: quantidade para tratamento de até 6 meses (fonte: bula/InfoSUS)."
+  },
+  "metilfenobarbital (prominal)": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: estes 4 barbitúricos (fenobarbital, metilfenobarbital/prominal, barbital e barbexaclona) são nominalmente excetuados da Notificação de Receita B e devem ser prescritos em Receita de Controle Especial, 2 vias, com a frase obrigatória \"VENDA SOB PRESCRIÇÃO MÉDICA - SÓ PODE SER VENDIDO COM RETENÇÃO DA RECEITA\" na rotulagem/bula. Os demais barbitúricos da Lista B1 (ex.: pentobarbital, secobarbital) NÃO estão citados neste adendo e seguem a regra padrão da B1.",
+    "quantidade_maxima": "Uso como anticonvulsivante: quantidade para tratamento de até 6 meses (fonte: bula/InfoSUS)."
+  },
+  "barbital": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: estes 4 barbitúricos (fenobarbital, metilfenobarbital/prominal, barbital e barbexaclona) são nominalmente excetuados da Notificação de Receita B e devem ser prescritos em Receita de Controle Especial, 2 vias, com a frase obrigatória \"VENDA SOB PRESCRIÇÃO MÉDICA - SÓ PODE SER VENDIDO COM RETENÇÃO DA RECEITA\" na rotulagem/bula. Os demais barbitúricos da Lista B1 (ex.: pentobarbital, secobarbital) NÃO estão citados neste adendo e seguem a regra padrão da B1.",
+    "quantidade_maxima": "Uso como anticonvulsivante: quantidade para tratamento de até 6 meses (fonte: bula/InfoSUS)."
+  },
+  "barbexaclona": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: estes 4 barbitúricos (fenobarbital, metilfenobarbital/prominal, barbital e barbexaclona) são nominalmente excetuados da Notificação de Receita B e devem ser prescritos em Receita de Controle Especial, 2 vias, com a frase obrigatória \"VENDA SOB PRESCRIÇÃO MÉDICA - SÓ PODE SER VENDIDO COM RETENÇÃO DA RECEITA\" na rotulagem/bula. Os demais barbitúricos da Lista B1 (ex.: pentobarbital, secobarbital) NÃO estão citados neste adendo e seguem a regra padrão da B1.",
+    "quantidade_maxima": "Uso como anticonvulsivante: quantidade para tratamento de até 6 meses (fonte: bula/InfoSUS)."
+  },
+  "zolpidem": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: preparações com até 10 mg de zolpidem ou zaleplona por unidade posológica são excetuadas da Notificação de Receita B e exigem Receita de Controle Especial, 2 vias, com a mesma frase obrigatória de retenção. Confirme a dosagem da apresentação antes de aplicar esta exceção.",
+    "quantidade_maxima": null
+  },
+  "zaleplona": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo da Lista B1: preparações com até 10 mg de zolpidem ou zaleplona por unidade posológica são excetuadas da Notificação de Receita B e exigem Receita de Controle Especial, 2 vias, com a mesma frase obrigatória de retenção. Confirme a dosagem da apresentação antes de aplicar esta exceção.",
+    "quantidade_maxima": null
+  },
+  "tramadol": {
+    "receita": "Receita de Controle Especial (branca, 2 vias)",
+    "vias": 2,
+    "validade_dias": 30,
+    "retencao": true,
+    "cor": "branca",
+    "motivo": "Adendo: preparações à base de tramadol, isoladas ou associadas, com até 100 mg de tramadol por unidade posológica, são excetuadas da Notificação de Receita A e exigem Receita de Controle Especial, 2 vias, com a mesma frase obrigatória de retenção. Confirme a dosagem da apresentação antes de aplicar esta exceção.",
+    "quantidade_maxima": null
+  }
+}

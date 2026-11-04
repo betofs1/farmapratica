@@ -1051,8 +1051,10 @@
     }
     .pin-card.active .pin-desc{ color: rgba(255,255,255,.75); }
 
+    /* 01/11/2026: 3 cartões de categoria lado a lado no mobile (antes eram 2 por linha),
+       com o conteúdo do cartão compactado para caber confortavelmente em 3 colunas. */
     .rail-group{
-      display:grid; grid-template-columns:1fr 1fr; gap:8px;
+      display:grid; grid-template-columns:repeat(3,1fr); gap:6px;
       padding-left:0; margin-bottom:18px; align-content:start;
     }
     .rail-group::before{ display:none; }
@@ -1066,16 +1068,16 @@
     .rail-node::before{ display:none; }
     .rail-card{
       flex-direction:column; align-items:flex-start; justify-content:flex-start;
-      gap:6px; min-height:82px; padding:10px 10px; border-radius:14px;
+      gap:5px; min-height:76px; padding:8px 8px; border-radius:12px;
     }
     .rail-card .rc-ic{
-      width:26px; height:26px; border-radius:8px;
+      width:22px; height:22px; border-radius:7px;
       background: var(--panel); color: var(--rail-color);
     }
-    .rail-card .rc-ic .ic{ width:15px; height:15px; }
+    .rail-card .rc-ic .ic{ width:13px; height:13px; }
     .rail-card.active .rc-ic{ background: rgba(255,255,255,.2); color:#fff; }
-    .rail-card .rc-label{ flex:none; width:100%; font-size:.72rem; line-height:1.25; }
-    .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; width:24px; height:24px; }
+    .rail-card .rc-label{ flex:none; width:100%; font-size:.62rem; line-height:1.2; }
+    .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; width:20px; height:20px; }
 
     .sidebar-aviso{ display:block; margin-top:16px; }
 

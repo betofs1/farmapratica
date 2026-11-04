@@ -139,15 +139,15 @@ Nenhum exame está marcado como exclusivamente `"drogaria"` ainda — a
 classificação deve ser revisada/ajustada conforme o usuário indicar ao
 adicionar novos exames.
 
-## Estado atual do conteúdo (atualizado em 28/09/2026)
+## Estado atual do conteúdo (atualizado em 01/11/2026)
 
-**142 exames** com todos os campos completos, distribuídos em 21 das 22
+**150 exames** com todos os campos completos, distribuídos em 21 das 22
 categorias (apenas "Outros" permanece vazia, propositalmente, como
-catch-all). Contagem por categoria: Infectologia 17, Hormônios 16,
-Imunologia 12, Hematologia 11, Glicemia e Metabolismo 10, Bioquímica 9,
-Lipidograma 9, Função Renal 9, Marcadores Tumorais 8, Vitaminas e Minerais
-8, Endocrinologia 6, Função Hepática 6, Marcadores Cardíacos 6, Eletrólitos
-5, Marcadores Inflamatórios 3, Exames de Fezes 2, Coagulação 1, Urinálise
+catch-all). Contagem por categoria: Infectologia 20, Hormônios 17,
+Imunologia 12, Hematologia 11, Bioquímica 10, Glicemia e Metabolismo 10,
+Lipidograma 9, Função Renal 9, Vitaminas e Minerais 9, Marcadores Tumorais
+8, Endocrinologia 6, Função Hepática 7, Marcadores Cardíacos 6, Eletrólitos
+5, Marcadores Inflamatórios 4, Exames de Fezes 2, Coagulação 1, Urinálise
 1, Parasitologia 1, Microbiologia 1, Gasometria 1.
 
 Histórico de 05/09 a 17/09/2026 (43 exames): 20 exames originais de
@@ -237,6 +237,54 @@ sociedades médicas brasileiras e internacionais (ver campo `fontes` de
 cada exame) — **sempre revise e atualize com a diretriz vigente mais
 recente antes de expandir o conteúdo**, e prefira sempre o intervalo de
 referência do laboratório do paciente ao interpretar um resultado real.
+
+**Rodada de 01/11/2026 (+8 exames, de 142 para 150):** a pedido do
+usuário ("adicione mais alguns [exames] que ache importante"), foram
+selecionados exames com forte justificativa de relevância à prática
+farmacêutica atual, priorizando testes de uso crescente em farmácia
+(testagem rápida/point-of-care) e lacunas pontuais em categorias já
+existentes, em vez de uma expansão extensa sem critério:
+
+- **Procalcitonina** (Marcadores Inflamatórios, categoria que tinha
+  apenas 3 exames) — marcador central de programas de uso racional de
+  antimicrobianos (antimicrobial stewardship), para orientar início e,
+  sobretudo, suspensão precoce de antibioticoterapia.
+- **COVID-19 (Antígeno, Teste Rápido)**, **Influenza A e B (Teste
+  Rápido)** e **Estreptococo Beta-Hemolítico do Grupo A (Teste Rápido)**
+  (Infectologia) — os três exames mais diretamente ligados à testagem
+  rápida realizada hoje dentro de farmácias (programas estaduais/
+  municipais de farmácia clínica e test-and-treat), também marcados como
+  `consultaRapida:true` (antes só 33 exames tinham essa flag; agora 36),
+  já que são literalmente testes de consulta rápida no balcão.
+- **Homocisteína** (Bioquímica) — apoio à investigação de deficiência de
+  B12/folato em níveis limítrofes e marcador de risco cardiovascular;
+  `correlatos` cruzados com Vitamina B12 e Ácido Fólico.
+- **Amônia Sérica** (Função Hepática) — encefalopatia hepática e, em
+  especial, hiperamonemia induzida por ácido valproico (interação
+  farmacológica relevante e por vezes subdiagnosticada); `correlatos`
+  cruzados com TGO e TGP.
+- **Zinco Sérico** (Vitaminas e Minerais) — investigação de deficiência
+  (cicatrização lenta, alopecia, diarreia crônica) e orientação sobre
+  espaçamento de horário frente a IBP/suplementos de ferro e cálcio, que
+  reduzem sua absorção.
+- **Hormônio Antimülleriano — AMH** (Hormônios) — marcador mais estável
+  de reserva ovariana no aconselhamento de fertilidade, já citado como
+  candidato pendente desde a rodada de 17/09/2026; `correlatos` cruzados
+  com FSH e Estradiol.
+
+Todos os 8 exames seguem o schema completo (valores de referência,
+interpretação alta/baixa com `examesApoio`, condições clínicas,
+medicamentos que aumentam/reduzem/interferem, interferentes
+pré-analíticos, preparo, amostra, correlatos, alertas e fontes) e foram
+validados programaticamente (JSON íntegro, 150 exames, nenhum id
+duplicado) antes da publicação.
+
+**Classificação de `ambiente`:** os 3 novos testes rápidos foram
+classificados como `"ambos"` (e não exclusivamente `"drogaria"`), por
+também serem usados em pronto-atendimento/hospital — mas são hoje os
+melhores candidatos do banco a uma eventual reclassificação específica
+para `"drogaria"`, pendência em aberto desde 17/09/2026 (nenhum exame
+ainda está marcado como exclusivamente de uso em farmácia).
 
 ## Favoritos, histórico e comparador de resultados
 

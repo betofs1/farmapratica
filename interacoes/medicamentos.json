@@ -254,8 +254,8 @@
     "id": "claritromicina",
     "nome": "Claritromicina",
     "classeTerapeutica": [
-      "macrolideo",
-      "prolonga_qt"
+      "prolonga_qt",
+      "macrolideo"
     ],
     "aliases": []
   },
@@ -263,8 +263,8 @@
     "id": "azitromicina",
     "nome": "Azitromicina",
     "classeTerapeutica": [
-      "macrolideo",
-      "prolonga_qt"
+      "prolonga_qt",
+      "macrolideo"
     ],
     "aliases": []
   },
@@ -272,8 +272,8 @@
     "id": "eritromicina",
     "nome": "Eritromicina",
     "classeTerapeutica": [
-      "macrolideo",
-      "prolonga_qt"
+      "prolonga_qt",
+      "macrolideo"
     ],
     "aliases": []
   },
@@ -281,7 +281,8 @@
     "id": "omeprazol",
     "nome": "Omeprazol",
     "classeTerapeutica": [
-      "ibp_potente"
+      "ibp_potente",
+      "inibidor_cyp2c19"
     ],
     "aliases": []
   },
@@ -289,7 +290,8 @@
     "id": "esomeprazol",
     "nome": "Esomeprazol",
     "classeTerapeutica": [
-      "ibp_potente"
+      "ibp_potente",
+      "inibidor_cyp2c19"
     ],
     "aliases": []
   },
@@ -307,7 +309,8 @@
     "id": "metformina",
     "nome": "Metformina",
     "classeTerapeutica": [
-      "metformina"
+      "metformina",
+      "antidiabetico"
     ],
     "aliases": [
       "glifage"
@@ -318,7 +321,8 @@
     "nome": "Fluoxetina",
     "classeTerapeutica": [
       "isrs",
-      "antidepressivo_serotoninergico"
+      "antidepressivo_serotoninergico",
+      "inibidor_cyp2d6_potente"
     ],
     "aliases": []
   },
@@ -336,7 +340,8 @@
     "nome": "Paroxetina",
     "classeTerapeutica": [
       "isrs",
-      "antidepressivo_serotoninergico"
+      "antidepressivo_serotoninergico",
+      "inibidor_cyp2d6_potente"
     ],
     "aliases": []
   },
@@ -344,6 +349,7 @@
     "id": "citalopram",
     "nome": "Citalopram",
     "classeTerapeutica": [
+      "prolonga_qt",
       "isrs",
       "antidepressivo_serotoninergico"
     ],
@@ -353,6 +359,7 @@
     "id": "escitalopram",
     "nome": "Escitalopram",
     "classeTerapeutica": [
+      "prolonga_qt",
       "isrs",
       "antidepressivo_serotoninergico"
     ],
@@ -418,8 +425,8 @@
     "id": "ciprofloxacino",
     "nome": "Ciprofloxacino",
     "classeTerapeutica": [
-      "quinolona",
-      "prolonga_qt"
+      "prolonga_qt",
+      "quinolona"
     ],
     "aliases": []
   },
@@ -427,8 +434,8 @@
     "id": "levofloxacino",
     "nome": "Levofloxacino",
     "classeTerapeutica": [
-      "quinolona",
-      "prolonga_qt"
+      "prolonga_qt",
+      "quinolona"
     ],
     "aliases": []
   },
@@ -436,8 +443,8 @@
     "id": "norfloxacino",
     "nome": "Norfloxacino",
     "classeTerapeutica": [
-      "quinolona",
-      "prolonga_qt"
+      "prolonga_qt",
+      "quinolona"
     ],
     "aliases": []
   },
@@ -453,8 +460,8 @@
     "id": "amiodarona",
     "nome": "Amiodarona",
     "classeTerapeutica": [
-      "amiodarona",
-      "prolonga_qt"
+      "prolonga_qt",
+      "amiodarona"
     ],
     "aliases": []
   },
@@ -473,7 +480,8 @@
     "id": "cefalexina",
     "nome": "Cefalexina",
     "classeTerapeutica": [
-      "antibiotico_amplo"
+      "antibiotico_amplo",
+      "cefalosporina"
     ],
     "aliases": []
   },
@@ -596,7 +604,8 @@
     "nome": "Propranolol",
     "classeTerapeutica": [
       "betabloqueador",
-      "anti_hipertensivo"
+      "anti_hipertensivo",
+      "betabloqueador_cyp2d6"
     ],
     "aliases": []
   },
@@ -614,7 +623,8 @@
     "nome": "Metoprolol",
     "classeTerapeutica": [
       "betabloqueador",
-      "anti_hipertensivo"
+      "anti_hipertensivo",
+      "betabloqueador_cyp2d6"
     ],
     "aliases": [
       "succinato de metoprolol",
@@ -635,7 +645,8 @@
     "nome": "Carvedilol",
     "classeTerapeutica": [
       "betabloqueador",
-      "anti_hipertensivo"
+      "anti_hipertensivo",
+      "betabloqueador_cyp2d6"
     ],
     "aliases": []
   },
@@ -643,9 +654,9 @@
     "id": "sotalol",
     "nome": "Sotalol",
     "classeTerapeutica": [
+      "prolonga_qt",
       "betabloqueador",
-      "anti_hipertensivo",
-      "prolonga_qt"
+      "anti_hipertensivo"
     ],
     "aliases": []
   },
@@ -1329,8 +1340,8 @@
     "id": "procainamida",
     "nome": "Procainamida",
     "classeTerapeutica": [
-      "antiarritmico_ia",
-      "prolonga_qt"
+      "prolonga_qt",
+      "antiarritmico_ia"
     ],
     "aliases": []
   },
@@ -1338,8 +1349,9 @@
     "id": "quinidina",
     "nome": "Quinidina",
     "classeTerapeutica": [
+      "prolonga_qt",
       "antiarritmico_ia",
-      "prolonga_qt"
+      "inibidor_cyp2d6_potente"
     ],
     "aliases": []
   },
@@ -1347,8 +1359,8 @@
     "id": "ranolazina",
     "nome": "Ranolazina",
     "classeTerapeutica": [
-      "antianginoso_novo",
-      "prolonga_qt"
+      "prolonga_qt",
+      "antianginoso_novo"
     ],
     "aliases": [
       "ranexa"
@@ -1600,7 +1612,8 @@
     "nome": "Bupropiona",
     "classeTerapeutica": [
       "antidepressivo_atipico",
-      "bupropiona"
+      "bupropiona",
+      "inibidor_cyp2d6_potente"
     ],
     "aliases": [
       "wellbutrin",
@@ -1768,9 +1781,9 @@
     "id": "haloperidol",
     "nome": "Haloperidol",
     "classeTerapeutica": [
+      "prolonga_qt",
       "antipsicotico_tipico",
-      "antipsicotico",
-      "prolonga_qt"
+      "antipsicotico"
     ],
     "aliases": [
       "haldol"
@@ -1780,9 +1793,9 @@
     "id": "clorpromazina",
     "nome": "Clorpromazina",
     "classeTerapeutica": [
+      "prolonga_qt",
       "antipsicotico_tipico",
-      "antipsicotico",
-      "prolonga_qt"
+      "antipsicotico"
     ],
     "aliases": [
       "amplictil",
@@ -1852,8 +1865,8 @@
     "id": "orfenadrina",
     "nome": "Orfenadrina",
     "classeTerapeutica": [
-      "relaxante_muscular_central",
       "prolonga_qt",
+      "relaxante_muscular_central",
       "anticolinergico"
     ],
     "aliases": [
@@ -2137,7 +2150,8 @@
     "nome": "Cimetidina",
     "classeTerapeutica": [
       "cimetidina",
-      "inibidor_cyp_h2"
+      "inibidor_cyp_h2",
+      "inibidor_cyp2c19"
     ],
     "aliases": []
   },
@@ -2174,9 +2188,9 @@
     "id": "domperidona",
     "nome": "Domperidona",
     "classeTerapeutica": [
+      "prolonga_qt",
       "domperidona",
-      "metoclopramida",
-      "prolonga_qt"
+      "metoclopramida"
     ],
     "aliases": [
       "motilium"
@@ -2462,9 +2476,9 @@
     "id": "metadona",
     "nome": "Metadona",
     "classeTerapeutica": [
+      "prolonga_qt",
       "metadona",
-      "opioide",
-      "prolonga_qt"
+      "opioide"
     ],
     "aliases": []
   },
@@ -2658,8 +2672,8 @@
     "id": "hidroxicloroquina",
     "nome": "Hidroxicloroquina",
     "classeTerapeutica": [
-      "hidroxicloroquina",
-      "prolonga_qt"
+      "prolonga_qt",
+      "hidroxicloroquina"
     ],
     "aliases": [
       "reuquinol"
@@ -2751,9 +2765,10 @@
     "id": "fluconazol",
     "nome": "Fluconazol",
     "classeTerapeutica": [
+      "prolonga_qt",
       "fluconazol",
       "antifungico_azolico_sistemico",
-      "prolonga_qt"
+      "inibidor_cyp2c19"
     ],
     "aliases": [
       "zoltec"
@@ -3101,7 +3116,8 @@
     "id": "propafenona",
     "nome": "Propafenona",
     "classeTerapeutica": [
-      "propafenona"
+      "propafenona",
+      "inibidor_cyp2d6_potente"
     ],
     "aliases": [
       "ritmonorm"
@@ -3130,8 +3146,8 @@
     "id": "ondansetrona",
     "nome": "Ondansetrona",
     "classeTerapeutica": [
-      "ondansetrona",
-      "prolonga_qt"
+      "prolonga_qt",
+      "ondansetrona"
     ],
     "aliases": [
       "vonau",
@@ -3142,11 +3158,53 @@
     "id": "tamoxifeno",
     "nome": "Tamoxifeno",
     "classeTerapeutica": [
-      "tamoxifeno",
-      "prolonga_qt"
+      "prolonga_qt",
+      "tamoxifeno"
     ],
     "aliases": [
       "nolvadex"
+    ]
+  },
+  {
+    "id": "moxifloxacino",
+    "nome": "Moxifloxacino",
+    "classeTerapeutica": [
+      "prolonga_qt",
+      "quinolona"
+    ],
+    "aliases": [
+      "avalox"
+    ]
+  },
+  {
+    "id": "nimodipino",
+    "nome": "Nimodipino",
+    "classeTerapeutica": [
+      "bcc"
+    ],
+    "aliases": [
+      "nimotop"
+    ]
+  },
+  {
+    "id": "amantadina",
+    "nome": "Amantadina",
+    "classeTerapeutica": [
+      "dopaminergico_parkinson"
+    ],
+    "aliases": [
+      "mantidan"
+    ]
+  },
+  {
+    "id": "miconazol_oral_gel",
+    "nome": "Miconazol (gel oral)",
+    "classeTerapeutica": [
+      "antifungico_azolico_sistemico"
+    ],
+    "aliases": [
+      "daktarin gel oral",
+      "miconazol oral"
     ]
   }
 ]

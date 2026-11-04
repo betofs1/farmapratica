@@ -27,6 +27,7 @@
     --green-ok: #3fb87f;
     --sky-ok: #38bdf8;
     --sidebar-w: 460px;
+    --sidebar-rail-w: 68px;
     --hover-tint: #414247;
 
     --cat-red:#ef5b76;        --cat-red-glow:rgba(239,91,118,.22);
@@ -162,7 +163,7 @@
   .theme-toggle svg{ width:18px; height:18px; }
   .theme-toggle .icon-moon{ display:none; }
 
-  .app-body{ display:flex; flex:1; min-height:0; }
+  .app-body{ display:flex; flex:1; min-height:0; position:relative; }
 
   /* ---------- Sidebar ---------- */
   .sidebar{
@@ -228,7 +229,7 @@
   .cat-header{
     display:flex; align-items:center; gap:9px; width:100%; text-align:left;
     background:linear-gradient(180deg, var(--card-hover), var(--panel)); border:1px solid var(--border); border-left:3px solid var(--cc, var(--red-bright));
-    border-radius:9px; padding:9px 11px; margin:0; cursor:pointer;
+    border-radius:9px; padding:9px 60px 9px 11px; margin:0; cursor:pointer;
     font-size:.72rem; text-transform:uppercase; letter-spacing:.5px; font-weight:800; color:var(--text-gray);
     transition:transform .12s ease, box-shadow .12s ease;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -2px 3px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.18);
@@ -239,8 +240,12 @@
   .cat-header .cat-count{ font-size:.64rem; font-weight:700; background:var(--cg, var(--hover-tint)); color:var(--cc, var(--text-dim)); padding:2px 8px; border-radius:20px; flex-shrink:0; }
   .cat-header .cat-chevron{ flex-shrink:0; width:13px; height:13px; transition:transform .2s ease; opacity:.75; color:var(--cc,var(--text-dim)); }
   .cat-header.aberto .cat-chevron{ transform:rotate(90deg); }
+  /* 01/11/2026: QUIZ deixou de flutuar sobre o canto superior esquerdo do botão (ficava
+     meio solto, longe da contagem) e passou a ficar encostado no final do botão, ao lado
+     da contagem/seta — a faixa de padding-right reservada em .cat-header acima abre espaço
+     pra ele sem sobrepor o nome da categoria. */
   .cat-quiz-btn{
-    position:absolute; top:-9px; left:16px; z-index:2;
+    position:absolute; top:50%; right:9px; transform:translateY(-50%); z-index:2;
     display:flex; align-items:center; gap:4px;
     background:linear-gradient(180deg,var(--red-bright),var(--red-dark));
     color:#fff; font-size:.6rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
@@ -496,11 +501,19 @@
     .titulo-descricao{ display:none; }
     .topbar-actions{ position:static; transform:none; grid-column:1; justify-content:center; flex-wrap:wrap; row-gap:8px; margin-top:10px; }
 
-    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
-    .cat-tile{ padding:10px 8px 9px; gap:5px; }
-    .cat-tile .ct-icon{ width:26px; height:26px; font-size:.85rem; border-radius:8px; }
-    .cat-tile h4{ font-size:.7rem; line-height:1.25; padding-right:0; }
-    .cat-tile .ct-count{ font-size:.6rem; }
+    .tiles-grid{ grid-template-columns:repeat(3,1fr); gap:10px; }
+    .cat-tile{
+      padding:14px 8px 12px; gap:7px; text-align:center; align-items:center;
+      border-radius:14px; border-top-width:3px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .cat-tile:active{ transform:scale(.97); }
+    .cat-tile .ct-icon{ width:42px; height:42px; font-size:1.15rem; border-radius:50%; border-width:1.5px; }
+    .cat-tile h4{ font-size:.72rem; line-height:1.25; padding-right:0; }
+    .cat-tile .ct-count{
+      font-size:.6rem; font-weight:800; letter-spacing:.2px; color:var(--cc, var(--text-dim));
+      background:var(--cg, var(--hover-tint)); padding:2px 9px; border-radius:20px;
+    }
     .ct-quiz-corner{ top:6px; right:6px; padding:2px 5px; font-size:.48rem; gap:2px; border-radius:16px; }
     .ct-quiz-corner svg{ width:6px; height:6px; }
 
@@ -542,6 +555,114 @@
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
   @media (min-width:801px){ .ct-quiz-corner{ display:none; } }
   @media (min-width:801px){ .cat-header-wrap{ display:flex; align-items:center; gap:8px; } .cat-header{ flex:1; min-width:0; } }
+
+  /* ---------- Sidebar retrátil por hover (desktop) — 04/11/2026 ----------
+     Estilo "página inicial": por padrão a sidebar fica recolhida como uma
+     faixa estreita de ícones (--sidebar-rail-w); ao passar o mouse (ou focar
+     via teclado, :focus-within) ela se expande por cima do conteúdo, sem
+     empurrar nem redimensionar o .main. */
+  @media (min-width:801px){
+    .sidebar{
+      position:absolute; top:0; left:0; height:100%; width:var(--sidebar-rail-w);
+      overflow:hidden; z-index:20;
+      transition: width .26s cubic-bezier(.22,.85,.32,1), box-shadow .26s ease;
+    }
+    .sidebar:hover, .sidebar:focus-within{
+      width:var(--sidebar-w);
+      box-shadow: 10px 0 40px rgba(0,0,0,.32);
+    }
+    .sidebar-list{ overflow-x:hidden; }
+    .main{ margin-left:var(--sidebar-rail-w); }
+
+    /* conteúdo que só aparece quando a sidebar está expandida */
+    /* recolhidos, .sidebar-header e .pinned-group não reservam altura (além de
+       opacity:0) — senão deixam um vão vazio acima dos ícones de categoria,
+       já que opacity sozinho mantém o espaço do layout */
+    .sidebar-header{
+      opacity:0; pointer-events:none; max-height:0; padding-top:0; padding-bottom:0; overflow:hidden;
+      transition: opacity .12s ease, max-height .22s ease, padding .22s ease;
+    }
+    .pinned-group{
+      opacity:0; pointer-events:none; max-height:0; margin-top:0; margin-bottom:0; overflow:hidden;
+      transition: opacity .12s ease, max-height .22s ease, margin .22s ease;
+    }
+    .sidebar:hover .sidebar-header, .sidebar:focus-within .sidebar-header{
+      opacity:1; pointer-events:auto; max-height:260px; padding-top:14px; padding-bottom:10px;
+      transition: opacity .18s ease .08s, max-height .24s ease, padding .24s ease;
+    }
+    .sidebar:hover .pinned-group, .sidebar:focus-within .pinned-group{
+      opacity:1; pointer-events:auto; max-height:400px; margin-top:6px; margin-bottom:14px;
+      transition: opacity .18s ease .08s, max-height .24s ease, margin .24s ease;
+    }
+
+    /* na faixa recolhida, cada categoria vira um "chip" circular só com o
+       ícone, centralizado; nome/contagem/seta/QUIZ somem (max-width:0, não
+       só opacity, pra não reservar espaço invisível e descentralizar o ícone) */
+    .cat-header{
+      width:44px; height:38px; margin:0 auto; padding:0; border-radius:50%;
+      justify-content:center; gap:0; border-left-width:0;
+      border:1px solid color-mix(in srgb, var(--cc, var(--red-bright)) 38%, var(--border));
+      transition: width .22s ease, height .22s ease, padding .22s ease, border-radius .22s ease;
+    }
+    .cat-header .cat-emoji{ font-size:1.1rem; }
+    .cat-header .cat-nome, .cat-header .cat-count, .cat-header .cat-chevron{
+      opacity:0; max-width:0; padding:0; margin:0; overflow:hidden; pointer-events:none;
+      transition: opacity .1s ease, max-width .18s ease;
+    }
+    .cat-quiz-btn{ opacity:0; pointer-events:none; transition:opacity .12s ease; }
+
+    .sidebar:hover .cat-header, .sidebar:focus-within .cat-header{
+      width:100%; height:auto; margin:0; padding:9px 60px 9px 11px; border-radius:9px;
+      justify-content:flex-start; gap:9px; border-left-width:3px; border-top:none; border-right:none; border-bottom:none;
+    }
+    .sidebar:hover .cat-header .cat-emoji, .sidebar:focus-within .cat-header .cat-emoji{ font-size:.95rem; }
+    .sidebar:hover .cat-header .cat-nome, .sidebar:focus-within .cat-header .cat-nome{
+      opacity:1; max-width:260px; transition: opacity .18s ease .1s, max-width .22s ease;
+    }
+    .sidebar:hover .cat-header .cat-count, .sidebar:focus-within .cat-header .cat-count{
+      opacity:1; max-width:70px; padding:2px 8px; transition: opacity .18s ease .1s, max-width .22s ease;
+    }
+    .sidebar:hover .cat-header .cat-chevron, .sidebar:focus-within .cat-header .cat-chevron{
+      opacity:.75; max-width:20px; transition: opacity .18s ease .1s, max-width .22s ease;
+    }
+    .sidebar:hover .cat-quiz-btn, .sidebar:focus-within .cat-quiz-btn{
+      opacity:1; pointer-events:auto; transition:opacity .18s ease .12s;
+    }
+  }
+
+  /* ---------- Tiles de categoria "estilo jogo" + grade fixa até 6/linha (desktop) — 04/11/2026 ---------- */
+  @media (min-width:801px){
+    .tiles-grid{
+      grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px;
+      max-width:1320px; margin:0 auto;
+    }
+    .cat-tile{
+      text-align:center; align-items:center; gap:10px;
+      padding:22px 14px 18px; border-radius:16px; border-top-width:4px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .cat-tile:hover{ transform:translateY(-5px) scale(1.03); }
+    .cat-tile h4{ padding-right:0; font-size:.92rem; }
+    .cat-tile .ct-icon{
+      width:56px; height:56px; border-radius:50%; font-size:1.55rem; border-width:2px;
+      box-shadow:0 4px 14px color-mix(in srgb, var(--cc, var(--red-bright)) 32%, transparent), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.12);
+    }
+    .cat-tile:hover .ct-icon{ transform:scale(1.12) rotate(-4deg); }
+    .cat-tile .ct-count{
+      font-weight:800; letter-spacing:.3px; color:var(--cc, var(--text-dim));
+      background:var(--cg, var(--hover-tint)); padding:3px 11px; border-radius:20px;
+    }
+  }
+  @media (min-width:801px) and (max-width:1099px){
+    .tiles-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+  }
+
+  /* "Favoritos" e "Não Confunda" não são categorias de verdade — fundo com leve
+     matiz na própria cor do cartão (em vez do cinza neutro das categorias),
+     pra sinalizar a diferença sem destoar do restante da grade (04/11/2026) */
+  .cat-tile-acao{
+    background: linear-gradient(165deg, color-mix(in srgb, var(--cg, var(--panel)) 55%, var(--card)), var(--card) 170%);
+  }
 </style>
 </head>
 <body>
@@ -1109,6 +1230,9 @@ function viewInicio(){
   categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#ffb020;--cg:rgba(255,176,32,.18)" onclick="setView(\'favoritos\')">' +
     favQuizCorner +
     '<div class="ct-icon">'+icon('star')+'</div><h4>Favoritos</h4><div class="ct-count">'+nFavsHome+' termo'+(nFavsHome===1?'':'s')+' salvo'+(nFavsHome===1?'':'s')+'</div></div>';
+  const nComp = DATA.comparacoes.length;
+  categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#b98cf0;--cg:rgba(185,140,240,.18)" onclick="setView(\'naoconfunda\')">' +
+    '<div class="ct-icon">'+icon('swap')+'</div><h4>Não Confunda</h4><div class="ct-count">'+nComp+' comparaç'+(nComp===1?'ão':'ões')+'</div></div>';
   DATA.categorias.forEach(cat=>{
     const n = termosDaCategoria(cat.id).length;
     const quizCorner = n>0 ? '<button class="ct-quiz-corner" onclick="event.stopPropagation(); iniciarQuiz(\''+cat.id+'\')" title="Testar '+esc(cat.nome)+' no modo Quiz">'+icon('cards')+'QUIZ</button>' : '';
@@ -1118,8 +1242,8 @@ function viewInicio(){
   });
   categoriasSection += '</div>';
 
-  // No mobile, "Categorias" vem antes de "Termos em destaque"; no desktop a ordem é invertida.
-  html += isMobile() ? (categoriasSection + destaqueSection) : (destaqueSection + categoriasSection);
+  // Categorias vem antes de "Termos em destaque" em qualquer tamanho de tela (pedido do usuário em 04/11/2026).
+  html += categoriasSection + destaqueSection;
 
   if(historico.length){
     html += '<div class="section-title">'+icon('history')+' Consultados recentemente</div><div class="historico-line">';

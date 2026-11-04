@@ -227,6 +227,13 @@
     margin-top:2px;
     white-space:nowrap;
   }
+  .calc-count-badge{
+    display:inline-flex; align-items:center; gap:6px; margin-top:7px;
+    padding:3px 11px; border-radius:999px;
+    background:var(--red-glow); border:1px solid rgba(228,23,44,.35);
+    color:var(--red-bright); font-size:.72rem; font-weight:700; letter-spacing:.02em;
+  }
+  .calc-count-badge svg{ width:13px; height:13px; }
 
   @media (max-width: 800px){
     /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
@@ -1470,6 +1477,7 @@
   <div class="titulo-central">
     <div class="titulo-principal">CALCULADORA <span class="titulo-accent">DE DOSES</span></div>
     <div class="titulo-descricao">Cálculo de doses por peso e idade (pediátrico e adulto) com base em bulas e diretrizes atualizadas</div>
+    <div class="calc-count-badge" id="calc-count-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg><span id="calc-count-num">—</span> medicamentos disponíveis</div>
   </div>
   <a href="../" class="home-btn-desktop" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
   <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
@@ -1729,6 +1737,8 @@ fetch('dados.json')
   .then(r => r.json())
   .then(data => {
     DB = data;
+    const ccEl = document.getElementById('calc-count-num');
+    if(ccEl) ccEl.textContent = (DB.farmacos || []).length;
     renderSidebar();
     const deepId = new URLSearchParams(location.search).get('farmaco');
     if(deepId){ selecionarFarmaco(deepId); }

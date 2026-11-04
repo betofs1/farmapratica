@@ -1,0 +1,4451 @@
+{
+  "_aviso": "Gerado cruzando o CMED/ANVISA com as substâncias controladas/antimicrobianas do controlados.json. Cobre só marcas cujo princípio ativo é uma substância rastreada nesta consulta.",
+  "_total_marcas": 1111,
+  "_total_substancias_com_marca": 216,
+  "marcas": {
+    "NEOTIGASON": {
+      "substancia": "Acitretina",
+      "codigo": "C2"
+    },
+    "BELPELE": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "DERIVA MICRO": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "DIFFERIN": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "ADACNE": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "ADACNE CLIN": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "DERIVA C MICRO": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "ADAPALENO + PERÓXIDO DE BENZOÍLA": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "ADAZO": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "EPIDUO": {
+      "substancia": "Adapaleno",
+      "codigo": "C2"
+    },
+    "VALDOXAN": {
+      "substancia": "Agomelatina",
+      "codigo": "C1"
+    },
+    "AGOXOM": {
+      "substancia": "Agomelatina",
+      "codigo": "C1"
+    },
+    "ELENCOS": {
+      "substancia": "Agomelatina",
+      "codigo": "C1"
+    },
+    "TRANQUINAL SLG": {
+      "substancia": "Alprazolam",
+      "codigo": "B1"
+    },
+    "TRANQUINAL": {
+      "substancia": "Alprazolam",
+      "codigo": "B1"
+    },
+    "APRAZ": {
+      "substancia": "Alprazolam",
+      "codigo": "B1"
+    },
+    "FRONTAL": {
+      "substancia": "Alprazolam",
+      "codigo": "B1"
+    },
+    "SOCIAN": {
+      "substancia": "Amissulprida",
+      "codigo": "C1"
+    },
+    "NEMOXIL": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "APLUC": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA SÓDICA + CLAVULANATO DE POTÁSSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA + CLAVULANATO DE POTÁSSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DOCLAXIN": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ÁCIDO CLAVULÂNICO + AMOXICILINA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRIFAMOX": {
+      "substancia": "sulbactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SINOT": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLAVULIN": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOX-EMS": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NOVOCILIN": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA TRIIDRATADA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OCYLIN": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VELAMOX BD": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VELAMOX": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLIMOXIL": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXIL": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA TRI-HIDRATADA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "IQUEGO-AMOXICILINA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP - AMOXICILINA": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA + CLAVULANATO DE POTASSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NOVAMOX": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLICLAVUMOXIL": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLICLAVUMOXIL BD": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LÂNICO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA TRIIDRATADA + CLAVULANATO DE POTÁSSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULBAMOX": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPICILAB": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPLACILINA": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPICILINA": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPLATIL": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-AMPICILINA": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CILINON": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPICILINA SÓDICA + SULBACTAM SÓDICO": {
+      "substancia": "sulbactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULBACTAM SÓDICO + AMPICILINA SÓDICA": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ULCTAM": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPCTAN": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPICILINA SÓDICA + SULBACTAM SÓDICA": {
+      "substancia": "ampicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NOVASUTIN": {
+      "substancia": "tetraciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TERICIN AT": {
+      "substancia": "tetraciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ARPEJO": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "SENSAZ": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "BIQUIZ": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "HEDD": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "TOARIP": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "AQUARELA": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "OPTARY": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "ARISTAB ODT": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "ARISTAB": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "ARPIO": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "HARIP": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "HARIP ODT": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "KAVIUM": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "KAVIUM ODT": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "AIPRI": {
+      "substancia": "Aripiprazol",
+      "codigo": "C1"
+    },
+    "NUVIGIL": {
+      "substancia": "Armodafinila",
+      "codigo": "B1"
+    },
+    "ZINNAT": {
+      "substancia": "cefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOTACEF": {
+      "substancia": "axetilcefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MEFEX": {
+      "substancia": "axetilcefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AURA": {
+      "substancia": "axetilcefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZINOSTIL": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROMICINA DI-HIDRATADA": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ELIM": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZI": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROMICINA MONOIDRATADA": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROMICINA": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ASTRO": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ASTRO IV": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZICIN": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZOLPROX": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TROMIZIR": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZIRK": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROMED": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROLAB": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZITROMAX": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROPHAR": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZITROMICINA DIIDRATADA": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZITRONEO": {
+      "substancia": "azitromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZEUS": {
+      "substancia": "aztreonam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AZANEM": {
+      "substancia": "aztreonam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PREDMICIN": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BYFAVO": {
+      "substancia": "Remimazolam",
+      "codigo": "B1"
+    },
+    "REXULTI": {
+      "substancia": "Brexpiprazol",
+      "codigo": "C1"
+    },
+    "LEXMA": {
+      "substancia": "Bromazepam",
+      "codigo": "B1"
+    },
+    "FLUXTAR": {
+      "substancia": "Bromazepam",
+      "codigo": "B1"
+    },
+    "SOMALIUM": {
+      "substancia": "Bromazepam",
+      "codigo": "B1"
+    },
+    "LEXOTAN": {
+      "substancia": "Bromazepam",
+      "codigo": "B1"
+    },
+    "SULPAN": {
+      "substancia": "Bromazepam",
+      "codigo": "B1"
+    },
+    "PROCIMAX": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "CITALOPRAM": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "CITTÀ": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "DENYL": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "CIPRAMIL": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "ALCYTAM": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "NYPRAM": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "COGLIVE": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "GAUDY": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "REGRESSA": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "ALZYNAMIN": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "COGIT": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "ELATIUM": {
+      "substancia": "Galantamina",
+      "codigo": "C1"
+    },
+    "VOEXTOR": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VOD": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VOGNUS": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VORXE": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "BRINTELLIX": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VURTUOSO": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VORPRO": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "VORSYNC": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "EVORTIA": {
+      "substancia": "Vortioxetina",
+      "codigo": "C1"
+    },
+    "LUSANDA": {
+      "substancia": "Buprenorfina",
+      "codigo": "A1"
+    },
+    "TRANSTEC": {
+      "substancia": "Buprenorfina",
+      "codigo": "A1"
+    },
+    "RESTIVA": {
+      "substancia": "Buprenorfina",
+      "codigo": "A1"
+    },
+    "TEGRETOL": {
+      "substancia": "Carbamazepina",
+      "codigo": "C1"
+    },
+    "TEGRETARD": {
+      "substancia": "Carbamazepina",
+      "codigo": "C1"
+    },
+    "UNI-CARBAMAZ": {
+      "substancia": "Carbamazepina",
+      "codigo": "C1"
+    },
+    "TEGREZIN": {
+      "substancia": "Carbamazepina",
+      "codigo": "C1"
+    },
+    "CARBOLITIUM": {
+      "substancia": "Lítio",
+      "codigo": "C1"
+    },
+    "LITERATA": {
+      "substancia": "Lítio",
+      "codigo": "C1"
+    },
+    "CARLIT": {
+      "substancia": "Lítio",
+      "codigo": "C1"
+    },
+    "BILYT": {
+      "substancia": "Lítio",
+      "codigo": "C1"
+    },
+    "BIPOLIT": {
+      "substancia": "Lítio",
+      "codigo": "C1"
+    },
+    "TANDRIFLAN": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TRILAX": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "BESEROL": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TANDENE": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TANDRILAX": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "FLEXALGIN": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TORSILAX": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "MIOFLEX A": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "MIONEVRIX": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "CARISOPRODOL + DICLOFENACO DE SÓDIO + PARACETAMOL+ CAFEÍNA": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TRIMUSK": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TANDERALGIN": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "INFRALAX": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "CARISOPRODOL + DICLOFENACO SÓDICO + PARACETAMOL + CAFEÍNA": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "PARACETAMOL + CARISOPRODOL + DICLOFENACO SÓDICO + CAFEÍNA": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "TORFLAY": {
+      "substancia": "Carisoprodol",
+      "codigo": "B1"
+    },
+    "CECLOR": {
+      "substancia": "cefaclor",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFACLOR": {
+      "substancia": "cefaclor",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LEXIN": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFALEXINA MONOIDRATADA": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFALEXINA": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEF": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-CEFALEXINA": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFAGEL": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFORAL": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFLEX": {
+      "substancia": "cefalexina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFARISTON": {
+      "substancia": "cefalotina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFLIN NEUTRO": {
+      "substancia": "cefalotina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEZOLIN": {
+      "substancia": "cefazolina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FAZOLON": {
+      "substancia": "cefazolina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFAZOL": {
+      "substancia": "cefazolina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETAZIMA": {
+      "substancia": "cefotaxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLAFORDIL": {
+      "substancia": "cefotaxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTON": {
+      "substancia": "cefoxitina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFOX": {
+      "substancia": "cefoxitina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZINFORO": {
+      "substancia": "ceftarolina fosamila",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZEVTERA": {
+      "substancia": "ceftobiprol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TEUCEF": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTRIAXONA DISSÓDICA": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTRIONA": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMPLOSPEC": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ROCEFIN": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRIAXTON": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFTRON": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTRIAXONA DISSÓDICA HEMIEPTAIDRATADA": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRIAXIN": {
+      "substancia": "ceftriaxona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZINACEF": {
+      "substancia": "cefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MONOCEF": {
+      "substancia": "cefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEROXIME": {
+      "substancia": "cefuroxima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "COQUES": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "DUCOX": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "CELEBRA": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "CIBEX": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "MOVYDIA": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "FOXIS": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "PARZO": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "DICOXIBE": {
+      "substancia": "Celecoxibe",
+      "codigo": "C1"
+    },
+    "IMIPENEM + CILASTATINA": {
+      "substancia": "imipenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "IMIPENEM + CILASTATINA SÓDICA": {
+      "substancia": "imipenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TESTOCYP": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "DEPOSTERON": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "MAXAPRAN": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "CITALOPRAM (PORT. 344/98, L-C1)": {
+      "substancia": "Citalopram",
+      "codigo": "C1"
+    },
+    "FENTANEST": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "FENTANEST BOLSA": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "ANESFENT": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "UNIFENTAL": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "FENTANIL": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "FENTORA": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "NILPERIDOL": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "FASTFEN": {
+      "substancia": "Sufentanila",
+      "codigo": "A1"
+    },
+    "SUFENTA": {
+      "substancia": "Sufentanila",
+      "codigo": "A1"
+    },
+    "CLABAT": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLINBACTER": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KLARICID": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLARILIB": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ESOGASTRO IBP": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LANSOPRAZOL + CLARITROMICINA + AMOXICILINA": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OMEPRAMIX": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA + CLARITROMICINA + ESOMEPRAZOL": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PYLORITRAT": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PYLORIPAC": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "H.BACTER": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LANSOPRAZOL +CLARITROMICINA +AMOXICILINA": {
+      "substancia": "claritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SINOT CLAV": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ATAK CLAV": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLAXAM": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA TRI-HIDRATADA + CLAVULANATO DE POTÁSSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMCLAVU": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMOXICILINA+CLAVULANATO DE POTASSIO": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SIGMA-CLAV BD": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SIGMA CLAV": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "URBANIL": {
+      "substancia": "Clobazam",
+      "codigo": "B1"
+    },
+    "FRISIUM": {
+      "substancia": "Clobazam",
+      "codigo": "B1"
+    },
+    "CLOPAM": {
+      "substancia": "Clonazepam",
+      "codigo": "B1"
+    },
+    "RIVOTRIL": {
+      "substancia": "Clonazepam",
+      "codigo": "B1"
+    },
+    "CLONAZEPAM (PORT. 344/98 – LISTA B1)": {
+      "substancia": "Clonazepam",
+      "codigo": "B1"
+    },
+    "AZENPI": {
+      "substancia": "Clonazepam",
+      "codigo": "B1"
+    },
+    "ZILEPAM": {
+      "substancia": "Clonazepam",
+      "codigo": "B1"
+    },
+    "REGENCEL": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FIBRINASE COM CLORANFENICOL": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ALFAST": {
+      "substancia": "Alfentanila",
+      "codigo": "A1"
+    },
+    "RAPIFEN": {
+      "substancia": "Alfentanila",
+      "codigo": "A1"
+    },
+    "MANTIDAN": {
+      "substancia": "Amantadina",
+      "codigo": "C1"
+    },
+    "AMYTRIL": {
+      "substancia": "Amitriptilina",
+      "codigo": "C1"
+    },
+    "MITRIP": {
+      "substancia": "Amitriptilina",
+      "codigo": "C1"
+    },
+    "LIMBITROL": {
+      "substancia": "Amitriptilina",
+      "codigo": "C1"
+    },
+    "ATENTAH": {
+      "substancia": "Atomoxetina",
+      "codigo": "C1"
+    },
+    "FLUTUAH": {
+      "substancia": "Atomoxetina",
+      "codigo": "C1"
+    },
+    "ANGINO RUB": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "GARGOJUICE": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "FLOGORAL": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "FLOGO-ROSA": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "CIFLOGEX": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "PASTILHAS CEPACOL": {
+      "substancia": "Benzidamina",
+      "codigo": "C1"
+    },
+    "CINETOL": {
+      "substancia": "Biperideno",
+      "codigo": "C1"
+    },
+    "PROPARK": {
+      "substancia": "Biperideno",
+      "codigo": "C1"
+    },
+    "AKINETON": {
+      "substancia": "Biperideno",
+      "codigo": "C1"
+    },
+    "ZETRON": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUP": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUP XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "WELLBUTRIN": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUENE": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "ALPES XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "SETH": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUPREXIS XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "EUTYMIA XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "DERADOP XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "NORADOP": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUPIUM XL": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "BUPIUM": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "CONTRAVE": {
+      "substancia": "Bupropiona",
+      "codigo": "C1"
+    },
+    "ANSITEC": {
+      "substancia": "Buspirona",
+      "codigo": "C1"
+    },
+    "STIMA": {
+      "substancia": "Buspirona",
+      "codigo": "C1"
+    },
+    "TAGUE": {
+      "substancia": "Buspirona",
+      "codigo": "C1"
+    },
+    "CLOCEF": {
+      "substancia": "cefepima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLORIDRATO DE CEFEPIME": {
+      "substancia": "cefepima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CICLOPLÉGICO": {
+      "substancia": "Ciclopentolato",
+      "codigo": "C1"
+    },
+    "CICLOLATO": {
+      "substancia": "Ciclopentolato",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE CLINDAMICINA": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLINDAMIN-C": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DALACIN C": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ANAFRANIL": {
+      "substancia": "Clomipramina",
+      "codigo": "C1"
+    },
+    "CLO": {
+      "substancia": "Clomipramina",
+      "codigo": "C1"
+    },
+    "LONGACTIL": {
+      "substancia": "Clorpromazina",
+      "codigo": "C1"
+    },
+    "CLORPROMAZ": {
+      "substancia": "Clorpromazina",
+      "codigo": "C1"
+    },
+    "AMPLICTIL": {
+      "substancia": "Clorpromazina",
+      "codigo": "C1"
+    },
+    "EMPOZZE": {
+      "substancia": "Dapoxetina",
+      "codigo": "C1"
+    },
+    "PROSOY": {
+      "substancia": "Dapoxetina",
+      "codigo": "C1"
+    },
+    "BDEXBRAUN": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "DEX": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "DEX BOLSA": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "EXTODIN": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "SIMBILEX": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "PRECEDEX": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "SLIPDEX": {
+      "substancia": "Dexmedetomidina",
+      "codigo": "C1"
+    },
+    "DON": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "LABREA": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "SENES": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "DEPZEL": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "EPÉZ": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "COMFECT": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "DONILA": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "FURP-DONEPEZILA": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "ERANZ": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "DANPEZIL": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "LÁBREA DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "EPÉZ DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE DONEPEZILA + CLORIDRATO DE MEMANTINA": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "ALOIS DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "ALOIS DUO PACK": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "MORIALE DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "COMFECT DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "DONILA DUO": {
+      "substancia": "Donepezila",
+      "codigo": "C1"
+    },
+    "DOXICLIN": {
+      "substancia": "doxiciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HICLATO DE DOXICICLINA": {
+      "substancia": "doxiciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VELIJA": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "DEP": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "SYMPTA": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "ABRETIA": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "LEDUO": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "DUAL": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "MYDULO": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "CYMBALTA": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "CYMBI": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "DEPRASIL": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "DUXXEN": {
+      "substancia": "Duloxetina",
+      "codigo": "C1"
+    },
+    "KETAMIN": {
+      "substancia": "Escetamina",
+      "codigo": "B1"
+    },
+    "KETAH": {
+      "substancia": "Escetamina",
+      "codigo": "B1"
+    },
+    "KETAH LC": {
+      "substancia": "Escetamina",
+      "codigo": "B1"
+    },
+    "SPRAVATO": {
+      "substancia": "Escetamina",
+      "codigo": "B1"
+    },
+    "FINTEPLA": {
+      "substancia": "Fenfluramina",
+      "codigo": "A3"
+    },
+    "VEROTINA": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "FLUXENE": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "FLUOXETIN": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "PROZEN": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "PROZAC": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "DAFORIN": {
+      "substancia": "Fluoxetina",
+      "codigo": "C1"
+    },
+    "DALMADORM": {
+      "substancia": "Flurazepam",
+      "codigo": "B1"
+    },
+    "IMIPRA": {
+      "substancia": "Imipramina",
+      "codigo": "C1"
+    },
+    "LEVOZINE": {
+      "substancia": "Levomepromazina",
+      "codigo": "C1"
+    },
+    "NEOZINE": {
+      "substancia": "Levomepromazina",
+      "codigo": "C1"
+    },
+    "LINATRON": {
+      "substancia": "lincomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DIASEC": {
+      "substancia": "Loperamida",
+      "codigo": "C1"
+    },
+    "INTESTIN": {
+      "substancia": "Loperamida",
+      "codigo": "C1"
+    },
+    "KAOSEC": {
+      "substancia": "Loperamida",
+      "codigo": "C1"
+    },
+    "MAGNOSTASE": {
+      "substancia": "Loperamida",
+      "codigo": "C1"
+    },
+    "IMOSEC": {
+      "substancia": "Loperamida",
+      "codigo": "C1"
+    },
+    "LURATT": {
+      "substancia": "Lurasidona",
+      "codigo": "C1"
+    },
+    "LATUDA®": {
+      "substancia": "Lurasidona",
+      "codigo": "C1"
+    },
+    "LUTAB": {
+      "substancia": "Lurasidona",
+      "codigo": "C1"
+    },
+    "LUBIP": {
+      "substancia": "Lurasidona",
+      "codigo": "C1"
+    },
+    "ZIDER": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "HEIMER": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "ALOIS": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "MORIALE ODT": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "ALZ": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "DESIRÉE": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "EBIX": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "MEALZ": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "VIE": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "KAMPPI": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "MAIZHER": {
+      "substancia": "Memantina",
+      "codigo": "C1"
+    },
+    "MYTEDOM": {
+      "substancia": "Metadona",
+      "codigo": "A1"
+    },
+    "ATTENZE": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "MEDATO": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "RITALINA": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "CONCERTA": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "CONSIV": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "RAGIONE": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "TEDEAGA": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "FOQ XR": {
+      "substancia": "Metilfenidato",
+      "codigo": "A3"
+    },
+    "DORMIRE": {
+      "substancia": "Midazolam",
+      "codigo": "B1"
+    },
+    "PRAIVA": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VIGAMOX": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEUMOSIN": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MADUN": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OFTALMOX": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AVALOX": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLORIDRATO DE MOXIFLOXACINO": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZANTY": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NUBAIN": {
+      "substancia": "Nalbufina",
+      "codigo": "A2"
+    },
+    "NALBLI": {
+      "substancia": "Nalbufina",
+      "codigo": "A2"
+    },
+    "NARCAN": {
+      "substancia": "Naloxona",
+      "codigo": "C1"
+    },
+    "TARGIN": {
+      "substancia": "Naloxona",
+      "codigo": "C1"
+    },
+    "REVIA": {
+      "substancia": "Naltrexona",
+      "codigo": "C1"
+    },
+    "UNINALTREX": {
+      "substancia": "Naltrexona",
+      "codigo": "C1"
+    },
+    "REDUXALT": {
+      "substancia": "Naltrexona",
+      "codigo": "C1"
+    },
+    "SLIV": {
+      "substancia": "Naltrexona",
+      "codigo": "C1"
+    },
+    "BUPNAL": {
+      "substancia": "Naltrexona",
+      "codigo": "C1"
+    },
+    "NORTRY": {
+      "substancia": "Nortriptilina",
+      "codigo": "C1"
+    },
+    "PAMELOR": {
+      "substancia": "Nortriptilina",
+      "codigo": "C1"
+    },
+    "OXINEST": {
+      "substancia": "Oxibuprocaína (benoxinato)",
+      "codigo": "C1"
+    },
+    "OXYPYNAL": {
+      "substancia": "Oxicodona",
+      "codigo": "A1"
+    },
+    "OXYCONTIN": {
+      "substancia": "Oxicodona",
+      "codigo": "A1"
+    },
+    "OXYNORM ®": {
+      "substancia": "Oxicodona",
+      "codigo": "A1"
+    },
+    "CEBRILIN": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "PONDERA": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "AROPAX": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "PAXIL CR": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "ROXETIN": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "PAROX": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "PONDERA XR": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "SINCRO XR": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE PAROXETINA": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "ROXETIN XR": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "PAXTRAT": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "DEPAXAN": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE PAROXETINA (PORT 344/98 LISTA C1)": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "MORATUS": {
+      "substancia": "Paroxetina",
+      "codigo": "C1"
+    },
+    "DOLOSAL": {
+      "substancia": "Petidina",
+      "codigo": "A1"
+    },
+    "CLORIDRATO DE PETIDINA (PORT. 344/98 - LISTA A1)": {
+      "substancia": "Petidina",
+      "codigo": "A1"
+    },
+    "ANESTALCON": {
+      "substancia": "Proximetacaina",
+      "codigo": "C1"
+    },
+    "REMIFAS": {
+      "substancia": "Remifentanila",
+      "codigo": "A1"
+    },
+    "REMISTESI": {
+      "substancia": "Remifentanila",
+      "codigo": "A1"
+    },
+    "RELYON": {
+      "substancia": "Remifentanila",
+      "codigo": "A1"
+    },
+    "ULTIVA": {
+      "substancia": "Remifentanila",
+      "codigo": "A1"
+    },
+    "JUMEXIL": {
+      "substancia": "Selegilina",
+      "codigo": "C1"
+    },
+    "ASSERT": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "AFETUS": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "ZOLOFT": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "SERENATA": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "TOLREST": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "RALZIN": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "DIELOFT": {
+      "substancia": "Sertralina",
+      "codigo": "C1"
+    },
+    "BIOMAG": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "SIBUS": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "CLORIDRATO DE SIBUTRAMINA": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "CLORIDRATO DE SIBUTRAMINA MONOIDRATADA": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "SIGRAN": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "VAZY": {
+      "substancia": "Sibutramina",
+      "codigo": "B2"
+    },
+    "PALEXIS® LP": {
+      "substancia": "Tapentadol",
+      "codigo": "A1"
+    },
+    "PALEXIS": {
+      "substancia": "Tapentadol",
+      "codigo": "A1"
+    },
+    "ANESTÉSICO OCULUM": {
+      "substancia": "Tetracaína",
+      "codigo": "C1"
+    },
+    "HEXOMEDINE": {
+      "substancia": "Tetracaína",
+      "codigo": "C1"
+    },
+    "OTO BETNOVATE": {
+      "substancia": "Tetracaína",
+      "codigo": "C1"
+    },
+    "TETRAMED": {
+      "substancia": "tetraciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CINATREX": {
+      "substancia": "tetraciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "UNITIDAZIN": {
+      "substancia": "Tioridazina",
+      "codigo": "C1"
+    },
+    "MELLERIL": {
+      "substancia": "Tioridazina",
+      "codigo": "C1"
+    },
+    "GÉSICO": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TRAMADON": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "CLORIDRATO DE TRAMADOL (PORT 344/98 - LISTA A2)": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "CLORIDRATO DE TRAMADOL (PORT. 344/98, L-A2)": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TROL": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TRAUM": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "CLORIDRATO DE TRAMADOL (PORTARIA 344/98 - LISTA A2)": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "CLORIDRATO DE TRAMADOL (PORT. 344/98 - LISTA A2)": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "NOVOTRAM": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TRAMAL": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TRAMAL RETARD": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "CLORIDRATO DE TRAMADOL + DICLOFENACO SÓDICO": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "NUSIRA": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "ADORLAN": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "SONIC": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "MOTRAZ": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "DONAREN": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "DONAREN RETARD": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "INSERIS XR": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "DONAREN® LP": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "LUMBRA": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "AZOD": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "LOREDON": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "RAZ XR": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "TRADEP": {
+      "substancia": "Trazodona",
+      "codigo": "C1"
+    },
+    "ARTANE": {
+      "substancia": "Triexifenidil",
+      "codigo": "B1"
+    },
+    "NOVAMICIN": {
+      "substancia": "vancomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VANCOTRAT": {
+      "substancia": "vancomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VANCOSON": {
+      "substancia": "vancomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HICOVAN": {
+      "substancia": "vancomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VANCOCINA CP": {
+      "substancia": "vancomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VENLAXIN XR": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "EFEXOR": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "VENSATE LP": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "VENLAFAXINA": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "VENLIFT OD": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "ALENTHUS XR": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE VENLAFAXINA (PORT. 344/98 L-C1)": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "MYLETIN": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "VENFORIN": {
+      "substancia": "Venlafaxina",
+      "codigo": "C1"
+    },
+    "AYMEE": {
+      "substancia": "Vilazodona",
+      "codigo": "C1"
+    },
+    "GEODON": {
+      "substancia": "Ziprasidona",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE ZIPRASIDONA": {
+      "substancia": "Ziprasidona",
+      "codigo": "C1"
+    },
+    "LFM ZIPRASIDONA": {
+      "substancia": "Ziprasidona",
+      "codigo": "C1"
+    },
+    "PINAZAN": {
+      "substancia": "Clozapina",
+      "codigo": "C1"
+    },
+    "OKÓTICO": {
+      "substancia": "Clozapina",
+      "codigo": "C1"
+    },
+    "LEPONEX": {
+      "substancia": "Clozapina",
+      "codigo": "C1"
+    },
+    "KOLLAGENASE COM CLORANFENICOL": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DBRIZ": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "IRUXOL": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KOLPOCERVIX": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-DAPSONA": {
+      "substancia": "dapsona",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRISK": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CUBICIN": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RELDAPTOS": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EXFUNO": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DOPCYM": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GAPOBAK": {
+      "substancia": "daptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HALO  DECANOATO": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "DECAN HALOPER": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "HALDOL DECANOATO": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "DECA-DURABOLIN": {
+      "substancia": "Nandrolona",
+      "codigo": "C5"
+    },
+    "DELTYBA": {
+      "substancia": "delamanide",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ADINOS GEN": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AUSTEDO": {
+      "substancia": "Deutetrabenazina",
+      "codigo": "C1"
+    },
+    "TRIVAGEL N": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MAXITROL": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MAXINOM": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MAXIVIEW": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRADEX": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRACORT": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SANTIAZEPAM": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "COMPAZ": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "UNI-DIAZEPAX": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "VALIUM": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "RELAPAX": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "FURP-DIAZEPAM": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "DIAZEPAM NQ": {
+      "substancia": "Diazepam",
+      "codigo": "B1"
+    },
+    "FURP - ETAMBUTOL": {
+      "substancia": "etambutol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FLUFENAN": {
+      "substancia": "Flufenazina",
+      "codigo": "C1"
+    },
+    "PISA": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "QUERA LP": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "SIFROL": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "MINÉRGI": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "STABIL": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "ROCKY": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "DICLORIDRATO DE PRAMIPEXOL": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "QUERA": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "STABIL XR": {
+      "substancia": "Pramipexol",
+      "codigo": "C1"
+    },
+    "STELAZINE": {
+      "substancia": "Trifluoperazina",
+      "codigo": "C1"
+    },
+    "CLOPIXOL": {
+      "substancia": "Zuclopentixol",
+      "codigo": "C1"
+    },
+    "LYSDEXA": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LISDEV": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LIND": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LYBERDIA": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LYBERDIA GOTAS": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "DEKSA": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LIDEXOR": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LIDEXOR GOTAS": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "JUNEVE": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "VENVANSE": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "VIMADE": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "LISVENX": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "DEXXAH": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "MONITUM": {
+      "substancia": "Lisdexanfetamina",
+      "codigo": "A3"
+    },
+    "TROK-G": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DIPROPIONATO DE BETAMETASONA + SULFATO DE GENTAMICINA": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BETOGENTA": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DIPROGENTA": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GABA ER": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "DUEPOLI  ER": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "LEPS ER": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "DEPAKOTE": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "DIVALCON": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "VALPI": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "ZEUGMA XR": {
+      "substancia": "Divalproato de sódio",
+      "codigo": "C1"
+    },
+    "DOXICICLINA": {
+      "substancia": "doxiciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VIBRAMICINA": {
+      "substancia": "doxiciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DROPERDAL": {
+      "substancia": "Droperidol",
+      "codigo": "C1"
+    },
+    "FLUFENAN DEPOT": {
+      "substancia": "Flufenazina",
+      "codigo": "C1"
+    },
+    "ENFLURAN": {
+      "substancia": "Enflurano",
+      "codigo": "C1"
+    },
+    "COMTAN": {
+      "substancia": "Entacapona",
+      "codigo": "C1"
+    },
+    "ENTARKIN": {
+      "substancia": "Entacapona",
+      "codigo": "C1"
+    },
+    "INVANZ": {
+      "substancia": "ertapenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ROVAMICINA": {
+      "substancia": "espiramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NOCTAL": {
+      "substancia": "Estazolam",
+      "codigo": "B1"
+    },
+    "RUBROMICIN": {
+      "substancia": "eritromicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PRYSMA": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "EZONIA": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "HEZO": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "TORREM": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "SOUL": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "ECZO": {
+      "substancia": "Eszopiclona",
+      "codigo": "B1"
+    },
+    "ZYLET": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FARMANGUINHOS - ETIONAMIDA": {
+      "substancia": "etionamida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EPTOMYDEX": {
+      "substancia": "Etomidato",
+      "codigo": "C1"
+    },
+    "HYPNOMIDATE": {
+      "substancia": "Etomidato",
+      "codigo": "C1"
+    },
+    "ARCOXIA": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "HETORI": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "TEROCOXI": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "ETCOB": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "SOTTO": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "ALIVETORE": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "TORXIS": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "ETORBEN": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "COXETO": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "XUMER": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "LERAW": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "ECOXE": {
+      "substancia": "Etoricoxibe",
+      "codigo": "C1"
+    },
+    "ETOXIN": {
+      "substancia": "Etossuximida",
+      "codigo": "C1"
+    },
+    "FENITAL ORAL": {
+      "substancia": "Fenitoina",
+      "codigo": "C1"
+    },
+    "DANTALIN": {
+      "substancia": "Fenitoina",
+      "codigo": "C1"
+    },
+    "FURP - FENITOINA": {
+      "substancia": "Fenitoina",
+      "codigo": "C1"
+    },
+    "HIDANTAL": {
+      "substancia": "Fenitoina",
+      "codigo": "C1"
+    },
+    "FENITAL": {
+      "substancia": "Fenitoina",
+      "codigo": "C1"
+    },
+    "FENOCRIS": {
+      "substancia": "Fenobarbital",
+      "codigo": "B1"
+    },
+    "CARBITAL": {
+      "substancia": "Fenobarbital",
+      "codigo": "B1"
+    },
+    "FURP-FENOBARBITAL": {
+      "substancia": "Fenobarbital",
+      "codigo": "B1"
+    },
+    "GARDENAL": {
+      "substancia": "Fenobarbital",
+      "codigo": "B1"
+    },
+    "DUROGESIC": {
+      "substancia": "Fentanila",
+      "codigo": "A1"
+    },
+    "FLUMAZIL": {
+      "substancia": "Flumazenil",
+      "codigo": "C1"
+    },
+    "LENAZEN": {
+      "substancia": "Flumazenil",
+      "codigo": "C1"
+    },
+    "LANEXAT": {
+      "substancia": "Flumazenil",
+      "codigo": "C1"
+    },
+    "ROHYPNOL": {
+      "substancia": "Flunitrazepam",
+      "codigo": "B1"
+    },
+    "ROHYDORM": {
+      "substancia": "Flunitrazepam",
+      "codigo": "B1"
+    },
+    "OTOSYLASE": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ELOTIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OTOMIXYN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FLUOCINOLONA ACETONIDA + SULFATO DE POLIMIXINA B + SULFATO DE NEOMICINA + CLORIDRATO DE LIDOCAINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FLUOCINOLONA ACETONIDA + SULFATO DE POLIMIXINA B + SULFATO DE NEOMICINA + CLORIDRATO DE LIDOCAÍNA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HIDROQUINONA+ TRETINOINA + FLUOCINOLONA ACETONIDA": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "TRINULOX": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "HORMOSKIN": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "SUAVICID": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "HYCLIN": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLINDARIX": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CODEIN": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "COD": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "FOSFATO DE CODEÍNA": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "CODATEN": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "PARACETAMOL + FOSFATO DE CODEÍNA": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "CODEX": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "PARACETAMOL + FOSFATO DE CODEINA": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "SIVEXTRO": {
+      "substancia": "tedizolida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VIGADEXA": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZANTY DUO": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FACOBA®": {
+      "substancia": "moxifloxacino",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MONURIL": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRATURIL": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MYFOS": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FOSMORYL": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VIZURIA": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CYSTOREN": {
+      "substancia": "fosfomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EMPAK": {
+      "substancia": "Gabapentina",
+      "codigo": "C1"
+    },
+    "GAPEM": {
+      "substancia": "Gabapentina",
+      "codigo": "C1"
+    },
+    "GABANEURIN": {
+      "substancia": "Gabapentina",
+      "codigo": "C1"
+    },
+    "HALO": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "HYPORIDROL": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "UNI HALOPER": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "FURP-HALOPERIDOL": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "HALDOL": {
+      "substancia": "Haloperidol",
+      "codigo": "C1"
+    },
+    "QUET XR": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUET": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUEPSIA LP": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "NEOTIAPIM": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUETIPIN": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUETIPIN LP": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUETIPIN SO": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "ATIP": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "ATIP XR": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "TRACOX": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUETROS": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "MENSYVA": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "KITAPEN": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "QUEROPAX": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "SEROQUEL": {
+      "substancia": "Quetiapina",
+      "codigo": "C1"
+    },
+    "COGNIVA": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "EXELON": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "VASTIGMA": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "TURNO SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "TURNO": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "RIPOSO SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "TURNO XR": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "INSONOX": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOUP SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ISOY": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLPAZ": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLPAZ SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOAF": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLFEST SPRAY": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLFEST": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLFEST D": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZOLREM SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "NOCTIDEN": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "NUIT FLASH": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "NUIT LONG XR": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "PATZ SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "PATZ CR": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "PATZ GTS": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "ZYLINOX SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "STILRAM SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "LUNE": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "LUNE SL": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "STILNOX": {
+      "substancia": "Zolpidem",
+      "codigo": "B1"
+    },
+    "VIVENCIA": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "HEMITARTARATO DE RIVASTIGMINA": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "DIVIDOL": {
+      "substancia": "Viminol",
+      "codigo": "A1"
+    },
+    "ISOFORINE": {
+      "substancia": "Isoflurano",
+      "codigo": "C1"
+    },
+    "FURP-ISONIAZIDA": {
+      "substancia": "isoniazida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FARMANGUINHOS - ISONIAZIDA": {
+      "substancia": "isoniazida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FARMANGUINHOS ISONIAZIDA + RIFAMPICINA": {
+      "substancia": "isoniazida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FARMANGUINHOS RIFAMPICINA+ISONIAZIDA+PIRAZINAMIDA+ETAMBUTOL": {
+      "substancia": "isoniazida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AMALFI": {
+      "substancia": "Isotretinoína",
+      "codigo": "C2"
+    },
+    "ROACUTAN": {
+      "substancia": "Isotretinoína",
+      "codigo": "C2"
+    },
+    "ISON": {
+      "substancia": "Isotretinoína",
+      "codigo": "C2"
+    },
+    "ACNOVA": {
+      "substancia": "Isotretinoína",
+      "codigo": "C2"
+    },
+    "ISOAC": {
+      "substancia": "Isotretinoína",
+      "codigo": "C2"
+    },
+    "LAKOS": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "SEIZLA": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "OSAMY": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "LACOTEM": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "VIMPAT": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "LAPSU": {
+      "substancia": "Lacosamida",
+      "codigo": "C1"
+    },
+    "LAMICTAL": {
+      "substancia": "Lamotrigina",
+      "codigo": "C1"
+    },
+    "NEURAL": {
+      "substancia": "Lamotrigina",
+      "codigo": "C1"
+    },
+    "LAMITOR CD": {
+      "substancia": "Lamotrigina",
+      "codigo": "C1"
+    },
+    "FORLUT": {
+      "substancia": "Lamotrigina",
+      "codigo": "C1"
+    },
+    "LEFLUN": {
+      "substancia": "Leflunomida",
+      "codigo": "C1"
+    },
+    "REUMIAN": {
+      "substancia": "Leflunomida",
+      "codigo": "C1"
+    },
+    "LFM-LEFLUNOMIDA": {
+      "substancia": "Leflunomida",
+      "codigo": "C1"
+    },
+    "ARAVA": {
+      "substancia": "Leflunomida",
+      "codigo": "C1"
+    },
+    "DAYVIGO": {
+      "substancia": "Lemborexante",
+      "codigo": "B1"
+    },
+    "NUVYOR": {
+      "substancia": "Lenalidomida",
+      "codigo": "C3"
+    },
+    "REVLIMID": {
+      "substancia": "Lenalidomida",
+      "codigo": "C3"
+    },
+    "LASSYA": {
+      "substancia": "Lenalidomida",
+      "codigo": "C3"
+    },
+    "LENANGIO": {
+      "substancia": "Lenalidomida",
+      "codigo": "C3"
+    },
+    "LYONE": {
+      "substancia": "Lenalidomida",
+      "codigo": "C3"
+    },
+    "ANTARA": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "SPARK": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ANTARA IV": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "SPARK XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ANTARA XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "LECZA XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "TAM": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "TAM XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "VEEPI": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "FRONTLEV": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ETIRA INJETÁVEL": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ETIRA XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ETIRA": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "ILUDRAL": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "KEPPRA": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "KEPPRA XR": {
+      "substancia": "Levetiracetam",
+      "codigo": "C1"
+    },
+    "STALEVO": {
+      "substancia": "Entacapona",
+      "codigo": "C1"
+    },
+    "PYLORIPAC RETRAT": {
+      "substancia": "amoxicilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SKINCAINE": {
+      "substancia": "Tetracaína",
+      "codigo": "C1"
+    },
+    "MECICLIN": {
+      "substancia": "limeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TETRALYSAL": {
+      "substancia": "limeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ADILOZ": {
+      "substancia": "linezolida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LYNOZ": {
+      "substancia": "linezolida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LIZBI®": {
+      "substancia": "linezolida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZYVOX": {
+      "substancia": "linezolida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LORAZEPAM (PORT.344/98, LISTA B1)": {
+      "substancia": "Lorazepam",
+      "codigo": "B1"
+    },
+    "LORAX": {
+      "substancia": "Lorazepam",
+      "codigo": "B1"
+    },
+    "AFLUV": {
+      "substancia": "Fluvoxamina",
+      "codigo": "C1"
+    },
+    "FLUVIQUE": {
+      "substancia": "Fluvoxamina",
+      "codigo": "C1"
+    },
+    "LUVOX": {
+      "substancia": "Fluvoxamina",
+      "codigo": "C1"
+    },
+    "REVOC": {
+      "substancia": "Fluvoxamina",
+      "codigo": "C1"
+    },
+    "SEMTRI": {
+      "substancia": "Fluvoxamina",
+      "codigo": "C1"
+    },
+    "DORMONID": {
+      "substancia": "Midazolam",
+      "codigo": "B1"
+    },
+    "CAMZYOS": {
+      "substancia": "Mavacanteno",
+      "codigo": "C1"
+    },
+    "MEROPENEM": {
+      "substancia": "meropenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MEROPENÉM": {
+      "substancia": "meropenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MEROMAX": {
+      "substancia": "meropenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MERONEM": {
+      "substancia": "meropenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GILMOV": {
+      "substancia": "Rasagilina",
+      "codigo": "C1"
+    },
+    "AZILECT": {
+      "substancia": "Rasagilina",
+      "codigo": "C1"
+    },
+    "PROVIRON": {
+      "substancia": "Mesterolona",
+      "codigo": "C5"
+    },
+    "ENDONIDAZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "METRONACK": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HIDAZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HELMIZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FLAGIMAX": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "METRONIFLEX": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FLAGYL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-METRONIDAZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NIDAZOFARMA": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MEFLAGIN": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ROZEX": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRINODAZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEOMETRODAZOL": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CANDERM": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "COLPATRIN": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PRONTOMID": {
+      "substancia": "Midazolam",
+      "codigo": "B1"
+    },
+    "HYPOZAM": {
+      "substancia": "Midazolam",
+      "codigo": "B1"
+    },
+    "DORMIUM": {
+      "substancia": "Midazolam",
+      "codigo": "B1"
+    },
+    "REMERON": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "RAZAPINA": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "CATARSE ODT": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "MENELAT": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "MENELAT ODT": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "ZAPSY": {
+      "substancia": "Mirtazapina",
+      "codigo": "C1"
+    },
+    "PROSTOKOS": {
+      "substancia": "Misoprostol",
+      "codigo": "C1"
+    },
+    "STAVIGILE": {
+      "substancia": "Modafinila",
+      "codigo": "B1"
+    },
+    "BACTROBAN": {
+      "substancia": "mupirocina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DERMOBAN": {
+      "substancia": "mupirocina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACROCIN": {
+      "substancia": "mupirocina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OTO - XILODASE": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "METRONIDAZOL + NISTATINA": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRICOMAX": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRINODAZOL NISTATINA": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DERMACERIUM": {
+      "substancia": "sulfadiazina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GYNOTRAN": {
+      "substancia": "metronidazol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NITRAPAN": {
+      "substancia": "Nitrazepam",
+      "codigo": "B1"
+    },
+    "NITRAZEPAM (PORT 344/98 LISTA B1)": {
+      "substancia": "Nitrazepam",
+      "codigo": "B1"
+    },
+    "SONEBON": {
+      "substancia": "Nitrazepam",
+      "codigo": "B1"
+    },
+    "CAZIDERM": {
+      "substancia": "nitrofural",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NITROFEN": {
+      "substancia": "nitrofurantoína",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MACRODANTINA": {
+      "substancia": "nitrofurantoína",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZAP": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "ZOPIX": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "CRISAPINA": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "OLANEXYN": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "AXONIUM": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "OLANZYS": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "ZYPREXA": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "ONAZ": {
+      "substancia": "Olanzapina",
+      "codigo": "C1"
+    },
+    "OXACILIL": {
+      "substancia": "oxacilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OXANON": {
+      "substancia": "oxacilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RECONTER": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "RECONTER ODT": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "ESC": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "ESC ODT": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "ESCENA": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "UNITRAM": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "LEXAPRO": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "EUDOK": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "ESPRAN": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "EXODUS": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "FUSOR": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "MIND": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "ESCILEX": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "SYTOC": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "DECIPRAX": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "EFICENTUS": {
+      "substancia": "Escitalopram",
+      "codigo": "C1"
+    },
+    "TRILEPTAL": {
+      "substancia": "Oxcarbazepina",
+      "codigo": "C1"
+    },
+    "OXCARB": {
+      "substancia": "Oxcarbazepina",
+      "codigo": "C1"
+    },
+    "OLEPTAL": {
+      "substancia": "Oxcarbazepina",
+      "codigo": "C1"
+    },
+    "INVEGA": {
+      "substancia": "Paliperidona",
+      "codigo": "C1"
+    },
+    "VEGAPALI": {
+      "substancia": "Paliperidona",
+      "codigo": "C1"
+    },
+    "CLORIDRATO DE TRAMADOL + PARACETAMOL": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "GÉSICO DUO": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "ATRACE": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TROL PAR": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "ONZUK": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "DAISAN": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "COMBFIX": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "REVANGE": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "ULTRACET": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "TILESTAL": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "PARATRAM": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "NOVOTRAM PAR": {
+      "substancia": "Tramadol",
+      "codigo": "A2"
+    },
+    "PACO": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "ALGICOD": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "PARACETAMOL+FOSFATO DE CODEINA": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "COD PAR": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "TYLEX": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "AGUD": {
+      "substancia": "Codeína",
+      "codigo": "A2"
+    },
+    "PAXIBE": {
+      "substancia": "Parecoxibe",
+      "codigo": "C1"
+    },
+    "BEXTRA IM/IV": {
+      "substancia": "Parecoxibe",
+      "codigo": "C1"
+    },
+    "COXDUO": {
+      "substancia": "Parecoxibe",
+      "codigo": "C1"
+    },
+    "PABEXHY": {
+      "substancia": "Parecoxibe",
+      "codigo": "C1"
+    },
+    "BEPEBEN": {
+      "substancia": "penicilina G",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FYCOMPA": {
+      "substancia": "Perampanel",
+      "codigo": "B1"
+    },
+    "NEULEPTIL": {
+      "substancia": "Periciazina (propericiazina)",
+      "codigo": "C1"
+    },
+    "CLINDOXYL": {
+      "substancia": "clindamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PIPERACILINA SÓDICA+TAZOBACTAM SÓDICO": {
+      "substancia": "piperacilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP- PIRAZINAMIDA": {
+      "substancia": "pirazinamida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LFM - PIRAZINAMIDA": {
+      "substancia": "pirazinamida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POMALYST": {
+      "substancia": "Pomalidomida",
+      "codigo": "C3"
+    },
+    "JOLIK": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "LIMIAR": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "MOBALE": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "INSIT": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "INSIT®": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "KONDUZ": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "GLYA": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "ÁPICE": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "PREFISS": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "PREGALPHA": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "ZEROPIN": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "INFOC": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "DORENE": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "DORENE TABS": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "DORENE LÍQUIDO": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "PREBICTAL": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "LYCERAH": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "PROLEPTOL": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "LYRICA": {
+      "substancia": "Pregabalina",
+      "codigo": "C1"
+    },
+    "PRIMID": {
+      "substancia": "Primidona",
+      "codigo": "C1"
+    },
+    "DURATESTON": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "LIPURO": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "PROPOVAN": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "PROVIVE": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "SPIVA MCT-LCT": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "PROFOLEN": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "PROPOTIL": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "DIPRIVAN": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "HYFOL": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "OPONAP®": {
+      "substancia": "Propofol",
+      "codigo": "C1"
+    },
+    "RAHIME": {
+      "substancia": "Ramelteona",
+      "codigo": "C1"
+    },
+    "ROZEREM": {
+      "substancia": "Ramelteona",
+      "codigo": "C1"
+    },
+    "RECARBRIO": {
+      "substancia": "imipenem",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RIBAVIRIN": {
+      "substancia": "Ribavirina",
+      "codigo": "C1"
+    },
+    "RIBAVIRINA": {
+      "substancia": "Ribavirina",
+      "codigo": "C1"
+    },
+    "RIFAMICINA SV SÓDICA": {
+      "substancia": "rifamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RIFASAN": {
+      "substancia": "rifamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RIFOTRAT": {
+      "substancia": "rifamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RIFOCINA SPRAY": {
+      "substancia": "rifamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-RIFAMPICINA": {
+      "substancia": "rifampicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RIFALDIN": {
+      "substancia": "rifampicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RISS": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "RISPERIDON": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "VIVERDAL": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "RISPXAN": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "ZARGUS": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "RISPERDAL": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "PERLID": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "RISPERAC": {
+      "substancia": "Risperidona",
+      "codigo": "C1"
+    },
+    "VIVENCIA PATCH": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "RIVAZICH": {
+      "substancia": "Rivastigmina",
+      "codigo": "C1"
+    },
+    "NEUPRO": {
+      "substancia": "Rotigotina",
+      "codigo": "C1"
+    },
+    "INOVELON": {
+      "substancia": "Rufinamida",
+      "codigo": "C1"
+    },
+    "SEVOCRIS": {
+      "substancia": "Sevoflurano",
+      "codigo": "C1"
+    },
+    "SEVOQ": {
+      "substancia": "Sevoflurano",
+      "codigo": "C1"
+    },
+    "VOFLUR": {
+      "substancia": "Sevoflurano",
+      "codigo": "C1"
+    },
+    "SEVONESS": {
+      "substancia": "Sevoflurano",
+      "codigo": "C1"
+    },
+    "SOGROYA": {
+      "substancia": "Somapacitana",
+      "codigo": "C5"
+    },
+    "GENRYZON": {
+      "substancia": "Somatrogona",
+      "codigo": "C5"
+    },
+    "OMNITROPE": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "SAIZEN": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "CRISCY": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "BIOMATROP": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "HORMOTROP": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "BIO-MANGUINHOS SOMATROPINA": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "NORDITROPIN": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "GENOTROPIN": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "EUTROPIN": {
+      "substancia": "Somatropina (hormônio do crescimento humano)",
+      "codigo": "C5"
+    },
+    "DESVE": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "VENDEXLA": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "IMENSE": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "VELLANA": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "SUCCINATO DE DESVENLAFAXINA": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "ANDES": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DESDIFF": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DESDUO": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DESENVO": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DELLER": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DESVENTAG": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "RYTMISE": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "PRISTIQ": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "ELIFORE": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "AFAX": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "DESTYC": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "VYXARA": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "AVIV": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "ZODEL": {
+      "substancia": "Desvenlafaxina",
+      "codigo": "C1"
+    },
+    "ARIFENICOL": {
+      "substancia": "cloranfenicol",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SILGLÓS": {
+      "substancia": "sulfadiazina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP - SULFADIAZINA": {
+      "substancia": "sulfadiazina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DERMAZINE": {
+      "substancia": "sulfadiazina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULPH": {
+      "substancia": "sulfadiazina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-ESTREPTOMICINA": {
+      "substancia": "estreptomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GENTAMICIN": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GENTAMISAN": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HYTAMICINA": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "GARASONE": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MALVATRICIN": {
+      "substancia": "tirotricina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DIMORF": {
+      "substancia": "Morfina",
+      "codigo": "A1"
+    },
+    "DIMORF BOLSA": {
+      "substancia": "Morfina",
+      "codigo": "A1"
+    },
+    "OPPY": {
+      "substancia": "Morfina",
+      "codigo": "A1"
+    },
+    "DOLO MOFF": {
+      "substancia": "Morfina",
+      "codigo": "A1"
+    },
+    "NEMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LOMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEOMICON": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KATRIZAN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULFATO DE NEOMICINA + BACITRACINA ZÍNCICA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACTODERM": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEBACIMED": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULFATO DE NEOMICINA + BACITRACINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULFATO DE NEOMICINA +  BACITRACINA ZÍNCICA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FERID": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACINANTRAT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACIGEN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP - NEOMICINA + BACITRACINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LQFEX - SULFATO DE NEOMICINA + BACITRACINA ZINCICA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEBACIDERME": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEBACTRINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EPICITRIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEOTRICIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NEBACETIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOCONAZOL + BETAMETASONA + SULFATO DE NEOMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HIDROCIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ESPERSON N": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOCONAZOL + DIPROPIONATO DE BETAMETASONA + SULFATO DE NEOMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TROK-N": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EMSCORT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOCORT-N": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOBETA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BETACORTAZOL": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "NOVACORT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOCONAZOL+DIPROPIONATO DE BETAMETASONA+SULFATO DE NEOMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEBETYM": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KNORTEX": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CBEQUIM": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRICORTID": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CIMECORT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BETRICORT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ONCILEG CORT": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CETOCONAZOL + DIPROPRIONATO DE BETAMETASONA + SULFATO DE NEOMICINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DRENISON N": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DEXAVISON": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DECADRON COLÍRIO": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DECADRON NASAL": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "OTOSPORIN": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "AFTINE": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TRIANCINOLONA ACETONIDA + SULFATO DE NEOMICINA + GRAMICIDINA + NISTATINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MUD": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ACETONIDO DE TRIANCINOLONA+SULFATO DE NEOMICINA+GRAMICIDINA+NISTATINA": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ONCILEG": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BISMU-JET": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "MICOPLEX": {
+      "substancia": "neomicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SPOX": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLYCID": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLY B": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BEDFORDPOLY - B": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLIXIL B": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "LIDOSPORIN": {
+      "substancia": "polimixina B",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRAMINA": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACTERACIN": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EQUILID": {
+      "substancia": "Sulpirida",
+      "codigo": "C1"
+    },
+    "FUNED - TALIDOMIDA": {
+      "substancia": "Ftalimidoglutarimida (talidomida)",
+      "codigo": "C3"
+    },
+    "PIPERACILINA SÓDICA + TAZOBACTAM SÓDICO": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PIPERACICLINA SÓDICA + TAZOBACTAM SÓDICO": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PYPE": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PIPTA": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TAZOMAZ": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TAZOCIN": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZERBAXA": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "PIPERAZAM": {
+      "substancia": "tazobactam",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KOPLAN": {
+      "substancia": "teicoplanina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACTOMAX": {
+      "substancia": "teicoplanina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TEIPLAN": {
+      "substancia": "teicoplanina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TEICOSTON": {
+      "substancia": "teicoplanina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TARGOCID": {
+      "substancia": "teicoplanina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "EMNYRA": {
+      "substancia": "Teriflunomida",
+      "codigo": "C1"
+    },
+    "AUBAGIO": {
+      "substancia": "Teriflunomida",
+      "codigo": "C1"
+    },
+    "ANDROGEL": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "TESTOGEL": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "MEVATYL": {
+      "substancia": "Canabidiol (CBD)",
+      "codigo": "C1"
+    },
+    "STABLON": {
+      "substancia": "Tianeptina",
+      "codigo": "C1"
+    },
+    "TIOXIN": {
+      "substancia": "ticarcilina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DUGAR": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SENGECIL": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TYG": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KALYME": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TAUMIK": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TYGACIL": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TAGELYNIX": {
+      "substancia": "tigeciclina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "THIOPENTAX": {
+      "substancia": "Tiopental",
+      "codigo": "B1"
+    },
+    "BRAMITOB": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBREX": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRACIN": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZOBILAR": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRAZOL": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TOBRACULAR": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ZOTEON PÓ": {
+      "substancia": "tobramicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ÉGIDE": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "AMATO": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "TODUZE": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "TÊMPORA": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "VIDMAX": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "TOPAMAX": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "ARASID": {
+      "substancia": "Topiramato",
+      "codigo": "C1"
+    },
+    "PARNATE": {
+      "substancia": "Tranilcipromina",
+      "codigo": "C1"
+    },
+    "VITANOL-A": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "VITACID": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "VESANOID": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "LUMIVIT": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "SUAVICID ONE": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "VITACID PLUS": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "VITACID ACNE": {
+      "substancia": "Tretinoína",
+      "codigo": "C2"
+    },
+    "UROCTRIN": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SUBTRAX": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULFAMETOXAZOL + TRIMETOPRIMA": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACFAR": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BACTRIM": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SULFAMETOXAZOL+TRIMETOPRIMA": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BELFACTRIM": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "FURP-SULFAMETOXAZOL + TRIMETOPRIMA": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "SIPUL": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BAC-SULFITRIN": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "BENECTRIN": {
+      "substancia": "trimetoprima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "QUEIMALIVE": {
+      "substancia": "sulfacetamida",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "HORMUS": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "DAEM": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "ATESTO": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "TEZDRO": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "NEBIDO": {
+      "substancia": "Testosterona",
+      "codigo": "C5"
+    },
+    "QUADRINEO": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VALERATO DE BETAMETASONA + SULFATO DE GENTAMICINA + TOLNAFTATO + CLIOQUINOL": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DERMATISAN": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VALERATO DE BETAMETASONA + SULFATO DE GETAMICINA + TOLNAFTATO + CLIOQUINOL": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CREMEDERME": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "POLIDERMS": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VALERATO DE BETAMETASONA + SULFATO DE GENTAMICINA + CLIOQUINOL + TOLNAFTATO POMADA": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VALERATO DE BETAMETASONA + SULFATO DE GENTAMICINA + CLIOQUINOL + TOLNAFTATO": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CLIOQDERM": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "QUADRILON": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "QUADRIDERM": {
+      "substancia": "gentamicina",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "ÁCIDO FUSÍDICO + VALERATO DE BETAMETASONA": {
+      "substancia": "ácido fusídico",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "VERUTEX B": {
+      "substancia": "ácido fusídico",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TORVAL CR": {
+      "substancia": "Ácido valpróico",
+      "codigo": "C1"
+    },
+    "SABRIL": {
+      "substancia": "Vigabatrina",
+      "codigo": "C1"
+    },
+    "IMOVANE": {
+      "substancia": "Zopiclona",
+      "codigo": "B1"
+    },
+    "VERUTEX": {
+      "substancia": "ácido fusídico",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "DEPAKENE": {
+      "substancia": "Ácido valpróico",
+      "codigo": "C1"
+    },
+    "EPILENIL": {
+      "substancia": "Ácido valpróico",
+      "codigo": "C1"
+    }
+  }
+}

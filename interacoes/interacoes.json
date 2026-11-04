@@ -4701,5 +4701,2329 @@
     "conduta": "Se houver suspeita de toxicidade, a infusão de lidocaína deve ser reduzida.",
     "acaoBalcao": "Reforçar acompanhamento médico em ambiente hospitalar.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT309",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos inibem o CYP3A4, via também responsável pelo metabolismo de diltiazem e verapamil — que já são, por si, inibidores do CYP3A4 — potencializando ainda mais os efeitos terapêuticos e tóxicos desses bloqueadores de canal de cálcio não di-hidropiridínicos.",
+    "conduta": "Monitorar aumento dos efeitos terapêuticos (hipotensão arterial) e tóxicos (fadiga, edema, bradicardia, alterações do ritmo cardíaco); considerar antifúngico alternativo ou ajuste de dose do bloqueador de canal de cálcio.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngicos orais (fluconazol, itraconazol, cetoconazol) antes de dispensar diltiazem/verapamil, e vice-versa.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT310",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Os indutores enzimáticos aumentam o metabolismo hepático de diltiazem e verapamil, reduzindo seu efeito anti-hipertensivo e antiarrítmico.",
+    "conduta": "Monitorar a pressão arterial e a frequência cardíaca; ajuste de dose do bloqueador de canal de cálcio pode ser necessário.",
+    "acaoBalcao": "Perguntar sobre uso de indutores enzimáticos (carbamazepina, fenitoína, fenobarbital, rifampicina) antes de dispensar diltiazem/verapamil.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT311",
+    "medicamentoA": "corticoide_sistemico",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diltiazem e verapamil inibem o CYP3A4, reduzindo o metabolismo dos corticoides sistêmicos e aumentando seus efeitos terapêuticos e tóxicos.",
+    "conduta": "Observar ocorrência de efeitos tóxicos do corticoide (edema por retenção de líquidos, cicatrização prejudicada de feridas, petéquias e equimoses).",
+    "acaoBalcao": "Perguntar sobre uso de diltiazem/verapamil antes de dispensar corticoide sistêmico de uso prolongado, e vice-versa.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT312",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina e eritromicina inibem o CYP3A4, elevando os níveis e os efeitos terapêuticos e tóxicos de diltiazem e verapamil (hipotensão, edema, alterações do ritmo cardíaco); a azitromicina não compartilha essa interação de forma relevante.",
+    "conduta": "Monitorar aumento dos efeitos terapêuticos (hipotensão) e tóxicos (edema, bradicardia); considerar troca por azitromicina quando clinicamente possível.",
+    "acaoBalcao": "Perguntar sobre uso de diltiazem/verapamil antes de dispensar claritromicina/eritromicina.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT313",
+    "medicamentoA": "benzodiazepinico",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Diltiazem e verapamil inibem o CYP3A4, elevando as concentrações de midazolam e, em menor grau, diazepam e clonazepam, potencializando a sedação e os efeitos hipnóticos prolongados.",
+    "conduta": "Evitar uso concomitante quando possível; se necessário, monitorar sedação excessiva e considerar redução de dose do benzodiazepínico.",
+    "acaoBalcao": "Alertar sobre sonolência excessiva e orientar a não dirigir/operar máquinas.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT314",
+    "medicamentoA": "aas",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Diltiazem e verapamil podem potencializar o efeito antiplaquetário do AAS, aumentando o risco de hemorragias e equimoses (mecanismo não totalmente esclarecido).",
+    "conduta": "Monitorar sinais de sangramento e equimoses.",
+    "acaoBalcao": "Orientar o paciente a relatar sangramentos ou hematomas incomuns.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT315",
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ritonavir é um potente inibidor do CYP3A4, reduzindo de forma importante o metabolismo de diltiazem e verapamil e elevando significativamente seus efeitos terapêuticos e tóxicos (hipotensão, bradicardia).",
+    "conduta": "Evitar associação quando possível; quando necessária, monitorar pressão arterial e frequência cardíaca de perto.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir (incluindo Paxlovid) antes de dispensar diltiazem/verapamil.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT316",
+    "medicamentoA": "aas",
+    "medicamentoB": "corticoide_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A associação de AAS com corticoides sistêmicos soma a agressão à mucosa gástrica, aumentando o risco de ulcerações e sangramento gastrintestinal; corticoides também podem aumentar o metabolismo e reduzir os níveis séricos do AAS.",
+    "conduta": "Monitorar sinais de sangramento gastrintestinal; considerar proteção gástrica (IBP) quando o uso prolongado de ambos for necessário. Reduzir as doses de forma gradativa e conjunta ao final do tratamento.",
+    "acaoBalcao": "Perguntar sobre uso de AAS antes de dispensar corticoide sistêmico de uso prolongado; orientar sinais de alarme (fezes escurecidas, dor epigástrica).",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT317",
+    "medicamentoA": "aas",
+    "medicamentoB": "ieca",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O AAS inibe a síntese de prostaglandinas renais vasodilatadoras, podendo reduzir o efeito anti-hipertensivo dos IECA, especialmente em doses anti-inflamatórias (efeito menos pronunciado em doses antiplaquetárias baixas, ex.: 100mg/dia).",
+    "conduta": "Monitorar pressão arterial, principalmente se uso de AAS em doses mais altas.",
+    "acaoBalcao": "Perguntar sobre uso de AAS (dose e frequência) antes de dispensar IECA; orientar monitorização domiciliar da pressão arterial.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT318",
+    "medicamentoA": "ieca",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A ciclosporina já apresenta nefrotoxicidade intrínseca; a associação com IECA soma redução da filtração glomerular e retenção de potássio, aumentando o risco de disfunção renal aguda e hipercalemia.",
+    "conduta": "Monitorar função renal (ureia, creatinina) e potássio sérico; manter hidratação adequada e cautela com uso concomitante de diuréticos.",
+    "acaoBalcao": "Encaminhar ao médico antes de dispensar a associação em pacientes transplantados; reforçar acompanhamento laboratorial regular.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT319",
+    "medicamentoA": "ieca",
+    "medicamentoB": "diuretico_alca",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipotensao",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O uso concomitante e prolongado de IECA com diuréticos de alça pode causar hipotensão, hipovolemia, hiponatremia e disfunção renal, por efeito somado sobre o sistema renina-angiotensina e depleção de volume.",
+    "conduta": "Monitorar pressão arterial e função renal (creatinina sérica); considerar redução de dose do diurético ou do IECA se necessário.",
+    "acaoBalcao": "Observar sinais de hipotensão postural, especialmente no início do tratamento ou em idosos.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT320",
+    "medicamentoA": "aine",
+    "medicamentoB": "aminoglicosideo",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "AINEs reduzem a perfusão renal por inibição de prostaglandinas, somando-se à nefrotoxicidade intrínseca dos aminoglicosídeos (amicacina, gentamicina) e aumentando o risco de lesão renal aguda.",
+    "conduta": "Monitorar função renal; evitar associação quando possível, especialmente em pacientes com função renal já comprometida.",
+    "acaoBalcao": "Perguntar sobre uso de aminoglicosídeos antes de dispensar AINE, especialmente em pacientes idosos ou com doença renal.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT321",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "A associação de dois indutores enzimáticos (carbamazepina, fenitoína, fenobarbital, rifampicina) pode reduzir mutuamente as concentrações terapêuticas de ambos, dificultando o ajuste de dose por efeito de indução cruzada.",
+    "conduta": "Monitorar a eficácia terapêutica de ambos os fármacos (ex.: controle de crises convulsivas); dosagem sérica pode ser necessária para ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de outros anticonvulsivantes/indutores enzimáticos antes de dispensar; reforçar adesão e acompanhamento médico regular.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT322",
+    "medicamentoA": "benzodiazepinico",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Indutores enzimáticos (carbamazepina, fenitoína, fenobarbital, rifampicina) reduzem a concentração e o efeito sedativo/hipnótico de benzodiazepínicos metabolizados pelo CYP3A4 (especialmente midazolam); por outro lado, benzodiazepínicos podem elevar os níveis de fenitoína.",
+    "conduta": "Monitorar a eficácia da sedação/controle de crises e, quando aplicável, sinais de toxicidade da fenitoína (nistagmo, ataxia, sonolência).",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes indutores enzimáticos antes de dispensar benzodiazepínicos de uso contínuo.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT323",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "sulfonilureia",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos (fluconazol, itraconazol, cetoconazol) inibem o CYP2C9, reduzindo o metabolismo das sulfonilureias (glibenclamida, gliclazida) e aumentando o risco de hipoglicemia.",
+    "conduta": "Monitorar glicemia, especialmente nos primeiros dias de associação.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar sulfonilureia; orientar sinais de hipoglicemia (tremor, sudorese, confusão).",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT324",
+    "medicamentoA": "fluconazol",
+    "medicamentoB": "losartana",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "hipotensao"
+    ],
+    "mecanismo": "O fluconazol inibe o CYP2C9, via responsável pela ativação da losartana em seu metabólito ativo; a interação pode, ainda assim, aumentar os efeitos hipotensores (mecanismo não totalmente esclarecido, possivelmente relacionado ao acúmulo do pró-fármaco).",
+    "conduta": "Monitorar pressão arterial, principalmente no início da associação.",
+    "acaoBalcao": "Perguntar sobre uso de losartana antes de dispensar fluconazol.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT325",
+    "medicamentoA": "aciclovir",
+    "medicamentoB": "tenofovir",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aciclovir e tenofovir competem pela secreção tubular renal ativa, podendo elevar os níveis séricos de tenofovir e o risco de seus efeitos tóxicos (nefrotoxicidade, neuropatia).",
+    "conduta": "Monitorar função renal e sinais de toxicidade do tenofovir (tontura, diarreia, neuropatia, vômito).",
+    "acaoBalcao": "Perguntar sobre uso de tenofovir antes de dispensar aciclovir sistêmico.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT326",
+    "medicamentoA": "fenobarbital",
+    "medicamentoB": "piridoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Piridoxina (vitamina B6) em altas doses pode acelerar o metabolismo hepático do fenobarbital, reduzindo seus níveis séricos e o efeito terapêutico (controle de crises convulsivas).",
+    "conduta": "Monitorar diminuição dos efeitos terapêuticos do fenobarbital quando houver uso concomitante de piridoxina em altas doses.",
+    "acaoBalcao": "Perguntar sobre uso de suplementos vitamínicos (complexo B/B6 em altas doses) antes de dispensar fenobarbital.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT327",
+    "medicamentoA": "amiodarona",
+    "medicamentoB": "fenitoina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Amiodarona inibe o CYP2C9, reduzindo o metabolismo da fenitoína e aumentando o risco de efeitos tóxicos (depressão do SNC, nistagmo, vertigem, sonolência, ataxia).",
+    "conduta": "Monitorar sinais de toxicidade da fenitoína; ajuste de dose pode ser necessário.",
+    "acaoBalcao": "Perguntar sobre uso de amiodarona antes de dispensar fenitoína, e vice-versa.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT328",
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "opioide",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ritonavir é um potente inibidor do CYP3A4, elevando significativamente os níveis de opioides metabolizados por essa via (especialmente fentanila), com risco de depressão respiratória grave.",
+    "conduta": "Evitar associação quando possível; se necessária, reduzir a dose do opioide e monitorar sedação e frequência respiratória.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir (incluindo Paxlovid) antes de dispensar opioides; orientar sobre sedação excessiva e dificuldade respiratória.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT329",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Antifúngicos azólicos sistêmicos inibem o CYP3A4, elevando os níveis de opioides metabolizados por essa via (fentanila, tramadol, oxicodona), com risco de sedação e depressão respiratória.",
+    "conduta": "Monitorar sedação excessiva, hipoventilação e sinais de toxicidade opioide.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar opioides.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT330",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina (e, em menor grau, eritromicina) inibem o CYP3A4, elevando os níveis de opioides metabolizados por essa via e potencializando a sedação.",
+    "conduta": "Monitorar sedação excessiva; considerar troca por azitromicina quando possível.",
+    "acaoBalcao": "Perguntar sobre uso de opioides antes de dispensar claritromicina/eritromicina.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT331",
+    "medicamentoA": "betabloqueador",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipotensao",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito hipotensor aditivo entre betabloqueadores e opioides, com risco aumentado de hipotensão significativa, especialmente em associação com fentanila.",
+    "conduta": "Monitorar pressão arterial, principalmente no início da associação ou em ajustes de dose.",
+    "acaoBalcao": "Orientar sobre tontura e risco de queda ao se levantar.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT332",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos aumentam o metabolismo hepático de opioides metabolizados pelo CYP3A4 (fentanila, metadona, oxicodona), reduzindo seu efeito analgésico.",
+    "conduta": "Monitorar eficácia analgésica; ajuste de dose do opioide pode ser necessário.",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes indutores enzimáticos antes de dispensar opioides de uso contínuo.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT333",
+    "medicamentoA": "calcio",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O cálcio pode antagonizar o efeito terapêutico de diltiazem e verapamil, que atuam bloqueando a entrada desse íon nas células musculares lisas e no miocárdio.",
+    "conduta": "Monitorar a pressão arterial.",
+    "acaoBalcao": "Perguntar sobre uso de suplementos de cálcio antes de recomendar diltiazem/verapamil.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT334",
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "corticoide_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos inibem o CYP3A4, reduzindo o metabolismo dos corticoides sistêmicos e aumentando seus efeitos terapêuticos e tóxicos.",
+    "conduta": "Observar ocorrência de efeitos tóxicos do corticoide (edema por retenção de líquidos, cicatrização prejudicada de feridas, petéquias e equimoses).",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar corticoide sistêmico de uso prolongado.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT335",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "corticoide_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina inibe o CYP3A4, reduzindo o metabolismo dos corticoides sistêmicos e aumentando seus efeitos terapêuticos e tóxicos; a azitromicina não apresenta essa interação de forma relevante.",
+    "conduta": "Observar ocorrência de efeitos tóxicos do corticoide (edema por retenção de líquidos, cicatrização prejudicada de feridas, petéquias e equimoses).",
+    "acaoBalcao": "Perguntar sobre uso de claritromicina antes de dispensar corticoide sistêmico de uso prolongado.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT336",
+    "medicamentoA": "ieca",
+    "medicamentoB": "hidroclorotiazida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipotensao",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito hipotensor aditivo entre IECA e hidroclorotiazida, com risco de hipotensão postural no início do tratamento; uso prolongado pode somar efeitos nefrotóxicos.",
+    "conduta": "Observar sinais de hipotensão postural no início do tratamento; monitorar função renal (ureia, creatinina) a longo prazo.",
+    "acaoBalcao": "Orientar sobre o risco de tontura ao levantar-se rapidamente, especialmente nos primeiros dias de tratamento.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT337",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos (carbamazepina, fenitoína, fenobarbital, rifampicina) aumentam o metabolismo do ritonavir e de outros inibidores de protease, reduzindo seus níveis terapêuticos e colocando em risco o efeito antirretroviral/antiviral (ex.: falha de Paxlovid).",
+    "conduta": "Evitar associação; o uso concomitante é frequentemente contraindicado pelo fabricante (ex.: nirmatrelvir/ritonavir).",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes indutores enzimáticos antes de dispensar ritonavir/Paxlovid; encaminhar ao médico se identificado.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT338",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "acido_valproico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina inibe o metabolismo do ácido valproico, aumentando o risco de efeitos tóxicos (distúrbios de marcha, fala e concentração).",
+    "conduta": "Monitorar efeitos tóxicos do ácido valproico; considerar troca por azitromicina quando possível.",
+    "acaoBalcao": "Perguntar sobre uso de ácido valproico antes de dispensar claritromicina.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT339",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Claritromicina inibe o CYP3A4, reduzindo o metabolismo de carbamazepina e demais indutores enzimáticos metabolizados por essa via, com risco de toxicidade (ataxia, sonolência, fadiga, discrasias sanguíneas).",
+    "conduta": "Monitorar efeitos tóxicos do anticonvulsivante; considerar troca por azitromicina ou ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes antes de dispensar claritromicina.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT340",
+    "medicamentoA": "suplemento_potassio",
+    "medicamentoB": "poupador_potassio",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito aditivo sobre a retenção de potássio, com risco importante de hipercalemia, especialmente em pacientes com função renal comprometida.",
+    "conduta": "Evitar associação, exceto em hipocalemia importante documentada; monitorar sinais de hipercalemia (fraqueza muscular, fadiga, arritmias, bradicardia).",
+    "acaoBalcao": "Perguntar sobre uso de diuréticos poupadores de potássio antes de dispensar suplementos de potássio, e vice-versa.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT341",
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "betabloqueador",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos aumentam o metabolismo hepático de betabloqueadores lipofílicos (metoprolol, propranolol), reduzindo seu efeito terapêutico; atenolol, de eliminação predominantemente renal, não é afetado.",
+    "conduta": "Monitorar pressão arterial e frequência cardíaca; considerar troca por atenolol quando clinicamente apropriado.",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes indutores enzimáticos antes de dispensar metoprolol/propranolol.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT342",
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Claritromicina inibe o CYP3A4, elevando as concentrações de midazolam e potencializando a sedação e os efeitos hipnóticos.",
+    "conduta": "Monitorar sedação excessiva; considerar troca por azitromicina quando possível.",
+    "acaoBalcao": "Alertar sobre sonolência excessiva e orientar a não dirigir/operar máquinas.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "id": "INT343",
+    "medicamentoA": "tramadol",
+    "medicamentoB": "amantadina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Tramadol e amantadina reduzem, cada um por mecanismo próprio, o limiar convulsivo; a associação aumenta o risco de convulsões.",
+    "conduta": "Evitar uso concomitante; se indispensável, utilizar as menores doses eficazes e monitorar atentamente.",
+    "acaoBalcao": "Perguntar sobre uso de amantadina antes de dispensar tramadol, e vice-versa; orientar sobre risco de convulsões.",
+    "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
+  },
+  {
+    "medicamentoA": "benzodiazepinico",
+    "medicamentoB": "alcool",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Potencialização da depressão do sistema nervoso central por somação dos efeitos GABAérgicos do benzodiazepínico com os do álcool.",
+    "conduta": "Evitar a associação. Quando o uso de benzodiazepínico for contínuo, orientar abstinência de álcool, especialmente nas primeiras semanas de tratamento e em idosos.",
+    "acaoBalcao": "Orientar sonolência intensa, risco de quedas e de depressão respiratória; reforçar não associar bebida alcoólica ao uso de benzodiazepínicos.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT344"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O consumo crônico de álcool é, por si só, um indutor do CYP2E1 e pode somar-se a outros indutores enzimáticos, alterando a formação de metabólitos tóxicos de alguns fármacos (ex.: isoniazida, paracetamol) e reduzindo a eficácia de outros.",
+    "conduta": "Reforçar a importância de informar o consumo regular de álcool ao prescritor, sobretudo para quem já usa um indutor enzimático.",
+    "acaoBalcao": "Perguntar sobre consumo regular de álcool ao dispensar anticonvulsivantes/rifampicina e outros indutores enzimáticos.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT345"
+  },
+  {
+    "medicamentoA": "sulfonilureia",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O álcool pode potencializar o efeito hipoglicemiante das sulfonilureias (inibição da gliconeogênese hepática) e, com algumas delas, provocar reação tipo disulfiram (rubor, náusea, taquicardia).",
+    "conduta": "Orientar moderação no consumo de álcool; evitar consumo em jejum.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia (tremor, sudorese, confusão) e sobre rubor facial/taquicardia ao associar álcool à sulfonilureia.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT346"
+  },
+  {
+    "medicamentoA": "antipsicotico",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Somação da depressão do sistema nervoso central; antipsicóticos sedativos (ex.: clorpromazina, quetiapina, olanzapina) têm efeito mais pronunciado, com risco adicional de hipotensão postural.",
+    "conduta": "Orientar redução/evitar álcool, especialmente no início do tratamento ou após ajuste de dose.",
+    "acaoBalcao": "Orientar sobre sonolência intensa e risco de queda, reforçando não associar a álcool.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT347"
+  },
+  {
+    "medicamentoA": "gabapentinoide",
+    "medicamentoB": "alcool",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Potencialização da depressão do sistema nervoso central e do risco de depressão respiratória, de forma análoga à associação com opioides e benzodiazepínicos.",
+    "conduta": "Evitar a associação, especialmente em doses mais altas de pregabalina/gabapentina.",
+    "acaoBalcao": "Alertar sobre sonolência intensa, risco de quedas e de depressão respiratória; reforçar não associar a álcool.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT348"
+  },
+  {
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Ritonavir (isolado ou em esquemas potencializados, incluindo nirmatrelvir+ritonavir) induz a glicuronidação do etinilestradiol, reduzindo seus níveis plasmáticos e a eficácia contraceptiva.",
+    "conduta": "Orientar método contraceptivo de barreira adicional durante o uso do antiviral e por tempo após o término, conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de contraceptivo hormonal antes de dispensar ritonavir/Paxlovid; orientar sobre risco de falha contraceptiva e uso de método de barreira adicional.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT349"
+  },
+  {
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "lamotrigina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Interação bidirecional: o etinilestradiol aumenta a glicuronidação da lamotrigina, podendo reduzir seus níveis e o controle de crises; na semana de pausa do contraceptivo (pílula de placebo), os níveis de lamotrigina podem subir, com risco de toxicidade.",
+    "conduta": "Ajuste de dose de lamotrigina geralmente necessário sob acompanhamento médico; não deve ser feito por conta própria.",
+    "acaoBalcao": "Perguntar sobre uso de contraceptivo hormonal combinado antes de dispensar lamotrigina, e vice-versa; orientar sobre perda de controle de crises convulsivas ou sinais de toxicidade (tontura, diplopia, ataxia) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT350"
+  },
+  {
+    "medicamentoA": "antibiotico_amplo",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Penicilinas de amplo espectro (amoxicilina, ampicilina) reduzem a secreção tubular renal do metotrexato, elevando seus níveis plasmáticos e o risco de toxicidade hematológica e mucosa — relevante principalmente em doses de metotrexato usadas em oncologia, mas também descrito com doses baixas semanais.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar hemograma e função renal mais de perto.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de dispensar amoxicilina/ampicilina; orientar sinais de alarme (feridas na boca, febre, cansaço extremo) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT351"
+  },
+  {
+    "medicamentoA": "quinolona",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "As fluoroquinolonas também reduzem a secreção tubular renal do metotrexato, de forma análoga às penicilinas de amplo espectro, elevando o risco de toxicidade.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar hemograma e função renal.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de dispensar uma quinolona (ciprofloxacino, levofloxacino etc.); orientar sinais de alarme e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT352"
+  },
+  {
+    "medicamentoA": "aine_coxibe",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Antifúngicos azólicos sistêmicos inibem o CYP3A4/CYP2C9, podendo elevar os níveis de celecoxibe e outros coxibes metabolizados por essas vias.",
+    "conduta": "Considerar redução de dose do coxibe durante o uso do antifúngico, conforme avaliação médica.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de recomendar/dispensar coxibe de uso contínuo.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT353"
+  },
+  {
+    "medicamentoA": "ieca",
+    "medicamentoB": "litio",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "IECA reduzem a filtração glomerular e a depuração renal do lítio (por redução da angiotensina II e da reabsorção tubular de sódio, que arrasta consigo o lítio), elevando seus níveis e o risco de toxicidade.",
+    "conduta": "Evitar o início de IECA sem reavaliação da litemia; se a associação for mantida, monitorar níveis de lítio com mais frequência, especialmente após qualquer ajuste de dose.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de lítio antes de dispensar IECA, e vice-versa; orientar sinais de toxicidade por lítio (tremor grosseiro, confusão, náusea, diarreia) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT354"
+  },
+  {
+    "medicamentoA": "bra",
+    "medicamentoB": "litio",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os BRA reduzem a depuração renal do lítio pelo mesmo mecanismo hemodinâmico renal dos IECA, elevando seus níveis e o risco de toxicidade.",
+    "conduta": "Evitar o início de BRA sem reavaliação da litemia; se mantida, monitorar níveis de lítio com mais frequência.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de lítio antes de dispensar um BRA, e vice-versa; orientar sinais de toxicidade por lítio e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT355"
+  },
+  {
+    "medicamentoA": "corticoide_inalatorio",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ritonavir é um potente inibidor do CYP3A4, via de metabolização da budesonida e fluticasona inaladas; mesmo a dose inalatória pode atingir exposição sistêmica relevante, levando a síndrome de Cushing iatrogênica e supressão adrenal.",
+    "conduta": "Evitar a associação quando possível; considerar corticoide inalatório com menor metabolismo por CYP3A4 (ex.: beclometasona) sob orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir/Paxlovid antes de dispensar corticoide inalatório (budesonida, fluticasona); orientar sinais de excesso de corticoide (face em lua cheia, fragilidade capilar, ganho de peso) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT356"
+  },
+  {
+    "medicamentoA": "corticoide_inalatorio",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos (itraconazol, voriconazol, cetoconazol) também inibem o CYP3A4, podendo elevar a exposição sistêmica ao corticoide inalatório, de forma análoga — porém geralmente menos intensa — à inibição por ritonavir.",
+    "conduta": "Monitorar sinais de excesso de corticoide durante o uso concomitante, especialmente em tratamentos prolongados com o antifúngico.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar corticoide inalatório de uso contínuo.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT357"
+  },
+  {
+    "medicamentoA": "corticoide_sistemico",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ritonavir inibe fortemente o CYP3A4, via principal de metabolização de corticoides sistêmicos (ex.: prednisona, dexametasona, e especialmente triancinolona/fluticasona injetável), aumentando sua exposição sistêmica e o risco de síndrome de Cushing iatrogênica e supressão adrenal.",
+    "conduta": "Evitar a associação quando possível; se indispensável, reduzir a dose do corticoide e monitorar sinais de excesso sob acompanhamento médico.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir/Paxlovid antes de dispensar corticoide sistêmico; orientar sinais de excesso de corticoide e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT358"
+  },
+  {
+    "medicamentoA": "fibrato",
+    "medicamentoB": "varfarina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Fibratos (fenofibrato, genfibrozila) deslocam a varfarina de sua ligação às proteínas plasmáticas e podem inibir seu metabolismo, potencializando o efeito anticoagulante.",
+    "conduta": "Reduzir a dose de varfarina ao iniciar o fibrato, com monitorização mais frequente do INR.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar fibrato, e vice-versa; orientar sinais de sangramento e reforçar controle de INR mais próximo.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT359"
+  },
+  {
+    "medicamentoA": "fibrato",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Risco aumentado de miopatia/rabdomiólise pela associação, além de possível nefrotoxicidade aditiva; genfibrozila também pode elevar os níveis de ciclosporina.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar função renal e sinais de miopatia.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar fibrato, especialmente em pacientes transplantados; orientar sinais de dor muscular e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT360"
+  },
+  {
+    "medicamentoA": "sglt2",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Efeito hipoglicemiante aditivo quando um inibidor de SGLT2 (dapagliflozina, empagliflozina) é associado à insulina ou a uma sulfonilureia.",
+    "conduta": "Pode ser necessário ajuste de dose da insulina/sulfonilureia pelo prescritor ao iniciar o inibidor de SGLT2.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia (tremor, sudorese, confusão) ao dispensar inibidor de SGLT2 para quem usa insulina ou sulfonilureia.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT361"
+  },
+  {
+    "medicamentoA": "imao_b",
+    "medicamentoB": "imao_b",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A combinação de dois inibidores da MAO (ex.: linezolida com selegilina) soma a inibição da degradação de monoaminas, com risco grave de síndrome serotoninérgica e/ou crise hipertensiva.",
+    "conduta": "Nunca associar; respeitar período de washout adequado ao trocar de um para o outro, conforme orientação médica.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de outro IMAO (incluindo selegilina para Parkinson) antes de dispensar linezolida, e vice-versa; nunca dispensar os dois juntos sem confirmação médica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT362"
+  },
+  {
+    "medicamentoA": "imao_b",
+    "medicamentoB": "descongestionante_nasal",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipertensao"
+    ],
+    "mecanismo": "Descongestionantes simpaticomiméticos indiretos (pseudoefedrina, fenilefrina) estimulam a liberação de noradrenalina, cuja degradação está bloqueada pelo IMAO — risco de crise hipertensiva grave.",
+    "conduta": "Nunca associar; orientar alternativas não simpaticomiméticas para congestão nasal (ex.: soluções salinas) em quem usa IMAO.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de IMAO/selegilina antes de recomendar qualquer descongestionante de venda livre para gripe/resfriado; verificar composição de associações prontas.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT363"
+  },
+  {
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "prolonga_qt",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Ritonavir inibe fortemente o CYP3A4, elevando os níveis de diversos fármacos que prolongam o intervalo QT e são metabolizados por essa via, somando-se ao risco farmacodinâmico de prolongamento do QT.",
+    "conduta": "Evitar a associação quando possível; quando indispensável, considerar monitorização eletrocardiográfica conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir/Paxlovid antes de dispensar medicamentos que prolongam o QT (certos antiarrítmicos, antipsicóticos, alguns antidepressivos); orientar sinais de palpitação/síncope e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT364"
+  },
+  {
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição dupla/aditiva do CYP3A4 por ritonavir e pelos antifúngicos azólicos sistêmicos (itraconazol, voriconazol, posaconazol), com risco de toxicidade de ambos os fármacos e de outros medicamentos metabolizados pela mesma via.",
+    "conduta": "Evitar a associação quando possível; se necessária, geralmente requer ajuste de dose sob acompanhamento médico especializado.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar ritonavir/Paxlovid, e vice-versa; encaminhar ao prescritor para avaliação.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT365"
+  },
+  {
+    "medicamentoA": "ranolazina",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indutores enzimáticos (carbamazepina, fenitoína, fenobarbital, rifampicina) aumentam o metabolismo da ranolazina pelo CYP3A4, reduzindo substancialmente seus níveis plasmáticos e sua eficácia antianginosa.",
+    "conduta": "Evitar a associação; se indispensável, a eficácia da ranolazina pode ficar comprometida mesmo em doses maiores.",
+    "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes/rifampicina antes de dispensar ranolazina; orientar sobre possível perda de controle da angina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT366"
+  },
+  {
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "prolonga_qt",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Os antifúngicos azólicos sistêmicos (itraconazol, voriconazol, posaconazol, cetoconazol) inibem o CYP3A4, elevando os níveis de fármacos que prolongam o QT metabolizados por essa via, além de alguns terem efeito direto sobre o QT.",
+    "conduta": "Evitar a associação quando possível; quando indispensável, considerar monitorização eletrocardiográfica conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de medicamentos que prolongam o QT (certos antiarrítmicos, antipsicóticos, ranolazina) antes de dispensar antifúngico oral sistêmico.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT367"
+  },
+  {
+    "medicamentoA": "antipsicotico",
+    "medicamentoB": "inibidor_cyp2d6_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibidores potentes do CYP2D6 (fluoxetina, paroxetina, quinidina) reduzem o metabolismo de antipsicóticos metabolizados por essa via (ex.: risperidona), elevando seus níveis e o risco de efeitos extrapiramidais e sedação.",
+    "conduta": "Considerar redução de dose do antipsicótico sob avaliação médica quando a associação for necessária.",
+    "acaoBalcao": "Perguntar sobre uso de fluoxetina/paroxetina antes de dispensar risperidona ou outro antipsicótico; orientar sobre sinais extrapiramidais (rigidez, tremor) e sedação excessiva.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT368"
+  },
+  {
+    "medicamentoA": "tamoxifeno",
+    "medicamentoB": "inibidor_cyp2d6_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "O tamoxifeno depende da conversão pelo CYP2D6 em endoxifeno, seu principal metabólito ativo; inibidores potentes dessa enzima (fluoxetina, paroxetina, quinidina) podem reduzir a formação de endoxifeno e comprometer a eficácia do tratamento.",
+    "conduta": "Preferir, quando possível e sob orientação médica, um antidepressivo com menor inibição do CYP2D6 (ex.: sertralina, citalopram/escitalopram) em pacientes usando tamoxifeno.",
+    "acaoBalcao": "Perguntar sobre uso de tamoxifeno antes de dispensar fluoxetina ou paroxetina; informar o prescritor sobre a possível perda de eficácia do tamoxifeno.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT369"
+  },
+  {
+    "medicamentoA": "ipde5",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Ritonavir inibe fortemente o CYP3A4, elevando substancialmente os níveis de sildenafila/tadalafila e o risco de hipotensão e efeitos adversos prolongados (incluindo priapismo).",
+    "conduta": "Reduzir significativamente a dose do inibidor da PDE5 e aumentar o intervalo entre doses, conforme orientação médica.",
+    "acaoBalcao": "Perguntar sobre uso de ritonavir/Paxlovid antes de dispensar sildenafila/tadalafila; orientar sobre uso de dose menor e espaçamento maior entre doses.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT370"
+  },
+  {
+    "medicamentoA": "aas",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O AAS reduz a secreção tubular renal do metotrexato e pode deslocá-lo de sua ligação proteica, elevando seus níveis plasmáticos — risco relevante mesmo com AAS em dose baixa, principalmente se houver insuficiência renal associada.",
+    "conduta": "Evitar associação com metotrexato em dose alta (oncológica); com metotrexato em dose baixa semanal (reumatológica), avaliar com o prescritor, pois a combinação com AAS cardioprotetor é comum e pode ser mantida sob monitorização.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de metotrexato antes de recomendar/dispensar AAS; orientar sinais de alarme (feridas na boca, febre, cansaço extremo) e encaminhar dúvidas ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT371"
+  },
+  {
+    "medicamentoA": "acido_valproico",
+    "medicamentoB": "aas",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O AAS desloca o ácido valproico de sua ligação às proteínas plasmáticas, elevando a fração livre (ativa) do anticonvulsivante, além de somar efeito antiplaquetário com o leve efeito antiagregante do valproato.",
+    "conduta": "Evitar uso regular/prolongado de AAS em quem usa ácido valproico; se necessário, monitorar sinais de toxicidade do valproato.",
+    "acaoBalcao": "Perguntar sobre uso de ácido valproico antes de recomendar AAS de uso regular; orientar sinais de toxicidade (sonolência, tremor, ataxia) e sangramento.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT372"
+  },
+  {
+    "medicamentoA": "azatioprina",
+    "medicamentoB": "sulfonamida_trimetoprima",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Sulfametoxazol+trimetoprima pode somar-se à toxicidade hematológica da azatioprina (ambos com potencial de mielossupressão), além de possível interferência no metabolismo das purinas.",
+    "conduta": "Evitar a associação quando possível; se indispensável (ex.: profilaxia em transplantados), exige monitorização hematológica rigorosa pelo prescritor.",
+    "acaoBalcao": "Nunca dispensar a associação sem confirmação médica; alertar sobre risco de mielossupressão grave (febre, feridas na boca, cansaço extremo, sangramentos) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT373"
+  },
+  {
+    "medicamentoA": "digoxina",
+    "medicamentoB": "propafenona",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A propafenona inibe a glicoproteína-P, reduzindo o clearance renal e biliar da digoxina e elevando seus níveis séricos, com risco de toxicidade digitálica.",
+    "conduta": "Reduzir a dose de digoxina em cerca de 30-50% ao iniciar propafenona, com monitorização de nível sérico quando disponível.",
+    "acaoBalcao": "Reforçar adesão exata à dose prescrita de digoxina e orientar sinais de toxicidade digitálica (náusea, alterações visuais, arritmias) ao identificar a combinação.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT374"
+  },
+  {
+    "medicamentoA": "digoxina",
+    "medicamentoB": "quinidina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "A quinidina inibe a glicoproteína-P e desloca a digoxina de sítios de ligação tecidual, podendo dobrar os níveis séricos de digoxina — uma das interações farmacocinéticas mais clássicas e bem documentadas dessa classe.",
+    "conduta": "Reduzir a dose de digoxina (frequentemente à metade) ao iniciar quinidina, com monitorização de nível sérico.",
+    "acaoBalcao": "Reforçar adesão exata à dose prescrita de digoxina e orientar sinais de toxicidade digitálica ao identificar a combinação; encaminhar ao médico se início recente de quinidina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT375"
+  },
+  {
+    "medicamentoA": "dipirona",
+    "medicamentoB": "clorpromazina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Associação descrita com risco de hipotermia grave, por somação de efeitos sobre a termorregulação central (a dipirona atua no hipotálamo e a clorpromazina tem efeito hipotérmico conhecido).",
+    "conduta": "Observar temperatura corporal durante o uso concomitante, especialmente em idosos e uso continuado.",
+    "acaoBalcao": "Alertar sobre queda incomum da temperatura corporal (frio intenso, confusão) ao dispensar a associação em uso contínuo.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT376"
+  },
+  {
+    "medicamentoA": "ivermectina",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "A ivermectina pode inibir parcialmente o metabolismo hepático da varfarina, potencializando seu efeito anticoagulante.",
+    "conduta": "Reforçar controle de INR mais próximo nas primeiras semanas após o uso de ivermectina em pacientes anticoagulados.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar ivermectina; orientar sinais de sangramento e reforçar controle de INR.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT377"
+  },
+  {
+    "medicamentoA": "isoniazida",
+    "medicamentoB": "dissulfiram",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Associação descrita com risco de efeitos neuropsiquiátricos (confusão mental, psicose, ataxia), possivelmente por interferência na neurotransmissão dopaminérgica/serotoninérgica em pacientes predispostos.",
+    "conduta": "Evitar a associação quando possível; se necessária, monitorar sinais neuropsiquiátricos, especialmente no início do tratamento.",
+    "acaoBalcao": "Perguntar sobre uso de dissulfiram antes de dispensar isoniazida; orientar sinais de alteração de comportamento, confusão ou falta de coordenação e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT378"
+  },
+  {
+    "medicamentoA": "metildopa",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Relatos de neurotoxicidade (letargia, fraqueza) com níveis normais de lítio quando associado à metildopa, por mecanismo não totalmente esclarecido, possivelmente envolvendo o sistema dopaminérgico central.",
+    "conduta": "Monitorar sinais de toxicidade neurológica mesmo com litemia dentro da faixa terapêutica.",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar metildopa; orientar sinais de letargia ou fraqueza incomum e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT379"
+  },
+  {
+    "medicamentoA": "metoclopramida",
+    "medicamentoB": "dopaminergico_parkinson",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "A metoclopramida é antagonista dopaminérgico central e pode antagonizar diretamente o efeito dos medicamentos dopaminérgicos usados no Parkinson, piorando tremor e rigidez, além de risco de sintomas extrapiramidais agudos.",
+    "conduta": "Evitar metoclopramida em pacientes com Parkinson; preferir antiemético sem ação antidopaminérgica central (ex.: domperidona, sob orientação médica).",
+    "acaoBalcao": "Perguntar sobre diagnóstico de Parkinson antes de recomendar/dispensar metoclopramida para náusea/vômito; alertar para piora de tremor/rigidez e orientar busca de atendimento médico.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT380"
+  },
+  {
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "topiramato",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Em doses acima de aproximadamente 200 mg/dia, o topiramato induz a glicuronidação do etinilestradiol, reduzindo seus níveis e podendo comprometer a eficácia contraceptiva; em doses menores, a interação é pouco relevante.",
+    "conduta": "Em doses mais altas de topiramato, orientar método contraceptivo adicional de barreira, conforme avaliação médica.",
+    "acaoBalcao": "Perguntar sobre a dose de topiramato ao dispensar contraceptivo hormonal combinado; orientar sobre risco de falha contraceptiva especificamente em doses mais altas (>200 mg/dia).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT381"
+  },
+  {
+    "medicamentoA": "topiramato",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Potencialização da depressão do sistema nervoso central e do comprometimento cognitivo/psicomotor associados ao topiramato.",
+    "conduta": "Orientar moderação no consumo de álcool, especialmente no início do tratamento ou após aumento de dose.",
+    "acaoBalcao": "Orientar sobre sonolência e dificuldade de concentração ao associar álcool ao topiramato; reforçar não dirigir/operar máquinas.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT382"
+  },
+  {
+    "medicamentoA": "ciprofloxacino",
+    "medicamentoB": "olanzapina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ciprofloxacino inibe o CYP1A2, principal via de metabolização da olanzapina, elevando seus níveis plasmáticos e o risco de sedação e efeitos adversos.",
+    "conduta": "Considerar redução temporária de dose da olanzapina durante o uso do ciprofloxacino, conforme avaliação médica.",
+    "acaoBalcao": "Perguntar sobre uso de olanzapina antes de dispensar ciprofloxacino; orientar sobre sonolência excessiva.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT383"
+  },
+  {
+    "medicamentoA": "ciprofloxacino",
+    "medicamentoB": "clozapina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ciprofloxacino inibe o CYP1A2, principal via de metabolização da clozapina, podendo elevar substancialmente seus níveis — risco aumentado de sedação, hipotensão e, mais raramente, convulsões, em um fármaco já de margem terapêutica estreita.",
+    "conduta": "Evitar a associação quando possível; se indispensável, geralmente requer redução de dose da clozapina sob acompanhamento médico rigoroso.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de clozapina antes de dispensar ciprofloxacino; encaminhar ao prescritor antes de dispensar a associação.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT384"
+  },
+  {
+    "medicamentoA": "ciprofloxacino",
+    "medicamentoB": "duloxetina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ciprofloxacino inibe o CYP1A2, via relevante de metabolização da duloxetina, podendo elevar seus níveis plasmáticos e o risco de efeitos adversos (náusea, sedação).",
+    "conduta": "Monitorar efeitos adversos da duloxetina durante o uso concomitante do antibiótico.",
+    "acaoBalcao": "Perguntar sobre uso de duloxetina antes de dispensar ciprofloxacino.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT385"
+  },
+  {
+    "medicamentoA": "ciprofloxacino",
+    "medicamentoB": "ropinirol",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "O ciprofloxacino inibe o CYP1A2, principal via de metabolização do ropinirol, podendo elevar seus níveis e o risco de efeitos adversos dopaminérgicos (náusea, discinesias, sonolência).",
+    "conduta": "Considerar redução temporária de dose do ropinirol durante o uso do ciprofloxacino, conforme avaliação médica.",
+    "acaoBalcao": "Perguntar sobre uso de ropinirol antes de dispensar ciprofloxacino; orientar sobre náusea ou movimentos involuntários incomuns.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT386"
+  },
+  {
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "erva_sao_joao",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A erva-de-são-joão tem atividade serotoninérgica própria (inibição da recaptação de serotonina), somando-se ao efeito dos antidepressivos serotoninérgicos — risco de síndrome serotoninérgica.",
+    "conduta": "Não associar sem orientação médica; o paciente não deve iniciar ou suspender a erva-de-são-joão por conta própria enquanto em uso de antidepressivo.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de fitoterápicos/suplementos (erva-de-são-joão/hipérico) em pacientes que usam antidepressivos — interação frequentemente omitida pelo paciente por não considerar 'remédio'; orientar sinais de síndrome serotoninérgica (agitação, tremor, sudorese, febre).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT387"
+  },
+  {
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "opioide",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Diversos opioides têm atividade serotoninérgica adicional (inibição da recaptação de serotonina), somando-se ao efeito dos antidepressivos serotoninérgicos e aumentando o risco de síndrome serotoninérgica — risco já bem estabelecido com tramadol (ver interação específica) e descrito, em menor grau, com outros opioides.",
+    "conduta": "Observar sinais de síndrome serotoninérgica ao associar; não é necessariamente contraindicado, mas requer atenção, sobretudo com doses mais altas ou múltiplos agentes serotoninérgicos.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo antes de dispensar opioide, e vice-versa; orientar sinais de síndrome serotoninérgica (agitação, tremor, sudorese, febre, diarreia).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT388"
+  },
+  {
+    "medicamentoA": "nimesulida",
+    "medicamentoB": "isoniazida",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ambos os fármacos têm potencial hepatotóxico; a associação pode aumentar o risco de lesão hepática, especialmente em uso prolongado ou em pacientes com outros fatores de risco hepático.",
+    "conduta": "Evitar uso prolongado de nimesulida em pacientes em tratamento com isoniazida; preferir paracetamol para dor/febre quando possível.",
+    "acaoBalcao": "Perguntar sobre uso de isoniazida antes de recomendar/dispensar nimesulida; orientar sinais de alerta hepático (icterícia, urina escura, dor abdominal) e sugerir paracetamol como alternativa.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT389"
+  },
+  {
+    "medicamentoA": "nimesulida",
+    "medicamentoB": "paracetamol",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Ambos têm potencial hepatotóxico; embora a associação em dose fixa (comum em produtos combinados de venda livre no Brasil) seja amplamente utilizada, o uso prolongado ou em doses elevadas de ambos pode aumentar o risco de lesão hepática, especialmente em pacientes com consumo de álcool ou hepatopatia de base.",
+    "conduta": "Reforçar as doses máximas diárias de cada componente e evitar uso prolongado sem orientação médica.",
+    "acaoBalcao": "Alertar sobre não exceder a dose diária recomendada do produto combinado; perguntar sobre consumo de álcool e uso de outros medicamentos com paracetamol (para evitar duplicidade).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT390"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução da glicoproteína-P intestinal/renal, reduzindo a digoxinemia e podendo comprometer o controle da arritmia/insuficiência cardíaca.",
+    "conduta": "Monitorar resposta clínica e, se disponível, nível sérico de digoxina ao iniciar ou suspender o indutor enzimático; ajustar dose conforme necessário.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de dispensar rifampicina/anticonvulsivantes indutores, e vice-versa; orientar sobre piora dos sintomas cardíacos e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT391"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "levotiroxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução do metabolismo hepático da levotiroxina, reduzindo seus níveis e podendo descompensar o hipotireoidismo.",
+    "conduta": "Monitorar TSH/T4 livre ao iniciar ou suspender o indutor enzimático; pode ser necessário ajustar a dose de levotiroxina.",
+    "acaoBalcao": "Perguntar sobre uso de levotiroxina antes de dispensar rifampicina/anticonvulsivantes indutores; orientar sinais de hipotireoidismo (cansaço, ganho de peso, frio) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT392"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "sulfonilureia",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução do metabolismo (CYP2C9) reduzindo os níveis e o efeito hipoglicemiante da sulfonilureia.",
+    "conduta": "Monitorar glicemia ao iniciar ou suspender o indutor enzimático; pode ser necessário ajustar a dose do hipoglicemiante.",
+    "acaoBalcao": "Perguntar sobre uso de sulfonilureia (glibenclamida, gliclazida) antes de dispensar rifampicina/anticonvulsivantes indutores; orientar sobre perda de controle glicêmico.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT393"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "bra",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Alteração da formação do metabólito ativo do BRA, reduzindo a eficácia anti-hipertensiva.",
+    "conduta": "Monitorar resposta pressórica ao associar; pode ser necessário ajuste de dose ou troca de anti-hipertensivo.",
+    "acaoBalcao": "Perguntar sobre uso de BRA (losartana, valsartana etc.) antes de dispensar indutor enzimático; orientar sobre monitorização da pressão arterial.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT394"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "aine_coxibe",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução enzimática reduzindo os níveis plasmáticos do coxibe e sua eficácia anti-inflamatória/analgésica.",
+    "conduta": "Monitorar eficácia analgésica; pode ser necessário ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de coxibe antes de dispensar indutor enzimático; orientar sobre possível perda de eficácia analgésica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT395"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "ipde5",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução do CYP3A4 reduzindo a exposição ao inibidor da PDE-5 e comprometendo sua eficácia.",
+    "conduta": "Monitorar eficácia; evitar a associação em uso de tadalafila para hipertensão arterial pulmonar.",
+    "acaoBalcao": "Perguntar sobre uso de sildenafila/tadalafila antes de dispensar indutor enzimático; orientar sobre possível perda de eficácia.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT396"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "antidepressivo_serotoninergico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução do metabolismo hepático reduzindo a exposição ao antidepressivo, podendo comprometer a eficácia.",
+    "conduta": "Monitorar resposta clínica; pode ser necessário aumentar a dose do antidepressivo durante o uso concomitante.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo antes de dispensar indutor enzimático; orientar sobre possível piora dos sintomas depressivos/ansiosos e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT397"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "vitamina_d",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aceleração do catabolismo hepático da vitamina D e seus metabólitos.",
+    "conduta": "Monitorar níveis de 25-OH-D; pode ser necessário aumentar a dose de manutenção.",
+    "acaoBalcao": "Orientar sobre possível necessidade de dose maior de vitamina D em uso crônico de indutor enzimático.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT398"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "linezolida",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Redução de aproximadamente 30% na exposição à linezolida.",
+    "conduta": "Monitorar resposta clínica; considerar monitorização de níveis em infecções graves.",
+    "acaoBalcao": "Perguntar sobre uso de indutor enzimático antes de dispensar linezolida; encaminhar ao prescritor se infecção grave.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT399"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "ondansetrona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Aumento significativo do clearance da ondansetrona, reduzindo sua eficácia antiemética.",
+    "conduta": "Monitorar resposta clínica; pode ser necessário ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de indutor enzimático antes de recomendar ondansetrona; orientar sobre possível perda de eficácia antiemética.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT400"
+  },
+  {
+    "medicamentoA": "indutor_enzimatico",
+    "medicamentoB": "corticoide_inalatorio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Indução do CYP3A4 reduzindo a concentração e a eficácia do corticoide inalatório.",
+    "conduta": "Monitorar controle dos sintomas respiratórios; pode ser necessário ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de corticoide inalatório antes de dispensar indutor enzimático; orientar sobre piora dos sintomas respiratórios.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT401"
+  },
+  {
+    "medicamentoA": "sucralfato",
+    "medicamentoB": "quinolona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Quelação por cátions polivalentes presentes no sucralfato, com redução importante da absorção oral da fluoroquinolona.",
+    "conduta": "Tomar a fluoroquinolona pelo menos 2 horas antes ou 6 horas depois do sucralfato.",
+    "acaoBalcao": "Orientar o espaçamento entre sucralfato e a fluoroquinolona (2h antes ou 6h depois) para não perder eficácia do antibiótico.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT402"
+  },
+  {
+    "medicamentoA": "sucralfato",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo",
+      "sangramento"
+    ],
+    "mecanismo": "Possível redução da absorção do anticoagulante por adsorção física ao sucralfato.",
+    "conduta": "Espaçar a administração em pelo menos 2 horas e monitorar RNI em uso concomitante.",
+    "acaoBalcao": "Orientar o espaçamento de pelo menos 2h entre sucralfato e varfarina; reforçar controle de RNI.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT403"
+  },
+  {
+    "medicamentoA": "sucralfato",
+    "medicamentoB": "fenitoina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Redução da absorção da fenitoína por adsorção física sobre a barreira formada pelo sucralfato.",
+    "conduta": "Espaçar a administração em pelo menos 2 horas e monitorar nível sérico/eficácia clínica.",
+    "acaoBalcao": "Orientar o espaçamento de pelo menos 2h entre sucralfato e fenitoína.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT404"
+  },
+  {
+    "medicamentoA": "sucralfato",
+    "medicamentoB": "teofilina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Redução da absorção da teofilina por adsorção física sobre a barreira formada pelo sucralfato.",
+    "conduta": "Espaçar a administração em pelo menos 2 horas e monitorar nível sérico/eficácia clínica.",
+    "acaoBalcao": "Orientar o espaçamento de pelo menos 2h entre sucralfato e teofilina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT405"
+  },
+  {
+    "medicamentoA": "sucralfato",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Redução da absorção da digoxina por adsorção física sobre a barreira formada pelo sucralfato.",
+    "conduta": "Espaçar a administração em pelo menos 2 horas e monitorar nível sérico/eficácia clínica.",
+    "acaoBalcao": "Orientar o espaçamento de pelo menos 2h entre sucralfato e digoxina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT406"
+  },
+  {
+    "medicamentoA": "aine",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Nefrotoxicidade aditiva por mecanismos distintos que convergem na redução da perfusão renal.",
+    "conduta": "Monitorar função renal e, quando disponível, nível sérico do imunossupressor.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de recomendar/dispensar AINE; orientar sinais de piora da função renal e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT407"
+  },
+  {
+    "medicamentoA": "quinolona",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento dos níveis séricos de ciclosporina, com elevação de creatinina em alguns casos.",
+    "conduta": "Monitorar função renal e nível sérico de ciclosporina.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar uma fluoroquinolona; encaminhar ao prescritor para monitorização.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT408"
+  },
+  {
+    "medicamentoA": "ritonavir_potente",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição potente do CYP3A4 pelo ritonavir, com aumento acentuado dos níveis do imunossupressor.",
+    "conduta": "Suspender/ajustar dose e monitorar nível sérico de ciclosporina rigorosamente ao associar ou suspender.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de ciclosporina antes de dispensar ritonavir/Paxlovid; encaminhar ao prescritor antes de dispensar a associação.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT409"
+  },
+  {
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do metabolismo da ciclosporina pelo etinilestradiol, aumentando seus níveis.",
+    "conduta": "Monitorar nível sérico de ciclosporina e função renal; ajustar dose se necessário.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar contraceptivo hormonal combinado.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT410"
+  },
+  {
+    "medicamentoA": "edoxabana",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Inibição da glicoproteína-P pela ciclosporina, aumentando a exposição à edoxabana.",
+    "conduta": "Reduzir a dose de edoxabana para 30 mg/dia conforme bula; monitorar sinais de sangramento.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar edoxabana; orientar sinais de sangramento e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT411"
+  },
+  {
+    "medicamentoA": "metotrexato",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento do risco de nefrotoxicidade e/ou da exposição ao metotrexato.",
+    "conduta": "Monitorar creatinina e, quando disponível, nível sérico de metotrexato.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar/recomendar metotrexato; encaminhar dúvidas ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT412"
+  },
+  {
+    "medicamentoA": "carvedilol",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento da concentração plasmática de ciclosporina.",
+    "conduta": "Monitorar nível sérico de ciclosporina.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar carvedilol; encaminhar ao prescritor para monitorização.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT413"
+  },
+  {
+    "medicamentoA": "aciclovir",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Risco aditivo de nefrotoxicidade, especialmente em infusão rápida ou desidratação.",
+    "conduta": "Hidratar adequadamente, monitorar creatinina e ajustar dose se necessário.",
+    "acaoBalcao": "Perguntar sobre uso de ciclosporina antes de dispensar aciclovir; orientar hidratação adequada.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT414"
+  },
+  {
+    "medicamentoA": "carbamazepina",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Risco aumentado de neurotoxicidade aditiva mesmo com níveis séricos individuais dentro da faixa terapêutica.",
+    "conduta": "Monitorar sinais neurológicos (tremor, ataxia, confusão).",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar carbamazepina, e vice-versa; orientar sinais de neurotoxicidade e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT415"
+  },
+  {
+    "medicamentoA": "teofilina",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Aumento da excreção renal de lítio pela teofilina/cafeína, reduzindo a litemia.",
+    "conduta": "Orientar consumo estável de cafeína/teofilina; monitorar litemia se houver mudança significativa no consumo.",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar teofilina; orientar sobre manter consumo estável de cafeína.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT416"
+  },
+  {
+    "medicamentoA": "espironolactona",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Redução do clearance renal de lítio, com risco de acúmulo e toxicidade.",
+    "conduta": "Monitorar litemia com maior frequência ao iniciar, ajustar ou suspender a espironolactona.",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar espironolactona, e vice-versa; orientar sinais de toxicidade por lítio e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT417"
+  },
+  {
+    "medicamentoA": "ondansetrona",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Risco de síndrome serotoninérgica com o uso concomitante.",
+    "conduta": "Monitorar sinais clínicos de síndrome serotoninérgica (agitação, tremor, sudorese, febre).",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de recomendar ondansetrona; orientar sinais de síndrome serotoninérgica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT418"
+  },
+  {
+    "medicamentoA": "oxcarbazepina",
+    "medicamentoB": "litio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Possível potencialização de efeitos neurotóxicos aditivos sobre o sistema nervoso central.",
+    "conduta": "Monitorar sinais de neurotoxicidade quando a associação for necessária.",
+    "acaoBalcao": "Perguntar sobre uso de lítio antes de dispensar oxcarbazepina, e vice-versa; orientar sinais de neurotoxicidade.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT419"
+  },
+  {
+    "medicamentoA": "aas",
+    "medicamentoB": "digoxina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Deslocamento da digoxina de sua ligação às proteínas plasmáticas, com possível elevação de seus níveis séricos livres.",
+    "conduta": "Atenção a sinais de intoxicação digitálica em uso concomitante prolongado ou em doses altas de AAS.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de recomendar AAS em doses altas/contínuas; orientar sinais de intoxicação digitálica (náusea, alterações visuais, arritmias).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT420"
+  },
+  {
+    "medicamentoA": "digoxina",
+    "medicamentoB": "cloreto_potassio",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Distúrbios do potássio alteram a sensibilidade miocárdica aos digitálicos; tanto hipopotassemia quanto hiperpotassemia aumentam o risco de arritmia.",
+    "conduta": "Manter a potassemia dentro da faixa-alvo e monitorizar ECG em ajustes de dose.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de dispensar/ajustar suplemento de potássio; orientar sobre não interromper ou dobrar doses sem orientação médica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT421"
+  },
+  {
+    "medicamentoA": "digoxina",
+    "medicamentoB": "ranolazina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento da exposição à digoxina por inibição da glicoproteína-P.",
+    "conduta": "Monitorar digoxinemia e ajustar dose se necessário.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de dispensar ranolazina; encaminhar ao prescritor para monitorização.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT422"
+  },
+  {
+    "medicamentoA": "digoxina",
+    "medicamentoB": "metoclopramida",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Aceleração do trânsito gastrointestinal, reduzindo o tempo de contato e podendo diminuir a biodisponibilidade da digoxina.",
+    "conduta": "Monitorar níveis séricos de digoxina e resposta clínica.",
+    "acaoBalcao": "Perguntar sobre uso de digoxina antes de recomendar metoclopramida de uso repetido.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT423"
+  },
+  {
+    "medicamentoA": "quinolona",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento do risco de estimulação do SNC e convulsões por antagonismo somado sobre receptores GABA.",
+    "conduta": "Usar com cautela; evitar associação em pacientes epilépticos ou com história de convulsão.",
+    "acaoBalcao": "Perguntar sobre história de convulsão/epilepsia antes de recomendar AINE a quem usa fluoroquinolona, e vice-versa.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT424"
+  },
+  {
+    "medicamentoA": "betabloqueador_cyp2d6",
+    "medicamentoB": "inibidor_cyp2d6_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP2D6 reduzindo o metabolismo de primeira passagem do betabloqueador, aumentando seus níveis plasmáticos.",
+    "conduta": "Monitorar frequência cardíaca e pressão arterial, ajustando a dose do betabloqueador se necessário.",
+    "acaoBalcao": "Perguntar sobre uso de metoprolol/carvedilol/propranolol antes de dispensar fluoxetina/paroxetina/quinidina/propafenona/bupropiona; orientar sobre bradicardia/hipotensão.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT425"
+  },
+  {
+    "medicamentoA": "antifungico_azolico_sistemico",
+    "medicamentoB": "ipde5",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "hipotensao"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pelo antifúngico azólico, aumentando a exposição ao inibidor da PDE-5.",
+    "conduta": "Reduzir a dose inicial do inibidor da PDE-5 e monitorar hipotensão.",
+    "acaoBalcao": "Perguntar sobre uso de antifúngico oral antes de dispensar sildenafila/tadalafila; orientar sobre uso de dose menor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT426"
+  },
+  {
+    "medicamentoA": "fibrato",
+    "medicamentoB": "sulfonilureia",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Potencialização do efeito hipoglicemiante.",
+    "conduta": "Monitorar glicemia ao associar.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia (tremor, sudorese, confusão) ao associar fibrato e sulfonilureia.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT427"
+  },
+  {
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "sulfonilureia",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do metabolismo da sulfonilureia, potencializando o efeito hipoglicemiante.",
+    "conduta": "Monitorar glicemia durante a antibioticoterapia.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao dispensar macrolídeo para quem usa sulfonilureia.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT428"
+  },
+  {
+    "medicamentoA": "macrolideo",
+    "medicamentoB": "apixabana",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sangramento"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pelo macrolídeo, aumentando os níveis plasmáticos de apixabana.",
+    "conduta": "Usar com cautela, monitorando sinais de sangramento.",
+    "acaoBalcao": "Perguntar sobre uso de apixabana antes de dispensar macrolídeo; orientar sinais de sangramento.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT429"
+  },
+  {
+    "medicamentoA": "beta2_agonista",
+    "medicamentoB": "antidiabetico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Efeito hiperglicemiante dos agonistas beta-2, reduzindo a eficácia do tratamento antidiabético.",
+    "conduta": "Monitorar glicemia, especialmente em uso sistêmico/tocolítico de doses mais altas.",
+    "acaoBalcao": "Alertar sobre possível descontrole glicêmico ao associar broncodilatador beta-2 e antidiabético.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT430"
+  },
+  {
+    "medicamentoA": "cefalosporina",
+    "medicamentoB": "furosemida",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Possível potencialização da nefrotoxicidade.",
+    "conduta": "Monitorar função renal e estado de hidratação.",
+    "acaoBalcao": "Perguntar sobre uso de furosemida antes de dispensar cefalosporina; orientar hidratação adequada.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT431"
+  },
+  {
+    "medicamentoA": "antibiotico_amplo",
+    "medicamentoB": "aminoglicosideo",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inativação química in vitro do aminoglicosídeo pela penicilina, principalmente quando misturados na mesma solução/seringa ou em insuficiência renal.",
+    "conduta": "Nunca misturar no mesmo frasco/seringa; administrar em linhas separadas, com intervalo (≥ 1 hora); monitorar níveis do aminoglicosídeo em pacientes com função renal reduzida.",
+    "acaoBalcao": "Em contexto hospitalar: nunca misturar penicilina e aminoglicosídeo na mesma solução/seringa; administrar separadamente.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT432"
+  },
+  {
+    "medicamentoA": "antibiotico_amplo",
+    "medicamentoB": "cloranfenicol",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Antagonismo teórico/in vitro: o cloranfenicol, bacteriostático, pode reduzir o efeito bactericida do beta-lactâmico.",
+    "conduta": "Evitar a associação em infecções graves (meningite, endocardite) quando possível.",
+    "acaoBalcao": "Evitar associar cloranfenicol com penicilina de amplo espectro em infecções graves; encaminhar ao prescritor se identificado.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT433"
+  },
+  {
+    "medicamentoA": "inibidor_cyp2c19",
+    "medicamentoB": "prolonga_qt",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "prolongamento_qt",
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP2C19 reduzindo o metabolismo de fármacos que prolongam o QT metabolizados por essa via (ex.: citalopram, escitalopram), elevando seus níveis e o risco de prolongamento do QTc.",
+    "conduta": "Considerar redução de dose (ex.: citalopram/escitalopram no máximo 20 mg/dia) e monitorização eletrocardiográfica quando aplicável.",
+    "acaoBalcao": "Perguntar sobre uso de citalopram/escitalopram antes de dispensar omeprazol/esomeprazol/fluconazol/cimetidina; orientar sobre dose máxima e sinais de palpitação/síncope.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT434"
+  },
+  {
+    "medicamentoA": "cilostazol",
+    "medicamentoB": "inibidor_cyp2c19",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Redução do metabolismo hepático do cilostazol via CYP2C19, aumentando seus níveis plasmáticos.",
+    "conduta": "Reduzir a dose de cilostazol para 50 mg 2x/dia durante o uso concomitante.",
+    "acaoBalcao": "Perguntar sobre uso de cilostazol antes de dispensar omeprazol/esomeprazol/fluconazol/cimetidina; encaminhar ao prescritor para ajuste de dose.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT435"
+  },
+  {
+    "medicamentoA": "cilostazol",
+    "medicamentoB": "macrolideo",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pelo macrolídeo, aumentando os níveis plasmáticos de cilostazol.",
+    "conduta": "Reduzir a dose de cilostazol para 50 mg 2x/dia durante o uso concomitante.",
+    "acaoBalcao": "Perguntar sobre uso de cilostazol antes de dispensar macrolídeo; encaminhar ao prescritor para ajuste de dose.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT436"
+  },
+  {
+    "medicamentoA": "cilostazol",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pelo bloqueador de canal de cálcio não dihidropiridínico, aumentando os níveis plasmáticos de cilostazol.",
+    "conduta": "Reduzir a dose de cilostazol para 50 mg 2x/dia durante o uso concomitante.",
+    "acaoBalcao": "Perguntar sobre uso de cilostazol antes de dispensar diltiazem/verapamil; encaminhar ao prescritor para ajuste de dose.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT437"
+  },
+  {
+    "medicamentoA": "fenitoina",
+    "medicamentoB": "fluoxetina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do metabolismo hepático (CYP2C9/2C19) da fenitoína pela fluoxetina, elevando seus níveis séricos.",
+    "conduta": "Monitorar nível sérico e sinais de toxicidade (nistagmo, ataxia, sedação).",
+    "acaoBalcao": "Perguntar sobre uso de fenitoína antes de dispensar fluoxetina, e vice-versa; orientar sinais de toxicidade e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT438"
+  },
+  {
+    "medicamentoA": "contraceptivo",
+    "medicamentoB": "teofilina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do metabolismo da teofilina pelo etinilestradiol, aumentando seus níveis.",
+    "conduta": "Monitorar efeito e, quando disponível, concentração sérica; ajustar dose se necessário.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de dispensar contraceptivo hormonal combinado.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT439"
+  },
+  {
+    "medicamentoA": "aciclovir",
+    "medicamentoB": "teofilina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento da concentração de teofilina.",
+    "conduta": "Monitorar teofilinemia e sinais de toxicidade.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de dispensar aciclovir; orientar sinais de toxicidade (náusea, tremor, arritmia).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT440"
+  },
+  {
+    "medicamentoA": "isoniazida",
+    "medicamentoB": "teofilina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do metabolismo hepático da teofilina pela isoniazida.",
+    "conduta": "Monitorar efeito e nível sérico de teofilina.",
+    "acaoBalcao": "Perguntar sobre uso de teofilina antes de dispensar isoniazida.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT441"
+  },
+  {
+    "medicamentoA": "isoniazida",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Inibição do metabolismo hepático do anticoagulante pela isoniazida.",
+    "conduta": "Monitorar RNI e sinais de sangramento ao associar ou suspender a isoniazida.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar isoniazida, e vice-versa; orientar sinais de sangramento e reforçar controle de RNI.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT442"
+  },
+  {
+    "medicamentoA": "varfarina",
+    "medicamentoB": "clotrimazol",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Inibição da CYP2C9 mesmo com absorção sistêmica baixa (uso tópico/vaginal); há relatos de elevação de RNI com imidazólicos tópicos.",
+    "conduta": "Perguntar sobre uso de antifúngico tópico/vaginal em pacientes anticoagulados; orientar monitorização de RNI mesmo com uso não sistêmico.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de varfarina antes de recomendar/dispensar antifúngico tópico ou vaginal (cremes/óvulos); orientar reforço do controle de RNI.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT443"
+  },
+  {
+    "medicamentoA": "nitazoxanida",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Alta ligação às proteínas plasmáticas, podendo deslocar o anticoagulante e potencializar seu efeito.",
+    "conduta": "Monitorar RNI ao associar.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de recomendar/dispensar nitazoxanida; orientar sinais de sangramento e reforçar controle de RNI.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT444"
+  },
+  {
+    "medicamentoA": "ranolazina",
+    "medicamentoB": "sinvastatina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pela ranolazina, aumentando os níveis plasmáticos da sinvastatina e o risco de miopatia.",
+    "conduta": "Limitar a dose de sinvastatina a 20 mg/dia; monitorar sintomas musculares.",
+    "acaoBalcao": "Perguntar sobre uso de sinvastatina antes de dispensar ranolazina; orientar sobre dor muscular e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT445"
+  },
+  {
+    "medicamentoA": "acido_valproico",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Deslocamento da ligação proteica da varfarina, potencializando seu efeito anticoagulante.",
+    "conduta": "Monitorar RNI com maior frequência ao associar ou ajustar doses.",
+    "acaoBalcao": "Perguntar sobre uso de varfarina antes de dispensar ácido valproico, e vice-versa; orientar sinais de sangramento e reforçar controle de RNI.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT446"
+  },
+  {
+    "medicamentoA": "ranolazina",
+    "medicamentoB": "metformina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento da exposição à metformina por inibição de transportadores renais.",
+    "conduta": "Limitar a dose de metformina conforme bula; monitorar função renal e sinais de acidose láctica.",
+    "acaoBalcao": "Perguntar sobre uso de metformina antes de dispensar ranolazina; orientar sinais de acidose láctica (mal-estar, dor abdominal, respiração acelerada).",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT447"
+  },
+  {
+    "medicamentoA": "alprazolam",
+    "medicamentoB": "fluoxetina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "Inibição parcial do CYP3A4 pela fluoxetina, aumentando os níveis de alprazolam.",
+    "conduta": "Reduzir a dose de alprazolam e monitorar sedação.",
+    "acaoBalcao": "Orientar sobre sonolência excessiva ao associar alprazolam e fluoxetina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT448"
+  },
+  {
+    "medicamentoA": "diazepam",
+    "medicamentoB": "fluoxetina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "Inibição do metabolismo hepático, com aumento das concentrações de diazepam.",
+    "conduta": "Monitorar sedação excessiva.",
+    "acaoBalcao": "Orientar sobre sonolência excessiva ao associar diazepam e fluoxetina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT449"
+  },
+  {
+    "medicamentoA": "levetiracetam",
+    "medicamentoB": "metotrexato",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Possível redução da depuração renal do metotrexato por competição em transportadores renais, elevando o risco de toxicidade.",
+    "conduta": "Monitorar níveis séricos de metotrexato e função renal quando a associação for necessária.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de dispensar levetiracetam, e vice-versa; orientar sinais de alarme e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT450"
+  },
+  {
+    "medicamentoA": "linezolida",
+    "medicamentoB": "clozapina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Soma de toxicidade hematológica (mielossupressão).",
+    "conduta": "Monitorar hemograma.",
+    "acaoBalcao": "Perguntar sobre uso de clozapina antes de dispensar linezolida, e vice-versa; orientar sinais de alarme hematológico (febre, feridas na boca, cansaço extremo) e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT451"
+  },
+  {
+    "medicamentoA": "benzodiazepinico",
+    "medicamentoB": "clozapina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo",
+      "sedacao"
+    ],
+    "mecanismo": "Relatos de sedação excessiva, depressão respiratória e colapso cardiorrespiratório com a associação, especialmente no início do tratamento com clozapina.",
+    "conduta": "Evitar associação, sobretudo na fase de introdução/titulação da clozapina; se indispensável, monitorização clínica estreita.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de benzodiazepínico antes de dispensar clozapina, especialmente em início de tratamento; orientar sonolência intensa/dificuldade respiratória e encaminhar ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT452"
+  },
+  {
+    "medicamentoA": "metotrexato",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento do risco de nefrotoxicidade e/ou da exposição ao metotrexato.",
+    "conduta": "Monitorar creatinina e, quando disponível, nível sérico de metotrexato.",
+    "acaoBalcao": "Perguntar sobre uso de metotrexato antes de dispensar amiodarona, e vice-versa; encaminhar dúvidas ao prescritor.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT453"
+  },
+  {
+    "medicamentoA": "metronidazol",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Possível efeito aditivo sobre o intervalo QT.",
+    "conduta": "Considerar monitorização eletrocardiográfica se houver fatores de risco adicionais para prolongamento do QT.",
+    "acaoBalcao": "Perguntar sobre uso de amiodarona antes de dispensar metronidazol; orientar sinais de palpitação/síncope se uso prolongado.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT454"
+  },
+  {
+    "medicamentoA": "tinidazol",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Possível efeito aditivo sobre o intervalo QT.",
+    "conduta": "Considerar monitorização eletrocardiográfica se houver fatores de risco adicionais para prolongamento do QT.",
+    "acaoBalcao": "Perguntar sobre uso de amiodarona antes de dispensar tinidazol; orientar sinais de palpitação/síncope se uso prolongado.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT455"
+  },
+  {
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição do CYP3A4 pelo ritonavir, aumentando a exposição ao antidepressivo serotoninérgico.",
+    "conduta": "Monitorar sinais de sedação excessiva e de síndrome serotoninérgica; pode requerer redução de dose.",
+    "acaoBalcao": "Perguntar sobre uso de antidepressivo antes de dispensar ritonavir/Paxlovid; orientar sinais de sedação excessiva/síndrome serotoninérgica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT456"
+  },
+  {
+    "medicamentoA": "salmeterol",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição potente do CYP3A4 pelo ritonavir, aumentando significativamente a exposição sistêmica ao salmeterol, com risco de efeitos cardiovasculares (taquicardia, prolongamento de QT).",
+    "conduta": "Evitar a associação quando possível; se indispensável, monitorar sinais cardiovasculares.",
+    "acaoBalcao": "Perguntar ativamente sobre uso de bombinha/inalador com salmeterol antes de dispensar ritonavir/Paxlovid; encaminhar ao prescritor antes de dispensar a associação.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT457"
+  },
+  {
+    "medicamentoA": "semaglutida",
+    "medicamentoB": "levotiroxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Aumento de aproximadamente 33% na exposição à levotiroxina com a formulação oral de semaglutida (Rybelsus®).",
+    "conduta": "Monitorar parâmetros tireoidianos (TSH/T4 livre) após início ou ajuste de dose.",
+    "acaoBalcao": "Perguntar sobre uso de levotiroxina antes de dispensar semaglutida oral (Rybelsus®); orientar necessidade de reavaliação da tireoide.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT458"
+  },
+  {
+    "medicamentoA": "etinilestradiol_drospirenona",
+    "medicamentoB": "espironolactona",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "Efeito antimineralocorticoide aditivo (a drospirenona já tem atividade antimineralocorticoide intrínseca), com risco de hipercalemia.",
+    "conduta": "Dosar potássio sérico no primeiro ciclo de uso crônico da associação.",
+    "acaoBalcao": "Perguntar sobre uso de espironolactona antes de dispensar contraceptivo com drospirenona, e vice-versa; orientar necessidade de dosagem de potássio.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT459"
+  },
+  {
+    "medicamentoA": "cefalexina",
+    "medicamentoB": "metformina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Inibição de transportadores renais (OCT2/MATE1) pela cefalexina, aumentando a exposição à metformina.",
+    "conduta": "Monitorar glicemia e sinais de acidose láctica; ajustar dose em caso de função renal reduzida.",
+    "acaoBalcao": "Perguntar sobre uso de metformina antes de dispensar cefalexina; orientar sinais de acidose láctica.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT460"
+  },
+  {
+    "medicamentoA": "aas",
+    "medicamentoB": "insulina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "efeito_aditivo"
+    ],
+    "mecanismo": "Doses altas de salicilato (anti-inflamatórias) podem potencializar o efeito hipoglicemiante.",
+    "conduta": "Relevante principalmente em doses anti-inflamatórias plenas; monitorar glicemia em uso prolongado nessas doses.",
+    "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao recomendar AAS em dose anti-inflamatória plena para quem usa insulina.",
+    "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
+    "id": "INT461"
   }
 ]
