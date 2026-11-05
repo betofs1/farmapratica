@@ -859,9 +859,9 @@ function renderInicio(){
     '</button>';
   }).join('')+'</div>';
 
-  // No mobile, "Categorias" vem antes de "Consulta Rápida" (e dos blocos de favoritos/
-  // recentes, que ficam junto dela); no desktop a ordem original é mantida.
-  let html = introBanner + (isMobile() ? (categoriasSection + quickSection) : (quickSection + categoriasSection));
+  // "Categorias" sempre vem antes de "Consulta Rápida" (e dos blocos de favoritos/
+  // recentes, que ficam junto dela) — em qualquer largura de tela (05/11/2026).
+  let html = introBanner + categoriasSection + quickSection;
 
   html += '<div class="disclaimer-fixed">'+icon('alert')+' Este conteúdo é uma ferramenta de apoio técnico à prática farmacêutica. Valores de referência podem variar entre laboratórios, métodos e populações. Priorize sempre o intervalo informado pelo laboratório do paciente. Um resultado isolado não estabelece diagnóstico; a interpretação deve considerar sintomas, histórico clínico e outros exames. Não substitui avaliação médica.</div>';
   return html;

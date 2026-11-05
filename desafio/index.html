@@ -393,6 +393,26 @@
   .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; align-items:center; }
   .filter-bar select{ background:var(--card); border:1px solid var(--border); color:var(--text); font-size:.78rem; font-weight:700; padding:8px 12px; border-radius:9px; cursor:pointer; }
   .filter-bar select:focus{ outline:none; border-color:var(--red-bright); }
+
+  /* ---------- Seletor de categorias (múltiplas) do Flashcards (05/11/2026) ---------- */
+  .flash-cat-chip{ position:relative; }
+  .flash-cat-chip.selected{
+    border-color:var(--cc, var(--red-bright));
+    box-shadow:0 0 0 2px color-mix(in srgb, var(--cc, var(--red-bright)) 55%, transparent), 0 8px 18px color-mix(in srgb, var(--cc, var(--red-bright)) 22%, transparent);
+    background:linear-gradient(165deg, color-mix(in srgb, var(--cc, var(--red-bright)) 14%, var(--card)), var(--card-hover) 150%);
+  }
+  .flash-cat-chip .fc-check{
+    position:absolute; top:8px; right:8px; width:20px; height:20px; border-radius:50%;
+    background:var(--cc, var(--red-bright)); color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 6px color-mix(in srgb, var(--cc, var(--red-bright)) 45%, transparent);
+  }
+  .flash-cat-chip .fc-check svg{ width:11px; height:11px; stroke-width:3.4; }
+  .flash-cat-chip.disabled{ opacity:.4; cursor:default; }
+  .flash-cat-chip.disabled:hover{ transform:none; box-shadow:none; border-color:var(--border); }
+  @media (min-width:801px){
+    .flash-cat-chip .fc-check{ top:12px; right:12px; }
+    .flash-cat-chip.disabled:hover{ transform:none; }
+  }
   .btn{
     display:inline-flex; align-items:center; gap:7px; padding:9px 16px; border-radius:10px; border:1px solid var(--border);
     background:var(--panel); color:var(--text); font-size:.8rem; font-weight:700; cursor:pointer; transition:.14s ease;
@@ -663,7 +683,7 @@ let state = {
   casoId:null, casoStepIndex:0, casoPontosGanhos:0, casoPontosMax:0, casoAcertosComp:[], casoRespostaAtual:null,
   quizFiltro:{categoria:'todas', nivel:'todos', concurso:false, quantidade:10},
   quizQueue:[], quizIndex:0, quizAcertos:0, quizErros:[], quizRespostaAtual:null,
-  flashFiltro:{categoria:'todas'},
+  flashFiltro:{categorias:['todas']},
   flashQueue:[], flashIndex:0, flashVirado:false,
   casosFiltro:{categoria:'todas', nivel:'todos', foco:'todos', ambiente:'todos'}
 };
@@ -960,15 +980,28 @@ function finalizarQuiz(){
 }
 
 /* ---------------- FLASHCARDS ---------------- */
-function iniciarFlash(categoriaId){
-  state.flashFiltro = {categoria:categoriaId||'todas'};
-  let pool = DATA.flashcards.filter(fc => state.flashFiltro.categoria==='todas' || fc.categoria===state.flashFiltro.categoria);
+function iniciarFlash(categoriaIds){
+  if(categoriaIds) state.flashFiltro = {categorias:categoriaIds};
+  const cats = state.flashFiltro.categorias;
+  let pool = DATA.flashcards.filter(fc => cats.includes('todas') || cats.includes(fc.categoria));
   const dificeis = pool.filter(fc => progresso.cartoesDificeis.includes(fc.id));
   const resto = shuffle(pool.filter(fc => !progresso.cartoesDificeis.includes(fc.id)));
   state.flashQueue = dificeis.concat(resto);
   state.flashIndex = 0; state.flashVirado = false;
   if(state.flashQueue.length===0) return;
   setView('flashcards');
+}
+function toggleFlashCategoria(id){
+  let cats = state.flashFiltro.categorias.slice();
+  if(id==='todas'){ cats = ['todas']; }
+  else{
+    cats = cats.filter(c=>c!=='todas');
+    const idx = cats.indexOf(id);
+    if(idx>=0) cats.splice(idx,1); else cats.push(id);
+    if(cats.length===0) cats = ['todas'];
+  }
+  state.flashFiltro.categorias = cats;
+  renderMain();
 }
 function virarCartao(){ state.flashVirado = !state.flashVirado; renderMain(); }
 function marcarCartao(sei){
@@ -1033,7 +1066,7 @@ function viewInicio(){
   h += '<div class="quick-grid">'+
     quickCard('cases','red','Caso Aleatório','Um caso clínico sorteado, do começo ao fim.','iniciarCasoAleatorio()')+
     quickCard('bolt','amber','Desafio Rápido','5 perguntas curtas, direto ao ponto.','iniciarQuizRapido()')+
-    quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.','iniciarFlash()')+
+    quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.',"setView('flashConfig')")+
     quickCard('quiz','indigo','Quiz','Banco completo de questões, com filtros por categoria e nível.',"setView('quizConfig')")+
     quickCard('alert','crimson','Sinais de Alerta','Casos focados em reconhecimento de red flags.',"setView('casos',{casosFiltro:{categoria:'todas',nivel:'todos',foco:'sinal-alerta',ambiente:'todos'}})")+
     '</div>';
@@ -1081,7 +1114,7 @@ function viewCategoria(){
     '<div class="empty-hint">'+icon('info')+'<span>Ainda não há questões cadastradas nesta categoria.</span></div>';
 
   h += '<div class="section-title" style="margin-top:26px">'+icon('cards')+'Flashcards desta categoria</div>';
-  h += fcN ? '<button class="btn btn-primary" onclick="iniciarFlash(\''+cat.id+'\')">'+icon('cards')+'Estudar Flashcards ('+fcN+')</button>' :
+  h += fcN ? '<button class="btn btn-primary" onclick="iniciarFlash([\''+cat.id+'\'])">'+icon('cards')+'Estudar Flashcards ('+fcN+')</button>' :
     '<div class="empty-hint">'+icon('info')+'<span>Ainda não há flashcards cadastrados nesta categoria.</span></div>';
 
   return h;
@@ -1310,20 +1343,35 @@ function viewQuizResultado(){
 
 /* ---- Flashcards ---- */
 function viewFlashConfig(){
+  const cats = state.flashFiltro.categorias;
+  const todasAtivo = cats.includes('todas');
   let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Flashcards'}]);
-  h += '<div class="home-hero"><h2>'+icon('cards')+'Flashcards</h2><p>Revise conceitos-chave — cartões marcados como "não sei" voltam a aparecer primeiro nas próximas sessões.</p></div>';
-  h += '<div class="filter-bar">';
-  h += selectFiltro('flashFiltro','categoria', [['todas','Todas as categorias']].concat(DATA.categorias.map(c=>[c.id, c.emoji+' '+c.nome])), state.flashFiltro.categoria);
+  h += '<div class="home-hero"><h2>'+icon('cards')+'Flashcards</h2><p>Escolha uma ou mais categorias para revisar — cartões marcados como "não sei" voltam a aparecer primeiro nas próximas sessões.</p></div>';
+  h += '<div class="section-title">'+icon('cases')+'Quais categorias você quer estudar?</div>';
+  h += '<div class="tiles-grid">';
+  h += '<div class="cat-tile flash-cat-chip'+(todasAtivo?' selected':'')+'" style="--cc:var(--red-bright);--cg:var(--red-glow)" onclick="toggleFlashCategoria(\'todas\')">'+
+    (todasAtivo?'<div class="fc-check">'+icon('check')+'</div>':'')+
+    '<div class="ct-icon">'+icon('cards')+'</div><h4>Todas as categorias</h4>'+
+    '<div class="ct-count">'+DATA.flashcards.length+' cartões</div></div>';
+  h += DATA.categorias.map(cat=>{
+    const n = DATA.flashcards.filter(f=>f.categoria===cat.id).length;
+    const ativo = !todasAtivo && cats.includes(cat.id);
+    return '<div class="cat-tile flash-cat-chip'+(ativo?' selected':'')+(n===0?' disabled':'')+'" '+ccStyle(cat.cor)+
+      (n>0 ? ' onclick="toggleFlashCategoria(\''+cat.id+'\')"' : '')+'>'+
+      (ativo?'<div class="fc-check">'+icon('check')+'</div>':'')+
+      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-count">'+n+(n===1?' cartão':' cartões')+'</div></div>';
+  }).join('');
   h += '</div>';
-  const n = DATA.flashcards.filter(fc => state.flashFiltro.categoria==='todas' || fc.categoria===state.flashFiltro.categoria).length;
-  h += '<button class="btn btn-primary" onclick="iniciarFlash(state.flashFiltro.categoria)">'+icon('cards')+'Estudar ('+n+' cartões)</button>';
+  const n = DATA.flashcards.filter(fc => todasAtivo || cats.includes(fc.categoria)).length;
+  h += '<button class="btn btn-primary" style="margin-top:18px" '+(n===0?'disabled':'')+' onclick="iniciarFlash()">'+icon('cards')+'Estudar ('+n+' cartões)</button>';
   if(progresso.cartoesDificeis.length) h += '<div class="empty-hint" style="margin-top:14px">'+icon('info')+'<span>Você tem '+progresso.cartoesDificeis.length+' cartão(ões) marcados como difíceis — eles aparecerão primeiro.</span></div>';
   return h;
 }
 function viewFlashPlayer(){
   if(state.flashIndex >= state.flashQueue.length){
     let h = '<div class="home-hero"><h2>'+icon('check')+'Sessão concluída!</h2><p>Você revisou '+state.flashQueue.length+' cartões.</p></div>';
-    h += '<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" onclick="iniciarFlash(state.flashFiltro.categoria)">'+icon('cards')+'Estudar Novamente</button>'+
+    h += '<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" onclick="iniciarFlash()">'+icon('cards')+'Estudar Novamente</button>'+
       '<button class="btn" onclick="setView(\'flashConfig\')">'+icon('back')+'Escolher outra categoria</button></div>';
     return h;
   }

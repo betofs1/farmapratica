@@ -270,6 +270,31 @@
   .grupo-card-nome{ font-family:'Inter',sans-serif; font-weight:700; font-size:.76rem; line-height:1.25; color:var(--text); }
   .grupo-card-count{ font-size:.62rem; color:var(--text-dim); font-weight:600; }
 
+  /* ---------- Grade de grupos "estilo jogo" + até 6/linha (desktop) — mesmo
+     tratamento visual já usado no Dicionário/Desafio Clínico (05/11/2026) ---------- */
+  @media (min-width:801px){
+    .grupos-grid{ grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px; }
+    .grupo-card{
+      text-align:center; align-items:center; gap:10px;
+      padding:22px 14px 18px; border-radius:16px; border-top-width:4px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .grupo-card:hover{ transform:translateY(-5px) scale(1.03); }
+    .grupo-card-nome{ font-size:.92rem; }
+    .grupo-card-icone{
+      width:56px; height:56px; border-radius:50%; font-size:1.55rem; border-width:2px;
+      box-shadow:0 4px 14px color-mix(in srgb, var(--gc, var(--accent)) 32%, transparent), inset 0 1px 0 rgba(255,255,255,.18), inset 0 -3px 6px rgba(0,0,0,.12);
+    }
+    .grupo-card:hover .grupo-card-icone{ transform:scale(1.12) rotate(-4deg); }
+    .grupo-card-count{
+      font-weight:800; letter-spacing:.3px; color:var(--gc, var(--text-dim));
+      background:color-mix(in srgb, var(--gc, var(--accent)) 18%, var(--card)); padding:3px 11px; border-radius:20px;
+    }
+  }
+  @media (min-width:801px) and (max-width:1099px){
+    .grupos-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+  }
+
   /* ================= Listas de medicamentos ================= */
   .med-list-flat{ display:flex; flex-direction:column; gap:8px; }
   .med-item{
@@ -467,10 +492,18 @@
     /* 01/11/2026: 3 cards de grupo lado a lado no mobile (antes caíam para 2 e depois 1 por
        linha), com o conteúdo do card compactado para caber confortavelmente em 3 colunas. */
     .grupos-grid{ grid-template-columns:repeat(3,1fr); gap:7px; }
-    .grupo-card{ padding:10px 8px 9px; gap:5px; }
-    .grupo-card-icone{ width:27px; height:27px; border-radius:8px; font-size:.86rem; }
+    .grupo-card{
+      padding:14px 8px 12px; gap:7px; text-align:center; align-items:center;
+      border-radius:14px; border-top-width:3px;
+      background:linear-gradient(165deg, var(--card), var(--card-hover) 150%);
+    }
+    .grupo-card:active{ transform:scale(.97); }
+    .grupo-card-icone{ width:42px; height:42px; border-radius:50%; font-size:1.15rem; border-width:1.5px; }
     .grupo-card-nome{ font-size:.64rem; line-height:1.22; }
-    .grupo-card-count{ font-size:.56rem; }
+    .grupo-card-count{
+      font-size:.56rem; font-weight:800; letter-spacing:.2px; color:var(--gc, var(--text-dim));
+      background:color-mix(in srgb, var(--gc, var(--accent)) 18%, var(--card)); padding:2px 9px; border-radius:20px;
+    }
   }
 </style>
 </head>

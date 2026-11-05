@@ -367,14 +367,22 @@
   .ic-freq{ width:12px; height:12px; vertical-align:-2px; margin-right:1px; }
   .btn-ghost .ic, .btn-relatorio .ic, .btn-fonte-dados .ic{ width:14px; height:14px; }
   .pin-card .pin-ic{
-    width:30px; height:30px; border-radius:9px; flex-shrink:0;
+    width:32px; height:32px; border-radius:10px; flex-shrink:0;
     display:flex; align-items:center; justify-content:center; font-size:1rem;
-    background: var(--card);
+    background:linear-gradient(145deg, color-mix(in srgb, var(--red-bright) 26%, transparent), color-mix(in srgb, var(--red-bright) 9%, transparent));
+    border:1px solid color-mix(in srgb, var(--red-bright) 32%, transparent);
+    box-shadow:0 3px 10px color-mix(in srgb, var(--red-bright) 26%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    color: var(--red-bright);
+    transition:transform .18s ease, box-shadow .18s ease;
   }
-  .pin-card .pin-ic .ic{ width:16px; height:16px; }
-  .pin-card:hover{ transform: translateX(2px); border-color: var(--red-bright); }
+  .pin-card .pin-ic .ic{ width:17px; height:17px; }
+  .pin-card:hover{ transform: translateX(2px) translateY(-1px); border-color: var(--red-bright); box-shadow:0 6px 16px rgba(0,0,0,.14); }
+  .pin-card:hover .pin-ic{
+    transform:scale(1.08) rotate(-3deg);
+    box-shadow:0 6px 16px color-mix(in srgb, var(--red-bright) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+  }
   .pin-card.active{ background: linear-gradient(135deg, var(--red-dark), var(--red)); color:#fff; border-color:transparent; }
-  .pin-card.active .pin-ic{ background: rgba(255,255,255,.18); }
+  .pin-card.active .pin-ic{ background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); color:#fff; box-shadow:none; }
   .pin-card.nc-pin{ color: var(--pill-text); }
   .pin-card.hoje-cta{
     /* 25/08/2026: removido o componente vermelho do fundo/ícone (era um
@@ -386,7 +394,8 @@
     border-color: rgba(245,158,11,.45);
     color: var(--text);
   }
-  .pin-card.hoje-cta .pin-ic{ background: linear-gradient(135deg, #ffd166, var(--amber)); color:#4a2e02; }
+  .pin-card.hoje-cta .pin-ic{ background: linear-gradient(135deg, #ffd166, var(--amber)); border-color: rgba(245,158,11,.5); color:#4a2e02; box-shadow:0 3px 10px rgba(245,158,11,.3), inset 0 1px 0 rgba(255,255,255,.25); }
+  .pin-card.hoje-cta:hover .pin-ic{ box-shadow:0 6px 16px rgba(245,158,11,.45), inset 0 1px 0 rgba(255,255,255,.3); }
   .pin-card.hoje-cta .pin-badge{ background: var(--amber); border-color: transparent; color:#1a1200; }
   .pin-card.hoje-cta.active{ background: linear-gradient(135deg, var(--red-dark), var(--red)); border-color:transparent; color:#fff; }
   .pin-card.hoje-cta.active .pin-ic{ background: rgba(255,255,255,.22); color:#fff; }
@@ -429,14 +438,26 @@
     padding: 10px 12px 10px 10px; cursor:pointer; box-shadow: 0 2px 8px rgba(0,0,0,.08);
     transition: background .15s ease, border-color .15s ease, transform .1s ease;
   }
-  .rail-card:hover{ transform: translateX(3px); border-color: var(--rail-color); }
+  .rail-card:hover{ transform: translateX(3px); border-color: var(--rail-color); box-shadow:0 6px 16px rgba(0,0,0,.14); }
   .rail-card.active{
     background: linear-gradient(135deg, var(--red-dark), var(--red));
     border-color: transparent;
   }
-  .rail-card .rc-ic{ flex-shrink:0; width:20px; height:20px; display:flex; align-items:center; justify-content:center; color: var(--rail-color); }
-  .rail-card .rc-ic .ic{ width:18px; height:18px; }
-  .rail-card.active .rc-ic{ color:#fff; }
+  .rail-card .rc-ic{
+    flex-shrink:0; width:32px; height:32px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(145deg, color-mix(in srgb, var(--rail-color) 26%, transparent), color-mix(in srgb, var(--rail-color) 9%, transparent));
+    border:1px solid color-mix(in srgb, var(--rail-color) 32%, transparent);
+    box-shadow:0 3px 10px color-mix(in srgb, var(--rail-color) 26%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    color: var(--rail-color);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .rail-card .rc-ic .ic{ width:17px; height:17px; }
+  .rail-card:hover .rc-ic{
+    transform:scale(1.08) rotate(-3deg);
+    box-shadow:0 6px 16px color-mix(in srgb, var(--rail-color) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.14);
+  }
+  .rail-card.active .rc-ic{ background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.3); color:#fff; box-shadow:none; }
   .rail-card .rc-label{
     flex:1; min-width:0; font-size:.85rem; font-weight:700; color: var(--text);
     white-space: normal; line-height:1.3; word-break: break-word;
@@ -497,20 +518,22 @@
     gap:6px;
     border: 1px solid var(--border);
     color: var(--text-gray);
-    background: transparent;
+    background: var(--card);
     padding: 8px 16px;
     border-radius: 20px;
     font-size:.78rem;
     font-weight:700;
     cursor:pointer;
     white-space:nowrap;
-    transition: background .15s, transform .1s, border-color .15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    transition: background .15s ease, transform .12s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
   }
-  .btn-ghost:hover{ background: var(--hover-tint); border-color: var(--red-bright); color: var(--red-bright); transform: translateY(-1px); }
+  .btn-ghost:hover{ background: var(--hover-tint); border-color: var(--red-bright); color: var(--red-bright); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.14); }
+  .btn-ghost:active{ transform: translateY(0) scale(.97); }
   .btn-ghost.primario{ border-color: var(--green); color: var(--green); }
-  .btn-ghost.primario:hover{ background: rgba(46,155,111,.1); border-color: var(--green); color: var(--green); }
+  .btn-ghost.primario:hover{ background: rgba(46,155,111,.1); border-color: var(--green); color: var(--green); box-shadow: 0 8px 18px rgba(46,155,111,.22); }
   .btn-ghost.perigo{ border-color: var(--red-bright); color: var(--red-bright); }
-  .btn-ghost.perigo:hover{ background: rgba(228,23,44,.12); border-color: var(--red-bright); color: var(--red-bright); }
+  .btn-ghost.perigo:hover{ background: rgba(228,23,44,.12); border-color: var(--red-bright); color: var(--red-bright); box-shadow: 0 8px 18px var(--red-glow); }
 
   /* ---------- Barra de progresso ---------- */
   .resumo-bar{
@@ -638,13 +661,16 @@
     padding:14px 18px; border-radius:12px; font-size:.82rem; font-weight:800;
     letter-spacing:.5px; cursor:pointer; border:1px solid var(--border);
     background:var(--card); color:var(--text);
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
     transition: transform .12s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
   }
   .btn-cat-nav .ic{ width:16px; height:16px; }
-  .btn-cat-nav:hover{ transform:translateY(-2px); border-color:var(--text-dim); }
+  .btn-cat-nav:hover{ transform:translateY(-2px); border-color:var(--text-dim); box-shadow:0 8px 18px rgba(0,0,0,.14); }
+  .btn-cat-nav:active{ transform:translateY(0) scale(.98); }
   .btn-cat-proximo{
     background: linear-gradient(135deg, var(--red-dark), var(--red));
     border-color:transparent; color:#fff;
+    box-shadow:0 3px 10px var(--red-glow);
   }
   .btn-cat-proximo:hover{ box-shadow:0 8px 20px var(--red-glow); border-color:transparent; }
 
@@ -1070,12 +1096,10 @@
       flex-direction:column; align-items:flex-start; justify-content:flex-start;
       gap:5px; min-height:76px; padding:8px 8px; border-radius:12px;
     }
-    .rail-card .rc-ic{
-      width:22px; height:22px; border-radius:7px;
-      background: var(--panel); color: var(--rail-color);
-    }
-    .rail-card .rc-ic .ic{ width:13px; height:13px; }
-    .rail-card.active .rc-ic{ background: rgba(255,255,255,.2); color:#fff; }
+    .rail-card .rc-ic{ width:26px; height:26px; border-radius:8px; border-width:1px; }
+    .rail-card .rc-ic .ic{ width:14px; height:14px; }
+    .rail-card:active{ transform:scale(.97); }
+    .rail-card.active .rc-ic{ background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.3); color:#fff; }
     .rail-card .rc-label{ flex:none; width:100%; font-size:.62rem; line-height:1.2; }
     .rail-card .rc-ring{ align-self:flex-end; margin-top:auto; width:20px; height:20px; }
 

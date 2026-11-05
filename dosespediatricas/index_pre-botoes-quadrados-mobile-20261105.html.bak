@@ -1,0 +1,2690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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">
+<title>FarmaPrática | Calculadora de Doses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Paleta grafite médio/escuro — mesmo tom usado no Medicamentos Equivalentes */
+    --header: linear-gradient(180deg, color-mix(in srgb, #2b2d31 84%, #000 10%) 0%, color-mix(in srgb, #2b2d31 88%, #000 14%) 100%);
+    --bg: #34363a;
+    --panel: #35373c;
+    --sidebar: #221f24;
+    --card: #38383e;
+    --card-hover: #414247;
+    --border: #48494f;
+    --red-dark: #a10f1f;
+    --red: #e4172c;
+    --red-bright: #e4172c;
+    --red-glow: rgba(228,23,44,0.22);
+    --text: #f5f5f4;
+    --text-dim: #a7abb1;
+    --text-gray: #d2d5d9;
+    --amber: #f59e0b;
+    --pill-bg: #33232a;
+    --pill-text: #f6cf74;
+    --sidebar-w: 292px;
+    --hover-tint: rgba(255,255,255,.06);
+  }
+
+  /* ---------- Tema claro ---------- */
+  body.light{
+    --header: linear-gradient(180deg, #dfe2e6 0%, #d3d7dc 100%);
+    --bg: #eceef1;
+    --panel: #f6f7f9;
+    --sidebar: #e2e5e9;
+    --card: #ffffff;
+    --card-hover: #f1f2f5;
+    --border: #d7dade;
+    --red-dark: #a10f1f;
+    --red: #d4152a;
+    --red-bright: #d4152a;
+    --red-glow: rgba(212,21,42,0.14);
+    --text: #22262c;
+    --text-dim: #767c84;
+    --text-gray: #4b5057;
+    --amber: #c9790a;
+    --pill-bg: #fbe9ea;
+    --pill-text: #a10f1f;
+    --hover-tint: rgba(20,20,30,.05);
+  }
+  body.light .empty-icon{ background: linear-gradient(135deg, rgba(161,15,31,.1), rgba(168,106,6,.1)); }
+  body.light .valor-pill{ background: linear-gradient(135deg, #fdf0d8, var(--pill-bg)); border-color: rgba(161,15,31,.22); }
+  body.light .peso-bar{ background: linear-gradient(135deg, rgba(161,15,31,.05), rgba(168,106,6,.04)); }
+  body.light .theme-toggle .icon-sun{ display:none; }
+  body.light .theme-toggle .icon-moon{ display:block; }
+  body.light .formulacao{ box-shadow: 0 2px 10px rgba(23,26,32,.06); }
+  body.light{ background: var(--bg); }
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display:flex;
+    flex-direction: column;
+    height:100vh;
+    overflow:hidden;
+    transition: background-color .2s ease, color .2s ease;
+    position: relative;
+  }
+
+  /* ---------- Modo Pediátrico: leve tingimento "bebê" da página inteira ----------
+     Aplicado via body.modo-pediatrico (idade < 18 anos informada). Usa uma camada
+     translúcida fixa (não interfere no layout/cores de cada componente individualmente,
+     por isso funciona igual nos temas claro e escuro) que aparece/desaparece com
+     transição suave conforme a idade digitada cruza o limiar de 18 anos. */
+  body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:4;
+    background:
+      radial-gradient(circle at 12% -4%, rgba(79,143,209,.16), transparent 55%),
+      linear-gradient(180deg, rgba(79,143,209,.05), rgba(79,143,209,.02) 45%, transparent 75%);
+    opacity:0;
+    transition: opacity .35s ease;
+  }
+  body.modo-pediatrico::after{ opacity:1; }
+  @media print{ body::after{ display:none !important; } }
+
+  /* ---------- Topbar ---------- */
+  .topbar-app{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 24px;
+    min-height: 84px;
+    flex-shrink:0;
+    padding: 20px 40px;
+    background: var(--header);
+    border-bottom: 2px solid #e4172c;
+    position: relative;
+    border-radius: 0 0 20px 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 1px 0 rgba(0,0,0,.35),
+      0 20px 34px -18px rgba(0,0,0,.65),
+      0 8px 16px -8px rgba(0,0,0,.45);
+    z-index: 3;
+  }
+  body.light .topbar-app{
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      0 1px 0 rgba(15,23,42,.06),
+      0 20px 34px -20px rgba(15,23,42,.26),
+      0 8px 16px -10px rgba(15,23,42,.13);
+  }
+  .theme-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    cursor:pointer;
+    flex-shrink:0;
+    box-shadow: 0 1px 4px rgba(0,0,0,.16);
+    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  body.light .theme-toggle{ box-shadow: 0 1px 3px rgba(23,26,32,.08); }
+  .theme-toggle:hover{ background: var(--hover-tint); box-shadow: 0 3px 10px rgba(0,0,0,.22); }
+  body.light .theme-toggle:hover{ box-shadow: 0 3px 10px rgba(23,26,32,.12); }
+  .theme-toggle svg{ width:18px; height:18px; }
+  .theme-toggle .icon-moon{ display:none; }
+  .topbar-app .logo-wrap{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+  }
+  .topbar-app .logo-wrap a{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:inherit;
+  }
+  /* 27/08/2026: botão "início" exclusivo do cabeçalho mobile — oculto por padrão,
+     só aparece dentro do @media(max-width:800px) abaixo (mesmo padrão já usado
+     no Checklist de Rotina). */
+  .topbar-home-mobile{ display:none; }
+  .home-btn-desktop{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer; text-decoration:none; transition:background-color .15s ease,border-color .15s ease; flex-shrink:0; }
+  .home-btn-desktop:hover{ background:var(--hover-tint); border-color:var(--red); }
+  .home-btn-desktop svg{ width:18px; height:18px; }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .brand img{
+    width:50px;
+    height:50px;
+  }
+  .brand-text h1{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:-0.3px;
+    line-height:1.1;
+    margin:0;
+    color: var(--text);
+    white-space:nowrap;
+    text-shadow: 0 2px 16px rgba(0,0,0,.5);
+  }
+  body.light .brand-text h1{ text-shadow: 0 1px 8px rgba(0,0,0,.12); }
+  .brand-text h1 span{ color:var(--red); }
+  .brand-text p{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:12.5px;
+    color:var(--text-gray);
+    font-weight:400;
+    margin:2px 0 0;
+    white-space:nowrap;
+    text-shadow: 0 1px 8px rgba(0,0,0,.35);
+  }
+  body.light .brand-text p{ text-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .topbar-app .titulo-central{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .topbar-app .titulo-principal{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size: 1rem;
+    font-weight:800;
+    white-space:nowrap;
+    letter-spacing:.4px;
+    line-height:1.25;
+    color: var(--text);
+    text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.38);
+  }
+  .topbar-app .titulo-principal .titulo-accent{
+    color: var(--text);
+    text-shadow: 0 1px 0 rgba(0,0,0,.45), 0 4px 14px rgba(0,0,0,.38);
+  }
+  body.light .topbar-app .titulo-principal{
+    text-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 6px rgba(23,26,32,.18);
+  }
+  body.light .topbar-app .titulo-principal .titulo-accent{
+    text-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 6px rgba(23,26,32,.18);
+  }
+  .topbar-app .titulo-descricao{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size: .74rem;
+    color: var(--text-dim);
+    margin-top:2px;
+    white-space:nowrap;
+  }
+  .calc-count-badge{
+    display:inline-flex; align-items:center; gap:6px; margin-top:7px;
+    padding:3px 11px; border-radius:999px;
+    background:var(--red-glow); border:1px solid rgba(228,23,44,.35);
+    color:var(--red-bright); font-size:.72rem; font-weight:700; letter-spacing:.02em;
+  }
+  .calc-count-badge svg{ width:13px; height:13px; }
+
+  @media (max-width: 800px){
+    /* 27/08/2026: cabeçalho mobile reformulado para seguir o mesmo padrão já
+       aprovado no Checklist de Rotina — a marca (logo+"FarmaPrática") some
+       completamente do mobile, e um botão circular de "início"
+       (.topbar-home-mobile) no canto superior esquerdo assume a função de
+       navegação que o logo tinha. */
+    .topbar-app{ flex-wrap:wrap; justify-content:center; gap:8px; padding: 10px 14px; position:relative; }
+    .topbar-app .logo-wrap{ display:none; }
+    .home-btn-desktop{ display:none; }
+    .topbar-home-mobile{
+      display:flex; align-items:center; justify-content:center;
+      position:absolute; left:14px; top:10px;
+      width:34px; height:34px; border-radius:9px;
+      border:1px solid var(--border); background:var(--panel);
+      color:var(--text-dim); text-decoration:none; z-index:2;
+    }
+    .topbar-home-mobile svg{ width:17px; height:17px; }
+    .topbar-home-mobile:hover{ color:var(--text); border-color:var(--red); }
+    /* Título+descrição: volta ao fluxo normal, com respiro simétrico dos dois
+       lados para não colidir com o botão de início. */
+    .topbar-app .titulo-central{ flex-basis:100%; padding:0 44px; }
+    .topbar-app .titulo-principal{ white-space:normal; }
+    .topbar-app .titulo-descricao{ white-space:normal; }
+    /* Botão de tema: sai do canto fixo (regra antiga tinha position:absolute) e
+       volta ao fluxo normal do flex — como o título acima ocupa a linha
+       inteira (flex-basis:100%), o botão fica sozinho na linha seguinte e
+       `justify-content:center` do .topbar-app já o centraliza, sem precisar de
+       nenhum ícone flutuando em canto fixo (mesmo padrão do Checklist de
+       Rotina). */
+  }
+
+  .app-body{
+    display:flex;
+    flex:1;
+    min-height:0;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    width: var(--sidebar-w);
+    flex-shrink:0;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    box-shadow: 4px 0 24px -8px rgba(0,0,0,.35);
+    z-index: 2;
+    transition: box-shadow .25s ease;
+  }
+  .sidebar:hover{ box-shadow: 4px 0 32px -8px rgba(0,0,0,.5); }
+  .sidebar-header{
+    padding: 18px 16px 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 6px;
+  }
+  .search-box{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    background: var(--card);
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding: 10px 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .search-box:focus-within{
+    border-color: var(--red-bright);
+    box-shadow: 0 0 0 3px var(--red-glow);
+  }
+  .search-box input{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--text);
+    font-size:.85rem;
+    font-family: inherit;
+    width:100%;
+  }
+  .search-box input::placeholder{ color: rgba(245,245,244,.62); opacity:1; }
+  body.light .search-box input::placeholder{ color: var(--text-dim); opacity:1; }
+  .sidebar-list{
+    flex:1;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding: 6px 12px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .sidebar-list::-webkit-scrollbar{ width:6px; }
+  .sidebar-list::-webkit-scrollbar-track{ background:transparent; }
+  .sidebar-list::-webkit-scrollbar-thumb{ background: var(--border); border-radius:10px; }
+  .cat-header{
+    font-size:.66rem;
+    text-transform:uppercase;
+    letter-spacing:1.1px;
+    color: var(--text);
+    font-weight:800;
+    opacity:.95;
+    transition: background-color .5s ease, color .5s ease;
+  }
+  .cat-group{ margin-top: 18px; }
+  .cat-group:first-child{ margin-top: 6px; }
+  /* 05/11/2026: reskin total do item de fármaco inspirado no cartão de termo
+     (.quick-card) do Dicionário Farmacêutico — ponto colorido por categoria
+     (.drug-dot) + rótulo, cantos mais arredondados e cartão mais "plano"
+     (var(--panel) sólido), mantendo a estrutura/funcionamento idênticos
+     (clique seleciona o fármaco, estado .active, destaque de busca via
+     <mark>). Nenhuma mudança de HTML fora de criarBotaoFarmaco(). */
+  .drug-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    width:100%;
+    text-align:left;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    color: var(--text-gray);
+    font-size:.85rem;
+    font-family: inherit;
+    padding: 8px 12px 8px 11px;
+    border-radius:10px;
+    cursor:pointer;
+    margin: 0 0 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.16), inset 0 1px 0 0 rgba(255,255,255,.08), inset 0 -3px 7px 0 rgba(0,0,0,.3);
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  body.light .drug-item{ box-shadow: 0 1px 2px rgba(35,40,48,.05), inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -2px 5px 0 rgba(35,40,48,.05); }
+  .drug-item .drug-dot{
+    width:7px;height:7px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(145deg, var(--cat-accent, var(--text-dim)), color-mix(in srgb, var(--cat-accent, var(--text-dim)) 55%, transparent));
+    box-shadow:0 0 5px 1px color-mix(in srgb, var(--cat-accent, var(--text-dim)) 55%, transparent), inset 0 1px 1px rgba(255,255,255,.4);
+    transition: transform .18s ease;
+  }
+  .drug-item .drug-label{ min-width:0; }
+  .drug-item:hover{ background: var(--card-hover); color: var(--text); border-color: var(--red-bright); box-shadow: 0 6px 16px rgba(0,0,0,.3), inset 0 1px 0 0 rgba(255,255,255,.12), inset 0 -3px 8px 0 rgba(0,0,0,.35); transform: translateY(-1px); }
+  body.light .drug-item:hover{ box-shadow: 0 6px 16px rgba(35,40,48,.13), inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -2px 6px 0 rgba(35,40,48,.07); }
+  .drug-item:hover .drug-dot{ transform:scale(1.2); }
+  .drug-item:active{ transform: translateY(0) scale(.98); }
+  .drug-item.active{
+    background: var(--red-glow);
+    color: var(--red-bright);
+    border-color: var(--red-bright);
+    border-left-color: var(--red-bright);
+    font-weight:700;
+  }
+
+  /* ---------- Main ---------- */
+  .main{
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 26px 40px 60px;
+    overflow-y:auto;
+    height:100%;
+  }
+  .main-inner{
+    width:100%;
+    max-width: 820px;
+  }
+  .main-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .main-header h2{
+    margin:0;
+    font-size: 1.75rem;
+    letter-spacing:-.2px;
+  }
+  .main-header .cat-tag{
+    display:inline-block;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+    color: var(--amber);
+    background: rgba(232,184,75,.08);
+    border: 1px solid rgba(232,184,75,.3);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top:8px;
+  }
+  .main-header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-mobile-voltar{
+    display:none;
+    align-items:center;
+    gap:6px;
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    font-size:.78rem;
+    font-weight:700;
+    padding:8px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-bottom:14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .btn-mobile-voltar .icon{ width:13px; height:13px; }
+  .btn-mobile-voltar:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); }
+  .breadcrumb-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+    color: var(--amber);
+    background: rgba(232,184,75,.08);
+    border: 1px solid rgba(232,184,75,.3);
+    padding: 4px 12px 4px 8px;
+    border-radius: 20px;
+    margin-bottom:10px;
+    cursor:pointer;
+    box-shadow: 0 1px 4px rgba(168,106,6,.14);
+    transition: background .15s, transform .1s, box-shadow .15s;
+  }
+  .breadcrumb-chip .icon{ width:11px; height:11px; }
+  .breadcrumb-chip:hover{ background: rgba(232,184,75,.16); transform: translateX(-2px); box-shadow: 0 3px 10px rgba(168,106,6,.22); }
+  .main-header h2{ margin-top:0; }
+  .farmaco-descricao{
+    margin: 8px 0 0;
+    font-size:.86rem;
+    line-height:1.5;
+    color: var(--text-gray);
+    max-width: 60ch;
+  }
+  .secao-titulo{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    font-weight:800;
+    color: var(--text-dim);
+    margin: 4px 0 10px;
+  }
+  .secao-titulo .icon{ width:13px; height:13px; color: var(--red-bright); }
+  .cat-header.destacado{ background: var(--red-glow); color: var(--red-bright); }
+  .btn-fav-calc{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;padding:0;
+    border:1px solid var(--red-bright);
+    color:var(--red-bright);
+    background: color-mix(in srgb, var(--red-bright) 8%, var(--card));
+    border-radius:50%;
+    cursor:pointer;
+    box-shadow: 0 2px 8px rgba(180,25,42,.22), inset 0 1px 0 0 rgba(255,255,255,.1);
+    transition:all .15s;
+    flex-shrink:0;
+  }
+  .btn-fav-calc svg{width:16px;height:16px;display:block;}
+  .btn-fav-calc:hover{background:rgba(200,19,40,.16); box-shadow: 0 6px 16px rgba(180,25,42,.32); transform: translateY(-2px);}
+  .btn-fav-calc:active{ transform: translateY(0) scale(.92); }
+  .btn-fav-calc.starred{background:var(--red-bright);color:#fff;}
+  .btn-bula{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border: 1px solid var(--red-bright);
+    color: var(--red-bright);
+    background: color-mix(in srgb, var(--red-bright) 7%, var(--card));
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size:.8rem;
+    font-weight:700;
+    cursor:pointer;
+    text-decoration:none;
+    white-space:nowrap;
+    box-shadow: 0 3px 10px rgba(180,25,42,.2), inset 0 1px 0 0 rgba(255,255,255,.1);
+    transition: background .15s, transform .1s, box-shadow .15s;
+  }
+  .btn-bula:hover{ background: rgba(239,45,64,.14); transform: translateY(-2px); box-shadow: 0 7px 18px rgba(180,25,42,.3); }
+  .btn-bula:active{ transform: translateY(0) scale(.96); }
+
+  .btn-nomes-comerciais{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    background: var(--card);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size:.8rem;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.14), inset 0 1px 0 0 rgba(255,255,255,.08);
+    transition: background .15s, color .15s, border-color .15s, box-shadow .15s, transform .1s;
+  }
+  body.light .btn-nomes-comerciais{ box-shadow: 0 1px 3px rgba(23,26,32,.07), inset 0 1px 0 0 rgba(255,255,255,.6); }
+  .btn-nomes-comerciais .icon{ width:13px; height:13px; }
+  .btn-nomes-comerciais:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); box-shadow: 0 6px 16px rgba(0,0,0,.2); transform: translateY(-2px); }
+  body.light .btn-nomes-comerciais:hover{ box-shadow: 0 6px 16px rgba(23,26,32,.12); }
+  .btn-nomes-comerciais:active{ transform: translateY(0) scale(.96); }
+
+  /* ---------- Modal de nomes comerciais ---------- */
+  .comerciais-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(3px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .comerciais-overlay.aberto{ display:flex; }
+  .comerciais-modal{
+    width:100%;
+    max-width: 440px;
+    max-height: 80vh;
+    overflow-y:auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+  }
+  .comerciais-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+    padding: 16px 18px 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comerciais-header h3{
+    margin:0;
+    font-size:1rem;
+    font-weight:800;
+    line-height:1.35;
+  }
+  .comerciais-fechar{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;
+    flex-shrink:0;
+    border:none;
+    background:transparent;
+    color:var(--text-dim);
+    cursor:pointer;
+    border-radius:50%;
+    transition: background .15s, color .15s;
+  }
+  .comerciais-fechar .icon{ width:14px; height:14px; }
+  .comerciais-fechar:hover{ background: var(--hover-tint); color:var(--text); }
+  .comerciais-body{ padding: 16px 20px 20px; }
+  .comerciais-lista{
+    list-style:none; margin:0 0 14px; padding:0;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .comerciais-lista li{
+    display:flex; align-items:center; gap:8px;
+    padding: 9px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size:.85rem;
+    font-weight:600;
+    color: var(--text);
+  }
+  .comerciais-lista li .icon{ width:13px; height:13px; color: var(--amber); flex-shrink:0; }
+  .comerciais-aviso{
+    font-size:.72rem;
+    line-height:1.55;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    padding-top:12px;
+    margin:0;
+  }
+
+  .peso-bar{
+    background: linear-gradient(135deg, rgba(180,25,42,.1), rgba(232,184,75,.05));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 22px;
+    display:flex;
+    gap: 32px;
+    align-items:center;
+    margin-bottom: 28px;
+  }
+  .peso-field{ display:flex; align-items:center; gap:10px; }
+  .peso-field .field-icon{
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: rgba(239,45,64,.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1rem;
+    flex-shrink:0;
+  }
+  .peso-field .field-inputs{ display:flex; flex-direction:column; gap:4px; }
+  .peso-field label{ font-size:.7rem; color: var(--text-dim); font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
+  .peso-field .field-row{ display:flex; align-items:center; gap:8px; }
+  .peso-field input{
+    width: 84px;
+    background: var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    padding:7px 10px;
+    font-size: 1rem;
+    font-weight:600;
+    outline:none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .peso-field input:focus{ border-color: var(--red-bright); box-shadow: 0 0 0 3px var(--red-glow); }
+  .peso-field span{ font-size:.8rem; color: var(--text-dim); font-weight:600; }
+  .unidade-toggle{
+    display:flex;
+    background: var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12);
+  }
+  body.light .unidade-toggle{ box-shadow: 0 1px 2px rgba(23,26,32,.06); }
+  .unidade-toggle button{
+    background:none;
+    border:none;
+    color: var(--text-dim);
+    font-size:.72rem;
+    font-weight:700;
+    padding: 7px 11px;
+    cursor:pointer;
+    transition: background .15s, color .15s;
+  }
+  .unidade-toggle button.active{
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    color:#fff;
+  }
+
+  @media (max-width: 560px){
+    .peso-bar{ flex-wrap:wrap; gap:16px; }
+  }
+
+  /* ---------- Selo de tipo de paciente (Adulto / Pediátrico) ---------- */
+  .tipo-paciente-banner{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-radius:14px;
+    padding:11px 18px;
+    margin-bottom:18px;
+    border:1px solid var(--border);
+    background: var(--card);
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    transition: background-color .25s ease, border-color .25s ease;
+  }
+  .tipo-paciente-banner[hidden]{ display:none; }
+  .tipo-paciente-banner .tp-icon{
+    width:36px; height:36px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition: background-color .25s ease, color .25s ease;
+  }
+  .tipo-paciente-banner .tp-icon .icon{ width:20px; height:20px; }
+  .tipo-paciente-banner .tp-texto{ display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .tipo-paciente-banner .tp-label{ font-size:.86rem; font-weight:800; letter-spacing:.4px; transition: color .25s ease; }
+  .tipo-paciente-banner .tp-sub{ font-size:.74rem; color:var(--text-dim); font-weight:600; }
+
+  .tipo-paciente-banner.tp-adulto{ border-color: rgba(228,23,44,.35); }
+  .tipo-paciente-banner.tp-adulto .tp-icon{ background: rgba(228,23,44,.12); color: var(--red-bright); }
+  .tipo-paciente-banner.tp-adulto .tp-label{ color: var(--red-bright); }
+
+  .tipo-paciente-banner.tp-pediatrico{ border-color: rgba(79,143,209,.4); }
+  .tipo-paciente-banner.tp-pediatrico .tp-icon{ background: rgba(79,143,209,.16); color:#4f8fd1; }
+  .tipo-paciente-banner.tp-pediatrico .tp-label{ color:#4f8fd1; }
+
+  .tipo-paciente-banner.tp-transicao .tp-sub{ color:#c9790a; font-weight:700; }
+  body.light .tipo-paciente-banner.tp-transicao .tp-sub{ color:#a8650a; }
+
+  .empty-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 34px 20px 20px;
+    color: var(--text-dim);
+  }
+  .empty-state .empty-icon{
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(180,25,42,.18), rgba(232,184,75,.1));
+    border: 1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 2rem;
+    margin-bottom: 18px;
+  }
+  .empty-state .empty-title{
+    font-size: 1.05rem;
+    font-weight:700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .empty-state .empty-sub{
+    font-size:.9rem;
+    max-width: 360px;
+    line-height:1.55;
+    color: var(--text);
+    font-weight:600;
+  }
+
+  .formulacoes-grid{
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+  }
+  .formulacao{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .formulacao:hover{ box-shadow: 0 8px 24px rgba(0,0,0,.22); transform: translateY(-1px); }
+  body.light .formulacao:hover{ box-shadow: 0 8px 20px rgba(23,26,32,.1); }
+  .formulacao .form-head{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .formulacao .form-icon{
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 1.05rem;
+    flex-shrink:0;
+  }
+  .formulacao .form-icon.tipo-gotas{ background: rgba(127,168,201,.15); color:#7fa8c9; }
+  .formulacao .form-icon.tipo-liquido{ background: rgba(74,180,150,.15); color:#4ab496; }
+  .formulacao .form-icon.tipo-comprimido{ background: rgba(180,130,220,.15); color:#b482dc; }
+  .formulacao .form-icon.tipo-injetavel{ background: rgba(239,45,64,.15); color: var(--red-bright); }
+  .formulacao .form-icon.tipo-supositorio{ background: rgba(201,138,86,.18); color:#c98a56; }
+  .formulacao h3{
+    font-size: .95rem;
+    margin: 0;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .valor-pill{
+    display:inline-block;
+    background: linear-gradient(135deg, #4a3910, var(--pill-bg));
+    color: var(--pill-text);
+    font-weight:800;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size:.95rem;
+    margin-right: 8px;
+    border: 1px solid rgba(244,207,110,.25);
+  }
+  .formulacao .linha-principal{
+    font-size:.88rem;
+    margin-bottom: 12px;
+    color: var(--text);
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 4px;
+  }
+  .sub-lista{
+    list-style:none;
+    margin:0;
+    padding: 12px 0 0;
+    border-top: 1px solid var(--border);
+  }
+  .sub-lista li{
+    font-size:.8rem;
+    color: var(--text-dim);
+    padding: 4px 0 4px 16px;
+    position:relative;
+    line-height:1.5;
+  }
+  .sub-lista li::before{
+    content: "•";
+    position:absolute;
+    left:0;
+    color: var(--red-bright);
+  }
+  .sub-lista li.restricao{
+    color: #f0a5a5;
+  }
+  .linha-principal.alerta-idade{
+    color: #f0a5a5;
+    font-weight:600;
+    align-items:flex-start;
+    background: rgba(240,165,165,.08);
+    border: 1px solid rgba(240,165,165,.3);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .linha-principal.alerta-idade .icon{
+    flex-shrink:0;
+    width:18px;
+    height:18px;
+    margin-top:1px;
+  }
+  .f-fixo{ color: var(--text); }
+  .f-var{ color: #7fa8c9; }
+
+  .instrucao-verbo{ color: var(--text-dim); font-weight:600; }
+
+  .formula-details{ margin-top: 10px; }
+  .formula-details summary{
+    list-style:none;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:.72rem;
+    font-weight:700;
+    color: var(--text-dim);
+    cursor:pointer;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    width:100%;
+  }
+  .formula-details summary::-webkit-details-marker{ display:none; }
+  .formula-details summary .icon{ width:11px; height:11px; transition: transform .15s ease; }
+  .formula-details[open] summary .icon{ transform: rotate(180deg); }
+  .formula-details summary:hover{ color: var(--text); }
+  .formula-content{
+    margin-top: 10px;
+    padding-left: 2px;
+  }
+  .formula-steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    counter-reset: passo;
+  }
+  .formula-steps li{
+    position:relative;
+    counter-increment: passo;
+    font-size:.76rem;
+    line-height:1.55;
+    color: var(--text-dim);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius:8px;
+    padding: 8px 10px 8px 32px;
+  }
+  .formula-steps li::before{
+    content: counter(passo);
+    position:absolute;
+    left:8px;
+    top:8px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background: var(--red-glow);
+    color: var(--red-bright);
+    font-size:.62rem;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+  .formula-steps .f-fixo{ font-weight:700; }
+  .formula-steps .f-var{
+    display:block;
+    margin-top:3px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size:.72rem;
+  }
+
+  .observacoes{
+    margin-bottom: 20px;
+    background: rgba(239,45,64,.05);
+    border: 1px solid rgba(239,45,64,.2);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .observacoes h3{
+    color: var(--red-bright);
+    font-size: .9rem;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin: 0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .obs-item{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:.85rem;
+    color: var(--text-gray);
+    margin-bottom: 12px;
+    line-height:1.5;
+  }
+  .obs-item:last-child{ margin-bottom:0; }
+  .obs-item .icon{
+    color: var(--red-bright);
+    flex-shrink:0;
+    margin-top:1px;
+    font-size:.8rem;
+  }
+
+  .fonte-tag{
+    margin-top: 20px;
+    display:inline-flex;
+    align-items:center;
+    gap: 6px;
+    font-size: .74rem;
+    color: var(--text-dim);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  .fonte-tag b{ color: var(--text); }
+
+  /* ---------- Gate legal (tela obrigatória ao iniciar) ---------- */
+  .gate-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(3px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .gate-modal{
+    width: 100%;
+    max-width: 540px;
+    max-height: 88vh;
+    overflow-y:auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  }
+  .gate-header{
+    background: linear-gradient(120deg, var(--red-dark) 0%, #1a0505 100%);
+    padding: 22px 26px;
+    border-radius: 16px 16px 0 0;
+  }
+  .gate-header h2{
+    margin:0 0 4px;
+    font-size: 1.2rem;
+    font-weight:800;
+    color:#fff;
+  }
+  .gate-header p{
+    margin:0;
+    font-size: .8rem;
+    color: rgba(255,255,255,.75);
+  }
+  .gate-body{
+    padding: 22px 26px 24px;
+  }
+  .gate-body p{
+    font-size: .82rem;
+    line-height: 1.65;
+    color: var(--text-gray);
+    margin: 0 0 14px;
+  }
+  .gate-body p strong{ color: var(--text); }
+  .gate-check{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size: .8rem;
+    line-height:1.5;
+    color: var(--text);
+    margin: 4px 0 18px;
+    cursor:pointer;
+  }
+  .gate-check input{
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    flex-shrink:0;
+    accent-color: var(--red-bright);
+    cursor:pointer;
+  }
+  .gate-btn{
+    width:100%;
+    padding: 13px;
+    border:none;
+    border-radius: 8px;
+    background: var(--border);
+    color: rgba(255,255,255,.4);
+    font-size: .95rem;
+    font-weight:700;
+    cursor:not-allowed;
+    transition: background .15s, color .15s;
+  }
+  .gate-btn.ativo{
+    background: linear-gradient(120deg, var(--red-bright), var(--red-dark));
+    color:#fff;
+    cursor:pointer;
+    box-shadow: 0 4px 16px rgba(180,25,42,.35);
+  }
+  .gate-btn.ativo:hover{ filter: brightness(1.08); box-shadow: 0 6px 20px rgba(180,25,42,.45); }
+  body.gate-aberto{ overflow:hidden; }
+  body.gate-aberto .app-body{ filter: blur(2px); pointer-events:none; }
+
+  .aviso-responsabilidade{
+    width:100%;
+    max-width: 1500px;
+    margin: 14px auto 0;
+    background: linear-gradient(160deg, rgba(228,23,44,.08), rgba(228,23,44,.02));
+    border: 1px solid rgba(228,23,44,.35);
+    border-radius: 14px;
+    padding: 26px 32px;
+  }
+  .aviso-responsabilidade .aviso-titulo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size: .95rem;
+    font-weight:800;
+    color: var(--red-bright);
+    margin-bottom: 12px;
+    letter-spacing:.2px;
+  }
+  .aviso-responsabilidade h4{
+    font-size: .78rem;
+    font-weight:700;
+    color: var(--text);
+    margin: 14px 0 4px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+  }
+  .aviso-responsabilidade h4:first-of-type{ margin-top:0; }
+  .aviso-responsabilidade p{
+    font-size: .78rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin: 0 0 4px;
+  }
+  .aviso-responsabilidade ul{
+    margin: 4px 0 4px;
+    padding-left: 18px;
+  }
+  .aviso-responsabilidade li{
+    font-size: .78rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 3px;
+  }
+  .aviso-responsabilidade strong{ color: var(--text); }
+
+  @media (max-width: 800px){
+    .topbar-app{ padding: 8px 14px; }
+    /* Marca FarmaPrática reduzida e discreta no mobile — o protagonismo passa a
+       ser do título da própria ferramenta, não da marca (pedido do usuário). */
+    .topbar-app .brand{ gap:7px; }
+    .topbar-app .brand img{ width:24px; height:24px; }
+    .topbar-app .brand-text h1{ font-size:13px; }
+    .topbar-app .brand-text p{ font-size:7.5px; }
+    .topbar-app .titulo-principal{
+      font-size: 1.05rem;
+      white-space:normal;
+      margin-top:3px;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.45);
+    }
+    body.light .topbar-app .titulo-principal{
+      text-shadow: 0 1px 0 rgba(255,255,255,.7), 0 3px 10px rgba(23,26,32,.22);
+    }
+    .topbar-app .titulo-descricao{ font-size: .64rem; white-space:normal; }
+    /* Sidebar e conteúdo agora ocupam a tela inteira, uma vista por vez (ver bloco
+       "Navegação mobile em vista única" mais abaixo), em vez de empilhar os dois
+       com a sidebar limitada a 40vh acima do conteúdo. */
+    .app-body{ flex-direction:column; min-height:0; }
+    .sidebar{ width:100%; border-right:none; border-bottom:1px solid var(--border); }
+    .main{ padding: 18px 16px 40px; }
+    .main-inner{ max-width:100%; }
+    .peso-bar{ flex-wrap:wrap; gap:14px; }
+  }
+
+  /* ---------- Ícones SVG utilitários ---------- */
+  .icon{ width:1em; height:1em; display:inline-block; vertical-align:-0.14em; flex-shrink:0; }
+  .icon svg{ width:100%; height:100%; display:block; }
+  .search-box .icon{ width:15px; height:15px; color: var(--text-dim); }
+  .field-icon .icon{ width:17px; height:17px; color: var(--red-bright); }
+  .empty-icon .icon{ width:32px; height:32px; color: var(--red-bright); }
+  .form-icon .icon{ width:23px; height:23px; }
+  .aviso-titulo .icon{ width:16px; height:16px; }
+  .obs-item .icon{ width:13px; height:13px; }
+  .cat-chevron{ width:13px; height:13px; transition: transform .15s ease; flex-shrink:0; }
+  .cat-header.colapsado .cat-chevron{ transform: rotate(-90deg); }
+
+  /* ---------- Destaque de busca ---------- */
+  mark{
+    background: rgba(242,184,75,.35);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 1px;
+  }
+
+  /* ---------- Cabeçalho de categoria (accordion) ----------
+     05/11/2026: reskin total, inspirado no cartão de categoria (.cat-tile)
+     do Dicionário Farmacêutico — cartão "plano" com cantos mais arredondados,
+     selo de ícone com degradê (.cat-badge, equivalente ao .ct-icon de lá) em
+     vez do pontinho solto, contador de itens (.cat-count-mini, equivalente ao
+     .ct-count) e o brilho de hover passa a usar a cor da própria categoria
+     (--cat-accent) em vez de um vermelho fixo — assim cada categoria "acende"
+     na sua própria cor, igual ao dicionário. Estrutura/funcionamento do
+     accordion (clique expande/colapsa, classe .colapsado) não muda. */
+  .cat-header{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    user-select:none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--cat-accent, var(--border));
+    border-radius:12px;
+    padding: 8px 11px !important;
+    margin: 0 0 8px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.14), inset 0 1px 0 0 rgba(255,255,255,.08), inset 0 -3px 7px 0 rgba(0,0,0,.3);
+    transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  body.light .cat-header{ box-shadow: 0 1px 2px rgba(35,40,48,.04), inset 0 1px 0 0 rgba(255,255,255,.6), inset 0 -2px 5px 0 rgba(35,40,48,.05); }
+  .cat-header:hover{
+    background: var(--hover-tint);
+    border-color: color-mix(in srgb, var(--cat-accent, var(--red-bright)) 70%, var(--border));
+    box-shadow: 0 7px 18px -4px color-mix(in srgb, var(--cat-accent, var(--red-bright)) 42%, rgba(0,0,0,.3)), inset 0 1px 0 0 rgba(255,255,255,.12), inset 0 -3px 8px 0 rgba(0,0,0,.35);
+    transform: translateY(-2px);
+  }
+  body.light .cat-header:hover{ box-shadow: 0 7px 18px -4px color-mix(in srgb, var(--cat-accent, var(--red-bright)) 30%, rgba(35,40,48,.1)), inset 0 1px 0 0 rgba(255,255,255,.7), inset 0 -2px 6px 0 rgba(35,40,48,.07); }
+  .cat-header:hover{ border-left-color: var(--cat-accent, var(--red-bright)); }
+  .cat-badge{
+    width:26px;height:26px;border-radius:9px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg, color-mix(in srgb, var(--cat-accent, var(--text-dim)) 30%, transparent), color-mix(in srgb, var(--cat-accent, var(--text-dim)) 10%, transparent));
+    border:1px solid color-mix(in srgb, var(--cat-accent, var(--text-dim)) 38%, transparent);
+    box-shadow:0 2px 8px color-mix(in srgb, var(--cat-accent, var(--text-dim)) 30%, transparent), inset 0 1px 0 rgba(255,255,255,.12);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .cat-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--cat-accent, var(--text-dim)) 100%, transparent), color-mix(in srgb, var(--cat-accent, var(--text-dim)) 50%, transparent));
+    box-shadow: 0 0 6px 1px var(--cat-accent-glow, transparent), inset 0 1px 1px rgba(255,255,255,.35);
+    flex-shrink:0;
+    transition: box-shadow .18s ease;
+  }
+  .cat-header:hover .cat-badge{
+    transform: scale(1.08) rotate(-4deg);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--cat-accent, var(--text-dim)) 48%, transparent), inset 0 1px 0 rgba(255,255,255,.16);
+  }
+  .cat-header:hover .cat-dot{ box-shadow: 0 0 9px 2px var(--cat-accent-glow, transparent), inset 0 1px 1px rgba(255,255,255,.4); }
+  .cat-label{ display:flex; align-items:center; gap:9px; min-width:0; flex:1; }
+  .cat-count-mini{
+    font-size:.62rem; font-weight:700; color:var(--text-dim);
+    background: var(--panel); border:1px solid var(--border);
+    padding:2px 7px; border-radius:20px; flex-shrink:0;
+  }
+  .cat-items{
+    overflow:hidden;
+    max-height: 900px;
+    opacity: 1;
+    transition: max-height .32s ease, opacity .25s ease;
+  }
+  .cat-group.colapsado .cat-items{ max-height:0; opacity:0; }
+  .cat-group.colapsado .cat-header{ margin-bottom: 0 !important; }
+  .cat-header:active{ transform: translateY(0) scale(.98); }
+
+  /* ---------- Favoritos na sidebar ---------- */
+  .fav-header{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.66rem;
+    text-transform:uppercase;
+    letter-spacing:1.1px;
+    color: var(--amber);
+    font-weight:800;
+    background: var(--sidebar);
+    border: 1px solid rgba(232,184,75,.3);
+    border-radius:7px;
+    padding: 7px 10px;
+    margin: 0 0 8px;
+  }
+  .fav-header .icon{ width:12px; height:12px; }
+  .fav-group{ margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--border); }
+  .drug-item .fav-dot{ margin-left:auto; color: var(--amber); width:12px; height:12px; flex-shrink:0; }
+
+  /* ---------- Menu inferior mobile (busca + favoritos) ---------- */
+  .mobile-bottom-nav{ display:none; }
+  .mobile-bottom-nav-item{
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    background:none; border:none; color: var(--text-dim);
+    font-family: inherit; font-size:.65rem; font-weight:700;
+    cursor:pointer; padding:6px 22px; border-radius:10px;
+    position:relative;
+    transition: background-color .15s ease, transform .12s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-bottom-nav-item .icon{ width:19px; height:19px; }
+  .mobile-bottom-nav-item:active{ background: var(--hover-tint); transform: scale(.93); }
+  .mobile-bottom-nav-item .fav-count{
+    position:absolute; top:1px; right:13px;
+    min-width:14px; height:14px; padding:0 3px;
+    border-radius:7px; background: var(--red-bright); color:#fff;
+    font-size:.58rem; font-weight:800; line-height:14px; text-align:center;
+  }
+  .mobile-search-fechar{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px; flex-shrink:0;
+    border:none; background:transparent; color: var(--text-dim);
+    cursor:pointer; border-radius:50%;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-search-fechar .icon{ width:14px; height:14px; }
+  .mobile-search-fechar:hover{ background: var(--hover-tint); color: var(--text); }
+  .mobile-search-backdrop{
+    display:none;
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.55);
+    z-index:990;
+  }
+  body.mobile-search-open .mobile-search-backdrop{ display:block; }
+
+  /* ---------- Skeleton de carregamento ---------- */
+  .skeleton-item{
+    height: 14px;
+    border-radius: 6px;
+    margin: 10px 12px;
+    background: linear-gradient(90deg, var(--card) 25%, var(--card-hover) 50%, var(--card) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.3s ease-in-out infinite;
+  }
+  @keyframes skeleton-pulse{
+    0%{ background-position: 200% 0; }
+    100%{ background-position: -200% 0; }
+  }
+
+  /* ---------- Botões de ação (copiar/imprimir/compartilhar) ---------- */
+  .btn-icon-action{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    padding:0;
+    border:1px solid var(--border);
+    color: var(--text-dim);
+    background: var(--card);
+    border-radius:50%;
+    cursor:pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.16), inset 0 1px 0 0 rgba(255,255,255,.08);
+    transition: all .15s;
+    flex-shrink:0;
+  }
+  body.light .btn-icon-action{ box-shadow: 0 1px 4px rgba(23,26,32,.08), inset 0 1px 0 0 rgba(255,255,255,.6); }
+  .btn-icon-action .icon{ width:16px; height:16px; }
+  .btn-icon-action:hover{ background: var(--hover-tint); color: var(--text); border-color: var(--text-dim); box-shadow: 0 6px 16px rgba(0,0,0,.24); transform: translateY(-2px); }
+  body.light .btn-icon-action:hover{ box-shadow: 0 6px 16px rgba(23,26,32,.14); }
+  .btn-icon-action:active{ transform: translateY(0) scale(.92); }
+  .btn-icon-action.feito{ color:#3fae6d; border-color:#3fae6d; }
+  .btn-copiar-dose{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    background:var(--card);
+    border:1px solid var(--border);
+    color: var(--text-dim);
+    font-size:.68rem;
+    font-weight:700;
+    padding: 4px 9px;
+    border-radius: 20px;
+    cursor:pointer;
+    margin-left:auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,.14);
+    transition: all .15s;
+    white-space:nowrap;
+  }
+  body.light .btn-copiar-dose{ box-shadow: 0 1px 3px rgba(23,26,32,.07); }
+  .btn-copiar-dose .icon{ width:11px; height:11px; }
+  .btn-copiar-dose:hover{ background: var(--hover-tint); color: var(--text); box-shadow: 0 5px 12px rgba(0,0,0,.2); transform: translateY(-1px); }
+  body.light .btn-copiar-dose:hover{ box-shadow: 0 5px 12px rgba(23,26,32,.12); }
+  .btn-copiar-dose:active{ transform: translateY(0) scale(.95); }
+  .btn-copiar-dose.feito{ color:#3fae6d; border-color:#3fae6d; }
+
+  /* ---------- Badge de verificação de dados ---------- */
+  .verificado-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:.7rem;
+    color: var(--text-dim);
+    background: var(--panel);
+    border:1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left:8px;
+  }
+  .verificado-badge .icon{ width:11px; height:11px; color:#3fae6d; }
+
+  /* ---------- Transição de conteúdo ---------- */
+  #conteudo{ animation: fade-in .18s ease; }
+  @keyframes fade-in{ from{ opacity:0; transform: translateY(3px); } to{ opacity:1; transform:none; } }
+
+  /* ---------- Layout mobile — navegação em vista única + polimento de toque ----------
+     Este bloco vem depois de todas as regras base que ele sobrescreve (inclusive as
+     redefinições de .cat-header/.btn-icon-action mais acima), para não perder o empate
+     de especificidade por ordem de declaração. */
+  @media (max-width: 800px){
+    .main-header{ flex-wrap:wrap; row-gap:12px; }
+    .main-header-actions{ flex-wrap:wrap; width:100%; }
+
+    /* Vista única: lista de fármacos OU fármaco selecionado, nunca as duas ao mesmo
+       tempo. #app-body recebe a classe correspondente em selecionarFarmaco() /
+       mobileMostrarLista() / voltarParaCategoria(). Seletores com duas classes aqui
+       têm especificidade maior que as regras base de .sidebar/.main (uma classe só),
+       então a ordem no arquivo não importa para este par. */
+    .app-body.mobile-vista-farmaco .sidebar{ display:none; }
+    .app-body.mobile-vista-lista .main{ display:none; }
+    .app-body.mobile-vista-farmaco .btn-mobile-voltar{ display:inline-flex; }
+
+    /* Áreas de toque maiores, mais fáceis de operar com uma mão no balcão */
+    .btn-icon-action, .btn-fav-calc{ width:40px; height:40px; }
+    .aviso-titulo{ align-items:flex-start; }
+
+    /* Lista mais densa no mobile: fonte e espaçamentos reduzidos para caber mais
+       fármacos na tela sem rolar tanto — pedido explícito do usuário, mesmo que
+       isso reverta o aumento de padding "para toque" de uma rodada anterior. */
+    .drug-item{ padding: 7px 10px 7px 9px; font-size:.78rem; margin-bottom:4px; gap:7px; }
+    /* 05/11/2026: no mobile, os "pontinhos" de cor ficam pequenos demais para o
+       contorno arredondado do selo/badge aparecer — na prática o olho só vê o
+       miolo colorido, que (sendo um círculo) lê como "bolinha", não como ícone.
+       A pedido do usuário, só no mobile os pontinhos/selos passam a ser
+       quadrados (cantos levemente arredondados); a versão web continua com
+       círculos, inalterada. */
+    .drug-item .drug-dot{ width:8px; height:8px; border-radius:2.5px; }
+    .cat-header{ padding: 6px 9px !important; margin-bottom:5px !important; gap:7px; }
+    .cat-badge{ width:22px; height:22px; border-radius:6px; }
+    .cat-badge .cat-dot{ width:14px; height:14px; border-radius:4px; }
+    .cat-count-mini{ display:none; }
+    .cat-group{ margin-top:12px; }
+    .cat-group:first-child{ margin-top:4px; }
+    .sidebar-list{ padding:8px 10px 76px; }
+
+    /* Campo de busca e Favoritos saem da sidebar e viram um menu inferior fixo —
+       a busca abre como um cartão flutuante por cima da lista (que continua
+       visível e filtrando em tempo real atrás dele); Favoritos abre no mesmo
+       modal centralizado já usado para "Nomes comerciais" (#comerciais-overlay). */
+    .sidebar-header{ display:none; }
+    .fav-group{ display:none; }
+    .mobile-bottom-nav{
+      display:flex;
+      position:fixed; left:0; right:0; bottom:0;
+      z-index:960;
+      justify-content:center; gap:6px;
+      background: var(--sidebar);
+      border-top:1px solid var(--border);
+      padding: 6px 16px calc(6px + env(safe-area-inset-bottom));
+      box-shadow: 0 -6px 18px rgba(0,0,0,.28);
+    }
+    body.light .mobile-bottom-nav{ box-shadow: 0 -6px 18px rgba(35,40,48,.1); }
+    .main{ padding-bottom:76px; }
+
+    body.mobile-search-open .sidebar-header{
+      display:block;
+      position:fixed;
+      top:calc(10px + env(safe-area-inset-top));
+      left:12px; right:12px;
+      z-index:1000;
+      margin:0;
+      padding:10px 12px;
+      background: var(--sidebar);
+      border:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      border-radius:12px;
+      box-shadow: 0 14px 34px -10px rgba(0,0,0,.55);
+    }
+    body.mobile-search-open .mobile-search-fechar{ display:inline-flex; }
+    /* .sidebar é item flex com z-index:2, o que já basta para formar seu próprio
+       contexto de empilhamento — mesmo com .sidebar-header em position:fixed e
+       z-index:1000, esse valor só é comparado DENTRO do contexto de .sidebar, que
+       por sua vez perde para o backdrop (z-index:990) na comparação externa (mesma
+       classe de bug já corrigida no farmadesk). No mobile as duas vistas nunca
+       aparecem lado a lado (ver .mobile-vista-lista/.mobile-vista-farmaco acima),
+       então o z-index de .sidebar não tem mais função aqui: zerá-lo remove o
+       contexto de empilhamento e deixa .sidebar-header (fixed) competir direto no
+       nível raiz, ficando acima do backdrop; o restante da lista (.sidebar-list,
+       estático) permanece abaixo do backdrop e é corretamente escurecido/bloqueado. */
+    .sidebar{ z-index:auto; }
+    body.mobile-search-open .mobile-bottom-nav{ display:none; }
+  }
+
+  /* ---------- Impressão ---------- */
+  .print-only{ display:none; }
+  @media print{
+    body.light, body{ background: #fff !important; color:#000 !important; }
+    .gate-overlay, .topbar-app, .sidebar, .theme-toggle, .btn-fav-calc, .btn-bula,
+    .btn-icon-action, .btn-copiar-dose, .peso-bar .unidade-toggle, .aviso-responsabilidade,
+    .breadcrumb-chip, .btn-nomes-comerciais, .comerciais-overlay, .no-print{ display:none !important; }
+    .print-only{ display:block !important; }
+    .app-body{ display:block !important; }
+    .main{ padding:0 !important; overflow:visible !important; height:auto !important; }
+    .main-inner{ max-width:100% !important; }
+    .formulacao, .observacoes{ box-shadow:none !important; border:1px solid #999 !important; break-inside: avoid; }
+    .valor-pill{ background:#f2b84b !important; color:#000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-only{ font-size:.72rem; color:#444; line-height:1.5; margin-top:18px; padding-top:12px; border-top:1px solid #ccc; }
+    .formula-content{ display:block !important; color:#333 !important; }
+    .formula-steps li{ background:#f7f7f7 !important; border-color:#ccc !important; color:#333 !important; break-inside: avoid; }
+    .formula-steps li::before{ background:#eee !important; color:#a10f1f !important; }
+    a[href]:after{ content:""; }
+  }
+</style>
+</head>
+<body class="gate-aberto">
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
+
+<div class="gate-overlay" id="gate-overlay">
+  <div class="gate-modal">
+    <div class="gate-header">
+      <h2>Antes de continuar</h2>
+      <p>Leia o aviso legal abaixo</p>
+    </div>
+    <div class="gate-body">
+      <p><strong>Aviso Legal e Limitação de Responsabilidade.</strong> Esta calculadora é uma ferramenta de apoio à consulta técnica, destinada exclusivamente a profissionais farmacêuticos e da saúde devidamente habilitados. Não constitui prescrição, diagnóstico ou substituto da avaliação clínica individualizada do paciente.</p>
+      <p>As informações têm caráter informativo e podem conter desatualizações ou imprecisões em relação a bulas e diretrizes vigentes. É responsabilidade do usuário confirmar posologia, dose máxima, contraindicações e interações na bula oficial vigente antes de qualquer orientação ao paciente.</p>
+      <p>O uso é de inteira responsabilidade do usuário. O autor não se responsabiliza por decisões clínicas tomadas com base neste conteúdo, nem por uso fora do contexto profissional para o qual foi concebido.</p>
+      <label class="gate-check">
+        <input type="checkbox" id="gate-checkbox">
+        Declaro que sou profissional de saúde habilitado, li o aviso acima e assumo a responsabilidade pelo uso deste material.
+      </label>
+      <button class="gate-btn" id="gate-btn" disabled>Continuar</button>
+    </div>
+  </div>
+</div>
+
+<div class="comerciais-overlay" id="comerciais-overlay" role="dialog" aria-modal="true" aria-labelledby="comerciais-titulo">
+  <div class="comerciais-modal">
+    <div class="comerciais-header">
+      <h3 id="comerciais-titulo">Nomes comerciais</h3>
+      <button type="button" class="comerciais-fechar" id="comerciais-fechar" aria-label="Fechar">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      </button>
+    </div>
+    <div class="comerciais-body" id="comerciais-body"></div>
+  </div>
+</div>
+
+<div class="comerciais-overlay" id="favoritos-overlay" role="dialog" aria-modal="true" aria-labelledby="favoritos-titulo">
+  <div class="comerciais-modal">
+    <div class="comerciais-header">
+      <h3 id="favoritos-titulo">Favoritos</h3>
+      <button type="button" class="comerciais-fechar" id="favoritos-fechar" aria-label="Fechar">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      </button>
+    </div>
+    <div class="comerciais-body" id="favoritos-body"></div>
+  </div>
+</div>
+
+<div class="topbar-app">
+  <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+  </a>
+  <div class="logo-wrap">
+    <a href="../" title="Voltar para a página inicial do FarmaPrática">
+      <div class="brand">
+        <img src="logo.png" alt="FarmaPrática">
+        <div class="brand-text">
+          <h1>Farma<span>Prática</span></h1>
+          <p>Plataforma para Rotina, Gestão e<br>Cuidado Farmacêutico</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="titulo-central">
+    <div class="titulo-principal">CALCULADORA <span class="titulo-accent">DE DOSES</span></div>
+    <div class="titulo-descricao">Cálculo de doses por peso e idade (pediátrico e adulto) com base em bulas e diretrizes atualizadas</div>
+    <div class="calc-count-badge" id="calc-count-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg><span id="calc-count-num">—</span> medicamentos disponíveis</div>
+  </div>
+  <a href="../" class="home-btn-desktop" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+  </button>
+</div>
+
+<div class="app-body mobile-vista-lista" id="app-body">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="search-box">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <input type="text" id="busca" placeholder="Busque por Fármaco">
+        <button type="button" class="mobile-search-fechar" id="mobile-search-fechar" aria-label="Fechar busca" title="Fechar busca">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar-list" id="lista-farmacos">
+      <div class="skeleton-item" style="width:60%"></div>
+      <div class="skeleton-item" style="width:85%"></div>
+      <div class="skeleton-item" style="width:70%"></div>
+      <div class="skeleton-item" style="width:80%"></div>
+      <div class="skeleton-item" style="width:55%"></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="main-inner">
+      <button type="button" class="btn-mobile-voltar no-print" id="btn-mobile-voltar" onclick="mobileMostrarLista()">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>Lista de fármacos
+      </button>
+      <div id="conteudo">
+        <div class="empty-state">
+          <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
+          <div class="empty-title">Nenhum fármaco selecionado</div>
+          <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose por peso e idade.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviso-responsabilidade">
+        <div class="aviso-titulo"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9L1.9 18a1.8 1.8 0 001.5 2.7h17.2a1.8 1.8 0 001.5-2.7L13.7 3.9a1.8 1.8 0 00-3.4 0z"/></svg></span> Aviso de Responsabilidade</div>
+
+        <h4>Natureza da ferramenta</h4>
+        <p>Esta calculadora é um <strong>instrumento de apoio à decisão clínica</strong>, destinado exclusivamente a profissionais de saúde habilitados (farmacêuticos, médicos, enfermeiros). Ela não substitui o julgamento clínico individualizado, a avaliação do paciente nem a consulta à bula oficial vigente do medicamento.</p>
+
+        <h4>Fontes e atualização <span class="verificado-badge"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Base revisada em <span id="data-verificacao"></span></span></h4>
+        <p>Os valores de dose, concentração e apresentação foram compilados com base em bulas registradas na ANVISA e diretrizes de sociedades médicas (SBP, entre outras) na data de elaboração desta ferramenta. Bulas podem ser atualizadas, descontinuadas ou substituídas por novas formulações a qualquer momento: <strong>sempre confirme a informação na bula vigente do produto efetivamente dispensado</strong> antes de orientar ou administrar qualquer medicamento.</p>
+
+        <h4>Limitações do cálculo</h4>
+        <ul>
+          <li>Concentrações de suspensões, xaropes e gotas variam entre fabricantes e entre lotes de um mesmo fabricante. Confira sempre a concentração impressa na embalagem real.</li>
+          <li>A conversão em gotas utiliza a calibração informada pelo fabricante quando conhecida; na ausência dela, aplica-se o padrão farmacotécnico de 20 gotas/mL, que é uma aproximação e pode não corresponder ao conta-gotas específico do produto dispensado.</li>
+          <li>Doses máximas absolutas (tetos de segurança) devem ser respeitadas independentemente do resultado calculado por peso.</li>
+          <li>Para fármacos com dose individualizada por gravidade clínica, faixa etária fixa ou apresentação em Unidades Internacionais (UI), o cálculo automático por peso não se aplica: a ferramenta sinaliza esses casos, mas a decisão permanece com o profissional.</li>
+        </ul>
+
+        <h4>Responsabilidade profissional</h4>
+        <p>A prescrição, dispensação e administração de qualquer medicamento são de <strong>responsabilidade exclusiva do profissional de saúde habilitado</strong>, que deve considerar o quadro clínico completo do paciente, comorbidades, alergias, interações medicamentosas e demais fatores individuais, em conformidade com as normas do Conselho Federal de Farmácia (CFF), Conselho Federal de Medicina (CFM) e demais órgãos reguladores aplicáveis, incluindo a ANVISA.</p>
+
+        <h4>Isenção de responsabilidade</h4>
+        <p>O FarmaPrática e seus desenvolvedores não se responsabilizam por decisões clínicas, erros de dispensação, reações adversas ou quaisquer danos decorrentes do uso desta ferramenta, incluindo eventuais desatualizações, imprecisões ou erros de digitação nos dados apresentados. O uso desta calculadora implica a aceitação destas condições.</p>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-search-backdrop" id="mobile-search-backdrop"></div>
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <button type="button" class="mobile-bottom-nav-item" id="btn-mobile-buscar">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+    <span>Buscar</span>
+  </button>
+  <button type="button" class="mobile-bottom-nav-item" id="btn-mobile-favoritos">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l3.1 6.28 6.93 1-5.02 4.9 1.19 6.9-6.2-3.26-6.2 3.26 1.19-6.9-5.02-4.9 6.93-1z"/></svg></span>
+    <span>Favoritos</span>
+    <span class="fav-count" id="fav-count" style="display:none;"></span>
+  </button>
+</nav>
+
+<script>
+// ---------- Tema claro/escuro ----------
+// 20/10/2026: a ferramenta agora inicia no modo escuro por padrão; a
+// preferência salva é lida de volta logo no carregamento (script inline
+// após o <body>) — a chave é compartilhada com as demais ferramentas do
+// FarmaPrática, então a escolha feita em qualquer uma delas vale aqui também.
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+
+// ---------- Ícones SVG reutilizados no JS ----------
+const ICONS = {
+  peso: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M5 6h14l1.5 9a2 2 0 01-2 2.3H5.5a2 2 0 01-2-2.3L5 6z"/><path d="M9 6a3 3 0 016 0"/></svg>',
+  idade: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  livro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 16.5v-12z"/><path d="M4 16.5A2.5 2.5 0 006.5 19H20"/></svg>',
+  imprimir: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="6" y="13" width="12" height="8"/><path d="M4 9h16a1 1 0 011 1v6a1 1 0 01-1 1h-2M6 17H4a1 1 0 01-1-1v-6a1 1 0 011-1h2"/></svg>',
+  copiar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>',
+  link: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.07 0l2-2a5 5 0 00-7.07-7.07l-1 1"/><path d="M14 11a5 5 0 00-7.07 0l-2 2a5 5 0 007.07 7.07l1-1"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  estrelaMini: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  observacao: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
+  gotas: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6.5 7.6 6.5 12.4a6.5 6.5 0 01-13 0C5.5 10.1 12 2.5 12 2.5z"/></svg>',
+  liquido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v4.5l3.6 8.1A3 3 0 0115.8 19H8.2a3 3 0 01-2.8-4.4L9 6.5V2z"/><path d="M8 15h8"/></svg>',
+  comprimido: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9" width="19" height="6" rx="3" transform="rotate(-45 12 12)"/><path d="M9.5 9.5l5 5"/></svg>',
+  injetavel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5l3 3M17 4l-11 11-3 6 6-3L20 7"/><path d="M12.5 8.5l3 3M9.5 11.5l3 3"/></svg>',
+  supositorio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2.5 2 4 5.5 4 9.5A4 4 0 0112 16a4 4 0 01-4-4.5C8 7.5 9.5 4 12 2z"/><path d="M12 16v6"/></svg>',
+  tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.59 2H4a2 2 0 00-2 2v8.59a2 2 0 00.59 1.41l9 9a2 2 0 002.82 0l7.18-7.18a2 2 0 000-2.82l-9-9A2 2 0 0012.59 2z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>',
+  fechar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+  chevronLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
+  paciente: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg>',
+  adulto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0114 0v2"/></svg>',
+  bebe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><path d="M9 11c.6 1 1.6 1.5 3 1.5s2.4-.5 3-1.5"/><circle cx="9.5" cy="9" r=".6" fill="currentColor" stroke="none"/><circle cx="14.5" cy="9" r=".6" fill="currentColor" stroke="none"/><path d="M12 16v2.3"/><circle cx="12" cy="19.6" r="1.7"/></svg>'
+};
+
+// Data de referência da última revisão geral da base (ajustar manualmente quando os dados forem revisados)
+const DADOS_VERIFICADOS_EM = 'agosto/2026';
+document.getElementById('data-verificacao').textContent = DADOS_VERIFICADOS_EM;
+
+// ---------- Gate legal ----------
+// O aceite é persistido (com versão e validade) para não interromper o uso repetido
+// no mesmo plantão, mas volta a ser exibido se o texto legal for alterado (GATE_VERSAO)
+// ou após o prazo de validade abaixo.
+const GATE_VERSAO = 1;
+const GATE_VALIDADE_HORAS = 24;
+const GATE_KEY = 'farmapratica_gate_aceite';
+
+function gateJaAceito(){
+  try{
+    const raw = localStorage.getItem(GATE_KEY);
+    if(!raw) return false;
+    const info = JSON.parse(raw);
+    if(info.versao !== GATE_VERSAO) return false;
+    const horasPassadas = (Date.now() - info.timestamp) / 3600000;
+    return horasPassadas < GATE_VALIDADE_HORAS;
+  }catch(e){ return false; }
+}
+
+(function(){
+  const overlay = document.getElementById('gate-overlay');
+  const checkbox = document.getElementById('gate-checkbox');
+  const btn = document.getElementById('gate-btn');
+
+  if(gateJaAceito()){
+    overlay.style.display = 'none';
+    document.body.classList.remove('gate-aberto');
+  }
+
+  checkbox.addEventListener('change', () => {
+    if(checkbox.checked){
+      btn.disabled = false;
+      btn.classList.add('ativo');
+    } else {
+      btn.disabled = true;
+      btn.classList.remove('ativo');
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    if(!checkbox.checked) return;
+    try{
+      localStorage.setItem(GATE_KEY, JSON.stringify({ versao: GATE_VERSAO, timestamp: Date.now() }));
+    }catch(e){}
+    overlay.style.display = 'none';
+    document.body.classList.remove('gate-aberto');
+  });
+})();
+
+// ---------- Modal de nomes comerciais: fechar por botão, backdrop ou Esc ----------
+document.getElementById('comerciais-fechar').addEventListener('click', fecharComerciais);
+document.getElementById('comerciais-overlay').addEventListener('click', (e) => {
+  if(e.target.id === 'comerciais-overlay') fecharComerciais();
+});
+document.addEventListener('keydown', (e) => {
+  if(e.key !== 'Escape') return;
+  if(document.getElementById('comerciais-overlay').classList.contains('aberto')){
+    fecharComerciais();
+  }
+  if(document.getElementById('favoritos-overlay').classList.contains('aberto')){
+    fecharFavoritosModal();
+  }
+  if(document.body.classList.contains('mobile-search-open')){
+    fecharBuscaMobile();
+  }
+});
+
+// ---------- Menu inferior mobile: busca ----------
+// A busca sai da sidebar e vira um botão no menu inferior; ao tocar, o campo
+// #busca (o mesmo da sidebar, reaproveitado) aparece como cartão flutuante por
+// cima da lista, que continua visível e filtrando em tempo real atrás dele.
+function abrirBuscaMobile(){
+  mobileMostrarLista();
+  document.body.classList.add('mobile-search-open');
+  const busca = document.getElementById('busca');
+  if(busca) setTimeout(() => busca.focus(), 50);
+}
+function fecharBuscaMobile(){
+  document.body.classList.remove('mobile-search-open');
+}
+document.getElementById('btn-mobile-buscar').addEventListener('click', abrirBuscaMobile);
+document.getElementById('mobile-search-fechar').addEventListener('click', fecharBuscaMobile);
+document.getElementById('mobile-search-backdrop').addEventListener('click', fecharBuscaMobile);
+
+// ---------- Menu inferior mobile: favoritos ----------
+// Reaproveita o mesmo modal centralizado já usado para "Nomes comerciais"
+// (#comerciais-overlay), com IDs próprios (#favoritos-overlay).
+function renderFavoritosModal(){
+  const body = document.getElementById('favoritos-body');
+  if(!DB){
+    body.innerHTML = '<div class="empty-sub" style="padding:16px 4px;">Carregando dados...</div>';
+    return;
+  }
+  const favs = getFavsCalc();
+  const favsValidos = favs.map(fv => DB.farmacos.find(f => f.id === fv.id)).filter(Boolean);
+  body.innerHTML = '';
+  if(!favsValidos.length){
+    body.innerHTML = '<div class="empty-sub" style="padding:16px 4px;">Nenhum fármaco favoritado ainda. Toque na estrela dentro de um fármaco para adicioná-lo aqui.</div>';
+    return;
+  }
+  favsValidos.forEach(f => {
+    const btn = criarBotaoFarmaco(f, '');
+    btn.addEventListener('click', fecharFavoritosModal);
+    body.appendChild(btn);
+  });
+}
+function abrirFavoritosModal(){
+  renderFavoritosModal();
+  document.getElementById('favoritos-overlay').classList.add('aberto');
+}
+function fecharFavoritosModal(){
+  document.getElementById('favoritos-overlay').classList.remove('aberto');
+}
+document.getElementById('btn-mobile-favoritos').addEventListener('click', abrirFavoritosModal);
+document.getElementById('favoritos-fechar').addEventListener('click', fecharFavoritosModal);
+document.getElementById('favoritos-overlay').addEventListener('click', (e) => {
+  if(e.target.id === 'favoritos-overlay') fecharFavoritosModal();
+});
+function atualizarFavCount(){
+  const el = document.getElementById('fav-count');
+  if(!el) return;
+  const n = getFavsCalc().length;
+  if(n > 0){ el.textContent = n; el.style.display = 'block'; }
+  else{ el.style.display = 'none'; }
+}
+atualizarFavCount();
+
+let DB = null;
+let farmacoAtual = null;
+let pesoAtual = 0;
+let idadeAtual = 0;
+let idadeUnidade = 'anos'; // 'anos' | 'meses'
+const categoriasColapsadas = new Set();
+
+fetch('dados.json')
+  .then(r => r.json())
+  .then(data => {
+    DB = data;
+    const ccEl = document.getElementById('calc-count-num');
+    if(ccEl) ccEl.textContent = (DB.farmacos || []).length;
+    renderSidebar();
+    const deepId = new URLSearchParams(location.search).get('farmaco');
+    if(deepId){ selecionarFarmaco(deepId); }
+  })
+  .catch(() => {
+    document.getElementById('lista-farmacos').innerHTML = '<div class="empty-state"><div class="empty-title">Erro ao carregar dados.json</div><div class="empty-sub">Verifique a conexão e recarregue a página.</div></div>';
+  });
+
+// ---------- FAVORITOS (sincronizados com a pagina inicial) ----------
+const CALC_FAV_KEY = 'dosespediatricas_favs_v1';
+function getFavsCalc(){
+  try{ return JSON.parse(localStorage.getItem(CALC_FAV_KEY) || '[]'); }
+  catch(e){ return []; }
+}
+function saveFavsCalc(favs){
+  try{ localStorage.setItem(CALC_FAV_KEY, JSON.stringify(favs)); }catch(e){}
+}
+function syncFavToHubCalc(id, label, added){
+  try{
+    const HUB_FAV_KEY = 'fp_favoritos_hub';
+    const raw = localStorage.getItem(HUB_FAV_KEY);
+    let list = raw ? JSON.parse(raw) : [];
+    const hubId = 'calc-' + id;
+    if(added){
+      if(!list.some(f => f.id === hubId)){
+        list.push({id: hubId, label: label, source: 'calc', sourceLabel: 'Calculadora de Doses', href: 'dosespediatricas/?farmaco=' + encodeURIComponent(id)});
+      }
+    } else {
+      list = list.filter(f => f.id !== hubId);
+    }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+function toggleFavCalc(){
+  if(!farmacoAtual) return;
+  const id = farmacoAtual.id;
+  let favs = getFavsCalc();
+  const idx = favs.findIndex(f => f.id === id);
+  if(idx === -1){
+    favs.push({id, nome: farmacoAtual.nome});
+    saveFavsCalc(favs);
+    syncFavToHubCalc(id, farmacoAtual.nome, true);
+  } else {
+    favs.splice(idx, 1);
+    saveFavsCalc(favs);
+    syncFavToHubCalc(id, null, false);
+  }
+  renderConteudo();
+  renderSidebar(document.getElementById('busca').value);
+  atualizarFavCount();
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function destacarTermo(nome, termo){
+  if(!termo) return escapeHtml(nome);
+  const idx = nome.toLowerCase().indexOf(termo);
+  if(idx === -1) return escapeHtml(nome);
+  return escapeHtml(nome.slice(0, idx)) + '<mark>' + escapeHtml(nome.slice(idx, idx + termo.length)) + '</mark>' + escapeHtml(nome.slice(idx + termo.length));
+}
+
+// Paleta de destaque por categoria (mesmos tons usados nos cartões de "Ferramentas" da INDEX),
+// aplicada apenas como acento (borda/ponto) — o texto do cabeçalho continua neutro.
+const CATEGORY_ACCENTS = [
+  { cor: '#3b82f6', glow: 'rgba(59,130,246,.4)' },
+  { cor: '#22c55e', glow: 'rgba(34,197,94,.4)' },
+  { cor: '#a855f7', glow: 'rgba(168,85,247,.4)' },
+  { cor: '#f59e0b', glow: 'rgba(245,158,11,.4)' },
+  { cor: '#06b6d4', glow: 'rgba(6,182,212,.4)' },
+  { cor: '#e4172c', glow: 'rgba(228,23,44,.4)' },
+];
+function accentDaCategoria(cat){
+  const idx = DB.categorias.indexOf(cat);
+  return CATEGORY_ACCENTS[(idx < 0 ? 0 : idx) % CATEGORY_ACCENTS.length];
+}
+
+function toggleCategoria(cat, groupEl){
+  const colapsando = !groupEl.classList.contains('colapsado');
+  if(colapsando) categoriasColapsadas.add(cat);
+  else categoriasColapsadas.delete(cat);
+  groupEl.classList.toggle('colapsado');
+  const header = groupEl.querySelector('.cat-header');
+  if(header) header.classList.toggle('colapsado');
+}
+
+function voltarParaCategoria(cat){
+  categoriasColapsadas.delete(cat);
+  document.getElementById('busca').value = '';
+  farmacoAtual = null;
+  history.replaceState(null, '', location.pathname);
+  renderConteudo();
+  renderSidebar('');
+  mobileMostrarLista();
+  const alvo = document.querySelector('.cat-header[data-categoria="' + CSS.escape(cat) + '"]');
+  if(alvo){
+    alvo.scrollIntoView({behavior:'smooth', block:'start'});
+    alvo.classList.add('destacado');
+    setTimeout(() => alvo.classList.remove('destacado'), 1200);
+  }
+}
+
+// ---------- Navegação mobile em vista única (lista de fármacos OU fármaco selecionado) ----------
+// Em telas <=800px a sidebar e o conteúdo não cabem empilhados de forma prática;
+// #app-body alterna entre as classes abaixo (ver CSS) para mostrar uma vista por vez,
+// com o botão "Lista de fármacos" (.btn-mobile-voltar) para retornar sem perder o
+// fármaco/peso/idade já preenchidos. Em telas largas (desktop) essas classes não têm
+// nenhum efeito — sidebar e conteúdo continuam lado a lado como sempre.
+function mobileMostrarFarmaco(){
+  const ab = document.getElementById('app-body');
+  if(!ab) return;
+  ab.classList.remove('mobile-vista-lista');
+  ab.classList.add('mobile-vista-farmaco');
+}
+function mobileMostrarLista(){
+  const ab = document.getElementById('app-body');
+  if(!ab) return;
+  ab.classList.remove('mobile-vista-farmaco');
+  ab.classList.add('mobile-vista-lista');
+  const listaEl = document.getElementById('lista-farmacos');
+  if(listaEl) listaEl.scrollTop = 0;
+}
+
+function criarBotaoFarmaco(f, termo){
+  const btn = document.createElement('button');
+  btn.className = 'drug-item' + (farmacoAtual && farmacoAtual.id === f.id ? ' active' : '');
+  const accent = accentDaCategoria(f.categoria);
+  btn.style.setProperty('--cat-accent', accent.cor);
+  btn.innerHTML = '<span class="drug-dot"></span><span class="drug-label">' + destacarTermo(f.nome, termo) + '</span>';
+  btn.onclick = () => selecionarFarmaco(f.id);
+  return btn;
+}
+
+function renderSidebar(filtro=''){
+  const lista = document.getElementById('lista-farmacos');
+  lista.innerHTML = '';
+  const termo = filtro.trim().toLowerCase();
+
+  // ----- seção de favoritos (fixa no topo, só aparece com filtro vazio) -----
+  if(!termo){
+    const favs = getFavsCalc();
+    const favsValidos = favs
+      .map(fv => DB.farmacos.find(f => f.id === fv.id))
+      .filter(Boolean);
+    if(favsValidos.length){
+      const favGroup = document.createElement('div');
+      favGroup.className = 'fav-group';
+      const favHeader = document.createElement('div');
+      favHeader.className = 'fav-header';
+      favHeader.innerHTML = '<span class="icon">' + ICONS.estrelaMini + '</span> Favoritos';
+      favGroup.appendChild(favHeader);
+      favsValidos.forEach(f => favGroup.appendChild(criarBotaoFarmaco(f, termo)));
+      lista.appendChild(favGroup);
+    }
+  }
+
+  DB.categorias.forEach(cat => {
+    const farmacosCat = DB.farmacos.filter(f => f.categoria === cat &&
+      (!termo || f.nome.toLowerCase().includes(termo)));
+    if(farmacosCat.length === 0) return;
+
+    const accent = accentDaCategoria(cat);
+    const colapsada = !termo && categoriasColapsadas.has(cat);
+    const group = document.createElement('div');
+    group.className = 'cat-group' + (colapsada ? ' colapsado' : '');
+
+    const header = document.createElement('div');
+    header.className = 'cat-header' + (colapsada ? ' colapsado' : '');
+    header.dataset.categoria = cat;
+    header.style.setProperty('--cat-accent', accent.cor);
+    header.style.setProperty('--cat-accent-glow', accent.glow);
+    header.innerHTML = '<span class="cat-label"><span class="cat-badge"><span class="cat-dot"></span></span><span>' + escapeHtml(cat) + '</span></span><span class="cat-count-mini">' + farmacosCat.length + '</span><span class="icon cat-chevron">' + ICONS.chevron + '</span>';
+    header.onclick = (e) => toggleCategoria(cat, e.currentTarget.closest('.cat-group'));
+    group.appendChild(header);
+
+    const itemsWrap = document.createElement('div');
+    itemsWrap.className = 'cat-items';
+    farmacosCat.forEach(f => itemsWrap.appendChild(criarBotaoFarmaco(f, termo)));
+    group.appendChild(itemsWrap);
+
+    lista.appendChild(group);
+  });
+}
+
+document.getElementById('busca').addEventListener('input', e => renderSidebar(e.target.value));
+
+function selecionarFarmaco(id){
+  farmacoAtual = DB.farmacos.find(f => f.id === id);
+  renderSidebar(document.getElementById('busca').value);
+  renderConteudo();
+  mobileMostrarFarmaco();
+}
+
+function renderConteudo(){
+  const el = document.getElementById('conteudo');
+  if(!farmacoAtual){
+    el.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5L3.5 13.5a5 5 0 117.07-7.07l7 7a5 5 0 01-7.07 7.07z"/><path d="M8.5 8.5l7 7"/></svg></span></div>
+        <div class="empty-title">Nenhum fármaco selecionado</div>
+        <div class="empty-sub">Escolha um item na lista ao lado para calcular a dose por peso e idade.</div>
+      </div>
+    `;
+    document.body.classList.remove('modo-pediatrico');
+    return;
+  }
+  const f = farmacoAtual;
+  const bulaUrl = 'https://consultas.anvisa.gov.br/#/bulario/?nomeProduto=' + encodeURIComponent(f.nome.split('(')[0].trim());
+
+  const _isFavCalc = getFavsCalc().some(fv => fv.id === f.id);
+  el.innerHTML = `
+    <div class="main-header">
+      <div>
+        <button type="button" class="breadcrumb-chip" onclick="voltarParaCategoria('${escapeHtml(f.categoria).replace(/'/g, "\\'")}')" title="Voltar para ${escapeHtml(f.categoria)}">
+          <span class="icon">${ICONS.chevronLeft}</span>${f.categoria}
+        </button>
+        <h2>${f.nome}</h2>
+        ${f.descricao ? `<p class="farmaco-descricao">${f.descricao}</p>` : ''}
+      </div>
+      <div class="main-header-actions no-print">
+        <button class="btn-fav-calc${_isFavCalc ? ' starred' : ''}" onclick="toggleFavCalc()" title="Favoritar (aparece na página inicial)" aria-label="${_isFavCalc ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}" aria-pressed="${_isFavCalc}">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+        <button class="btn-icon-action" id="btn-copiar-link" title="Copiar link direto deste fármaco" aria-label="Copiar link direto deste fármaco">
+          <span class="icon">${ICONS.link}</span>
+        </button>
+        <button class="btn-icon-action" id="btn-imprimir" title="Imprimir / exportar em PDF" aria-label="Imprimir ou exportar em PDF">
+          <span class="icon">${ICONS.imprimir}</span>
+        </button>
+        ${(f.nomesComerciais && f.nomesComerciais.length) ? `<button type="button" class="btn-nomes-comerciais" id="btn-comerciais" title="Ver nomes comerciais deste fármaco">
+          <span class="icon">${ICONS.tag}</span>Nomes comerciais
+        </button>` : ''}
+        <a class="btn-bula" href="${bulaUrl}" target="_blank" rel="noopener">Ver bula ↗</a>
+      </div>
+    </div>
+
+    <div class="secao-titulo"><span class="icon">${ICONS.paciente}</span>Dados do paciente</div>
+    <div class="peso-bar">
+      ${f.somenteIdade ? '' : `<div class="peso-field">
+        <div class="field-icon"><span class="icon">${ICONS.peso}</span></div>
+        <div class="field-inputs">
+          <label>Peso</label>
+          <div class="field-row">
+            <input type="number" id="peso" min="0" step="0.1" placeholder="0" value="${pesoAtual || ''}" aria-label="Peso em quilogramas">
+            <span>kg</span>
+          </div>
+        </div>
+      </div>`}
+      <div class="peso-field">
+        <div class="field-icon"><span class="icon">${ICONS.idade}</span></div>
+        <div class="field-inputs">
+          <label>Idade</label>
+          <div class="field-row">
+            <input type="number" id="idade" min="0" step="${idadeUnidade === 'meses' ? '1' : '0.1'}" placeholder="0" value="${idadeAtual || ''}" aria-label="Idade">
+            <div class="unidade-toggle">
+              <button type="button" id="btn-meses" class="${idadeUnidade === 'meses' ? 'active' : ''}">Meses</button>
+              <button type="button" id="btn-anos" class="${idadeUnidade === 'anos' ? 'active' : ''}">Anos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tipo-paciente-banner" id="tipo-paciente-banner" hidden aria-live="polite">
+      <div class="tp-icon" id="tipo-paciente-icon"></div>
+      <div class="tp-texto">
+        <span class="tp-label" id="tipo-paciente-label"></span>
+        <span class="tp-sub" id="tipo-paciente-sub"></span>
+      </div>
+    </div>
+
+    <div id="observacoes-container" aria-live="polite"></div>
+    <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
+    <div class="fonte-tag"><span class="icon">${ICONS.livro}</span> Fonte: <b>${f.fonte}</b></div>
+    <div class="print-only">
+      Gerado pela Calculadora de Doses — FarmaPrática · Base revisada em ${DADOS_VERIFICADOS_EM}. Ferramenta de apoio à decisão clínica; não substitui a avaliação individualizada do paciente nem a bula vigente do medicamento efetivamente dispensado. A responsabilidade pela prescrição, dispensação e administração é do profissional de saúde habilitado.
+    </div>
+  `;
+
+  document.getElementById('btn-copiar-link').addEventListener('click', (e) => {
+    const url = location.origin + location.pathname + '?farmaco=' + encodeURIComponent(f.id);
+    copiarTexto(url, e.currentTarget);
+  });
+  document.getElementById('btn-imprimir').addEventListener('click', () => window.print());
+
+  const btnComerciais = document.getElementById('btn-comerciais');
+  if(btnComerciais){
+    btnComerciais.addEventListener('click', () => abrirComerciais(f));
+  }
+
+  const campoPeso = document.getElementById('peso');
+  if(campoPeso){
+    campoPeso.addEventListener('input', e => {
+      pesoAtual = parseFloat(e.target.value) || 0;
+      calcularEExibir();
+    });
+  }
+  document.getElementById('idade').addEventListener('input', e => {
+    idadeAtual = parseFloat(e.target.value) || 0;
+    calcularEExibir();
+  });
+  document.getElementById('btn-meses').addEventListener('click', () => trocarUnidadeIdade('meses'));
+  document.getElementById('btn-anos').addEventListener('click', () => trocarUnidadeIdade('anos'));
+
+  calcularEExibir();
+}
+
+function trocarUnidadeIdade(novaUnidade){
+  if(novaUnidade === idadeUnidade) return;
+  // converter o valor já digitado para manter a mesma idade real
+  if(idadeAtual > 0){
+    idadeAtual = (novaUnidade === 'meses') ? arred(idadeAtual * 12) : arred(idadeAtual / 12);
+  }
+  idadeUnidade = novaUnidade;
+  renderConteudo();
+}
+
+// ---------- Modal de nomes comerciais ----------
+function abrirComerciais(f){
+  const overlay = document.getElementById('comerciais-overlay');
+  document.getElementById('comerciais-titulo').textContent = 'Nomes comerciais — ' + f.nome;
+  const nomes = f.nomesComerciais || [];
+  const lista = nomes.map(n => `<li><span class="icon">${ICONS.tag}</span>${escapeHtml(n)}</li>`).join('');
+  document.getElementById('comerciais-body').innerHTML = `
+    <ul class="comerciais-lista">${lista}</ul>
+    <p class="comerciais-aviso">Levantamento de marcas de referência e éticas disponíveis no mercado brasileiro para consulta rápida. A existência, o fabricante e a apresentação de cada marca podem mudar: confirme sempre no Bulário Eletrônico da ANVISA antes de orientar, prescrever ou dispensar.</p>
+  `;
+  overlay.classList.add('aberto');
+}
+function fecharComerciais(){
+  document.getElementById('comerciais-overlay').classList.remove('aberto');
+}
+
+function seg(fixo, variavel){
+  return `<span class="f-fixo">${fixo}</span> <span class="f-var">${variavel}</span>`;
+}
+
+// Ao imprimir, expande os detalhes de fórmula (normalmente recolhidos) para que
+// o cálculo completo fique documentado na versão impressa/PDF.
+let _detalhesAbertosAntesDeImprimir = [];
+window.addEventListener('beforeprint', () => {
+  _detalhesAbertosAntesDeImprimir = [];
+  document.querySelectorAll('.formula-details').forEach(d => {
+    if(!d.open){ d.open = true; _detalhesAbertosAntesDeImprimir.push(d); }
+  });
+});
+window.addEventListener('afterprint', () => {
+  _detalhesAbertosAntesDeImprimir.forEach(d => { d.open = false; });
+  _detalhesAbertosAntesDeImprimir = [];
+});
+
+// ---------- Copiar texto para a área de transferência ----------
+function copiarTexto(texto, btnEl){
+  const marcarFeito = () => {
+    if(!btnEl) return;
+    const iconEl = btnEl.querySelector('.icon');
+    const original = iconEl ? iconEl.innerHTML : null;
+    btnEl.classList.add('feito');
+    if(iconEl) iconEl.innerHTML = ICONS.check;
+    setTimeout(() => {
+      btnEl.classList.remove('feito');
+      if(iconEl && original !== null) iconEl.innerHTML = original;
+    }, 1600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(marcarFeito).catch(() => fallbackCopiar(texto, marcarFeito));
+  } else {
+    fallbackCopiar(texto, marcarFeito);
+  }
+}
+function fallbackCopiar(texto, cb){
+  try{
+    const ta = document.createElement('textarea');
+    ta.value = texto;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if(cb) cb();
+  }catch(e){}
+}
+
+function textoPlano(html){
+  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+// ---------- Selo de tipo de paciente (Adulto / Pediátrico) + tingimento da página ----------
+function atualizarBannerPaciente(faixaClinica, idade, unidade){
+  const banner = document.getElementById('tipo-paciente-banner');
+  if(!banner) return;
+  const iconEl = document.getElementById('tipo-paciente-icon');
+  const labelEl = document.getElementById('tipo-paciente-label');
+  const subEl = document.getElementById('tipo-paciente-sub');
+
+  if(!faixaClinica){
+    banner.hidden = true;
+    document.body.classList.remove('modo-pediatrico');
+    return;
+  }
+
+  banner.hidden = false;
+  banner.classList.remove('tp-adulto', 'tp-pediatrico', 'tp-transicao');
+
+  const unidadeTxt = unidade === 'meses' ? (idade === 1 ? 'mês' : 'meses') : (idade === 1 ? 'ano' : 'anos');
+  const idadeTexto = `${idade} ${unidadeTxt}`;
+
+  if(faixaClinica === 'adulto'){
+    banner.classList.add('tp-adulto');
+    iconEl.innerHTML = ICONS.adulto;
+    labelEl.textContent = 'PACIENTE ADULTO';
+    subEl.textContent = `Idade informada: ${idadeTexto} — posologia de adulto`;
+    document.body.classList.remove('modo-pediatrico');
+  } else if(faixaClinica === 'transicao'){
+    banner.classList.add('tp-pediatrico', 'tp-transicao');
+    iconEl.innerHTML = ICONS.bebe;
+    labelEl.textContent = 'PACIENTE PEDIÁTRICO';
+    subEl.textContent = `Idade informada: ${idadeTexto} — faixa de transição (dose por peso limitada ao teto de adulto)`;
+    document.body.classList.add('modo-pediatrico');
+  } else {
+    banner.classList.add('tp-pediatrico');
+    iconEl.innerHTML = ICONS.bebe;
+    labelEl.textContent = 'PACIENTE PEDIÁTRICO';
+    subEl.textContent = `Idade informada: ${idadeTexto}`;
+    document.body.classList.add('modo-pediatrico');
+  }
+}
+
+function calcularEExibir(){
+  const f = farmacoAtual;
+  const peso = pesoAtual;
+  const idadeMeses = idadeUnidade === 'meses' ? idadeAtual : idadeAtual * 12;
+  const idadeAnos = idadeMeses / 12;
+  const formDiv = document.getElementById('formulacoes');
+  const obsDiv = document.getElementById('observacoes-container');
+  formDiv.innerHTML = '';
+  obsDiv.innerHTML = '';
+
+  // ----- classificação do paciente por idade (Adulto / Pediátrico / faixa de transição 12-18) -----
+  // Corte padrão de 12 anos incompletos, ajustável por fármaco via idadeLimitePediatricaAnos
+  // (ex.: mantido em 18 para fármacos de baixo índice terapêutico, quando aplicável).
+  const idadeInformada = idadeAtual > 0;
+  const limitePed = f.idadeLimitePediatricaAnos || 12;
+  let faixaClinica = null; // 'pediatrico' | 'transicao' | 'adulto'
+  if(idadeInformada){
+    if(idadeAnos >= 18) faixaClinica = 'adulto';
+    else if(idadeAnos >= limitePed) faixaClinica = 'transicao';
+    else faixaClinica = 'pediatrico';
+  }
+  let usarRegimeAdulto = faixaClinica === 'adulto';
+  let transicaoPorPeso = false;
+  if(!usarRegimeAdulto && peso > 0 && f.pesoCorteAdultoKg && peso >= f.pesoCorteAdultoKg){
+    usarRegimeAdulto = true;
+    transicaoPorPeso = true;
+  }
+  // Alguns fármacos definem em bula um corte de idade próprio para o regime de
+  // adulto (dose fixa), mais baixo que os 18 anos padrão — ex.: bulas que definem
+  // "adultos e crianças acima de 12 anos" com posologia fixa, sem faixa de
+  // transição por peso entre 12 e 18 anos. idadeRegimeAdultoMeses permite esse
+  // corte por fármaco, independente de idadeLimitePediatricaAnos (que só afeta a
+  // classificação exibida no banner, não o regime de cálculo).
+  if(!usarRegimeAdulto && f.idadeRegimeAdultoMeses != null && idadeInformada && idadeMeses >= f.idadeRegimeAdultoMeses){
+    usarRegimeAdulto = true;
+  }
+  atualizarBannerPaciente(faixaClinica, idadeAtual, idadeUnidade);
+
+  // ----- calcular dose base (mg por administração) -----
+  let dose = null; // {min, max} em mg por administração
+  let infoMgKg = null; // para observação dinâmica
+  let regimeUsado = null; // 'adulto' | 'pediatrico' | 'transicao'
+  const db = f.doseBase;
+  const da = f.doseAdulto;
+
+  // ----- "Regra de ouro": trava de segurança final (dose calculada por peso nunca
+  // ultrapassa a dose máxima diária de adulto), aplicável às formulações mg/kg -----
+  // Declarada aqui (antes do cálculo da dose) porque aplicarTravaAdulto() é chamada
+  // de dentro dos ramos mgkg_dia/mgkg_dose logo abaixo — declará-la só depois desses
+  // ramos causava "Cannot access before initialization" (TDZ do `let`) sempre que a
+  // trava realmente precisava ser acionada, travando o cálculo inteiro.
+  let travaAdultoAplicada = false;
+  function aplicarTravaAdulto(){
+    if(!dose || !f.doseMaximaDiaAdultoMg || usarRegimeAdulto) return;
+    const vezesDiaEfetivo = db.vezesDia || db.fracionamento || 1;
+    const maxPorAdministracao = f.doseMaximaDiaAdultoMg / vezesDiaEfetivo;
+    if(dose.max > maxPorAdministracao){
+      dose.max = maxPorAdministracao;
+      if(dose.min > maxPorAdministracao) dose.min = maxPorAdministracao;
+      dose.capApplied = true;
+      travaAdultoAplicada = true;
+    }
+  }
+
+  // A dose fixa de adulto não depende do peso — fica fora do gate "peso > 0"
+  // abaixo, que existe para as demais formas de cálculo (por kg).
+  if(usarRegimeAdulto && da && da.modo === 'fixa'){
+    regimeUsado = 'adulto';
+    let doseMin = da.doseMg.min, doseMax = da.doseMg.max;
+    dose = { min: doseMin, max: doseMax, capApplied:false };
+    dose.formulaBase = [seg(
+      'Dose fixa de adulto (posologia não calculada por peso)',
+      `→ ${doseMin === doseMax ? formatarMg(doseMax) : formatarMg(doseMin)+'–'+formatarMg(doseMax)} por administração${da.doseMaximaDiaMg ? ' (máx. ' + formatarMg(da.doseMaximaDiaMg) + '/dia)' : ''}`
+    )];
+  } else if(peso > 0){
+    if(usarRegimeAdulto && da && da.modo === 'mgkg'){
+      regimeUsado = 'adulto';
+      let doseMin = da.doseMgKg.min * peso;
+      let doseMax = da.doseMgKg.max * peso;
+      let capApplied = false;
+      if(da.doseMaximaDoseMg){
+        if(doseMin > da.doseMaximaDoseMg){ doseMin = da.doseMaximaDoseMg; capApplied = true; }
+        if(doseMax > da.doseMaximaDoseMg){ doseMax = da.doseMaximaDoseMg; capApplied = true; }
+      }
+      dose = { min: doseMin, max: doseMax, capApplied };
+      infoMgKg = { unidade: 'dose', min: da.doseMgKg.min, max: da.doseMgKg.max };
+      dose.formulaBase = [seg(
+        'Calcular a dose de adulto por peso: peso × mg/kg/dose',
+        `→ ${peso} kg × ${da.doseMgKg.min}–${da.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo por dose)' : ''}`
+      )];
+    } else if(db.tipo === 'mgkg_dia'){
+      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
+      let diaMin = db.doseMgKg.min * peso;
+      let diaMax = db.doseMgKg.max * peso;
+      let capApplied = false;
+      if(db.doseMaximaDiaMg){
+        if(diaMin > db.doseMaximaDiaMg){ diaMin = db.doseMaximaDiaMg; capApplied = true; }
+        if(diaMax > db.doseMaximaDiaMg){ diaMax = db.doseMaximaDiaMg; capApplied = true; }
+      }
+      const frac = db.fracionamento || 1;
+      dose = { min: diaMin/frac, max: diaMax/frac, capApplied };
+      infoMgKg = { unidade: 'dia', min: db.doseMgKg.min, max: db.doseMgKg.max };
+      dose.formulaBase = [
+        seg(
+          'Calcular a dose diária total: peso × mg/kg/dia',
+          `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dia = ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg/dia${capApplied ? ' (ajustado ao teto máximo diário)' : ''}`
+        ),
+        seg(
+          `Dividir pelo número de tomadas ao dia: total ÷ ${frac} tomada(s)`,
+          `→ ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg ÷ ${frac} = ${arred(dose.min)}–${arred(dose.max)} mg por administração`
+        )
+      ];
+      aplicarTravaAdulto();
+    } else if(db.tipo === 'mgkg_dose'){
+      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
+      let doseMin = db.doseMgKg.min * peso;
+      let doseMax = db.doseMgKg.max * peso;
+      let capApplied = false;
+      if(db.doseMaximaDoseMg){
+        if(doseMin > db.doseMaximaDoseMg){ doseMin = db.doseMaximaDoseMg; capApplied = true; }
+        if(doseMax > db.doseMaximaDoseMg){ doseMax = db.doseMaximaDoseMg; capApplied = true; }
+      }
+      dose = { min: doseMin, max: doseMax, capApplied };
+      infoMgKg = { unidade: 'dose', min: db.doseMgKg.min, max: db.doseMgKg.max };
+      dose.formulaBase = [seg(
+        'Calcular a dose por administração: peso × mg/kg/dose',
+        `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dose = ${arred(doseMin)}–${arred(doseMax)} mg${capApplied ? ' (ajustado ao teto máximo por dose)' : ''}`
+      )];
+      aplicarTravaAdulto();
+    } else if(db.tipo === 'faixa_fixa'){
+      regimeUsado = (usarRegimeAdulto ? 'adulto' : faixaClinica) || 'pediatrico';
+      let faixa;
+      if(db.faixasPorIdade){
+        faixa = db.faixas.find(fx => idadeMeses <= fx.idadeMaxMeses) || db.faixas[db.faixas.length-1];
+      } else {
+        faixa = db.faixas.find(fx => peso <= fx.pesoMaxKg) || db.faixas[db.faixas.length-1];
+      }
+      if(faixa.mgPorKg){
+        const frac = faixa.fracionamento || 1;
+        const diaMg = faixa.mgPorKg * peso;
+        dose = { min: diaMg/frac, max: diaMg/frac, capApplied:false };
+        dose.formulaBase = [seg(
+          `Enquadrar na faixa de dose (${faixa.descricao}) e calcular: peso × ${faixa.mgPorKg} mg/kg/dia`,
+          `→ ${peso} kg × ${faixa.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(dose.min)} mg por administração`
+        )];
+      } else if(faixa.doseMg !== null && faixa.doseMg !== undefined){
+        if(typeof faixa.doseMg === 'object'){
+          dose = { min: faixa.doseMg.min, max: faixa.doseMg.max, capApplied:false };
+          dose.formulaBase = [seg(
+            `Enquadrar na faixa fixa (${faixa.descricao}) por ${db.faixasPorIdade ? 'idade' : 'peso'}`,
+            `→ dose fixa da faixa: ${faixa.doseMg.min}–${faixa.doseMg.max} mg (não calculada por mg/kg)`
+          )];
+        } else {
+          dose = { min: faixa.doseMg, max: faixa.doseMg, capApplied:false };
+          dose.formulaBase = [seg(
+            `Enquadrar na faixa fixa (${faixa.descricao}) por ${db.faixasPorIdade ? 'idade' : 'peso'}`,
+            `→ dose fixa da faixa: ${faixa.doseMg} mg (não calculada por mg/kg)`
+          )];
+        }
+      }
+    }
+  }
+
+  // ----- idade mínima: aviso -----
+  let avisoIdade = null;
+  if(f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses){
+    avisoIdade = `Idade informada abaixo da idade mínima orientada (${formatarIdadeMinima(f.idadeMinimaMeses)}). Reavaliar indicação.`;
+  }
+  // Quando o fármaco trava o cálculo abaixo da idade mínima (bloquearAbaixoIdadeMinima),
+  // nenhuma dose é de fato calculada — usado abaixo para não exibir uma observação de
+  // "dose calculada" (mg/kg) contraditória junto do alerta de bloqueio nos cards.
+  const idadeBloqueada = !!(f.bloquearAbaixoIdadeMinima && f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses);
+
+  // ----- render formulações -----
+  // Em regime de adulto, oculta apresentações em "gotas" quando o fármaco também tem
+  // outra apresentação (comprimido/líquido/etc.) disponível: gotas são, na prática
+  // farmacêutica, uma forma concentrada pensada para doses pequenas de lactentes/crianças
+  // — para um adulto, calcular a dose fixa de adulto em número de gotas resultaria em
+  // quantidades grandes e clinicamente sem sentido (ex.: "80 gotas"). Quando gotas é a
+  // ÚNICA apresentação cadastrada (ex.: colírios, óticos, algumas vitaminas), continua
+  // sendo exibida normalmente — nesses casos a gota já é a via de administração real
+  // para qualquer idade, não uma questão de conveniência posológica.
+  // Exceção: quando o próprio fármaco tem posologia de adulto documentada em bula
+  // especificamente para a apresentação em gotas (ex.: ibuprofeno gotas concentrado,
+  // usado por adultos para dose fracionada), a formulação pode marcar
+  // "exibirEmAdulto": true para não ser ocultada mesmo havendo alternativa não-gotas.
+  const temAlternativaNaoGotas = f.formulacoes.some(x => x.tipo !== 'gotas');
+  f.formulacoes.forEach(form => {
+    if(usarRegimeAdulto && form.tipo === 'gotas' && temAlternativaNaoGotas && !form.exibirEmAdulto) return;
+    const card = document.createElement('div');
+    card.className = 'formulacao';
+
+    let valorTexto = '-';
+    let subItens = [];
+    let formulaCompleta = null;
+    let textoAlerta = null;
+
+    if(f.bloquearAbaixoIdadeMinima && f.idadeMinimaMeses && idadeAtual > 0 && idadeMeses < f.idadeMinimaMeses){
+      textoAlerta = f.textoAlertaIdadeMinima || `Não há posologia estabelecida em bula para menores de ${formatarIdadeMinima(f.idadeMinimaMeses)}. Reavaliar indicação clínica.`;
+    } else if(form.faixasTextoPeso){
+      if(peso <= 0){
+        valorTexto = 'informe o peso';
+      } else {
+        const tier = form.faixasTextoPeso.find(t => peso <= t.pesoMaxKg) || form.faixasTextoPeso[form.faixasTextoPeso.length-1];
+        valorTexto = tier.texto;
+      }
+    } else if(form.faixasTexto){
+      if(idadeAtual <= 0){
+        valorTexto = 'informe a idade';
+      } else {
+        const tier = form.faixasTexto.find(t => idadeMeses <= t.idadeMaxMeses) || form.faixasTexto[form.faixasTexto.length-1];
+        if(tier.alerta){
+          textoAlerta = tier.texto;
+        } else if(tier.mgPorKg){
+          // Sub-faixa calculada por peso dentro de uma formulação majoritariamente
+          // baseada em texto fixo por idade (ex.: uma única faixa etária cuja bula
+          // define a posologia em mg/kg, enquanto as demais faixas são dose fixa).
+          if(peso <= 0){
+            valorTexto = 'informe o peso';
+          } else {
+            const frac = tier.fracionamento || 1;
+            const diaMg = tier.mgPorKg * peso;
+            const doseAdmin = diaMg / frac;
+            const sufixoFreq = tier.frequenciaTexto ? ` ${tier.frequenciaTexto}` : '';
+            if(form.concentracaoMgMl){
+              const ml = doseAdmin / form.concentracaoMgMl;
+              valorTexto = `${arred(ml)} mL${sufixoFreq}`;
+              formulaCompleta = [seg(
+                `Enquadrar na faixa (${tier.descricao || 'calculada por peso'}) e calcular: peso × ${tier.mgPorKg} mg/kg/dia`,
+                `→ ${peso} kg × ${tier.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(doseAdmin)} mg por administração ÷ ${form.concentracaoMgMl} mg/mL = ${arred(ml)} mL`
+              )];
+            } else {
+              valorTexto = `${arred(doseAdmin)} mg${sufixoFreq}`;
+              formulaCompleta = [seg(
+                `Enquadrar na faixa (${tier.descricao || 'calculada por peso'}) e calcular: peso × ${tier.mgPorKg} mg/kg/dia`,
+                `→ ${peso} kg × ${tier.mgPorKg} mg/kg/dia = ${arred(diaMg)} mg/dia ÷ ${frac} tomada(s) = ${arred(doseAdmin)} mg por administração`
+              )];
+            }
+          }
+        } else {
+          valorTexto = tier.texto;
+        }
+      }
+    } else if(form.textoDoseFixo){
+      valorTexto = form.textoDoseFixo;
+    } else if(form.tipo === 'gotas' && form.calculoEspecial === 'gotas_por_kg'){
+      // Regra prática (gotas/kg) tem prioridade sobre uma eventual dose fixa de
+      // adulto: essas apresentações são de uso pediátrico e a regra depende do peso.
+      if(peso <= 0){
+        valorTexto = '00';
+      } else {
+        const gMin = Math.round(peso * 1);
+        const gMax = Math.round(peso * 2);
+        valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
+        formulaCompleta = [seg('Calcular o número de gotas: peso × 1–2 gotas/kg', `→ ${peso} kg × 1–2 gotas/kg = ${gMin}–${gMax} gotas`)];
+      }
+    } else if(form.usarDoseBaseSempre && db && db.tipo === 'mgkg_dia' && peso > 0){
+      // Exceção pontual: algumas apresentações líquidas/gotas têm, na própria bula,
+      // uma posologia por peso válida "para adultos e crianças acima de X anos" —
+      // ou seja, o regime de dose fixa de adulto (doseAdulto) NÃO se aplica a essa
+      // apresentação específica, mesmo quando o paciente já está classificado como
+      // adulto. As demais apresentações do fármaco (comprimido, supositório etc.)
+      // continuam usando o fluxo normal (dose fixa de adulto a partir de 18 anos).
+      let diaMin = db.doseMgKg.min * peso;
+      let diaMax = db.doseMgKg.max * peso;
+      let capApplied2 = false;
+      if(db.doseMaximaDiaMg){
+        if(diaMin > db.doseMaximaDiaMg){ diaMin = db.doseMaximaDiaMg; capApplied2 = true; }
+        if(diaMax > db.doseMaximaDiaMg){ diaMax = db.doseMaximaDiaMg; capApplied2 = true; }
+      }
+      const frac2 = db.fracionamento || 1;
+      const doseMin = diaMin / frac2;
+      const doseMax = diaMax / frac2;
+      const formulaBase2 = [seg(
+        `Calcular a dose diária total: peso × mg/kg/dia (posologia por peso válida para qualquer idade ≥ ${formatarIdadeMinima(f.idadeMinimaMeses || 0)}, inclusive adultos, conforme bula desta apresentação)`,
+        `→ ${peso} kg × ${db.doseMgKg.min}–${db.doseMgKg.max} mg/kg/dia = ${arred(db.doseMgKg.min*peso)}–${arred(db.doseMgKg.max*peso)} mg/dia${capApplied2 ? ' (ajustado ao teto máximo diário)' : ''} ÷ ${frac2} tomada(s) = ${arred(doseMin)}–${arred(doseMax)} mg por administração`
+      )];
+
+      if(form.tipo === 'gotas' && form.mgPorGota){
+        const gMin = Math.round(doseMin / form.mgPorGota);
+        const gMax = Math.round(doseMax / form.mgPorGota);
+        valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
+        formulaCompleta = [...formulaBase2, seg('Converter a dose em gotas: dose ÷ mg por gota', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorGota} mg/gota = ${gMin}–${gMax} gotas`)];
+      } else if((form.tipo === 'liquido' || form.tipo === 'injetavel') && form.concentracaoMgMl){
+        const mlMin = doseMin / form.concentracaoMgMl;
+        const mlMax = doseMax / form.concentracaoMgMl;
+        valorTexto = (Math.abs(mlMax-mlMin) < 0.05) ? `${arred(mlMax)} mL` : `${arred(mlMin)} – ${arred(mlMax)} mL`;
+        formulaCompleta = [...formulaBase2, seg('Converter a dose em volume: dose ÷ concentração', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.concentracaoMgMl} mg/mL = ${arred(mlMin)}–${arred(mlMax)} mL`)];
+      } else {
+        valorTexto = `${arred(doseMin)} – ${arred(doseMax)} mg`;
+        formulaCompleta = formulaBase2;
+      }
+    } else if(dose){
+      // 'dose' já pode estar calculada sem depender do peso (ex.: dose fixa de
+      // adulto) — verificar antes do gate "peso <= 0" abaixo, para não bloquear
+      // indevidamente um valor que já está pronto.
+      const doseMin = form.doseMaximaPorDoseMg ? Math.min(dose.min, form.doseMaximaPorDoseMg) : dose.min;
+      const doseMax = form.doseMaximaPorDoseMg ? Math.min(dose.max, form.doseMaximaPorDoseMg) : dose.max;
+
+      if(form.tipo === 'gotas' && form.mgPorGota){
+        const gMin = Math.round(doseMin / form.mgPorGota);
+        const gMax = Math.round(doseMax / form.mgPorGota);
+        valorTexto = (gMin === gMax) ? `${gMax} gotas` : `${gMin} – ${gMax} gotas`;
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em gotas: dose ÷ mg por gota', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorGota} mg/gota = ${gMin}–${gMax} gotas`)];
+      } else if((form.tipo === 'liquido' || form.tipo === 'injetavel') && form.concentracaoMgMl){
+        const mlMin = doseMin / form.concentracaoMgMl;
+        const mlMax = doseMax / form.concentracaoMgMl;
+        valorTexto = (Math.abs(mlMax-mlMin) < 0.05) ? `${arred(mlMax)} mL` : `${arred(mlMin)} – ${arred(mlMax)} mL`;
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em volume: dose ÷ concentração', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.concentracaoMgMl} mg/mL = ${arred(mlMin)}–${arred(mlMax)} mL`)];
+      } else if(form.tipo === 'comprimido' && form.mgPorComprimido){
+        let cMin = arredondarMeio(doseMin / form.mgPorComprimido);
+        let cMax = arredondarMeio(doseMax / form.mgPorComprimido);
+        if(cMax < 0.5){
+          valorTexto = 'fracionamento não recomendado';
+          subItens.push({tipo:'restricao', texto:'Dose calculada resulta em fração muito pequena do comprimido. Preferir apresentação líquida ou gotas.'});
+        } else {
+          valorTexto = (cMin === cMax) ? `${formatarComprimidos(cMax)}` : `${formatarComprimidos(cMin)} – ${formatarComprimidos(cMax)}`;
+        }
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em comprimidos: dose ÷ mg por comprimido', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorComprimido} mg = ${cMin}–${cMax} comp.`)];
+      } else if(form.tipo === 'supositorio' && form.mgPorSupositorio){
+        let sMin = Math.round(doseMin / form.mgPorSupositorio);
+        let sMax = Math.round(doseMax / form.mgPorSupositorio);
+        if(sMax < 1){
+          valorTexto = 'dose inferior à menor apresentação';
+          subItens.push({tipo:'restricao', texto:'Dose calculada é menor que 1 supositório desta apresentação. Reavaliar via ou apresentação adequada ao peso.'});
+        } else {
+          if(sMin < 1) sMin = 1;
+          valorTexto = (sMin === sMax) ? `${sMax} supositório${sMax > 1 ? 's' : ''}` : `${sMin} – ${sMax} supositório(s)`;
+        }
+        formulaCompleta = [...(dose.formulaBase || []), seg('Converter a dose em supositórios: dose ÷ mg por unidade', `→ ${arred(doseMin)}–${arred(doseMax)} mg ÷ ${form.mgPorSupositorio} mg = ${sMin}–${sMax} unidade(s)`)];
+      } else {
+        valorTexto = `${arred(doseMin)} – ${arred(doseMax)} mg`;
+        formulaCompleta = dose.formulaBase || null;
+      }
+    } else if(peso <= 0){
+      valorTexto = '00';
+    }
+
+    // dose máxima por dose (texto)
+    if(form.doseMaximaPorDoseMg){
+      subItens.push({tipo:'info', texto:`dose máxima de ${form.doseMaximaPorDoseMg} mg por dose (via ${form.tipo === 'injetavel' ? 'injetável' : 'oral'})`});
+    } else if(db.doseMaximaDoseMg && form.tipo !== 'comprimido'){
+      subItens.push({tipo:'info', texto:`dose máxima de ${db.doseMaximaDoseMg} mg por dose`});
+    }
+
+    if(form.apresentacaoTexto){
+      subItens.push({tipo:'info', texto:`apresentação: ${form.apresentacaoTexto}`});
+    }
+    if(form.diluicaoTexto){
+      subItens.push({tipo:'info', texto: form.diluicaoTexto});
+    }
+    (form.restricoes||[]).forEach(r => subItens.push({tipo:'restricao', texto:r}));
+
+    const icone = ICONS[form.tipo] || ICONS.comprimido;
+    const temValorCalculado = !textoAlerta && valorTexto && !['informe o peso', 'informe a idade', '00'].includes(valorTexto);
+    const prefixoInstrucao = temValorCalculado ? '<span class="instrucao-verbo">Administrar</span> ' : '';
+
+    card.innerHTML = `
+      <div class="form-head">
+        <div class="form-icon tipo-${form.tipo}"><span class="icon">${icone}</span></div>
+        <h3>${form.rotulo}</h3>
+        ${temValorCalculado ? `<button class="btn-copiar-dose no-print" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button>` : ''}
+      </div>
+      ${textoAlerta
+        ? `<div class="linha-principal alerta-idade"><span class="icon">${ICONS.observacao}</span><span>${textoAlerta}</span></div>`
+        : `<div class="linha-principal">${prefixoInstrucao}<span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>`
+      }
+      ${subItens.length ? `<ul class="sub-lista">
+        ${subItens.map(i => `<li class="${i.tipo}">${i.texto}</li>`).join('')}
+      </ul>` : ''}
+      ${formulaCompleta && formulaCompleta.length ? `<details class="formula-details">
+        <summary class="no-print"><span class="icon">${ICONS.chevron}</span>Ver como o cálculo foi feito, passo a passo</summary>
+        <div class="formula-content">
+          <ol class="formula-steps">
+            ${formulaCompleta.map(passo => `<li>${passo}</li>`).join('')}
+          </ol>
+        </div>
+      </details>` : ''}
+    `;
+    if(temValorCalculado){
+      const textoCopia = `${f.nome} — ${form.rotulo}: ${textoPlano(valorTexto)}${form.viaTexto ? ' ' + textoPlano(form.viaTexto) : ''} (peso ${peso} kg${idadeAtual > 0 ? ', idade ' + idadeAtual + ' ' + idadeUnidade : ''})`;
+      card.querySelector('.btn-copiar-dose').addEventListener('click', (e) => copiarTexto(textoCopia, e.currentTarget));
+    }
+    formDiv.appendChild(card);
+  });
+
+  // ----- observações -----
+  const obsItens = [];
+
+  if(dose && infoMgKg && peso > 0 && !idadeBloqueada){
+    const mediaDose = (dose.min + dose.max) / 2;
+    const mgkgCalc = arred(mediaDose / peso);
+    const unidadeTxt = infoMgKg.unidade === 'dia' ? 'mg/kg/dia' : 'mg/kg/dose';
+    const recTxt = infoMgKg.min === infoMgKg.max ? `${infoMgKg.min} ${unidadeTxt}` : `${infoMgKg.min}-${infoMgKg.max} ${unidadeTxt}`;
+    obsItens.push(`Dose calculada equivalente a aproximadamente ${mgkgCalc} ${unidadeTxt} (recomendação de referência: ${recTxt}).`);
+  }
+  if(travaAdultoAplicada){
+    obsItens.push(`Trava de segurança: a dose calculada pelo peso ultrapassaria a dose máxima de adulto (${formatarMg(f.doseMaximaDiaAdultoMg)}/dia) e foi ajustada a esse teto.`);
+  } else if(dose && dose.capApplied){
+    obsItens.push('A dose calculada pelo peso ultrapassaria o teto recomendado: valor ajustado para a dose máxima de segurança.');
+  }
+  if(faixaClinica === 'transicao' && !usarRegimeAdulto && f.doseMaximaDiaAdultoMg){
+    obsItens.push(`Paciente adolescente (${limitePed}–17 anos): dose ajustada ao peso, limitada à dose convencional de adulto (máx. ${formatarMg(f.doseMaximaDiaAdultoMg)}/dia). Avaliar peso, estadiamento puberal e farmacocinética do fármaco.`);
+  }
+  if(transicaoPorPeso && f.pesoCorteAdultoKg){
+    obsItens.push(`Peso ≥ ${f.pesoCorteAdultoKg} kg: conduta ajustada para a posologia convencional de adulto, independentemente da idade.`);
+  }
+  if(faixaClinica === 'adulto' && !da && dose){
+    obsItens.push('Dose específica de adulto ainda não cadastrada para este fármaco: valor extrapolado pelo cálculo por peso, com a trava de segurança de adulto ativa.');
+  }
+  if(avisoIdade){ obsItens.push(avisoIdade); }
+  if(f.idadeMinimaMeses > 0){
+    obsItens.push(`Não recomendado / contraindicado o uso para menores de ${formatarIdadeMinima(f.idadeMinimaMeses)}.`);
+  }
+  if(db.doseMaximaDiaMg){
+    obsItens.push(`Dose máxima diária de ${formatarMg(db.doseMaximaDiaMg)}.`);
+  }
+  (f.observacoesExtras || []).forEach(o => obsItens.push(o));
+
+  if(obsItens.length){
+    obsDiv.innerHTML = `
+      <div class="observacoes">
+        <h3><span class="icon">${ICONS.observacao}</span> Observações</h3>
+        ${obsItens.map(o => `<div class="obs-item"><span class="icon">${ICONS.observacao}</span><span>${o}</span></div>`).join('')}
+      </div>
+    `;
+  }
+}
+
+function arred(n){ return Math.round(n * 100) / 100; }
+
+function arredondarMeio(n){ return Math.round(n * 2) / 2; }
+
+function formatarComprimidos(n){
+  if(n === 1) return '1 comprimido';
+  if(n % 1 === 0) return `${n} comprimidos`;
+  const inteiro = Math.floor(n);
+  const sufixo = inteiro > 0 ? `${inteiro}½` : '½';
+  return `${sufixo} comprimido${n > 1 ? 's' : ''}`;
+}
+
+function formatarMg(mg){
+  if(mg >= 1000) return `${arred(mg/1000)} g`;
+  return `${mg} mg`;
+}
+
+function formatarIdadeMinima(meses){
+  if(meses < 12) return meses + ' meses';
+  const anos = meses / 12;
+  return (anos % 1 === 0 ? anos : anos.toFixed(1)) + ' anos';
+}
+</script>
+
+<script src="../assets/tempo-uso.js" data-tool="calc"></script>
+</body>
+</html>
