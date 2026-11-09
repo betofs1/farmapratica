@@ -832,7 +832,7 @@ function setView(view, extra){
 }
 function renderBottomNav(){
   document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
-  const map = {inicio:'inicio', casos:'casos', categoria:'casos', caso:'casos', casoResumo:'casos',
+  const map = {inicio:'inicio', casos:'casos', casosArea:'casos', categoria:'casos', caso:'casos', casoResumo:'casos',
     quizConfig:'quizConfig', quiz:'quizConfig', quizResultado:'quizConfig'};
   const key = map[state.view];
   if(key){ const b = document.querySelector('.bottom-nav button[data-bn="'+key+'"]'); if(b) b.classList.add('active'); }
@@ -847,7 +847,7 @@ function renderSidebar(){
     {id:'flashConfig', label:'Flashcards', icon:'cards', count:DATA.flashcards.length},
     {id:'conquistas', label:'Conquistas', icon:'trophy'}
   ];
-  const activeMap = {categoria:'casos', caso:'casos', casoResumo:'casos', quiz:'quizConfig', quizResultado:'quizConfig', flashcards:'flashConfig'};
+  const activeMap = {casosArea:'casos', categoria:'casos', caso:'casos', casoResumo:'casos', quiz:'quizConfig', quizResultado:'quizConfig', flashcards:'flashConfig'};
   const activeView = activeMap[state.view] || state.view;
   const navHtml = navItems.map(n =>
     '<button class="nav-item'+(activeView===n.id?' active':'')+'" onclick="setView(\''+n.id+'\')">'+icon(n.icon)+
@@ -1027,6 +1027,7 @@ function renderMain(){
     case 'inicio': html = viewInicio(); break;
     case 'categoria': html = viewCategoria(); break;
     case 'casos': html = viewCasosList(); break;
+    case 'casosArea': html = viewCasosArea(); break;
     case 'caso': html = viewCasoPlayer(); break;
     case 'casoResumo': html = viewCasoResumo(); break;
     case 'quizConfig': html = viewQuizConfig(); break;
@@ -1065,6 +1066,7 @@ function viewInicio(){
   h += '<div class="section-title section-title-home">'+icon('bolt')+'Começar agora</div>';
   h += '<div class="quick-grid">'+
     quickCard('cases','red','Caso Aleatório','Um caso clínico sorteado, do começo ao fim.','iniciarCasoAleatorio()')+
+    quickCard('cases','teal','Casos Clínicos','Escolha uma área e veja os casos dela.',"setView('casosArea')")+
     quickCard('bolt','amber','Desafio Rápido','5 perguntas curtas, direto ao ponto.','iniciarQuizRapido()')+
     quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.',"setView('flashConfig')")+
     quickCard('quiz','indigo','Quiz','Banco completo de questões, com filtros por categoria e nível.',"setView('quizConfig')")+
@@ -1130,6 +1132,17 @@ function caseCard(c){
     '</div>';
 }
 
+function viewCasosArea(){
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Casos Clínicos'}]);
+  h += '<div class="home-hero"><h2>'+icon('cases')+'Casos Clínicos</h2><p>Escolha uma área para ver os casos clínicos dela.</p></div>';
+  h += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
+    const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
+    return '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
+      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-count">'+n+' caso'+(n===1?'':'s')+'</div></div>';
+  }).join('')+'</div>';
+  return h;
+}
 function viewCasosList(){
   const f = state.casosFiltro;
   let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Casos Clínicos'}]);

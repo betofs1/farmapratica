@@ -203,22 +203,75 @@
      "rotulo": "Suspensão oral 100 mg/5 mL (20 mg/mL)",
      "viaTexto": "via oral a cada 6-8 horas se dor ou febre",
      "concentracaoMgMl": 20,
-     "apresentacaoTexto": "frasco com 100 mL"
+     "apresentacaoTexto": "frasco com 100 mL",
+     "faixasTextoPeso": [
+      {
+       "pesoMaxKg": 10,
+       "texto": "2,5 mL (50 mg), 3 vezes ao dia — dose máxima diária 150 mg (~7–10 kg, aprox. 6–12 meses)"
+      },
+      {
+       "pesoMaxKg": 14.5,
+       "texto": "2,5 mL (50 mg), 3 a 4 vezes ao dia — dose máxima diária 200 mg (~10–14,5 kg, aprox. 1–2 anos)"
+      },
+      {
+       "pesoMaxKg": 25,
+       "texto": "5 mL (100 mg), 3 a 4 vezes ao dia — dose máxima diária 400 mg (~14,5–25 kg, aprox. 3–7 anos)"
+      },
+      {
+       "pesoMaxKg": 40,
+       "texto": "10 mL (200 mg), 3 a 4 vezes ao dia — dose máxima diária 800 mg (~25–40 kg, aprox. 8–12 anos)"
+      },
+      {
+       "pesoMaxKg": 9999,
+       "texto": "10 mL (200 mg) em dose única, ou 20 mL (400 mg) em dose única, ou 3 vezes ao dia — dose diária total não deve exceder 1.200 mg (uso adulto/adolescente ≥12 anos, ~≥40 kg)"
+      }
+     ]
     },
     {
      "tipo": "comprimido",
-     "rotulo": "Comprimido 400 mg",
+     "rotulo": "Comprimido revestido 400 mg",
      "viaTexto": "via oral a cada 6-8 horas se dor ou febre",
      "mgPorComprimido": 400,
-     "apresentacaoTexto": "cartela com 20 comprimidos"
+     "apresentacaoTexto": "cartela com 20 comprimidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Comprimido revestido 400 mg: uso pediátrico não recomendado para menores de 12 anos, conforme bula (DALSY®) — usar a suspensão oral 20 mg/mL ou a solução em gotas para essa faixa etária."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido (400 mg), em dose única ou até 3 vezes ao dia, com intervalo de 4 a 6 horas entre doses — dose diária total não deve exceder 1.200 mg (DALSY®, a partir de 12 anos/~40 kg)."
+      }
+     ]
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido revestido 600 mg (genérico)",
+     "viaTexto": "via oral, 3 a 4 vezes ao dia",
+     "mgPorComprimido": 600,
+     "apresentacaoTexto": "cartela de comprimidos revestidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Comprimido 600 mg: uso exclusivamente adulto, sem indicação pediátrica em bula — para menores de 12 anos, usar a suspensão oral ou a solução em gotas."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "600 mg, por via oral, 3 a 4 vezes ao dia — dose diária total não deve exceder 3.200 mg (genérico GEOLAB)."
+      }
+     ]
     }
    ],
    "observacoesExtras": [
     "Evitar em desidratação, varicela e suspeita de dengue, pelo risco de sangramento.",
-    "Posologia por peso revisada conforme bula das soluções orais (gotas) 100 mg/mL e 50 mg/mL: dose de 5-10 mg/kg/dose (a menor para febre baixa/dor leve, a maior para febre alta/dor mais intensa), a cada 6-8 horas, até 4x/dia.",
-    "Dose máxima diária de 3.200 mg (800 mg até 4x/dia) corresponde ao teto terapêutico sob orientação médica (uso anti-inflamatório em dose mais alta); para uso de autocuidado (analgesia/antitérmico) sem avaliação médica, considerar o limite mais conservador de 1.200 mg/dia já praticado em bulas de produtos de venda livre (ex.: Advil, Alivium)."
+    "Suspensão oral 20 mg/mL (DALSY®): a partir de 07/11/2026 a dose pediátrica passou a seguir a tabela por faixa de peso da própria bula (dose fixa por faixa, 3 a 4 vezes ao dia), em vez do cálculo contínuo de 5–10 mg/kg/dose usado anteriormente — a tabela da bula resulta em doses diárias máximas mais baixas que o cálculo contínuo para crianças abaixo de 8 anos (ex.: teto de 400 mg/dia dos 14,5 aos 25 kg, contra até 800 mg/dia pelo cálculo anterior). A bula contraindica o uso em menores de 6 meses OU com peso inferior a 5 kg (este piso de peso ainda não é verificado automaticamente pela calculadora — conferir manualmente).",
+    "Comprimido revestido 400 mg (DALSY®) não é recomendado para menores de 12 anos; comprimido 600 mg (genérico GEOLAB) não tem indicação pediátrica em bula — ambos exibem alerta de restrição etária.",
+    "A dose máxima diária de adulto varia conforme o produto/apresentação: 1.200 mg/dia para o comprimido 400 mg e a suspensão 20 mg/mL (DALSY®); 3.200 mg/dia para o comprimido 600 mg genérico (GEOLAB) e para as soluções em gotas (dose mais alta, de uso sob orientação médica/anti-inflamatória). Usar o teto correspondente à apresentação realmente dispensada.",
+    "Gotas (100 mg/mL e 50 mg/mL): dados mantidos conforme verificação em bula de rodada anterior — nenhuma bula de gotas foi reenviada nesta reconciliação (07/11/2026)."
    ],
-   "fonte": "Bula do fabricante — solução oral (gotas) Ibuprofeno 100 mg/mL e 50 mg/mL (dados fornecidos e revisados pelo farmacêutico responsável pela base) / ANVISA / SBP",
+   "fonte": "Bula do fabricante — solução oral (gotas) Ibuprofeno 100 mg/mL e 50 mg/mL (dados fornecidos e revisados pelo farmacêutico responsável pela base, rodada anterior) / bula profissional DALSY® suspensão oral 20 mg/mL e comprimido revestido 400 mg (Abbott Laboratórios do Brasil Ltda., Registro MS 1.0553.0318, aprovada pela ANVISA em 10/11/2016) / bula profissional Ibuprofeno 600 mg comprimido revestido genérico (GEOLAB Indústria Farmacêutica, Registro MS 1.5423.0227) — bulas enviadas pelo usuário (farmacêutico responsável pela base) e conferidas diretamente em 07/11/2026.",
    "nomesComerciais": [
     "Advil",
     "Alivium",
@@ -226,7 +279,8 @@
     "Artril",
     "Ibupril",
     "Ibufran",
-    "Nurofen"
+    "Nurofen",
+    "Dalsy"
    ],
    "doseAdulto": {
     "modo": "fixa",
@@ -239,8 +293,8 @@
    },
    "doseMaximaDiaAdultoMg": 3200,
    "fontesAdulto": [
-    "Bula do fabricante — solução oral (gotas) Ibuprofeno 100 mg/mL e 50 mg/mL: dose habitual de 200-800 mg por administração, até 4x/dia, dose máxima diária de 3.200 mg (dados fornecidos pelo farmacêutico responsável pela base).",
-    "Bula ANVISA — ADVIL® 400 mg comprimidos, Haleon/GSK Consumer Healthcare — referência de dose de autocuidado (400 mg até 3x/dia, máx. 1.200 mg/dia), mantida como observação para uso sem orientação médica."
+    "Bula DALSY® (comprimido revestido 400 mg e suspensão oral 20 mg/mL): dose de 400 mg por administração (1 comprimido, ou 10–20 mL), dose única ou até 3x/dia, intervalo de 4–6h, dose diária total não deve exceder 1.200 mg — uso a partir de 12 anos (~40 kg).",
+    "Bula Ibuprofeno 600 mg comprimido revestido genérico (GEOLAB): dose de 600 mg, 3 a 4 vezes ao dia, dose diária total não deve exceder 3.200 mg — uso exclusivamente adulto, sem indicação pediátrica em bula."
    ]
   },
   {
@@ -338,7 +392,6 @@
    ],
    "observacoesExtras": [
     "Em otite média aguda, doses de 80-90 mg/kg/dia podem ser indicadas — confirmar protocolo.",
-    "PEDB registra faixa específica de 40-50 mg/kg/dia para Otite Média Aguda (dentro da faixa geral 20-50 mg/kg/dia já usada aqui) e admite fracionamento em 8/8h ou 12/12h conforme a apresentação (12/12h mais usada com a suspensão 400 mg/5 mL).",
     "Bula (atualização): dose máxima pediátrica de 150 mg/kg/dia (não se aplica na prática dentro da faixa <40 kg, cujo teto natural pela fórmula de 50 mg/kg/dia é 2.000 mg/dia aos 40 kg); crianças >40 kg podem usar posologia de adulto (250-500 mg VO a cada 8 horas).",
     "Bula (atualização): esquema alternativo de adulto — 875 mg VO a cada 12 horas (1.750 mg/dia), dentro do teto de 3 g/dia. Profilaxia de endocardite bacteriana: 2 g VO em dose única, 1 hora antes do procedimento (não calculado automaticamente)."
    ],
@@ -374,61 +427,128 @@
    "nome": "Amoxicilina + Clavulanato",
    "categoria": "Antibióticos",
    "doseBase": {
-    "tipo": "mgkg_dia",
-    "doseMgKg": {
-     "min": 20,
-     "max": 50
-    },
-    "fracionamento": 2,
-    "doseMaximaDiaMg": 2000
+    "tipo": "ver_formulacoes",
+    "_nota": "Cada formulação abaixo calcula com a fórmula mg/kg própria da sua bula (proporção e fracionamento diferem entre as apresentações) — este doseBase não é usado pelo motor."
    },
-   "idadeMinimaMeses": 0,
+   "idadeMinimaMeses": 2,
+   "bloquearAbaixoIdadeMinima": true,
+   "textoAlertaIdadeMinima": "Não há dados clínicos de uso em menores de 2 meses de idade para nenhuma apresentação de amoxicilina+clavulanato, conforme bula. Reavaliar indicação.",
    "formulacoes": [
     {
      "tipo": "liquido",
-     "rotulo": "Suspensão BD 400 mg/5 mL (80 mg/mL, base amoxicilina)",
-     "viaTexto": "via oral a cada 12 horas",
+     "rotulo": "Suspensão BD 400 mg + 57 mg/5 mL (80 mg/mL, base amoxicilina)",
+     "viaTexto": "via oral, de 12 em 12 horas",
      "concentracaoMgMl": 80,
-     "apresentacaoTexto": "frasco com 75 mL"
+     "apresentacaoTexto": "frasco com 70 mL após reconstituição + seringa dosadora",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 9999,
+       "mgPorKgMin": 25,
+       "mgPorKgMax": 70,
+       "fracionamento": 2,
+       "frequenciaTexto": "de 12 em 12 horas",
+       "descricao": "adultos e crianças a partir de 2 meses — 25–45 mg/kg/dia para infecções leves/moderadas, 45–70 mg/kg/dia para infecções mais graves"
+      }
+     ]
+    },
+    {
+     "tipo": "liquido",
+     "rotulo": "Suspensão 250 mg + 62,5 mg/5 mL (50 mg/mL, base amoxicilina)",
+     "viaTexto": "via oral, de 8 em 8 horas",
+     "concentracaoMgMl": 50,
+     "apresentacaoTexto": "frasco com 75 mL após reconstituição + colher-dosadora",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 9999,
+       "mgPorKgMin": 20,
+       "mgPorKgMax": 60,
+       "fracionamento": 3,
+       "frequenciaTexto": "de 8 em 8 horas",
+       "descricao": "adultos e crianças a partir de 2 meses — 20–40 mg/kg/dia para infecções leves/moderadas, 40–60 mg/kg/dia para infecções mais graves"
+      }
+     ]
+    },
+    {
+     "tipo": "liquido",
+     "rotulo": "Clavulin ES 600 mg + 42,9 mg/5 mL (120 mg/mL) — otite média aguda recorrente/persistente",
+     "viaTexto": "via oral, de 12 em 12 horas, por 10 dias",
+     "concentracaoMgMl": 120,
+     "apresentacaoTexto": "frasco com 50 ou 100 mL após reconstituição + seringa dosadora",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 2,
+       "alerta": true,
+       "texto": "Clavulin ES: sem dados de uso em menores de 3 meses, conforme bula."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "mgPorKg": 90,
+       "fracionamento": 2,
+       "frequenciaTexto": "de 12 em 12 horas",
+       "descricao": "pediátrico a partir de 3 meses, otite média aguda recorrente/persistente — sem dados de uso acima de 40 kg nem em adultos (conferir peso manualmente)"
+      }
+     ]
     },
     {
      "tipo": "comprimido",
      "rotulo": "Comprimido 500 mg + 125 mg",
-     "viaTexto": "via oral a cada 8 horas",
+     "viaTexto": "via oral, de 8 em 8 horas",
      "mgPorComprimido": 500,
-     "apresentacaoTexto": "cartela com 21 comprimidos"
+     "apresentacaoTexto": "cartela com 21 comprimidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Comprimido 500 mg + 125 mg: uso a partir de 12 anos — ou a partir de 40 kg, mesmo abaixo de 12 anos, conforme bula — para crianças menores, usar uma das suspensões orais."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido (500 mg + 125 mg), por via oral, 3 vezes ao dia (de 8 em 8 horas)."
+      }
+     ]
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido 875 mg + 125 mg (BD)",
+     "viaTexto": "via oral, de 12 em 12 horas",
+     "mgPorComprimido": 875,
+     "apresentacaoTexto": "cartela com 14 comprimidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Comprimido 875 mg + 125 mg (BD): uso exclusivamente adulto, sem indicação pediátrica em bula — para crianças, usar o comprimido 500 mg + 125 mg (a partir de 12 anos/40 kg) ou uma das suspensões orais."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido (875 mg + 125 mg), por via oral, 2 vezes ao dia (de 12 em 12 horas)."
+      }
+     ]
     }
    ],
    "observacoesExtras": [
-    "Dose calculada com base no componente amoxicilina; observar dose máxima de clavulanato na bula.",
-    "Bula (atualização): faixa geral de 20-50 mg/kg/dia de amoxicilina por via oral a cada 8 horas (dose máxima teórica de 150 mg/kg/dia, não vinculante na prática pediátrica). O cálculo abaixo usa fracionamento a cada 12 horas, compatível com a apresentação 'BD' (400 mg + 57 mg/5 mL) cadastrada.",
-    "Bula (atualização): esquema alternativo de adulto — 875 mg + 125 mg VO a cada 12 horas (1.750 mg/dia de amoxicilina).",
-    "Via endovenosa (não contemplada nesta calculadora): adultos 1 g + 200 mg a cada 6-8 horas; crianças 25-45 mg/kg/dia de amoxicilina, fracionado a cada 6, 8 ou 12 horas."
+    "Dose calculada com base no componente amoxicilina (mg/kg se refere à amoxicilina, não ao ácido clavulânico) — conferir a proporção de cada apresentação antes de trocar uma pela outra: elas não são equivalentes em ácido clavulânico por mg de amoxicilina.",
+    "Insuficiência renal (ajuste não calculado automaticamente pela calculadora — conferir manualmente): comprimido 875 mg + 125 mg — TFG ≥30 mL/min sem ajuste, TFG <30 mL/min uso não recomendado. Comprimido 500 mg + 125 mg e suspensão 250 mg + 62,5 mg/5 mL (mesma proporção 4:1) — adultos: insuficiência leve sem ajuste, moderada 1 comprimido 500+125mg 12/12h, grave não recomendado; crianças: insuficiência leve sem ajuste, moderada 18,75 mg/kg 12/12h, grave 18,75 mg/kg em dose única diária (máx. 625 mg).",
+    "Comprimido 500 mg + 125 mg — infecções graves: a bula (genérico Ranbaxy) documenta a opção de aumentar a posologia, a critério médico, para até 50 mg/kg/dia divididos de 8 em 8 horas (dose usual equivalente a 25 mg/kg/dia) — acima do regime fixo padrão de 1 comprimido 3x/dia calculado por esta ferramenta; não aplicado automaticamente ao cálculo, que mantém o regime fixo usual como padrão.",
+    "Insuficiência hepática: cautela e monitorização da função hepática em todas as apresentações; dados insuficientes em bula para recomendação específica de dose.",
+    "Tratamento não deve ultrapassar 14 dias sem revisão médica, em qualquer apresentação oral.",
+    "Suspensão BD 400+57 mg/5 mL contém 2 mg de aspartamo por dose de 5 mL; Clavulin ES contém 7 mg de aspartamo por dose de 5 mL — cautela em pacientes fenilcetonúricos (fonte de fenilalanina).",
+    "Via intravenosa (Clavulin®, 500 mg+100 mg ou 1 g+200 mg — uso restrito a hospitais, não contemplada nesta calculadora): adultos e ≥12 anos — 1,2 g de 8/8h; crianças de 3 meses a 12 anos — 30 mg/kg de 8/8h; crianças de 0 a 3 meses (prematuros/RN) — 30 mg/kg de 12/12h."
    ],
-   "fonte": "Bula ANVISA",
+   "fonte": "Bula profissional Clavulin® BD comprimidos 875 mg+125 mg (GSK, MS 1.0107.0076) / bula profissional amoxicilina+clavulanato 875 mg+125 mg comprimidos, genérico EMS (MS 1.0235.0845), genérico Cellera/Delta (MS 1.0440.0203) e genérico Ranbaxy (MS 1.2352.0273) / bula profissional Clavulin® comprimidos 500 mg+125 mg (GSK, MS 1.0107.0076) e genérico Ranbaxy (MS 1.2352.0273) / bula profissional Clavulin® BD suspensão 400 mg+57 mg/5 mL (GSK, MS 1.0107.0076), genérico Eurofarma (MS 1.0043.1067) e genérico Cellera/Delta (MS 1.0440.0202) / bula profissional amoxicilina+clavulanato suspensão 250 mg+62,5 mg/5 mL, genérico Sandoz (MS 1.0047.0431) / bula profissional Clavulin® ES suspensão 600 mg+42,9 mg/5 mL (GSK, MS 1.0107.0076) / bula profissional Clavulin® pó para solução injetável (GSK, MS 1.0107.0076) — bulas enviadas pelo usuário (farmacêutico responsável pela base) e conferidas diretamente em 08/11/2026.",
    "nomesComerciais": [
     "Clavulin",
     "Clavulin BD",
+    "Clavulin ES",
     "Novamox 2x",
     "Sinot Clav",
     "Atak Clav",
     "Sigma-Clav BD",
     "Lânico"
    ],
-   "doseAdulto": {
-    "modo": "fixa",
-    "doseMg": {
-     "min": 500,
-     "max": 500
-    },
-    "vezesDia": 3,
-    "doseMaximaDiaMg": 1750
-   },
-   "doseMaximaDiaAdultoMg": 1750,
    "fontesAdulto": [
-    "Bula ANVISA — Clavulin BD (875+125 mg comprimidos), GSK Brasil, profissional de saúde",
-    "Drugs.com Amoxicillin/Clavulanate Dosage Guide",
-    "Bula ANVISA — atualização de posologia fornecida pelo usuário (29/09/2026)"
+    "Comprimido 875 mg+125 mg: Clavulin BD (GSK, MS 1.0107.0076), genérico EMS (MS 1.0235.0845), genérico Cellera/Delta (MS 1.0440.0203) e genérico Aché (MS 1.0573.0535) — uso adulto, 1 comprimido 2x/dia, idêntico entre referência e os três genéricos conferidos.",
+    "Comprimido 500 mg+125 mg: Clavulin (GSK, MS 1.0107.0076) e genérico Ranbaxy (MS 1.2352.0273) — uso a partir de 12 anos/40 kg, 1 comprimido 3x/dia, idêntico entre referência e genérico; o genérico Ranbaxy documenta ainda a opção de escalonamento para infecções graves (até 50 mg/kg/dia, 8/8h — ver observacoesExtras)."
    ]
   },
   {
@@ -4088,36 +4208,51 @@
    "observacoesExtras": [
     "Dose por evento (não diária) — repetir a cada 5 a 15 minutos conforme resposta clínica, sem número fixo de repetições estabelecido pela fonte.",
     "Acionar suporte de emergência (SAMU 192) em paralelo à administração.",
-    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização; a faixa de 0,01 mg/kg/dose (máx. 0,3 mg) é, porém, consistente com diretrizes consagradas (SBP/AAP) para anafilaxia pediátrica."
+    "Entrada adicionada em 11/09/2026 com a fórmula clássica de anafilaxia (0,01 mg/kg/dose, máximo 0,3 mg, podendo repetir a cada 5-15 min), consistente com diretrizes consagradas (SBP/AAP) — ainda não verificada diretamente em bula ANVISA de um produto específico. Revisão pendente."
    ],
-   "fonte": "PEDB (pedb.com.br)",
+   "fonte": "Diretrizes clínicas SBP/AAP para anafilaxia pediátrica",
    "nomesComerciais": [
     "Adrenalina",
     "Epinefrina"
    ],
    "doseAdulto": {
     "modo": "mesma_pediatrica"
-   },
-   "fontesAdulto": [
-    "PEDB (pedb.com.br) — dose única de referência 0,3-0,5 mg IM não diferenciada explicitamente pela fonte"
-   ]
+   }
   },
   {
    "id": "butilbrometo_escopolamina",
    "nome": "Butilbrometo de Escopolamina",
    "categoria": "Gastrointestinal",
    "doseBase": {
-    "tipo": "individualizado"
+    "tipo": "faixa_fixa",
+    "faixasPorIdade": true,
+    "faixas": [
+     {
+      "idadeMaxMeses": 11,
+      "rotulo": "Lactentes",
+      "doseMg": 5,
+      "descricao": "lactentes (até 11 meses)"
+     },
+     {
+      "idadeMaxMeses": 72,
+      "doseMg": {
+       "min": 5,
+       "max": 10
+      },
+      "descricao": "crianças de 1 a 6 anos"
+     }
+    ]
    },
    "idadeMinimaMeses": 0,
+   "idadeRegimeAdultoMeses": 73,
    "formulacoes": [
     {
      "tipo": "gotas",
      "rotulo": "Solução oral gotas 10 mg/mL",
-     "viaTexto": "via oral, repetir até 3 vezes ao dia",
-     "mgPorGota": null,
+     "viaTexto": "via oral; até 3 vezes ao dia até 6 anos, de 3 a 5 vezes ao dia a partir de 6 anos/adultos",
+     "mgPorGota": 0.5,
      "apresentacaoTexto": "frasco gotejador",
-     "textoDoseFixo": "20 gotas por tomada, repetir até 3x/dia conforme necessidade"
+     "exibirEmAdulto": true
     },
     {
      "tipo": "comprimido",
@@ -4125,30 +4260,61 @@
      "viaTexto": "via oral, de 3 a 5 vezes ao dia",
      "mgPorComprimido": 10,
      "apresentacaoTexto": "cartela de drágeas",
-     "textoDoseFixo": "1 a 2 drágeas por tomada, de 3 a 5 vezes ao dia"
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 72,
+       "alerta": true,
+       "texto": "Drágea: uso aprovado em bula somente a partir de 6 anos (engolir inteira, sem partir/mastigar) — para crianças mais novas, usar a solução oral em gotas."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 a 2 drágeas (10 a 20 mg) por via oral, de 3 a 5 vezes ao dia."
+      }
+     ]
     },
     {
      "tipo": "injetavel",
-     "rotulo": "Solução injetável 20 mg/mL",
-     "viaTexto": "uso institucional — confirmar protocolo e faixa etária na bula do produto dispensado",
+     "rotulo": "Solução injetável 20 mg/mL (IM)",
+     "viaTexto": "via intramuscular, lenta — pode repetir conforme necessidade clínica, respeitando o teto diário",
      "concentracaoMgMl": 20,
-     "apresentacaoTexto": "ampola",
+     "apresentacaoTexto": "ampola de 1 mL",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "mgPorKgMin": 0.3,
+       "mgPorKgMax": 0.6,
+       "fracionamento": 1,
+       "descricao": "lactentes e crianças menores de 12 anos",
+       "frequenciaTexto": "por dose, podendo repetir várias vezes ao dia"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 a 2 ampolas (20 a 40 mg = 1 a 2 mL), podendo repetir várias vezes ao dia — adultos e adolescentes acima de 12 anos."
+      }
+     ],
      "restricoes": [
-      "Uso predominantemente hospitalar/pronto atendimento; o PEDB não detalha dose específica por peso para esta apresentação."
+      "Teto diário: 1,5 mg/kg/dia em lactentes e crianças menores de 12 anos; 100 mg/dia (5 ampolas) em adultos e adolescentes acima de 12 anos.",
+      "Não administrar de forma contínua ou por períodos prolongados sem investigar a causa da dor abdominal."
      ]
     }
    ],
    "observacoesExtras": [
-    "O PEDB não fornece fórmula mg/kg para este fármaco nem discrimina claramente as doses pediátrica e adulta — confirmar idade mínima e dose exata na bula do produto dispensado antes de orientar.",
-    "Indicado para cólicas gastrointestinais (espasmos da musculatura lisa).",
-    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização."
+    "Drágea contém sacarose (41,2 mg por drágea; até 411,8 mg na dose máxima diária recomendada) — usar com cautela em diabéticos; contraindicada em condições hereditárias raras de intolerância à frutose, má-absorção de glicose-galactose ou deficiência de sacarase-isomaltase.",
+    "Solução gotas contém sódio (28 mg por dose única máxima; até 140 mg na dose diária máxima para adultos e crianças acima de 6 anos) — usar com cautela em pacientes com dieta hipossódica controlada.",
+    "Fonte: bula profissional Buscopan® drágea e solução gotas (CosMed Indústria de Cosméticos e Medicamentos S.A., Registro MS 1.7817.0890) e bula profissional Buscopan® solução injetável (Boehringer Ingelheim/CosMed, Registro MS 1.0367.0014) — bulas enviadas pelo usuário (farmacêutico responsável pela base) e conferidas diretamente em 07/11/2026."
    ],
-   "fonte": "PEDB (pedb.com.br)",
+   "fonte": "Bula profissional Buscopan® — drágea e solução gotas (Registro MS 1.7817.0890) e solução injetável (Registro MS 1.0367.0014)",
    "nomesComerciais": [
     "Buscopan"
    ],
    "doseAdulto": {
-    "modo": "mesma_pediatrica"
+    "modo": "fixa",
+    "doseMg": {
+     "min": 10,
+     "max": 20
+    },
+    "vezesDia": 5,
+    "doseMaximaDiaMg": 100
    }
   },
   {
@@ -4156,43 +4322,58 @@
    "nome": "Dexametasona",
    "categoria": "Outros",
    "doseBase": {
-    "tipo": "individualizado"
+    "tipo": "mgkg_dia",
+    "doseMgKg": {
+     "min": 0.08,
+     "max": 0.3
+    },
+    "fracionamento": 2,
+    "doseMaximaDiaMg": 9
    },
    "idadeMinimaMeses": 0,
    "formulacoes": [
     {
      "tipo": "liquido",
      "rotulo": "Solução oral 0,1 mg/mL (Elixir)",
-     "viaTexto": "via oral, a cada 6 horas",
+     "viaTexto": "via oral, a cada 12 horas",
      "concentracaoMgMl": 0.1,
-     "apresentacaoTexto": "frasco",
-     "textoDoseFixo": "Exemplo de referência do PEDB: 12,5 mL (1,25 mg) por tomada, a cada 6 horas — ajustar conforme peso e indicação clínica."
+     "apresentacaoTexto": "frasco"
     },
     {
      "tipo": "injetavel",
      "rotulo": "Solução injetável 2 mg/mL (ampola)",
-     "viaTexto": "intramuscular ou endovenoso, dividido em 2 a 3 doses",
+     "viaTexto": "intravenoso em 15 minutos ou intramuscular, a cada 12 horas",
      "concentracaoMgMl": 2,
      "apresentacaoTexto": "ampola",
-     "textoDoseFixo": "Exemplo de referência do PEDB: 2 mL (4 mg) por dia, dividido em 2 a 3 doses.",
+     "diluicaoTexto": "Para uso endovenoso, diluir em Soro Fisiológico 0,9% e infundir lentamente.",
      "restricoes": [
       "Uso predominantemente hospitalar/pronto atendimento."
      ]
     }
    ],
    "observacoesExtras": [
-    "O PEDB não detalha a fórmula mg/kg para este fármaco; a dose de dexametasona varia bastante conforme a indicação clínica (ex.: crupe: dose única 0,15-0,6 mg/kg; uso anti-inflamatório geral: doses menores e fracionadas). Confirmar protocolo específico antes de orientar.",
-    "Fármaco de uso restrito — sujeito a retenção de receita conforme legislação vigente (RDC/Portaria SVS/MS 344/98, se aplicável à apresentação).",
-    "Entrada adicionada em 11/09/2026 com base exclusivamente nos dados do PEDB (pedb.com.br) — não verificada diretamente em bula ANVISA nesta atualização; fórmula mg/kg não fornecida pela fonte."
+    "Esquema calculado nesta ferramenta: uso anti-inflamatório sistêmico (dose inicial), 0,08-0,3 mg/kg/dia, divididos de 12/12h — faixa amplamente citada na literatura pediátrica padrão. Dexametasona tem esquemas bastante diferentes por indicação; as demais abaixo são de referência (texto), não calculadas automaticamente:",
+    "Exacerbação de asma: 0,6 mg/kg em dose única no primeiro dia, máximo 16 mg (nova dose em 24h depende de reavaliação clínica).",
+    "Crupe (laringotraqueíte): 0,6 mg/kg em dose única, máximo 12 mg (0,15 mg/kg é alternativa publicada para quadros leves).",
+    "Meningite bacteriana: 0,15 mg/kg/dose IV a cada 6 horas por 4 dias, iniciada antes ou junto da primeira dose do antibiótico, sem atrasar o antimicrobiano.",
+    "Edema cerebral vasogênico associado a tumor e profilaxia de edema de via aérea na extubação: protocolos especializados (oncologia/UTI), com esquema por etapa de tratamento — fora do escopo desta calculadora; consultar protocolo institucional.",
+    "Entrada reestruturada em 07/11/2026 com a fórmula padrão mg/kg/dia e o corte etário de adulto aos 18 anos (mesmo padrão já usado nesta ferramenta) — ainda não verificada de forma independente em bula ANVISA do produto dispensado. Revisão pendente."
    ],
-   "fonte": "PEDB (pedb.com.br)",
+   "fonte": "Literatura pediátrica padrão (uso anti-inflamatório sistêmico) — pendente de verificação em bula ANVISA",
    "nomesComerciais": [
     "Decadron",
     "Oradexon"
    ],
    "doseAdulto": {
-    "modo": "mesma_pediatrica"
-   }
+    "modo": "fixa",
+    "doseMg": {
+     "min": 0.375,
+     "max": 4.5
+    },
+    "vezesDia": 2,
+    "doseMaximaDiaMg": 9
+   },
+   "doseMaximaDiaAdultoMg": 9
   }
  ]
 }
