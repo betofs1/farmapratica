@@ -206,6 +206,49 @@
   }
   .type-btn.active .type-btn-badge{background:rgba(255,255,255,.24);color:#fff;}
   .type-btn.active:hover{background:linear-gradient(135deg, var(--navy), var(--navy-dark));transform:translateY(-1px);}
+  /* 11/11/2026 — 8 tipos de receita: selo do botão aceita siglas de 2-3 letras */
+  .type-btn-badge{width:auto;min-width:20px;padding:0 5px;border-radius:10px;}
+  .type-selector{margin-bottom:12px;grid-template-columns:repeat(4,minmax(0,1fr));}
+  @media (max-width:760px){ .type-selector{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  .rg-item b{font-size:12.5px;font-weight:600;}
+  /* Barra da UF da farmácia */
+  .uf-barra{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:0 0 12px;}
+  .uf-barra label{font-weight:700;color:var(--text);}
+  .uf-barra select{padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--card);color:var(--text);font-size:13px;}
+  /* Cartão "Regras deste receituário" */
+  .regras-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--navy-light);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:24px;}
+  .regras-card > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;flex-wrap:wrap;}
+  .regras-card > summary:focus-visible{outline:2px solid var(--navy-light);outline-offset:2px;border-radius:var(--radius);}
+  .regras-card > summary::-webkit-details-marker{display:none;}
+  /* Botão grande de expandir/recolher (o cartão inicia recolhido) */
+  .regras-card > summary::after{content:'Ver regras  ▾';margin-left:auto;flex-shrink:0;padding:10px 18px;border-radius:999px;
+    background:linear-gradient(135deg, var(--navy-light), var(--navy));color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.2px;
+    white-space:pre;box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 6px 14px -8px rgba(161,15,31,.6);transition:transform .15s ease, filter .15s ease;}
+  .regras-card > summary:hover::after{transform:translateY(-1px);filter:brightness(1.08);}
+  .regras-card[open] > summary::after{content:'Ocultar regras  ▴';background:var(--hover-tint);color:var(--text);box-shadow:none;border:1px solid var(--border);}
+  @media (max-width:760px){ .regras-card > summary::after{flex-basis:100%;margin-left:0;text-align:center;padding:12px 18px;font-size:14px;} }
+  .rg-badge{flex-shrink:0;min-width:38px;height:38px;padding:0 8px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#1f2937;border:1px solid rgba(0,0,0,.15);}
+  .rg-titulo{flex:1 1 0;min-width:0;}
+  .rg-titulo b{display:block;font-size:14.5px;color:var(--text);}
+  .rg-titulo small{display:block;font-size:12px;color:var(--muted);margin-top:2px;}
+  .rg-corpo{padding:0 16px 16px;}
+  .rg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;}
+  .rg-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 11px;}
+  .rg-item span{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);font-weight:700;margin-bottom:3px;}
+  .rg-item b{font-size:13px;color:var(--text);font-weight:600;line-height:1.4;}
+  .rg-notas{margin:12px 0 0;padding-left:18px;font-size:12.5px;color:var(--text);line-height:1.55;}
+  .rg-notas li{margin-bottom:4px;}
+  .rg-base{margin-top:10px;font-size:11px;color:var(--muted);line-height:1.5;}
+  /* Conferência regulatória (checagens manuais do farmacêutico) */
+  .conf-reg{margin:0 0 14px;padding:12px;border:1px dashed var(--border);border-radius:var(--radius-sm);background:var(--bg);}
+  .conf-reg-tit{font-size:11px;text-transform:uppercase;letter-spacing:.4px;font-weight:800;color:var(--muted);margin-bottom:8px;}
+  .conf-reg label{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);line-height:1.4;margin:6px 0;cursor:pointer;}
+  .conf-reg label input[type=checkbox]{margin-top:2px;flex-shrink:0;width:auto;}
+  .conf-reg label.cr-flag{color:var(--muted);}
+  .conf-reg label .cr-obrig{font-size:10px;font-weight:800;color:var(--danger, #b91c1c);margin-left:4px;}
+  .conf-reg .cr-num{display:flex;align-items:center;gap:8px;font-size:12.5px;margin:6px 0;}
+  .conf-reg .cr-num input{width:64px;padding:4px 6px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);}
+  .receipt-mock.tipo-ret{background:#f7f7f4;}
 
   /* ---- Mockup da receita (papel amarelo/azul/cinza) — agora editável ---- */
   .receipt-row{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;}
@@ -268,6 +311,8 @@
   .hint-ok{color:#15803d;}
   .hint-warn{color:#b45309;}
   .hint-danger{color:#b91c1c;}
+  .qtd-hint{font-size:10.5px;color:#6b7280;margin-top:4px;font-weight:700;line-height:1.4;}
+  .qtd-hint.hint-ok{color:#15803d;} .qtd-hint.hint-warn{color:#b45309;} .qtd-hint.hint-danger{color:#b91c1c;}
 
   /* ---- Autocomplete de medicamentos (base CMED/ANVISA) ---- */
   .ac-wrap{position:relative;}
@@ -330,6 +375,22 @@
   .ac-item-lg{padding:11px 12px;font-size:13.5px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;}
   .ac-item-lg .ac-detail{font-size:12px;}
   .ac-item-lg .ac-badge{font-size:9.5px;}
+  /* 11/11/2026 — modo escuro: lista de medicamentos (modal e dropdown) com contraste adequado */
+  body:not(.light) .ac-dropdown{background:var(--card);}
+  body:not(.light) .ac-item{color:var(--text);border-bottom-color:var(--border);}
+  body:not(.light) .ac-item .ac-nome{color:#f1f5f9;}
+  body:not(.light) .ac-item .ac-detail{color:#c4c9d1;}
+  body:not(.light) .ac-item:hover, body:not(.light) .ac-item:focus-visible{background:var(--hover-tint);border-color:var(--navy-light);}
+  body:not(.light) .ac-item-lg{background:color-mix(in srgb, var(--card) 88%, #fff 12%);}
+  body:not(.light) .ac-badge.generico, body:not(.light) .ac-compat-ok{background:rgba(34,197,94,.18);color:#86efac;}
+  body:not(.light) .ac-badge.similar{background:rgba(245,158,11,.18);color:#fcd34d;}
+  body:not(.light) .ac-badge.outros{background:rgba(139,92,246,.22);color:#c4b5fd;}
+  body:not(.light) .ac-badge.biologico{background:rgba(59,130,246,.2);color:#93c5fd;}
+  body:not(.light) .ac-badge.fitoterapico{background:rgba(16,185,129,.18);color:#6ee7b7;}
+  body:not(.light) .ac-compat-warn{background:rgba(239,68,68,.2);color:#fca5a5;}
+  body:not(.light) .ac-empty{color:#c4c9d1;}
+  body:not(.light) .modal-subtitulo{color:#c4c9d1;}
+  body:not(.light) .painel-intercambio .ac-item{border-color:var(--border);}
 
   /* ---- Sinal de divergência ---- */
   .sinal-alerta{
@@ -552,11 +613,25 @@
 
   <div class="type-selector" id="typeSelector">
     <button class="type-btn active" data-tipo="A"><span class="type-btn-badge">A</span>Notificação A</button>
-    <button class="type-btn" data-tipo="B"><span class="type-btn-badge">B</span>Notificação B</button>
-    <button class="type-btn" data-tipo="CONTROLE"><span class="type-btn-badge">CE</span>Controle Especial</button>
-    <button class="type-btn" data-tipo="RETINOIDES"><span class="type-btn-badge">RT</span>Retinóides</button>
-    <button class="type-btn" data-tipo="TALIDOMIDA"><span class="type-btn-badge">TL</span>Talidomida</button>
+    <button class="type-btn" data-tipo="B"><span class="type-btn-badge">B1</span>Notificação B1</button>
+    <button class="type-btn" data-tipo="B2"><span class="type-btn-badge">B2</span>Notificação B2</button>
+    <button class="type-btn" data-tipo="RETINOIDES"><span class="type-btn-badge">C2</span>Retinoides</button>
+    <button class="type-btn" data-tipo="TALIDOMIDA"><span class="type-btn-badge">C3</span>Talidomida</button>
+    <button class="type-btn" data-tipo="CONTROLE"><span class="type-btn-badge">C1</span>Controle Especial</button>
+    <button class="type-btn" data-tipo="C5"><span class="type-btn-badge">C5</span>Anabolizantes</button>
+    <button class="type-btn" data-tipo="ATM"><span class="type-btn-badge">ATM</span>Antimicrobianos</button>
   </div>
+
+  <div class="uf-barra">
+    <label for="ufFarmacia">UF da farmácia</label>
+    <select id="ufFarmacia" aria-describedby="ufFarmaciaAjuda">
+      <option value="">— não informada —</option>
+      <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+    </select>
+    <span id="ufFarmaciaAjuda">Usada para conferir a abrangência territorial da receita (fica salva neste navegador).</span>
+  </div>
+
+  <details class="regras-card" id="regrasCard"></details>
 
   <!-- =========================================================
        PAINEL GENÉRICO — Notificação A / B / Retinóides sistêmicos
@@ -682,7 +757,8 @@
           <div class="stamp-field"><label>Data da venda</label><input type="date" id="dataVenda"></div>
           <div class="stamp-field"><label>MS <button type="button" class="regen-btn" id="regenMS" title="Gerar novo número">↻</button></label><input type="text" id="msNumero"></div>
           <div class="stamp-field"><label>Lote <button type="button" class="regen-btn" id="regenLote" title="Gerar novo lote">↻</button></label><input type="text" id="lote"></div>
-          <div class="stamp-field"><label>Quantidade de caixas vendida</label><input type="text" id="qtdVendida"><div id="qtdVendidaHint" style="font-size:10.5px;color:#6b7280;margin-top:3px;"></div></div>
+          <div class="stamp-field"><label>Quantidade de caixas vendida</label><input type="text" id="qtdVendida" inputmode="numeric"></div>
+          <div class="stamp-field"><label for="unidCaixa" id="unidCaixaRot">Comprimidos por caixa</label><input type="text" id="unidCaixa" inputmode="numeric" placeholder="Ex: 30"><div id="qtdVendidaHint" class="qtd-hint"></div></div>
           <div class="stamp-field"><label>Assinatura do vendedor</label><input type="text" id="assinaturaVendedor"></div>
           <div class="stamp-field"><label>Assinatura do farmacêutico</label><input type="text" id="assinaturaFarmaceutico"></div>
           <div class="stamp-note">carimbo do farmacêutico responsável</div>
@@ -695,6 +771,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">O nome do medicamento no carimbo pode ser referência, similar ou genérico. Confirme que a quantidade de caixas vendida corresponde ao que foi prescrito.</p>
+          <div class="conf-reg" id="confRegGenerico"></div>
           <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarGenerico" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarGenerico" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
@@ -820,6 +897,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">Confirme que a quantidade informada em "Dados sobre a dispensação" corresponde exatamente à quantidade de comprimidos prescrita no item 4.</p>
+          <div class="conf-reg" id="confRegTalidomida"></div>
           <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarTalidomida" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarTalidomida" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
@@ -829,7 +907,7 @@
         <div class="validation-panel">
           <div class="val-status idle" id="statusBoxTalidomida">Preencha os campos na receita e clique em "Validar receita"</div>
           <ul class="val-list" id="checklistTalidomida"></ul>
-          <div class="legal-refs">Base normativa: Portaria SVS/MS n.º 344/1998 (talidomida, controle especial) e regulamentação específica da ANVISA sobre talidomida (2 vias: 1ª paciente, 2ª unidade dispensadora). Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.</div>
+          <div class="legal-refs" id="legalRefsTalidomida">Base normativa: RDC ANVISA n.º 11/2011 (talidomida — Notificação de Receita de Talidomida com validade de 20 dias, somente na UF de emissão, para até 30 dias de tratamento) e Portaria SVS/MS n.º 344/1998 (lista C3). 2 vias: 1ª paciente, 2ª unidade dispensadora. Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.</div>
         </div>
       </div>
     </section>
@@ -846,11 +924,11 @@
   <div id="painelControle" style="display:none;">
 
     <section>
-      <h2>Receita <span class="hint">— Receita de Controle Especial (2 vias) · preencha diretamente sobre o modelo</span></h2>
+      <h2>Receita <span class="hint" id="hintCE">— Receita de Controle Especial (2 vias) · preencha diretamente sobre o modelo</span></h2>
       <div class="receipt-row">
         <div class="a4-sheet" style="flex:2 1 480px;">
           <div class="a4-section" style="border-top:none;">
-            <div class="a4-title-main" style="text-align:center;">RECEITA DE CONTROLE ESPECIAL</div>
+            <div class="a4-title-main" style="text-align:center;" id="tituloCE">RECEITA DE CONTROLE ESPECIAL</div>
           </div>
 
           <div class="a4-section">
@@ -859,12 +937,28 @@
               <div class="a4-field-inline" style="flex:2 1 240px;"><span class="a4-label">Nome/Instituição:</span><input type="text" id="nomeEmitenteCE"></div>
               <div class="a4-field-inline"><span class="a4-label">Inscrição/UF:</span><input type="text" id="inscricaoCE"></div>
             </div>
+            <div id="grupoC5Emit" style="display:none;">
+              <div class="a4-row">
+                <div class="a4-field-inline"><span class="a4-label">CPF do prescritor:</span><input type="text" id="cpfPrescritorCE"></div>
+                <div class="a4-field-inline" style="flex:2 1 240px;"><span class="a4-label">Endereço e telefone profissionais:</span><input type="text" id="contatoPrescritorCE"></div>
+              </div>
+            </div>
           </div>
 
           <div class="a4-section">
             <div class="a4-section-title">Identificação do paciente</div>
             <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Nome completo:</span><input type="text" id="nomePacienteCE"></div></div>
             <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">CPF/Passaporte:</span><input type="text" id="docPacienteCE" placeholder="Preenchido pelo prescritor"></div></div>
+            <div id="grupoC5Pac" style="display:none;">
+              <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Endereço do paciente:</span><input type="text" id="enderecoPacienteCE"></div></div>
+              <div class="a4-row"><div class="a4-field-inline"><span class="a4-label">CID:</span><input type="text" id="cidCE" placeholder="Ex: E29.1"></div></div>
+            </div>
+            <div id="grupoATMPac" style="display:none;">
+              <div class="a4-row">
+                <div class="a4-field-inline"><span class="a4-label">Idade:</span><input type="text" id="idadePacienteCE" placeholder="Ex: 34 anos"></div>
+                <div class="a4-field-inline"><span class="a4-label">Sexo:</span><select id="sexoPacienteCE"><option value="">—</option><option value="Feminino">Feminino</option><option value="Masculino">Masculino</option></select></div>
+              </div>
+            </div>
           </div>
 
           <div class="a4-section">
@@ -929,7 +1023,7 @@
 
           <div class="a4-section">
             <div class="a4-section-title">Identificação do comprador <span class="fixed-tag" style="background:#1d3557;color:#fff;">dados fictícios · editável</span></div>
-            <div style="font-size:9px;color:#555;margin-bottom:8px;">*Impressão opcional — conforme Portaria n.º 6/99, art. 85, alínea "c", pode ser aposta por carimbo, no verso, pela farmácia.</div>
+            <div style="font-size:9px;color:#555;margin-bottom:8px;" id="compradorNotaCE">*Impressão opcional — conforme Portaria n.º 6/99, art. 85, alínea "c", pode ser aposta por carimbo, no verso, pela farmácia.</div>
             <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Nome:</span><input type="text" id="nomeCompradorCE"></div></div>
             <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">CPF/Passaporte:</span><input type="text" id="docCompradorCE"></div></div>
             <div class="a4-row"><div class="a4-field-inline" style="flex:1 1 100%;"><span class="a4-label">Endereço:</span><input type="text" id="enderecoCompradorCE"></div></div>
@@ -940,7 +1034,7 @@
             </div>
           </div>
 
-          <div class="a4-note">1ª via: retenção pela farmácia · 2ª via: paciente.</div>
+          <div class="a4-note" id="notaCE">1ª via: retenção pela farmácia · 2ª via: paciente.</div>
         </div>
 
         <div class="stamp-box" style="flex:1 1 300px;" aria-label="Carimbo de registro da venda, verso da receita de controle especial">
@@ -953,7 +1047,8 @@
           <div class="stamp-field"><label>Data da venda</label><input type="date" id="dataVendaCE"></div>
           <div class="stamp-field"><label>MS <button type="button" class="regen-btn" id="regenMSCE" title="Gerar novo número">↻</button></label><input type="text" id="msNumeroCE"></div>
           <div class="stamp-field"><label>Lote <button type="button" class="regen-btn" id="regenLote1CE" title="Gerar novo lote">↻</button></label><input type="text" id="lote1CE"></div>
-          <div class="stamp-field"><label>Quantidade de caixas vendida</label><input type="text" id="qtdCaixas1CE"><div id="qtdCaixas1CEHint" style="font-size:10.5px;color:#6b7280;margin-top:3px;"></div></div>
+          <div class="stamp-field"><label>Quantidade de caixas vendida</label><input type="text" id="qtdCaixas1CE" inputmode="numeric"></div>
+          <div class="stamp-field"><label for="unidCaixaCE" id="unidCaixaCERot">Comprimidos por caixa</label><input type="text" id="unidCaixaCE" inputmode="numeric" placeholder="Ex: 30"><div id="qtdCaixas1CEHint" class="qtd-hint"></div></div>
           <div class="stamp-field"><label>Assinatura do vendedor</label><input type="text" id="assinaturaVendedorCE"></div>
           <div class="stamp-field"><label>Assinatura do farmacêutico</label><input type="text" id="assinaturaFarmaceuticoCE"></div>
           <div class="stamp-note">carimbo do farmacêutico responsável</div>
@@ -966,6 +1061,7 @@
         <div class="card">
           <div class="section-label">Antes de validar</div>
           <p style="font-size:12.5px;color:var(--muted);margin-top:0;">O item 1 do verso (medicamento, lote e quantidade de caixas) é obrigatório; os itens 2 e 3 (se houver) devem ser preenchidos diretamente na receita quando aplicável.</p>
+          <div class="conf-reg" id="confRegControle"></div>
           <div class="btn-row-validar" style="display:flex;gap:10px;">
             <button class="btn-validar" id="validarControle" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarControle" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
@@ -977,14 +1073,14 @@
         <div class="validation-panel">
           <div class="val-status idle" id="statusBoxControle">Preencha os campos na receita e clique em "Validar receita"</div>
           <ul class="val-list" id="checklistControle"></ul>
-          <div class="legal-refs">Base normativa: RDC ANVISA n.º 44/2009 e Portaria SVS/MS n.º 6/1999, art. 85, alínea "c" (impressão do comprador pode ser suprida por carimbo no verso). Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.</div>
+          <div class="legal-refs" id="legalRefsControle">Base normativa: RDC ANVISA n.º 44/2009 e Portaria SVS/MS n.º 6/1999, art. 85, alínea "c" (impressão do comprador pode ser suprida por carimbo no verso). Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.</div>
         </div>
       </div>
     </section>
 
     <div class="info-box">
       <div>ℹ️</div>
-      <div><b>Atenção, farmacêutico(a):</b> a receita de controle especial exige 2 vias (1ª retida pela farmácia, 2ª entregue ao paciente). Confirme a autenticidade do impresso e o lançamento da dispensação no SNGPC quando aplicável à substância prescrita.</div>
+      <div id="infoControle"><b>Atenção, farmacêutico(a):</b> a receita de controle especial exige 2 vias (1ª retida pela farmácia, 2ª entregue ao paciente). Confirme a autenticidade do impresso e o lançamento da dispensação no SNGPC quando aplicável à substância prescrita.</div>
     </div>
   </div>
 
@@ -1493,6 +1589,7 @@ function selecionarDoModal(item){
     }
     qv.dataset.dirty = '1';
     qv.dataset.caixasReais = '1'; // marca que este valor agora é nº de caixas, não texto espelhado
+    preencherUnidCaixa('');
     atualizarDicaQtdVendida();
     atualizarCompatibilidadeVersoMedicamento();
   } else if(modalContexto === 'prescricaoCE'){
@@ -1538,6 +1635,7 @@ function selecionarDoModal(item){
     }
     qv1.dataset.dirty = '1';
     qv1.dataset.caixasReais = '1';
+    preencherUnidCaixa('CE');
     atualizarDicaQtdCaixas1CE();
     atualizarCompatibilidadeVersoMedicamentoCE();
   }
@@ -1609,9 +1707,10 @@ function ocultarAlertaDivergencia(alertaId){
    PAINEL GENÉRICO (A / B / RETINÓIDES)
    ========================================================= */
 const CONFIG_GENERICO = {
-  A: { titulo:'NOTIFICAÇÃO DE RECEITA — Nº A', corClasse:'tipo-a', nota:'Impresso numerado e fornecido pela Vigilância Sanitária • cor amarela • retido integralmente na farmácia (SNGPC)', sufixoNumero:'-A', mostrarNascSexo:false, mostrarGravidez:false, baseLegal:'Portaria SVS/MS n.º 344/1998 (art. 35 — validade de 30 dias em todo o território nacional) e RDC ANVISA n.º 471/2021 (SNGPC).', tituloPagina:'Notificação de Receita A' },
-  B: { titulo:'NOTIFICAÇÃO DE RECEITA — Nº B', corClasse:'tipo-b', nota:'Impresso numerado e fornecido pela Vigilância Sanitária • cor azul • válido somente no estado de emissão • retido integralmente na farmácia (SNGPC)', sufixoNumero:'-B', mostrarNascSexo:false, mostrarGravidez:false, baseLegal:'Portaria SVS/MS n.º 344/1998 (validade de 30 dias, abrangência estadual) e RDC ANVISA n.º 471/2021 (SNGPC).', tituloPagina:'Notificação de Receita B' },
-  RETINOIDES: { titulo:'NOTIFICAÇÃO DE RECEITA ESPECIAL — RETINÓIDES SISTÊMICOS', corClasse:'tipo-ret', nota:'Impresso específico para retinóides sistêmicos • retido integralmente na farmácia (SNGPC) • exige controle de gravidez', sufixoNumero:'', mostrarNascSexo:true, mostrarGravidez:true, baseLegal:'Portaria SVS/MS n.º 344/1998 e regulamentação específica da ANVISA para retinóides sistêmicos (isotretinoína, acitretina).', tituloPagina:'Notificação de Receita Especial — Retinóides Sistêmicos' }
+  A: { titulo:'NOTIFICAÇÃO DE RECEITA — Nº A', corClasse:'tipo-a', nota:'Impresso numerado (numeração controlada pela Vigilância Sanitária/SNCR) • cor amarela • válida em todo o território nacional • retida integralmente na farmácia (SNGPC)', sufixoNumero:'-A', mostrarNascSexo:false, mostrarGravidez:false, tituloPagina:'Notificação de Receita A' },
+  B: { titulo:'NOTIFICAÇÃO DE RECEITA — Nº B', corClasse:'tipo-b', nota:'Impresso numerado (numeração concedida pela Vigilância Sanitária/SNCR) • cor azul • válida em todo o território nacional (Lei 13.732/2018) • retida integralmente na farmácia (SNGPC)', sufixoNumero:'-B', mostrarNascSexo:false, mostrarGravidez:false, tituloPagina:'Notificação de Receita B1' },
+  B2: { titulo:'NOTIFICAÇÃO DE RECEITA B2 — ANOREXÍGENOS', corClasse:'tipo-b', nota:'Impresso numerado • cor azul • acompanhada do Termo de Responsabilidade do Prescritor • retida integralmente na farmácia (SNGPC)', sufixoNumero:'-B2', mostrarNascSexo:false, mostrarGravidez:false, tituloPagina:'Notificação de Receita B2' },
+  RETINOIDES: { titulo:'NOTIFICAÇÃO DE RECEITA ESPECIAL — RETINOIDES SISTÊMICOS', corClasse:'tipo-ret', nota:'Impresso numerado específico (lista C2) • cor branca • acompanhada do Termo de Consentimento Pós-Informação • retida integralmente na farmácia (SNGPC)', sufixoNumero:'', mostrarNascSexo:true, mostrarGravidez:true, tituloPagina:'Notificação de Receita Especial — Retinoides Sistêmicos (C2)' }
 };
 let tipoGenericoAtual = 'A';
 
@@ -1619,9 +1718,9 @@ function gerarDadosFixosGenerico(){
   const cfg = CONFIG_GENERICO[tipoGenericoAtual];
   const medico = randItem(NOMES_MEDICOS);
   const paciente = randItem(NOMES_PACIENTES);
-  const [cidade, uf] = randItem(CIDADES_UF);
+  const [cidade, uf] = cidadeUfFicticia();
   const crm = fakeCRM();
-  const diasAtras = Math.floor(Math.random()*25);
+  const diasAtras = Math.floor(Math.random()*Math.max(1, validadeDe(tipoGenericoAtual)-5));
   const dataEmissao = new Date(); dataEmissao.setDate(dataEmissao.getDate()-diasAtras);
 
   setVal('numNotificacao', `${randDigits(7)}${cfg.sufixoNumero}`);
@@ -1667,7 +1766,7 @@ function aplicarConfigGenerico(tipo){
   const cfg = CONFIG_GENERICO[tipo];
   document.getElementById('mockTitulo').textContent = cfg.titulo;
   document.getElementById('mockNota').textContent = cfg.nota;
-  document.getElementById('legalRefsGenerico').textContent = 'Base normativa: ' + cfg.baseLegal + ' Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.';
+  document.getElementById('legalRefsGenerico').textContent = 'Base normativa: ' + REGRAS_RECEITA[tipo].base + ' Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.';
   document.getElementById('tituloPagina').textContent = cfg.tituloPagina;
   const mock = document.getElementById('receiptMockGenerico');
   mock.classList.remove('tipo-a','tipo-b','tipo-ret');
@@ -1694,10 +1793,15 @@ function sincronizarVersoGenerico(){
   }
   if(!vq.dataset.dirty){
     const q = getVal('quantidade'); const u = document.getElementById('unidade').value;
-    const map={comprimidos:'comprimido(s)',capsulas:'cápsula(s)',caixas:'caixa(s)',ampolas:'ampola(s)/frasco(s)',ml:'mL',frascos:'frasco(s)',outros:'un.'};
-    vq.value = q ? `${q} ${map[u]||''}`.trim() : '';
+    // O campo é sempre nº de CAIXAS: só sugere quando dá para calcular (prescrição
+    // em caixas, ou quantidade prescrita ÷ unidades por caixa exata); senão fica vazio.
+    const qn = extrairNumero(q), un = extrairNumero(getVal('unidCaixa'));
+    if(u === 'caixas' && !isNaN(qn)) vq.value = String(qn);
+    else if(!isNaN(qn) && un > 0 && qn % un === 0) vq.value = String(qn / un);
+    else vq.value = '';
   }
   atualizarCompatibilidadeVersoMedicamento();
+  atualizarDicaQtdVendida();
 }
 ['medicamento','concentracao','formaFarmaceutica','quantidade','unidade'].forEach(id=>{
   document.getElementById(id).addEventListener('input', sincronizarVersoGenerico);
@@ -1711,6 +1815,8 @@ document.getElementById('qtdVendida').addEventListener('input', function(){
   this.dataset.dirty = '1';
   atualizarDicaQtdVendida();
 });
+document.getElementById('unidCaixa').addEventListener('input', () => { lerUnidCaixa(''); sincronizarVersoGenerico(); });
+['quantidade','unidade'].forEach(id => { document.getElementById(id).addEventListener('input', atualizarDicaQtdVendida); document.getElementById(id).addEventListener('change', atualizarDicaQtdVendida); });
 
 function pluralizarPrimeiraPalavra(txt){
   if(!txt) return txt;
@@ -1720,21 +1826,69 @@ function pluralizarPrimeiraPalavra(txt){
   return partes.join(' ').toLowerCase();
 }
 
-function atualizarDicaQtdVendida(){
-  const vm = document.getElementById('versoMedicamento');
-  const hint = document.getElementById('qtdVendidaHint');
-  const unidEmb = parseFloat(vm.dataset.unidadesPorEmbalagem);
-  const semUnidadeContinua = vm.dataset.unidadesPorEmbalagem && !vm.dataset.unidadeEmbalagem;
-  const caixas = extrairNumero(getVal('qtdVendida'));
-  if(semUnidadeContinua && !isNaN(unidEmb) && !isNaN(caixas)){
-    const formaPlural = vm.dataset.forma ? pluralizarPrimeiraPalavra(vm.dataset.forma) : 'unidade(s)';
-    const caixaLabel = caixas === 1 ? 'caixa' : 'caixas';
-    const total = caixas * unidEmb;
-    hint.textContent = caixas === 1
-      ? `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural}`
-      : `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural} (= ${total} ${formaPlural} no total)`;
-  } else {
-    hint.textContent = '';
+function atualizarDicaQtdVendida(){ conferirCaixasVendidas(''); }
+
+/* 11/11/2026 — Caixas vendidas × unidades por caixa, conferido contra a
+   quantidade prescrita. O campo "unidades por caixa" é preenchido sozinho
+   quando a apresentação vem da base CMED e pode ser editado à mão. */
+const CAIXA_IDS = {
+  '':   { cx:'qtdVendida',   un:'unidCaixa',   rot:'unidCaixaRot',   med:'versoMedicamento', qp:'quantidade',   uni:'unidade',   hint:'qtdVendidaHint' },
+  'CE': { cx:'qtdCaixas1CE', un:'unidCaixaCE', rot:'unidCaixaCERot', med:'medicamento1CE',   qp:'quantidadeCE', uni:'unidadeCE', hint:'qtdCaixas1CEHint' }
+};
+const ROTULO_UNID_CAIXA = { comprimidos:['Comprimidos por caixa','comprimidos','quantos'], capsulas:['Cápsulas por caixa','cápsulas','quantas'], ampolas:['Ampolas por caixa','ampolas','quantas'], ml:['mL por frasco/caixa','mL','quantos'], gotas:['Gotas por frasco','gotas','quantas'], frascos:['Frascos por caixa','frascos','quantos'] };
+function _quantos(sfx){ const r = ROTULO_UNID_CAIXA[document.getElementById(CAIXA_IDS[sfx].uni).value]; return r ? r[2] : 'quantas'; }
+function rotuloUnidCaixa(sfx){
+  const ids = CAIXA_IDS[sfx];
+  const r = ROTULO_UNID_CAIXA[document.getElementById(ids.uni).value] || ['Unidades por caixa','unidades','quantas'];
+  document.getElementById(ids.rot).textContent = r[0];
+  return r[1];
+}
+function lerUnidCaixa(sfx){
+  // campo editado à mão → passa a valer como apresentação escolhida
+  const ids = CAIXA_IDS[sfx], med = document.getElementById(ids.med), cx = document.getElementById(ids.cx);
+  const n = extrairNumero(getVal(ids.un));
+  if(!isNaN(n) && n > 0){ med.dataset.unidadesPorEmbalagem = String(n); delete med.dataset.unidadeEmbalagem; cx.dataset.caixasReais = '1'; }
+  else { delete med.dataset.unidadesPorEmbalagem; delete med.dataset.unidadeEmbalagem; }
+}
+function preencherUnidCaixa(sfx){
+  const ids = CAIXA_IDS[sfx], med = document.getElementById(ids.med);
+  const n = parseFloat(med.dataset.unidadesPorEmbalagem);
+  setVal(ids.un, (!isNaN(n) && n > 0 && !med.dataset.unidadeEmbalagem) ? String(n) : '');
+}
+function conferirCaixasVendidas(sfx){
+  const ids = CAIXA_IDS[sfx], hint = document.getElementById(ids.hint); if(!hint) return;
+  const noun = rotuloUnidCaixa(sfx);
+  hint.classList.remove('hint-ok','hint-warn','hint-danger');
+  const cxTxt = getVal(ids.cx), caixas = extrairNumero(cxTxt), un = extrairNumero(getVal(ids.un));
+  const qp = extrairNumero(getVal(ids.qp)), uniPresc = document.getElementById(ids.uni).value;
+  if(!cxTxt){
+    hint.textContent = (!isNaN(qp) && uniPresc !== 'caixas')
+      ? 'Receita: ' + formatarNumeroPosologia(qp) + ' ' + noun + '. Informe as caixas vendidas' + (isNaN(un) || un <= 0 ? ' e ' + _quantos(sfx) + ' ' + noun + ' vêm em cada caixa' : '') + '.'
+      : '';
+    return;
+  }
+  if(isNaN(caixas)){ hint.textContent = ''; return; }
+  if(uniPresc === 'caixas'){
+    if(isNaN(qp)){ hint.textContent = ''; return; }
+    const cls = caixas === qp ? 'hint-ok' : caixas < qp ? 'hint-warn' : 'hint-danger';
+    hint.classList.add(cls);
+    hint.textContent = caixas === qp ? '✓ ' + caixas + ' caixa(s) — confere com a receita' : caixas < qp ? '⚠ ' + caixas + ' de ' + qp + ' caixa(s) prescritas — dispensação parcial' : '✖ ' + caixas + ' caixa(s) — excede as ' + qp + ' prescritas';
+    return;
+  }
+  if(isNaN(un) || un <= 0){
+    hint.classList.add('hint-warn');
+    hint.textContent = '⚠ Informe ' + _quantos(sfx) + ' ' + noun + ' vêm em cada caixa para conferir com a receita' + (!isNaN(qp) ? ' (' + formatarNumeroPosologia(qp) + ' ' + noun + ')' : '');
+    return;
+  }
+  const total = caixas * un, fmt = formatarNumeroPosologia;
+  const conta = fmt(caixas) + ' caixa' + (caixas === 1 ? '' : 's') + ' × ' + fmt(un) + ' = ' + fmt(total) + ' ' + noun;
+  if(isNaN(qp)){ hint.textContent = conta; return; }
+  if(Math.abs(total - qp) < 0.01){ hint.classList.add('hint-ok'); hint.textContent = '✓ ' + conta + ' — confere com a receita (' + fmt(qp) + ')'; }
+  else if(total < qp){ hint.classList.add('hint-warn'); hint.textContent = '⚠ ' + conta + ' — dispensação parcial: faltam ' + fmt(qp - total) + ' de ' + fmt(qp) + ' prescritos'; }
+  else {
+    hint.classList.add('hint-danger');
+    const cxMax = Math.floor(qp / un);
+    hint.textContent = '✖ ' + conta + ' — excede a receita (' + fmt(qp) + ') em ' + fmt(total - qp) + (cxMax >= 1 ? '. Máximo: ' + cxMax + ' caixa' + (cxMax === 1 ? '' : 's') + (cxMax * un !== qp ? ' (' + fmt(cxMax * un) + ' ' + noun + ')' : '') : '. A receita não completa 1 caixa — não é permitido vender a caixa inteira');
   }
 }
 
@@ -1787,23 +1941,7 @@ function atualizarCompatibilidadeVersoMedicamento(){
    Mesma lógica acima, replicada para o verso do Controle
    Especial (medicamento prescrito × medicamento dispensado)
    ========================================================= */
-function atualizarDicaQtdCaixas1CE(){
-  const vm = document.getElementById('medicamento1CE');
-  const hint = document.getElementById('qtdCaixas1CEHint');
-  const unidEmb = parseFloat(vm.dataset.unidadesPorEmbalagem);
-  const semUnidadeContinua = vm.dataset.unidadesPorEmbalagem && !vm.dataset.unidadeEmbalagem;
-  const caixas = extrairNumero(getVal('qtdCaixas1CE'));
-  if(semUnidadeContinua && !isNaN(unidEmb) && !isNaN(caixas)){
-    const formaPlural = vm.dataset.forma ? pluralizarPrimeiraPalavra(vm.dataset.forma) : 'unidade(s)';
-    const caixaLabel = caixas === 1 ? 'caixa' : 'caixas';
-    const total = caixas * unidEmb;
-    hint.textContent = caixas === 1
-      ? `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural}`
-      : `${caixas} ${caixaLabel} de ${unidEmb} ${formaPlural} (= ${total} ${formaPlural} no total)`;
-  } else {
-    hint.textContent = '';
-  }
-}
+function atualizarDicaQtdCaixas1CE(){ conferirCaixasVendidas('CE'); }
 
 function verificarCompatibilidadePrincipioCE(){
   const medEl = document.getElementById('medicamentoCE');
@@ -1895,15 +2033,16 @@ document.getElementById('validarGenerico').addEventListener('click', function(){
   }
 
   const dataStr = getVal('dataEmissao');
+  const VAL = validadeDe(tipoGenericoAtual);
   let dentroDoPrazo = false, dataFutura = false;
   if(dataStr){
     const diffDias = diasDesde(dataStr);
     dataFutura = diffDias < 0;
-    dentroDoPrazo = diffDias >= 0 && diffDias <= 30;
+    dentroDoPrazo = diffDias >= 0 && diffDias <= VAL;
     checks.push({
       label: dataFutura ? 'Data de emissão é futura — verifique o documento'
-        : dentroDoPrazo ? `Dentro do prazo de validade (30 dias) — ${diffDias} dia(s) desde a emissão`
-        : `Fora do prazo de validade de 30 dias (${diffDias} dias desde a emissão)`,
+        : dentroDoPrazo ? `Dentro do prazo de validade (${VAL} dias) — ${diffDias} dia(s) desde a emissão`
+        : `Fora do prazo de validade de ${VAL} dias (${diffDias} dias desde a emissão) — receita vencida, não dispensar`,
       ok: dentroDoPrazo, level: dentroDoPrazo ? 'pass' : 'fail'
     });
   }
@@ -1944,7 +2083,9 @@ document.getElementById('validarGenerico').addEventListener('click', function(){
       ? `${qvBruto} caixa(s) × ${unidadesPorEmbalagem} = ${totalCalculado}`
       : `${totalCalculado}`;
 
-    if(isNaN(qp) || isNaN(totalCalculado)){
+    if(!temApresentacaoEscolhida && document.getElementById('unidade').value !== 'caixas'){
+      checks.push({label:`Informe ${_quantos('')} ${rotuloUnidCaixa('')} vêm em cada caixa (campo "${document.getElementById('unidCaixaRot').textContent}") para conferir se ${getVal('qtdVendida')} caixa(s) correspondem aos ${getVal('quantidade')} prescritos`, ok:true, level:'warnitem', divergente:true});
+    } else if(isNaN(qp) || isNaN(totalCalculado)){
       checks.push({label:`Confirme se a quantidade de caixas vendida (${getVal('qtdVendida')}) corresponde à quantidade prescrita (${getVal('quantidade')}) — regra geral: nunca dispensar mais do que o prescrito`, ok:true, level:'warnitem', divergente:true});
     } else if(totalCalculado === qp){
       checks.push({label:`${descricaoCalculo} — confere exatamente com a quantidade prescrita (${qp})`, ok:true, level:'pass'});
@@ -1971,22 +2112,16 @@ document.getElementById('validarGenerico').addEventListener('click', function(){
     }
   }
 
-  const unidade = document.getElementById('unidade').value;
-  const qtdNum = extrairNumero(getVal('quantidade'));
-  if(!isNaN(qtdNum) && unidade === 'ampolas'){
-    checks.push({label:`Forma injetável: confirme se a quantidade (${qtdNum}) é compatível com o tratamento prescrito — usualmente a orientação é de até 5 ampolas por notificação simples`, ok:true, level:'warnitem'});
-  }
+  const reg = conferirRegras(tipoGenericoAtual, checks, { sfx:'', med:'medicamento', conc:'concentracao', forma:'formaFarmaceutica', uf: extrairUF(getVal('inscricaoConselho')), conf:'confRegGenerico', sexo: getVal('sexoPaciente'), nasc: getVal('dataNascPaciente') });
   if(cfg.mostrarGravidez){
     checks.push({label:'Lembrete: confirme teste de gravidez negativo e orientação sobre método contraceptivo, quando aplicável', ok:true, level:'warnitem'});
   }
-  if(tipoGenericoAtual === 'B'){
-    checks.push({label:'Lembrete: Notificação B tem validade restrita ao estado de emissão', ok:true, level:'warnitem'});
-  }
-  checks.push({label:'Lembrete: reter o impresso integralmente na farmácia e lançar a movimentação no SNGPC', ok:true, level:'warnitem'});
+  checks.push({label:'Lembrete: ' + REGRAS_RECEITA[tipoGenericoAtual].retencao + ' — lançar a movimentação no SNGPC', ok:true, level:'warnitem'});
 
   const falhasCriticas = [];
   if(incompatibilidadeCritica) falhasCriticas.push('Medicamento vendido NÃO é intercambiável com o prescrito');
   if(quantidadeExcedente) falhasCriticas.push('Quantidade dispensada maior que a prescrita');
+  falhasCriticas.push(...reg.criticos);
 
   renderChecklist('checklistGenerico', checks);
   renderStatus('statusBoxGenerico', allFilled, dataFutura || !dentroDoPrazo, falhasCriticas.length ? falhasCriticas.join(' — ') + ' — não dispensar' : null);
@@ -2019,6 +2154,8 @@ function reiniciarGenerico(){
   delete document.getElementById('versoMedicamento').dataset.unidadeEmbalagem;
   delete document.getElementById('qtdVendida').dataset.caixasReais;
   document.getElementById('qtdVendidaHint').textContent = '';
+  document.getElementById('qtdVendidaHint').classList.remove('hint-ok','hint-warn','hint-danger');
+  setVal('unidCaixa', '');
   document.getElementById('versoMedicamentoHint').textContent = '';
   document.getElementById('versoMedicamentoHint').classList.remove('hint-ok','hint-warn','hint-danger');
 
@@ -2046,8 +2183,8 @@ document.getElementById('reiniciarGenerico').addEventListener('click', reiniciar
 function gerarDadosTalidomida(){
   const medico = randItem(NOMES_MEDICOS);
   const paciente = randItem(NOMES_PACIENTES);
-  const [cidade, uf] = randItem(CIDADES_UF);
-  const diasAtras = Math.floor(Math.random()*25);
+  const [cidade, uf] = cidadeUfFicticia();
+  const diasAtras = Math.floor(Math.random()*Math.max(1, validadeDe('TALIDOMIDA')-5));
   const data = new Date(); data.setDate(data.getDate()-diasAtras);
 
   setVal('numeroTal', randDigits(7));
@@ -2116,14 +2253,15 @@ document.getElementById('validarTalidomida').addEventListener('click', function(
   }
 
   const dataStr = getVal('dataMedicoTal');
+  const VAL = validadeDe('TALIDOMIDA');
   let dentroDoPrazo=false, dataFutura=false;
   if(dataStr){
     const diffDias = diasDesde(dataStr);
-    dataFutura = diffDias<0; dentroDoPrazo = diffDias>=0 && diffDias<=30;
+    dataFutura = diffDias<0; dentroDoPrazo = diffDias>=0 && diffDias<=VAL;
     checks.push({
       label: dataFutura ? 'Data é futura — verifique o documento'
-        : dentroDoPrazo ? `Dentro do prazo de validade (30 dias) — ${diffDias} dia(s) desde a emissão`
-        : `Fora do prazo de validade de 30 dias (${diffDias} dias desde a emissão)`,
+        : dentroDoPrazo ? `Dentro do prazo de validade (${VAL} dias — RDC 11/2011) — ${diffDias} dia(s) desde a emissão`
+        : `Fora do prazo de validade de ${VAL} dias da talidomida (${diffDias} dias desde a emissão) — receita vencida, não dispensar`,
       ok: dentroDoPrazo, level: dentroDoPrazo?'pass':'fail'
     });
   }
@@ -2136,11 +2274,11 @@ document.getElementById('validarTalidomida').addEventListener('click', function(
     checks.push({label: ok ? `Quantidade dispensada (${qd}) confere com a prescrita (${qp})` : `Divergência de quantidade: prescrito ${isNaN(qp)?'—':qp} ≠ dispensado ${isNaN(qd)?'—':qd}`, ok, level: ok?'pass':'fail'});
   }
 
-  checks.push({label:'Confirme orientação sobre risco teratogênico e método contraceptivo, quando aplicável', ok:true, level:'warnitem'});
+  const reg = conferirRegras('TALIDOMIDA', checks, { uf: extrairUF(getVal('crmTal')), conf:'confRegTalidomida' });
   checks.push({label:'Lembrete: 1ª via ao paciente, 2ª via retida na unidade dispensadora, e lançamento no SNGPC', ok:true, level:'warnitem'});
 
   renderChecklist('checklistTalidomida', checks);
-  renderStatus('statusBoxTalidomida', allFilled, dataFutura || !dentroDoPrazo);
+  renderStatus('statusBoxTalidomida', allFilled, dataFutura || !dentroDoPrazo, reg.criticos.length ? reg.criticos.join(' — ') + ' — não dispensar' : null);
   atualizarAlertaDivergencia('alertaTalidomida', checks);
 });
 
@@ -2171,15 +2309,21 @@ document.getElementById('reiniciarTalidomida').addEventListener('click', reinici
 function gerarDadosControle(){
   const medico = randItem(NOMES_MEDICOS);
   const paciente = randItem(NOMES_PACIENTES);
-  const [cidade, uf] = randItem(CIDADES_UF);
+  const [cidade, uf] = cidadeUfFicticia();
   const crm = fakeCRM();
-  const diasAtras = Math.floor(Math.random()*25);
+  const diasAtras = Math.floor(Math.random()*Math.max(1, validadeDe(tipoControleAtual)-5));
   const data = new Date(); data.setDate(data.getDate()-diasAtras);
 
   setVal('nomeEmitenteCE', `Dr(a). ${medico}`);
   setVal('inscricaoCE', `CRM/${uf} ${crm}`);
   setVal('nomePacienteCE', paciente);
   setVal('docPacienteCE', fakeCPF());
+  setVal('cpfPrescritorCE', fakeCPF());
+  setVal('contatoPrescritorCE', `${randItem(ENDERECOS)}, ${cidade}/${uf} · ${fakePhone()}`);
+  setVal('enderecoPacienteCE', `${randItem(RUAS_COMPRADOR)} — ${cidade}/${uf}`);
+  setVal('cidCE', randItem(['E29.1 — Hipogonadismo masculino','E23.0 — Hipopituitarismo','D61.9 — Anemia aplástica']));
+  setVal('idadePacienteCE', `${18 + Math.floor(Math.random()*60)} anos`);
+  document.getElementById('sexoPacienteCE').value = randItem(['Feminino','Masculino']);
   setVal('dataCE', formatDateISO(data));
 
   setVal('nomeCompradorCE', randItem(NOMES_COMPRADORES));
@@ -2204,6 +2348,8 @@ document.getElementById('nomeEmitenteCE').addEventListener('input', atualizarAss
 document.getElementById('regenMSCE').addEventListener('click', ()=>{ setVal('msNumeroCE', fakeMS()); });
 document.getElementById('regenLote1CE').addEventListener('click', ()=>{ setVal('lote1CE', fakeLote()); });
 document.getElementById('qtdCaixas1CE').addEventListener('input', atualizarDicaQtdCaixas1CE);
+document.getElementById('unidCaixaCE').addEventListener('input', () => { lerUnidCaixa('CE'); atualizarDicaQtdCaixas1CE(); });
+['quantidadeCE','unidadeCE'].forEach(id => { document.getElementById(id).addEventListener('input', atualizarDicaQtdCaixas1CE); document.getElementById(id).addEventListener('change', atualizarDicaQtdCaixas1CE); });
 
 document.getElementById('validarControle').addEventListener('click', function(){
   const checks = [];
@@ -2218,6 +2364,17 @@ document.getElementById('validarControle').addEventListener('click', function(){
     ['medicamento1CE','Medicamento vendido (verso)'],['dataVendaCE','Data da venda (verso)'],['msNumeroCE','MS (verso)'],['lote1CE','Lote (verso)'],['qtdCaixas1CE','Quantidade de caixas vendida (verso)'],
     ['assinaturaVendedorCE','Assinatura do vendedor (verso)'],['assinaturaFarmaceuticoCE','Assinatura do farmacêutico (verso)'],
   ];
+  const tCE = tipoControleAtual;
+  if(tCE === 'ATM'){
+    // RDC 471/2021: paciente com nome, idade e sexo; comprador e MS não são exigidos
+    const fora = ['docPacienteCE','nomeCompradorCE','docCompradorCE','enderecoCompradorCE','cidadeCompradorCE','ufCompradorCE','msNumeroCE'];
+    for(let i = required.length - 1; i >= 0; i--) if(fora.includes(required[i][0])) required.splice(i, 1);
+    required.splice(3, 0, ['idadePacienteCE','Idade do paciente (RDC 471/2021)'], ['sexoPacienteCE','Sexo do paciente (RDC 471/2021)']);
+    required.forEach(r => { if(r[0] === 'qtdCaixas1CE') r[1] = 'Quantidade dispensada anotada na receita'; if(r[0] === 'lote1CE') r[1] = 'Lote anotado na receita'; if(r[0] === 'dataVendaCE') r[1] = 'Data da dispensação anotada na receita'; });
+  }
+  if(tCE === 'C5'){
+    required.splice(4, 0, ['enderecoPacienteCE','Endereço do paciente (Lei 9.965/2000)'], ['cidCE','CID (Lei 9.965/2000)'], ['cpfPrescritorCE','CPF do prescritor (Lei 9.965/2000)'], ['contatoPrescritorCE','Endereço e telefone profissionais do prescritor (Lei 9.965/2000)']);
+  }
   let allFilled = true;
   required.forEach(([id,label])=>{
     const filled = getVal(id).length>0;
@@ -2242,14 +2399,15 @@ document.getElementById('validarControle').addEventListener('click', function(){
   }
 
   const dataStr = getVal('dataCE');
+  const VAL = validadeDe(tCE);
   let dentroDoPrazo=false, dataFutura=false;
   if(dataStr){
     const diffDias = diasDesde(dataStr);
-    dataFutura = diffDias<0; dentroDoPrazo = diffDias>=0 && diffDias<=30;
+    dataFutura = diffDias<0; dentroDoPrazo = diffDias>=0 && diffDias<=VAL;
     checks.push({
       label: dataFutura ? 'Data da prescrição é futura — verifique o documento'
-        : dentroDoPrazo ? `Dentro do prazo de validade (30 dias) — ${diffDias} dia(s) desde a emissão`
-        : `Fora do prazo de validade de 30 dias (${diffDias} dias desde a emissão)`,
+        : dentroDoPrazo ? `Dentro do prazo de validade (${VAL} dias${tCE === 'ATM' && VAL === 90 ? ' — uso contínuo' : ''}) — ${diffDias} dia(s) desde a emissão`
+        : `Fora do prazo de validade de ${VAL} dias (${diffDias} dias desde a emissão) — receita vencida, não dispensar`,
       ok: dentroDoPrazo, level: dentroDoPrazo?'pass':'fail'
     });
   }
@@ -2273,7 +2431,9 @@ document.getElementById('validarControle').addEventListener('click', function(){
       ? `${qvBrutoCE} caixa(s) × ${unidadesPorEmbalagemCE} = ${totalCalculadoCE}`
       : `${totalCalculadoCE}`;
 
-    if(isNaN(qpCE2) || isNaN(totalCalculadoCE)){
+    if(!temApresentacaoEscolhidaCE && document.getElementById('unidadeCE').value !== 'caixas'){
+      checks.push({label:`Informe ${_quantos('CE')} ${rotuloUnidCaixa('CE')} vêm em cada caixa (campo "${document.getElementById('unidCaixaCERot').textContent}") para conferir se ${getVal('qtdCaixas1CE')} caixa(s) correspondem aos ${getVal('quantidadeCE')} prescritos`, ok:true, level:'warnitem', divergente:true});
+    } else if(isNaN(qpCE2) || isNaN(totalCalculadoCE)){
       checks.push({label:`Confirme se a quantidade de caixas vendida (${getVal('qtdCaixas1CE')}) corresponde à quantidade prescrita (${getVal('quantidadeCE')}) — regra geral: nunca dispensar mais do que o prescrito`, ok:true, level:'warnitem', divergente:true});
     } else if(totalCalculadoCE === qpCE2){
       checks.push({label:`${descricaoCalculoCE} — confere exatamente com a quantidade prescrita (${qpCE2})`, ok:true, level:'pass'});
@@ -2299,12 +2459,14 @@ document.getElementById('validarControle').addEventListener('click', function(){
     }
   }
 
-  checks.push({label:'Lembrete: 1ª via retida pela farmácia, 2ª via entregue ao paciente', ok:true, level:'warnitem'});
-  checks.push({label:'Impressão dos dados do comprador é opcional — pode ser suprida por carimbo no verso (Portaria 6/99, art. 85, "c")', ok:true, level:'warnitem'});
+  const reg = conferirRegras(tCE, checks, { sfx:'CE', med:'medicamentoCE', conc:'concentracaoCE', forma:'formaFarmaceuticaCE', uf: extrairUF(getVal('inscricaoCE')), conf:'confRegControle' });
+  checks.push({label:'Lembrete: ' + REGRAS_RECEITA[tCE].retencao, ok:true, level:'warnitem'});
+  if(tCE !== 'ATM') checks.push({label:'Impressão dos dados do comprador é opcional — pode ser suprida por carimbo no verso (Portaria 6/99, art. 85, "c")', ok:true, level:'warnitem'});
 
   const falhasCriticasCE = [];
   if(incompatibilidadeCriticaCE) falhasCriticasCE.push('Medicamento dispensado NÃO é intercambiável com o prescrito');
   if(quantidadeExcedenteCE) falhasCriticasCE.push('Quantidade dispensada maior que a prescrita');
+  falhasCriticasCE.push(...reg.criticos);
 
   renderChecklist('checklistControle', checks);
   renderStatus('statusBoxControle', allFilled, dataFutura || !dentroDoPrazo, falhasCriticasCE.length ? falhasCriticasCE.join(' — ') + ' — não dispensar' : null);
@@ -2322,6 +2484,8 @@ function reiniciarControle(){
   document.getElementById('medicamento1CEHint').textContent = '';
   document.getElementById('medicamento1CEHint').classList.remove('hint-ok','hint-warn','hint-danger');
   document.getElementById('qtdCaixas1CEHint').textContent = '';
+  document.getElementById('qtdCaixas1CEHint').classList.remove('hint-ok','hint-warn','hint-danger');
+  setVal('unidCaixaCE', '');
 
   const medCE = document.getElementById('medicamentoCE');
   medCE.value = ''; delete medCE.dataset.principio; delete medCE.dataset.laboratorio;
@@ -2353,12 +2517,11 @@ document.getElementById('reiniciarControle').addEventListener('click', reiniciar
    10/11/2026 — Semáforo + relatório em PDF, linha do tempo da
    validade e modo treino (receita com erros para encontrar).
    ========================================================= */
-const VALIDADE_DIAS = 30;
 const REL_CFG = {
   checklistGenerico: { status:'statusBoxGenerico', painel:'painelGenerico', data:'dataEmissao', campos:[
     ['Paciente','nomePaciente'],['Documento do paciente','docPaciente'],['Prescritor','nomeEmitente'],['Inscrição','inscricaoConselho'],
     ['Medicamento prescrito',['medicamento','concentracao','formaFarmaceutica']],['Quantidade prescrita','quantidade'],['Posologia','posologia'],
-    ['Data de emissão','dataEmissao'],['Comprador','nomeComprador'],['Medicamento vendido','versoMedicamento'],['Lote','lote'],['Data da venda','dataVenda']] },
+    ['Data de emissão','dataEmissao'],['Comprador','nomeComprador'],['Medicamento vendido','versoMedicamento'],['Caixas vendidas × unidades por caixa',['qtdVendida','unidCaixa']],['Lote','lote'],['Data da venda','dataVenda']] },
   checklistTalidomida: { status:'statusBoxTalidomida', painel:'painelTalidomida', data:'dataMedicoTal', campos:[
     ['Paciente','nomePacienteTal'],['Documento do paciente','docPacienteTal'],['Prescritor','nomeMedicoTal'],['CRM','crmTal'],['CID','cidTal'],
     ['Quantidade prescrita','quantidadeComprimidosTal'],['Posologia','posologiaTal'],['Data da prescrição','dataMedicoTal'],
@@ -2366,7 +2529,7 @@ const REL_CFG = {
   checklistControle: { status:'statusBoxControle', painel:'painelControle', data:'dataCE', campos:[
     ['Paciente','nomePacienteCE'],['Documento do paciente','docPacienteCE'],['Prescritor','nomeEmitenteCE'],['Inscrição','inscricaoCE'],
     ['Medicamento prescrito',['medicamentoCE','concentracaoCE','formaFarmaceuticaCE']],['Quantidade prescrita','quantidadeCE'],['Posologia','posologiaCE'],
-    ['Data da prescrição','dataCE'],['Comprador','nomeCompradorCE'],['Medicamento dispensado','medicamento1CE'],['Lote','lote1CE'],['Data da venda','dataVendaCE']] }
+    ['Data da prescrição','dataCE'],['Comprador','nomeCompradorCE'],['Medicamento dispensado','medicamento1CE'],['Caixas vendidas × unidades por caixa',['qtdCaixas1CE','unidCaixaCE']],['Lote','lote1CE'],['Data da venda','dataVendaCE']] }
 };
 const ULTIMA_CONF = {};
 function _dataBR(iso){ if(!iso) return ''; const [y,m,d] = iso.split('-'); return d + '/' + m + '/' + y; }
@@ -2419,6 +2582,7 @@ function imprimirRelatorio(listId){
 function atualizarLinhaTempo(listId){
   const cfg = REL_CFG[listId]; if(!cfg) return;
   const box = document.getElementById(cfg.status); if(!box) return;
+  const VALIDADE_DIAS = validadeLista(listId);
   let tl = document.getElementById('tl-' + listId);
   if(!tl){ tl = document.createElement('div'); tl.id = 'tl-' + listId; tl.className = 'validade-tl'; box.parentNode.insertBefore(tl, box); }
   const iso = getVal(cfg.data);
@@ -2441,10 +2605,13 @@ function atualizarTodasLinhasTempo(){ Object.keys(REL_CFG).forEach(atualizarLinh
 
 // ---------- Modo treino ----------
 const TREINO_MEDS = {
-  A: { nome:'Sulfato de morfina', conc:'10 mg', forma:'Comprimido', princ:'SULFATO DE MORFINA', un:'comprimidos' },
-  B: { nome:'Clonazepam', conc:'2 mg', forma:'Comprimido', princ:'CLONAZEPAM', un:'comprimidos' },
-  RETINOIDES: { nome:'Isotretinoína', conc:'20 mg', forma:'Cápsula mole', princ:'ISOTRETINOÍNA', un:'capsulas' },
-  CONTROLE: { nome:'Sertralina', conc:'50 mg', forma:'Comprimido revestido', princ:'CLORIDRATO DE SERTRALINA', un:'comprimidos' }
+  A: { nome:'Sulfato de morfina', conc:'10 mg', forma:'Comprimido', princ:'SULFATO DE MORFINA', un:'comprimidos', pos:['1','12h','15','30'], emb:30 },
+  B: { nome:'Clonazepam', conc:'2 mg', forma:'Comprimido', princ:'CLONAZEPAM', un:'comprimidos', pos:['1','12h','15','30'], emb:30 },
+  B2: { nome:'Sibutramina', conc:'15 mg', forma:'Cápsula dura', princ:'CLORIDRATO DE SIBUTRAMINA MONOIDRATADO', un:'capsulas', pos:['1','1x','30','30'], emb:30 },
+  RETINOIDES: { nome:'Isotretinoína', conc:'20 mg', forma:'Cápsula mole', princ:'ISOTRETINOÍNA', un:'capsulas', pos:['1','1x','30','30'], emb:30 },
+  CONTROLE: { nome:'Sertralina', conc:'50 mg', forma:'Comprimido revestido', princ:'CLORIDRATO DE SERTRALINA', un:'comprimidos', pos:['1','1x','30','30'], emb:30 },
+  C5: { nome:'Oxandrolona', conc:'5 mg', forma:'Comprimido', princ:'OXANDROLONA', un:'comprimidos', pos:['1','1x','30','30'], emb:30 },
+  ATM: { nome:'Amoxicilina', conc:'500 mg', forma:'Cápsula dura', princ:'AMOXICILINA TRI-HIDRATADA', un:'capsulas', pos:['1','8h','7','21'], emb:21 }
 };
 const TREINO_ERROS = {
   generico: [
@@ -2453,59 +2620,81 @@ const TREINO_ERROS = {
     { id:'cpf', rot:'Falta o documento (CPF) do paciente', ap(){ setVal('docPaciente', ''); } },
     { id:'endereco', rot:'Falta o endereço do comprador', ap(){ setVal('enderecoComprador', ''); } },
     { id:'lote', rot:'Falta o lote no carimbo de venda', ap(){ setVal('lote', ''); } },
-    { id:'excesso', rot:'Quantidade vendida maior que a prescrita', ap(){ setVal('qtdVendida', '2'); } },
+    { id:'excesso', rot:'Quantidade vendida maior que a prescrita', ap(){ setVal('qtdVendida', '2'); atualizarDicaQtdVendida(); } },
     { id:'intercambio', rot:'Medicamento vendido não é intercambiável com o prescrito', ap(){ const v = document.getElementById('versoMedicamento'); v.value = 'Diazepam 10 mg (genérico)'; v.dataset.principio = 'DIAZEPAM'; v.dataset.concentracao = '10 mg'; } },
-    { id:'assinatura', rot:'Falta a assinatura do farmacêutico', ap(){ setVal('assinaturaFarmaceutico', ''); } }
+    { id:'assinatura', rot:'Falta a assinatura do farmacêutico', ap(){ setVal('assinaturaFarmaceutico', ''); } },
+    { id:'limite', rot:'Quantidade acima do limite de tratamento deste receituário', ap(){ treinoExcederLimite('', tipoGenericoAtual); } },
+    { id:'formal', rot:'Requisito formal/documental não atendido (assinatura, rasura, termo ou item único)', ap(){ treinoDesmarcarObrigatorio('confRegGenerico'); } }
   ],
   controle: [
     { id:'vencida', rot:'Receita fora do prazo de validade', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() - (35 + Math.floor(Math.random()*20))); setVal('dataCE', formatDateISO(d)); } },
     { id:'futura', rot:'Data da prescrição no futuro', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() + 3); setVal('dataCE', formatDateISO(d)); } },
-    { id:'cpf', rot:'Falta o documento (CPF) do paciente', ap(){ setVal('docPacienteCE', ''); } },
-    { id:'endereco', rot:'Falta o endereço do comprador', ap(){ setVal('enderecoCompradorCE', ''); } },
+    { id:'cpf', rot:'Falta o documento (CPF) do paciente', nao:['ATM'], ap(){ setVal('docPacienteCE', ''); } },
+    { id:'endereco', rot:'Falta o endereço do comprador', nao:['ATM'], ap(){ setVal('enderecoCompradorCE', ''); } },
+    { id:'idade', rot:'Falta a idade do paciente', so:['ATM'], ap(){ setVal('idadePacienteCE', ''); } },
+    { id:'cid', rot:'Falta o CID na receita de anabolizante', so:['C5'], ap(){ setVal('cidCE', ''); } },
+    { id:'limite', rot:'Quantidade acima do limite de tratamento deste receituário', nao:['ATM'], ap(){ treinoExcederLimite('CE', tipoControleAtual); } },
+    { id:'formal', rot:'Requisito formal/documental não atendido (assinatura, rasura ou conferência obrigatória)', ap(){ treinoDesmarcarObrigatorio('confRegControle'); } },
     { id:'lote', rot:'Falta o lote no verso', ap(){ setVal('lote1CE', ''); } },
-    { id:'excesso', rot:'Quantidade dispensada maior que a prescrita', ap(){ setVal('qtdCaixas1CE', '2'); } },
+    { id:'excesso', rot:'Quantidade dispensada maior que a prescrita', ap(){ setVal('qtdCaixas1CE', '2'); atualizarDicaQtdCaixas1CE(); } },
     { id:'intercambio', rot:'Medicamento dispensado não é intercambiável com o prescrito', ap(){ const v = document.getElementById('medicamento1CE'); v.value = 'Fluoxetina 20 mg (genérico)'; v.dataset.principio = 'CLORIDRATO DE FLUOXETINA'; v.dataset.concentracao = '20 mg'; } },
     { id:'assinatura', rot:'Falta a assinatura do farmacêutico', ap(){ setVal('assinaturaFarmaceuticoCE', ''); } }
   ]
 };
 const TREINO = {};
-function _marcarMed(el, m){ el.dataset.principio = m.princ; el.dataset.concentracao = m.conc; el.dataset.forma = m.forma; el.dataset.unidadesPorEmbalagem = '30'; delete el.dataset.unidadeEmbalagem; }
+function _marcarMed(el, m){ el.dataset.principio = m.princ; el.dataset.concentracao = m.conc; el.dataset.forma = m.forma; el.dataset.unidadesPorEmbalagem = String(m.emb || 30); delete el.dataset.unidadeEmbalagem; setVal(el.id === 'medicamento1CE' ? 'unidCaixaCE' : 'unidCaixa', String(m.emb || 30)); }
+function treinoExcederLimite(sfx, tipo){
+  const r = REGRAS_RECEITA[tipo]; let lim = r.maxDias || 30;
+  if(tipo === 'B2') lim = 60;
+  const dias = lim + 20;
+  const pq = parseFloat(getVal('posologiaQtd' + sfx)) || 1, f = FREQUENCIA_OPCOES[getVal('posologiaFrequencia' + sfx)];
+  setVal('posologiaDias' + sfx, String(dias));
+  setVal('quantidade' + sfx, String(Math.round(pq * (f && f.multiplicador || 1) * dias)));
+  if(sfx) montarResumoPosologiaCE(); else montarResumoPosologia();
+}
+function treinoDesmarcarObrigatorio(confId){
+  const obr = [...document.querySelectorAll('#' + confId + ' input[data-obrig="1"]')];
+  if(obr.length){ const c = randItem(obr); c.checked = false; }
+}
 function preencherReceitaBase(tipo){
   if(tipo === 'controle'){
-    const m = TREINO_MEDS.CONTROLE;
+    const m = TREINO_MEDS[tipoControleAtual] || TREINO_MEDS.CONTROLE;
     gerarDadosControle();
+    renderConfReg('confRegControle', tipoControleAtual); marcarConfRegOk('confRegControle');
     setVal('medicamentoCE', m.nome); setVal('concentracaoCE', m.conc); setVal('formaFarmaceuticaCE', m.forma);
     document.getElementById('medicamentoCE').dataset.principio = m.princ;
-    document.getElementById('unidadeCE').value = m.un; setVal('quantidadeCE', '30');
-    setVal('posologiaQtdCE', '1'); document.getElementById('posologiaUnidadeCE').value = m.un; document.getElementById('posologiaFrequenciaCE').value = '1x';
-    document.getElementById('posologiaContinuaCE').checked = false; document.getElementById('posologiaDiasCE').disabled = false; setVal('posologiaDiasCE', '30'); setVal('posologiaObsCE', '');
+    document.getElementById('unidadeCE').value = m.un; setVal('quantidadeCE', m.pos[3]);
+    setVal('posologiaQtdCE', m.pos[0]); document.getElementById('posologiaUnidadeCE').value = m.un; document.getElementById('posologiaFrequenciaCE').value = m.pos[1];
+    document.getElementById('posologiaContinuaCE').checked = false; document.getElementById('posologiaDiasCE').disabled = false; setVal('posologiaDiasCE', m.pos[2]); setVal('posologiaObsCE', '');
     montarResumoPosologiaCE();
     const v = document.getElementById('medicamento1CE'); v.value = m.nome + ' ' + m.conc + ' (genérico)'; _marcarMed(v, m);
-    setVal('qtdCaixas1CE', '1'); setVal('dataVendaCE', formatDateISO(new Date()));
+    setVal('qtdCaixas1CE', '1'); document.getElementById('qtdCaixas1CE').dataset.caixasReais = '1'; setVal('dataVendaCE', formatDateISO(new Date())); atualizarDicaQtdCaixas1CE(); atualizarCompatibilidadeVersoMedicamentoCE();
   } else {
     const m = TREINO_MEDS[tipoGenericoAtual] || TREINO_MEDS.B;
     gerarDadosFixosGenerico(); gerarDadosCompradorGenerico(); gerarDadosVersoGenerico();
+    renderConfReg('confRegGenerico', tipoGenericoAtual); marcarConfRegOk('confRegGenerico');
     const menor = document.getElementById('menorIdade'); if(menor && menor.checked){ menor.checked = false; menor.dispatchEvent(new Event('change')); }
     setVal('medicamento', m.nome); setVal('concentracao', m.conc); setVal('formaFarmaceutica', m.forma);
     document.getElementById('medicamento').dataset.principio = m.princ;
-    document.getElementById('unidade').value = m.un; setVal('quantidade', '30');
-    setVal('posologiaQtd', '1'); document.getElementById('posologiaUnidade').value = m.un; document.getElementById('posologiaFrequencia').value = '12h';
-    document.getElementById('posologiaContinua').checked = false; document.getElementById('posologiaDias').disabled = false; setVal('posologiaDias', '15'); setVal('posologiaObs', '');
+    document.getElementById('unidade').value = m.un; setVal('quantidade', m.pos[3]);
+    setVal('posologiaQtd', m.pos[0]); document.getElementById('posologiaUnidade').value = m.un; document.getElementById('posologiaFrequencia').value = m.pos[1];
+    document.getElementById('posologiaContinua').checked = false; document.getElementById('posologiaDias').disabled = false; setVal('posologiaDias', m.pos[2]); setVal('posologiaObs', '');
     montarResumoPosologia();
     const v = document.getElementById('versoMedicamento'); v.value = m.nome + ' ' + m.conc + ' (genérico)'; _marcarMed(v, m);
-    setVal('qtdVendida', '1'); setVal('dataVenda', formatDateISO(new Date()));
+    setVal('qtdVendida', '1'); document.getElementById('qtdVendida').dataset.caixasReais = '1'; setVal('dataVenda', formatDateISO(new Date())); atualizarDicaQtdVendida(); atualizarCompatibilidadeVersoMedicamento();
     atualizarAssinaturaGenerico();
   }
 }
 function iniciarTreino(tipo){
   const listId = tipo === 'controle' ? 'checklistControle' : 'checklistGenerico';
   preencherReceitaBase(tipo);
-  const pool = TREINO_ERROS[tipo];
+  const T = tipo === 'controle' ? tipoControleAtual : tipoGenericoAtual;
+  const pool = TREINO_ERROS[tipo].filter(e => (!e.so || e.so.includes(T)) && (!e.nao || !e.nao.includes(T)));
   const n = 2 + Math.floor(Math.random() * 2);
   const escolhidos = []; const embaralhado = pool.slice().sort(() => Math.random() - .5);
   for(const e of embaralhado){ if(escolhidos.length >= n) break; if(e.grupo && escolhidos.some(x => x.grupo === e.grupo)) continue; escolhidos.push(e); }
   escolhidos.forEach(e => e.ap());
-  TREINO[tipo] = { erros: escolhidos.map(e => e.id), conferido: false };
+  TREINO[tipo] = { erros: escolhidos.map(e => e.id), conferido: false, pool };
   // limpa o resultado anterior
   const cfg = REL_CFG[listId];
   document.getElementById(listId).innerHTML = '';
@@ -2518,7 +2707,7 @@ function iniciarTreino(tipo){
 }
 function renderTreino(tipo){
   const t = TREINO[tipo]; const el = document.getElementById('treino-' + tipo); if(!el || !t) return;
-  const pool = TREINO_ERROS[tipo];
+  const pool = t.pool || TREINO_ERROS[tipo];
   el.hidden = false;
   el.innerHTML = '<div class="treino-topo"><b>🎯 Modo treino</b><span>Esta receita foi preenchida com <b>'+t.erros.length+' problemas</b>. Confira cada campo e marque o que encontrou:</span></div>' +
     '<div class="treino-opcoes">' + pool.map(e => {
@@ -2545,11 +2734,450 @@ function sairTreino(tipo){ const el = document.getElementById('treino-' + tipo);
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(atualizarTodasLinhasTempo, 0);
   Object.values(REL_CFG).forEach(c => { const el = document.getElementById(c.data); if(el){ el.addEventListener('input', atualizarTodasLinhasTempo); el.addEventListener('change', atualizarTodasLinhasTempo); } });
-  document.querySelectorAll('.type-btn').forEach(b => b.addEventListener('click', () => { setTimeout(atualizarTodasLinhasTempo, 0); sairTreino('generico'); }));
+  document.querySelectorAll('.type-btn').forEach(b => b.addEventListener('click', () => { setTimeout(atualizarTodasLinhasTempo, 0); sairTreino('generico'); sairTreino('controle'); }));
   ['reiniciarGenerico','reiniciarTalidomida','reiniciarControle'].forEach(id => { const b = document.getElementById(id); if(b) b.addEventListener('click', () => { setTimeout(atualizarTodasLinhasTempo, 0); Object.keys(REL_CFG).forEach(l => { const s = document.getElementById(l + '-sem'); if(s) s.innerHTML = ''; }); }); });
 });
 
-const PAINEIS = { A:'painelGenerico', B:'painelGenerico', RETINOIDES:'painelGenerico', TALIDOMIDA:'painelTalidomida', CONTROLE:'painelControle' };
+/* =========================================================
+   11/11/2026 — Regras por tipo de receituário.
+   Fontes: Portaria SVS/MS 344/1998 e Portaria 6/1999; RDC 58/2007 e
+   RDC 50/2014 (B2/sibutramina); RDC 52/2011; RDC 11/2011 (talidomida);
+   Lei 9.965/2000 (anabolizantes); RDC 471/2021 e IN 360/2025
+   (antimicrobianos); Lei 13.732/2018 (validade nacional);
+   RDC 1.000/2025 (modelos de receituário); RDC 22/2014 (SNGPC).
+   Material de apoio: "Resumo de Receitas e Notificações" (nov/2026).
+   ========================================================= */
+let tipoAtual = 'A';
+let tipoControleAtual = 'CONTROLE';
+
+const REGRAS_RECEITA = {
+  A: {
+    badge:'A', cor:'#f2d64b', nome:'Notificação de Receita A',
+    listas:'Listas A1 e A2 (entorpecentes) e A3 (psicotrópicos)',
+    impresso:'Notificação de Receita A — amarela, numerada',
+    validade:30, abrangencia:'nacional', apresentarVisa:true,
+    quantidade:'Até 5 ampolas ou quantidade para 30 dias de tratamento',
+    maxAmp:5, maxDias:30, justificativa:true,
+    itens:'1 medicamento ou substância por notificação',
+    vias:'1 via (notificação)', retencao:'Notificação retida integralmente na farmácia',
+    docs:'Justificativa do prescritor (CID ou diagnóstico e posologia) quando acima do limite',
+    notas:[
+      'Acima da quantidade regulamentar, o prescritor deve anexar justificativa com CID ou diagnóstico e posologia, datada e assinada.',
+      'Enquadre pela substância, não pelo nome comercial. Confira os adendos: algumas apresentações da A2 (ex.: codeína, tramadol em baixa concentração) passam à Receita de Controle Especial.',
+      'Receita emitida em outra UF é válida em todo o país (Lei 13.732/2018), mas verifique a exigência local de apresentação à Vigilância Sanitária (Ofício Anvisa n.º 39/2019).',
+      'RDC 1.000/2025: os novos modelos trazem CPF/passaporte do paciente no lugar do endereço; impressos antigos seguem válidos.'
+    ],
+    base:'Portaria SVS/MS n.º 344/1998 e Portaria n.º 6/1999; Lei n.º 13.732/2018 (validade nacional); RDC n.º 1.000/2025 (modelos de receituário); RDC n.º 22/2014 (SNGPC).'
+  },
+  B: {
+    badge:'B1', cor:'#8fb3df', nome:'Notificação de Receita B1',
+    listas:'Lista B1 (psicotrópicos) — ex.: alprazolam, clonazepam, diazepam, bromazepam, zolpidem',
+    impresso:'Notificação de Receita B — azul, numerada',
+    validade:30, abrangencia:'nacional',
+    quantidade:'Até 5 ampolas ou quantidade para 60 dias de tratamento',
+    maxAmp:5, maxDias:60, justificativa:true,
+    itens:'1 medicamento ou substância por notificação',
+    vias:'1 via (notificação)', retencao:'Notificação retida integralmente na farmácia',
+    docs:'Justificativa do prescritor (CID ou diagnóstico e posologia) quando acima do limite',
+    notas:[
+      'Antes da Lei 13.732/2018 a Notificação B valia só na UF de emissão; hoje tem validade em todo o território nacional, observadas numeração e regras vigentes.',
+      'Adendo da B1: fenobarbital, metilfenobarbital, barbital e barbexaclona são prescritos em Receita de Controle Especial.',
+      'Não confundir a Notificação B (azul) com a Receita de Controle Especial (branca, 2 vias).'
+    ],
+    base:'Portaria SVS/MS n.º 344/1998 e Portaria n.º 6/1999; Lei n.º 13.732/2018; RDC n.º 1.000/2025; RDC n.º 22/2014 (SNGPC).'
+  },
+  B2: {
+    badge:'B2', cor:'#8fb3df', nome:'Notificação de Receita B2',
+    listas:'Lista B2 (psicotrópicos anorexígenos) — na prática, sibutramina',
+    impresso:'Notificação de Receita B2 — azul, numerada',
+    validade:30, abrangencia:'nacional',
+    quantidade:'Sibutramina: até 60 dias de tratamento (máx. 15 mg/dia); demais B2: até 30 dias',
+    maxAmp:5, maxDias:30, justificativa:false,
+    itens:'1 medicamento ou substância por notificação',
+    vias:'1 via (notificação)', retencao:'Notificação B2 retida na farmácia, que também preenche e retém a sua via do Termo de Responsabilidade do Prescritor',
+    docs:'Termo de Responsabilidade do Prescritor (3 vias: paciente, prescritor e farmácia)',
+    notas:[
+      'Sibutramina: dose máxima de 15 mg/dia e quantidade para até 60 dias (RDC 50/2014).',
+      'Femproporex, anfepramona e mazindol tiveram fabricação, comercialização e prescrição vedadas pela RDC 52/2011 — não dispensar.',
+      'O Termo de Responsabilidade do Prescritor deve acompanhar a notificação; sem ele, não dispensar.'
+    ],
+    base:'RDC n.º 58/2007 (Notificação B2) e RDC n.º 50/2014 (sibutramina: 60 dias, 15 mg/dia, Termo de Responsabilidade); RDC n.º 52/2011; Portaria SVS/MS n.º 344/1998.'
+  },
+  RETINOIDES: {
+    badge:'C2', cor:'#e7e7e2', nome:'Notificação de Receita Especial — Retinoides (C2)',
+    listas:'Lista C2 (retinoides de uso sistêmico) — isotretinoína, acitretina, bexaroteno, tretinoína sistêmica',
+    impresso:'Notificação de Receita Especial — branca, numerada',
+    validade:30, abrangencia:'nacional',
+    quantidade:'Até 5 ampolas ou quantidade para 30 dias de tratamento',
+    maxAmp:5, maxDias:30, justificativa:false,
+    itens:'1 medicamento ou substância por notificação',
+    vias:'1 via (notificação)', retencao:'Notificação retida integralmente na farmácia',
+    docs:'Termo de Consentimento Pós-Informação',
+    notas:[
+      'Retinoides de uso tópico (lista C2) são vendidos sob prescrição, sem retenção — a Notificação Especial não é exigida.',
+      'Mulher com potencial de engravidar: teste de gravidez negativo, contracepção e quantidade para 1 ciclo (até 30 dias).',
+      'A dispensação exige estabelecimento cadastrado na Vigilância Sanitária.',
+      'Normas estaduais podem ser mais restritivas (ex.: SP, Portaria CVS n.º 23/2003 — validade de 7 dias para mulheres em idade fértil).'
+    ],
+    base:'Portaria SVS/MS n.º 344/1998 (lista C2) e Portaria n.º 6/1999; Lei n.º 13.732/2018; RDC n.º 1.000/2025.'
+  },
+  TALIDOMIDA: {
+    badge:'C3', cor:'#f3f4f6', nome:'Notificação de Receita de Talidomida (C3)',
+    listas:'Lista C3 — exclusivamente talidomida',
+    impresso:'Notificação de Receita de Talidomida — branca, 2 vias',
+    validade:20, abrangencia:'UF',
+    quantidade:'Quantidade para até 30 dias de tratamento',
+    maxDias:30,
+    itens:'Exclusivamente talidomida',
+    vias:'2 vias', retencao:'2ª via retida na unidade dispensadora; 1ª via com o paciente',
+    docs:'Termo de Responsabilidade/Esclarecimento; CID; prescrição exclusivamente médica',
+    notas:[
+      'Válida somente na unidade federativa em que foi emitida.',
+      'Dispensação exclusiva pelo farmacêutico; é proibido fracionar a embalagem secundária. O medicamento é pessoal e intransferível.',
+      'Mulheres em idade fértil: exclusão de gravidez e métodos contraceptivos previstos na norma; homens: preservativo durante o tratamento e por 30 dias após o término.',
+      'Lenalidomida e pomalidomida (também C3) têm normas próprias (ex.: RDC 191/2017) — não aplique a elas as regras da talidomida.'
+    ],
+    base:'RDC n.º 11/2011 (talidomida) e Portaria SVS/MS n.º 344/1998 (lista C3).'
+  },
+  CONTROLE: {
+    badge:'C1', cor:'#ffffff', nome:'Receita de Controle Especial (C1)',
+    listas:'Lista C1 (outras substâncias sujeitas a controle especial) e adendos de outras listas',
+    impresso:'Receita de Controle Especial — branca, 2 vias',
+    validade:30, abrangencia:'nacional', apresentarVisa:true,
+    quantidade:'Até 5 ampolas ou quantidade para 60 dias; anticonvulsivantes e antiparkinsonianos: até 180 dias',
+    maxAmp:5, maxDias:60, justificativa:true,
+    itens:'Até 3 substâncias da lista C1 por receita',
+    vias:'2 vias', retencao:'1ª via retida na farmácia; 2ª via devolvida ao paciente',
+    docs:'Justificativa do prescritor quando acima do limite; identificação do comprador (pode ser por carimbo no verso)',
+    notas:[
+      'A exceção de 180 dias vale só para anticonvulsivantes e antiparkinsonianos, não para todo C1.',
+      'O limite de 5 ampolas continua valendo para as formas injetáveis.',
+      'Receita de outra UF: válida em todo o país, mas verifique a exigência local de apresentação à Vigilância Sanitária.'
+    ],
+    base:'Portaria SVS/MS n.º 344/1998 e Portaria n.º 6/1999 (art. 85, "c" — comprador por carimbo no verso); Lei n.º 13.732/2018; RDC n.º 1.000/2025; RDC n.º 22/2014 (SNGPC).'
+  },
+  C5: {
+    badge:'C5', cor:'#ffffff', nome:'Receita de Controle Especial — Anabolizantes (C5)',
+    listas:'Lista C5 (esteroides e peptídeos anabolizantes) — ex.: testosterona, oxandrolona, nandrolona, somatropina',
+    impresso:'Receita de Controle Especial — branca, 2 vias',
+    validade:30, abrangencia:'nacional', apresentarVisa:true,
+    quantidade:'Até 5 ampolas ou quantidade para 60 dias de tratamento',
+    maxAmp:5, maxDias:60, justificativa:true,
+    itens:'Confira a quantidade de substâncias permitida para o receituário',
+    vias:'2 vias (cópia carbonada)', retencao:'1ª via retida na farmácia por 5 anos (Lei 9.965/2000); 2ª via com o paciente',
+    docs:'CID; prescritor com CRM/CRO, CPF, endereço e telefone profissionais; paciente com nome completo, endereço e CPF',
+    notas:[
+      'Somente médico ou cirurgião-dentista pode prescrever (Lei 9.965/2000).',
+      'Nem todo produto hormonal é C5 — confira a substância na lista vigente.',
+      'Preparações tópicas de C5 podem ter regra de venda sem retenção, conforme adendo.'
+    ],
+    base:'Lei n.º 9.965/2000; Portaria SVS/MS n.º 344/1998 (lista C5) e Portaria n.º 6/1999; Lei n.º 13.732/2018; RDC n.º 1.000/2025.'
+  },
+  ATM: {
+    badge:'ATM', cor:'#ffffff', nome:'Receita de Antimicrobiano',
+    listas:'Antimicrobianos da lista da IN n.º 360/2025',
+    impresso:'Receituário comum, 2 vias',
+    validade:10, abrangencia:'nacional',
+    quantidade:'Conforme o tratamento; em uso contínuo, a receita vale 90 dias, com quantidade para cada 30 dias',
+    maxAmp:null, maxDias:null, justificativa:false,
+    itens:'Sem limite de antimicrobianos; não pode conter medicamento da Portaria 344/1998',
+    vias:'2 vias', retencao:'2ª via retida na farmácia; 1ª via devolvida ao paciente, com data, quantidade dispensada e lote anotados nas duas vias',
+    docs:'Paciente: nome, idade e sexo; medicamento pela DCB, com concentração, forma, posologia e quantidade',
+    notas:[
+      'A receita vale 10 dias a partir da emissão.',
+      'Em tratamento prolongado, pode ser usada por até 90 dias, se indicar expressamente "uso contínuo" e a quantidade para cada 30 dias.',
+      'Não é permitido prescrever, na mesma receita, medicamentos sujeitos à Portaria 344/1998.'
+    ],
+    base:'RDC n.º 471/2021 (antimicrobianos) e IN n.º 360/2025 (lista de antimicrobianos); Lei n.º 13.732/2018.'
+  }
+};
+
+const LISTAS_POR_TIPO = { A:['A1','A2','A3'], B:['B1'], B2:['B2'], RETINOIDES:['C2'], TALIDOMIDA:['C3'], CONTROLE:['C1'], C5:['C5'], ATM:['ANTIMICROBIANO'] };
+const IMPRESSO_LISTA = { A1:'NRA', A2:'NRA', A3:'NRA', B1:'NRB', B2:'NRB2', C1:'RCE', C2:'NRR', C3:'NRT', C5:'RCE', ANTIMICROBIANO:'ATM' };
+const IMPRESSO_TIPO = { A:'NRA', B:'NRB', B2:'NRB2', RETINOIDES:'NRR', TALIDOMIDA:'NRT', CONTROLE:'RCE', C5:'RCE', ATM:'ATM' };
+const DESCR_IMPRESSO = { NRA:'Notificação de Receita A (amarela)', NRB:'Notificação de Receita B (azul)', NRB2:'Notificação de Receita B2 (azul) com Termo de Responsabilidade', RCE:'Receita de Controle Especial (2 vias)', NRR:'Notificação de Receita Especial de retinoides', NRT:'Notificação de Receita de Talidomida', ATM:'receita de antimicrobiano (2 vias)' };
+const NOME_CONF_LISTA = { C1:'Controle Especial (C1)', C5:'Anabolizantes (C5)' };
+
+/* Checagens manuais do farmacêutico (o que só se vê no papel) */
+const CR_ITEM_UNICO = { id:'crItemUnico', obrig:true, rot:'Contém um único medicamento ou substância' };
+const CR_JUSTIF = { id:'crJustificativa', flag:true, rot:'Há justificativa do prescritor para quantidade acima do limite (CID ou diagnóstico e posologia)' };
+const CONF_REG = {
+  comum: [
+    { id:'crLegivel', obrig:true, rot:'Documento legível, sem rasuras ou emendas' },
+    { id:'crAssinatura', obrig:true, rot:'Assinatura do prescritor e identificação (carimbo/registro) presentes' }
+  ],
+  A: [ CR_ITEM_UNICO, CR_JUSTIF ],
+  B: [ CR_ITEM_UNICO, CR_JUSTIF ],
+  B2: [ CR_ITEM_UNICO, { id:'crTermoB2', obrig:true, rot:'Termo de Responsabilidade do Prescritor anexado e preenchido' } ],
+  RETINOIDES: [ CR_ITEM_UNICO,
+    { id:'crTermoRet', obrig:true, rot:'Termo de Consentimento Pós-Informação assinado' },
+    { id:'crGravidez', obrig:true, rot:'Mulher com potencial de engravidar: teste de gravidez negativo e contracepção confirmados (ou não se aplica)' } ],
+  TALIDOMIDA: [
+    { id:'crTermoTal', obrig:true, rot:'Termo de Responsabilidade/Esclarecimento preenchido e assinado' },
+    { id:'crFarmTal', obrig:true, rot:'Dispensação feita pelo farmacêutico, sem fracionar a embalagem secundária' },
+    { id:'crContracepTal', obrig:true, rot:'Orientação sobre teratogenicidade e contracepção/preservativo realizada' } ],
+  CONTROLE: [
+    { id:'crNSubst', num:true, def:1, rot:'Nº de substâncias da lista C1 nesta receita' },
+    { id:'crAnticonv', flag:true, rot:'Anticonvulsivante ou antiparkinsoniano (limite de 180 dias)' },
+    CR_JUSTIF ],
+  C5: [ { id:'crPrescritorC5', obrig:true, rot:'Prescritor é médico (CRM) ou cirurgião-dentista (CRO)' }, CR_JUSTIF ],
+  ATM: [
+    { id:'crSem344', obrig:true, rot:'A receita não contém medicamento sujeito à Portaria 344/1998' },
+    { id:'crUsoContinuo', flag:true, rot:'Receita indica "uso contínuo" e a quantidade para cada 30 dias (validade de 90 dias)' } ]
+};
+
+function renderConfReg(cid, tipo){
+  const el = document.getElementById(cid); if(!el) return;
+  const itens = CONF_REG.comum.concat(CONF_REG[tipo] || []);
+  el.innerHTML = '<div class="conf-reg-tit">Conferência no documento — marque o que você verificou</div>' + itens.map(it => {
+    const id = cid + '_' + it.id;
+    if(it.num) return '<div class="cr-num"><label for="'+id+'" style="margin:0;">'+it.rot+'</label><input type="number" id="'+id+'" min="1" step="1" value="'+it.def+'"></div>';
+    return '<label class="'+(it.flag ? 'cr-flag' : '')+'"><input type="checkbox" id="'+id+'"'+(it.obrig ? ' data-obrig="1"' : '')+'><span>'+it.rot+(it.obrig ? '<span class="cr-obrig">obrigatório</span>' : '')+'</span></label>';
+  }).join('');
+}
+function marcarConfRegOk(cid){ document.querySelectorAll('#' + cid + ' input[data-obrig="1"]').forEach(i => { i.checked = true; }); }
+function crChecked(cid, key){ const el = document.getElementById(cid + '_' + key); return !!(el && el.checked); }
+function crNum(cid, key){ const el = document.getElementById(cid + '_' + key); return el ? parseInt(el.value, 10) : NaN; }
+
+/* Validade, UF e duração do tratamento */
+function validadeDe(tipo){
+  const r = REGRAS_RECEITA[tipo] || REGRAS_RECEITA.A;
+  if(tipo === 'ATM' && crChecked('confRegControle', 'crUsoContinuo')) return 90;
+  return r.validade;
+}
+function validadeLista(listId){
+  if(listId === 'checklistTalidomida') return validadeDe('TALIDOMIDA');
+  if(listId === 'checklistControle') return validadeDe(tipoControleAtual);
+  return validadeDe(tipoGenericoAtual);
+}
+const UFS_BR = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
+function extrairUF(texto){
+  const t = texto || '';
+  const m = t.toUpperCase().match(/CR(?:M|O|MV)\s*[\/\-–\s]\s*([A-Z]{2})\b/);
+  if(m && UFS_BR.includes(m[1])) return m[1];
+  const tokens = (t.match(/\b[A-Z]{2}\b/g) || []).filter(x => UFS_BR.includes(x));
+  return tokens.length ? tokens[0] : '';
+}
+function cidadeUfFicticia(){
+  const uf = getVal('ufFarmacia');
+  if(!uf) return randItem(CIDADES_UF);
+  return CIDADES_UF.find(c => c[1] === uf) || ['Capital', uf];
+}
+function diasTratamento(sfx){
+  const cont = document.getElementById('posologiaContinua' + sfx).checked;
+  const dias = parseInt(getVal('posologiaDias' + sfx), 10);
+  const pq = parseFloat((getVal('posologiaQtd' + sfx) || '').replace(',', '.'));
+  const f = FREQUENCIA_OPCOES[getVal('posologiaFrequencia' + sfx)];
+  const qtd = extrairNumero(getVal('quantidade' + sfx));
+  let porQtd = null;
+  if(f && f.multiplicador && pq > 0 && !isNaN(qtd) && getVal('posologiaUnidade' + sfx) === document.getElementById('unidade' + sfx).value){
+    porQtd = Math.ceil(qtd / (pq * f.multiplicador) - 1e-9);
+  }
+  const porDias = (!cont && dias > 0) ? dias : null;
+  if(porDias == null) return porQtd;
+  return porQtd == null ? porDias : Math.max(porDias, porQtd);
+}
+
+/* Enquadramento da substância nas listas (bloco #listas-344, gerado de consultacontrolados) */
+let _L344 = null;
+const ALIAS_344 = { 'valproato':'C1', 'divalproato':'C1' };
+function listas344(){
+  if(_L344) return _L344;
+  try{ _L344 = JSON.parse(document.getElementById('listas-344').textContent); }catch(e){ _L344 = { L:{}, X:[] }; }
+  _L344.chaves = Object.keys(_L344.L).map(k => [k, ' ' + k.replace(/[^a-z0-9]+/g, ' ').trim() + ' ']);
+  return _L344;
+}
+function classificarSubstancia(txt){
+  const t = ' ' + normalizar(txt).replace(/[^a-z0-9]+/g, ' ').trim() + ' ';
+  const d = listas344(), achados = [], vistos = new Set();
+  d.chaves.forEach(([k, kk]) => { if(t.includes(kk) && !vistos.has(k)){ vistos.add(k); const v = d.L[k]; achados.push({ sub:k, lista: Array.isArray(v) ? v[0] : v, nome: Array.isArray(v) ? v[1] : '', adendo:d.X.includes(k) }); } });
+  Object.entries(ALIAS_344).forEach(([k, v]) => { if(t.includes(' ' + k + ' ') && !vistos.has(k)){ vistos.add(k); achados.push({ sub:k, lista:v, adendo:false }); } });
+  // remove achados contidos em outro mais longo (ex.: "fenobarbital" dentro de "metilfenobarbital" não ocorre, mas "acido x" vs "x" sim)
+  return achados.filter(a => !achados.some(b => b !== a && b.sub.length > a.sub.length && (' ' + b.sub + ' ').includes(' ' + a.sub + ' ')));
+}
+function _nomeSub(a){ const n = a.nome || a.sub; return n.charAt(0).toUpperCase() + n.slice(1); }
+function _idadeAnos(iso){ if(!iso) return NaN; const n = new Date(iso + 'T00:00:00'), h = new Date(); let i = h.getFullYear() - n.getFullYear(); if(h < new Date(h.getFullYear(), n.getMonth(), n.getDate())) i--; return i; }
+
+/* Conferência regulatória por tipo — adiciona itens ao checklist e devolve as falhas críticas */
+function conferirRegras(tipo, checks, ctx){
+  const r = REGRAS_RECEITA[tipo], criticos = [];
+  const add = (label, level, extra) => checks.push(Object.assign({ label, ok: level !== 'fail', level }, extra || {}));
+
+  // 1) Checagens manuais obrigatórias
+  let pendente = false;
+  CONF_REG.comum.concat(CONF_REG[tipo] || []).forEach(it => {
+    if(!it.obrig) return;
+    if(crChecked(ctx.conf, it.id)) add(it.rot + ' — conferido', 'pass');
+    else { add(it.rot + ' — NÃO confirmado', 'fail'); pendente = true; }
+  });
+  if(pendente) criticos.push('Requisito formal/documental não confirmado');
+
+  // 2) Abrangência territorial
+  const ufF = getVal('ufFarmacia'), ufP = ctx.uf || '';
+  if(r.abrangencia === 'UF'){
+    if(!ufF) add('Informe a UF da farmácia (no topo da página): ' + r.nome + ' só é válida na UF de emissão' + (ufP ? ' (' + ufP + ')' : ''), 'warnitem', { divergente:true });
+    else if(!ufP) add('Não foi possível identificar a UF do registro do prescritor — confirme que a receita foi emitida em ' + ufF, 'warnitem', { divergente:true });
+    else if(ufP !== ufF){ add('Receita emitida em ' + ufP + ' e apresentada em ' + ufF + ': ' + r.nome + ' é válida somente na UF de emissão', 'fail'); criticos.push('Receita fora da UF de emissão'); }
+    else add('Emitida na mesma UF da farmácia (' + ufF + ') — abrangência atendida', 'pass');
+  } else if(ufP && ufF && ufP !== ufF){
+    add('Emitida em ' + ufP + ' e apresentada em ' + ufF + ' — válida em todo o território nacional (Lei 13.732/2018)', 'pass');
+    if(r.apresentarVisa) add('Receita de outra UF: verifique a exigência local de apresentação à Vigilância Sanitária (Ofício Anvisa n.º 39/2019)', 'warnitem');
+  }
+
+  if(tipo === 'TALIDOMIDA'){ _conferirTalidomida(add, criticos); return { criticos }; }
+
+  // 3) Enquadramento da substância
+  const medEl = document.getElementById(ctx.med);
+  const txtMed = (medEl && medEl.dataset.principio) || getVal(ctx.med);
+  const achados = txtMed ? classificarSubstancia(txtMed) : [];
+  const forma = normalizar(getVal(ctx.forma));
+  const topico = /(gel|creme|pomada|locao|topic|cutane|dermato|xampu|shampoo|adesivo|transderm)/.test(forma);
+  if(txtMed && tipo === 'ATM'){
+    const c344 = achados.filter(a => a.lista !== 'ANTIMICROBIANO'), atm = achados.filter(a => a.lista === 'ANTIMICROBIANO');
+    if(c344.length){ add(_nomeSub(c344[0]) + ' pertence à lista ' + c344[0].lista + ' da Portaria 344/1998 — não pode ser prescrito em receita de antimicrobiano', 'fail'); criticos.push('Medicamento da Portaria 344 em receita de antimicrobiano'); }
+    if(atm.length) add(atm.map(_nomeSub).join(' + ') + ': antimicrobiano da lista da IN 360/2025 — receituário compatível', 'pass');
+    else if(!c344.length) add('Substância não localizada na lista de antimicrobianos desta base — confirme se exige retenção de receita (IN 360/2025)', 'warnitem', { divergente:true });
+  } else if(txtMed){
+    const esperadas = LISTAS_POR_TIPO[tipo] || [];
+    const ok = achados.filter(a => esperadas.includes(a.lista));
+    if(ok.length){
+      add(ok.map(_nomeSub).join(' + ') + ': lista ' + [...new Set(ok.map(a => a.lista))].join('/') + ' — compatível com ' + r.nome, 'pass');
+      ok.filter(a => a.adendo).forEach(a => add(_nomeSub(a) + ' possui adendo na Portaria 344/1998 — confira concentração e apresentação', 'warnitem'));
+    } else if(!achados.length){
+      add('Substância não localizada nas listas desta base — confirme o enquadramento na lista vigente da Anvisa', 'warnitem', { divergente:true });
+    } else {
+      const a = achados[0], imp = IMPRESSO_LISTA[a.lista];
+      if(imp === IMPRESSO_TIPO[tipo]) add(_nomeSub(a) + ' é da lista ' + a.lista + ' — mesmo receituário, mas use a conferência "' + (NOME_CONF_LISTA[a.lista] || a.lista) + '" para aplicar os limites corretos', 'warnitem', { divergente:true });
+      else if(a.adendo || a.lista === 'A2') add(_nomeSub(a) + ' (lista ' + a.lista + ') tem adendo/exceção conforme concentração ou apresentação — confirme se pode constar em ' + r.nome, 'warnitem', { divergente:true });
+      else { add(_nomeSub(a) + ' pertence à lista ' + a.lista + ', que exige ' + (DESCR_IMPRESSO[imp] || 'outro receituário') + ' — receituário incompatível', 'fail'); criticos.push('Receituário incompatível com a lista da substância'); }
+    }
+    if(topico && (tipo === 'RETINOIDES' || tipo === 'C5')) add(tipo === 'RETINOIDES' ? 'Forma de uso tópico: retinoides tópicos são vendidos sob prescrição sem retenção — a Notificação Especial não é exigida' : 'Forma tópica/transdérmica: confira o adendo da lista C5 (pode haver venda sem retenção)', 'warnitem', { divergente:true });
+    if(tipo === 'B2'){
+      const proib = achados.find(a => ['femproporex','anfepramona','mazindol'].includes(a.sub));
+      if(proib){ add(_nomeSub(proib) + ': fabricação, comercialização e prescrição vedadas (RDC 52/2011) — não dispensar', 'fail'); criticos.push('Anorexígeno vedado'); }
+    }
+  }
+
+  // 4) Limite de ampolas / dias de tratamento
+  const sib = tipo === 'B2' && achados.some(a => a.sub === 'sibutramina');
+  if(r.maxDias || r.maxAmp){
+    let lim = r.maxDias, motivo = '';
+    if(sib){ lim = 60; motivo = ' (sibutramina — RDC 50/2014)'; }
+    if(tipo === 'CONTROLE' && crChecked(ctx.conf, 'crAnticonv')){ lim = 180; motivo = ' (anticonvulsivante/antiparkinsoniano)'; }
+    const unidade = document.getElementById('unidade' + ctx.sfx).value;
+    const qtd = extrairNumero(getVal('quantidade' + ctx.sfx));
+    const just = r.justificativa && crChecked(ctx.conf, 'crJustificativa');
+    const acima = txt => {
+      if(just) add(txt + ' — há justificativa do prescritor; confira CID/diagnóstico e posologia', 'warnitem', { divergente:true });
+      else { add(txt + (r.justificativa ? ' — sem justificativa do prescritor, não dispensar acima do limite' : ' — este receituário não admite exceção'), 'fail'); criticos.push('Quantidade acima do limite do receituário'); }
+    };
+    if(unidade === 'ampolas' && !isNaN(qtd)){
+      if(qtd > r.maxAmp) acima(qtd + ' ampolas prescritas — acima do limite de ' + r.maxAmp + ' ampolas');
+      else add(qtd + ' ampola(s) — dentro do limite de ' + r.maxAmp + ' ampolas', 'pass');
+    } else if(getVal('quantidade' + ctx.sfx)){
+      const dt = diasTratamento(ctx.sfx);
+      if(dt == null) add('Não foi possível calcular a duração do tratamento — confira se não ultrapassa ' + lim + ' dias' + motivo, 'warnitem', { divergente:true });
+      else if(dt > lim) acima('Quantidade/posologia correspondem a ~' + dt + ' dias de tratamento — acima do limite de ' + lim + ' dias' + motivo);
+      else add('Tratamento de ~' + dt + ' dias — dentro do limite de ' + lim + ' dias' + motivo, 'pass');
+    }
+  }
+
+  // 5) Regras específicas
+  if(sib){
+    const mg = extrairNumero(getVal(ctx.conc)), pq = parseFloat((getVal('posologiaQtd' + ctx.sfx) || '').replace(',', '.')), f = FREQUENCIA_OPCOES[getVal('posologiaFrequencia' + ctx.sfx)];
+    if(!isNaN(mg) && pq > 0 && f && f.multiplicador){
+      const dose = mg * pq * f.multiplicador;
+      if(dose > 15){ add('Dose diária de sibutramina = ' + formatarNumeroPosologia(dose) + ' mg — acima do máximo de 15 mg/dia', 'fail'); criticos.push('Dose de sibutramina acima de 15 mg/dia'); }
+      else add('Dose diária de sibutramina = ' + formatarNumeroPosologia(dose) + ' mg — dentro do máximo de 15 mg/dia', 'pass');
+    } else add('Confira a dose diária de sibutramina (máximo de 15 mg/dia)', 'warnitem', { divergente:true });
+  }
+  if(tipo === 'CONTROLE'){
+    const n = crNum(ctx.conf, 'crNSubst');
+    if(n > 3){ add(n + ' substâncias C1 na mesma receita — o máximo é 3', 'fail'); criticos.push('Mais de 3 substâncias C1 na receita'); }
+    else if(n >= 1) add(n + ' substância(s) C1 na receita — dentro do máximo de 3', 'pass');
+  }
+  if(tipo === 'RETINOIDES' && ufF === 'SP' && ctx.sexo === 'Feminino'){
+    const idade = _idadeAnos(ctx.nasc), dd = diasDesde(getVal('dataEmissao'));
+    if(!isNaN(idade) && idade >= 10 && idade <= 55) add('SP — mulher em idade fértil: a Portaria CVS n.º 23/2003 limita a validade a 7 dias' + (dd != null ? ' (emitida há ' + dd + ' dia(s))' : '') + ' — confira', dd != null && dd > 7 ? 'fail' : 'warnitem', { divergente:true });
+    if(!isNaN(idade) && idade >= 10 && idade <= 55 && dd != null && dd > 7) criticos.push('Notificação de retinoide fora do prazo estadual (SP)');
+  }
+  if(tipo === 'ATM'){
+    const uc = crChecked(ctx.conf, 'crUsoContinuo'), cont = document.getElementById('posologiaContinuaCE').checked;
+    if(uc){
+      const dt = diasTratamento('CE');
+      if(dt != null && dt > 30) add('Uso contínuo: a quantidade prescrita cobre ~' + dt + ' dias — cada dispensação deve corresponder a 30 dias de tratamento', 'warnitem', { divergente:true });
+      else add('Uso contínuo declarado: receita válida por 90 dias da emissão, dispensando a quantidade para cada 30 dias', 'pass');
+    } else if(cont) add('Posologia marcada como contínua, mas a receita não declara "uso contínuo" com quantidade para 30 dias — a validade continua sendo de 10 dias', 'warnitem', { divergente:true });
+  }
+  return { criticos };
+}
+function _conferirTalidomida(add, criticos){
+  const bruto = getVal('tempoTratamentoTal'), t = normalizar(bruto);
+  const m = t.match(/(\d+(?:[.,]\d+)?)\s*(dia|semana|mes)/);
+  if(m){
+    const n = parseFloat(m[1].replace(',', '.'));
+    const dias = m[2] === 'semana' ? n * 7 : m[2] === 'mes' ? n * 30 : n;
+    if(dias > 30){ add('Tempo de tratamento "' + bruto + '" (~' + Math.round(dias) + ' dias) — acima do máximo de 30 dias por notificação', 'fail'); criticos.push('Tratamento de talidomida acima de 30 dias'); }
+    else add('Tempo de tratamento de ~' + Math.round(dias) + ' dias — dentro do máximo de 30 dias', 'pass');
+  } else if(bruto) add('Não foi possível interpretar o tempo de tratamento — confira se não ultrapassa 30 dias', 'warnitem', { divergente:true });
+  if(getVal('cidTal')) add('CID informado — confira se corresponde a indicação prevista para talidomida (RDC 11/2011)', 'warnitem');
+}
+
+/* Cartão "Regras deste receituário" */
+function renderRegrasCard(tipo){
+  const r = REGRAS_RECEITA[tipo], el = document.getElementById('regrasCard'); if(!el || !r) return;
+  const item = (rot, v) => '<div class="rg-item"><span>' + rot + '</span><b>' + v + '</b></div>';
+  el.innerHTML = '<summary><span class="rg-badge" style="background:' + r.cor + '">' + r.badge + '</span><span class="rg-titulo"><b>Regras deste receituário — ' + r.nome + '</b><small>' + r.listas + '</small></span></summary>' +
+    '<div class="rg-corpo"><div class="rg-grid">' +
+      item('Receituário', r.impresso) +
+      item('Validade', r.validade + ' dias a partir da emissão' + (tipo === 'ATM' ? ' (90 dias em uso contínuo)' : '')) +
+      item('Abrangência', r.abrangencia === 'UF' ? 'Somente na UF de emissão' : 'Todo o território nacional') +
+      item('Quantidade máxima', r.quantidade) +
+      item('Itens por receita', r.itens) +
+      item('Vias e retenção', r.vias + ' · ' + r.retencao) +
+      item('Exigências adicionais', r.docs) +
+    '</div><ul class="rg-notas">' + r.notas.map(n => '<li>' + n + '</li>').join('') + '</ul>' +
+    '<div class="rg-base"><b>Base normativa:</b> ' + r.base + ' Confira sempre a lista e os adendos vigentes da Anvisa e as normas da Vigilância Sanitária local.</div></div>';
+}
+
+function aplicarConfigControle(tipo){
+  tipoControleAtual = tipo;
+  const r = REGRAS_RECEITA[tipo], atm = tipo === 'ATM', c5 = tipo === 'C5';
+  document.getElementById('tituloCE').textContent = atm ? 'RECEITUÁRIO — ANTIMICROBIANO (2 VIAS)' : c5 ? 'RECEITA DE CONTROLE ESPECIAL — ANABOLIZANTES' : 'RECEITA DE CONTROLE ESPECIAL';
+  document.getElementById('hintCE').textContent = '— ' + r.impresso + ' · preencha diretamente sobre o modelo';
+  document.getElementById('notaCE').textContent = atm ? '1ª via: paciente · 2ª via: retida na farmácia (RDC 471/2021). Anotar data, quantidade e lote nas duas vias.'
+    : c5 ? '1ª via: retida na farmácia por 5 anos (Lei 9.965/2000) · 2ª via: paciente.' : '1ª via: retenção pela farmácia · 2ª via: paciente.';
+  document.getElementById('compradorNotaCE').textContent = atm ? '*Para antimicrobianos, a RDC 471/2021 não exige a identificação do comprador — preenchimento opcional.'
+    : '*Impressão opcional — conforme Portaria n.º 6/99, art. 85, alínea "c", pode ser aposta por carimbo, no verso, pela farmácia.';
+  ['grupoC5Emit','grupoC5Pac'].forEach(id => { document.getElementById(id).style.display = c5 ? 'block' : 'none'; });
+  document.getElementById('grupoATMPac').style.display = atm ? 'block' : 'none';
+  document.getElementById('legalRefsControle').textContent = 'Base normativa: ' + r.base + ' Esta conferência não substitui a consulta ao SNGPC nem a checagem da autenticidade do impresso.';
+  document.getElementById('infoControle').innerHTML = '<b>Atenção, farmacêutico(a):</b> ' + (atm
+    ? 'a receita de antimicrobiano tem 2 vias: a 2ª fica retida na farmácia e a 1ª volta ao paciente, ambas com data, quantidade e lote anotados. Escriture no SNGPC conforme as exigências vigentes.'
+    : 'a receita de controle especial exige 2 vias (1ª retida pela farmácia, 2ª entregue ao paciente). Confirme a autenticidade do impresso e o lançamento da dispensação no SNGPC.');
+  document.getElementById('tituloPagina').textContent = r.nome;
+  gerarDadosControle();
+}
+
+function limparResultado(painel){
+  const m = { painelGenerico:['checklistGenerico','statusBoxGenerico','alertaGenerico'], painelTalidomida:['checklistTalidomida','statusBoxTalidomida','alertaTalidomida'], painelControle:['checklistControle','statusBoxControle','alertaControle'] }[painel];
+  if(!m) return;
+  document.getElementById(m[0]).innerHTML = '';
+  const sem = document.getElementById(m[0] + '-sem'); if(sem) sem.innerHTML = '';
+  const b = document.getElementById(m[1]); b.className = 'val-status idle'; b.textContent = 'Preencha os campos na receita e clique em "Validar receita"';
+  ocultarAlertaDivergencia(m[2]);
+}
+
+function iniciarRegrasReceita(){
+  const sel = document.getElementById('ufFarmacia');
+  try{ const v = localStorage.getItem('fp-receitas-uf'); if(v) sel.value = v; }catch(e){}
+  sel.addEventListener('change', () => { try{ localStorage.setItem('fp-receitas-uf', sel.value); }catch(e){} });
+  ['confRegGenerico','confRegTalidomida','confRegControle'].forEach(id => {
+    const el = document.getElementById(id); if(el) el.addEventListener('change', () => atualizarTodasLinhasTempo());
+  });
+}
+
+const PAINEIS = { A:'painelGenerico', B:'painelGenerico', B2:'painelGenerico', RETINOIDES:'painelGenerico', TALIDOMIDA:'painelTalidomida', CONTROLE:'painelControle', C5:'painelControle', ATM:'painelControle' };
 
 document.querySelectorAll('.type-btn').forEach(btn=>{
   btn.addEventListener('click', function(){
@@ -2562,18 +3190,29 @@ document.querySelectorAll('.type-btn').forEach(btn=>{
     document.getElementById('painelControle').style.display = (PAINEIS[tipo] === 'painelControle') ? 'block' : 'none';
     document.getElementById('sinalAlertaGlobal').style.display = 'none';
 
+    tipoAtual = tipo;
     if(PAINEIS[tipo] === 'painelGenerico'){
       aplicarConfigGenerico(tipo);
+      renderConfReg('confRegGenerico', tipo);
     } else if(tipo === 'TALIDOMIDA'){
-      document.getElementById('tituloPagina').textContent = 'Notificação de Receita de Talidomida';
-    } else if(tipo === 'CONTROLE'){
-      document.getElementById('tituloPagina').textContent = 'Receita de Controle Especial';
+      document.getElementById('tituloPagina').textContent = REGRAS_RECEITA.TALIDOMIDA.nome;
+      renderConfReg('confRegTalidomida', tipo);
+    } else {
+      aplicarConfigControle(tipo);
+      renderConfReg('confRegControle', tipo);
     }
+    renderRegrasCard(tipo);
+    limparResultado(PAINEIS[tipo]);
   });
 });
 
 document.addEventListener('DOMContentLoaded', function(){
+  iniciarRegrasReceita();
   aplicarConfigGenerico('A');
+  renderConfReg('confRegGenerico', 'A');
+  renderConfReg('confRegTalidomida', 'TALIDOMIDA');
+  renderConfReg('confRegControle', 'CONTROLE');
+  renderRegrasCard('A');
   gerarDadosCompradorGenerico();
   gerarDadosVersoGenerico();
   montarResumoPosologia();
@@ -2589,6 +3228,8 @@ document.addEventListener('DOMContentLoaded', function(){
   carregarMedicamentos();
 });
 </script>
+
+<script type="application/json" id="listas-344">{"_fonte":"consultacontrolados/index.html (dados-controlados) · 2026-11-03","L":{"acetilmetadol":["A1","Acetilmetadol"],"alfacetilmetadol":["A1","Alfacetilmetadol"],"alfameprodina":["A1","Alfameprodina"],"alfametadol":["A1","Alfametadol"],"alfaprodina":["A1","Alfaprodina"],"alfentanila":["A1","Alfentanila"],"alilprodina":["A1","Alilprodina"],"anileridina":["A1","Anileridina"],"bezitramida":["A1","Bezitramida"],"benzetidina":["A1","Benzetidina"],"benzilmorfina":["A1","Benzilmorfina"],"benzoilmorfina":["A1","Benzoilmorfina"],"betacetilmetadol":["A1","Betacetilmetadol"],"betameprodina":["A1","Betameprodina"],"betametadol":["A1","Betametadol"],"betaprodina":["A1","Betaprodina"],"buprenorfina":["A1","Buprenorfina"],"butorfanol":["A1","Butorfanol"],"clonitazeno":["A1","Clonitazeno"],"codoxima":["A1","Codoxima"],"concentrado de palha de dormideira":["A1","Concentrado de palha de dormideira"],"dextromoramida":["A1","Dextromoramida"],"diampromida":["A1","Diampromida"],"dietiltiambuteno":["A1","Dietiltiambuteno"],"difenoxilato":["A1","Difenoxilato"],"difenoxina":["A1","Difenoxina"],"diidromorfina":["A1","Diidromorfina"],"dimefeptanol":["A1","Dimefeptanol"],"metadol":["A1","metadol"],"dimenoxadol":["A1","Dimenoxadol"],"dimetiltiambuteno":["A1","Dimetiltiambuteno"],"dioxafetila":["A1","Dioxafetila"],"dipipanona":["A1","Dipipanona"],"drotebanol":["A1","Drotebanol"],"etilmetiltiambuteno":["A1","Etilmetiltiambuteno"],"etonitazeno":["A1","Etonitazeno"],"etoxeridina":["A1","Etoxeridina"],"fenadoxona":["A1","Fenadoxona"],"fenampromida":["A1","Fenampromida"],"fenazocina":["A1","Fenazocina"],"fenomorfano":["A1","Fenomorfano"],"fenoperidina":["A1","Fenoperidina"],"fentanila":["A1","Fentanila"],"furetidina":["A1","Furetidina"],"hidrocodona":["A1","Hidrocodona"],"hidromorfinol":["A1","Hidromorfinol"],"hidromorfona":["A1","Hidromorfona"],"hidroxipetidina":["A1","Hidroxipetidina"],"intermediario da metadona":["A1","Intermediário da metadona"],"4-ciano-2-dimetilamina-4,4-difenilbutano":["A1","4-ciano-2-dimetilamina-4,4-difenilbutano"],"intermediario da moramida":["A1","Intermediário da moramida"],"acido 2-metil-3-morfolina-1,1-difenilpropano carboxilico":["A1","ácido 2-metil-3-morfolina-1,1-difenilpropano carboxílico"],"intermediario \"a\" da petidina":["A1","Intermediário \"a\" da petidina"],"4-ciano-1-metil-4-fenilpiperidina":["A1","4-ciano-1-metil-4-fenilpiperidina"],"intermediario \"b\" da petidina":["A1","Intermediário \"b\" da petidina"],"ester etilico do acido 4-fenilpiperidina-4-carboxilico":["A1","éster etílico do ácido 4-fenilpiperidina-4-carboxilíco"],"intermediario \"c\" da petidina":["A1","Intermediário \"c\" da petidina"],"acido-1-metil-4-fenilpiperidina-4-carboxilico":["A1","ácido-1-metil-4-fenilpiperidina-4-carboxílico"],"isometadona":["A1","Isometadona"],"levofenacilmorfano":["A1","Levofenacilmorfano"],"levometorfano":["A1","Levometorfano"],"levomoramida":["A1","Levomoramida"],"levorfanol":["A1","Levorfanol"],"metadona":["A1","Metadona"],"metazocina":["A1","Metazocina"],"metildesorfina":["A1","Metildesorfina"],"metildiidromorfina":["A1","Metildiidromorfina"],"metopona":["A1","Metopona"],"mirofina":["A1","Mirofina"],"morferidina":["A1","Morferidina"],"morfina":["A1","Morfina"],"morinamida":["A1","Morinamida"],"nicomorfina":["A1","Nicomorfina"],"noracimetadol":["A1","Noracimetadol"],"norlevorfanol":["A1","Norlevorfanol"],"normetadona":["A1","Normetadona"],"normorfina":["A1","Normorfina"],"norpipanona":["A1","Norpipanona"],"n-oxicodeina":["A1","N-oxicodeína"],"n-oximorfina":["A1","N-oximorfina"],"opio":["A1","Ópio"],"oripavina":["A1","Oripavina"],"oxicodona":["A1","Oxicodona"],"oximorfona":["A1","Oximorfona"],"petidina":["A1","Petidina"],"piminodina":["A1","Piminodina"],"piritramida":["A1","Piritramida"],"proeptazina":["A1","Proeptazina"],"properidina":["A1","Properidina"],"racemetorfano":["A1","Racemetorfano"],"racemoramida":["A1","Racemoramida"],"racemorfano":["A1","Racemorfano"],"remifentanila":["A1","Remifentanila"],"sufentanila":["A1","Sufentanila"],"tapentadol":["A1","Tapentadol"],"tebacona":["A1","Tebacona"],"tebaina":["A1","Tebaína"],"tilidina":["A1","Tilidina"],"trimeperidina":["A1","Trimeperidina"],"viminol":["A1","Viminol"],"acetildiidrocodeina":["A2","Acetildiidrocodeina"],"codeina":["A2","Codeína"],"dextropropoxifeno":["A2","Dextropropoxifeno"],"diidrocodeina":["A2","Diidrocodeína"],"etilmorfina":["A2","Etilmorfina"],"folcodina":["A2","Folcodina"],"nalbufina":["A2","Nalbufina"],"nalorfina":["A2","Nalorfina"],"nicocodina":["A2","Nicocodina"],"nicodicodina":["A2","Nicodicodina"],"norcodeina":["A2","Norcodeína"],"propiram":["A2","Propiram"],"tramadol":["A2","Tramadol"],"anfetamina":["A3","Anfetamina"],"catina":["A3","Catina"],"clorfentermina":["A3","Clorfentermina"],"dexanfetamina":["A3","Dexanfetamina"],"dronabinol":["A3","Dronabinol"],"femetrazina":["A3","Femetrazina"],"fenciclidina":["A3","Fenciclidina"],"fenetilina":["A3","Fenetilina"],"fenfluramina":["A3","Fenfluramina"],"levanfetamina":["A3","Levanfetamina"],"lisdexanfetamina":["A3","Lisdexanfetamina"],"metilfenidato":["A3","Metilfenidato"],"metilsinefrina":["A3","Metilsinefrina"],"tanfetamina":["A3","Tanfetamina"],"alfaxalona":["B1","Alfaxalona"],"alobarbital":["B1","Alobarbital"],"alprazolam":["B1","Alprazolam"],"amineptina":["B1","Amineptina"],"amobarbital":["B1","Amobarbital"],"aprobarbital":["B1","Aprobarbital"],"armodafinila":["B1","Armodafinila"],"barbexaclona":["B1","Barbexaclona"],"barbital":["B1","Barbital"],"bromazepam":["B1","Bromazepam"],"bromazolam":["B1","Bromazolam"],"brotizolam":["B1","Brotizolam"],"butabarbital":["B1","Butabarbital"],"butalbital":["B1","Butalbital"],"camazepam":["B1","Camazepam"],"carisoprodol":["B1","Carisoprodol"],"cetamina":["B1","Cetamina"],"cetazolam":["B1","Cetazolam"],"ciclobarbital":["B1","Ciclobarbital"],"clobazam":["B1","Clobazam"],"clonazepam":["B1","Clonazepam"],"clonazolam":["B1","Clonazolam"],"clorazepam":["B1","Clorazepam"],"clorazepato":["B1","Clorazepato"],"clordiazepoxido":["B1","Clordiazepóxido"],"cloreto de etila":["B1","Cloreto de etila"],"cloreto de metileno/diclorometano":["B1","Cloreto de metileno/diclorometano"],"clotiazepam":["B1","Clotiazepam"],"cloxazolam":["B1","Cloxazolam"],"delorazepam":["B1","Delorazepam"],"diazepam":["B1","Diazepam"],"diclazepam":["B1","Diclazepam"],"escetamina":["B1","Escetamina"],"estazolam":["B1","Estazolam"],"eszopiclona":["B1","Eszopiclona"],"etclorvinol":["B1","Etclorvinol"],"etilanfetamina":["B1","Etilanfetamina"],"n-etilanfetamina":["B1","N-etilanfetamina"],"etinamato":["B1","Etinamato"],"etizolam":["B1","Etizolam"],"fenazepam":["B1","Fenazepam"],"fenobarbital":["B1","Fenobarbital"],"flualprazolam":["B1","Flualprazolam"],"flubromazolam":["B1","Flubromazolam"],"fludiazepam":["B1","Fludiazepam"],"flunitrazepam":["B1","Flunitrazepam"],"flunitrazolam":["B1","Flunitrazolam"],"flurazepam":["B1","Flurazepam"],"ghb -":["B1","GHB -"],"acido gama - hidroxibutirico":["B1","ácido gama - hidroxibutírico"],"glutetimida":["B1","Glutetimida"],"halazepam":["B1","Halazepam"],"haloxazolam":["B1","Haloxazolam"],"lefetamina":["B1","Lefetamina"],"lemborexante":["B1","Lemborexante"],"loflazepato de etila":["B1","Loflazepato de etila"],"loprazolam":["B1","Loprazolam"],"lorazepam":["B1","Lorazepam"],"lormetazepam":["B1","Lormetazepam"],"medazepam":["B1","Medazepam"],"meprobamato":["B1","Meprobamato"],"mesocarbo":["B1","Mesocarbo"],"metilfenobarbital":["B1","Metilfenobarbital"],"prominal":["B1","prominal"],"metiprilona":["B1","Metiprilona"],"midazolam":["B1","Midazolam"],"modafinila":["B1","Modafinila"],"nimetazepam":["B1","Nimetazepam"],"nitrazepam":["B1","Nitrazepam"],"norcanfano":["B1","Norcanfano"],"fencanfamina":["B1","fencanfamina"],"nordazepam":["B1","Nordazepam"],"oxazepam":["B1","Oxazepam"],"oxazolam":["B1","Oxazolam"],"pemolina":["B1","Pemolina"],"pentazocina":["B1","Pentazocina"],"pentobarbital":["B1","Pentobarbital"],"perampanel":["B1","Perampanel"],"pinazepam":["B1","Pinazepam"],"pipradrol":["B1","Pipradrol"],"pirovalerona":["B1","Pirovalerona"],"prazepam":["B1","Prazepam"],"prolintano":["B1","Prolintano"],"propilexedrina":["B1","Propilexedrina"],"remimazolam":["B1","Remimazolam"],"secbutabarbital":["B1","Secbutabarbital"],"secobarbital":["B1","Secobarbital"],"temazepam":["B1","Temazepam"],"tetrazepam":["B1","Tetrazepam"],"tiamilal":["B1","Tiamilal"],"tiopental":["B1","Tiopental"],"triazolam":["B1","Triazolam"],"tricloroetileno":["B1","Tricloroetileno"],"triexifenidil":["B1","Triexifenidil"],"vinilbital":["B1","Vinilbital"],"zaleplona":["B1","Zaleplona"],"zolpidem":["B1","Zolpidem"],"zopiclona":["B1","Zopiclona"],"aminorex":["B2","Aminorex"],"anfepramona":["B2","Anfepramona"],"femproporex":["B2","Femproporex"],"fendimetrazina":["B2","Fendimetrazina"],"fentermina":["B2","Fentermina"],"mazindol":["B2","Mazindol"],"mefenorex":["B2","Mefenorex"],"sibutramina":["B2","Sibutramina"],"acepromazina":["C1","Acepromazina"],"acido valproico":["C1","Ácido valpróico"],"agomelatina":["C1","Agomelatina"],"amantadina":["C1","Amantadina"],"amissulprida":["C1","Amissulprida"],"amitriptilina":["C1","Amitriptilina"],"amoxapina":["C1","Amoxapina"],"aripiprazol":["C1","Aripiprazol"],"asenapina":["C1","Asenapina"],"atomoxetina":["C1","Atomoxetina"],"azaciclonol":["C1","Azaciclonol"],"beclamida":["C1","Beclamida"],"benactizina":["C1","Benactizina"],"benfluorex":["C1","Benfluorex"],"benzidamina":["C1","Benzidamina"],"benzoctamina":["C1","Benzoctamina"],"benzoquinamida":["C1","Benzoquinamida"],"biperideno":["C1","Biperideno"],"brexpiprazol":["C1","Brexpiprazol"],"brivaracetam":["C1","Brivaracetam"],"bupropiona":["C1","Bupropiona"],"buspirona":["C1","Buspirona"],"butaperazina":["C1","Butaperazina"],"butriptilina":["C1","Butriptilina"],"canabidiol":["C1","Canabidiol"],"captodiamo":["C1","Captodiamo"],"carbamazepina":["C1","Carbamazepina"],"caroxazona":["C1","Caroxazona"],"celecoxibe":["C1","Celecoxibe"],"cenobamato":["C1","Cenobamato"],"ciclarbamato":["C1","Ciclarbamato"],"ciclexedrina":["C1","Ciclexedrina"],"ciclopentolato":["C1","Ciclopentolato"],"cisaprida":["C1","Cisaprida"],"citalopram":["C1","Citalopram"],"clomacrano":["C1","Clomacrano"],"clometiazol":["C1","Clometiazol"],"clomipramina":["C1","Clomipramina"],"clorexadol":["C1","Clorexadol"],"clorpromazina":["C1","Clorpromazina"],"clorprotixeno":["C1","Clorprotixeno"],"clotiapina":["C1","Clotiapina"],"clozapina":["C1","Clozapina"],"dapoxetina":["C1","Dapoxetina"],"desflurano":["C1","Desflurano"],"desipramina":["C1","Desipramina"],"desvenlafaxina":["C1","Desvenlafaxina"],"deutetrabenazina":["C1","Deutetrabenazina"],"dexetimida":["C1","Dexetimida"],"dexmedetomidina":["C1","Dexmedetomidina"],"dibenzepina":["C1","Dibenzepina"],"dimetracrina":["C1","Dimetracrina"],"disopiramida":["C1","Disopiramida"],"dissulfiram":["C1","Dissulfiram"],"divalproato de sodio":["C1","Divalproato de sódio"],"dixirazina":["C1","Dixirazina"],"donepezila":["C1","Donepezila"],"doxepina":["C1","Doxepina"],"droperidol":["C1","Droperidol"],"duloxetina":["C1","Duloxetina"],"ectilureia":["C1","Ectiluréia"],"emilcamato":["C1","Emilcamato"],"enflurano":["C1","Enflurano"],"entacapona":["C1","Entacapona"],"escitalopram":["C1","Escitalopram"],"estiripentol":["C1","Estiripentol"],"etomidato":["C1","Etomidato"],"etoricoxibe":["C1","Etoricoxibe"],"etossuximida":["C1","Etossuximida"],"facetoperano":["C1","Facetoperano"],"femprobamato":["C1","Femprobamato"],"fenaglicodol":["C1","Fenaglicodol"],"fenelzina":["C1","Fenelzina"],"feniprazina":["C1","Feniprazina"],"fenitoina":["C1","Fenitoina"],"flufenazina":["C1","Flufenazina"],"flumazenil":["C1","Flumazenil"],"fluoxetina":["C1","Fluoxetina"],"flupentixol":["C1","Flupentixol"],"fluvoxamina":["C1","Fluvoxamina"],"gabapentina":["C1","Gabapentina"],"galantamina":["C1","Galantamina"],"haloperidol":["C1","Haloperidol"],"halotano":["C1","Halotano"],"hidrato de cloral":["C1","Hidrato de cloral"],"hidroclorbezetilamina":["C1","Hidroclorbezetilamina"],"hidroxidiona":["C1","Hidroxidiona"],"homofenazina":["C1","Homofenazina"],"imicloprazina":["C1","Imicloprazina"],"imipramina":["C1","Imipramina"],"imipraminoxido":["C1","Imipraminóxido"],"iproclozida":["C1","Iproclozida"],"isocarboxazida":["C1","Isocarboxazida"],"isoflurano":["C1","Isoflurano"],"isopropil-crotonil-ureia":["C1","Isopropil-crotonil-uréia"],"lacosamida":["C1","Lacosamida"],"lamotrigina":["C1","Lamotrigina"],"leflunomida":["C1","Leflunomida"],"levetiracetam":["C1","Levetiracetam"],"levomepromazina":["C1","Levomepromazina"],"levomilnaciprana":["C1","Levomilnaciprana"],"lisurida":["C1","Lisurida"],"litio":["C1","Lítio"],"loperamida":["C1","Loperamida"],"loxapina":["C1","Loxapina"],"lumiracoxibe":["C1","Lumiracoxibe"],"lurasidona":["C1","Lurasidona"],"mavacanteno":["C1","Mavacanteno"],"maprotilina":["C1","Maprotilina"],"meclofenoxato":["C1","Meclofenoxato"],"mefenoxalona":["C1","Mefenoxalona"],"mefexamida":["C1","Mefexamida"],"memantina":["C1","Memantina"],"mepazina":["C1","Mepazina"],"mesoridazina":["C1","Mesoridazina"],"metilnaltrexona":["C1","Metilnaltrexona"],"metilpentinol":["C1","Metilpentinol"],"metisergida":["C1","Metisergida"],"metixeno":["C1","Metixeno"],"metopromazina":["C1","Metopromazina"],"metoxiflurano":["C1","Metoxiflurano"],"mianserina":["C1","Mianserina"],"milnaciprana":["C1","Milnaciprana"],"miltefosina":["C1","Miltefosina"],"minaprina":["C1","Minaprina"],"mirtazapina":["C1","Mirtazapina"],"misoprostol":["C1","Misoprostol"],"moclobemida":["C1","Moclobemida"],"molnupiravir":["C1","Molnupiravir"],"moperona":["C1","Moperona"],"naloxona":["C1","Naloxona"],"naltrexona":["C1","Naltrexona"],"nefazodona":["C1","Nefazodona"],"nialamida":["C1","Nialamida"],"nitrito de isobutila":["C1","Nitrito de isobutila"],"nitrito de isopentila":["C1","Nitrito de isopentila"],"nitrito de isopropila":["C1","Nitrito de isopropila"],"nomifensina":["C1","Nomifensina"],"nortriptilina":["C1","Nortriptilina"],"noxiptilina":["C1","Noxiptilina"],"olanzapina":["C1","Olanzapina"],"opipramol":["C1","Opipramol"],"oxcarbazepina":["C1","Oxcarbazepina"],"oxibuprocaina":["C1","Oxibuprocaína"],"benoxinato":["C1","benoxinato"],"oxifenamato":["C1","Oxifenamato"],"oxipertina":["C1","Oxipertina"],"paliperidona":["C1","Paliperidona"],"parecoxibe":["C1","Parecoxibe"],"paroxetina":["C1","Paroxetina"],"penfluridol":["C1","Penfluridol"],"perfenazina":["C1","Perfenazina"],"pergolida":["C1","Pergolida"],"periciazina":["C1","Periciazina"],"propericiazina":["C1","propericiazina"],"pimozida":["C1","Pimozida"],"pipamperona":["C1","Pipamperona"],"pipotiazina":["C1","Pipotiazina"],"pramipexol":["C1","Pramipexol"],"pregabalina":["C1","Pregabalina"],"primidona":["C1","Primidona"],"proclorperazina":["C1","Proclorperazina"],"promazina":["C1","Promazina"],"propanidina":["C1","Propanidina"],"propiomazina":["C1","Propiomazina"],"propofol":["C1","Propofol"],"protipendil":["C1","Protipendil"],"protriptilina":["C1","Protriptilina"],"proximetacaina":["C1","Proximetacaina"],"quetiapina":["C1","Quetiapina"],"ramelteona":["C1","Ramelteona"],"rasagilina":["C1","Rasagilina"],"reboxetina":["C1","Reboxetina"],"ribavirina":["C1","Ribavirina"],"rimonabanto":["C1","Rimonabanto"],"risperidona":["C1","Risperidona"],"rivastigmina":["C1","Rivastigmina"],"rofecoxibe":["C1","Rofecoxibe"],"ropinirol":["C1","Ropinirol"],"rotigotina":["C1","Rotigotina"],"rufinamida":["C1","Rufinamida"],"selegilina":["C1","Selegilina"],"sertralina":["C1","Sertralina"],"sevoflurano":["C1","Sevoflurano"],"sulpirida":["C1","Sulpirida"],"sultoprida":["C1","Sultoprida"],"tacrina":["C1","Tacrina"],"teriflunomida":["C1","Teriflunomida"],"tetrabenazina":["C1","Tetrabenazina"],"tetracaina":["C1","Tetracaína"],"tiagabina":["C1","Tiagabina"],"tianeptina":["C1","Tianeptina"],"tiaprida":["C1","Tiaprida"],"tioproperazina":["C1","Tioproperazina"],"tioridazina":["C1","Tioridazina"],"tiotixeno":["C1","Tiotixeno"],"tolcapona":["C1","Tolcapona"],"topiramato":["C1","Topiramato"],"tranilcipromina":["C1","Tranilcipromina"],"trazodona":["C1","Trazodona"],"triclofos":["C1","Triclofós"],"trifluoperazina":["C1","Trifluoperazina"],"trifluperidol":["C1","Trifluperidol"],"trimipramina":["C1","Trimipramina"],"troglitazona":["C1","Troglitazona"],"valdecoxibe":["C1","Valdecoxibe"],"valproato sodico":["C1","Valproato sódico"],"venlafaxina":["C1","Venlafaxina"],"veraliprida":["C1","Veraliprida"],"vigabatrina":["C1","Vigabatrina"],"vilazodona":["C1","Vilazodona"],"vortioxetina":["C1","Vortioxetina"],"ziprasidona":["C1","Ziprasidona"],"zotepina":["C1","Zotepina"],"zuclopentixol":["C1","Zuclopentixol"],"acitretina":["C2","Acitretina"],"adapaleno":["C2","Adapaleno"],"bexaroteno":["C2","Bexaroteno"],"isotretinoina":["C2","Isotretinoína"],"tretinoina":["C2","Tretinoína"],"ftalimidoglutarimida":["C3","Ftalimidoglutarimida"],"talidomida":["C3","talidomida"],"lenalidomida":["C3","Lenalidomida"],"pomalidomida":["C3","Pomalidomida"],"androstanolona":["C5","Androstanolona"],"bolasterona":["C5","Bolasterona"],"boldenona":["C5","Boldenona"],"cloroxomesterona":["C5","Cloroxomesterona"],"clostebol":["C5","Clostebol"],"deidroclormetiltestosterona":["C5","Deidroclormetiltestosterona"],"drostanolona":["C5","Drostanolona"],"estanolona":["C5","Estanolona"],"estanozolol":["C5","Estanozolol"],"etilestrenol":["C5","Etilestrenol"],"fluoximesterona ou fluoximetiltestosterona":["C5","Fluoximesterona ou fluoximetiltestosterona"],"formebolona":["C5","Formebolona"],"gestrinona":["C5","Gestrinona"],"mesterolona":["C5","Mesterolona"],"metandienona ou metandrostenolona":["C5","Metandienona ou metandrostenolona"],"metandranona":["C5","Metandranona"],"metandriol":["C5","Metandriol"],"metenolona":["C5","Metenolona"],"metiltestosterona":["C5","Metiltestosterona"],"mibolerona":["C5","Mibolerona"],"nandrolona":["C5","Nandrolona"],"noretandrolona":["C5","Noretandrolona"],"oxandrolona":["C5","Oxandrolona"],"oximesterona":["C5","Oximesterona"],"oximetolona":["C5","Oximetolona"],"prasterona":["C5","Prasterona"],"deidroepiandrosterona - dhea":["C5","deidroepiandrosterona - DHEA"],"somapacitana":["C5","Somapacitana"],"somatrogona":["C5","Somatrogona"],"somatropina":["C5","Somatropina"],"hormonio do crescimento humano":["C5","hormônio do crescimento humano"],"testosterona":["C5","Testosterona"],"trembolona":["C5","Trembolona"],"acido clavulanico":["ANTIMICROBIANO","ácido clavulânico"],"acido fusidico":["ANTIMICROBIANO","ácido fusídico"],"acido nalidixico":["ANTIMICROBIANO","ácido nalidíxico"],"acido oxolinico":["ANTIMICROBIANO","ácido oxolínico"],"acido pipemidico":["ANTIMICROBIANO","ácido pipemídico"],"amicacina":["ANTIMICROBIANO","amicacina"],"amoxicilina":["ANTIMICROBIANO","amoxicilina"],"ampicilina":["ANTIMICROBIANO","ampicilina"],"axetilcefuroxima":["ANTIMICROBIANO","axetilcefuroxima"],"azitromicina":["ANTIMICROBIANO","azitromicina"],"aztreonam":["ANTIMICROBIANO","aztreonam"],"bacitracina":["ANTIMICROBIANO","bacitracina"],"besifloxacino":["ANTIMICROBIANO","besifloxacino"],"brodimoprima":["ANTIMICROBIANO","brodimoprima"],"capreomicin":["ANTIMICROBIANO","capreomicin"],"carbenicilina":["ANTIMICROBIANO","carbenicilina"],"cefaclor":["ANTIMICROBIANO","cefaclor"],"cefadroxil":["ANTIMICROBIANO","cefadroxil"],"cefalexina":["ANTIMICROBIANO","cefalexina"],"cefalotina":["ANTIMICROBIANO","cefalotina"],"cefazolina":["ANTIMICROBIANO","cefazolina"],"cefepima":["ANTIMICROBIANO","cefepima"],"cefodizima":["ANTIMICROBIANO","cefodizima"],"cefoperazona":["ANTIMICROBIANO","cefoperazona"],"cefotaxima":["ANTIMICROBIANO","cefotaxima"],"cefoxitina":["ANTIMICROBIANO","cefoxitina"],"cefpodoxima":["ANTIMICROBIANO","cefpodoxima"],"cefefpiroma":["ANTIMICROBIANO","cefefpiroma"],"cefprozil":["ANTIMICROBIANO","cefprozil"],"ceftadizima":["ANTIMICROBIANO","ceftadizima"],"ceftarolina fosamila":["ANTIMICROBIANO","ceftarolina fosamila"],"ceftobiprol":["ANTIMICROBIANO","ceftobiprol"],"ceftriaxona":["ANTIMICROBIANO","ceftriaxona"],"cefuroxima":["ANTIMICROBIANO","cefuroxima"],"ciprofloxacina":["ANTIMICROBIANO","ciprofloxacina"],"claritromicina":["ANTIMICROBIANO","claritromicina"],"clindamicina":["ANTIMICROBIANO","clindamicina"],"clofazimina":["ANTIMICROBIANO","clofazimina"],"clorfenesina":["ANTIMICROBIANO","clorfenesina"],"cloranfenicol":["ANTIMICROBIANO","cloranfenicol"],"cloxacilina":["ANTIMICROBIANO","cloxacilina"],"dactinomicina":["ANTIMICROBIANO","dactinomicina"],"daptomicina":["ANTIMICROBIANO","daptomicina"],"dapsona":["ANTIMICROBIANO","dapsona"],"delamanide":["ANTIMICROBIANO","delamanide"],"dicloxacilina":["ANTIMICROBIANO","dicloxacilina"],"difenilsulfona":["ANTIMICROBIANO","difenilsulfona"],"diidroestreptomicina":["ANTIMICROBIANO","diidroestreptomicina"],"diritromicina":["ANTIMICROBIANO","diritromicina"],"doripenem":["ANTIMICROBIANO","doripenem"],"doxiciclina":["ANTIMICROBIANO","doxiciclina"],"eritromicina":["ANTIMICROBIANO","eritromicina"],"ertapenem":["ANTIMICROBIANO","ertapenem"],"espectinomicina":["ANTIMICROBIANO","espectinomicina"],"espiramicina":["ANTIMICROBIANO","espiramicina"],"estreptomicina":["ANTIMICROBIANO","estreptomicina"],"etambutol":["ANTIMICROBIANO","etambutol"],"etionamida":["ANTIMICROBIANO","etionamida"],"fosfomicina":["ANTIMICROBIANO","fosfomicina"],"ftalilsulfatiazol":["ANTIMICROBIANO","ftalilsulfatiazol"],"gatifloxacina":["ANTIMICROBIANO","gatifloxacina"],"gemifloxacino":["ANTIMICROBIANO","gemifloxacino"],"gentamicina":["ANTIMICROBIANO","gentamicina"],"gramicidina":["ANTIMICROBIANO","gramicidina"],"imipenem":["ANTIMICROBIANO","imipenem"],"isoniazida":["ANTIMICROBIANO","isoniazida"],"levofloxacina":["ANTIMICROBIANO","levofloxacina"],"linezolida":["ANTIMICROBIANO","linezolida"],"limeciclina":["ANTIMICROBIANO","limeciclina"],"lincomicina":["ANTIMICROBIANO","lincomicina"],"lomefloxacina":["ANTIMICROBIANO","lomefloxacina"],"loracarbef":["ANTIMICROBIANO","loracarbef"],"mandelamina":["ANTIMICROBIANO","mandelamina"],"meropenem":["ANTIMICROBIANO","meropenem"],"metampicilina":["ANTIMICROBIANO","metampicilina"],"metronidazol":["ANTIMICROBIANO","metronidazol"],"minociclina":["ANTIMICROBIANO","minociclina"],"miocamicina":["ANTIMICROBIANO","miocamicina"],"mitomicina":["ANTIMICROBIANO","mitomicina"],"moxifloxacino":["ANTIMICROBIANO","moxifloxacino"],"mupirocina":["ANTIMICROBIANO","mupirocina"],"neomicina":["ANTIMICROBIANO","neomicina"],"netilmicina":["ANTIMICROBIANO","netilmicina"],"nitrofural":["ANTIMICROBIANO","nitrofural"],"nitrofurantoina":["ANTIMICROBIANO","nitrofurantoína"],"nitroxolina":["ANTIMICROBIANO","nitroxolina"],"norfloxacina":["ANTIMICROBIANO","norfloxacina"],"ofloxacina":["ANTIMICROBIANO","ofloxacina"],"oxacilina":["ANTIMICROBIANO","oxacilina"],"oxitetraciclina":["ANTIMICROBIANO","oxitetraciclina"],"pefloxacina":["ANTIMICROBIANO","pefloxacina"],"penicilina g":["ANTIMICROBIANO","penicilina G"],"penicilina v":["ANTIMICROBIANO","penicilina V"],"piperacilina":["ANTIMICROBIANO","piperacilina"],"pirazinamida":["ANTIMICROBIANO","pirazinamida"],"polimixina b":["ANTIMICROBIANO","polimixina B"],"pristinamicina":["ANTIMICROBIANO","pristinamicina"],"protionamida":["ANTIMICROBIANO","protionamida"],"retapamulina":["ANTIMICROBIANO","retapamulina"],"rifabutina":["ANTIMICROBIANO","rifabutina"],"rifamicina":["ANTIMICROBIANO","rifamicina"],"rifampicina":["ANTIMICROBIANO","rifampicina"],"rifapentina":["ANTIMICROBIANO","rifapentina"],"rosoxacina":["ANTIMICROBIANO","rosoxacina"],"roxitromicina":["ANTIMICROBIANO","roxitromicina"],"sulbactam":["ANTIMICROBIANO","sulbactam"],"sulfacetamida":["ANTIMICROBIANO","sulfacetamida"],"sulfadiazina":["ANTIMICROBIANO","sulfadiazina"],"sulfadoxina":["ANTIMICROBIANO","sulfadoxina"],"sulfaguanidina":["ANTIMICROBIANO","sulfaguanidina"],"sulfamerazina":["ANTIMICROBIANO","sulfamerazina"],"sulfanilamida":["ANTIMICROBIANO","sulfanilamida"],"sulfametizol":["ANTIMICROBIANO","sulfametizol"],"sulfametoxazol":["ANTIMICROBIANO","sulfametoxazol"],"sulfametoxipiridazina":["ANTIMICROBIANO","sulfametoxipiridazina"],"sulfametoxipirimidina":["ANTIMICROBIANO","sulfametoxipirimidina"],"sulfatiazol":["ANTIMICROBIANO","sulfatiazol"],"sultamicilina":["ANTIMICROBIANO","sultamicilina"],"tazobactam":["ANTIMICROBIANO","tazobactam"],"tedizolida":["ANTIMICROBIANO","tedizolida"],"teicoplanina":["ANTIMICROBIANO","teicoplanina"],"telitromicina":["ANTIMICROBIANO","telitromicina"],"tetraciclina":["ANTIMICROBIANO","tetraciclina"],"tianfenicol":["ANTIMICROBIANO","tianfenicol"],"ticarcilina":["ANTIMICROBIANO","ticarcilina"],"tigeciclina":["ANTIMICROBIANO","tigeciclina"],"tirotricina":["ANTIMICROBIANO","tirotricina"],"tobramicina":["ANTIMICROBIANO","tobramicina"],"trimetoprima":["ANTIMICROBIANO","trimetoprima"],"trovafloxacina":["ANTIMICROBIANO","trovafloxacina"],"vancomicina":["ANTIMICROBIANO","vancomicina"]},"X":["barbexaclona","barbital","fenobarbital","metilfenobarbital","tramadol","zaleplona","zolpidem"]}</script>
 
 <script src="../assets/tempo-uso.js" data-tool="validador"></script>
 </body>
