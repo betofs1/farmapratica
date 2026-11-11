@@ -1415,6 +1415,26 @@
   .about-modal h3{font-size:19px;font-weight:800;margin-bottom:6px;}
   .about-modal h3 span{color:var(--red);}
   .about-modal p{font-size:13.5px;color:var(--text-gray);line-height:1.6;margin-bottom:22px;}
+  .about-modal p.about-tagline{margin-bottom:14px;}
+  .about-modal p.about-author{font-size:12.5px;margin-bottom:20px;line-height:1.55;}
+  .about-modal p.about-author strong{color:var(--text-white);font-weight:700;}
+  .about-contacts{display:flex;flex-direction:column;gap:9px;text-align:left;}
+  .about-contact{
+    display:flex;align-items:center;gap:12px;
+    padding:10px 12px;border-radius:12px;
+    background:var(--bg-panel);border:1px solid var(--card-border);
+    color:inherit;text-decoration:none;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .about-contact:hover{border-color:rgba(228,23,44,.55);transform:translateY(-1px);}
+  .about-contact-ico{
+    width:36px;height:36px;flex:0 0 36px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(228,23,44,.12);color:var(--red);
+  }
+  .about-contact-ico svg{width:18px;height:18px;}
+  .about-contact-txt{display:flex;flex-direction:column;font-size:13.5px;font-weight:600;min-width:0;}
+  .about-contact-txt small{font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-gray-dim);}
   .about-socials{display:flex;align-items:center;justify-content:center;gap:14px;}
   .about-socials a{
     width:44px;height:44px;border-radius:12px;
@@ -2490,16 +2510,17 @@
     <h4>Institucional</h4>
     <ul>
       <li><a href="#" onclick="openAboutModal();return false;">Sobre o FarmaPrática</a></li>
-      <li><a href="mailto:contato@farmapratica.com.br">Contato por e-mail</a></li>
-      <li><a href="https://wa.me/5584900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="mailto:betofs1@live.com">betofs1@live.com</a></li>
+      <li><a href="https://instagram.com/betofs1" target="_blank" rel="noopener">Instagram @betofs1</a></li>
+      <li><a href="https://wa.me/5584999326141" target="_blank" rel="noopener">WhatsApp (84) 99932-6141</a></li>
     </ul>
   </div>
 </footer>
 <div class="footer-bottom">
   <span>© 2026 FarmaPrática. Todos os direitos reservados. Idealizado por Valberto Ferreira | CRF-RN 7652.</span>
   <div class="footer-socials">
-    <a href="https://instagram.com/farmapratica" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:contato@farmapratica.com.br" title="E-mail" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></a>
+    <a href="https://instagram.com/betofs1" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="mailto:betofs1@live.com" title="E-mail" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></a>
   </div>
 </div>
 
@@ -2546,16 +2567,20 @@
     </button>
     <img id="about-logo" src="" alt="">
     <h3>Farma<span>Prática</span></h3>
-    <p>Idealizado por Valberto Ferreira | CRF-RN 7652</p>
-    <div class="about-socials">
-      <a href="mailto:contato@farmapratica.com.br" title="E-mail" aria-label="E-mail">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg>
+    <p class="about-tagline">Ferramentas práticas para a rotina, a gestão e o cuidado farmacêutico — com respaldo técnico e legislação à mão.</p>
+    <p class="about-author">Idealizado e desenvolvido por <strong>Valberto Ferreira</strong><br>Farmacêutico-Bioquímico · CRF-RN 7652</p>
+    <div class="about-contacts">
+      <a href="https://wa.me/5584999326141" target="_blank" rel="noopener" class="about-contact">
+        <span class="about-contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+        <span class="about-contact-txt"><small>WhatsApp</small>(84) 99932-6141</span>
       </a>
-      <a href="https://instagram.com/farmapratica" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <a href="https://instagram.com/betofs1" target="_blank" rel="noopener" class="about-contact">
+        <span class="about-contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="about-contact-txt"><small>Instagram</small>@betofs1</span>
       </a>
-      <a href="https://wa.me/5584900000000" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <a href="mailto:betofs1@live.com" class="about-contact">
+        <span class="about-contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></span>
+        <span class="about-contact-txt"><small>E-mail</small>betofs1@live.com</span>
       </a>
     </div>
   </div>
@@ -2846,7 +2871,7 @@
         var arr = d && d.medicamentos;
         if(!arr) return [];
         return arr.map(function(m){
-          return { source:'medinter', nome:m.nome, meta:m.principio || '', href:'medinter/' };
+          return { source:'medinter', nome:m.nome, meta:m.principio || '', href:'medinter/?med=' + encodeURIComponent(m.nome) };
         });
       }),
 
@@ -2855,7 +2880,7 @@
         var arr = d && d.farmacos;
         if(!arr) return [];
         return arr.map(function(f){
-          return { source:'calc', nome:f.nome, meta:f.categoria || '', href:'dosespediatricas/' };
+          return { source:'calc', nome:f.nome, meta:f.categoria || '', href:'dosespediatricas/?farmaco=' + encodeURIComponent(f.id) };
         });
       }),
 
@@ -2872,7 +2897,7 @@
             Object.keys(listas).forEach(function(catKey){
               var lista = listas[catKey];
               (lista.substancias || []).forEach(function(sub){
-                out.push({ source:'consulta', nome:sub, meta:lista.titulo || catKey, href:'consultacontrolados/' });
+                out.push({ source:'consulta', nome:sub, meta:lista.titulo || catKey, href:'consultacontrolados/?substancia=' + encodeURIComponent(sub) });
               });
             });
           }
@@ -2882,7 +2907,7 @@
             var marcas = dMarcas.marcas || {};
             Object.keys(marcas).forEach(function(nomeMarca){
               var info = marcas[nomeMarca];
-              out.push({ source:'consulta', nome:nomeMarca, meta:(info && info.substancia) || '', href:'consultacontrolados/' });
+              out.push({ source:'consulta', nome:nomeMarca, meta:(info && info.substancia) || '', href:(info && info.substancia) ? 'consultacontrolados/?substancia=' + encodeURIComponent(info.substancia) : 'consultacontrolados/' });
             });
           }
           return out;
@@ -2942,7 +2967,7 @@
             source:'interacoes',
             nome: m.nome,
             meta: (m.aliases && m.aliases.length) ? m.aliases.join(', ') : '',
-            href: 'interacoes/'
+            href: 'interacoes/?med=' + encodeURIComponent(m.id)
           };
         });
       }),
@@ -2954,7 +2979,7 @@
         return arr.map(function(e){
           var meta = e.sigla || '';
           if(e.sinonimos && e.sinonimos.length) meta = meta ? (meta + ' · ' + e.sinonimos[0]) : e.sinonimos[0];
-          return { source:'exames', nome:e.nome, meta:meta, href:'exames/' };
+          return { source:'exames', nome:e.nome, meta:meta, href:'exames/?exame=' + encodeURIComponent(e.id) };
         });
       }),
 
@@ -3181,6 +3206,7 @@
     bulario:   {label:'Bulário Farmacêutico',   icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'},
     dicionario:{label:'Dicionário Farmacêutico', icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7"/><path d="M9 11h7"/>'},
     exames:    {label:'Exames Laboratoriais',   icon:'<path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.58 16.5h12.85"/>'},
+    desafio:   {label:'Desafio Clínico',        icon:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'},
     outro:     {label:'Outra ferramenta',       icon:'<path d="M12 17.3l-5.4 3 1-6-4.6-4 6.1-.5L12 4l2.9 5.8 6.1.5-4.6 4 1 6z"/>'}
   };
 
@@ -3196,6 +3222,7 @@
     bulario:   '#d946ef', // magenta (mesma identidade visual do Bulário)
     dicionario:'#6366f1', // índigo (identidade própria do Dicionário Farmacêutico)
     exames:    '#8751d6', // roxo (mesma identidade visual de Exames Laboratoriais, --c-purple)
+    desafio:   '#d6c951', // mesma cor do Desafio Clínico na busca global
     outro:     '#94a3b8'  // cinza neutro
   };
   function hexToRgba(hex, alpha){

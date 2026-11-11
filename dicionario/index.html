@@ -666,6 +666,88 @@
   .cat-tile-acao{
     background: linear-gradient(165deg, color-mix(in srgb, var(--cg, var(--panel)) 55%, var(--card)), var(--card) 170%);
   }
+  /* ---------- 10/11/2026: mapa de conceitos, conexões, citação, termo do dia, modo concurso ---------- */
+  .mapa-conceitos{ position:relative; height:320px; border-radius:12px; background: radial-gradient(circle at 50% 50%, var(--cg), transparent 62%); margin-top:6px; }
+  .mapa-linhas{ position:absolute; inset:0; width:100%; height:100%; }
+  .mapa-linhas line{ stroke-width:1.4; opacity:.6; vector-effect: non-scaling-stroke; stroke-dasharray: 4 4; }
+  .mapa-centro{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); max-width:170px; text-align:center; padding:12px 16px; border-radius:14px; background: var(--cc); color:#fff; font-weight:800; font-size:.9rem; line-height:1.25; box-shadow: 0 6px 22px var(--cg); z-index:2; }
+  .mapa-no{ position:absolute; transform:translate(-50%,-50%); max-width:140px; font: inherit; font-size:.74rem; font-weight:700; line-height:1.25; text-align:center; padding:7px 10px; border-radius:10px; cursor:pointer; color: var(--text); background: var(--card); border:1.5px solid var(--cc); box-shadow: 0 3px 10px rgba(0,0,0,.18); transition: transform .15s ease, background .15s ease; z-index:2; }
+  .mapa-no:hover{ transform:translate(-50%,-50%) scale(1.06); background: color-mix(in srgb, var(--cc) 16%, var(--card)); }
+  .mapa-dica{ font-size:.72rem; color: var(--text-dim); margin: 8px 0 0; }
+  .conexoes-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:14px; }
+  .conexao-col{ display:flex; flex-direction:column; gap:6px; }
+  .conexao-rotulo{ font-size:.66rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase; color: var(--text-dim); }
+  .conexao-item{ display:flex; align-items:flex-start; gap:9px; padding:8px 10px; border-radius:10px; background: var(--panel); border:1px solid var(--border); color: var(--text); text-decoration:none; font-size:.8rem; font-weight:600; line-height:1.3; transition: border-color .15s ease, transform .15s ease; }
+  .conexao-item:hover{ transform: translateY(-1px); }
+  .conexao-bulario:hover{ border-color:#d946ef; }
+  .conexao-caso:hover{ border-color:#d6c951; }
+  .conexao-item small{ display:block; font-size:.68rem; font-weight:500; color: var(--text-dim); margin-top:2px; }
+  .conexao-ico{ font-size:.9rem; line-height:1.2; }
+  .citacao-box{ margin-top:12px; padding:10px 12px; border-radius:10px; background: var(--panel); border:1px dashed var(--border); }
+  .citacao-topo{ display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:.74rem; color: var(--text-gray); }
+  .citacao-btn{ display:inline-flex; align-items:center; gap:5px; font: inherit; font-size:.7rem; font-weight:700; padding:4px 10px; border-radius:20px; border:1px solid var(--border); background: var(--card); color: var(--text-dim); cursor:pointer; }
+  .citacao-btn svg{ width:12px; height:12px; }
+  .citacao-btn.feito{ color: var(--green-ok); border-color: var(--green-ok); }
+  .citacao-txt{ font-size:.74rem; line-height:1.5; margin:6px 0 0; color: var(--text-dim); word-break: break-word; }
+  .tdd-card{ cursor:pointer; margin: 4px 0 6px; padding: 18px 20px; border-radius: 16px; background: linear-gradient(135deg, var(--cg), transparent 70%), var(--card); border:1px solid var(--border); border-left: 4px solid var(--cc); transition: transform .15s ease, box-shadow .15s ease; }
+  .tdd-card:hover{ transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.18); }
+  .tdd-topo{ display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+  .tdd-selo{ display:inline-flex; align-items:center; gap:6px; font-size:.68rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color: var(--cc); }
+  .tdd-selo svg{ width:14px; height:14px; }
+  .tdd-data{ font-size:.72rem; color: var(--text-dim); }
+  .tdd-card h3{ font-size:1.25rem; font-weight:800; margin: 8px 0 4px; }
+  .tdd-card p{ margin:0; font-size:.88rem; line-height:1.55; color: var(--text-gray); }
+  .tdd-rodape{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .tdd-ler{ display:inline-flex; align-items:center; gap:4px; font-size:.78rem; font-weight:700; color: var(--cc); }
+  .tdd-ler svg{ width:14px; height:14px; }
+  .conc-wrap{ max-width: 760px; }
+  .conc-hero{ display:flex; gap:16px; align-items:flex-start; padding:18px 20px; border-radius:16px; background: linear-gradient(135deg, var(--red-glow), transparent 70%), var(--card); border:1px solid var(--border); margin-bottom: 18px; }
+  .conc-hero h2{ margin:0 0 6px; font-size:1.3rem; font-weight:800; }
+  .conc-hero p{ margin:0; font-size:.86rem; line-height:1.55; color: var(--text-gray); }
+  .conc-hero-ico{ width:46px; height:46px; flex:0 0 46px; border-radius:12px; display:flex; align-items:center; justify-content:center; background: var(--red-glow); color: var(--red-bright); }
+  .conc-hero-ico svg{ width:24px; height:24px; }
+  .conc-label{ font-size:.7rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase; color: var(--text-dim); margin: 16px 0 8px; }
+  .conc-opcoes{ display:flex; flex-wrap:wrap; gap:7px; }
+  .conc-chip{ font: inherit; font-size:.78rem; font-weight:600; padding:7px 12px; border-radius:20px; cursor:pointer; background: var(--card); color: var(--text-gray); border:1px solid var(--border); }
+  .conc-chip:hover{ border-color: var(--red-bright); }
+  .conc-chip.ativo{ background: var(--red); border-color: var(--red); color:#fff; }
+  .conc-iniciar{ justify-content:flex-start !important; margin-left:0 !important; max-width:none !important; }
+  .conc-recorde{ font-size:.8rem; color: var(--text-dim); }
+  .conc-topo{ display:flex; justify-content:space-between; font-size:.8rem; color: var(--text-dim); margin-bottom: 8px; }
+  .conc-barra{ max-width:none !important; margin:0 !important; }
+  .conc-questao{ margin-top: 18px; padding: 20px 22px; border-radius:16px; background: var(--card); border:1px solid var(--border); }
+  .conc-enunciado-rotulo{ font-size:.72rem; font-weight:700; color: var(--text-dim); margin-bottom: 8px; }
+  .conc-enunciado{ font-size:1rem; line-height:1.6; margin: 0 0 16px; }
+  .conc-alternativas{ display:flex; flex-direction:column; gap:8px; }
+  .conc-alt{ display:flex; align-items:center; gap:12px; text-align:left; font: inherit; font-size:.9rem; font-weight:600; padding: 11px 14px; border-radius:12px; cursor:pointer; background: var(--panel); color: var(--text); border:1.5px solid var(--border); transition: border-color .12s ease, transform .12s ease; }
+  .conc-alt:hover:not(:disabled){ border-color: var(--red-bright); transform: translateX(2px); }
+  .conc-letra{ width:28px; height:28px; flex:0 0 28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; background: var(--card); border:1px solid var(--border); }
+  .conc-alt.certa{ border-color: var(--green-ok); background: color-mix(in srgb, var(--green-ok) 14%, var(--panel)); }
+  .conc-alt.certa .conc-letra{ background: var(--green-ok); color:#fff; border-color: var(--green-ok); }
+  .conc-alt.errada{ border-color: var(--red-bright); background: color-mix(in srgb, var(--red-bright) 14%, var(--panel)); }
+  .conc-alt.errada .conc-letra{ background: var(--red-bright); color:#fff; border-color: var(--red-bright); }
+  .conc-alt.apagada{ opacity:.5; }
+  .conc-alt:disabled{ cursor:default; }
+  .conc-feedback{ margin-top: 14px; padding: 10px 12px; border-radius:10px; font-size:.84rem; line-height:1.5; }
+  .conc-feedback.ok{ background: color-mix(in srgb, var(--green-ok) 12%, transparent); border:1px solid color-mix(in srgb, var(--green-ok) 45%, transparent); }
+  .conc-feedback.erro{ background: color-mix(in srgb, var(--red-bright) 10%, transparent); border:1px solid color-mix(in srgb, var(--red-bright) 40%, transparent); }
+  .conc-proxima{ display:flex; justify-content:flex-end; margin-top:14px; }
+  .conc-resultado{ display:flex; align-items:center; gap:18px; padding: 20px 22px; border-radius:16px; background: var(--card); border:1px solid var(--border); --rc: var(--green-ok); border-left: 5px solid var(--rc); }
+  .conc-medio{ --rc: var(--amber); } .conc-baixo{ --rc: var(--red-bright); }
+  .conc-pct{ font-size:2.2rem; font-weight:900; color: var(--rc); min-width: 92px; }
+  .conc-resultado h3{ margin:0 0 4px; font-size:1.1rem; } .conc-resultado p{ margin:0; font-size:.85rem; color: var(--text-dim); }
+  .conc-revisao{ display:flex; flex-direction:column; gap:10px; }
+  .conc-rev-item{ padding: 12px 14px; border-radius:12px; background: var(--card); border:1px solid var(--border); }
+  .conc-rev-def{ font-size:.84rem; line-height:1.5; color: var(--text-gray); }
+  .conc-rev-resp{ display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:8px; font-size:.78rem; font-weight:700; }
+  .conc-x{ color: var(--red-bright); } .conc-v{ color: var(--green-ok); } .conc-v a{ color:inherit; text-decoration:underline; cursor:pointer; }
+  @media (max-width: 640px){
+    .mapa-conceitos{ height: 400px; margin-bottom: 6px; }
+    .mapa-no{ max-width: 108px; font-size:.63rem; padding:6px 7px; }
+    .mapa-centro{ max-width: 110px; font-size:.76rem; padding:9px 10px; }
+    .conc-questao{ padding: 16px; }
+    .conc-resultado{ flex-direction:column; align-items:flex-start; gap:6px; }
+  }
 </style>
 </head>
 <body>
@@ -1195,6 +1277,7 @@ function renderMain(){
   else if(state.view==='quiz') el.innerHTML = viewQuiz();
   else if(state.view==='quizhub') el.innerHTML = viewQuizHub();
   else if(state.view==='favoritos') el.innerHTML = viewFavoritosLista();
+  else if(state.view==='concurso') el.innerHTML = viewConcurso();
   else el.innerHTML = viewInicio();
 }
 
@@ -1233,6 +1316,8 @@ function viewInicio(){
   categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#ffb020;--cg:rgba(255,176,32,.18)" onclick="setView(\'favoritos\')">' +
     favQuizCorner +
     '<div class="ct-icon">'+icon('star')+'</div><h4>Favoritos</h4><div class="ct-count">'+nFavsHome+' termo'+(nFavsHome===1?'':'s')+' salvo'+(nFavsHome===1?'':'s')+'</div></div>';
+  categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#ef5b6b;--cg:rgba(239,91,107,.18)" onclick="abrirConcursoSetup()">' +
+    '<div class="ct-icon">'+icon('target')+'</div><h4>Modo Concurso</h4><div class="ct-count">simulado de múltipla escolha</div></div>';
   const nComp = DATA.comparacoes.length;
   categoriasSection += '<div class="cat-tile cat-tile-acao" style="--cc:#b98cf0;--cg:rgba(185,140,240,.18)" onclick="setView(\'naoconfunda\')">' +
     '<div class="ct-icon">'+icon('swap')+'</div><h4>Não Confunda</h4><div class="ct-count">'+nComp+' comparaç'+(nComp===1?'ão':'ões')+'</div></div>';
@@ -1246,7 +1331,7 @@ function viewInicio(){
   categoriasSection += '</div>';
 
   // Categorias vem antes de "Termos em destaque" em qualquer tamanho de tela (pedido do usuário em 04/11/2026).
-  html += categoriasSection + destaqueSection;
+  html += termoDoDiaHTML() + categoriasSection + destaqueSection;
 
   if(historico.length){
     html += '<div class="section-title">'+icon('history')+' Consultados recentemente</div><div class="historico-line">';
@@ -1360,18 +1445,14 @@ function viewTermo(id){
     html += '</div>';
   }
 
-  if(t.termosRelacionados && t.termosRelacionados.length){
-    const validos = t.termosRelacionados.filter(rid=>getTerm(rid));
-    if(validos.length){
-      html += '<div class="term-block" data-min-nivel="completo"><h5>'+icon('link')+' Termos Relacionados</h5><div class="chips-wrap">' +
-        validos.map(rid=>chipLink(rid)).join('') + '</div></div>';
-    }
-  }
+  html += mapaConceitosHTML(t);
+  html += conexoesHTML(t);
 
   html += '<div class="term-block" data-min-nivel="rapido"><div class="fontes-box">';
   if(t.fontes && t.fontes.length){
     html += '<b>Fontes de referência:</b><ul>'+t.fontes.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>';
   }
+  html += citacaoHTML(t);
   html += '<div class="disclaimer-fixed">'+icon('alert')+'<span>Conteúdo educacional de apoio à prática farmacêutica — não substitui a bula oficial, protocolos institucionais ou a legislação sanitária vigente. Sempre confira a versão mais atual das normas citadas.</span></div>';
   html += '</div></div>';
 
@@ -1413,6 +1494,7 @@ function viewNaoConfundaLista(){
 function viewQuizHub(){
   let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Quiz'}]);
   html += '<div class="home-hero"><h2>'+icon('cards')+' Quiz</h2><p>Escolha uma categoria para revisar seus termos no modo flashcard — vire o card para conferir a definição e teste seu conhecimento.</p></div>';
+  html += '<div class="quiz-actions conc-iniciar" style="margin:0 0 18px"><button class="quiz-btn primario" onclick="abrirConcursoSetup()">'+icon('target')+' Modo Concurso: simulado de múltipla escolha</button></div>';
   html += '<div class="tiles-grid">';
   DATA.categorias.forEach(cat=>{
     const n = termosDaCategoria(cat.id).length;
@@ -1502,6 +1584,206 @@ window.addEventListener('resize', function(){
     _eraMobile = agoraMobile;
     if(state.view==='inicio') renderMain();
   }
+});
+
+/* =====================================================================
+   10/11/2026 — Conexões (Desafio Clínico + Bulário), mapa de conceitos,
+   "Como citar", Termo do dia e Modo Concurso (múltipla escolha).
+   ===================================================================== */
+let CONEXOES = null;
+fetch('conexoes.json').then(r => r.ok ? r.json() : null).then(d => {
+  CONEXOES = (d && d.conexoes) || {};
+  if(DATA && state.view === 'termo') renderMain();
+}).catch(() => { CONEXOES = {}; });
+
+function mapaConceitosHTML(t){
+  const rel = (t.termosRelacionados || []).filter(rid => getTerm(rid));
+  if(!rel.length) return '';
+  const nos = rel.slice(0, 8), n = nos.length;
+  const cat = getCat(t.categoria);
+  let linhas = '', botoes = '';
+  nos.forEach((rid, i) => {
+    const ang = -Math.PI / 2 + (2 * Math.PI * i) / n;
+    const x = 50 + 36 * Math.cos(ang), y = 50 + 33 * Math.sin(ang);
+    const rt = getTerm(rid), rc = getCat(rt.categoria);
+    const cor = rc ? rc.cor : 'slate';
+    linhas += '<line x1="50" y1="50" x2="'+x.toFixed(2)+'" y2="'+y.toFixed(2)+'" style="stroke:var(--cat-'+cor+')"/>';
+    botoes += '<button type="button" class="mapa-no" style="left:'+x.toFixed(2)+'%;top:'+y.toFixed(2)+'%;--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)" onclick="abrirTermo(\''+rid+'\')" title="'+esc(rt.termo)+(rc && rc.id !== t.categoria ? ' · '+esc(rc.nome) : '')+'">'+esc(rt.termo)+'</button>';
+  });
+  const extras = rel.slice(8);
+  return '<div class="term-block mapa-block" data-min-nivel="completo"><h5>'+icon('layers')+' Mapa de conceitos</h5>' +
+    '<div class="mapa-conceitos" '+ccStyle(cat.cor)+'>' +
+      '<svg class="mapa-linhas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+linhas+'</svg>' +
+      '<div class="mapa-centro">'+esc(t.termo)+'</div>' + botoes +
+    '</div>' +
+    (extras.length ? '<div class="chips-wrap" style="margin-top:10px">'+extras.map(rid => chipLink(rid)).join('')+'</div>' : '') +
+    '<p class="mapa-dica">Toque num conceito para abrir o verbete. As cores indicam a categoria de cada termo.</p></div>';
+}
+
+function conexoesHTML(t){
+  if(!CONEXOES) return '';
+  const c = CONEXOES[t.id];
+  if(!c) return '';
+  let html = '<div class="term-block conexoes-block" data-min-nivel="completo"><h5>'+icon('link')+' No FarmaPrática</h5><div class="conexoes-grid">';
+  if(c.bulario && c.bulario.length){
+    html += '<div class="conexao-col"><span class="conexao-rotulo">Fármacos no Bulário</span>' +
+      c.bulario.map(m => '<a class="conexao-item conexao-bulario" href="../bulario/#/medicamento/'+encodeURIComponent(m.id)+'"><span class="conexao-ico">💊</span><span>'+esc(m.nome)+'</span></a>').join('') + '</div>';
+  }
+  if(c.casos && c.casos.length){
+    html += '<div class="conexao-col"><span class="conexao-rotulo">Casos clínicos que usam este termo</span>' +
+      c.casos.map(k => '<a class="conexao-item conexao-caso" href="../desafio/?caso='+encodeURIComponent(k.id)+'"><span class="conexao-ico">🎯</span><span>'+esc(k.titulo)+(k.cat ? '<small>'+esc(k.cat)+'</small>' : '')+'</span></a>').join('') + '</div>';
+  }
+  return html + '</div></div>';
+}
+
+const MESES_ABNT = ['jan.','fev.','mar.','abr.','maio','jun.','jul.','ago.','set.','out.','nov.','dez.'];
+function citacaoABNT(t){
+  const d = new Date();
+  const url = location.origin + location.pathname + '?termo=' + encodeURIComponent(t.id);
+  return 'FARMAPRÁTICA. ' + t.termo + '. In: DICIONÁRIO Farmacêutico. [S. l.]: FarmaPrática, ' + d.getFullYear() +
+    '. Disponível em: ' + url + '. Acesso em: ' + d.getDate() + ' ' + MESES_ABNT[d.getMonth()] + ' ' + d.getFullYear() + '.';
+}
+function copiarCitacao(btn){
+  const t = getTerm(state.termoId); if(!t) return;
+  const txt = citacaoABNT(t);
+  const ok = () => { btn.classList.add('feito'); btn.innerHTML = icon('check')+' Copiado'; setTimeout(() => { btn.classList.remove('feito'); btn.innerHTML = icon('cards')+' Copiar'; }, 1600); };
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(ok).catch(() => {}); }
+  else { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); ok(); }catch(e){} ta.remove(); }
+}
+function citacaoHTML(t){
+  return '<div class="citacao-box"><div class="citacao-topo"><b>Como citar este verbete (ABNT)</b>' +
+    '<button type="button" class="citacao-btn" onclick="copiarCitacao(this)">'+icon('cards')+' Copiar</button></div>' +
+    '<p class="citacao-txt">'+esc(citacaoABNT(t))+'</p></div>';
+}
+
+/* ---------- Termo do dia ---------- */
+function termoDoDia(){
+  const d = new Date();
+  let h = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  h = Math.imul((h >>> 16) ^ h, 0x45d9f3b); h = Math.imul((h >>> 16) ^ h, 0x45d9f3b); h = (h >>> 16) ^ h;
+  const lista = DATA.termos.filter(t => t.explicacaoSimplificada);
+  return lista[Math.abs(h) % lista.length];
+}
+function termoDoDiaHTML(){
+  const t = termoDoDia(); if(!t) return '';
+  const cat = getCat(t.categoria);
+  const data = new Date().toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long' });
+  return '<div class="tdd-card" '+ccStyle(cat.cor)+' onclick="abrirTermo(\''+t.id+'\')">' +
+    '<div class="tdd-topo"><span class="tdd-selo">'+icon('bulb')+' Termo do dia</span><span class="tdd-data">'+esc(data)+'</span></div>' +
+    '<h3>'+esc(t.termo)+(t.sigla ? ' <span class="tc-sigla">('+esc(t.sigla)+')</span>' : '')+'</h3>' +
+    '<p>'+esc(t.explicacaoSimplificada)+'</p>' +
+    '<div class="tdd-rodape"><span class="chip" '+ccStyle(cat.cor)+'>'+catEmoji(cat.id)+' '+esc(cat.nome)+'</span><span class="tdd-ler">Ler verbete '+icon('chev')+'</span></div></div>';
+}
+
+/* ---------- Modo Concurso (múltipla escolha) ---------- */
+const CONC_BEST_KEY = 'dicionario_concurso_best_v1';
+let concurso = null;
+function _escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function mascararDefinicao(t){
+  let txt = t.definicao || '';
+  const nomes = [t.termo, t.termo.replace(/\s*\(.*?\)\s*/g, ' ').trim(), t.sigla].concat(t.sinonimos || []).filter(x => x && x.length >= 3);
+  nomes.sort((a, b) => b.length - a.length).forEach(n => { txt = txt.replace(new RegExp(_escRe(n), 'gi'), '▢▢▢'); });
+  return txt;
+}
+function abrirConcursoSetup(){ concurso = { fase:'setup', cat:(concurso && concurso.cat) || 'todas', qtd:(concurso && concurso.qtd) || 10 }; setView('concurso'); }
+function concursoSet(k, v){ concurso[k] = v; renderMain(); }
+function iniciarConcurso(){
+  const pool = DATA.termos.filter(t => t.definicao && (concurso.cat === 'todas' || t.categoria === concurso.cat));
+  if(pool.length < 4) return;
+  const sorteados = shuffleArray(pool).slice(0, Math.min(concurso.qtd, pool.length));
+  const questoes = sorteados.map(t => {
+    let mesmos = DATA.termos.filter(x => x.categoria === t.categoria && x.id !== t.id);
+    if(mesmos.length < 3) mesmos = DATA.termos.filter(x => x.id !== t.id);
+    const opcoes = shuffleArray([t].concat(shuffleArray(mesmos).slice(0, 3)));
+    return { id: t.id, opcoes: opcoes.map(o => o.id), resposta: null };
+  });
+  Object.assign(concurso, { fase:'jogo', questoes, idx:0, inicio: Date.now(), fim:null, novoRecorde:false, recordeAnterior:null });
+  setView('concurso');
+}
+function concursoResponder(i){
+  const q = concurso.questoes[concurso.idx];
+  if(q.resposta !== null) return;
+  q.resposta = q.opcoes[i];
+  renderMain();
+}
+function concursoProxima(){
+  if(concurso.idx < concurso.questoes.length - 1){ concurso.idx++; setView('concurso'); return; }
+  concurso.fase = 'fim'; concurso.fim = Date.now();
+  const acertos = concurso.questoes.filter(q => q.resposta === q.id).length;
+  const pct = Math.round(acertos / concurso.questoes.length * 100);
+  let best = {}; try{ best = JSON.parse(localStorage.getItem(CONC_BEST_KEY) || '{}'); }catch(e){}
+  const chave = concurso.cat + '|' + concurso.qtd;
+  concurso.recordeAnterior = best[chave] != null ? best[chave] : null;
+  if(best[chave] == null || pct > best[chave]){ best[chave] = pct; try{ localStorage.setItem(CONC_BEST_KEY, JSON.stringify(best)); }catch(e){} concurso.novoRecorde = true; }
+  setView('concurso');
+}
+function _fmtTempo(ms){ const s = Math.round(ms / 1000); return Math.floor(s / 60) + ' min ' + String(s % 60).padStart(2, '0') + ' s'; }
+function viewConcurso(){
+  if(!concurso) concurso = { fase:'setup', cat:'todas', qtd:10 };
+  let html = breadcrumb([{label:'Início', href:"setView('inicio')"}, {label:'Modo Concurso'}]);
+  if(concurso.fase === 'setup'){
+    html += '<div class="conc-wrap"><div class="conc-hero"><div class="conc-hero-ico">'+icon('target')+'</div><div><h2>Modo Concurso</h2>' +
+      '<p>Questões de múltipla escolha no formato de prova: leia a definição e marque o termo correto. Ao final, você vê acertos, tempo e a revisão das questões que errou. Atalhos: teclas A–D para responder e Enter para avançar.</p></div></div>';
+    html += '<div class="conc-label">Conteúdo</div><div class="conc-opcoes"><button class="conc-chip'+(concurso.cat==='todas'?' ativo':'')+'" onclick="concursoSet(\'cat\',\'todas\')">Todas as categorias</button>' +
+      DATA.categorias.filter(c => termosDaCategoria(c.id).length >= 4).map(c => '<button class="conc-chip'+(concurso.cat===c.id?' ativo':'')+'" onclick="concursoSet(\'cat\',\''+c.id+'\')">'+catEmoji(c.id)+' '+esc(c.nome)+'</button>').join('') + '</div>';
+    html += '<div class="conc-label">Número de questões</div><div class="conc-opcoes">' +
+      [10, 20, 30].map(n => '<button class="conc-chip'+(concurso.qtd===n?' ativo':'')+'" onclick="concursoSet(\'qtd\','+n+')">'+n+' questões</button>').join('') + '</div>';
+    let best = {}; try{ best = JSON.parse(localStorage.getItem(CONC_BEST_KEY) || '{}'); }catch(e){}
+    const rec = best[concurso.cat + '|' + concurso.qtd];
+    html += '<div class="quiz-actions conc-iniciar"><button class="quiz-btn primario" onclick="iniciarConcurso()">'+icon('target')+' Iniciar simulado</button>' +
+      (rec != null ? '<span class="conc-recorde">Seu recorde nesta configuração: <b>'+rec+'%</b></span>' : '') + '</div></div>';
+    return html;
+  }
+  const total = concurso.questoes.length;
+  if(concurso.fase === 'fim'){
+    const acertos = concurso.questoes.filter(q => q.resposta === q.id).length;
+    const pct = Math.round(acertos / total * 100);
+    const nivel = pct >= 80 ? 'ok' : pct >= 60 ? 'medio' : 'baixo';
+    html += '<div class="conc-wrap"><div class="conc-resultado conc-'+nivel+'"><div class="conc-pct">'+pct+'%</div><div>' +
+      '<h3>'+acertos+' de '+total+' acertos</h3><p>Tempo: '+_fmtTempo(concurso.fim - concurso.inicio)+(concurso.novoRecorde ? ' · <b>Novo recorde!</b>' : (concurso.recordeAnterior != null ? ' · Recorde: '+concurso.recordeAnterior+'%' : ''))+'</p></div></div>';
+    const erros = concurso.questoes.filter(q => q.resposta !== q.id);
+    if(erros.length){
+      html += '<div class="section-title">'+icon('alert')+' Revise as questões que errou</div><div class="conc-revisao">' +
+        erros.map(q => { const t = getTerm(q.id), r = getTerm(q.resposta);
+          return '<div class="conc-rev-item"><div class="conc-rev-def">'+esc(mascararDefinicao(t))+'</div>' +
+            '<div class="conc-rev-resp"><span class="conc-x">Sua resposta: '+esc(r ? r.termo : '—')+'</span><span class="conc-v">Correta: <a onclick="abrirTermo(\''+t.id+'\')">'+esc(t.termo)+'</a></span></div></div>'; }).join('') + '</div>';
+    }
+    html += '<div class="quiz-actions conc-iniciar"><button class="quiz-btn primario" onclick="iniciarConcurso()">'+icon('swap')+' Novo simulado</button>' +
+      '<button class="quiz-btn" onclick="abrirConcursoSetup()">'+icon('layers')+' Mudar configuração</button>' +
+      '<button class="quiz-btn" onclick="setView(\'inicio\')">'+icon('home')+' Início</button></div></div>';
+    return html;
+  }
+  const q = concurso.questoes[concurso.idx];
+  const t = getTerm(q.id), cat = getCat(t.categoria);
+  const respondida = q.resposta !== null;
+  const acertosAte = concurso.questoes.filter(x => x.resposta !== null && x.resposta === x.id).length;
+  html += '<div class="conc-wrap"><div class="conc-topo"><span>Questão <b>'+(concurso.idx+1)+'</b> de '+total+'</span><span>'+acertosAte+' acerto'+(acertosAte===1?'':'s')+'</span></div>' +
+    '<div class="quiz-progress-bar conc-barra"><div class="quiz-progress-fill" style="width:'+Math.round(concurso.idx/total*100)+'%"></div></div>' +
+    '<div class="conc-questao"><div class="conc-enunciado-rotulo">'+catEmoji(cat.id)+' '+esc(cat.nome)+' · Assinale o termo que corresponde à definição:</div>' +
+    '<p class="conc-enunciado">'+esc(mascararDefinicao(t))+'</p><div class="conc-alternativas">' +
+    q.opcoes.map((oid, i) => {
+      const o = getTerm(oid);
+      let cls = 'conc-alt';
+      if(respondida){ if(oid === q.id) cls += ' certa'; else if(oid === q.resposta) cls += ' errada'; else cls += ' apagada'; }
+      return '<button class="'+cls+'" '+(respondida?'disabled':'')+' onclick="concursoResponder('+i+')"><span class="conc-letra">'+'ABCD'[i]+'</span><span>'+esc(o.termo)+'</span></button>';
+    }).join('') + '</div>';
+  if(respondida){
+    const ok = q.resposta === q.id;
+    html += '<div class="conc-feedback '+(ok?'ok':'erro')+'"><b>'+(ok?'Correto!':'Resposta: '+esc(t.termo)+'.')+'</b> '+esc(t.explicacaoSimplificada || '')+'</div>' +
+      '<div class="conc-proxima"><button class="quiz-btn primario" onclick="concursoProxima()">'+(concurso.idx < total-1 ? 'Próxima '+icon('chev') : 'Ver resultado '+icon('check'))+'</button></div>';
+  }
+  html += '</div><span class="quiz-sair-link" onclick="abrirConcursoSetup()">Encerrar simulado</span></div>';
+  return html;
+}
+document.addEventListener('keydown', e => {
+  if(state.view !== 'concurso' || !concurso || concurso.fase !== 'jogo') return;
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName || '')) return;
+  const q = concurso.questoes[concurso.idx];
+  const k = (e.key || '').toUpperCase();
+  if(q.resposta === null){
+    let i = 'ABCD'.indexOf(k); if(i < 0) i = '1234'.indexOf(k);
+    if(k.length === 1 && i >= 0 && i < q.opcoes.length) concursoResponder(i);
+  } else if(e.key === 'Enter'){ e.preventDefault(); concursoProxima(); }
 });
 
 fetch('dicionario.json').then(r=>r.json()).then(data=>{

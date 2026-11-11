@@ -1134,6 +1134,33 @@ function atualizarDbLabel(){
 atualizarDbLabel();
 renderLinhas();
 renderRecentes();
+
+/* Link direto vindo de outras ferramentas (Bulário, busca da página inicial):
+   ?med=<id>[,<id>...] — pré-preenche os medicamentos (um por linha) e, com
+   2 ou mais reconhecidos, já executa a análise. Com 1 só, foca a próxima linha. */
+(function(){
+  let ids = [];
+  try{
+    const v = new URLSearchParams(location.search).get('med');
+    if(v) ids = v.split(',').map(function(x){ return x.trim(); }).filter(Boolean).slice(0, MAX_LINHAS);
+  }catch(e){ return; }
+  if(!ids.length) return;
+  BASE_LOAD_PROMISE.then(function(){
+    const nomes = ids.map(function(id){
+      const med = MEDICAMENTOS.find(function(m){ return m.id === id; }) || encontrarMedicamento(id);
+      return med ? med.nome : null;
+    }).filter(Boolean);
+    if(!nomes.length) return;
+    linhas = nomes.map(function(n){ return {id:seqId++, chips:[n]}; });
+    if(linhas.length < 2) linhas.push({id:seqId++, chips:[]});
+    renderLinhas();
+    if(nomes.length >= 2){ verResultado(); }
+    else{
+      const inp = document.querySelector('input[data-linha="'+linhas[1].id+'"]');
+      if(inp) inp.focus();
+    }
+  });
+})();
 </script>
 <script src="../assets/tempo-uso.js" data-tool="interacoes"></script>
 </body>

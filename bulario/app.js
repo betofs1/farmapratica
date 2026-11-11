@@ -719,6 +719,7 @@
             </button>
           </div>
           ${tagsHtml(m.tags)}
+          <div class="ficha-atalhos" id="ficha-atalhos" hidden></div>
         </div>
 
         <nav class="ficha-menu-rapido" aria-label="Acesso rápido às seções">
@@ -760,6 +761,51 @@
     });
 
     ativarObservadorSecoes();
+    renderAtalhos(medId);
+  }
+
+  // ---------- Atalhos para as outras ferramentas do FarmaPrática ----------
+  // atalhos.json é gerado por scripts/gerar_atalhos_bulario.py (cruzamento por
+  // nome com Interações, Calculadora Pediátrica, Controle Especial e CMED).
+  let atalhosPromise = null;
+  function carregarAtalhos() {
+    if (!atalhosPromise) {
+      atalhosPromise = fetch("atalhos.json")
+        .then((r) => (r.ok ? r.json() : { atalhos: {} }))
+        .then((d) => (d && d.atalhos) || {})
+        .catch(() => ({}));
+    }
+    return atalhosPromise;
+  }
+  const ICO_AT = {
+    interacoes: '<path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/>',
+    calc: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="16" x2="8.01" y2="16"/><line x1="12" y1="16" x2="12.01" y2="16"/><line x1="16" y1="16" x2="16.01" y2="16"/>',
+    medinter: '<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+    controlado: '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15h6"/><path d="M12 12v6"/>'
+  };
+  function atalhoLink(href, tipo, titulo, sub) {
+    return `<a class="atalho-chip atalho-${tipo}" href="${esc(href)}">
+      <span class="atalho-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO_AT[tipo]}</svg></span>
+      <span class="atalho-txt"><strong>${esc(titulo)}</strong><small>${esc(sub)}</small></span></a>`;
+  }
+  function renderAtalhos(medId) {
+    carregarAtalhos().then((mapa) => {
+      const box = document.getElementById("ficha-atalhos");
+      if (!box || location.hash !== "#/medicamento/" + medId) return;
+      const a = mapa[medId];
+      if (!a) return;
+      const html = [];
+      if (a.interacoes) html.push(atalhoLink("../interacoes/?med=" + encodeURIComponent(a.interacoes), "interacoes", "Checar interações", "Interações Medicamentosas"));
+      if (a.calc) html.push(atalhoLink("../dosespediatricas/?farmaco=" + encodeURIComponent(a.calc), "calc", "Calcular dose", "Calculadora de Doses"));
+      if (a.medinter) html.push(atalhoLink("../medinter/?med=" + encodeURIComponent(a.medinter), "medinter", "Equivalentes e preços", "Substituição de Medicamentos"));
+      if (a.controlado) {
+        const lista = a.controlado.lista === "ANTIMICROBIANO" ? "Antimicrobiano (retenção de receita)" : "Controle especial · Lista " + a.controlado.lista;
+        html.push(atalhoLink("../consultacontrolados/?substancia=" + encodeURIComponent(a.controlado.nome), "controlado", "Receituário", lista));
+      }
+      if (!html.length) return;
+      box.innerHTML = `<span class="atalhos-rotulo">Abrir em outras ferramentas</span><div class="atalhos-lista">${html.join("")}</div>`;
+      box.hidden = false;
+    });
   }
 
   function ativarObservadorSecoes() {

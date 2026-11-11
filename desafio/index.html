@@ -439,6 +439,12 @@
   .case-check svg{ width:12px; height:12px; }
 
   /* Case player */
+  .caso-fav-row{ max-width:760px; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+  .caso-fav-titulo{ font-size:1.15rem; font-weight:800; line-height:1.3; margin:0; }
+  .fav-star-btn{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; padding:0; background:var(--red-glow); color:var(--text-dim); border:1px solid color-mix(in srgb, var(--red) 45%, transparent); border-radius:9px; cursor:pointer; transition:all .15s; flex-shrink:0; }
+  .fav-star-btn:hover{ color:var(--red-bright); }
+  .fav-star-btn.starred{ background:var(--red-bright); color:#fff; border-color:var(--red-bright); }
+  .fav-star-btn svg{ width:16px; height:16px; display:block; }
   .player-card{ max-width:760px; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:26px 28px; box-shadow:0 8px 26px rgba(0,0,0,.14); }
   .player-progress{ display:flex; gap:5px; margin-bottom:18px; }
   .player-progress .pp-seg{ flex:1; height:5px; border-radius:4px; background:var(--panel); }
@@ -711,6 +717,44 @@ const ICONS = {
   star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
 };
 function icon(name, cls){ return '<svg class="'+(cls||'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ (ICONS[name]||'') +'</svg>'; }
+// ---------- FAVORITOS (sincronizados com o hub da página inicial) ----------
+const DESAFIO_FAV_KEY = 'desafio_favs_v1';
+function getFavsDesafio(){ try{ return JSON.parse(localStorage.getItem(DESAFIO_FAV_KEY) || '[]'); }catch(e){ return []; } }
+function isFavCaso(id){ return getFavsDesafio().indexOf(id) !== -1; }
+function syncFavToHubDesafio(id, label, catNome, added){
+  try{
+    const HUB_FAV_KEY = 'fp_favoritos_hub';
+    let list = JSON.parse(localStorage.getItem(HUB_FAV_KEY) || '[]');
+    const hubId = 'desafio-' + id;
+    if(added){
+      if(!list.some(f=>f.id===hubId)){
+        list.push({ id:hubId, label:label, source:'desafio',
+          sourceLabel:'Desafio Clínico' + (catNome ? ' · ' + catNome : ''),
+          href:'desafio/?caso=' + encodeURIComponent(id) });
+      }
+    } else { list = list.filter(f=>f.id!==hubId); }
+    localStorage.setItem(HUB_FAV_KEY, JSON.stringify(list));
+  }catch(e){}
+}
+function toggleFavCaso(id, ev){
+  if(ev){ ev.stopPropagation(); ev.preventDefault(); }
+  const caso = CASO_BY_ID[id]; if(!caso) return;
+  const cat = getCat(caso.categoria);
+  let favs = getFavsDesafio();
+  const added = favs.indexOf(id) === -1;
+  favs = added ? favs.concat([id]) : favs.filter(x=>x!==id);
+  try{ localStorage.setItem(DESAFIO_FAV_KEY, JSON.stringify(favs)); }catch(e){}
+  syncFavToHubDesafio(id, caso.titulo, cat ? cat.nome : '', added);
+  document.querySelectorAll('[data-fav-caso="'+id+'"]').forEach(btn=>{
+    btn.classList.toggle('starred', added);
+    btn.title = (added ? 'Remover dos favoritos' : 'Adicionar aos favoritos') + ' (aparece na página inicial)';
+  });
+}
+function favStarCaso(id){
+  const st = isFavCaso(id);
+  return '<button type="button" class="fav-star-btn'+(st?' starred':'')+'" data-fav-caso="'+esc(id)+'" onclick="toggleFavCaso(\''+esc(id)+'\', event)" title="'+(st?'Remover dos favoritos':'Adicionar aos favoritos')+' (aparece na página inicial)" aria-label="Favoritar caso">' +
+    '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>';
+}
 function esc(s){ return (s==null?'':s).toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
 function getCat(id){ return CAT_BY_ID[id]; }
@@ -1180,6 +1224,7 @@ function viewCasoPlayer(){
   const cat = getCat(caso.categoria);
   const etapa = caso.etapas[state.casoStepIndex];
   let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:cat.nome, action:"abrirCategoria('"+cat.id+"')"}, {label:caso.titulo}]);
+  h += '<div class="caso-fav-row"><h2 class="caso-fav-titulo">'+esc(caso.titulo)+'</h2>'+favStarCaso(caso.id)+'</div>';
   h += '<div class="player-card">';
   h += '<div class="player-progress">'+caso.etapas.map((e,i)=>{
     const cls = i<state.casoStepIndex ? 'done' : (i===state.casoStepIndex ? 'current' : '');

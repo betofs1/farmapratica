@@ -8471,7 +8471,8 @@ renderBaseAtualizacao();
 
 const __deepSubstancia = new URLSearchParams(location.search).get('substancia');
 if(__deepSubstancia){
-  const __alvo = indice.find(i => i.nome === decodeURIComponent(__deepSubstancia));
+  const __q = decodeURIComponent(__deepSubstancia);
+  const __alvo = indice.find(i => i.nome === __q) || indice.find(i => normaliza(i.nome) === normaliza(__q));
   if(__alvo){ selecionarSubstancia(__alvo); }
 }
 </script>

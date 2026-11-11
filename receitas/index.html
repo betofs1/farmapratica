@@ -448,6 +448,71 @@
     .btn-row-validar{flex-direction:column;}
     .btn-row-validar .btn-validar{flex:1 1 auto !important;width:100% !important;}
   }
+  /* ---------- 10/11/2026: semáforo, relatório, linha do tempo da validade, modo treino ---------- */
+  .semaforo{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:10px 12px; margin:-4px 0 12px; border-radius:var(--radius-sm); background:var(--bg); border:1px solid var(--border); }
+  .sem-luzes{ display:flex; gap:5px; padding:5px 7px; border-radius:20px; background:#151618; }
+  .luz{ width:14px; height:14px; border-radius:50%; opacity:.22; }
+  .luz.vermelho{ background:var(--danger); } .luz.amarelo{ background:var(--warn); } .luz.verde{ background:var(--ok); }
+  .luz.on{ opacity:1; box-shadow:0 0 10px currentColor; }
+  .luz.vermelho.on{ color:var(--danger); } .luz.amarelo.on{ color:var(--warn); } .luz.verde.on{ color:var(--ok); }
+  .sem-contagem{ display:flex; gap:10px; flex-wrap:wrap; font-size:12px; font-weight:700; flex:1; }
+  .c-f{ color:var(--danger); } .c-w{ color:var(--warn); } .c-p{ color:var(--ok); }
+  .btn-relatorio{ font:inherit; font-size:12px; font-weight:700; padding:7px 12px; border-radius:20px; cursor:pointer; background:var(--card); color:var(--text); border:1px solid var(--border); }
+  .btn-relatorio:hover{ border-color:var(--brand-red); }
+  .validade-tl{ padding:12px 14px 6px; margin-bottom:12px; border-radius:var(--radius-sm); background:var(--bg); border:1px solid var(--border); }
+  .tl-topo{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; font-size:12.5px; }
+  .tl-msg{ font-weight:700; font-size:12px; color:var(--muted); }
+  .tl-msg.tl-ok{ color:var(--ok); } .tl-msg.tl-perto{ color:var(--warn); } .tl-msg.tl-vencida, .tl-msg.tl-futura{ color:var(--danger); }
+  .tl-barra{ position:relative; height:10px; margin:22px 0 4px; border-radius:6px; background:var(--danger-bg); }
+  .tl-valida{ position:absolute; left:0; top:0; bottom:0; border-radius:6px 0 0 6px; background:linear-gradient(90deg, var(--ok), color-mix(in srgb, var(--ok) 55%, var(--warn))); }
+  .tl-hoje{ position:absolute; top:-5px; width:4px; height:20px; margin-left:-2px; border-radius:2px; background:var(--text); }
+  .tl-hoje i{ position:absolute; bottom:22px; left:50%; transform:translateX(-50%); font-style:normal; font-size:10.5px; font-weight:800; padding:1px 6px; border-radius:5px; background:var(--text); color:var(--card); white-space:nowrap; }
+  .tl-datas{ position:relative; height:32px; font-size:10.5px; color:var(--muted); line-height:1.25; }
+  .tl-datas span{ position:absolute; top:2px; }
+  .tl-datas span + span{ transform:translateX(-50%); text-align:center; }
+  .tl-datas b{ color:var(--text); }
+  .btn-treino-abrir{ width:100%; margin-top:10px; font:inherit; font-weight:700; font-size:13px; padding:11px; border-radius:var(--radius-sm); cursor:pointer; background:transparent; color:var(--text); border:1.5px dashed var(--border); }
+  .btn-treino-abrir:hover{ border-color:var(--brand-red); color:var(--brand-red); }
+  .treino-box{ margin-top:12px; padding:14px; border-radius:var(--radius); background:color-mix(in srgb, var(--warn) 8%, var(--card)); border:1px solid color-mix(in srgb, var(--warn) 40%, var(--border)); }
+  .treino-topo{ display:flex; flex-direction:column; gap:4px; font-size:13px; margin-bottom:10px; }
+  .treino-topo span{ color:var(--text-gray); font-size:12.5px; }
+  .treino-opcoes{ display:flex; flex-direction:column; gap:6px; }
+  .treino-op{ display:flex; align-items:center; gap:9px; padding:8px 10px; border-radius:var(--radius-sm); background:var(--card); border:1px solid var(--border); font-size:12.5px; cursor:pointer; }
+  .treino-op input{ accent-color:var(--brand-red); width:16px; height:16px; }
+  .treino-op span{ flex:1; }
+  .treino-op em{ font-style:normal; font-size:11px; font-weight:800; }
+  .treino-op.acerto{ border-color:var(--ok); background:var(--ok-bg); } .treino-op.acerto em{ color:var(--ok); }
+  .treino-op.omitido{ border-color:var(--warn); background:var(--warn-bg); } .treino-op.omitido em{ color:var(--warn); }
+  .treino-op.falso{ border-color:var(--danger); background:var(--danger-bg); } .treino-op.falso em{ color:var(--danger); }
+  .treino-res{ margin-top:10px; font-size:13px; }
+  .treino-acoes{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .btn-treino{ font:inherit; font-weight:700; font-size:12.5px; padding:9px 14px; border-radius:var(--radius-sm); cursor:pointer; border:none; background:linear-gradient(135deg, var(--navy-light), var(--navy)); color:#fff; }
+  .btn-treino.sec{ background:var(--card); color:var(--text); border:1px solid var(--border); }
+  #rel-print-area{ display:none; }
+  @media print{
+    html, body{ background:#fff !important; }
+    body.imprimindo-relatorio > *:not(#rel-print-area){ display:none !important; }
+    body.imprimindo-relatorio #rel-print-area{ display:block !important; }
+    @page{ margin:14mm; }
+  }
+  .rel-folha{ font-family:'Inter',Arial,sans-serif; color:#111; font-size:10.5pt; line-height:1.45; }
+  .rel-cab{ display:flex; justify-content:space-between; font-size:9pt; color:#555; border-bottom:2px solid #e4172c; padding-bottom:6px; margin-bottom:10px; }
+  .rel-cab b span{ color:#e4172c; }
+  .rel-folha h1{ font-size:15pt; margin:0 0 10px; }
+  .rel-status{ display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:6px; font-weight:700; margin-bottom:12px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .rel-luz{ width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+  .rel-verde{ background:#e6f5ee; color:#1f7a50; } .rel-verde .rel-luz{ background:#2e9b6f; }
+  .rel-amarelo{ background:#fff4d6; color:#8a5a00; } .rel-amarelo .rel-luz{ background:#f59e0b; }
+  .rel-vermelho{ background:#fde4e6; color:#a10f1f; } .rel-vermelho .rel-luz{ background:#e4172c; }
+  .rel-dados{ width:100%; border-collapse:collapse; margin-bottom:12px; font-size:9.5pt; }
+  .rel-dados th{ text-align:left; width:32%; color:#555; font-weight:600; padding:3px 8px 3px 0; border-bottom:1px solid #eee; vertical-align:top; }
+  .rel-dados td{ padding:3px 0; border-bottom:1px solid #eee; }
+  .rel-folha h3{ font-size:11pt; margin:12px 0 4px; }
+  .rel-folha h3.g-f{ color:#a10f1f; } .rel-folha h3.g-w{ color:#8a5a00; } .rel-folha h3.g-p{ color:#1f7a50; }
+  .rel-folha ul{ margin:0; padding-left:18px; font-size:9.5pt; }
+  .rel-legal{ margin-top:14px; font-size:8.5pt; color:#555; border-top:1px solid #ddd; padding-top:8px; }
+  .rel-assin{ display:flex; justify-content:space-between; gap:20px; margin-top:28px; font-size:9pt; color:#333; }
+  .rel-rodape{ margin-top:16px; font-size:8pt; color:#777; }
 </style>
 </head>
 <body>
@@ -634,6 +699,8 @@
             <button class="btn-validar" id="validarGenerico" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarGenerico" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
           </div>
+          <button type="button" class="btn-treino-abrir" onclick="iniciarTreino('generico')">🎯 Treinar: receita com erros para encontrar</button>
+          <div class="treino-box" id="treino-generico" hidden></div>
           <div class="alerta-divergencia" id="alertaGenerico"></div>
         </div>
         <div class="validation-panel">
@@ -903,6 +970,8 @@
             <button class="btn-validar" id="validarControle" style="flex:1;width:auto;">✔ Validar receita</button>
             <button class="btn-validar" id="reiniciarControle" style="background:#64748b;flex:0 0 140px;width:auto;padding:13px 10px;">↺ Reiniciar</button>
           </div>
+          <button type="button" class="btn-treino-abrir" onclick="iniciarTreino('controle')">🎯 Treinar: receita com erros para encontrar</button>
+          <div class="treino-box" id="treino-controle" hidden></div>
           <div class="alerta-divergencia" id="alertaControle"></div>
         </div>
         <div class="validation-panel">
@@ -971,7 +1040,7 @@ function fakeMS(){ return `1.${randDigits(4)}.${randDigits(4)}.${randDigits(3)}-
 function fakeLote(){ const letras='ABCDEFGHJKLMNPQRSTVXYZ'; let s='L'; for(let i=0;i<2;i++) s+=letras[Math.floor(Math.random()*letras.length)]; s+=randDigits(4); return s; }
 function fakeBirthDate(minAge,maxAge){ const hoje=new Date(); const idade=minAge+Math.floor(Math.random()*(maxAge-minAge)); return new Date(hoje.getFullYear()-idade, Math.floor(Math.random()*12), 1+Math.floor(Math.random()*28)); }
 function formatDateBR(d){ return d.toLocaleDateString('pt-BR'); }
-function formatDateISO(d){ return d.toISOString().split('T')[0]; }
+function formatDateISO(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); } // data local (toISOString usava UTC e virava o dia após 21h no horário de Brasília)
 function diasDesde(dataStr){ if(!dataStr) return null; const d=new Date(dataStr+'T00:00:00'); const hoje=new Date(); hoje.setHours(0,0,0,0); return Math.round((hoje-d)/(1000*60*60*24)); }
 function setVal(id,val){ const el=document.getElementById(id); if(el) el.value = val; }
 function getVal(id){ const el=document.getElementById(id); return el ? el.value.trim() : ''; }
@@ -1501,6 +1570,7 @@ function renderChecklist(listId, checks){
     li.innerHTML = `<span class="icon">${icon}</span><span>${c.label}</span>`;
     list.appendChild(li);
   });
+  ULTIMA_CONF[listId] = { checks };
 }
 function renderStatus(boxId, allFilled, dataInvalida, falhaCritica){
   const box = document.getElementById(boxId);
@@ -1509,6 +1579,9 @@ function renderStatus(boxId, allFilled, dataInvalida, falhaCritica){
   else if(dataInvalida){ box.classList.add('danger'); box.innerHTML = '✖ Receita fora dos critérios de validade — não dispensar sem confirmação'; }
   else if(falhaCritica){ box.classList.add('danger'); box.innerHTML = `✖ ${falhaCritica}`; }
   else { box.classList.add('ok'); box.innerHTML = '✔ Receita formalmente apta à dispensação'; }
+  const lid = Object.keys(REL_CFG).find(k => REL_CFG[k].status === boxId);
+  if(lid && ULTIMA_CONF[lid]) renderSemaforo(lid, ULTIMA_CONF[lid].checks);
+  if(lid) atualizarLinhaTempo(lid);
 }
 
 function atualizarAlertaDivergencia(alertaId, checks){
@@ -2276,6 +2349,206 @@ document.getElementById('reiniciarControle').addEventListener('click', reiniciar
 /* =========================================================
    Alternância entre painéis (seletor de tipo)
    ========================================================= */
+/* =========================================================
+   10/11/2026 — Semáforo + relatório em PDF, linha do tempo da
+   validade e modo treino (receita com erros para encontrar).
+   ========================================================= */
+const VALIDADE_DIAS = 30;
+const REL_CFG = {
+  checklistGenerico: { status:'statusBoxGenerico', painel:'painelGenerico', data:'dataEmissao', campos:[
+    ['Paciente','nomePaciente'],['Documento do paciente','docPaciente'],['Prescritor','nomeEmitente'],['Inscrição','inscricaoConselho'],
+    ['Medicamento prescrito',['medicamento','concentracao','formaFarmaceutica']],['Quantidade prescrita','quantidade'],['Posologia','posologia'],
+    ['Data de emissão','dataEmissao'],['Comprador','nomeComprador'],['Medicamento vendido','versoMedicamento'],['Lote','lote'],['Data da venda','dataVenda']] },
+  checklistTalidomida: { status:'statusBoxTalidomida', painel:'painelTalidomida', data:'dataMedicoTal', campos:[
+    ['Paciente','nomePacienteTal'],['Documento do paciente','docPacienteTal'],['Prescritor','nomeMedicoTal'],['CRM','crmTal'],['CID','cidTal'],
+    ['Quantidade prescrita','quantidadeComprimidosTal'],['Posologia','posologiaTal'],['Data da prescrição','dataMedicoTal'],
+    ['Quantidade dispensada','quantidadeDispensadaTal'],['Lote','loteTal'],['Farmacêutico','farmaceuticoTal'],['Data da dispensação','dataDispensacaoTal']] },
+  checklistControle: { status:'statusBoxControle', painel:'painelControle', data:'dataCE', campos:[
+    ['Paciente','nomePacienteCE'],['Documento do paciente','docPacienteCE'],['Prescritor','nomeEmitenteCE'],['Inscrição','inscricaoCE'],
+    ['Medicamento prescrito',['medicamentoCE','concentracaoCE','formaFarmaceuticaCE']],['Quantidade prescrita','quantidadeCE'],['Posologia','posologiaCE'],
+    ['Data da prescrição','dataCE'],['Comprador','nomeCompradorCE'],['Medicamento dispensado','medicamento1CE'],['Lote','lote1CE'],['Data da venda','dataVendaCE']] }
+};
+const ULTIMA_CONF = {};
+function _dataBR(iso){ if(!iso) return ''; const [y,m,d] = iso.split('-'); return d + '/' + m + '/' + y; }
+
+// ---------- Semáforo ----------
+function renderSemaforo(listId, checks){
+  const cfg = REL_CFG[listId]; if(!cfg) return;
+  const list = document.getElementById(listId);
+  let sem = document.getElementById(listId + '-sem');
+  if(!sem){ sem = document.createElement('div'); sem.id = listId + '-sem'; sem.className = 'semaforo'; list.parentNode.insertBefore(sem, list); }
+  const nF = checks.filter(c => c.level === 'fail').length, nW = checks.filter(c => c.level === 'warnitem').length, nP = checks.filter(c => c.level === 'pass').length;
+  const box = document.getElementById(cfg.status);
+  const cor = (nF > 0 || box.classList.contains('danger')) ? 'vermelho' : box.classList.contains('warn') ? 'amarelo' : 'verde';
+  sem.innerHTML = '<div class="sem-luzes" aria-hidden="true"><span class="luz vermelho'+(cor==='vermelho'?' on':'')+'"></span><span class="luz amarelo'+(cor==='amarelo'?' on':'')+'"></span><span class="luz verde'+(cor==='verde'?' on':'')+'"></span></div>' +
+    '<div class="sem-contagem"><span class="c-f">✖ '+nF+' não conforme'+(nF===1?'':'s')+'</span><span class="c-w">⚠ '+nW+' atenç'+(nW===1?'ão':'ões')+'</span><span class="c-p">✔ '+nP+' conforme'+(nP===1?'':'s')+'</span></div>' +
+    '<button type="button" class="btn-relatorio" onclick="imprimirRelatorio(\''+listId+'\')">📄 Relatório (PDF)</button>';
+}
+
+// ---------- Relatório para imprimir / salvar em PDF ----------
+function imprimirRelatorio(listId){
+  const cfg = REL_CFG[listId], conf = ULTIMA_CONF[listId]; if(!cfg || !conf) return;
+  const box = document.getElementById(cfg.status);
+  const painel = document.getElementById(cfg.painel);
+  const legal = painel ? (painel.querySelector('.legal-refs') || {}).textContent || '' : '';
+  const valor = idOuLista => (Array.isArray(idOuLista) ? idOuLista.map(getVal).filter(Boolean).join(' · ') : (/^data/i.test(idOuLista) ? _dataBR(getVal(idOuLista)) : getVal(idOuLista))) || '—';
+  const grupo = (lvl, titulo, cls) => { const it = conf.checks.filter(c => c.level === lvl); return it.length ? '<h3 class="'+cls+'">'+titulo+' ('+it.length+')</h3><ul class="'+cls+'">'+it.map(c => '<li>'+c.label+'</li>').join('')+'</ul>' : ''; };
+  const cor = (conf.checks.some(c => c.level === 'fail') || box.classList.contains('danger')) ? 'vermelho' : box.classList.contains('warn') ? 'amarelo' : 'verde';
+  const agora = new Date();
+  const html = '<div class="rel-folha">' +
+    '<div class="rel-cab"><div><b>Farma<span>Prática</span></b> · Conferência de Receitas</div><div>'+agora.toLocaleDateString('pt-BR')+' '+agora.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</div></div>' +
+    '<h1>Relatório de conferência — '+document.getElementById('tituloPagina').textContent+'</h1>' +
+    '<div class="rel-status rel-'+cor+'"><span class="rel-luz"></span>'+box.textContent.trim()+'</div>' +
+    '<table class="rel-dados">'+cfg.campos.map(([rot, id]) => '<tr><th>'+rot+'</th><td>'+valor(id)+'</td></tr>').join('')+'</table>' +
+    grupo('fail', '✖ Não conformidades', 'g-f') + grupo('warnitem', '⚠ Pontos de atenção', 'g-w') + grupo('pass', '✔ Itens conformes', 'g-p') +
+    '<p class="rel-legal">'+legal+'</p>' +
+    '<div class="rel-assin"><div>______________________________________<br>Farmacêutico(a) responsável · CRF</div><div>Decisão: ☐ Dispensado ☐ Não dispensado ☐ Contato com prescritor</div></div>' +
+    '<p class="rel-rodape">Relatório gerado pela ferramenta de apoio Conferência de Receitas (FarmaPrática). Não substitui a verificação da autenticidade do impresso nem o registro no SNGPC.</p>' +
+  '</div>';
+  let area = document.getElementById('rel-print-area');
+  if(!area){ area = document.createElement('div'); area.id = 'rel-print-area'; document.body.appendChild(area); }
+  area.innerHTML = html;
+  document.body.classList.add('imprimindo-relatorio');
+  const limpar = () => { document.body.classList.remove('imprimindo-relatorio'); window.removeEventListener('afterprint', limpar); };
+  window.addEventListener('afterprint', limpar);
+  window.print();
+  setTimeout(() => { if(!matchMedia('print').matches) limpar(); }, 1500);
+}
+
+// ---------- Linha do tempo da validade ----------
+function atualizarLinhaTempo(listId){
+  const cfg = REL_CFG[listId]; if(!cfg) return;
+  const box = document.getElementById(cfg.status); if(!box) return;
+  let tl = document.getElementById('tl-' + listId);
+  if(!tl){ tl = document.createElement('div'); tl.id = 'tl-' + listId; tl.className = 'validade-tl'; box.parentNode.insertBefore(tl, box); }
+  const iso = getVal(cfg.data);
+  if(!iso){ tl.innerHTML = '<div class="tl-topo"><b>Validade da receita</b><span class="tl-msg">Informe a data de emissão para ver o prazo.</span></div>'; return; }
+  const emissao = new Date(iso + 'T00:00:00');
+  const venc = new Date(emissao); venc.setDate(venc.getDate() + VALIDADE_DIAS);
+  const decorridos = diasDesde(iso);
+  const total = VALIDADE_DIAS + 10;
+  const pos = d => Math.max(0, Math.min(100, d / total * 100));
+  let nivel, msg;
+  if(decorridos < 0){ nivel = 'futura'; msg = 'Data de emissão no futuro — confira o documento'; }
+  else if(decorridos > VALIDADE_DIAS){ nivel = 'vencida'; msg = 'Vencida há ' + (decorridos - VALIDADE_DIAS) + ' dia' + (decorridos - VALIDADE_DIAS === 1 ? '' : 's'); }
+  else { const rest = VALIDADE_DIAS - decorridos; nivel = rest <= 5 ? 'perto' : 'ok'; msg = rest === 0 ? 'Último dia de validade' : 'Faltam ' + rest + ' dia' + (rest === 1 ? '' : 's'); }
+  tl.innerHTML = '<div class="tl-topo"><b>Validade da receita ('+VALIDADE_DIAS+' dias)</b><span class="tl-msg tl-'+nivel+'">'+msg+'</span></div>' +
+    '<div class="tl-barra"><span class="tl-valida" style="width:'+pos(VALIDADE_DIAS)+'%"></span>' +
+      (decorridos >= 0 ? '<span class="tl-hoje tl-'+nivel+'" style="left:'+pos(decorridos)+'%"><i>Hoje</i></span>' : '') + '</div>' +
+    '<div class="tl-datas"><span style="left:0">Emissão<br><b>'+emissao.toLocaleDateString('pt-BR')+'</b></span><span style="left:'+pos(VALIDADE_DIAS)+'%">Vence<br><b>'+venc.toLocaleDateString('pt-BR')+'</b></span></div>';
+}
+function atualizarTodasLinhasTempo(){ Object.keys(REL_CFG).forEach(atualizarLinhaTempo); }
+
+// ---------- Modo treino ----------
+const TREINO_MEDS = {
+  A: { nome:'Sulfato de morfina', conc:'10 mg', forma:'Comprimido', princ:'SULFATO DE MORFINA', un:'comprimidos' },
+  B: { nome:'Clonazepam', conc:'2 mg', forma:'Comprimido', princ:'CLONAZEPAM', un:'comprimidos' },
+  RETINOIDES: { nome:'Isotretinoína', conc:'20 mg', forma:'Cápsula mole', princ:'ISOTRETINOÍNA', un:'capsulas' },
+  CONTROLE: { nome:'Sertralina', conc:'50 mg', forma:'Comprimido revestido', princ:'CLORIDRATO DE SERTRALINA', un:'comprimidos' }
+};
+const TREINO_ERROS = {
+  generico: [
+    { id:'vencida', rot:'Receita fora do prazo de validade', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() - (35 + Math.floor(Math.random()*20))); setVal('dataEmissao', formatDateISO(d)); } },
+    { id:'futura', rot:'Data de emissão no futuro', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() + 3); setVal('dataEmissao', formatDateISO(d)); } },
+    { id:'cpf', rot:'Falta o documento (CPF) do paciente', ap(){ setVal('docPaciente', ''); } },
+    { id:'endereco', rot:'Falta o endereço do comprador', ap(){ setVal('enderecoComprador', ''); } },
+    { id:'lote', rot:'Falta o lote no carimbo de venda', ap(){ setVal('lote', ''); } },
+    { id:'excesso', rot:'Quantidade vendida maior que a prescrita', ap(){ setVal('qtdVendida', '2'); } },
+    { id:'intercambio', rot:'Medicamento vendido não é intercambiável com o prescrito', ap(){ const v = document.getElementById('versoMedicamento'); v.value = 'Diazepam 10 mg (genérico)'; v.dataset.principio = 'DIAZEPAM'; v.dataset.concentracao = '10 mg'; } },
+    { id:'assinatura', rot:'Falta a assinatura do farmacêutico', ap(){ setVal('assinaturaFarmaceutico', ''); } }
+  ],
+  controle: [
+    { id:'vencida', rot:'Receita fora do prazo de validade', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() - (35 + Math.floor(Math.random()*20))); setVal('dataCE', formatDateISO(d)); } },
+    { id:'futura', rot:'Data da prescrição no futuro', grupo:'data', ap(){ const d = new Date(); d.setDate(d.getDate() + 3); setVal('dataCE', formatDateISO(d)); } },
+    { id:'cpf', rot:'Falta o documento (CPF) do paciente', ap(){ setVal('docPacienteCE', ''); } },
+    { id:'endereco', rot:'Falta o endereço do comprador', ap(){ setVal('enderecoCompradorCE', ''); } },
+    { id:'lote', rot:'Falta o lote no verso', ap(){ setVal('lote1CE', ''); } },
+    { id:'excesso', rot:'Quantidade dispensada maior que a prescrita', ap(){ setVal('qtdCaixas1CE', '2'); } },
+    { id:'intercambio', rot:'Medicamento dispensado não é intercambiável com o prescrito', ap(){ const v = document.getElementById('medicamento1CE'); v.value = 'Fluoxetina 20 mg (genérico)'; v.dataset.principio = 'CLORIDRATO DE FLUOXETINA'; v.dataset.concentracao = '20 mg'; } },
+    { id:'assinatura', rot:'Falta a assinatura do farmacêutico', ap(){ setVal('assinaturaFarmaceuticoCE', ''); } }
+  ]
+};
+const TREINO = {};
+function _marcarMed(el, m){ el.dataset.principio = m.princ; el.dataset.concentracao = m.conc; el.dataset.forma = m.forma; el.dataset.unidadesPorEmbalagem = '30'; delete el.dataset.unidadeEmbalagem; }
+function preencherReceitaBase(tipo){
+  if(tipo === 'controle'){
+    const m = TREINO_MEDS.CONTROLE;
+    gerarDadosControle();
+    setVal('medicamentoCE', m.nome); setVal('concentracaoCE', m.conc); setVal('formaFarmaceuticaCE', m.forma);
+    document.getElementById('medicamentoCE').dataset.principio = m.princ;
+    document.getElementById('unidadeCE').value = m.un; setVal('quantidadeCE', '30');
+    setVal('posologiaQtdCE', '1'); document.getElementById('posologiaUnidadeCE').value = m.un; document.getElementById('posologiaFrequenciaCE').value = '1x';
+    document.getElementById('posologiaContinuaCE').checked = false; document.getElementById('posologiaDiasCE').disabled = false; setVal('posologiaDiasCE', '30'); setVal('posologiaObsCE', '');
+    montarResumoPosologiaCE();
+    const v = document.getElementById('medicamento1CE'); v.value = m.nome + ' ' + m.conc + ' (genérico)'; _marcarMed(v, m);
+    setVal('qtdCaixas1CE', '1'); setVal('dataVendaCE', formatDateISO(new Date()));
+  } else {
+    const m = TREINO_MEDS[tipoGenericoAtual] || TREINO_MEDS.B;
+    gerarDadosFixosGenerico(); gerarDadosCompradorGenerico(); gerarDadosVersoGenerico();
+    const menor = document.getElementById('menorIdade'); if(menor && menor.checked){ menor.checked = false; menor.dispatchEvent(new Event('change')); }
+    setVal('medicamento', m.nome); setVal('concentracao', m.conc); setVal('formaFarmaceutica', m.forma);
+    document.getElementById('medicamento').dataset.principio = m.princ;
+    document.getElementById('unidade').value = m.un; setVal('quantidade', '30');
+    setVal('posologiaQtd', '1'); document.getElementById('posologiaUnidade').value = m.un; document.getElementById('posologiaFrequencia').value = '12h';
+    document.getElementById('posologiaContinua').checked = false; document.getElementById('posologiaDias').disabled = false; setVal('posologiaDias', '15'); setVal('posologiaObs', '');
+    montarResumoPosologia();
+    const v = document.getElementById('versoMedicamento'); v.value = m.nome + ' ' + m.conc + ' (genérico)'; _marcarMed(v, m);
+    setVal('qtdVendida', '1'); setVal('dataVenda', formatDateISO(new Date()));
+    atualizarAssinaturaGenerico();
+  }
+}
+function iniciarTreino(tipo){
+  const listId = tipo === 'controle' ? 'checklistControle' : 'checklistGenerico';
+  preencherReceitaBase(tipo);
+  const pool = TREINO_ERROS[tipo];
+  const n = 2 + Math.floor(Math.random() * 2);
+  const escolhidos = []; const embaralhado = pool.slice().sort(() => Math.random() - .5);
+  for(const e of embaralhado){ if(escolhidos.length >= n) break; if(e.grupo && escolhidos.some(x => x.grupo === e.grupo)) continue; escolhidos.push(e); }
+  escolhidos.forEach(e => e.ap());
+  TREINO[tipo] = { erros: escolhidos.map(e => e.id), conferido: false };
+  // limpa o resultado anterior
+  const cfg = REL_CFG[listId];
+  document.getElementById(listId).innerHTML = '';
+  const sem = document.getElementById(listId + '-sem'); if(sem) sem.innerHTML = '';
+  const st = document.getElementById(cfg.status); st.className = 'val-status idle'; st.textContent = 'Modo treino: encontre os problemas antes de validar';
+  ocultarAlertaDivergencia(tipo === 'controle' ? 'alertaControle' : 'alertaGenerico');
+  atualizarLinhaTempo(listId);
+  renderTreino(tipo);
+  const painel = document.getElementById(cfg.painel); if(painel) painel.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+function renderTreino(tipo){
+  const t = TREINO[tipo]; const el = document.getElementById('treino-' + tipo); if(!el || !t) return;
+  const pool = TREINO_ERROS[tipo];
+  el.hidden = false;
+  el.innerHTML = '<div class="treino-topo"><b>🎯 Modo treino</b><span>Esta receita foi preenchida com <b>'+t.erros.length+' problemas</b>. Confira cada campo e marque o que encontrou:</span></div>' +
+    '<div class="treino-opcoes">' + pool.map(e => {
+      let cls = '';
+      if(t.conferido){ const real = t.erros.includes(e.id), marc = (t.marcados || []).includes(e.id); cls = real && marc ? 'acerto' : real ? 'omitido' : marc ? 'falso' : ''; }
+      return '<label class="treino-op '+cls+'"><input type="checkbox" value="'+e.id+'" '+((t.marcados||[]).includes(e.id)?'checked':'')+(t.conferido?' disabled':'')+'><span>'+e.rot+'</span>'+
+        (t.conferido && cls ? '<em>'+({acerto:'✔ encontrado', omitido:'não marcado', falso:'não havia'})[cls]+'</em>' : '')+'</label>';
+    }).join('') + '</div>' +
+    (t.conferido
+      ? '<div class="treino-res">Você encontrou <b>'+t.acertos+' de '+t.erros.length+'</b>'+(t.falsos ? ' · '+t.falsos+' marcação(ões) indevida(s)' : '')+'. A conferência completa está ao lado.</div><div class="treino-acoes"><button type="button" class="btn-treino" onclick="iniciarTreino(\''+tipo+'\')">↻ Nova receita de treino</button><button type="button" class="btn-treino sec" onclick="sairTreino(\''+tipo+'\')">Sair do treino</button></div>'
+      : '<div class="treino-acoes"><button type="button" class="btn-treino" onclick="conferirTreino(\''+tipo+'\')">Conferir respostas</button><button type="button" class="btn-treino sec" onclick="sairTreino(\''+tipo+'\')">Cancelar</button></div>');
+}
+function conferirTreino(tipo){
+  const t = TREINO[tipo]; const el = document.getElementById('treino-' + tipo);
+  t.marcados = [...el.querySelectorAll('input:checked')].map(i => i.value);
+  t.acertos = t.marcados.filter(id => t.erros.includes(id)).length;
+  t.falsos = t.marcados.filter(id => !t.erros.includes(id)).length;
+  t.conferido = true;
+  renderTreino(tipo);
+  document.getElementById(tipo === 'controle' ? 'validarControle' : 'validarGenerico').click();
+}
+function sairTreino(tipo){ const el = document.getElementById('treino-' + tipo); if(el){ el.hidden = true; el.innerHTML = ''; } delete TREINO[tipo]; }
+
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(atualizarTodasLinhasTempo, 0);
+  Object.values(REL_CFG).forEach(c => { const el = document.getElementById(c.data); if(el){ el.addEventListener('input', atualizarTodasLinhasTempo); el.addEventListener('change', atualizarTodasLinhasTempo); } });
+  document.querySelectorAll('.type-btn').forEach(b => b.addEventListener('click', () => { setTimeout(atualizarTodasLinhasTempo, 0); sairTreino('generico'); }));
+  ['reiniciarGenerico','reiniciarTalidomida','reiniciarControle'].forEach(id => { const b = document.getElementById(id); if(b) b.addEventListener('click', () => { setTimeout(atualizarTodasLinhasTempo, 0); Object.keys(REL_CFG).forEach(l => { const s = document.getElementById(l + '-sem'); if(s) s.innerHTML = ''; }); }); });
+});
+
 const PAINEIS = { A:'painelGenerico', B:'painelGenerico', RETINOIDES:'painelGenerico', TALIDOMIDA:'painelTalidomida', CONTROLE:'painelControle' };
 
 document.querySelectorAll('.type-btn').forEach(btn=>{

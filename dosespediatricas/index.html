@@ -1525,6 +1525,113 @@
     body.mobile-search-open .mobile-bottom-nav{ display:none; }
   }
 
+  /* ---------- 10/11/2026: memória de cálculo, visual da dose, teto, etiqueta ---------- */
+  .form-acoes{ margin-left:auto; display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+  .form-acoes .btn-copiar-dose{ margin-left:0; }
+  .memoria-calculo{ margin: 2px 0 12px; padding: 10px 12px; border-radius: 12px; background: var(--hover-tint); border: 1px dashed var(--border); }
+  .memoria-titulo{ display:flex; align-items:center; gap:6px; font-size:.64rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color: var(--text-dim); margin-bottom:6px; }
+  .memoria-titulo .icon{ width:11px; height:11px; color:#3fae6d; }
+  .eq-linha{ display:flex; flex-wrap:wrap; align-items:center; gap:5px; font-size:.78rem; line-height:1.4; padding:3px 0; }
+  .eq-linha + .eq-linha{ border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent); }
+  .eq-termo{ padding: 2px 7px; border-radius: 6px; background: var(--card); border: 1px solid var(--border); font-weight:600; font-variant-numeric: tabular-nums; }
+  .eq-resultado{ background: var(--pill-bg); color: var(--pill-text); border-color: color-mix(in srgb, var(--pill-text) 35%, transparent); font-weight:800; }
+  .eq-op{ font-weight:800; color: var(--red-bright); font-size:.9rem; }
+  .eq-nota{ font-size:.7rem; color: var(--amber); font-style: italic; }
+  .visual-dose{ margin: 0 0 12px; padding: 10px 12px 8px; border-radius: 12px; background: color-mix(in srgb, var(--card) 70%, var(--bg)); border: 1px solid var(--border); text-align:center; }
+  .seringa-svg{ width:100%; max-width: 340px; height:auto; display:block; margin: 0 auto; }
+  .copo-svg{ width: 150px; height:auto; display:block; margin: 0 auto; }
+  .comp-svg{ height: 46px; width:auto; max-width:100%; display:block; margin: 4px auto; }
+  .sr-tubo{ fill: none; stroke: var(--text-dim); stroke-width: 1.6; }
+  .sr-corpo{ fill: var(--border); }
+  .sr-haste{ stroke: var(--border); stroke-width: 6; stroke-linecap: round; }
+  .sr-aba{ stroke: var(--text-dim); stroke-width: 2.4; stroke-linecap: round; }
+  .sr-embolo-borracha{ fill: var(--text-gray); }
+  .sr-liquido{ fill: #4ab496; opacity: .85; }
+  .tipo-injetavel .sr-liquido{ fill: #ef6b7b; }
+  .sr-faixa{ fill: #4ab496; opacity: .35; }
+  .tipo-injetavel .sr-faixa{ fill: #ef6b7b; }
+  .sr-tick{ stroke: var(--text-gray); stroke-width: 1; }
+  .sr-num{ fill: var(--text-dim); font-size: 8.5px; text-anchor: middle; font-family: inherit; font-weight: 600; }
+  .sr-marca{ stroke: var(--red-bright); stroke-width: 1.6; stroke-dasharray: 4 3; }
+  .cp-fundo{ fill: none; stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .cp-cheio{ fill: #b482dc; }
+  .cp-cheio2{ fill: #d2b4ee; }
+  .cp-sulco{ stroke: rgba(255,255,255,.55); stroke-width: 1.5; }
+  .cp-corte{ stroke: var(--red-bright); stroke-width: 1.5; stroke-dasharray: 3 2; }
+  .cp-opcional .cp-cheio{ opacity: .45; }
+  .visual-legenda{ font-size: .72rem; color: var(--text-dim); margin-top: 4px; line-height:1.4; }
+  .visual-legenda b{ color: var(--text); }
+  .teto-box{ margin: 0 0 14px; padding: 12px 14px; border-radius: 14px; background: var(--card); border: 1px solid var(--border); --teto: #3fae6d; }
+  .teto-perto{ --teto: var(--amber); }
+  .teto-no-teto{ --teto: var(--red-bright); }
+  .teto-topo{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+  .teto-titulo{ font-size:.68rem; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color: var(--text-dim); }
+  .teto-status{ font-size:.72rem; font-weight:700; color: var(--teto); }
+  .teto-barra{ position:relative; height: 10px; border-radius: 6px; background: var(--hover-tint); border: 1px solid var(--border); overflow:hidden; }
+  .teto-cheio, .teto-faixa{ position:absolute; top:0; bottom:0; left:0; background: var(--teto); }
+  .teto-faixa{ opacity: .4; }
+  .teto-legenda{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:7px; font-size:.74rem; color: var(--text-dim); }
+  .teto-legenda b{ color: var(--text); }
+  /* Etiqueta */
+  .etiqueta-modal{ max-width: 860px !important; max-height: 92vh !important; }
+  .etiqueta-corpo{ display:grid; grid-template-columns: minmax(0,1fr) calc(90mm + 4px); gap: 18px; padding: 16px 20px 20px; }
+  .etq-form{ display:flex; flex-direction:column; gap:10px; }
+  .etq-form label{ display:flex; flex-direction:column; gap:4px; font-size:.7rem; font-weight:700; color: var(--text-dim); text-transform:uppercase; letter-spacing:.4px; }
+  .etq-form input, .etq-form textarea{ font: inherit; font-size:.85rem; text-transform:none; letter-spacing:0; font-weight:500; color: var(--text); background: var(--panel); border:1px solid var(--border); border-radius: 9px; padding: 8px 10px; }
+  .etq-form textarea{ resize: vertical; min-height: 54px; }
+  .etq-form .etq-par{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .etq-aviso{ font-size:.74rem; color: var(--amber); background: color-mix(in srgb, var(--amber) 12%, transparent); border:1px solid color-mix(in srgb, var(--amber) 40%, transparent); border-radius: 8px; padding: 7px 9px; }
+  .etq-lado{ display:flex; flex-direction:column; gap:12px; }
+  .etq-lado-titulo{ font-size:.7rem; font-weight:800; color: var(--text-dim); text-transform:uppercase; letter-spacing:.5px; }
+  .etiqueta-papel, #etiqueta-preview{ width: 90mm; max-width:100%; min-height: 50mm; box-sizing:border-box; background:#fff; color:#111; border: 1.5px dashed #999; border-radius: 6px; padding: 3.5mm 4mm; font-family: 'Inter', Arial, sans-serif; font-size: 9.5pt; line-height: 1.3; }
+  #etiqueta-preview{ box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .etq-cab{ display:flex; justify-content:space-between; font-size: 7.5pt; color:#555; border-bottom: 1px solid #ddd; padding-bottom: 1.5mm; margin-bottom: 1.5mm; }
+  .etq-marca b{ color:#d4152a; }
+  .etq-paciente{ font-weight: 700; font-size: 9.5pt; margin-bottom: 1mm; }
+  .etq-vazio{ font-weight: 400; color:#666; }
+  .etq-med{ font-weight: 800; font-size: 12pt; line-height:1.15; }
+  .etq-apres{ font-size: 8pt; color:#444; margin-bottom: 1.5mm; }
+  .etq-dose{ font-size: 10.5pt; background: #fff4d6; border-radius: 3px; padding: 1mm 1.5mm; margin-bottom: 1.5mm; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .etq-linha{ display:flex; gap: 2mm; font-size: 9pt; }
+  .etq-linha span{ color:#555; min-width: 15mm; }
+  .etq-obs{ font-size: 8.5pt; margin-top: 1mm; font-style: italic; }
+  .etq-prof{ font-size: 7.5pt; color:#555; border-top: 1px solid #ddd; margin-top: 1.5mm; padding-top: 1mm; }
+  .etq-acoes{ display:flex; gap:8px; justify-content:flex-end; }
+  .etq-form select{ font: inherit; font-size:.85rem; text-transform:none; letter-spacing:0; font-weight:500; color: var(--text); background: var(--panel); border:1px solid var(--border); border-radius: 9px; padding: 8px 10px; }
+  .etq-drog{ font-weight:800; color:#111; font-size: 8.5pt; text-transform: uppercase; letter-spacing:.3px; }
+  .etq-dica-cupom{ font-size:.72rem; line-height:1.4; color: var(--text-dim); background: var(--hover-tint); border-radius:8px; padding:7px 9px; max-width: 90mm; }
+  /* Cupom térmico: só preto, sem fundo (impressoras térmicas não imprimem cor), largura útil da bobina */
+  #etiqueta-preview.fmt-cupom80, .etiqueta-papel.fmt-cupom80{ width: 72mm; min-height: 0; border: 1px dashed #bbb; border-radius: 0; padding: 3mm 2mm 5mm; font-size: 10.5pt; }
+  #etiqueta-preview.fmt-cupom58, .etiqueta-papel.fmt-cupom58{ width: 48mm; min-height: 0; border: 1px dashed #bbb; border-radius: 0; padding: 2.5mm 1mm 4mm; font-size: 9pt; }
+  .fmt-cupom80 .etq-cab, .fmt-cupom58 .etq-cab{ flex-direction: column; align-items: center; text-align: center; gap: 1mm; border-bottom: 1px dashed #000; color:#000; }
+  .fmt-cupom80 .etq-drog, .fmt-cupom58 .etq-drog{ font-size: 1.05em; }
+  .fmt-cupom80 .etq-dose, .fmt-cupom58 .etq-dose{ background: none; border: 1.5px solid #000; border-radius: 0; font-size: 1.1em; }
+  .fmt-cupom80 .etq-med, .fmt-cupom58 .etq-med{ font-size: 1.25em; }
+  .fmt-cupom58 .etq-linha{ flex-direction: column; gap: 0; }
+  .fmt-cupom80 *, .fmt-cupom58 *{ color:#000 !important; }
+  .fmt-cupom80 .etq-prof, .fmt-cupom58 .etq-prof{ border-top: 1px dashed #000; text-align:center; }
+  .etq-btn{ font: inherit; font-weight:700; font-size:.82rem; border-radius: 10px; padding: 9px 14px; cursor:pointer; border:1px solid var(--border); background: var(--panel); color: var(--text); }
+  .etq-btn.primario{ background: var(--red); border-color: var(--red); color:#fff; }
+  #etiqueta-print-area{ display:none; }
+  @media (max-width: 680px){
+    .etiqueta-corpo{ grid-template-columns: 1fr; }
+    .etq-lado{ order: -1; align-items:center; }
+    .eq-linha{ font-size: .74rem; }
+  }
+  @media print{
+    .memoria-calculo, .visual-dose, .teto-box{ break-inside: avoid; background:#fff !important; border-color:#bbb !important; color:#000 !important; }
+    .eq-termo{ background:#f4f4f4 !important; border-color:#ccc !important; color:#000 !important; }
+    .eq-resultado{ background:#f2b84b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .teto-cheio, .teto-faixa, .sr-liquido, .sr-faixa, .cp-cheio{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html{ background:#fff !important; }
+    .mobile-bottom-nav{ display:none !important; }
+    .etiqueta-overlay-x{ display:none !important; }
+    body.imprimindo-etiqueta > *:not(#etiqueta-print-area){ display:none !important; }
+    body.imprimindo-etiqueta #etiqueta-print-area{ display:block !important; }
+    body.imprimindo-etiqueta .etiqueta-papel{ border: 1px dashed #999; }
+    body.imprimindo-etiqueta .etiqueta-papel.fmt-cupom80, body.imprimindo-etiqueta .etiqueta-papel.fmt-cupom58{ border: none; margin: 0 auto; }
+    @page{ margin: 8mm; }
+  }
   /* ---------- Impressão ---------- */
   .print-only{ display:none; }
   @media print{
@@ -1569,6 +1676,52 @@
     </div>
   </div>
 </div>
+
+<div class="comerciais-overlay etiqueta-overlay-x" id="etiqueta-overlay" role="dialog" aria-modal="true" aria-labelledby="etiqueta-titulo">
+  <div class="comerciais-modal etiqueta-modal">
+    <div class="comerciais-header">
+      <h3 id="etiqueta-titulo">Etiqueta de posologia</h3>
+      <button type="button" class="comerciais-fechar" id="etiqueta-fechar" aria-label="Fechar">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      </button>
+    </div>
+    <div class="etiqueta-corpo">
+      <div class="etq-form">
+        <div class="etq-par">
+          <label>Drogaria / farmácia<input id="etq-drogaria" type="text" placeholder="Nome do estabelecimento" autocomplete="off"></label>
+          <label>Formato de impressão<select id="etq-formato">
+            <option value="etiqueta">Etiqueta 90 × 50 mm</option>
+            <option value="cupom80">Cupom térmico 80 mm</option>
+            <option value="cupom58">Cupom térmico 58 mm</option>
+          </select></label>
+        </div>
+        <label>Paciente<input id="etq-paciente" type="text" placeholder="Nome (opcional)" autocomplete="off"></label>
+        <label>Dose a administrar<input id="etq-dose" type="text"></label>
+        <div class="etq-aviso" id="etq-aviso-faixa" hidden>A dose está em faixa. Defina um valor único antes de imprimir.</div>
+        <label>Via e frequência<input id="etq-via" type="text"></label>
+        <div class="etq-par">
+          <label>1ª dose às<input id="etq-inicio" type="time"></label>
+          <label>Duração (dias)<input id="etq-dias" type="number" min="1" step="1" placeholder="—"></label>
+        </div>
+        <label>Observação<textarea id="etq-obs" placeholder="Ex.: agitar antes de usar; manter na geladeira após aberto"></textarea></label>
+        <div class="etq-par">
+          <label>Farmacêutico(a)<input id="etq-prof" type="text" autocomplete="off"></label>
+          <label>CRF<input id="etq-crf" type="text" placeholder="CRF-UF 0000" autocomplete="off"></label>
+        </div>
+      </div>
+      <div class="etq-lado">
+        <span class="etq-lado-titulo" id="etq-prev-titulo">Prévia (90 × 50 mm)</span>
+        <div class="etq-dica-cupom" id="etq-dica-cupom" hidden>Na janela de impressão, escolha a impressora térmica, margens <b>Nenhuma</b> e desmarque <b>Cabeçalhos e rodapés</b>.</div>
+        <div id="etiqueta-preview"></div>
+        <div class="etq-acoes">
+          <button type="button" class="etq-btn" onclick="fecharEtiqueta()">Cancelar</button>
+          <button type="button" class="etq-btn primario" id="etq-imprimir">Imprimir etiqueta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="etiqueta-print-area"></div>
 
 <div class="comerciais-overlay" id="comerciais-overlay" role="dialog" aria-modal="true" aria-labelledby="comerciais-titulo">
   <div class="comerciais-modal">
@@ -2157,6 +2310,7 @@ function renderConteudo(){
   document.getElementById('resultado-grid').innerHTML = `
     <div id="observacoes-container" aria-live="polite"></div>
     <div class="resultado-principal">
+      <div id="teto-container" aria-live="polite"></div>
       <div class="formulacoes-grid" id="formulacoes" aria-live="polite"></div>
       <div class="fonte-tag"><span class="icon">${ICONS.livro}</span> Fonte: <b>${f.fonte}</b></div>
       <div class="print-only">
@@ -2716,17 +2870,19 @@ function calcularEExibir(){
       <div class="form-head">
         <div class="form-icon tipo-${form.tipo}"><span class="icon">${icone}</span></div>
         <h3>${form.rotulo}</h3>
-        ${temValorCalculado ? `<button class="btn-copiar-dose no-print" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button>` : ''}
+        ${temValorCalculado ? `<div class="form-acoes no-print"><button class="btn-copiar-dose" type="button"><span class="icon">${ICONS.copiar}</span>Copiar</button><button class="btn-copiar-dose btn-etiqueta" type="button" title="Gerar etiqueta de posologia para o frasco/caixa"><span class="icon">${ICONS.imprimir}</span>Etiqueta</button></div>` : ''}
       </div>
       ${textoAlerta
         ? `<div class="linha-principal alerta-idade"><span class="icon">${ICONS.observacao}</span><span>${textoAlerta}</span></div>`
-        : `<div class="linha-principal">${rotuloFaixaBadge ? `<span class="faixa-rotulo-badge">${rotuloFaixaBadge}</span>` : ''}${prefixoInstrucao}<span class="valor-pill">${valorTexto}</span>${form.viaTexto || ''}</div>`
+        : `<div class="linha-principal">${rotuloFaixaBadge ? `<span class="faixa-rotulo-badge">${rotuloFaixaBadge}</span>` : ''}${prefixoInstrucao}<span class="valor-pill">${_decBR(valorTexto)}</span>${form.viaTexto || ''}</div>`
       }
+      ${temValorCalculado ? visualDoseHTML(form, valorTexto) : ''}
+      ${temValorCalculado && formulaCompleta && formulaCompleta.length ? equacaoHTML(formulaCompleta) : ''}
       ${subItens.length ? `<ul class="sub-lista">
         ${subItens.map(i => `<li class="${i.tipo}">${i.texto}</li>`).join('')}
       </ul>` : ''}
       ${formulaCompleta && formulaCompleta.length ? `<details class="formula-details">
-        <summary class="no-print"><span class="icon">${ICONS.chevron}</span>Ver como o cálculo foi feito, passo a passo</summary>
+        <summary class="no-print"><span class="icon">${ICONS.chevron}</span>Ver a explicação de cada passo</summary>
         <div class="formula-content">
           <ol class="formula-steps">
             ${formulaCompleta.map(passo => `<li>${passo}</li>`).join('')}
@@ -2735,11 +2891,16 @@ function calcularEExibir(){
       </details>` : ''}
     `;
     if(temValorCalculado){
-      const textoCopia = `${f.nome} — ${form.rotulo}: ${textoPlano(valorTexto)}${form.viaTexto ? ' ' + textoPlano(form.viaTexto) : ''} (peso ${peso} kg${idadeAtual > 0 ? ', idade ' + idadeAtual + ' ' + idadeUnidade : ''})`;
+      const textoCopia = `${f.nome} — ${form.rotulo}: ${_decBR(textoPlano(valorTexto))}${form.viaTexto ? ' ' + textoPlano(form.viaTexto) : ''} (peso ${peso} kg${idadeAtual > 0 ? ', idade ' + idadeAtual + ' ' + idadeUnidade : ''})`;
       card.querySelector('.btn-copiar-dose').addEventListener('click', (e) => copiarTexto(textoCopia, e.currentTarget));
+      card.querySelector('.btn-etiqueta').addEventListener('click', () => abrirEtiqueta({ f, form, valorTexto }));
     }
     formDiv.appendChild(card);
   });
+
+  // ----- teto diário (indicador visual) -----
+  const tetoEl = document.getElementById('teto-container');
+  if(tetoEl) tetoEl.innerHTML = tetoDiarioHTML({ f, dose, db, da, regimeUsado, idadeBloqueada });
 
   // ----- observações -----
   const obsItens = [];
@@ -2769,8 +2930,10 @@ function calcularEExibir(){
   if(f.idadeMinimaMeses > 0){
     obsItens.push(`Não recomendado / contraindicado o uso para menores de ${formatarIdadeMinima(f.idadeMinimaMeses)}.`);
   }
-  if(db.doseMaximaDiaMg){
+  if(db.doseMaximaDiaMg && !usarRegimeAdulto){
     obsItens.push(`Dose máxima diária de ${formatarMg(db.doseMaximaDiaMg)}.`);
+  } else if(usarRegimeAdulto && da && da.doseMaximaDiaMg){
+    obsItens.push(`Dose máxima diária de adulto: ${formatarMg(da.doseMaximaDiaMg)}.`);
   }
   (f.observacoesExtras || []).forEach(o => obsItens.push(o));
 
@@ -2783,6 +2946,291 @@ function calcularEExibir(){
     `;
   }
 }
+
+// =====================================================================
+// 10/11/2026 — Memória de cálculo visível, visual da dose (seringa / copo
+// dosador / comprimidos), indicador de teto diário e etiqueta de posologia.
+// =====================================================================
+
+// ---------- Memória de cálculo (equação sempre visível) ----------
+function _decBR(s){ return String(s).replace(/(\d)\.(\d{1,2})(?!\d)/g, '$1,$2'); }
+function _termoEq(t, ultimo){
+  t = t.trim();
+  let nota = '';
+  const mNota = t.match(/\s*(\([^)]*\))\s*$/);
+  if(mNota){ nota = mNota[1]; t = t.slice(0, mNota.index).trim(); }
+  return `<span class="eq-termo${ultimo ? ' eq-resultado' : ''}">${_decBR(t)}</span>` +
+         (nota ? `<span class="eq-nota">${_decBR(nota)}</span>` : '');
+}
+function equacaoHTML(passos){
+  const linhas = [];
+  passos.forEach(p => {
+    const m = String(p).match(/<span class="f-var">([\s\S]*?)<\/span>\s*$/);
+    let v = (m ? m[1] : textoPlano(p)).replace(/^\s*→\s*/, '').trim();
+    if(!/[×÷=]/.test(v)) return;              // passo descritivo (dose fixa etc.)
+    linhas.push(v);
+  });
+  if(!linhas.length) return '';
+  const html = linhas.map((v, li) => {
+    const partes = v.split(/\s([×÷=])\s/);
+    let out = '';
+    partes.forEach((pt, i) => {
+      if(i % 2 === 1){ out += `<span class="eq-op">${pt}</span>`; }
+      else { out += _termoEq(pt, li === linhas.length - 1 && i === partes.length - 1); }
+    });
+    return `<div class="eq-linha">${out}</div>`;
+  }).join('');
+  return `<div class="memoria-calculo">
+    <div class="memoria-titulo"><span class="icon">${ICONS.check}</span>Memória de cálculo</div>
+    ${html}
+  </div>`;
+}
+
+// ---------- Visual da dose ----------
+function _numBR(n){ return _decBR(arred(n)); }
+function _parseML(txt){
+  const m = String(txt).match(/^\s*([\d.]+)(?:\s*–\s*([\d.]+))?\s*mL/);
+  if(!m) return null;
+  const a = parseFloat(m[1]), b = m[2] ? parseFloat(m[2]) : a;
+  if(!(a > 0) || !(b > 0)) return null;
+  return { min: Math.min(a,b), max: Math.max(a,b) };
+}
+function _parseComp(txt){
+  const re = /(\d+)?(½)?\s*(?:comprimido|cápsula|capsula|drágea|dragea)/gi;
+  const vals = []; let m;
+  while((m = re.exec(txt))){
+    const v = (m[1] ? parseInt(m[1], 10) : 0) + (m[2] ? 0.5 : 0);
+    if(v > 0) vals.push(v);
+  }
+  if(!vals.length) return null;
+  return { min: Math.min(...vals), max: Math.max(...vals) };
+}
+function seringaSVG(ml, injetavel){
+  const caps = [1, 3, 5, 10, 20];
+  const cap = caps.find(c => ml.max <= c);
+  if(!cap) return copoSVG(ml);
+  const x0 = 46, x1 = 266, w = x1 - x0, y = 22, h = 30;
+  const px = v => x0 + (Math.min(v, cap) / cap) * w;
+  const passo = cap <= 1 ? 0.1 : cap <= 3 ? 0.1 : cap <= 5 ? 0.2 : cap <= 10 ? 0.5 : 1;
+  const maior = cap <= 1 ? 0.5 : cap <= 5 ? 1 : cap <= 10 ? 2 : 5;
+  let ticks = '';
+  for(let v = 0; v <= cap + 1e-9; v += passo){
+    const vv = Math.round(v * 100) / 100;
+    const ehMaior = Math.abs(vv / maior - Math.round(vv / maior)) < 1e-6;
+    const xx = px(vv);
+    ticks += `<line x1="${xx}" y1="${y}" x2="${xx}" y2="${y + (ehMaior ? 12 : 6)}" class="sr-tick"/>`;
+    if(ehMaior) ticks += `<text x="${xx}" y="${y + h + 14}" class="sr-num">${_decBR(vv)}</text>`;
+  }
+  const fMin = px(ml.min), fMax = px(ml.max);
+  const faixa = ml.max > ml.min ? `<rect x="${fMin}" y="${y + 1}" width="${fMax - fMin}" height="${h - 2}" class="sr-faixa"/>` : '';
+  return `<svg class="seringa-svg" viewBox="0 0 300 76" role="img" aria-label="Seringa de ${cap} mL marcada em ${_numBR(ml.max)} mL">
+    <rect x="${x0 - 30}" y="${y + 8}" width="8" height="${h - 16}" rx="2" class="sr-corpo"/>
+    <rect x="${x0 - 22}" y="${y + 12}" width="22" height="${h - 24}" class="sr-corpo"/>
+    <rect x="${x0}" y="${y + 1}" width="${fMin - x0}" height="${h - 2}" class="sr-liquido"/>
+    ${faixa}
+    <rect x="${x0}" y="${y}" width="${w}" height="${h}" rx="3" class="sr-tubo"/>
+    ${ticks}
+    <rect x="${fMax}" y="${y + 1}" width="5" height="${h - 2}" class="sr-embolo-borracha"/>
+    <line x1="${fMax + 5}" y1="${y + h / 2}" x2="${x1 + 26}" y2="${y + h / 2}" class="sr-haste"/>
+    <rect x="${x1 + 26}" y="${y - 4}" width="5" height="${h + 8}" rx="2" class="sr-corpo"/>
+    <line x1="${x1}" y1="${y - 6}" x2="${x1}" y2="${y + h + 6}" class="sr-aba"/>
+  </svg>
+  <div class="visual-legenda">${injetavel ? 'Seringa' : 'Seringa dosadora oral'} de ${cap} mL · aspirar até <b>${ml.max > ml.min ? _numBR(ml.min) + '–' + _numBR(ml.max) : _numBR(ml.max)} mL</b></div>`;
+}
+function copoSVG(ml){
+  const cap = ml.max <= 30 ? 30 : Math.ceil(ml.max / 10) * 10;
+  const yTopo = 14, yBase = 104, xa = 40, xb = 120;
+  const py = v => yBase - (Math.min(v, cap) / cap) * (yBase - yTopo);
+  let ticks = '';
+  for(let v = 5; v <= cap; v += 5){
+    const yy = py(v);
+    ticks += `<line x1="${xb - 18}" y1="${yy}" x2="${xb - 4}" y2="${yy}" class="sr-tick"/><text x="${xb + 8}" y="${yy + 3}" class="sr-num" text-anchor="start">${v}</text>`;
+  }
+  const yMax = py(ml.max), yMin = py(ml.min);
+  return `<svg class="copo-svg" viewBox="0 0 170 116" role="img" aria-label="Copo dosador marcado em ${_numBR(ml.max)} mL">
+    <rect x="${xa + 2}" y="${yMin}" width="${xb - xa - 4}" height="${yBase - yMin}" class="sr-liquido"/>
+    ${ml.max > ml.min ? `<rect x="${xa + 2}" y="${yMax}" width="${xb - xa - 4}" height="${yMin - yMax}" class="sr-faixa"/>` : ''}
+    <path d="M${xa} ${yTopo} L${xa} ${yBase} Q${xa} ${yBase + 6} ${xa + 6} ${yBase + 6} L${xb - 6} ${yBase + 6} Q${xb} ${yBase + 6} ${xb} ${yBase} L${xb} ${yTopo}" class="sr-tubo"/>
+    ${ticks}
+    <line x1="${xa - 8}" y1="${yMax}" x2="${xb + 4}" y2="${yMax}" class="sr-marca"/>
+  </svg>
+  <div class="visual-legenda">Copo dosador · encher até <b>${ml.max > ml.min ? _numBR(ml.min) + '–' + _numBR(ml.max) : _numBR(ml.max)} mL</b></div>`;
+}
+function comprimidosSVG(c, capsula){
+  const n = Math.ceil(c.max);
+  if(n < 1 || n > 6) return '';
+  let itens = '';
+  for(let i = 0; i < n; i++){
+    const resto = c.max - i;
+    const meio = resto > 0 && resto < 1;
+    const cx = 26 + i * 50;
+    const opcional = (i + (meio ? 0.5 : 1)) > c.min + 1e-9;   // parte acima do mínimo da faixa
+    if(capsula){
+      itens += `<g class="cp-item${opcional ? ' cp-opcional' : ''}"><rect x="${cx - 20}" y="12" width="40" height="22" rx="11" class="cp-fundo"/>
+        <path d="M${cx} 12 h9 a11 11 0 0 1 0 22 h-9 z" class="cp-cheio"/>${meio ? `<line x1="${cx}" y1="8" x2="${cx}" y2="38" class="cp-corte"/>` : `<path d="M${cx} 12 h-9 a11 11 0 0 0 0 22 h9 z" class="cp-cheio cp-cheio2"/>`}</g>`;
+    } else {
+      itens += `<g class="cp-item${opcional ? ' cp-opcional' : ''}"><circle cx="${cx}" cy="23" r="18" class="cp-fundo"/>
+        ${meio ? `<path d="M${cx} 5 A18 18 0 0 0 ${cx} 41 Z" class="cp-cheio"/><line x1="${cx}" y1="3" x2="${cx}" y2="43" class="cp-corte"/>` : `<circle cx="${cx}" cy="23" r="18" class="cp-cheio"/><line x1="${cx - 11}" y1="23" x2="${cx + 11}" y2="23" class="cp-sulco"/>`}</g>`;
+    }
+  }
+  const txt = c.max > c.min ? `${_numBR(c.min)} a ${_numBR(c.max)}` : _numBR(c.max);
+  return `<svg class="comp-svg" viewBox="0 0 ${n * 50 + 2} 46" role="img" aria-label="${txt} ${capsula ? 'cápsula(s)' : 'comprimido(s)'}">${itens}</svg>
+  <div class="visual-legenda">${c.max % 1 ? 'Partir o comprimido ao meio (somente se for sulcado/fracionável) · ' : ''}<b>${txt.replace('.5', '½')} ${capsula ? 'cápsula(s)' : 'comprimido(s)'}</b> por dose</div>`;
+}
+function visualDoseHTML(form, valorTexto){
+  let html = '';
+  if((form.tipo === 'liquido' || form.tipo === 'injetavel') && form.concentracaoMgMl){
+    const ml = _parseML(valorTexto);
+    if(ml) html = seringaSVG(ml, form.tipo === 'injetavel');
+  } else if(form.tipo === 'comprimido'){
+    const c = _parseComp(valorTexto);
+    if(c) html = comprimidosSVG(c, /c[aá]psula/i.test(form.rotulo || '') || form.unidadeComprimido === 'cápsula');
+  }
+  return html ? `<div class="visual-dose tipo-${form.tipo}">${html}</div>` : '';
+}
+
+// ---------- Teto diário ----------
+function tetoDiarioHTML(ctx){
+  const { f, dose, db, da, regimeUsado, idadeBloqueada } = ctx;
+  if(!dose || idadeBloqueada) return '';
+  let vezes = null, teto = null, rot = '';
+  if(regimeUsado === 'adulto' && da){
+    vezes = da.vezesDia || null;
+    teto = da.doseMaximaDiaMg || f.doseMaximaDiaAdultoMg || null;
+    rot = 'dose máxima diária de adulto';
+  } else if(db.tipo === 'mgkg_dia'){
+    vezes = db.fracionamento || 1;
+    teto = db.doseMaximaDiaMg || f.doseMaximaDiaAdultoMg || null;
+    rot = db.doseMaximaDiaMg ? 'dose máxima diária' : 'dose máxima diária de adulto';
+  } else if(db.tipo === 'mgkg_dose' && db.vezesDia){
+    vezes = db.vezesDia;
+    teto = db.doseMaximaDiaMg || (db.doseMaximaDoseMg ? db.doseMaximaDoseMg * db.vezesDia : null) || f.doseMaximaDiaAdultoMg || null;
+    rot = 'dose máxima diária';
+  }
+  if(!vezes || !teto) return '';
+  const dMin = dose.min * vezes, dMax = dose.max * vezes;
+  const pct = Math.min(100, Math.round(dMax / teto * 100));
+  const pctMin = Math.min(100, Math.round(dMin / teto * 100));
+  const nivel = pct >= 100 ? 'no-teto' : pct >= 80 ? 'perto' : 'ok';
+  const msg = dose.capApplied ? 'Limitada ao teto: o cálculo por peso ultrapassaria a dose máxima' : pct >= 100 ? 'A dose maior da faixa atinge o teto diário' : pct >= 80 ? 'Próximo do teto diário' : 'Dentro da margem de segurança';
+  return `<div class="teto-box teto-${nivel}">
+    <div class="teto-topo">
+      <span class="teto-titulo">Dose diária × teto</span>
+      <span class="teto-status">${msg}</span>
+    </div>
+    <div class="teto-barra" role="img" aria-label="${pct}% da ${rot}">
+      <span class="teto-faixa" style="left:${pctMin}%;width:${Math.max(pct - pctMin, 0)}%"></span>
+      <span class="teto-cheio" style="width:${pctMin}%"></span>
+    </div>
+    <div class="teto-legenda">
+      <span><b>${dMin === dMax ? formatarMg(arred(dMax)) : formatarMg(arred(dMin)) + '–' + formatarMg(arred(dMax))}</b>/dia (${vezes}× ao dia)</span>
+      <span>${pctMin === pct ? pct : pctMin + '–' + pct}% da ${rot} (<b>${formatarMg(teto)}</b>)</span>
+    </div>
+  </div>`;
+}
+
+// ---------- Etiqueta de posologia ----------
+const ETQ_PROF_KEY = 'fp-etiqueta-profissional';
+let _etqCtx = null;
+function _intervaloHoras(via){
+  const t = (via || '').toLowerCase();
+  let m = t.match(/a cada (\d+(?:[.,]\d+)?)\s*(?:h\b|hora)/);
+  if(m) return parseFloat(m[1].replace(',', '.'));
+  m = t.match(/(\d+)\s*(?:x|vezes)\s*(?:ao|por)\s*dia/);
+  if(m) return 24 / parseInt(m[1], 10);
+  if(/(1|uma)\s*vez\s*(ao|por)\s*dia|1x\/dia/.test(t)) return 24;
+  return null;
+}
+function _horarios(inicio, intervalo){
+  if(!intervalo || !inicio || intervalo < 4 || 24 % intervalo) return '';
+  const [h, mi] = inicio.split(':').map(Number);
+  const out = [];
+  for(let k = 0; k < 24 / intervalo; k++){
+    const hh = (h + k * intervalo) % 24;
+    out.push(String(hh).padStart(2, '0') + ':' + String(mi || 0).padStart(2, '0'));
+  }
+  return out.join(' · ');
+}
+function abrirEtiqueta(ctx){
+  _etqCtx = ctx;
+  let prof = {};
+  try{ prof = JSON.parse(localStorage.getItem(ETQ_PROF_KEY) || '{}'); }catch(e){}
+  const v = id => document.getElementById(id);
+  v('etq-paciente').value = '';
+  v('etq-dose').value = _decBR(textoPlano(ctx.valorTexto));
+  v('etq-via').value = textoPlano(ctx.form.viaTexto || '');
+  const agora = new Date(); const prox = (agora.getHours() + 1) % 24;
+  v('etq-inicio').value = String(prox).padStart(2, '0') + ':00';
+  v('etq-dias').value = '';
+  v('etq-obs').value = '';
+  v('etq-prof').value = prof.nome || '';
+  v('etq-drogaria').value = prof.drogaria || '';
+  v('etq-formato').value = prof.formato || 'etiqueta';
+  v('etq-crf').value = prof.crf || '';
+  atualizarEtiqueta();
+  document.getElementById('etiqueta-overlay').classList.add('aberto');
+  setTimeout(() => v('etq-paciente').focus(), 50);
+}
+function fecharEtiqueta(){ document.getElementById('etiqueta-overlay').classList.remove('aberto'); }
+function atualizarEtiqueta(){
+  if(!_etqCtx) return;
+  const val = id => (document.getElementById(id).value || '').trim();
+  const { f, form } = _etqCtx;
+  const dose = val('etq-dose'), via = val('etq-via');
+  const intervalo = _intervaloHoras(via);
+  const hor = _horarios(val('etq-inicio'), intervalo);
+  const dias = val('etq-dias');
+  const faixa = /–|-\s*\d|\ba\s+\d/.test(dose);
+  document.getElementById('etq-aviso-faixa').hidden = !faixa;
+  const hoje = new Date().toLocaleDateString('pt-BR');
+  const nomeProf = val('etq-prof'), crf = val('etq-crf');
+  const drog = val('etq-drogaria'), fmt = document.getElementById('etq-formato').value;
+  const prev = document.getElementById('etiqueta-preview');
+  prev.className = 'fmt-' + fmt;
+  document.getElementById('etq-prev-titulo').textContent = 'Prévia (' + ({ etiqueta:'90 × 50 mm', cupom80:'cupom 80 mm', cupom58:'cupom 58 mm' })[fmt] + ')';
+  document.getElementById('etq-dica-cupom').hidden = fmt === 'etiqueta';
+  prev.innerHTML = `
+    <div class="etq-cab">${drog ? `<span class="etq-drog">${escapeHtml(drog)}</span>` : '<span class="etq-marca">Farma<b>Prática</b></span>'}<span>${hoje}</span></div>
+    ${val('etq-paciente') ? `<div class="etq-paciente">${escapeHtml(val('etq-paciente'))}</div>` : '<div class="etq-paciente etq-vazio">Paciente: ______________________</div>'}
+    <div class="etq-med">${escapeHtml(f.nome)}</div>
+    <div class="etq-apres">${escapeHtml(form.rotulo)}</div>
+    <div class="etq-dose">Tomar <b>${escapeHtml(dose || '—')}</b>${via ? ' ' + escapeHtml(via) : ''}</div>
+    ${hor ? `<div class="etq-linha"><span>Horários</span><b>${hor}</b></div>` : ''}
+    ${dias ? `<div class="etq-linha"><span>Duração</span><b>${escapeHtml(dias)} dia${dias === '1' ? '' : 's'}</b></div>` : ''}
+    ${val('etq-obs') ? `<div class="etq-obs">${escapeHtml(val('etq-obs'))}</div>` : ''}
+    ${(nomeProf || crf) ? `<div class="etq-prof">Farm. ${escapeHtml(nomeProf)}${crf ? ' · ' + escapeHtml(crf) : ''}</div>` : ''}
+  `;
+}
+function imprimirEtiqueta(){
+  const fmt = document.getElementById('etq-formato').value;
+  try{ localStorage.setItem(ETQ_PROF_KEY, JSON.stringify({ nome: document.getElementById('etq-prof').value.trim(), crf: document.getElementById('etq-crf').value.trim(), drogaria: document.getElementById('etq-drogaria').value.trim(), formato: fmt })); }catch(e){}
+  const area = document.getElementById('etiqueta-print-area');
+  area.innerHTML = `<div class="etiqueta-papel fmt-${fmt}">${document.getElementById('etiqueta-preview').innerHTML}</div>`;
+  document.body.classList.add('imprimindo-etiqueta');
+  // Tamanho da página: cupom térmico usa a largura da bobina e a altura exata do conteúdo (corte logo após o texto)
+  let pg = document.getElementById('etq-page-style');
+  if(!pg){ pg = document.createElement('style'); pg.id = 'etq-page-style'; document.head.appendChild(pg); }
+  if(fmt === 'etiqueta'){ pg.textContent = '@media print{ @page{ size:auto; margin:8mm; } }'; }
+  else {
+    const largura = fmt === 'cupom58' ? 58 : 80;
+    const prevEl = document.getElementById('etiqueta-preview');
+    const alturaMm = Math.ceil(prevEl.scrollHeight * 25.4 / 96 * (fmt === 'cupom58' ? 48 : 72) / (prevEl.offsetWidth * 25.4 / 96 || 1)) + 12;
+    pg.textContent = '@media print{ @page{ size:' + largura + 'mm ' + Math.max(alturaMm, 60) + 'mm; margin:0; } }';
+  }
+  const limpar = () => { document.body.classList.remove('imprimindo-etiqueta'); area.innerHTML = ''; window.removeEventListener('afterprint', limpar); };
+  window.addEventListener('afterprint', limpar);
+  window.print();
+  setTimeout(() => { if(document.body.classList.contains('imprimindo-etiqueta') && !matchMedia('print').matches) limpar(); }, 1500);
+}
+(function initEtiqueta(){
+  const ov = document.getElementById('etiqueta-overlay');
+  if(!ov) return;
+  ov.addEventListener('click', e => { if(e.target === ov) fecharEtiqueta(); });
+  document.getElementById('etiqueta-fechar').addEventListener('click', fecharEtiqueta);
+  document.getElementById('etq-imprimir').addEventListener('click', imprimirEtiqueta);
+  ov.querySelectorAll('input, textarea, select').forEach(el => { el.addEventListener('input', atualizarEtiqueta); el.addEventListener('change', atualizarEtiqueta); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && ov.classList.contains('aberto')) fecharEtiqueta(); });
+})();
 
 function arred(n){ return Math.round(n * 100) / 100; }
 

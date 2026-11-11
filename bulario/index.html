@@ -376,6 +376,21 @@
 
   /* ================= Ficha do medicamento (Nível 3) ================= */
   .ficha-topo{ margin-bottom:10px; }
+  .ficha-atalhos{ margin-top:14px; }
+  .atalhos-rotulo{ display:block; font-size:10.5px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
+  .atalhos-lista{ display:flex; flex-wrap:wrap; gap:8px; }
+  .atalho-chip{ --at:var(--accent); display:flex; align-items:center; gap:10px; padding:8px 12px 8px 8px; border-radius:11px;
+    background:var(--card); border:1px solid var(--border); color:var(--text); text-decoration:none; min-width:0;
+    transition:border-color .15s ease, transform .15s ease; }
+  .atalho-chip:hover{ border-color:var(--at); transform:translateY(-1px); }
+  .atalho-ico{ width:32px; height:32px; flex:0 0 32px; border-radius:9px; display:flex; align-items:center; justify-content:center;
+    color:var(--at); background:color-mix(in srgb, var(--at) 14%, transparent); }
+  .atalho-ico svg{ width:17px; height:17px; }
+  .atalho-txt{ display:flex; flex-direction:column; line-height:1.25; min-width:0; }
+  .atalho-txt strong{ font-size:13px; font-weight:700; }
+  .atalho-txt small{ font-size:11px; color:var(--text-dim); }
+  .atalho-interacoes{ --at:#2bc4b5; } .atalho-calc{ --at:#3fb87f; } .atalho-medinter{ --at:#4fa3e3; } .atalho-controlado{ --at:#f59e0b; }
+  @media (max-width:640px){ .atalhos-lista{ display:grid; grid-template-columns:1fr 1fr; } .atalho-chip{ padding:7px 9px 7px 7px; } .atalho-txt small{ font-size:10px; } }
   .ficha-titulo-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
   .ficha-titulo{ font-size:1.5rem; margin:0; }
   .btn-favoritar{
