@@ -254,6 +254,11 @@
     } else if (hash.startsWith("#/medicamento/")) {
       const id = hash.replace("#/medicamento/", "");
       renderFicha(id);
+    } else if (hash.startsWith("#/comparar")) {
+      const partes = hash.replace("#/comparar", "").split("/");
+      const a = partes[1] && MEDICAMENTOS[partes[1]] ? partes[1] : null;
+      const b = partes[2] && MEDICAMENTOS[partes[2]] ? partes[2] : null;
+      renderComparar(a, b);
     } else if (hash.startsWith("#/busca/")) {
       const q = hash.replace("#/busca/", "");
       renderBusca(q);
@@ -714,11 +719,16 @@
           <a href="${gi ? `#/grupo/${gi.grupo.id}` : "#/"}" class="btn-voltar">‹ ${gi ? esc(gi.grupo.nome) : "Todos os grupos"}</a>
           <div class="ficha-titulo-row">
             <h1 class="ficha-titulo">${esc(m.nomeGenerico)}</h1>
-            <button class="btn-favoritar ${fav ? "ativo" : ""}" id="btn-fav" title="Favoritar medicamento" aria-label="Favoritar medicamento">
-              <span class="estrela">★</span><span class="btn-favoritar-label">${fav ? "Favoritado" : "Favoritar"}</span>
-            </button>
+            <div class="ficha-acoes">
+              <button class="btn-ficha-acao" type="button" onclick="compararCom('${medId}')" title="Comparar com outro fármaco">⇄ Comparar</button>
+              <button class="btn-ficha-acao" type="button" onclick="abrirCartaoPaciente('${medId}')" title="Cartão de orientação para entregar ao paciente">🗂 Cartão do paciente</button>
+              <button class="btn-favoritar ${fav ? "ativo" : ""}" id="btn-fav" title="Favoritar medicamento" aria-label="Favoritar medicamento">
+                <span class="estrela">★</span><span class="btn-favoritar-label">${fav ? "Favoritado" : "Favoritar"}</span>
+              </button>
+            </div>
           </div>
           ${tagsHtml(m.tags)}
+          ${seloFichaHtml(m)}
           <div class="ficha-atalhos" id="ficha-atalhos" hidden></div>
         </div>
 
@@ -807,6 +817,225 @@
       box.hidden = false;
     });
   }
+
+  /* ---------------------------------------------------------------------
+     10/11/2026 — Selo de completude, comparação entre dois fármacos e
+     cartão de orientação ao paciente.
+  --------------------------------------------------------------------- */
+  function dataBR(iso) {
+    if (!iso || !/^\d{4}-\d{2}-\d{2}/.test(iso)) return iso || "";
+    const [y, mm, d] = iso.slice(0, 10).split("-");
+    return `${d}/${mm}/${y}`;
+  }
+  function seloFichaHtml(m) {
+    const completa = fichaCompleta(m);
+    const nRef = (m.referencias || []).length;
+    if (!completa) {
+      return `<div class="ficha-selo selo-pendente"><span class="selo-tag">◔ Ficha mínima</span><span>Conteúdo farmacoterapêutico em revisão — confira a bula vigente.</span></div>`;
+    }
+    return `<div class="ficha-selo"><span class="selo-tag">✓ Ficha completa</span>` +
+      (m.ultimaAtualizacao ? `<span>Revisada em <b>${esc(dataBR(m.ultimaAtualizacao))}</b></span>` : "") +
+      (nRef ? `<a href="#sec-referencias" data-target="sec-referencias">${nRef} referência${nRef > 1 ? "s" : ""}</a>` : "") +
+      `</div>`;
+  }
+
+  // ---------- Comparar dois fármacos ----------
+  function textoCurto(v) {
+    if (v === undefined || v === null || v === "") return "";
+    if (Array.isArray(v)) return v.length ? `<ul>${v.map((i) => `<li>${esc(typeof i === "string" ? i : (i.par || JSON.stringify(i)))}</li>`).join("")}</ul>` : "";
+    return `<p>${esc(v)}</p>`;
+  }
+  const LINHAS_COMPARACAO = [
+    ["Classe terapêutica", (m) => textoCurto(m.classeTerapeutica)],
+    ["Mecanismo de ação", (m) => textoCurto(m.mecanismoAcao)],
+    ["Indicações", (m) => textoCurto(m.indicacoes)],
+    ["Posologia — adultos", (m) => textoCurto(m.posologia && m.posologia.adultos)],
+    ["Posologia — pediátrica", (m) => textoCurto(m.posologia && m.posologia.pediatrica)],
+    ["Contraindicações", (m) => textoCurto(m.contraindicacoes)],
+    ["Interações graves", (m) => { const g = (m.interacoes && m.interacoes.graves) || []; return g.length ? `<p class="cmp-num">${g.length}</p>` + textoCurto(g.map((x) => x.par)) : `<p class="texto-dim">Nenhuma registrada</p>`; }],
+    ["Reações adversas comuns", (m) => { const r = m.reacoesAdversas || {}; return textoCurto([].concat(r.muitoComuns || [], r.comuns || [])); }],
+    ["Reações adversas graves", (m) => textoCurto((m.reacoesAdversas || {}).graves)],
+    ["Gestação", (m) => (m.gestacaoCategoria ? `<p>${riscoDotHtml(m.gestacaoCategoria, "gestacao")}</p>` : "") + textoCurto(m.gestacao)],
+    ["Lactação", (m) => (m.lactacaoCategoria ? `<p>${riscoDotHtml(m.lactacaoCategoria, "lactacao")}</p>` : "") + textoCurto(m.lactacao)],
+    ["Insuficiência renal", (m) => textoCurto(m.renal || (m.posologia && m.posologia.renal))],
+    ["Insuficiência hepática", (m) => textoCurto(m.hepatica || (m.posologia && m.posologia.hepatica))],
+    ["Idosos", (m) => textoCurto(m.geriatria)],
+    ["Receituário", (m) => textoCurto(m.tipoReceituario)],
+    ["Genérico / Farmácia Popular", (m) => `<p>Genérico: <b>${m.generico ? "sim" : "não"}</b> · Farmácia Popular: <b>${m.farmaciaPopular ? "sim" : "não"}</b></p>`],
+  ];
+  function seletorComparacaoHtml(slot, medId, outro) {
+    const m = medId ? MEDICAMENTOS[medId] : null;
+    return `<div class="cmp-slot" data-slot="${slot}">
+      ${m ? `<div class="cmp-escolhido"><span class="cmp-letra">${slot === "a" ? "A" : "B"}</span><div><b>${esc(m.nomeGenerico)}</b><small>${esc(m.classeTerapeutica || "")}</small></div>
+        <button type="button" class="cmp-trocar" onclick="limparComparacao('${slot}')">Trocar</button></div>` : ""}
+      <div class="cmp-busca"${m ? " hidden" : ""}>
+        <input type="text" class="cmp-input" placeholder="Buscar fármaco ${slot === "a" ? "A" : "B"} (nome ou marca)" autocomplete="off" data-slot="${slot}" data-outro="${esc(outro || "")}">
+        <div class="cmp-sugestoes"></div>
+      </div>
+    </div>`;
+  }
+  function renderComparar(a, b) {
+    const ma = a ? MEDICAMENTOS[a] : null, mb = b ? MEDICAMENTOS[b] : null;
+    setTituloTopo("Comparar fármacos", "Dois fármacos lado a lado, com os mesmos campos da ficha");
+    let html = `<div class="cmp-view">
+      <a href="${ma ? `#/medicamento/${a}` : "#/"}" class="btn-voltar">‹ ${ma ? esc(ma.nomeGenerico) : "Todos os grupos"}</a>
+      <h1 class="ficha-titulo">Comparar fármacos</h1>
+      <div class="cmp-seletores">${seletorComparacaoHtml("a", ma ? a : null, b)}<span class="cmp-vs">×</span>${seletorComparacaoHtml("b", mb ? b : null, a)}</div>`;
+    if (ma && mb) {
+      html += `<div class="cmp-tabela" role="table">
+        <div class="cmp-linha cmp-cab" role="row"><div role="columnheader"></div>
+          <div role="columnheader"><a href="#/medicamento/${a}">${esc(ma.nomeGenerico)}</a></div>
+          <div role="columnheader"><a href="#/medicamento/${b}">${esc(mb.nomeGenerico)}</a></div></div>` +
+        LINHAS_COMPARACAO.map(([rot, fn]) => {
+          const va = fn(ma) || `<p class="texto-dim">—</p>`, vb = fn(mb) || `<p class="texto-dim">—</p>`;
+          return `<div class="cmp-linha${va === vb ? " cmp-igual" : ""}" role="row"><div class="cmp-rot" role="rowheader">${rot}${va === vb ? `<small>igual</small>` : ""}</div><div class="cmp-col" data-nome="${esc(ma.nomeGenerico)}" role="cell">${va}</div><div class="cmp-col" data-nome="${esc(mb.nomeGenerico)}" role="cell">${vb}</div></div>`;
+        }).join("") + `</div>
+        <p class="aviso-secao-final">Comparação gerada a partir das fichas do Bulário. Confira sempre a bula vigente de cada produto.</p>`;
+    } else {
+      html += `<p class="cmp-dica">Escolha os dois fármacos para ver a comparação lado a lado.</p>`;
+    }
+    html += `</div>`;
+    app.innerHTML = html;
+    ligarSeletoresComparacao(a, b);
+    const vazio = $(".cmp-input:not([hidden])", app);
+    const primeiro = $all(".cmp-busca", app).find((el) => !el.hidden);
+    if (primeiro) $(".cmp-input", primeiro).focus();
+  }
+  function ligarSeletoresComparacao(a, b) {
+    $all(".cmp-input", app).forEach((inp) => {
+      const box = inp.nextElementSibling;
+      const mostrar = debounce(() => {
+        const q = inp.value.trim();
+        if (q.length < 2) { box.innerHTML = ""; return; }
+        const ids = [];
+        buscarMedicamentos(q).forEach((id) => { if (!ids.includes(id)) ids.push(id); });
+        buscarPorNomeComercial(q).forEach((c) => { if (!ids.includes(c.medId)) ids.push(c.medId); });
+        box.innerHTML = ids.slice(0, 8).map((id) => `<button type="button" data-id="${id}"><b>${esc(MEDICAMENTOS[id].nomeGenerico)}</b><small>${esc(MEDICAMENTOS[id].classeTerapeutica || "")}</small></button>`).join("") ||
+          `<div class="cmp-sem">Nenhum fármaco encontrado</div>`;
+      }, 140);
+      inp.addEventListener("input", mostrar);
+      box.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("button[data-id]"); if (!btn) return;
+        const id = btn.dataset.id;
+        const na = inp.dataset.slot === "a" ? id : a, nb = inp.dataset.slot === "b" ? id : b;
+        irPara(`#/comparar/${na || ""}/${nb || ""}`);
+      });
+      inp.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter") { const f = $("button[data-id]", box); if (f) f.click(); }
+      });
+    });
+  }
+  window.limparComparacao = function (slot) {
+    const partes = decodeURIComponent(location.hash).replace("#/comparar", "").split("/").filter((x, i) => i > 0);
+    const a = partes[0] || "", b = partes[1] || "";
+    irPara(`#/comparar/${slot === "a" ? "" : a}/${slot === "b" ? "" : b}`);
+  };
+  window.compararCom = function (medId) { irPara(`#/comparar/${medId}/`); };
+
+  // ---------- Cartão de orientação ao paciente ----------
+  const CARTAO_ITENS = [
+    ["comoTomar", "💊", "Como tomar"],
+    ["esquecimento", "⏰", "Esqueceu uma dose?"],
+    ["alimentos", "🍽️", "Alimentos"],
+    ["alcool", "🍷", "Bebida alcoólica"],
+    ["dirigir", "🚗", "Dirigir e máquinas"],
+    ["sinaisAlerta", "🚨", "Procure atendimento se"],
+  ];
+  const PROF_KEY = "fp-etiqueta-profissional"; // compartilhado com a etiqueta da Calculadora
+  let cartaoMedId = null;
+  function lerProf() { try { return JSON.parse(localStorage.getItem(PROF_KEY) || "{}"); } catch (e) { return {}; } }
+  function garantirModalCartao() {
+    if ($("#cartao-overlay")) return;
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <div class="cartao-overlay" id="cartao-overlay" role="dialog" aria-modal="true" aria-labelledby="cartao-titulo">
+        <div class="cartao-modal">
+          <div class="cartao-modal-cab"><h3 id="cartao-titulo">Cartão de orientação ao paciente</h3><button type="button" class="cartao-fechar" aria-label="Fechar" onclick="fecharCartaoPaciente()">✕</button></div>
+          <div class="cartao-modal-corpo">
+            <div class="cartao-campos">
+              <label>Drogaria / farmácia<input id="cartao-drogaria" type="text" autocomplete="off" placeholder="Nome do estabelecimento"></label>
+              <label>Paciente (opcional)<input id="cartao-paciente" type="text" autocomplete="off"></label>
+              <label>Farmacêutico(a)<input id="cartao-prof" type="text" autocomplete="off"></label>
+              <label>CRF<input id="cartao-crf" type="text" autocomplete="off" placeholder="CRF-UF 0000"></label>
+              <label>Telefone para dúvidas<input id="cartao-tel" type="text" autocomplete="off" placeholder="(00) 00000-0000"></label>
+              <div class="cartao-botoes">
+                <button type="button" class="cartao-btn" onclick="copiarCartaoPaciente(this)">Copiar texto (WhatsApp)</button>
+                <button type="button" class="cartao-btn primario" onclick="imprimirCartaoPaciente()">Imprimir</button>
+              </div>
+            </div>
+            <div class="cartao-preview-wrap"><div id="cartao-preview"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="cartao-print-area"></div>`;
+    while (div.firstElementChild) document.body.appendChild(div.firstElementChild);
+    $("#cartao-overlay").addEventListener("click", (e) => { if (e.target.id === "cartao-overlay") fecharCartaoPaciente(); });
+    $all(".cartao-campos input").forEach((el) => el.addEventListener("input", renderCartaoPaciente));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#cartao-overlay").classList.contains("aberto")) fecharCartaoPaciente(); });
+  }
+  function renderCartaoPaciente() {
+    const m = MEDICAMENTOS[cartaoMedId]; if (!m) return;
+    const o = m.orientacoesPaciente || {};
+    const v = (id) => ($("#" + id).value || "").trim();
+    const drog = v("cartao-drogaria"), pac = v("cartao-paciente"), prof = v("cartao-prof"), crf = v("cartao-crf"), tel = v("cartao-tel");
+    $("#cartao-preview").innerHTML = `
+      <div class="cartao-papel">
+        <div class="cp-cab"><span class="cp-drog">${drog ? esc(drog) : "Farma<b>Prática</b>"}</span><span>${new Date().toLocaleDateString("pt-BR")}</span></div>
+        ${pac ? `<div class="cp-pac">Para: <b>${esc(pac)}</b></div>` : ""}
+        <div class="cp-med">${esc(m.nomeGenerico)}</div>
+        <div class="cp-classe">${esc(m.classeTerapeutica || "")}</div>
+        <div class="cp-grade">
+          ${CARTAO_ITENS.filter(([k]) => o[k]).map(([k, ico, rot]) => `<div class="cp-item${k === "sinaisAlerta" ? " cp-alerta" : ""}"><div class="cp-ico">${ico}</div><div><b>${rot}</b><p>${esc(o[k])}</p></div></div>`).join("")}
+        </div>
+        <div class="cp-rod">${prof || crf || tel ? `Dúvidas? Fale com ${prof ? "o(a) farmacêutico(a) <b>" + esc(prof) + "</b>" : "o farmacêutico"}${crf ? " · " + esc(crf) : ""}${tel ? " · " + esc(tel) : ""}.` : "Dúvidas? Fale com o farmacêutico."} Este cartão não substitui a bula nem a orientação do prescritor.</div>
+      </div>`;
+  }
+  window.abrirCartaoPaciente = function (medId) {
+    garantirModalCartao();
+    cartaoMedId = medId;
+    const p = lerProf();
+    $("#cartao-drogaria").value = p.drogaria || "";
+    $("#cartao-prof").value = p.nome || "";
+    $("#cartao-crf").value = p.crf || "";
+    $("#cartao-tel").value = p.telefone || "";
+    $("#cartao-paciente").value = "";
+    renderCartaoPaciente();
+    $("#cartao-overlay").classList.add("aberto");
+  };
+  window.fecharCartaoPaciente = function () { const o = $("#cartao-overlay"); if (o) o.classList.remove("aberto"); };
+  function salvarProf() {
+    const p = lerProf();
+    p.drogaria = $("#cartao-drogaria").value.trim(); p.nome = $("#cartao-prof").value.trim();
+    p.crf = $("#cartao-crf").value.trim(); p.telefone = $("#cartao-tel").value.trim();
+    try { localStorage.setItem(PROF_KEY, JSON.stringify(p)); } catch (e) {}
+  }
+  window.imprimirCartaoPaciente = function () {
+    salvarProf();
+    const area = $("#cartao-print-area");
+    area.innerHTML = $("#cartao-preview").innerHTML;
+    document.body.classList.add("imprimindo-cartao");
+    const limpar = () => { document.body.classList.remove("imprimindo-cartao"); area.innerHTML = ""; window.removeEventListener("afterprint", limpar); };
+    window.addEventListener("afterprint", limpar);
+    window.print();
+    setTimeout(() => { if (!matchMedia("print").matches) limpar(); }, 1500);
+  };
+  window.copiarCartaoPaciente = function (btn) {
+    salvarProf();
+    const m = MEDICAMENTOS[cartaoMedId]; const o = m.orientacoesPaciente || {};
+    const drog = $("#cartao-drogaria").value.trim(), pac = $("#cartao-paciente").value.trim();
+    const txt = [
+      drog ? `*${drog}*` : "",
+      pac ? `Orientações para ${pac}` : "Orientações de uso",
+      `*${m.nomeGenerico}*`,
+      "",
+      ...CARTAO_ITENS.filter(([k]) => o[k]).map(([k, ico, rot]) => `${ico} *${rot}:* ${o[k]}`),
+      "",
+      "Dúvidas? Fale com o farmacêutico. Estas orientações não substituem a bula nem a orientação do prescritor.",
+    ].filter((l, i) => l !== "" || i > 2).join("\n");
+    const ok = () => { const t = btn.textContent; btn.textContent = "Copiado ✓"; setTimeout(() => (btn.textContent = t), 1600); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(ok).catch(() => {});
+    else { const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) {} ta.remove(); }
+  };
 
   function ativarObservadorSecoes() {
     const secoesEls = $all(".ficha-secao", app);

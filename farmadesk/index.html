@@ -913,6 +913,26 @@
   }
   .mobile-bottom-nav-item svg{width:13px;height:13px;}
   .mobile-bottom-nav-item:active{background:var(--paper-dim);}
+  /* 11/11/2026: busca mobile em 1 toque — o próprio campo fica no menu inferior,
+     então o toque já foca o input nativamente e o teclado abre na hora. */
+  .mobile-busca{
+    flex:1; max-width:560px; display:flex; align-items:center; gap:10px;
+    min-height:46px; padding:0 8px 0 14px; border-radius:999px;
+    background:var(--paper-dim); border:1.5px solid var(--rule); cursor:text;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .mobile-busca:focus-within{ border-color:var(--red-bright); box-shadow:0 0 0 3px rgba(235,61,79,.18); }
+  .mobile-busca > svg{ width:18px; height:18px; flex:none; color:var(--red-bright); }
+  .mobile-busca input{
+    flex:1; min-width:0; border:none; outline:none; background:transparent; color:var(--ink);
+    font-family:'Inter',"Helvetica Neue",Arial,sans-serif; font-size:16px; /* 16px evita o zoom automático do iOS */
+    padding:11px 0; -webkit-appearance:none; appearance:none;
+  }
+  .mobile-busca input::placeholder{ color:var(--muted); }
+  .mobile-busca input::-webkit-search-cancel-button{ display:none; }
+  .mobile-busca-limpar{ width:32px; height:32px; flex:none; display:flex; align-items:center; justify-content:center; border:none; border-radius:50%; background:var(--rule); color:var(--ink); cursor:pointer; -webkit-tap-highlight-color:transparent; }
+  .mobile-busca-limpar[hidden]{ display:none; }
+  .mobile-busca-limpar svg{ width:14px; height:14px; }
   .mobile-search-close{
     display:none;
     align-items:center;justify-content:center;
@@ -1363,6 +1383,10 @@
       box-shadow:none;
     }
     .sys-btn.sys-btn-trigger{display:flex;}
+    /* 11/11/2026: no mobile o botão ativo perde o fundo vermelho (background:transparent acima);
+       sem isto o texto branco sumia no tema claro. */
+    .sys-btn.active.sys-btn-trigger{color:var(--ink);}
+    .sys-btn.active.sys-btn-trigger .count{background:var(--paper-dim);color:var(--muted);}
     #sysList.sys-expanded .sys-btn{display:flex;}
     .sys-btn:not(.sys-btn-trigger):hover{background:var(--paper-dim);}
     .sys-btn.active:not(.sys-btn-trigger) .sys-btn-left span{color:var(--red);font-weight:700;}
@@ -1581,10 +1605,13 @@
 </header>
 <div class="mobile-search-backdrop" id="mobileSearchBackdrop" onclick="closeMobileSearch()"></div>
 <nav class="mobile-bottom-nav" id="mobileBottomNav">
-  <button type="button" class="mobile-bottom-nav-item" onclick="openMobileSearch(event)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-    <span>Buscar</span>
-  </button>
+  <label class="mobile-busca" for="searchMobile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input id="searchMobile" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="Pesquisar condição, medicamento ou sintoma" aria-label="Pesquisar condição, medicamento ou sintoma">
+    <button type="button" id="searchMobileClear" class="mobile-busca-limpar" aria-label="Limpar busca" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </label>
 </nav>
 
 <div class="layout">
@@ -1896,11 +1923,37 @@ searchEl.addEventListener('blur', toggleShortcutHint);
 searchEl.addEventListener('input', toggleShortcutHint);
 
 // Busca no mobile: abre como overlay a partir do botão do menu inferior
+// ---------- Busca mobile em 1 toque (campo real no menu inferior) ----------
+const searchMobileEl = document.getElementById('searchMobile');
+const searchMobileClear = document.getElementById('searchMobileClear');
+if(searchMobileEl){
+  searchMobileEl.addEventListener('input', () => {
+    searchEl.value = searchMobileEl.value;
+    searchEl.dispatchEvent(new Event('input', { bubbles:true }));
+    searchMobileClear.hidden = !searchMobileEl.value;
+    window.scrollTo({ top:0 });
+  });
+  searchMobileEl.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){ e.preventDefault(); searchMobileEl.blur(); }   // fecha o teclado e deixa os resultados à vista
+  });
+  searchMobileClear.addEventListener('click', (e) => {
+    e.preventDefault();
+    searchMobileEl.value = '';
+    searchMobileEl.dispatchEvent(new Event('input', { bubbles:true }));
+    searchMobileEl.focus();
+  });
+  // Mantém os dois campos sincronizados se a busca for alterada por outro caminho (botão Limpar, atalhos)
+  searchEl.addEventListener('input', () => {
+    if(document.activeElement !== searchMobileEl && searchMobileEl.value !== searchEl.value){
+      searchMobileEl.value = searchEl.value; searchMobileClear.hidden = !searchEl.value;
+    }
+  });
+}
 function openMobileSearch(e){
   if(e){ e.stopPropagation(); }
   document.body.classList.add('mobile-search-open');
   document.body.style.overflow = 'hidden';
-  setTimeout(() => searchEl.focus(), 60);
+  searchEl.focus({ preventScroll:true });   // síncrono: dentro do gesto do usuário o teclado abre no 1º toque
 }
 function closeMobileSearch(){
   document.body.classList.remove('mobile-search-open');

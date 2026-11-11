@@ -617,6 +617,77 @@
     }
   }
   @media (min-width:801px){ .btn-voltar-mobile, .bottom-nav{ display:none; } }
+  /* ---------- 10/11/2026: referências, rotina, revisão espaçada, plantão ---------- */
+  .ref-block h5{ display:flex; align-items:center; gap:7px; }
+  .ref-block h5 svg{ width:16px; height:16px; color:var(--red-bright); }
+  .ref-lista{ margin:6px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:7px; }
+  .ref-lista li{ font-size:.86rem; line-height:1.45; }
+  .ref-lista li > span:last-child{ display:block; }
+  .ref-tipo{ display:inline-block; font-size:.62rem; font-weight:800; text-transform:uppercase; letter-spacing:.4px; padding:2px 7px; border-radius:20px; margin-bottom:3px; border:1px solid; }
+  .ref-norma{ color:#f59e0b; border-color:rgba(245,158,11,.45); background:rgba(245,158,11,.1); }
+  .ref-oficial{ color:#38bdf8; border-color:rgba(56,189,248,.45); background:rgba(56,189,248,.1); }
+  .ref-diretriz{ color:#b98cf0; border-color:rgba(185,140,240,.45); background:rgba(185,140,240,.1); }
+  .ref-livro{ color:var(--text-dim); border-color:var(--border); }
+  .ref-nota{ font-size:.74rem; color:var(--text-dim); margin:10px 0 0; }
+  .base-tecnica{ display:flex; gap:8px; align-items:flex-start; max-width:760px; margin-top:10px; font-size:.74rem; color:var(--text-dim); line-height:1.45; }
+  .base-tecnica svg{ width:14px; height:14px; flex-shrink:0; margin-top:2px; }
+  .rotina-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; }
+  .rotina-card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px 16px; display:flex; flex-direction:column; gap:10px; }
+  .rc-topo{ display:flex; gap:12px; align-items:center; }
+  .rc-topo b{ display:block; font-size:.95rem; }
+  .rc-topo small{ display:block; font-size:.74rem; color:var(--text-dim); line-height:1.4; margin-top:2px; }
+  .rc-fogo{ font-size:1.8rem; filter:grayscale(1); opacity:.45; }
+  .rc-fogo.aceso{ filter:none; opacity:1; }
+  .rc-rev{ width:42px; height:42px; flex:0 0 42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:900; color:var(--red-bright); background:var(--red-glow); }
+  .cal-linha{ display:grid; grid-template-columns:repeat(14, 1fr); gap:3px; }
+  .cal-dia{ aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:6px; font-size:.58rem; font-weight:700; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); text-transform:uppercase; }
+  .cal-dia.ativo{ background:var(--red); border-color:var(--red-bright); color:#fff; }
+  .cal-dia.hoje{ outline:2px solid var(--red-bright); outline-offset:1px; }
+  .meta-anel{ width:54px; height:54px; flex:0 0 54px; }
+  .ma-fundo{ fill:none; stroke:var(--panel); stroke-width:6; }
+  .ma-valor{ fill:none; stroke:var(--red-bright); stroke-width:6; stroke-linecap:round; transform:rotate(-90deg); transform-origin:27px 27px; transition:stroke-dashoffset .4s ease; }
+  .meta-anel text{ font-size:12px; font-weight:800; fill:var(--text); }
+  .meta-ok{ display:flex; align-items:center; gap:6px; font-size:.82rem; font-weight:700; color:var(--acerto); }
+  .meta-ok svg{ width:16px; height:16px; }
+  .rotina-card .btn{ align-self:flex-start; }
+  .rev-casos{ display:flex; flex-direction:column; gap:5px; }
+  .rev-casos a{ display:flex; gap:6px; align-items:center; font-size:.78rem; color:var(--text); cursor:pointer; padding:6px 8px; border-radius:8px; background:var(--panel); }
+  .rev-casos a svg{ width:13px; height:13px; flex-shrink:0; color:var(--red-bright); }
+  .rev-casos a:hover{ color:var(--red-bright); }
+  .plantao-barra{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; max-width:760px; padding:10px 14px; margin-bottom:12px; border-radius:12px; background:linear-gradient(120deg, rgba(239,91,107,.16), var(--card)); border:1px solid rgba(239,91,107,.45); font-size:.84rem; }
+  .pb-tit{ font-weight:900; }
+  .pb-pontos{ display:flex; gap:4px; }
+  .pb-pontos i{ width:12px; height:12px; border-radius:50%; background:var(--panel); border:1px solid var(--border); }
+  .pb-pontos i.atual{ border-color:var(--red-bright); background:var(--red-glow); }
+  .pb-pontos i.ok{ background:var(--acerto); border-color:var(--acerto); }
+  .pb-pontos i.mal{ background:var(--erro); border-color:var(--erro); }
+  .pb-tempo{ margin-left:auto; font-variant-numeric:tabular-nums; }
+  .pb-sair{ font-size:.74rem; color:var(--text-dim); text-decoration:underline; cursor:pointer; }
+  .plantao-intervalo, .plantao-hero, .plantao-relatorio{ max-width:760px; }
+  .plantao-intervalo{ display:flex; gap:18px; align-items:center; padding:18px 20px; border-radius:14px; background:var(--card); border:1px solid var(--border); }
+  .plantao-intervalo h3{ margin:0 0 4px; } .plantao-intervalo p{ margin:0 0 4px; } .plantao-intervalo small{ color:var(--text-dim); font-size:.78rem; }
+  .pi-num{ font-size:2rem; font-weight:900; min-width:84px; }
+  .pi-ok{ color:var(--acerto); } .pi-mal{ color:var(--erro); }
+  .plantao-acoes{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  .plantao-hero{ padding:22px; border-radius:16px; background:linear-gradient(135deg, rgba(239,91,107,.14), transparent 70%), var(--card); border:1px solid var(--border); }
+  .plantao-hero h2{ margin:0 0 6px; } .plantao-hero p{ color:var(--text-gray); margin:0 0 14px; }
+  .pr-cab{ display:flex; gap:16px; align-items:center; padding:18px 20px; border-radius:16px; background:var(--card); border:1px solid var(--border); margin-bottom:12px; }
+  .pr-cab h2{ margin:0 0 4px; font-size:1.2rem; } .pr-cab p{ margin:0; font-size:.86rem; color:var(--text-gray); } .pr-cab small{ font-size:.74rem; color:var(--text-dim); }
+  .pr-nota{ width:64px; height:64px; flex:0 0 64px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:900; color:#fff; }
+  .pr-A{ background:var(--acerto); } .pr-B{ background:#65a30d; } .pr-C{ background:var(--atencao); } .pr-D{ background:var(--erro); }
+  .pr-rec{ color:var(--red-bright); }
+  .pr-lista{ display:flex; flex-direction:column; gap:8px; }
+  .pr-item{ display:flex; align-items:center; gap:12px; padding:10px 12px; border-radius:12px; background:var(--card); border:1px solid var(--border); }
+  .pr-i{ width:26px; height:26px; flex:0 0 26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; background:var(--panel); }
+  .pr-txt{ flex:1; min-width:0; } .pr-txt b{ display:block; font-size:.86rem; } .pr-txt small{ font-size:.72rem; color:var(--text-dim); }
+  .pr-pct{ font-weight:900; font-size:1rem; }
+  .plantao-continuar{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; max-width:760px; padding:10px 14px; margin-bottom:12px; border-radius:12px; background:var(--red-glow); border:1px solid var(--red-bright); font-weight:700; font-size:.86rem; }
+  @media (max-width:640px){
+    .plantao-intervalo, .pr-cab{ flex-direction:column; align-items:flex-start; }
+    .pr-item{ flex-wrap:wrap; }
+    .pr-item .btn{ width:100%; justify-content:center; }
+    .pb-tempo{ margin-left:0; }
+  }
 </style>
 </head>
 <body>
@@ -1064,6 +1135,211 @@ function marcarCartao(sei){
 /* =================================================================
    RENDER
    ================================================================= */
+/* =====================================================================
+   10/11/2026 — Referências do caso, rotina diária (sequência, meta do dia,
+   calendário), revisão espaçada (quiz e casos) e Modo Plantão.
+   ===================================================================== */
+function isoLocal(d){ d = d || new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function isoMaisDias(n){ const d = new Date(); d.setDate(d.getDate() + n); return isoLocal(d); }
+function garantirRotina(){
+  if(!progresso.diasAtivos) progresso.diasAtivos = [];
+  if(!progresso.revisao) progresso.revisao = {};
+  if(!progresso.revisaoCasos) progresso.revisaoCasos = {};
+  if(!progresso.hoje || progresso.hoje.data !== isoLocal()) progresso.hoje = { data: isoLocal(), casos: 0, questoes: 0 };
+}
+
+// ---------- Referências do caso ----------
+function tipoFonte(f){
+  if(/portaria|rdc|resolu[cç][aã]o|\blei\b|instru[cç][aã]o normativa|decreto/i.test(f)) return ['norma', 'Norma'];
+  if(/minist[eé]rio da sa[uú]de|protocolo|pcdt|anvisa|opas|oms|who/i.test(f)) return ['oficial', 'Protocolo oficial'];
+  if(/diretriz|sociedade|consenso|guideline|gina|gold|kdigo|beers|stopp|ags|sbc|sbd|sbp|sbem|ada\b|esc\b|aha|acc/i.test(f)) return ['diretriz', 'Diretriz / consenso'];
+  return ['livro', 'Referência técnica'];
+}
+function referenciasCasoHtml(caso){
+  if(!caso.fontes || !caso.fontes.length) return '';
+  return '<div class="resumo-block ref-block"><h5>'+icon('book')+'Referências e base técnica da conduta</h5><ol class="ref-lista">'+
+    caso.fontes.map(f => { const [cls, rot] = tipoFonte(f); return '<li><span class="ref-tipo ref-'+cls+'">'+rot+'</span><span>'+esc(f)+'</span></li>'; }).join('')+
+    '</ol><p class="ref-nota">A conduta deste caso segue as referências acima. Protocolos e normas são atualizados periodicamente: confira sempre a versão vigente.</p></div>';
+}
+
+// ---------- Revisão espaçada (caixas de Leitner) ----------
+const INTERVALOS_REVISAO = [1, 3, 7, 14, 30];
+function agendar(mapa, id, acertou){
+  const r = mapa[id];
+  if(!acertou){ mapa[id] = { caixa: 0, proxima: isoMaisDias(1) }; return; }
+  if(!r) return;
+  const caixa = r.caixa + 1;
+  if(caixa >= INTERVALOS_REVISAO.length) delete mapa[id];
+  else mapa[id] = { caixa, proxima: isoMaisDias(INTERVALOS_REVISAO[caixa]) };
+}
+function pendentes(mapa){ const hoje = isoLocal(); return Object.keys(mapa || {}).filter(id => mapa[id].proxima <= hoje); }
+function iniciarRevisaoHoje(){
+  garantirRotina();
+  const ids = pendentes(progresso.revisao).filter(id => DATA.quiz.some(q => q.id === id));
+  if(!ids.length) return;
+  state.quizQueue = shuffle(DATA.quiz.filter(q => ids.includes(q.id))).slice(0, 20);
+  state.quizIndex = 0; state.quizAcertos = 0; state.quizErros = []; state.quizRespostaAtual = null; state.modoRevisao = true;
+  setView('quiz');
+}
+
+// ---------- Ganchos nas funções existentes ----------
+const _registrarDiaAtivoOrig = registrarDiaAtivo;
+registrarDiaAtivo = function(){
+  _registrarDiaAtivoOrig();
+  garantirRotina();
+  const h = isoLocal();
+  if(!progresso.diasAtivos.includes(h)){ progresso.diasAtivos.push(h); progresso.diasAtivos = progresso.diasAtivos.slice(-120); }
+};
+const _responderQuizOrig = responderQuiz;
+responderQuiz = function(idx){
+  if(state.quizRespostaAtual !== null) return;
+  const q = state.quizQueue[state.quizIndex];
+  _responderQuizOrig(idx);
+  garantirRotina();
+  agendar(progresso.revisao, q.id, idx === q.correta);
+  progresso.hoje.questoes++;
+  saveProgresso();
+};
+const _finalizarQuizOrig = finalizarQuiz;
+finalizarQuiz = function(){ _finalizarQuizOrig(); state.modoRevisao = false; };
+const _finalizarCasoOrig = finalizarCaso;
+finalizarCaso = function(){
+  const caso = CASO_BY_ID[state.casoId];
+  const erros = revisaoErrosCaso(caso).length;
+  garantirRotina();
+  agendar(progresso.revisaoCasos, caso.id, erros === 0);
+  progresso.hoje.casos++;
+  _finalizarCasoOrig();
+  if(state.plantao && state.plantao.ids[state.plantao.idx] === caso.id && !state.plantao.registrado[state.plantao.idx]){
+    state.plantao.registrado[state.plantao.idx] = true;
+    const pct = state.casoPontosMax > 0 ? Math.round(state.casoPontosGanhos / state.casoPontosMax * 100) : 0;
+    state.plantao.resultados.push({ id: caso.id, pct, pontos: state.casoPontosGanhos, max: state.casoPontosMax, erros, tempo: Date.now() - state.plantao.inicioCaso });
+    setView('plantao');
+  }
+};
+const _viewCasoPlayerOrig = viewCasoPlayer;
+viewCasoPlayer = function(){
+  const caso = CASO_BY_ID[state.casoId];
+  let h = _viewCasoPlayerOrig();
+  if(state.plantao && state.plantao.ids[state.plantao.idx] === state.casoId) h = plantaoBarraHtml() + h;
+  if(caso && caso.fontes && caso.fontes.length) h += '<div class="base-tecnica">'+icon('book')+'<span><b>Base técnica:</b> '+caso.fontes.map(esc).join(' · ')+'</span></div>';
+  return h;
+};
+const _viewCasoResumoOrig = viewCasoResumo;
+viewCasoResumo = function(){
+  let h = _viewCasoResumoOrig();
+  if(state.plantao){
+    h = '<div class="plantao-continuar"><span>🏥 Você está em um plantão</span><button class="btn btn-primary" onclick="setView(\'plantao\')">Voltar ao plantão '+icon('chev')+'</button></div>' + h;
+  }
+  return h;
+};
+
+// ---------- Rotina de estudos (home) ----------
+function rotinaHtml(){
+  garantirRotina();
+  const hoje = isoLocal();
+  const fezHoje = progresso.diasAtivos.includes(hoje);
+  // calendário dos últimos 14 dias
+  let cal = '';
+  for(let i = 13; i >= 0; i--){
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const k = isoLocal(d), ativo = progresso.diasAtivos.includes(k);
+    cal += '<span class="cal-dia'+(ativo ? ' ativo' : '')+(i === 0 ? ' hoje' : '')+'" title="'+d.toLocaleDateString('pt-BR')+(ativo ? ' — estudou' : '')+'">'+d.toLocaleDateString('pt-BR',{weekday:'narrow'})+'</span>';
+  }
+  // meta do dia: 1 caso OU 10 questões
+  const pctMeta = Math.min(100, Math.max(progresso.hoje.casos * 100, progresso.hoje.questoes * 10));
+  const pendQ = pendentes(progresso.revisao).filter(id => DATA.quiz.some(q => q.id === id)).length;
+  const pendC = pendentes(progresso.revisaoCasos).filter(id => CASO_BY_ID[id]);
+  const totalRev = Object.keys(progresso.revisao).length + Object.keys(progresso.revisaoCasos).length;
+  const circ = 2 * Math.PI * 22;
+  return '<div class="section-title section-title-home">'+icon('trophy')+'Sua rotina de estudos</div><div class="rotina-grid">' +
+    '<div class="rotina-card"><div class="rc-topo"><span class="rc-fogo'+(fezHoje ? ' aceso' : '')+'">🔥</span><div><b>'+progresso.streakDias+' dia'+(progresso.streakDias===1?'':'s')+' seguido'+(progresso.streakDias===1?'':'s')+'</b><small>'+(fezHoje ? 'Sequência garantida hoje.' : 'Estude hoje para manter a sequência.')+'</small></div></div><div class="cal-linha">'+cal+'</div></div>' +
+    '<div class="rotina-card"><div class="rc-topo"><svg class="meta-anel" viewBox="0 0 54 54"><circle cx="27" cy="27" r="22" class="ma-fundo"/><circle cx="27" cy="27" r="22" class="ma-valor" style="stroke-dasharray:'+circ.toFixed(1)+';stroke-dashoffset:'+(circ * (1 - pctMeta / 100)).toFixed(1)+'"/><text x="27" y="31" text-anchor="middle">'+pctMeta+'%</text></svg><div><b>Meta do dia</b><small>1 caso clínico ou 10 questões.<br>Hoje: '+progresso.hoje.casos+' caso(s) · '+progresso.hoje.questoes+' questão(ões)</small></div></div>' +
+      (pctMeta < 100 ? '<button class="btn" onclick="iniciarCasoAleatorio()">'+icon('cases')+'Fazer um caso</button>' : '<div class="meta-ok">'+icon('check')+'Meta cumprida!</div>') + '</div>' +
+    '<div class="rotina-card"><div class="rc-topo"><span class="rc-rev">↻</span><div><b>Revisão espaçada</b><small>'+(pendQ + pendC.length ? (pendQ + pendC.length)+' item(ns) para revisar hoje' : (totalRev ? 'Nada para hoje — '+totalRev+' item(ns) agendados' : 'Questões e casos que você errar voltam aqui em 1, 3, 7, 14 e 30 dias.'))+'</small></div></div>' +
+      (pendQ ? '<button class="btn btn-primary" onclick="iniciarRevisaoHoje()">'+icon('quiz')+'Revisar '+pendQ+' questão(ões)</button>' : '') +
+      (pendC.length ? '<div class="rev-casos">'+pendC.slice(0, 3).map(id => '<a onclick="abrirCaso(\''+id+'\')">'+icon('cases')+esc(CASO_BY_ID[id].titulo)+'</a>').join('')+'</div>' : '') +
+    '</div></div>';
+}
+
+// ---------- Modo Plantão ----------
+const PLANTAO_N = 5;
+let _plantaoTimer = null;
+function iniciarPlantao(){
+  const porCat = {};
+  shuffle(DATA.casos).forEach(c => { (porCat[c.categoria] = porCat[c.categoria] || []).push(c); });
+  const cats = shuffle(Object.keys(porCat));
+  const ids = [];
+  const alerta = shuffle(DATA.casos.filter(c => c.foco === 'sinal-alerta'))[0];
+  if(alerta) ids.push(alerta.id);
+  for(const cat of cats){ if(ids.length >= PLANTAO_N) break; const c = porCat[cat].find(x => !ids.includes(x.id)); if(c) ids.push(c.id); }
+  state.plantao = { ids: shuffle(ids), idx: 0, inicio: Date.now(), inicioCaso: Date.now(), resultados: [], registrado: {} };
+  state.plantaoFinal = null;
+  if(!_plantaoTimer) _plantaoTimer = setInterval(() => {
+    const el = document.getElementById('plantao-tempo');
+    if(el && state.plantao) el.textContent = fmtTempo(Date.now() - state.plantao.inicio);
+  }, 1000);
+  abrirCaso(state.plantao.ids[0]);
+}
+function fmtTempo(ms){ const s = Math.floor(ms / 1000); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+function plantaoBarraHtml(){
+  const p = state.plantao;
+  return '<div class="plantao-barra"><span class="pb-tit">🏥 Plantão</span><span>Paciente <b>'+(p.idx + 1)+'</b> de '+p.ids.length+'</span>' +
+    '<span class="pb-pontos">'+p.ids.map((id, i) => '<i class="'+(i < p.resultados.length ? (p.resultados[i].pct >= 70 ? 'ok' : 'mal') : (i === p.idx ? 'atual' : ''))+'"></i>').join('')+'</span>' +
+    '<span class="pb-tempo">⏱ <b id="plantao-tempo">'+fmtTempo(Date.now() - p.inicio)+'</b></span>' +
+    '<a class="pb-sair" onclick="encerrarPlantao()">Encerrar</a></div>';
+}
+function proximoPaciente(){
+  const p = state.plantao; if(!p) return;
+  p.idx++; p.inicioCaso = Date.now();
+  abrirCaso(p.ids[p.idx]);
+}
+function encerrarPlantao(){
+  const p = state.plantao; if(!p) return;
+  finalizarPlantao(true);
+}
+function finalizarPlantao(parcial){
+  const p = state.plantao;
+  const tempo = Date.now() - p.inicio;
+  const res = p.resultados;
+  const media = res.length ? Math.round(res.reduce((a, r) => a + r.pct, 0) / res.length) : 0;
+  const nota = media >= 90 ? 'A' : media >= 75 ? 'B' : media >= 60 ? 'C' : 'D';
+  if(!parcial && res.length === p.ids.length){
+    const ant = progresso.melhorPlantao;
+    if(!ant || media > ant.media || (media === ant.media && tempo < ant.tempo)){ progresso.melhorPlantao = { media, tempo, data: isoLocal() }; state.plantaoRecorde = true; } else state.plantaoRecorde = false;
+    progresso.plantoesConcluidos = (progresso.plantoesConcluidos || 0) + 1;
+    saveProgresso();
+  }
+  state.plantaoFinal = { res, tempo, media, nota, parcial, total: p.ids.length };
+  state.plantao = null;
+  setView('plantao');
+}
+function viewPlantao(){
+  let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:'Modo Plantão'}]);
+  const p = state.plantao;
+  if(p){
+    const r = p.resultados[p.resultados.length - 1];
+    const ultimo = p.resultados.length >= p.ids.length;
+    if(ultimo){ finalizarPlantao(false); return viewPlantao(); }
+    const caso = CASO_BY_ID[r.id];
+    h += plantaoBarraHtml();
+    h += '<div class="plantao-intervalo"><div class="pi-num pi-'+(r.pct >= 70 ? 'ok' : 'mal')+'">'+r.pct+'%</div><div><h3>Paciente '+p.resultados.length+' atendido</h3><p>'+esc(caso.titulo)+'</p>' +
+      '<small>'+r.pontos+' de '+r.max+' pontos · '+(r.erros ? r.erros+' decisão(ões) a revisar' : 'todas as decisões corretas')+' · '+fmtTempo(r.tempo)+'</small></div></div>' +
+      '<div class="plantao-acoes"><button class="btn btn-primary" onclick="proximoPaciente()">Chamar próximo paciente '+icon('chev')+'</button><button class="btn" onclick="setView(\'casoResumo\')">'+icon('book')+'Ver o resumo deste caso</button></div>';
+    return h;
+  }
+  const f = state.plantaoFinal;
+  if(!f){ h += '<div class="plantao-hero"><h2>🏥 Modo Plantão</h2><p>'+PLANTAO_N+' pacientes em sequência, de áreas diferentes e com pelo menos um sinal de alerta, com cronômetro. No fim, você recebe o relatório do plantão.</p><button class="btn btn-primary" onclick="iniciarPlantao()">Iniciar plantão</button></div>'; return h; }
+  h += '<div class="plantao-relatorio"><div class="pr-cab"><div class="pr-nota pr-'+f.nota+'">'+f.nota+'</div><div><h2>Relatório do plantão'+(f.parcial ? ' (encerrado antes do fim)' : '')+'</h2>' +
+    '<p>'+f.res.length+' de '+f.total+' pacientes atendidos · média de <b>'+f.media+'%</b> · tempo total <b>'+fmtTempo(f.tempo)+'</b>'+(state.plantaoRecorde ? ' · <b class="pr-rec">Novo recorde!</b>' : '')+'</p>' +
+    (progresso.melhorPlantao ? '<small>Melhor plantão: '+progresso.melhorPlantao.media+'% em '+fmtTempo(progresso.melhorPlantao.tempo)+'</small>' : '')+'</div></div>' +
+    '<div class="pr-lista">'+f.res.map((r, i) => { const c = CASO_BY_ID[r.id], cat = getCat(c.categoria);
+      return '<div class="pr-item"><span class="pr-i">'+(i + 1)+'</span><div class="pr-txt"><b>'+esc(c.titulo)+'</b><small>'+cat.emoji+' '+esc(cat.nome)+(c.foco === 'sinal-alerta' ? ' · 🚨 sinal de alerta' : '')+' · '+fmtTempo(r.tempo)+'</small></div><span class="pr-pct pi-'+(r.pct >= 70 ? 'ok' : 'mal')+'">'+r.pct+'%</span><button class="btn" onclick="abrirCaso(\''+r.id+'\')">Refazer</button></div>'; }).join('')+'</div>' +
+    '<p class="ref-nota">Casos com decisões erradas entram na sua revisão espaçada e voltam amanhã.</p>' +
+    '<div class="plantao-acoes"><button class="btn btn-primary" onclick="iniciarPlantao()">Novo plantão</button><button class="btn" onclick="setView(\'inicio\')">'+icon('back')+'Início</button></div></div>';
+  return h;
+}
+
 function renderMain(){
   const main = document.getElementById('main');
   let html = '';
@@ -1080,6 +1356,7 @@ function renderMain(){
     case 'flashConfig': html = viewFlashConfig(); break;
     case 'flashcards': html = viewFlashPlayer(); break;
     case 'conquistas': html = viewConquistas(); break;
+    case 'plantao': html = viewPlantao(); break;
     default: html = viewInicio();
   }
   main.innerHTML = html;
@@ -1107,10 +1384,12 @@ function viewInicio(){
     '<div class="stat-card"><div class="sc-val">'+st.taxa+'%</div><div class="sc-label">Acerto no quiz</div></div>'+
     '</div>';
 
+  h += rotinaHtml();
   h += '<div class="section-title section-title-home">'+icon('bolt')+'Começar agora</div>';
   h += '<div class="quick-grid">'+
     quickCard('cases','red','Caso Aleatório','Um caso clínico sorteado, do começo ao fim.','iniciarCasoAleatorio()')+
     quickCard('cases','teal','Casos Clínicos','Escolha uma área e veja os casos dela.',"setView('casosArea')")+
+    quickCard('alert','red','Modo Plantão','5 pacientes seguidos, com cronômetro e relatório final.','iniciarPlantao()')+
     quickCard('bolt','amber','Desafio Rápido','5 perguntas curtas, direto ao ponto.','iniciarQuizRapido()')+
     quickCard('cards','sky','Flashcards','Revise conceitos-chave em cartões.',"setView('flashConfig')")+
     quickCard('quiz','indigo','Quiz','Banco completo de questões, com filtros por categoria e nível.',"setView('quizConfig')")+
@@ -1317,9 +1596,7 @@ function viewCasoResumo(){
       caso.termosDicionario.map(tid=>'<a class="tag" style="cursor:pointer" href="../dicionario/?termo='+encodeURIComponent(tid)+'" target="_blank" rel="noopener">'+esc(tid.replace(/-/g,' '))+'</a>').join('')+
       '</div></div>';
   }
-  if(caso.fontes && caso.fontes.length){
-    h += '<div class="resumo-block"><h5>Fontes</h5><p>'+caso.fontes.map(esc).join(' · ')+'</p></div>';
-  }
+  h += referenciasCasoHtml(caso);
   h += '</div>';
   h += '<div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">'+
     '<button class="btn btn-primary" onclick="iniciarCasoAleatorio()">'+icon('cases')+'Próximo Caso Aleatório</button>'+
