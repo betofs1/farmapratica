@@ -2482,7 +2482,7 @@
     "id": "INT163",
     "medicamentoA": "doac",
     "medicamentoB": "aine",
-    "gravidade": "moderada",
+    "gravidade": "grave",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -2490,7 +2490,7 @@
       "sangramento"
     ],
     "mecanismo": "Efeito aditivo sobre o risco de sangramento: o AINE soma o dano à mucosa gastrointestinal e a leve disfunção plaquetária ao efeito anticoagulante do DOAC.",
-    "conduta": "Evitar uso regular de AINE; preferir paracetamol para dor/febre em pacientes anticoagulados quando possível.",
+    "conduta": "Evitar associação; preferir paracetamol para dor/febre em pacientes anticoagulados. Se o AINE for indispensável, usar pelo menor tempo possível, com gastroproteção e orientação sobre sinais de sangramento.",
     "acaoBalcao": "Perguntar sobre uso de anticoagulante antes de recomendar AINE de venda livre.",
     "fonte": "Farmacologia clínica estabelecida; bulas dos anticoagulantes orais diretos"
   },
@@ -2498,7 +2498,7 @@
     "id": "INT164",
     "medicamentoA": "doac",
     "medicamentoB": "aine_coxibe",
-    "gravidade": "leve",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -3149,7 +3149,7 @@
     "id": "INT206",
     "medicamentoA": "alopurinol",
     "medicamentoB": "varfarina",
-    "gravidade": "grave",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -3329,7 +3329,7 @@
     "id": "INT218",
     "medicamentoA": "dissulfiram",
     "medicamentoB": "metronidazol",
-    "gravidade": "moderada",
+    "gravidade": "grave",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -3845,14 +3845,14 @@
     "id": "INT252",
     "medicamentoA": "antibiotico_amplo",
     "medicamentoB": "tetraciclina",
-    "gravidade": "grave",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
       "antagonismo"
     ],
-    "mecanismo": "As tetraciclinas (bacteriostáticas) podem antagonizar o efeito bactericida das aminopenicilinas, reduzindo a eficácia terapêutica.",
-    "conduta": "Administrar os medicamentos com intervalo de pelo menos duas horas, ou evitar associação.",
+    "mecanismo": "As tetraciclinas (bacteriostáticas) podem antagonizar o efeito bactericida dos betalactâmicos (aminopenicilinas e cefalosporinas), que dependem de multiplicação bacteriana ativa, reduzindo a eficácia terapêutica.",
+    "conduta": "Evitar a associação sem indicação expressa; o espaçamento entre as doses não elimina o antagonismo. Confirmar o esquema com o prescritor.",
     "acaoBalcao": "Perguntar sobre uso concomitante antes de orientar sobre horários de administração.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },

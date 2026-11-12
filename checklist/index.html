@@ -1276,6 +1276,18 @@
 // NORMAS: base normativa reutilizável, com explicação de origem/escopo
 // =====================================================================
 const NORMAS = {
+  lei6437_1977: {
+    tipo: 'Lei Federal', numero: 'nº 6.437/1977', orgao: 'Presidência da República',
+    titulo: 'Infrações à legislação sanitária federal e respectivas sanções',
+    contexto: 'Define as infrações sanitárias, as penalidades (advertência, multa, interdição, cancelamento de autorização) e o rito do processo administrativo sanitário — base dos autos de infração lavrados pela vigilância sanitária.',
+    link: 'https://www.planalto.gov.br/ccivil_03/leis/l6437.htm'
+  },
+  in360_2025: {
+    tipo: 'Instrução Normativa', numero: 'nº 360/2025', orgao: 'Anvisa',
+    titulo: 'Lista de antimicrobianos e de agonistas de GLP-1 de uso sob prescrição com retenção de receita',
+    contexto: 'Publicada em abril de 2025 (vigência em junho de 2025), define a lista vigente de substâncias antimicrobianas (132) e de agonistas do receptor de GLP-1 (semaglutida, liraglutida, dulaglutida, tirzepatida e lixisenatida) de que trata a RDC 471/2021, alterada pela RDC 973/2025, revogando a IN 244/2023 (que já havia substituído as IN 83/2021 e 107/2021).',
+    link: 'https://www.normasbrasil.com.br/norma/instrucao-normativa-360-2025_477175.html'
+  },
   rdc44_2009: {
     tipo: 'RDC', numero: 'nº 44/2009', orgao: 'Anvisa',
     titulo: 'Boas Práticas Farmacêuticas para farmácias e drogarias',
@@ -1360,11 +1372,17 @@ const NORMAS = {
     contexto: 'Publicada em 2019, detalha especificamente para farmácias e drogarias os critérios de concessão, alteração e cancelamento da AFE/AE junto à Anvisa — é a norma operacional que complementa a Lei nº 6.360/1976.',
     link: 'https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2019/rdc0275_9_04_2019.pdf'
   },
-  rdc333_2003: {
-    tipo: 'RDC', numero: 'nº 333/2003', orgao: 'Anvisa',
-    titulo: 'Regulamento técnico de rotulagem de medicamentos',
-    contexto: 'Publicada em 2003, exige que medicamentos com destinação hospitalar tragam a inscrição "EMBALAGEM HOSPITALAR" no rótulo — base da vedação a que farmácias e drogarias vendam ao público esses produtos diretamente ao consumidor final.',
-    link: 'https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2003/rdc0333_19_11_2003.html'
+  rdc768_2022: {
+    tipo: 'RDC', numero: 'nº 768/2022', orgao: 'Anvisa',
+    titulo: 'Regras para a rotulagem de medicamentos',
+    contexto: 'Publicada em dezembro de 2022 (alterada pela RDC 808/2023), revogou a RDC 71/2009 — que já havia substituído a RDC 333/2003. Define a destinação comercial, hospitalar e governamental das embalagens e os dizeres obrigatórios, como "PROIBIDA A VENDA" para medicamentos de destinação governamental; produtos com destinação hospitalar ou governamental não podem ser vendidos ao consumidor final em farmácias e drogarias.',
+    link: 'https://www.in.gov.br/en/web/dou/-/resolucao-rdc-n-768-de-12-de-dezembro-de-2022-450312757'
+  },
+  lei9965_2000: {
+    tipo: 'Lei Federal', numero: 'nº 9.965/2000', orgao: 'Congresso Nacional',
+    titulo: 'Restrição à venda de esteroides ou peptídeos anabolizantes',
+    contexto: 'Condiciona a dispensação de anabolizantes à retenção da receita, que deve conter a identificação do profissional (com número do conselho e CPF), do paciente e o CID da doença; a farmácia deve arquivar a receita por 5 anos, à disposição da vigilância sanitária.',
+    link: 'https://www.planalto.gov.br/ccivil_03/leis/l9965.htm'
   },
   rdc80_2006: {
     tipo: 'RDC', numero: 'nº 80/2006', orgao: 'Anvisa',
@@ -1554,9 +1572,9 @@ const DATA = {
           correcao:'Transferir imediatamente para refrigeração adequada e avaliar se houve perda de estabilidade.',
           normas:['rdc430_2020'] },
         { id:'m6', texto:'Cumpre a proibição de comercializar medicamentos em embalagem hospitalar ao consumidor final', crit:'alta',
-          motivo:'Medicamentos com destinação hospitalar têm rotulagem, controle de qualidade e canal de distribuição próprios, distintos da venda ao público em geral.',
+          motivo:'Medicamentos com destinação hospitalar ou governamental ("PROIBIDA A VENDA") têm rotulagem e canal de distribuição próprios; sua venda ao consumidor final caracteriza infração sanitária e pode indicar desvio de carga.',
           correcao:'Retirar imediatamente o produto da área de venda e verificar a origem/procedência junto ao fornecedor.',
-          normas:['rdc333_2003'] },
+          normas:['rdc768_2022','lei6437_1977'] },
         { id:'m7', texto:'Fracionamento de medicamentos (quando realizado) segue a regulamentação específica', crit:'media',
           motivo:'O fracionamento fora das regras técnicas compromete a rastreabilidade e a integridade do medicamento; produtos de controle especial nunca podem ser fracionados.',
           correcao:'Suspender o fracionamento até adequação aos requisitos técnicos e nunca fracionar itens da Portaria 344/98.',
@@ -1572,7 +1590,11 @@ const DATA = {
         { id:'m10', texto:'Aquisição de medicamentos restrita a fornecedores/distribuidores qualificados e regularizados', crit:'media',
           motivo:'Comprar de fornecedores não regularizados aumenta o risco de produtos falsificados, roubados ou adulterados entrarem no estoque.',
           correcao:'Suspender compras do fornecedor até regularização e verificar a procedência do lote já recebido.',
-          normas:['rdc44_2009','rdc430_2020'] }
+          normas:['rdc44_2009','rdc430_2020'] },
+        { id:'m11', texto:'Alertas sanitários e recolhimentos da Anvisa acompanhados; lotes suspensos, interditados ou recolhidos segregados, identificados e sem dispensação', crit:'alta',
+          motivo:'Lotes com desvio de qualidade, falsificação ou suspensão determinada pela Anvisa podem causar dano direto ao paciente; a dispensação de produto interditado é infração sanitária.',
+          correcao:'Consultar periodicamente as resoluções e alertas da Anvisa, segregar imediatamente os lotes afetados em área identificada e seguir as orientações de recolhimento do detentor do registro.',
+          normas:['lei6360_1976','rdc44_2009','lei6437_1977'] }
       ]
     },
     {
@@ -1598,7 +1620,7 @@ const DATA = {
           motivo:'Prescrições eletrônicas fraudadas ou reutilizadas comprometem o controle sanitário.',
           correcao:'Validar a assinatura no verificador oficial antes de dispensar e registrar o número/hash da prescrição.',
           normas:['rdc44_2009','rdc1000_2025'] },
-        { id:'r6', texto:'Notificações amarelas (Listas A1/A2) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 30 dias, 1 medicamento por notificação', crit:'alta',
+        { id:'r6', texto:'Notificações de Receita A amarelas (Listas A1, A2 e A3) aviadas dentro do prazo (30 dias), com no máximo 5 ampolas ou quantidade suficiente para 30 dias, 1 medicamento por notificação', crit:'alta',
           motivo:'Cada lista da Portaria 344/98 tem regras próprias de quantidade e validade; o descumprimento invalida a dispensação.',
           correcao:'Recusar a dispensação fora desses parâmetros e orientar o paciente a buscar nova notificação.',
           normas:['portaria344_1998','rdc1000_2025'] },
@@ -1606,20 +1628,20 @@ const DATA = {
           motivo:'Mesmo princípio de controle de quantidade/validade aplicado à Lista B1 (psicotrópicos).',
           correcao:'Recusar a dispensação fora desses parâmetros.',
           normas:['portaria344_1998','rdc1000_2025'] },
-        { id:'r8', texto:'Receitas carbonadas (Lista C1) aviadas dentro do prazo (30 dias), com quantidade para até 60 dias e no máximo 3 medicamentos por receita (exceto antiparkinsonianos/anticonvulsivantes, até 6 meses)', crit:'alta',
+        { id:'r8', texto:'Receitas de Controle Especial em 2 vias (Lista C1) aviadas dentro do prazo (30 dias), com quantidade para até 60 dias e no máximo 3 substâncias por receita (exceto antiparkinsonianos/anticonvulsivantes, até 6 meses)', crit:'alta',
           motivo:'Regra específica de quantidade/validade para a Lista C1 (outras substâncias sujeitas a controle).',
           correcao:'Recusar a dispensação fora desses parâmetros; verificar exceção para tratamento crônico quando aplicável.',
           normas:['portaria344_1998','rdc1000_2025'] },
-        { id:'r9', texto:'Dispensação de esteroides anabolizantes (Lista C5) mediante receita carbonada completa, com receita arquivada por 5 anos', crit:'alta',
+        { id:'r9', texto:'Dispensação de esteroides anabolizantes (Lista C5) mediante Receita de Controle Especial em 2 vias completa, com CID e CPF do prescritor, retida e arquivada por 5 anos', crit:'alta',
           motivo:'A Lista C5 exige guarda documental prolongada pelo alto potencial de desvio de uso.',
           correcao:'Regularizar o arquivamento e verificar se todas as receitas anteriores foram mantidas pelo prazo exigido.',
-          normas:['portaria344_1998','rdc1000_2025'] },
+          normas:['lei9965_2000','portaria344_1998','rdc1000_2025'] },
         { id:'r14', texto:'Listas C1 e C5 dispensadas exclusivamente mediante Receita de Controle Especial — receita privativa comum recusada para essas listas, mesmo que completa', crit:'alta',
           motivo:'A RDC 1.000/2025 tornou obrigatório o uso da Receita de Controle Especial para as Listas C1 e C5; a receita privativa comum deixou de ser aceita para essas substâncias.',
           correcao:'Recusar a dispensação apresentada em receita privativa comum e orientar o paciente a obter a Receita de Controle Especial correta com o prescritor.',
           normas:['rdc1000_2025','portaria344_1998'] },
-        { id:'r10', texto:'Retinoides sistêmicos (Lista C2) dispensados com receita válida por 30 dias; para mulheres em idade fértil, validade de 7 dias com revalidação mensal', crit:'alta',
-          motivo:'O uso de retinoides em gestantes causa malformações graves; o prazo curto de revalidação garante triagem periódica.',
+        { id:'r10', texto:'Retinoides sistêmicos (Lista C2) dispensados com Notificação de Receita Especial válida por 30 dias (somente na UF emitente), quantidade para até 30 dias e Termo de Conhecimento de Risco (Anexos XV/XVI) — observar norma estadual mais restritiva para mulheres em idade fértil', crit:'alta',
+          motivo:'Os retinoides sistêmicos são altamente teratogênicos; a limitação a 30 dias de tratamento força a reavaliação mensal (com β-hCG nas mulheres em idade fértil). Alguns estados restringem ainda mais a validade — ex.: SP (Portaria CVS 23/2003), 7 dias para mulheres em idade fértil.',
           correcao:'Recusar a dispensação fora do prazo e confirmar o Termo de Consentimento e Conhecimento de Risco arquivado.',
           normas:['portaria344_1998'] },
         { id:'r11', texto:'Sibutramina (Notificação B2) dispensada apenas até 15 mg/dia, por no máximo 30 dias, com Termo de Responsabilidade do Prescritor anexado', crit:'alta',
@@ -1633,11 +1655,11 @@ const DATA = {
         { id:'r12', texto:'Antimicrobianos dispensados apenas com receita privativa legível, sem rasuras, dentro de 10 dias da emissão, com registro de data, quantidade, lote e rubrica do farmacêutico no verso das duas vias', crit:'alta',
           motivo:'A receita de antimicrobianos tem validade curta e exige registro específico para rastreabilidade do uso racional de antibióticos; a RDC 1.000/2025 reforça que a Receita de Controle Especial não pode ser usada para essa finalidade.',
           correcao:'Recusar a dispensação fora do prazo, em receita de controle especial indevida, ou sem o registro completo no verso da receita antes da entrega.',
-          normas:['rdc471_2021','rdc1000_2025'] },
-        { id:'r16', texto:'Agonistas de GLP-1 (ex.: semaglutida, liraglutida) dispensados exclusivamente com receita privativa — nunca em Receita de Controle Especial', crit:'alta',
-          motivo:'A RDC 1.000/2025 veda expressamente o uso do talão de controle especial para agonistas de GLP-1, ainda que o paciente ou o prescritor tragam a receita nesse modelo por engano.',
-          correcao:'Recusar a receita de controle especial apresentada para esses medicamentos e orientar o prescritor/paciente a emitir receita privativa comum.',
-          normas:['rdc1000_2025'] },
+          normas:['rdc471_2021','in360_2025','rdc1000_2025'] },
+        { id:'r16', texto:'Agonistas de GLP-1 (semaglutida, liraglutida, dulaglutida, tirzepatida, lixisenatida) dispensados com receita sujeita à retenção em 2 vias, válida por 90 dias, com retenção da 2ª via e escrituração no SNGPC', crit:'alta',
+          motivo:'Desde 23/06/2025 (RDC 973/2025, que alterou a RDC 471/2021, e IN 360/2025) os agonistas de GLP-1 seguem o mesmo controle dos antimicrobianos; a Anvisa ressalta que Receita sujeita à retenção e Receita de Controle Especial são categorias distintas.',
+          correcao:'Recusar receita vencida (> 90 dias), em via única ou sem os dados obrigatórios; reter a 2ª via e escriturar a saída no SNGPC.',
+          normas:['rdc471_2021','in360_2025','rdc1000_2025'] },
         { id:'r13', texto:'Medicamentos isentos de prescrição em autosserviço organizados por Denominação Comum Brasileira (DCB), separados de outros produtos, com cartaz de alerta contra automedicação visível', crit:'media',
           motivo:'A organização por DCB facilita a identificação pelo usuário e o cartaz reforça a orientação farmacêutica mesmo no autosserviço.',
           correcao:'Reorganizar a área de autosserviço e afixar o cartaz de alerta em local visível.',
@@ -1671,14 +1693,22 @@ const DATA = {
           motivo:'O atraso na transmissão, quando exigida, é infração sanitária passível de penalidade.',
           correcao:'Regularizar a transmissão pendente e verificar a causa do atraso (conectividade, erro de sistema etc.).',
           normas:['rdc22_2014'] },
-        { id:'c6', texto:'Medicamentos antimicrobianos controlados por sistema aceito pela vigilância sanitária', crit:'alta',
+        { id:'c6', texto:'Antimicrobianos e agonistas de GLP-1 escriturados no SNGPC, com as receitas retidas arquivadas por 2 anos', crit:'alta',
           motivo:'Antibióticos têm regras próprias de retenção de receita e escrituração, distintas (mas complementares) das demais substâncias da Portaria 344/98.',
-          correcao:'Regularizar a escrituração dos antimicrobianos no mesmo sistema utilizado para os demais controlados.',
-          normas:['rdc22_2014','rdc471_2021'] },
-        { id:'c7', texto:'Nas ausências do farmacêutico responsável técnico sem substituto, a transmissão da escrituração ao SNGPC permanece bloqueada no período', crit:'alta',
-          motivo:'A responsabilidade pela escrituração de controlados é pessoal do farmacêutico; sem RT presente, o sistema não deve permitir novas transmissões.',
-          correcao:'Verificar a configuração do sistema de escrituração e formalizar a substituição técnica quando houver ausência prolongada.',
-          normas:['rdc22_2014'] }
+          correcao:'Regularizar a escrituração dos antimicrobianos e agonistas de GLP-1 no SNGPC, junto com os demais controlados.',
+          normas:['rdc22_2014','rdc471_2021','in360_2025'] },
+        { id:'c7', texto:'Controlados e antimicrobianos dispensados somente com farmacêutico presente; acesso ao SNGPC feito com login pessoal do farmacêutico cadastrado (RT ou substituto), sem compartilhamento de senha', crit:'alta',
+          motivo:'A escrituração é ato privativo e de responsabilidade pessoal do farmacêutico; dispensação sem farmacêutico ou uso de credencial de terceiros compromete a rastreabilidade e configura infração sanitária e ética.',
+          correcao:'Suspender a dispensação de controlados nas ausências do farmacêutico, cadastrar o farmacêutico substituto no SNGPC e formalizar a substituição técnica quando houver ausência prolongada.',
+          normas:['rdc22_2014','rdc44_2009','resolucaocff724_2022'] },
+        { id:'c8', texto:'Perdas, extravios, furtos ou roubos de controlados registrados (boletim de ocorrência) e comunicados à autoridade sanitária; ajustes de estoque documentados e justificados', crit:'alta',
+          motivo:'Divergências de estoque de controlados sem documentação caracterizam infração e podem indicar desvio; a Portaria 344/1998 exige comunicação e registro das ocorrências.',
+          correcao:'Registrar a ocorrência, lavrar boletim de ocorrência quando houver furto/roubo/extravio, comunicar a vigilância sanitária e documentar a justificativa do ajuste no SNGPC.',
+          normas:['portaria344_1998','rdc22_2014'] },
+        { id:'c9', texto:'Notas fiscais de aquisição de controlados conferidas no recebimento e arquivadas junto à escrituração', crit:'media',
+          motivo:'A entrada no estoque e no SNGPC depende de documento de aquisição válido; sem ele, não há rastreabilidade do produto controlado.',
+          correcao:'Conferir NF, produto, lote e quantidade antes da entrada no armário de controlados e arquivar a nota junto aos registros do SNGPC.',
+          normas:['portaria344_1998','rdc22_2014'] }
       ]
     },
     {
@@ -1740,7 +1770,11 @@ const DATA = {
         { id:'e8', texto:'No recebimento, verificados o estado de conservação, a legibilidade do lote/validade e indícios de falsificação ou violação da embalagem', crit:'alta',
           motivo:'Essa é a principal barreira contra a entrada de produtos falsificados, adulterados ou impróprios no estoque.',
           correcao:'Recusar o recebimento do lote suspeito, isolar imediatamente e notificar o farmacêutico responsável.',
-          normas:['rdc44_2009','rdc430_2020'] }
+          normas:['rdc44_2009','rdc430_2020'] },
+        { id:'e9', texto:'Termolábeis conferidos na chegada: transporte refrigerado verificado (embalagem térmica/indicador de temperatura) e armazenamento imediato em 2–8 °C', crit:'alta',
+          motivo:'A quebra da cadeia de frio durante o transporte compromete a estabilidade do medicamento antes mesmo de chegar à prateleira.',
+          correcao:'Recusar ou segregar o recebimento sem condições adequadas de transporte, registrar a ocorrência e contatar o distribuidor; armazenar os aceitos na geladeira sem demora.',
+          normas:['rdc430_2020','rdc44_2009'] }
       ]
     },
     {
@@ -1781,7 +1815,11 @@ const DATA = {
         { id:'s9', texto:'Caso realize Exames de Análises Clínicas (EAC), o estabelecimento está inscrito no CNES', crit:'media',
           motivo:'A inscrição no CNES é exigência específica para farmácias que atuam como Serviço Tipo I de EAC.',
           correcao:'Providenciar a inscrição no CNES antes de continuar oferecendo o serviço.',
-          normas:['rdc978_2025'] }
+          normas:['rdc978_2025'] },
+        { id:'s10', texto:'Declaração de Serviço Farmacêutico entregue ao usuário após cada serviço prestado (PA, glicemia, administração de medicamentos, etc.), com cópia/registro mantido', crit:'media',
+          motivo:'A RDC 44/2009 exige a emissão da Declaração de Serviço Farmacêutico, documento que formaliza o atendimento, os valores obtidos e as orientações dadas.',
+          correcao:'Adotar modelo de declaração com identificação do estabelecimento, do usuário, do serviço, dos resultados e do farmacêutico, e arquivar a via/registro conforme o POP.',
+          normas:['rdc44_2009','resolucaocff585_2013'] }
       ]
     },
     {
@@ -1819,9 +1857,9 @@ const DATA = {
           motivo:'É obrigação de todo empregador manter o acompanhamento médico ocupacional dos funcionários.',
           correcao:'Contratar médico do trabalho responsável e elaborar/atualizar o programa.',
           normas:['nr7'] },
-        { id:'d9', texto:'Farmacêutico possui acesso ao NOTIVISA para notificação de problemas relacionados a medicamentos (farmacovigilância)', crit:'media',
+        { id:'d9', texto:'Farmacêutico cadastrado e orientado para notificar eventos adversos a medicamentos e vacinas no VigiMed e queixas técnicas (desvios de qualidade) no Notivisa', crit:'media',
           motivo:'A farmacovigilância é atribuição legal do farmacêutico e depende do cadastro ativo no sistema da Anvisa.',
-          correcao:'Providenciar login pessoal e intransferível no Notivisa para o farmacêutico responsável.',
+          correcao:'Providenciar acesso pessoal e intransferível ao VigiMed (eventos adversos) e ao Notivisa (queixas técnicas) para o farmacêutico responsável e definir no POP o fluxo de notificação.',
           normas:['rdc44_2009','lei13021_2014'] },
         { id:'d10', texto:'Cartaz informativo completo afixado (razão social, CNPJ, AFE, nome do(s) farmacêutico(s) e CRF, horários de trabalho, telefones do CRF e da vigilância sanitária)', crit:'media',
           motivo:'A informação completa ao público é exigência de transparência e facilita o contato em caso de dúvidas ou denúncias.',
@@ -1838,7 +1876,23 @@ const DATA = {
         { id:'d12', texto:'Quando credenciado ao Programa Farmácia Popular do Brasil, a documentação do credenciamento está regularizada', crit:'baixa',
           motivo:'O credenciamento ao PFPB tem regras próprias de manutenção e prestação de contas junto ao Ministério da Saúde.',
           correcao:'Verificar a situação do credenciamento no sistema do programa e regularizar pendências.',
-          normas:['portariaconsolidacao5_2017'] }
+          normas:['portariaconsolidacao5_2017'] },
+        { id:'d14', texto:'Registros de limpeza e higienização dos ambientes, prateleiras, balcões e refrigeradores preenchidos conforme POP', crit:'media',
+          motivo:'Sem registro, a limpeza executada não pode ser comprovada em inspeção, e falhas de rotina não são detectadas.',
+          correcao:'Implantar planilha/controle de limpeza por ambiente e equipamento, com data, responsável e produto utilizado, revisada pelo farmacêutico.',
+          normas:['rdc44_2009'] },
+        { id:'d15', texto:'Comprovantes de coleta e destinação final dos resíduos (vencidos, perfurocortantes, químicos) arquivados', crit:'media',
+          motivo:'O PGRSS só é comprovado com o registro da coleta e do destino final por empresa licenciada.',
+          correcao:'Manter contrato com empresa licenciada e arquivar os manifestos/certificados de coleta e destinação de cada retirada.',
+          normas:['rdc222_2018'] },
+        { id:'d16', texto:'Alterações de responsabilidade técnica e de dados cadastrais (endereço, razão social, horário de funcionamento) comunicadas ao CRF e à vigilância sanitária', crit:'alta',
+          motivo:'Mudanças não comunicadas deixam o estabelecimento irregular perante o CRF e a Anvisa e podem gerar autuação.',
+          correcao:'Protocolar as alterações no CRF e na vigilância sanitária e atualizar AFE e licença sanitária sempre que houver mudança de RT ou de dados cadastrais.',
+          normas:['lei13021_2014','rdc275_2019','resolucaocff700_2021'] },
+        { id:'d17', texto:'Autos de infração, termos de intimação e notificações da vigilância sanitária ou do CRF acompanhados, com adequações cumpridas dentro do prazo', crit:'alta',
+          motivo:'O descumprimento de exigências fiscais dentro do prazo agrava as penalidades previstas na legislação sanitária.',
+          correcao:'Manter pasta com todos os termos recebidos, prazos e evidências das adequações realizadas; comunicar o responsável legal sobre exigências pendentes.',
+          normas:['lei6437_1977','lei5991_1973'] }
       ]
     },
     {
@@ -1925,7 +1979,7 @@ const DATA = {
           motivo:'A avaliação técnica da prescrição pelo farmacêutico é parte central da dispensação responsável.',
           correcao:'Reforçar com a equipe que toda prescrição deve ser avaliada pelo farmacêutico antes da dispensação.',
           normas:['rdc44_2009','resolucaocff724_2022'] },
-        { id:'rt7', texto:'Senhas de sistemas (SNGPC, Notivisa etc.) utilizadas são pessoais e intransferíveis', crit:'alta',
+        { id:'rt7', texto:'Senhas de sistemas (SNGPC, VigiMed, Notivisa etc.) utilizadas são pessoais e intransferíveis', crit:'alta',
           motivo:'O compartilhamento de senhas compromete a responsabilização individual e a segurança dos registros.',
           correcao:'Reforçar a política de uso pessoal de senhas e trocar credenciais compartilhadas indevidamente.',
           normas:['resolucaocff724_2022','rdc22_2014'] },
@@ -1940,7 +1994,15 @@ const DATA = {
         { id:'rt10', texto:'Toda a equipe, inclusive limpeza e manutenção, recebe capacitação sobre biossegurança, higiene pessoal e descarte de EPIs conforme o PGRSS', crit:'media',
           motivo:'A capacitação de toda a equipe — não só do farmacêutico — reduz riscos de contaminação e reforça a qualidade dos serviços prestados.',
           correcao:'Programar treinamento abrangendo toda a equipe e manter registro com conteúdo, data e assinaturas.',
-          normas:['rdc44_2009','nr32'] }
+          normas:['rdc44_2009','nr32'] },
+        { id:'rt11', texto:'Atos privativos do farmacêutico (avaliação da prescrição, dispensação de controlados e antimicrobianos, serviços farmacêuticos) não são delegados a balconistas ou outros colaboradores', crit:'alta',
+          motivo:'A Lei 13.021/2014 e o Código de Ética atribuem ao farmacêutico atividades que não podem ser executadas por pessoal não habilitado.',
+          correcao:'Definir por escrito os limites de atuação de cada função, treinar a equipe e supervisionar o atendimento no balcão.',
+          normas:['lei13021_2014','resolucaocff724_2022','rdc44_2009'] },
+        { id:'rt12', texto:'Dados pessoais e de saúde dos pacientes (receitas, cadastros, registros de serviços) protegidos, com acesso restrito e sigilo profissional', crit:'media',
+          motivo:'Informações de saúde são dados sensíveis pela LGPD, e o sigilo é dever ético do farmacêutico.',
+          correcao:'Restringir o acesso a documentos e sistemas, orientar a equipe sobre sigilo e LGPD e definir o descarte seguro de documentos com dados de pacientes.',
+          normas:['lei13709_2018','resolucaocff724_2022'] }
       ]
     },
     {
@@ -1972,7 +2034,7 @@ const DATA = {
           normas:['lei13709_2018','rdc978_2025'] },
         { id:'eac7', texto:'Resultados que indiquem suspeita de doença de notificação compulsória são notificados às autoridades sanitárias', crit:'alta',
           motivo:'A notificação compulsória é essencial para a vigilância epidemiológica de doenças de interesse à saúde pública.',
-          correcao:'Notificar imediatamente pelo canal oficial vigente (Notivisa/sistema municipal) assim que identificada a suspeita.',
+          correcao:'Notificar a vigilância epidemiológica municipal (SINAN/e-SUS Notifica) assim que identificada a suspeita — imediatamente (até 24 h) nos agravos de notificação imediata — e orientar o paciente a procurar o serviço de saúde.',
           normas:['portariaconsolidacao4_2017'] }
       ]
     },
@@ -2722,7 +2784,7 @@ function renderDashboard(el){
       <p>Os dados marcados são armazenados <strong>apenas no navegador do dispositivo utilizado</strong> (armazenamento local), não havendo envio a servidores externos.</p>
     </div>
 
-    <div class="versao-footer">Checklist de Rotina · FarmaPrática v1.2 · ${TODOS_ITENS.length} itens em ${DATA.categorias.length} rotinas · ${Object.keys(NORMAS).length} normas na base · normas verificadas em ${NORMAS_ATUALIZADO_EM}</div>
+    <div class="versao-footer">Checklist de Rotina e Autoinspeção · FarmaPrática v1.2 · ${TODOS_ITENS.length} itens em ${DATA.categorias.length} rotinas · ${Object.keys(NORMAS).length} normas na base · normas verificadas em ${NORMAS_ATUALIZADO_EM}</div>
   `;
 
   ['estab-nome','estab-cnpj','estab-rt'].forEach(id => {
@@ -2971,7 +3033,7 @@ function gerarRelatorioPDF(){
 
   let html = `
     <div class="rel-header">
-      <div class="rel-brand">Farma<span>Prática</span> - Relatório de Checklist de Rotina</div>
+      <div class="rel-brand">Farma<span>Prática</span> - Relatório de Checklist de Rotina e Autoinspeção</div>
       <div class="rel-meta">
         Relatório emitido em: <strong>${emitidoEm}</strong><br>
         Estabelecimento: <strong>${estabNome}</strong>${estabCnpj}<br>
@@ -3049,7 +3111,7 @@ function gerarRelatorioPDF(){
   `;
 
   html += `<div class="rel-footer">
-    Relatório gerado automaticamente pela ferramenta de Checklist de Rotina do FarmaPrática. As datas de conferência refletem o último registro salvo no navegador utilizado; itens diários, semanais e mensais são reiniciados automaticamente ao final de cada período. Este documento é um instrumento de apoio interno e não substitui os registros oficiais exigidos pela legislação sanitária vigente nem a consulta ao texto integral e atualizado de cada norma (disponível no painel "Fonte de Dados").
+    Relatório gerado automaticamente pela ferramenta de Checklist de Rotina e Autoinspeção do FarmaPrática. As datas de conferência refletem o último registro salvo no navegador utilizado; itens diários, semanais e mensais são reiniciados automaticamente ao final de cada período. Este documento é um instrumento de apoio interno e não substitui os registros oficiais exigidos pela legislação sanitária vigente nem a consulta ao texto integral e atualizado de cada norma (disponível no painel "Fonte de Dados").
   </div>`;
 
   document.getElementById('relatorio-impressao').innerHTML = html;
@@ -3068,7 +3130,7 @@ function imprimirChecklistBranco(){
 
   let html = `
     <div class="rel-header">
-      <div class="rel-brand">Farma<span>Prática</span> - Checklist de Rotina (formulário para preenchimento manual)</div>
+      <div class="rel-brand">Farma<span>Prática</span> - Checklist de Rotina e Autoinspeção (formulário para preenchimento manual)</div>
       <div class="rel-meta">
         Estabelecimento: <strong>${estabNome}</strong><br>
         Farmacêutico(a) RT: <strong>${estabRt}</strong>
@@ -3117,7 +3179,7 @@ function imprimirChecklistBranco(){
   `;
 
   html += `<div class="rel-footer">
-    Formulário gerado pela ferramenta de Checklist de Rotina do FarmaPrática para uso offline. Após o preenchimento, repasse os resultados para o aplicativo assim que possível — os dados marcados no papel não são sincronizados automaticamente.
+    Formulário gerado pela ferramenta de Checklist de Rotina e Autoinspeção do FarmaPrática para uso offline. Após o preenchimento, repasse os resultados para o aplicativo assim que possível — os dados marcados no papel não são sincronizados automaticamente.
   </div>`;
 
   document.getElementById('relatorio-impressao').innerHTML = html;

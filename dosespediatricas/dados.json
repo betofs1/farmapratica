@@ -305,40 +305,39 @@
    "nome": "Naproxeno",
    "categoria": "AINEs",
    "doseBase": {
-    "tipo": "mgkg_dose",
+    "tipo": "mgkg_dia",
     "doseMgKg": {
-     "min": 5,
-     "max": 7
+     "min": 10,
+     "max": 10
     },
-    "vezesDia": 2,
-    "doseMaximaDoseMg": 500,
+    "fracionamento": 2,
     "doseMaximaDiaMg": 1000
    },
    "idadeMinimaMeses": 24,
    "formulacoes": [
     {
-     "tipo": "liquido",
-     "rotulo": "Suspensão oral 25 mg/mL",
-     "viaTexto": "via oral a cada 12 horas",
-     "concentracaoMgMl": 25,
-     "apresentacaoTexto": "frasco com 100 mL"
-    },
-    {
      "tipo": "comprimido",
      "rotulo": "Comprimido 250 mg",
      "viaTexto": "via oral a cada 12 horas",
      "mgPorComprimido": 250,
-     "apresentacaoTexto": "cartela com 10 comprimidos"
+     "apresentacaoTexto": "embalagens com 10 a 45 comprimidos"
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido 500 mg",
+     "viaTexto": "via oral a cada 12 horas",
+     "mgPorComprimido": 500,
+     "apresentacaoTexto": "embalagens com 10 a 45 comprimidos"
     }
    ],
    "observacoesExtras": [
-    "Uso pediátrico geralmente reservado a indicação reumatológica; confirmar protocolo.",
-    "Esquema alternativo (dose única diária mais alta): 500-660 mg via oral 1x/dia — não calculado automaticamente pela ferramenta, que exibe o esquema usual (250-275 mg a cada 12-24h); considerar manualmente quando a posologia em dose única for a escolhida.",
-    "Bula FLANAX® (naproxeno sódico 275 mg, venda livre): 1 comprimido 1 a 2 vezes ao dia; não exceder 550 mg em 24 h, salvo prescrição médica. Menores de 12 anos só com orientação médica."
+    "Naproxeno (base) — NÃO confundir com naproxeno sódico (275/550 mg, ver item próprio): 275 mg de naproxeno sódico equivalem a 250 mg de naproxeno.",
+    "Uso pediátrico em bula apenas para artrite reumatoide juvenil: 10 mg/kg/dia em 2 tomadas (12/12 h). Só há comprimidos de 250/500 mg no mercado — conferir se a dose calculada é viável com a apresentação.",
+    "Adultos (bula NAPROSYN®/genéricos): 250 a 500 mg 2x/dia, ou 500 a 1000 mg em dose única diária; esquemas de gota aguda, enxaqueca e dismenorreia usam dose inicial maior — a dose total diária não deve exceder 1250 mg nessas indicações.",
+    "Não usar por mais de 10 dias consecutivos sem orientação médica."
    ],
-   "fonte": "Bula ANVISA",
+   "fonte": "Bula ANVISA — NAPROSYN® (naproxeno) 250/500 mg; naproxeno genérico",
    "nomesComerciais": [
-    "Flanax",
     "Naprosyn",
     "Naxotec",
     "Naprox"
@@ -347,6 +346,73 @@
     "modo": "fixa",
     "doseMg": {
      "min": 250,
+     "max": 500
+    },
+    "vezesDia": 2,
+    "doseMaximaDiaMg": 1000
+   },
+   "doseMaximaDiaAdultoMg": 1000,
+   "fontesAdulto": [
+    "Bula NAPROSYN® (naproxeno) comprimidos 250 mg e 500 mg: 250 mg ou 500 mg duas vezes ao dia, ou 500–1000 mg em dose única diária; dose total diária não deve exceder 1250 mg (gota aguda/dismenorreia)."
+   ]
+  },
+  {
+   "id": "naproxeno_sodico",
+   "nome": "Naproxeno sódico",
+   "categoria": "AINEs",
+   "doseBase": {
+    "tipo": "individualizado"
+   },
+   "idadeMinimaMeses": 0,
+   "formulacoes": [
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido revestido 275 mg (= 250 mg de naproxeno)",
+     "viaTexto": "via oral",
+     "mgPorComprimido": null,
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Menores de 12 anos: uso somente com orientação médica, conforme bula (FLANAX®) — não há posologia pediátrica de venda livre."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido (275 mg), 1 a 2 vezes ao dia — não exceder 550 mg em 24 horas, salvo prescrição médica."
+      }
+     ]
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido revestido 550 mg (= 500 mg de naproxeno)",
+     "viaTexto": "via oral",
+     "mgPorComprimido": null,
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 143,
+       "alerta": true,
+       "texto": "Menores de 12 anos: uso somente com orientação médica, conforme bula — usar outra opção pediátrica."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 comprimido (550 mg), 1 vez ao dia — não exceder 550 mg em 24 horas, salvo prescrição médica."
+      }
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "Naproxeno sódico — NÃO confundir com naproxeno base (250/500 mg, ver item próprio): 275 mg de naproxeno sódico = 250 mg de naproxeno; 550 mg = 500 mg.",
+    "Bula FLANAX® (venda livre): 275 mg 1 a 2 vezes ao dia ou 550 mg 1 vez ao dia; a dose diária de 550 mg não deve ser excedida, salvo prescrição médica. Não usar por mais de 10 dias consecutivos sem orientação médica.",
+    "Cada comprimido de 275 mg contém 25 mg de sódio (550 mg: 50 mg) — considerar em dieta com restrição de sódio."
+   ],
+   "fonte": "Bula ANVISA — FLANAX® (naproxeno sódico) 275/550 mg; naproxeno sódico genérico",
+   "nomesComerciais": [
+    "Flanax"
+   ],
+   "doseAdulto": {
+    "modo": "fixa",
+    "doseMg": {
+     "min": 275,
      "max": 275
     },
     "vezesDia": 2,
@@ -354,7 +420,7 @@
    },
    "doseMaximaDiaAdultoMg": 550,
    "fontesAdulto": [
-    "Bula do fabricante (dados fornecidos e revisados pelo farmacêutico responsável pela base): dose usual de 250-275 mg por via oral a cada 12-24 horas; alternativamente, 500-660 mg por via oral 1x/dia."
+    "Bula FLANAX® (naproxeno sódico) 275 mg e 550 mg, Bayer: 275 mg 1–2x/dia ou 550 mg 1x/dia; não exceder 550 mg/dia salvo prescrição médica."
    ]
   },
   {

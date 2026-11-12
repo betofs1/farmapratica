@@ -498,7 +498,7 @@
   <div class="filter-row" id="filterRow" style="display:none">
     <span class="filter-label">Categoria:</span>
     <button class="filter-btn fa" data-t="todos"    onclick="setFiltro('todos',this)">Todos</button>
-    <button class="filter-btn"    data-t="etico"    onclick="setFiltro('etico',this)"><span class="filter-dot" style="background:#3b82f6"></span>Éticos</button>
+    <button class="filter-btn"    data-t="etico"    onclick="setFiltro('etico',this)"><span class="filter-dot" style="background:#3b82f6"></span>Novos</button>
     <button class="filter-btn"    data-t="similar"  onclick="setFiltro('similar',this)"><span class="filter-dot" style="background:#f59e0b"></span>Similares</button>
     <button class="filter-btn"    data-t="generico" onclick="setFiltro('generico',this)"><span class="filter-dot" style="background:#10b981"></span>Genéricos</button>
     <button class="filter-btn"    data-t="outros"   onclick="setFiltro('outros',this)"><span class="filter-dot" style="background:#6b7280"></span>Outros</button>
@@ -1138,7 +1138,7 @@ function renderWelcome() {
   document.getElementById("results").innerHTML = `<div class="state-box">
     <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
     <div class="state-title">Busque por nome comercial ou princípio ativo</div>
-    <div class="state-desc">A busca retorna apenas equivalentes com os mesmos princípios ativos,<br>a mesma dose e a mesma forma farmacêutica (Éticos, Similares e Genéricos)</div>
+    <div class="state-desc">A busca retorna apenas equivalentes com os mesmos princípios ativos,<br>a mesma dose e a mesma forma farmacêutica (Novos/inovadores, Similares e Genéricos)</div>
   </div>`;
 }
 
@@ -1168,7 +1168,7 @@ function renderResults(query) {
   document.getElementById("statusBar").innerHTML = `
     <span class="status-text">${gtotal} medicamento${gtotal>1?"s":""} para <em style="font-style:normal;font-weight:700;color:var(--blue-dark)">"${query}"</em>${total!==gtotal?` <span style="font-size:12px;color:var(--gray-light)">(${total} apresentações agrupadas)</span>`:""}</span>
     <div class="status-counts">
-      ${gcnt.etico   ?`<span class="count-chip chip-e">${gcnt.etico} Ético${gcnt.etico>1?"s":""}</span>`:""}
+      ${gcnt.etico   ?`<span class="count-chip chip-e">${gcnt.etico} Novo${gcnt.etico>1?"s":""}</span>`:""}
       ${gcnt.similar ?`<span class="count-chip chip-s">${gcnt.similar} Similar${gcnt.similar>1?"es":""}</span>`:""}
       ${gcnt.generico?`<span class="count-chip chip-g">${gcnt.generico} Genérico${gcnt.generico>1?"s":""}</span>`:""}
       ${gcnt.outros  ?`<span class="count-chip chip-o">${gcnt.outros} Outro${gcnt.outros>1?"s":""}</span>`:""}
@@ -1194,7 +1194,7 @@ function renderCards() {
 
   const grouped = groupResults(list);
   const shInfo = {
-    etico:   { label:"Éticos — Medicamento de Referência", cls:"sh-e" },
+    etico:   { label:"Novos — inovadores (em geral, o medicamento de referência)", cls:"sh-e" },
     similar: { label:"Similares",                          cls:"sh-s" },
     generico:{ label:"Genéricos",                          cls:"sh-g" },
     outros:  { label:"Outros",                             cls:"sh-o" },
@@ -1293,7 +1293,7 @@ function toggleFavMedinter(btn){
 function cardResumidoHTML(m, msExact) {
   const bc = { etico:"be", similar:"bs", generico:"bg", outros:"bo" };
   const rc = { etico:"re", similar:"rs", generico:"rg", outros:"ro" };
-  const tl = { etico:"Ético", similar:"Similar", generico:"Genérico", outros:"Outro" };
+  const tl = { etico:"Novo", similar:"Similar", generico:"Genérico", outros:"Outro" };
   const fotoQ = encodeURIComponent("embalagem " + m.nome + " medicamento");
   const princ = simplifyPrincipio(m.principio);
   const _favId = m.nome + "||" + (m.laboratorio||"");
@@ -1391,7 +1391,7 @@ function cardResumidoHTML(m, msExact) {
 function cardHTML(m) {
   const cc = { etico:"te be", similar:"ts bs", generico:"tg bg", outros:"to bo" };
   const cl = (m.tipo in cc ? cc[m.tipo] : "to bo").split(" ");
-  const tl = { etico:"Ético · Referência", similar:"Similar", generico:"Genérico", outros:"Outro" };
+  const tl = { etico:"Novo · Inovador", similar:"Similar", generico:"Genérico", outros:"Outro" };
 
   let tarjaHtml = "";
   if (m.tarja) {

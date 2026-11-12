@@ -79,7 +79,7 @@ def normalizar_str(s):
 
 def tipo_produto(raw):
     r = normalizar_str(raw)
-    if "refer" in r:       return "referencia"
+    if "refer" in r or r.startswith("novo"): return "etico"   # CMED "Novo" = inovador (em geral, o de referência)
     if "generi" in r:      return "generico"
     if "simil" in r:       return "similar"
     if "biolog" in r:      return "biologico"
@@ -416,7 +416,7 @@ def buscar():
             break
 
     # Ordena: referência > genérico > similar > outros
-    ordem = ["referencia", "generico", "similar", "biologico", "fitoterapico", "homeopatico", "outros"]
+    ordem = ["etico", "generico", "similar", "biologico", "fitoterapico", "homeopatico", "outros"]
     resultados.sort(key=lambda m: ordem.index(m["tipo"]) if m["tipo"] in ordem else 99)
 
     return jsonify({
@@ -456,7 +456,7 @@ def index():
     <hr style="border-color:#1e3254;margin:20px 0">
     <p style="color:#64748b;font-size:13px">Endpoints:</p>
     <code style="color:#34d399">/anvisa/medicamentos?q=diosmina</code><br><br>
-    <code style="color:#34d399">/anvisa/medicamentos?q=diosmina+hesperidina&tipo=referencia</code><br><br>
+    <code style="color:#34d399">/anvisa/medicamentos?q=diosmina+hesperidina&tipo=etico</code><br><br>
     <code style="color:#34d399">/anvisa/sugestoes?q=dio</code><br><br>
     <code style="color:#34d399">/status</code>
     <hr style="border-color:#1e3254;margin:20px 0">

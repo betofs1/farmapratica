@@ -1326,9 +1326,11 @@ function calcularLDL(){
     box.classList.add('show'); return;
   }
   const ldl = ct - hdl - (tg/5);
-  let cat='Ótimo (<100)';
-  if(ldl>=190) cat='Muito alto (≥190)'; else if(ldl>=160) cat='Alto (160–189)'; else if(ldl>=130) cat='Limítrofe (130–159)'; else if(ldl>=100) cat='Próximo do ótimo (100–129)';
-  box.innerHTML = '<div class="cr-valor">'+ldl.toFixed(1)+'</div><div class="cr-unidade">mg/dL</div><div class="cr-interp">Categoria: <b>'+cat+'</b>. A meta terapêutica deve ser individualizada pelo risco cardiovascular do paciente.</div>';
+  const metas=[['baixo',115],['intermediário',100],['alto',70],['muito alto',50],['extremo',40]];
+  const atinge=metas.filter(m=>ldl<m[1]).map(m=>m[0]);
+  let txt = atinge.length ? 'Dentro da meta para risco <b>'+atinge.join(', ')+'</b>.' : 'Acima da meta de todas as categorias de risco (≥ 115 mg/dL).';
+  if(ldl>=190) txt += ' <b>LDL ≥ 190 mg/dL</b>: classifica como alto risco e sugere investigar hipercolesterolemia familiar.';
+  box.innerHTML = '<div class="cr-valor">'+ldl.toFixed(1)+'</div><div class="cr-unidade">mg/dL</div><div class="cr-interp">'+txt+'<br>Metas de LDL (SBC 2025): baixo &lt;115 · intermediário &lt;100 · alto &lt;70 · muito alto &lt;50 · extremo &lt;40 mg/dL. Classifique o risco cardiovascular do paciente antes de interpretar.</div>';
   box.classList.add('show');
 }
 function calcularRAC(){
