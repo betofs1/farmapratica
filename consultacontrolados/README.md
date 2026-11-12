@@ -111,6 +111,42 @@ qualquer sandbox/ambiente restrito — os dois sites da ANVISA (Datalegis) não
 são alcançáveis de dentro de assistentes de IA em nuvem. Rode-o direto no seu
 computador.
 
+## Exceções de adendo (`excecoes.json`) — validadas automaticamente
+
+Cada substância cuja regra de dispensação muda por causa de um **adendo** da
+Portaria 344/98 (ex.: codeína ≤100 mg → Receita de Controle Especial;
+carisoprodol → sem retenção) tem uma entrada em `excecoes.json`. Desde
+12/11/2026, toda entrada precisa trazer a **prova** de que o adendo ainda existe:
+
+| Campo | Para que serve |
+|---|---|
+| `lista`, `adendo_item` | Onde está o adendo (ex.: `"B1"`, `"16"`) |
+| `trecho_norma` | Trecho **literal** do adendo (acentos/maiúsculas não importam) |
+| `fundamento` | Norma citada na tela |
+| `verificado_em`, `revisar_ate` | Data da última conferência e prazo da próxima (≈6 meses) |
+| `tipo` | `substitui` (troca a receita), `condicional` (depende de forma/dose) ou `restricao` (mesma receita, restrição de dispensação) |
+| `rotulo`, `titulo`, `tag` | Textos opcionais exibidos na página |
+
+A cada execução, `atualizar_fontes.py` confere cada exceção contra o adendo
+**recém-capturado**. Se o item tiver virado "(Excluído)", se o trecho não for
+mais encontrado ou se a substância saiu da lista, aparece **ERRO** e o
+`controlados.json` **não é gravado**. O `atualizar_pagina.py` repete essa
+conferência e também se recusa a publicar se `excecoes.json` foi editado sem
+rodar o passo anterior. São **avisos** (não bloqueiam): o prazo `revisar_ate`
+vencido, o trecho ter mudado de número (renumeração) e um adendo novo que cita
+uma substância com regra especial ainda sem exceção cadastrada.
+
+O relatório de mudanças agora compara também os **adendos**, item por item,
+e não só os nomes das substâncias. Foi exatamente uma revogação de adendo
+(item 4 da B1, zolpidem/zaleplona, RDC 871/2024) que passou despercebida antes.
+
+Depois de editar `excecoes.json` sem precisar baixar as normas de novo:
+
+```
+python3 atualizar_fontes.py --sem-rede
+python3 atualizar_pagina.py
+```
+
 ## Quando rodar isso
 
 - **`atualizar_fontes.py`** — tem aviso automático embutido: quando detecta

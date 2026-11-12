@@ -93,7 +93,7 @@
     --accent2-glow:rgba(31,138,95,0.14);
     --text-white:#22262c;
     --text-gray:#454a52;
-    --text-gray-dim:#6d737b;
+    --text-gray-dim:#565c64; /* 12/11/2026: mais escuro para leitura no balcão */
     --sidebar-bg:#d6dadf;
     --sidebar-border:#c4c9cf;
     --sidebar-hover:#e1e4e7;
@@ -1844,6 +1844,114 @@
     transform:scale(1.1) translateX(3px);
   }
   .tools-hub-card.placeholder{opacity:.82;}
+  /* 12/11/2026: tema claro -- card branco com faixa da cor da ferramenta no
+     topo, ícone em cor sólida e efeito "game" (degrau sólido + bisel), SEM os
+     halos/brilhos coloridos borrados do tema escuro (ficavam sujos no fundo
+     claro). Opção "B", aprovada pelo usuário. O tema escuro não muda. */
+  /* Efeito "game" (degrau sólido na cor da ferramenta + bisel), igual ao
+     tema escuro -- mas SEM os halos/brilhos coloridos borrados, que é o que
+     ficava feio no fundo claro. */
+  body.light .tools-hub-card{
+    border-width:2px; border-top-width:4px;
+    border-color:color-mix(in srgb, var(--hub-color) 60%, #aab0b8);
+    box-shadow:0 6px 0 0 color-mix(in srgb, var(--hub-color) 55%, #5b6068), 0 14px 22px -14px rgba(30,35,45,.45), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  body.light .tools-hub-card:hover{
+    border-color:var(--hub-color); transform:translateY(-5px);
+    box-shadow:0 11px 0 0 color-mix(in srgb, var(--hub-color) 60%, #5b6068), 0 24px 30px -18px rgba(30,35,45,.5), inset 0 1px 0 rgba(255,255,255,.8);
+  }
+  body.light .tools-hub-card:active{
+    transform:translateY(2px);
+    box-shadow:0 2px 0 0 color-mix(in srgb, var(--hub-color) 55%, #5b6068), 0 6px 10px -8px rgba(30,35,45,.4), inset 0 1px 0 rgba(255,255,255,.6);
+  }
+  body.light .tools-hub-card-body{
+    border-radius:13px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--hub-color) 13%, #ffffff) 0%, #ffffff 58%);
+  }
+  /* 12/11/2026: mesmo estilo "B" no tema escuro (pedido do usuário) --
+     faixa da cor da ferramenta no topo do card (em vez do brilho radial),
+     ícone em cor sólida com desenho branco e degrau "game" mantido. Os halos
+     coloridos ficam mais contidos para combinar com o tema claro. */
+  body:not(.light) .tools-hub-card-body{
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--hub-color) 26%, var(--tools-card-fill-1)) 0%, var(--tools-card-fill-1) 45%, var(--tools-card-fill-2) 100%);
+  }
+  body:not(.light) .tools-hub-card:hover .tools-hub-card-body{
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--hub-color) 36%, var(--tools-card-fill-1)) 0%, var(--tools-card-fill-1) 50%, var(--tools-card-fill-2) 100%);
+  }
+  body:not(.light) .tools-hub-card{
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 35%, transparent), 0 6px 0 0 color-mix(in srgb, var(--hub-color) 50%, rgba(0,0,0,.55)), 0 14px 28px -12px rgba(0,0,0,.5), var(--tool-card-bevel);
+  }
+  body:not(.light) .tools-hub-card:hover{
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--hub-color) 60%, transparent), 0 0 22px -8px color-mix(in srgb, var(--hub-color) 60%, transparent), 0 11px 0 0 color-mix(in srgb, var(--hub-color) 55%, rgba(0,0,0,.55)), 0 24px 42px -16px rgba(0,0,0,.55), var(--tool-card-bevel-hover);
+  }
+  body:not(.light) .tools-hub-icon,
+  body:not(.light) .tools-hub-card:hover .tools-hub-icon{
+    background:var(--hub-color); color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3), 0 2px 0 color-mix(in srgb, var(--hub-color) 55%, #111);
+    filter:none;
+  }
+  body:not(.light) .tools-hub-icon svg,
+  body:not(.light) .tools-hub-card:hover .tools-hub-icon svg{ filter:none; }
+  body:not(.light) .tools-hub-arrow{ box-shadow:none; background:color-mix(in srgb, var(--hub-color) 18%, transparent); }
+  /* =====================================================================
+     12/11/2026 — Tema claro da página inicial: "fundo neutro, superfícies
+     brancas, vermelho só como destaque" (mesmo princípio dos cards).
+     ===================================================================== */
+  /* 1) Cabeçalho branco (mantém a linha/anel vermelho) */
+  body.light header{
+    background:#ffffff;
+    box-shadow:0 1px 0 rgba(15,23,42,.06), 0 12px 26px -20px rgba(15,23,42,.28);
+  }
+  body.light .sidebar{ border-right:1px solid var(--sidebar-border, #d3d8de); }
+  /* 2) Bloco de baixo sem "caixa dentro de caixa": some o painel externo */
+  body.light .stats-card{
+    background:transparent !important; box-shadow:none !important; border:none !important;
+    animation:none; padding-left:0; padding-right:0;
+  }
+  body.light .quad-panel > .stat-block{
+    background:#ffffff;
+    box-shadow:0 1px 2px rgba(15,23,42,.05), 0 10px 22px -16px rgba(15,23,42,.22);
+  }
+  body.light .note-category-chip{ border:1px solid var(--card-border); }
+  body.light .stats-footer{
+    background:#ffffff !important;
+    box-shadow:0 1px 2px rgba(15,23,42,.05), 0 10px 22px -16px rgba(15,23,42,.22);
+  }
+  body.light .stats-footer::before, body.light .stats-footer::after{ display:none; }
+  body.light .quick-tip-card{ background:#ffffff; }
+  /* 3) Sem manchas rosadas: branco + vermelho só no detalhe */
+  body.light .time-saved-card{ background:#ffffff; }
+  body.light .time-saved-card::after{ display:none; }
+  body.light .institutional-banner{
+    background:#ffffff; border-left:4px solid var(--red); animation:none;
+  }
+  body.light .institutional-banner-visual{
+    background-image:linear-gradient(90deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.6) 45%, rgba(255,255,255,.88) 100%), url("images/banner-farmapratica.png");
+  }
+  @media (max-width:760px){ body.light .institutional-banner::after{ display:none; } }
+  /* 4) Textos secundários mais legíveis */
+  body.light .header-credit{ font-size:11.5px; }
+  body.light .note-category-chip .chip-desc{ font-size:11.5px; }
+  body.light .greeting-clock-date{ font-size:12px; }
+
+  body.light .tools-hub-card:hover .tools-hub-card-body{
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--hub-color) 20%, #ffffff) 0%, #ffffff 62%);
+  }
+  body.light .tools-hub-icon,
+  body.light .tools-hub-card:hover .tools-hub-icon{
+    background:var(--hub-color); color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 2px 0 color-mix(in srgb, var(--hub-color) 60%, #3a3f46);
+    filter:none;
+  }
+  body.light .tools-hub-icon svg,
+  body.light .tools-hub-card:hover .tools-hub-icon svg{ filter:none; }
+  body.light .tools-hub-arrow{ box-shadow:none; background:color-mix(in srgb, var(--hub-color) 12%, #ffffff); }
+  body.light .tools-hub-card h3{ color:#1d2127; }
+  body.light .tools-hub-card p{ color:#5a6069; }
   .tools-hub-soon-badge{
     position:absolute;top:14px;right:14px;z-index:2;
     font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
@@ -2608,7 +2716,8 @@
     roxo:   {bg:'#272038', bgPanel:'#302744', cardBg:'#34284a', cardBorder:'#453860', cardHoverBg:'#382e53', placeholderBorder:'#3d325b', sidebarBg:'#221a34', sidebarBorder:'#453860', sidebarHover:'#34284a'}
   };
   var bgPalettesLight = {
-    atual: {bg:'#e1e4e7', bgPanel:'#ecedf0', cardBg:'#f7f8f9', cardBorder:'#c5c9ce', cardHoverBg:'#eaecf0', placeholderBorder:'#c1c5cb', sidebarBg:'#d6dadf', sidebarBorder:'#c4c9cf', sidebarHover:'#e1e4e7'},
+    // 12/11/2026: superfícies brancas (cards, menu lateral, painéis) sobre fundo neutro um pouco mais profundo
+    atual: {bg:'#dde1e6', bgPanel:'#f5f6f8', cardBg:'#ffffff', cardBorder:'#cfd4da', cardHoverBg:'#f3f4f6', placeholderBorder:'#c9ced5', sidebarBg:'#ffffff', sidebarBorder:'#d3d8de', sidebarHover:'#eef0f3'},
     azul:  {bg:'#e7edf5', bgPanel:'#f2f6fb', cardBg:'#ffffff', cardBorder:'#d3ddea', cardHoverBg:'#eaf1f8', placeholderBorder:'#cfdaea', sidebarBg:'#dde7f2', sidebarBorder:'#c9d6e8', sidebarHover:'#e7edf5'},
     verde: {bg:'#e9f3ef', bgPanel:'#f3faf7', cardBg:'#ffffff', cardBorder:'#d2e5dd', cardHoverBg:'#eef7f3', placeholderBorder:'#cde2d9', sidebarBg:'#ddefe7', sidebarBorder:'#c7ddd2', sidebarHover:'#e9f3ef'},
     lilas: {bg:'#f0edf7', bgPanel:'#f8f5fc', cardBg:'#ffffff', cardBorder:'#ded6ee', cardHoverBg:'#f4f0fa', placeholderBorder:'#dad0ec', sidebarBg:'#e7e0f3', sidebarBorder:'#d4c9e9', sidebarHover:'#f0edf7'},

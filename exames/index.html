@@ -590,6 +590,83 @@
     .pl-status:empty{ display:none; }
     .interp-valor input{ width: 110px; }
   }
+
+  /* =====================================================================
+     12/11/2026 — Menu lateral redesenhado (mais moderno, exames em destaque)
+     Substitui o visual "bisel 3D" da sidebar por um estilo plano e limpo:
+     abas em controle segmentado, categorias como cartões com faixa de cor,
+     e itens de exame maiores, com nome completo (quebra em 2 linhas em vez
+     de cortar com "...") e a sigla em selo colorido abaixo do nome.
+     ===================================================================== */
+  :root{ --sidebar-w: 340px; }
+  .sidebar{ box-shadow:none; }
+  .sidebar-header{ padding:16px 16px 12px; gap:12px; border-bottom:1px solid var(--border); }
+  .search-box{ border-radius:12px; padding:10px 12px; background:var(--card); }
+  .search-box input{ font-size:.86rem; }
+
+  .qtabs{ grid-template-columns:1fr 1fr; gap:3px; padding:4px; border-radius:12px; background:var(--panel); border:1px solid var(--border); }
+  .qtab, .qtab:hover, .qtab:active, .qtab.active, .qtab.active:hover{ transform:none; }
+  .qtab{
+    background:transparent; border:none; box-shadow:none; border-radius:9px;
+    padding:8px 4px; font-size:.66rem; letter-spacing:.3px; white-space:nowrap; color:var(--text-dim);
+  }
+  .qtab:hover{ color:var(--text); background:var(--hover-tint); box-shadow:none; }
+  .qtab.active{ background:var(--red); color:#fff; box-shadow:0 2px 8px var(--red-glow); }
+
+  .sidebar-list{ padding:12px 12px 24px; }
+  .pinned-head{ font-size:.68rem; padding:2px 4px 8px; }
+  .exam-chip{ box-shadow:none; background:var(--card); border-radius:10px; }
+  .exam-chip:hover{ box-shadow:none; }
+  .exam-chip.active{ box-shadow:none; }
+
+  .cat-header, .cat-header:hover, .cat-header:active, .cat-header.aberto{ box-shadow:none; transform:none; }
+  .cat-header{
+    position:relative; overflow:hidden; gap:10px;
+    background:var(--card); border:1px solid var(--border); border-left:1px solid var(--border);
+    border-radius:12px; padding:11px 12px 11px 16px; margin:8px 0 6px;
+    font-size:.74rem; letter-spacing:.4px; transition:background .15s ease, border-color .15s ease;
+  }
+  .cat-header::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--cc, var(--red-bright)); }
+  .cat-header:hover{ border-color:var(--cc, var(--red-bright)); background:linear-gradient(90deg, var(--cg, var(--hover-tint)), var(--card) 70%); }
+  .cat-header.aberto{ background:linear-gradient(90deg, var(--cg, var(--hover-tint)), var(--card) 80%); border-color:color-mix(in srgb, var(--cc, var(--red-bright)) 55%, var(--border)); }
+  .cat-header .cat-count{ font-size:.66rem; padding:2px 9px; }
+
+  .cat-body{ padding:2px 0 10px 0; }
+  .cat-body.aberto{ display:flex; flex-direction:column; gap:2px; }
+  .cat-grupo-titulo{
+    display:flex; align-items:center; gap:8px; font-size:.6rem; letter-spacing:.7px;
+    padding:10px 4px 4px; color:var(--text-dim);
+  }
+  .cat-grupo-titulo::after{ content:""; flex:1; height:1px; background:var(--border); }
+
+  .exam-item{
+    position:relative; align-items:center; gap:10px; padding:7px 10px 7px 14px;
+    border-radius:10px; border:1px solid transparent; background:transparent;
+    transition:background .12s ease, border-color .12s ease, transform .12s ease;
+  }
+  .exam-item .item-dot{
+    position:absolute; left:4px; top:8px; bottom:8px; width:3px; height:auto; border-radius:3px;
+    background:var(--cc, var(--red-bright)); opacity:.45; transition:opacity .12s ease;
+  }
+  .exam-item:hover{ background:var(--card); border-color:var(--border); transform:translateX(2px); }
+  .exam-item:hover .item-dot{ opacity:1; }
+  .exam-item.active{ background:var(--cg, var(--red-glow)); border-color:color-mix(in srgb, var(--cc, var(--red-bright)) 55%, transparent); }
+  .exam-item.active .item-dot{ opacity:1; }
+  .exam-item .item-txt{ flex:1; min-width:0; display:flex; flex-direction:column; align-items:flex-start; gap:3px; }
+  .exam-item .item-nome{
+    font-size:.88rem; font-weight:650; line-height:1.28; letter-spacing:-.1px;
+    white-space:normal; overflow:hidden; text-overflow:clip;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+  }
+  .exam-item .item-sigla{
+    font-size:.62rem; font-weight:800; letter-spacing:.3px; line-height:1;
+    padding:2px 6px; border-radius:5px;
+    color:var(--cc, var(--text-dim)); background:var(--cg, var(--hover-tint));
+  }
+  .exam-item.active .item-nome{ font-weight:750; }
+  .fav-star{ width:17px; height:17px; opacity:.55; transition:opacity .12s ease, transform .12s ease; }
+  .exam-item:hover .fav-star, .fav-star.on{ opacity:1; }
+  .fav-star:hover{ transform:scale(1.15); }
 </style>
 </head>
 <body>
@@ -895,8 +972,8 @@ function examItemHTML(e){
   const fav = favoritos.has(e.id);
   return '<div class="exam-item'+(state.exameId===e.id?' active':'')+'" '+ccStyle(cat?cat.cor:'gray')+' onclick="abrirExame(\''+e.id+'\')">'+
     '<span class="item-dot"></span>'+
-    '<span class="item-nome">'+e.nome+'</span>'+
-    '<span class="item-sigla">'+e.sigla+'</span>'+
+    '<span class="item-txt"><span class="item-nome">'+e.nome+'</span>'+
+    (e.sigla ? '<span class="item-sigla">'+e.sigla+'</span>' : '')+'</span>'+
     '<span class="fav-star'+(fav?' on':'')+'" onclick="toggleFavorito(\''+e.id+'\', event)">'+icon('star')+'</span>'+
   '</div>';
 }

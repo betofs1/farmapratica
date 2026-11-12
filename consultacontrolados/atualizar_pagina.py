@@ -115,6 +115,22 @@ def main():
             return
 
     controlados_bruto = json.loads(caminho_controlados.read_text(encoding="utf-8"))
+
+    # Trava de segurança: a curadoria publicada tem que ser a mesma de
+    # excecoes.json E tem que conferir com o texto de adendo capturado.
+    caminho_excecoes = pasta / "excecoes.json"
+    if caminho_excecoes.exists():
+        excecoes_arquivo = json.loads(caminho_excecoes.read_text(encoding="utf-8"))
+        if excecoes_arquivo != controlados_bruto.get("excecoes", {}):
+            print("ABORTADO: excecoes.json foi editado depois do último atualizar_fontes.py. "
+                  "Rode 'python3 atualizar_fontes.py --sem-rede' antes. Nada foi gravado.")
+            return
+    from atualizar_fontes import validar_excecoes, relatar_validacao
+    erros, avisos = validar_excecoes(controlados_bruto.get("listas", {}), controlados_bruto.get("excecoes", {}))
+    if not relatar_validacao(erros, avisos):
+        print("ABORTADO: exceções inconsistentes com a norma capturada. Nada foi gravado.")
+        return
+    print()
     marcas = json.loads(caminho_marcas.read_text(encoding="utf-8"))
     html_original = caminho_pagina.read_text(encoding="utf-8")
 

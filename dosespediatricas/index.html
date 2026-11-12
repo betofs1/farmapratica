@@ -1628,9 +1628,19 @@
     .etiqueta-overlay-x{ display:none !important; }
     body.imprimindo-etiqueta > *:not(#etiqueta-print-area){ display:none !important; }
     body.imprimindo-etiqueta #etiqueta-print-area{ display:block !important; }
-    body.imprimindo-etiqueta .etiqueta-papel{ border: 1px dashed #999; }
-    body.imprimindo-etiqueta .etiqueta-papel.fmt-cupom80, body.imprimindo-etiqueta .etiqueta-papel.fmt-cupom58{ border: none; margin: 0 auto; }
-    @page{ margin: 8mm; }
+    /* 12/11/2026: a página impressa tem exatamente o tamanho da etiqueta --
+       sem centralização vertical, sem altura da tela, sem margens, sem borda
+       tracejada (evita o longo espaço em branco e o desperdício de papel). */
+    html:has(body.imprimindo-etiqueta), body.imprimindo-etiqueta{
+      height:auto !important; min-height:0 !important; margin:0 !important; padding:0 !important;
+      display:block !important; overflow:visible !important; background:#fff !important;
+    }
+    body.imprimindo-etiqueta::before, body.imprimindo-etiqueta::after{ display:none !important; content:none !important; }
+    body.imprimindo-etiqueta #etiqueta-print-area{ margin:0 !important; padding:0 !important; }
+    body.imprimindo-etiqueta .etiqueta-papel{
+      border:none !important; border-radius:0 !important; box-shadow:none !important;
+      margin:0 !important; max-width:none !important; break-inside:avoid; page-break-inside:avoid;
+    }
   }
   /* ---------- Impressão ---------- */
   .print-only{ display:none; }
@@ -1711,7 +1721,7 @@
       </div>
       <div class="etq-lado">
         <span class="etq-lado-titulo" id="etq-prev-titulo">Prévia (90 × 50 mm)</span>
-        <div class="etq-dica-cupom" id="etq-dica-cupom" hidden>Na janela de impressão, escolha a impressora térmica, margens <b>Nenhuma</b> e desmarque <b>Cabeçalhos e rodapés</b>.</div>
+        <div class="etq-dica-cupom" id="etq-dica-cupom" hidden>Na janela de impressão, escolha a impressora da etiqueta/cupom, deixe <b>Tamanho do papel</b> no padrão sugerido, margens <b>Nenhuma</b> e desmarque <b>Cabeçalhos e rodapés</b>. A página já sai do tamanho exato da etiqueta.</div>
         <div id="etiqueta-preview"></div>
         <div class="etq-acoes">
           <button type="button" class="etq-btn" onclick="fecharEtiqueta()">Cancelar</button>
@@ -2846,8 +2856,11 @@ function calcularEExibir(){
     // dose máxima por dose (texto)
     if(form.doseMaximaPorDoseMg){
       subItens.push({tipo:'info', texto:`dose máxima de ${form.doseMaximaPorDoseMg} mg por dose (via ${form.tipo === 'injetavel' ? 'injetável' : 'oral'})`});
+    } else if(usarRegimeAdulto && da && da.modo === 'fixa' && da.doseMg && form.tipo !== 'comprimido'){
+      // 12/11/2026: no regime de adulto, o teto por dose é o do adulto (ex.: adrenalina 0,5 mg), não o pediátrico
+      subItens.push({tipo:'info', texto:`dose máxima de ${_decBR(String(da.doseMg.max))} mg por dose (adulto)`});
     } else if(db.doseMaximaDoseMg && form.tipo !== 'comprimido'){
-      subItens.push({tipo:'info', texto:`dose máxima de ${db.doseMaximaDoseMg} mg por dose`});
+      subItens.push({tipo:'info', texto:`dose máxima de ${_decBR(String(db.doseMaximaDoseMg))} mg por dose`});
     }
 
     if(form.apresentacaoTexto){
@@ -3188,7 +3201,7 @@ function atualizarEtiqueta(){
   const prev = document.getElementById('etiqueta-preview');
   prev.className = 'fmt-' + fmt;
   document.getElementById('etq-prev-titulo').textContent = 'Prévia (' + ({ etiqueta:'90 × 50 mm', cupom80:'cupom 80 mm', cupom58:'cupom 58 mm' })[fmt] + ')';
-  document.getElementById('etq-dica-cupom').hidden = fmt === 'etiqueta';
+  document.getElementById('etq-dica-cupom').hidden = false;
   prev.innerHTML = `
     <div class="etq-cab">${drog ? `<span class="etq-drog">${escapeHtml(drog)}</span>` : '<span class="etq-marca">Farma<b>Prática</b></span>'}<span>${hoje}</span></div>
     ${val('etq-paciente') ? `<div class="etq-paciente">${escapeHtml(val('etq-paciente'))}</div>` : '<div class="etq-paciente etq-vazio">Paciente: ______________________</div>'}
@@ -3207,17 +3220,33 @@ function imprimirEtiqueta(){
   const area = document.getElementById('etiqueta-print-area');
   area.innerHTML = `<div class="etiqueta-papel fmt-${fmt}">${document.getElementById('etiqueta-preview').innerHTML}</div>`;
   document.body.classList.add('imprimindo-etiqueta');
-  // Tamanho da página: cupom térmico usa a largura da bobina e a altura exata do conteúdo (corte logo após o texto)
-  let pg = document.getElementById('etq-page-style');
-  if(!pg){ pg = document.createElement('style'); pg.id = 'etq-page-style'; document.head.appendChild(pg); }
-  if(fmt === 'etiqueta'){ pg.textContent = '@media print{ @page{ size:auto; margin:8mm; } }'; }
-  else {
-    const largura = fmt === 'cupom58' ? 58 : 80;
-    const prevEl = document.getElementById('etiqueta-preview');
-    const alturaMm = Math.ceil(prevEl.scrollHeight * 25.4 / 96 * (fmt === 'cupom58' ? 48 : 72) / (prevEl.offsetWidth * 25.4 / 96 || 1)) + 12;
-    pg.textContent = '@media print{ @page{ size:' + largura + 'mm ' + Math.max(alturaMm, 60) + 'mm; margin:0; } }';
+  // 12/11/2026: a página de impressão tem SEMPRE o tamanho exato da etiqueta
+  // (largura do formato × altura real do conteúdo), margem zero -- assim a
+  // impressora não alimenta uma folha/bobina inteira em branco.
+  const LARGURA_MM = { etiqueta: 90, cupom80: 80, cupom58: 58 }[fmt] || 90;
+  const papel = area.querySelector('.etiqueta-papel');
+  // mede fora da tela, já na largura final, antes de abrir a impressão
+  Object.assign(area.style, { display:'block', position:'absolute', left:'-10000px', top:'0', visibility:'hidden' });
+  papel.style.width = (fmt === 'etiqueta' ? 90 : (fmt === 'cupom58' ? 48 : 72)) + 'mm';
+  papel.style.minHeight = '0';
+  const pxPorMm = 96 / 25.4;
+  const conteudoMm = papel.getBoundingClientRect().height / pxPorMm;
+  // etiqueta adesiva: exatamente 90 × 50 mm (só cresce se o texto não couber);
+  // cupom: altura do conteúdo + 2 mm para o corte da bobina
+  let alturaMm = fmt === 'etiqueta' ? Math.max(Math.ceil(conteudoMm), 50) : Math.ceil(conteudoMm) + 2;
+  area.removeAttribute('style');
+  if(fmt !== 'etiqueta'){
+    // centraliza a área útil da bobina (72/48 mm) dentro da largura do papel (80/58 mm)
+    papel.style.marginLeft = papel.style.marginRight = 'auto';
   }
-  const limpar = () => { document.body.classList.remove('imprimindo-etiqueta'); area.innerHTML = ''; window.removeEventListener('afterprint', limpar); };
+  papel.style.minHeight = '0';
+  papel.style.height = alturaMm + 'mm';
+  papel.style.overflow = 'hidden';
+  let pg = document.getElementById('etq-page-style');
+  if(!pg){ pg = document.createElement('style'); pg.id = 'etq-page-style'; }
+  document.head.appendChild(pg); // sempre por último, para vencer qualquer outra regra @page
+  pg.textContent = '@media print{ @page{ size:' + LARGURA_MM + 'mm ' + alturaMm + 'mm; margin:0; } }';
+  const limpar = () => { document.body.classList.remove('imprimindo-etiqueta'); area.innerHTML = ''; pg.textContent = ''; window.removeEventListener('afterprint', limpar); };
   window.addEventListener('afterprint', limpar);
   window.print();
   setTimeout(() => { if(document.body.classList.contains('imprimindo-etiqueta') && !matchMedia('print').matches) limpar(); }, 1500);

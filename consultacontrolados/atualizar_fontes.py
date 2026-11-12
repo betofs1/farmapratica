@@ -15,14 +15,21 @@ sandbox/bridge, já que os dois sites abaixo não são alcançáveis de dentro d
 uma sessão restrita.
 
 Uso:
-    python3 atualizar_fontes.py
+    python3 atualizar_fontes.py            (busca as normas na internet)
+    python3 atualizar_fontes.py --sem-rede (só reaplica regras/curadoria e valida)
+
+Toda execução valida excecoes.json contra o texto do adendo capturado; se
+alguma exceção não conferir (item excluído, trecho não encontrado), o
+controlados.json NÃO é gravado.
 
 Gera:
     controlados.json -- dado final, pronto para o atualizar_pagina.py
 """
 
-import requests
 import re
+import sys
+import argparse
+import unicodedata
 import html as html_lib
 import json
 from datetime import date
@@ -59,8 +66,13 @@ REGRAS_POR_LISTA = {
     "B1": {"receita": "Notificação de Receita B (azul)", "vias": 1, "validade_dias": 30, "retencao": True},
     "B2": {"receita": "Notificação de Receita B2 (azul)", "vias": 1, "validade_dias": 30, "retencao": True},
     "C1": {"receita": "Receita de Controle Especial (branca, 2 vias)", "vias": 2, "validade_dias": 30, "retencao": True},
-    "C2": {"receita": "Receita de Controle Especial + Termo de Consentimento", "vias": 2, "validade_dias": 30, "retencao": True},
-    "C3": {"receita": "Notificação de Receita Especial + Termo de Consentimento", "vias": 2, "validade_dias": 30, "retencao": True},
+    # C2: Notificação de Receita Especial (branca) para retinoides de uso sistêmico + Termo de
+    # Consentimento Pós-Informação (Portaria 344/98). Uso tópico: ver Adendo 2 da C2.
+    "C2": {"receita": "Notificação de Receita Especial para Retinoides (branca) + Termo de Consentimento Pós-Informação", "vias": 1, "validade_dias": 30, "retencao": True},
+    # C3: talidomida -> Notificação de Receita de Talidomida (RDC 11/2011); lenalidomida e
+    # pomalidomida -> Notificação de Receita da Lista C3 (RDC 191/2017). Ambas com Termo de
+    # Responsabilidade/Esclarecimento e validade de 20 dias.
+    "C3": {"receita": "Notificação de Receita específica (branca) + Termo de Responsabilidade/Esclarecimento", "vias": 1, "validade_dias": 20, "retencao": True},
     "C5": {"receita": "Receita de Controle Especial (branca, 2 vias)", "vias": 2, "validade_dias": 30, "retencao": True},
 }
 
@@ -86,6 +98,7 @@ def limpar_html(bruto: str) -> str:
 
 
 def buscar(url: str) -> str:
+    import requests  # só necessário no modo com rede
     resp = requests.get(url, headers=HEADERS, timeout=30)
     resp.raise_for_status()
     return resp.text
@@ -218,6 +231,115 @@ def montar_lista_antimicrobianos():
     }
 
 
+
+# ---------------------------------------------------------------------------
+# Parte 2b: validação da curadoria de exceções contra o texto vigente
+# ---------------------------------------------------------------------------
+# Cada entrada de excecoes.json precisa PROVAR que o adendo que a justifica
+# ainda existe no texto consolidado da Portaria 344/98 que acabou de ser
+# capturado. Foi a falta disso que deixou o zolpidem com a regra do Adendo 4
+# da B1 mesmo depois de a RDC 871/2024 ter excluído esse adendo.
+
+CAMPOS_OBRIGATORIOS_EXCECAO = [
+    "receita", "vias", "validade_dias", "retencao", "cor", "motivo",
+    "lista", "adendo_item", "trecho_norma", "fundamento", "verificado_em", "revisar_ate",
+]
+
+# Palavras que indicam que um item de adendo muda a regra de dispensação de
+# substâncias nominalmente citadas (usado para achar adendos não curados).
+PALAVRAS_REGRA_ESPECIAL = [
+    "receita de controle especial", "sem retencao", "sem prescricao", "estabelecimentos",
+]
+
+
+# Falsos positivos conhecidos da detecção de "adendo não curado": substância
+# citada no adendo só como referência, sem regra própria. Formato:
+# (lista, item do adendo, substância em minúsculas).
+IGNORAR_AVISOS_ADENDO = {
+    ("A1", "3", "morfina"),  # adendo do ópio usa "morfina anidra" só como medida do teor
+}
+
+
+def normalizar(texto: str) -> str:
+    """Minúsculas, sem acentos, aspas unificadas e espaços colapsados -- para comparar trechos."""
+    t = unicodedata.normalize("NFKD", texto or "")
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    t = t.replace("“", '"').replace("”", '"').replace("’", "'")
+    return re.sub(r"\s+", " ", t).strip().lower()
+
+
+def itens_adendo(adendo: str) -> dict:
+    """Separa o texto corrido do adendo em {"1": "...", "2": "...", ...}."""
+    partes = re.split(r"(?:^|\s)(\d{1,2})\)\s", " " + (adendo or ""))
+    itens = {}
+    for i in range(1, len(partes) - 1, 2):
+        itens.setdefault(partes[i], partes[i + 1].strip())
+    return itens
+
+
+def validar_excecoes(listas: dict, excecoes: dict, hoje: str = None):
+    """Retorna (erros, avisos). Erro = bloqueia a publicação."""
+    hoje = hoje or date.today().isoformat()
+    erros, avisos = [], []
+    nomes = {c: {s.lower() for s in l.get("substancias", [])} for c, l in listas.items()}
+
+    for nome, exc in excecoes.items():
+        faltando = [c for c in CAMPOS_OBRIGATORIOS_EXCECAO if c not in exc]
+        if faltando:
+            erros.append(f"{nome}: campos obrigatórios ausentes: {', '.join(faltando)}")
+            continue
+        lista = exc["lista"]
+        if lista not in listas:
+            erros.append(f"{nome}: Lista {lista} não encontrada na captura.")
+            continue
+        if nome not in nomes[lista]:
+            erros.append(f"{nome}: a substância não consta mais da Lista {lista} (removida, renomeada ou mudou de lista?).")
+        itens = itens_adendo(listas[lista].get("adendo", ""))
+        num = str(exc["adendo_item"])
+        trecho = normalizar(exc["trecho_norma"])
+        item = itens.get(num)
+        if item is None:
+            erros.append(f"{nome}: o item {num} do adendo da Lista {lista} não existe mais.")
+        elif normalizar(item).startswith("(exclu"):
+            erros.append(f"{nome}: o item {num} do adendo da Lista {lista} foi EXCLUÍDO da norma -- a exceção caducou. Remova-a de excecoes.json.")
+        elif trecho not in normalizar(item):
+            outro = [n for n, t in itens.items() if trecho in normalizar(t)]
+            if outro:
+                avisos.append(f"{nome}: o trecho agora está no item {outro[0]} do adendo da Lista {lista} (renumeração?) -- atualize 'adendo_item'.")
+            else:
+                erros.append(f"{nome}: trecho_norma não encontrado no adendo da Lista {lista} -- o adendo foi revogado ou reescrito. Revise a exceção.")
+        if str(exc["revisar_ate"]) < hoje:
+            avisos.append(f"{nome}: prazo de revisão vencido ({exc['revisar_ate']}). Confira e atualize 'verificado_em'/'revisar_ate'.")
+
+    # Adendos que mudam regra de substância nominalmente citada, sem exceção cadastrada
+    for codigo, l in listas.items():
+        if codigo == "ANTIMICROBIANO":
+            continue
+        for num, txt in itens_adendo(l.get("adendo", "")).items():
+            n = normalizar(txt)
+            if "padroes analiticos" in n or not any(p in n for p in PALAVRAS_REGRA_ESPECIAL):
+                continue
+            for s in l.get("substancias", []):
+                base = normalizar(s.split("(")[0])
+                if (codigo, num, s.lower()) in IGNORAR_AVISOS_ADENDO:
+                    continue
+                if len(base) > 3 and s.lower() not in excecoes and re.search(r"\b" + re.escape(base) + r"\b", n):
+                    avisos.append(f"Lista {codigo}, adendo {num}: cita '{s}' com regra especial, mas não há exceção cadastrada em excecoes.json.")
+    return erros, avisos
+
+
+def relatar_validacao(erros, avisos) -> bool:
+    print("\nValidação da curadoria de exceções:")
+    for a in avisos:
+        print(f"   AVISO: {a}")
+    for e in erros:
+        print(f"   ERRO:  {e}")
+    if not erros and not avisos:
+        print("   OK -- todas as exceções conferem com o texto vigente da norma.")
+    elif not erros:
+        print("   Sem erros (só avisos acima).")
+    return not erros
+
 # ---------------------------------------------------------------------------
 # Parte 3: fusão com curadoria manual + diff contra o estado anterior
 # ---------------------------------------------------------------------------
@@ -253,11 +375,26 @@ def mostrar_diff(anterior: dict, novo: dict):
             for s in sorted(removidas):
                 print(f"       - {s}")
 
+        itens_antes = itens_adendo(listas_antes.get(codigo, {}).get("adendo", ""))
+        itens_depois = itens_adendo(listas_depois.get(codigo, {}).get("adendo", ""))
+        for num in sorted(set(itens_antes) | set(itens_depois), key=int):
+            a, d = itens_antes.get(num), itens_depois.get(num)
+            if normalizar(a or "") != normalizar(d or ""):
+                mudou_algo = True
+                estado = "NOVO" if a is None else ("REMOVIDO" if d is None else "ALTERADO")
+                print(f"4/4 ⚠️  ADENDO {estado} -- Lista {codigo}, item {num}: {(d or a)[:160]}...")
+
     if not mudou_algo:
         print("4/4 Sem mudanças nas listas, em relação à última captura (controlados.json atual).")
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Atualiza controlados.json a partir das normas + curadoria.")
+    parser.add_argument("--sem-rede", action="store_true",
+                        help="Não busca as normas: reaproveita as listas da última captura (controlados.json) "
+                             "e só reaplica regras + curadoria + validação. Use depois de editar excecoes.json.")
+    args = parser.parse_args()
+
     pasta = Path(__file__).parent
     caminho_saida = pasta / "controlados.json"
 
@@ -265,8 +402,19 @@ def main():
     if caminho_saida.exists():
         anterior = json.loads(caminho_saida.read_text(encoding="utf-8"))
 
-    listas = montar_listas_portaria()
-    listas["ANTIMICROBIANO"] = montar_lista_antimicrobianos()
+    if args.sem_rede:
+        if not anterior:
+            print("Modo --sem-rede precisa de um controlados.json anterior nesta pasta.")
+            sys.exit(1)
+        print("1-2/4 Modo --sem-rede: reaproveitando as listas capturadas em", anterior.get("_capturado_em"))
+        listas = anterior["listas"]
+        for codigo, l in listas.items():
+            l["regra"] = REGRAS_POR_LISTA.get(codigo, REGRA_ANTIMICROBIANO if codigo == "ANTIMICROBIANO" else l.get("regra"))
+        capturado_em = anterior.get("_capturado_em", "")
+    else:
+        listas = montar_listas_portaria()
+        listas["ANTIMICROBIANO"] = montar_lista_antimicrobianos()
+        capturado_em = date.today().isoformat()
 
     detalhes = carregar_json_opcional(pasta / "detalhes_farmacologicos.json", "Detalhes farmacológicos", {})
     excecoes = carregar_json_opcional(pasta / "excecoes.json", "Exceções de adendo", {})
@@ -275,13 +423,21 @@ def main():
         "_aviso": "Gerado automaticamente a partir da Portaria 344/98 e da IN vigente sobre antimicrobianos. Conferir contra o texto oficial antes de publicar mudanças.",
         "_fonte_controlados": URL_PORTARIA_344,
         "_fonte_antimicrobianos": URL_IN_ANTIMICROBIANOS,
-        "_capturado_em": date.today().isoformat(),
+        "_capturado_em": capturado_em,
+        "_curadoria_validada_em": date.today().isoformat(),
         "listas": listas,
         "detalhes": detalhes,
         "excecoes": excecoes,
     }
 
-    mostrar_diff(anterior, saida)
+    if not args.sem_rede:
+        mostrar_diff(anterior, saida)
+
+    erros, avisos = validar_excecoes(listas, excecoes)
+    if not relatar_validacao(erros, avisos):
+        print("\nABORTADO: há exceções que não conferem com o texto vigente da norma. "
+              "controlados.json NÃO foi alterado. Corrija excecoes.json e rode de novo.")
+        sys.exit(1)
 
     caminho_saida.write_text(json.dumps(saida, ensure_ascii=False, indent=2), encoding="utf-8")
 

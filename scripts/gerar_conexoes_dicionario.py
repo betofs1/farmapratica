@@ -22,6 +22,41 @@ des = json.load(open(P('desafio', 'desafio.json'), encoding='utf-8'))
 bul = json.load(open(P('bulario', 'dados-busca.json'), encoding='utf-8'))['medicamentos']
 cats = {c['id']: c['nome'] for c in des.get('categorias', [])}
 
+
+# 12/11/2026: curadoria manual para verbetes de CLASSE farmacológica. A busca
+# automática pela classe ATC do Bulário trazia pares errados (ex.: "AINEs" ->
+# tacrolimo/pimecrolimo, da classe ATC de anti-inflamatórios dermatológicos;
+# "Antipsicóticos" -> clonazepam; "Macrolídeos" -> clindamicina) e cortava os
+# fármacos de referência porque os 8 primeiros em ordem alfabética eram
+# associações. Para estes verbetes vale SÓ a lista abaixo, na ordem dada:
+# cada item é o princípio ativo (sem sal); "a + b" pede a associação exata.
+CURADO = {
+  'aines': ['ibuprofeno','diclofenaco','naproxeno','cetoprofeno','nimesulida','meloxicam','celecoxibe','piroxicam','etoricoxibe','acido mefenamico','indometacina','tenoxicam'],
+  'ieca': ['captopril','enalapril','lisinopril','ramipril','perindopril','benazepril','fosinopril','trandolapril'],
+  'ibp': ['omeprazol','pantoprazol','esomeprazol','lansoprazol','rabeprazol','dexlansoprazol'],
+  'betalactamicos': ['amoxicilina','amoxicilina + clavulanato','ampicilina','penicilina g benzatina','cefalexina','cefuroxima','ceftriaxona','meropenem','imipenem'],
+  'penicilinas': ['amoxicilina','amoxicilina + clavulanato','ampicilina','penicilina g benzatina','oxacilina','piperacilina + tazobactam'],
+  'macrolideos': ['azitromicina','claritromicina','eritromicina','espiramicina','roxitromicina'],
+  'antipsicoticos': ['haloperidol','risperidona','quetiapina','olanzapina','aripiprazol','clorpromazina','clozapina','ziprasidona','levomepromazina','lurasidona'],
+  'corticosteroides-sistemicos': ['prednisona','prednisolona','dexametasona','metilprednisolona','hidrocortisona','betametasona','deflazacorte'],
+  'anticoagulantes-orais': ['varfarina','rivaroxabana','apixabana','dabigatrana','edoxabana'],
+  'diureticos': ['hidroclorotiazida','clortalidona','indapamida','furosemida','bumetanida','espironolactona','amilorida','eplerenona'],
+  'antiagregantes-plaquetarios': ['acido acetilsalicilico','clopidogrel','ticagrelor','prasugrel','cilostazol','dipiridamol'],
+  'anticonvulsivantes': ['carbamazepina','fenitoina','acido valproico','divalproato','lamotrigina','levetiracetam','topiramato','fenobarbital','oxcarbazepina','lacosamida'],
+  'bifosfonados': ['alendronato','risedronato','ibandronato','acido zoledronico','pamidronato'],
+  'antiemeticos': ['ondansetrona','metoclopramida','bromoprida','domperidona','dimenidrinato','meclozina','granisetrona','aprepitanto'],
+  'cefalosporinas': ['cefalexina','cefadroxila','cefaclor','cefuroxima','cefdinir','ceftriaxona','ceftazidima','cefepima'],
+  'corticosteroides': None,
+}
+CURADO = {k: v for k, v in CURADO.items() if v}
+def achar_curado(chave, bul):
+    partes = [base(x) for x in chave.split('+')]
+    for m in sorted(bul, key=lambda m: (len(m['nome']), m['nome'])):
+        b = base(m['nome']); n_comp = m['nome'].count('+') + 1
+        if n_comp == len(partes) and all(re.search(r'\b' + re.escape(pt) + r'\b', b) for pt in partes):
+            return m
+    return None
+
 casos = {}
 for c in des['casos']:
     for tid in c.get('termosDicionario') or []:
@@ -48,6 +83,22 @@ for t in dic['termos']:
         for m in cand:
             if m['id'] not in vistos:
                 vistos.add(m['id']); achados.append({'id': m['id'], 'nome': m['nome']})
+    if t['id'] in CURADO:
+        achados = []
+        for chave in CURADO[t['id']]:
+            m = achar_curado(chave, bul)
+            if m and m['id'] not in {x['id'] for x in achados}:
+                achados.append({'id': m['id'], 'nome': m['nome']})
+    else:
+        # monofármacos antes das associações
+        achados.sort(key=lambda x: (x['nome'].count('+'), len(x['nome']), x['nome']))
+        # uma ficha por princípio ativo (ignora variações de hidratação/sal)
+        HID = r'\b(mono|di|tri|sesqui|hemi)? ?-?hidratad[oa]s?|monoidratad[oa]|trihidratad[oa]|tri hidratad[oa]|di hidratad[oa]\b'
+        unicos, vistos_b = [], set()
+        for x in achados:
+            kb = re.sub(r'\s+', ' ', re.sub(HID, ' ', base(x['nome']))).strip()
+            if kb not in vistos_b: vistos_b.add(kb); unicos.append(x)
+        achados = unicos
     item = {}
     if t['id'] in casos: item['casos'] = casos[t['id']][:8]; n_c += 1
     if achados: item['bulario'] = achados[:8]; n_b += 1

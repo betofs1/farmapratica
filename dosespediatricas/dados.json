@@ -33,10 +33,13 @@
    "formulacoes": [
     {
      "tipo": "gotas",
-     "rotulo": "Solução oral (gotas) 200 mg/mL (10 mg/gota)",
+     "rotulo": "Solução oral (gotas) 200 mg/mL (≈13,3 mg/gota · 14–16 gotas/mL)",
      "viaTexto": "via oral a cada 4-6 horas se dor ou febre",
-     "mgPorGota": 10,
-     "apresentacaoTexto": "frasco gotejador com 15 ou 20 mL"
+     "mgPorGota": 13.3,
+     "apresentacaoTexto": "frasco gotejador com 15 ou 20 mL",
+     "restricoes": [
+      "Bula TYLENOL® Gotas: 1 gota/kg por dose, até no máximo 35 gotas por dose, no máximo 5 administrações em 24 h. Genéricos/similares podem ter gotejamento diferente — conferir gotas/mL na bula do produto dispensado."
+     ]
     },
     {
      "tipo": "liquido",
@@ -330,7 +333,8 @@
    ],
    "observacoesExtras": [
     "Uso pediátrico geralmente reservado a indicação reumatológica; confirmar protocolo.",
-    "Esquema alternativo (dose única diária mais alta): 500-660 mg via oral 1x/dia — não calculado automaticamente pela ferramenta, que exibe o esquema usual (250-275 mg a cada 12-24h); considerar manualmente quando a posologia em dose única for a escolhida."
+    "Esquema alternativo (dose única diária mais alta): 500-660 mg via oral 1x/dia — não calculado automaticamente pela ferramenta, que exibe o esquema usual (250-275 mg a cada 12-24h); considerar manualmente quando a posologia em dose única for a escolhida.",
+    "Bula FLANAX® (naproxeno sódico 275 mg, venda livre): 1 comprimido 1 a 2 vezes ao dia; não exceder 550 mg em 24 h, salvo prescrição médica. Menores de 12 anos só com orientação médica."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -346,9 +350,9 @@
      "max": 275
     },
     "vezesDia": 2,
-    "doseMaximaDiaMg": 660
+    "doseMaximaDiaMg": 550
    },
-   "doseMaximaDiaAdultoMg": 660,
+   "doseMaximaDiaAdultoMg": 550,
    "fontesAdulto": [
     "Bula do fabricante (dados fornecidos e revisados pelo farmacêutico responsável pela base): dose usual de 250-275 mg por via oral a cada 12-24 horas; alternativamente, 500-660 mg por via oral 1x/dia."
    ]
@@ -868,10 +872,10 @@
     "tipo": "mgkg_dia",
     "doseMgKg": {
      "min": 0.15,
-     "max": 0.3
+     "max": 0.15
     },
     "fracionamento": 3,
-    "doseMaximaDiaMg": 12
+    "doseMaximaDiaMg": 6
    },
    "idadeMinimaMeses": 24,
    "formulacoes": [
@@ -901,7 +905,8 @@
     }
    ],
    "observacoesExtras": [
-    "Efeito sedativo (anti-histamínico de 1ª geração) — orientar sobre sonolência."
+    "Efeito sedativo (anti-histamínico de 1ª geração) — orientar sobre sonolência.",
+    "Bula POLARAMINE®: gotas 2,8 mg/mL (28 gotas/mL = 0,1 mg/gota) — 2 a 6 anos: 5 gotas ou 1 gota/2 kg, 3x/dia (máx. 3 mg/dia = 30 gotas); 6 a 12 anos: 10 gotas ou 1 gota/2 kg, 3x/dia (máx. 6 mg/dia = 60 gotas); > 12 anos: 20 gotas 3–4x/dia (máx. 12 mg/dia)."
    ],
    "fonte": "Bula ANVISA",
    "nomesComerciais": [
@@ -1195,7 +1200,7 @@
     "tipo": "mgkg_dose",
     "doseMgKg": {
      "min": 0.25,
-     "max": 0.5
+     "max": 0.25
     },
     "vezesDia": 3,
     "doseMaximaDoseMg": 10,
@@ -1225,7 +1230,8 @@
     }
    ],
    "observacoesExtras": [
-    "Confirmar indicação e restrições vigentes na bula atual antes de recomendar."
+    "Confirmar indicação e restrições vigentes na bula atual antes de recomendar.",
+    "Bula (Motilium®/genéricos) — crianças < 35 kg: 0,25 mg/kg (0,25 mL/kg da suspensão 1 mg/mL) 3 vezes ao dia, 15–30 min antes das refeições, podendo uma dose ao deitar; não exceder 1 mg/kg/dia (máx. 35 mg/dia). Usar a menor dose eficaz pelo menor tempo."
    ],
    "fonte": "Bula ANVISA (com nota de segurança) / SBP",
    "nomesComerciais": [
@@ -4208,7 +4214,8 @@
    "observacoesExtras": [
     "Dose por evento (não diária) — repetir a cada 5 a 15 minutos conforme resposta clínica, sem número fixo de repetições estabelecido pela fonte.",
     "Acionar suporte de emergência (SAMU 192) em paralelo à administração.",
-    "Entrada adicionada em 11/09/2026 com a fórmula clássica de anafilaxia (0,01 mg/kg/dose, máximo 0,3 mg, podendo repetir a cada 5-15 min), consistente com diretrizes consagradas (SBP/AAP) — ainda não verificada diretamente em bula ANVISA de um produto específico. Revisão pendente."
+    "Entrada adicionada em 11/09/2026 com a fórmula clássica de anafilaxia (0,01 mg/kg/dose, máximo 0,3 mg, podendo repetir a cada 5-15 min), consistente com diretrizes consagradas (SBP/AAP) — ainda não verificada diretamente em bula ANVISA de um produto específico. Revisão pendente.",
+    "Anafilaxia (IM, face anterolateral da coxa): crianças 0,01 mg/kg (máx. 0,3 mg); adolescentes e adultos 0,3–0,5 mg (máx. 0,5 mg por dose). Pode repetir a cada 5–15 min conforme resposta (bula e consenso SBP/ASBAI)."
    ],
    "fonte": "Diretrizes clínicas SBP/AAP para anafilaxia pediátrica",
    "nomesComerciais": [
@@ -4216,8 +4223,15 @@
     "Epinefrina"
    ],
    "doseAdulto": {
-    "modo": "mesma_pediatrica"
-   }
+    "modo": "fixa",
+    "doseMg": {
+     "min": 0.3,
+     "max": 0.5
+    },
+    "vezesDia": 1,
+    "doseMaximaDiaMg": 0.5
+   },
+   "doseMaximaDiaAdultoMg": null
   },
   {
    "id": "butilbrometo_escopolamina",

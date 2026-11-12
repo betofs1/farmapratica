@@ -390,6 +390,21 @@
     .quick-grid, .tiles-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
   }
 
+  /* ---------- 12/11/2026: coluna central única na tela inicial ----------
+     Antes, aviso e "Sua rotina" ocupavam a largura toda, enquanto títulos,
+     progresso e cartões ficavam limitados a 1320px -> bordas desalinhadas.
+     Agora tudo vive dentro de .home-wrap, com a mesma largura e o mesmo eixo. */
+  .home-wrap{ width:100%; max-width:1320px; margin:0 auto; }
+  .home-wrap > *{ max-width:none; margin-left:0; margin-right:0; }
+  .home-wrap .intro-banner{ margin-bottom:22px; }
+  .home-wrap .disclaimer-fixed{ max-width:none; }
+  @media (min-width:801px){
+    .home-wrap .stats-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+  }
+  @media (min-width:1100px){
+    .home-wrap .quick-grid{ grid-template-columns:repeat(7, minmax(0,1fr)); gap:16px; }
+  }
+
   .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; align-items:center; }
   .filter-bar select{ background:var(--card); border:1px solid var(--border); color:var(--text); font-size:.78rem; font-weight:700; padding:8px 12px; border-radius:9px; cursor:pointer; }
   .filter-bar select:focus{ outline:none; border-color:var(--red-bright); }
@@ -688,6 +703,7 @@
     .pr-item .btn{ width:100%; justify-content:center; }
     .pb-tempo{ margin-left:0; }
   }
+  .cat-svg{ display:inline-block; vertical-align:-0.14em; width:1em; height:1em; }
 </style>
 </head>
 <body>
@@ -829,6 +845,16 @@ function favStarCaso(id){
 function esc(s){ return (s==null?'':s).toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function ccStyle(cor){ return 'style="--cc:var(--cat-'+cor+');--cg:var(--cat-'+cor+'-glow)"'; }
 function getCat(id){ return CAT_BY_ID[id]; }
+// 12/11/2026: ícone próprio (SVG) para categorias sem emoji adequado — não
+// existe emoji de estômago/intestino. Usado onde o ícone é HTML (menu, cards,
+// títulos); em <option>/toasts/badges continua o emoji do desafio.json (fallback).
+const SVG_CATEGORIA = {
+  gastrointestinal: '<svg class="cat-svg" viewBox="0 0 64 64" width="1em" height="1em" aria-hidden="true">'+
+    '<path d="M24 2 h8 v12 c0 3 2 5 5 5 c9 0 16 6 16 15 c0 13 -11 23 -24 23 c-6 0 -10 -2 -13 -5 l-3 4 l-5 -4 l4 -5 c-3 -5 -2 -12 3 -15 c3 -2 7 -1 9 2 c2 3 6 3 8 0 c2 -3 0 -7 -4 -7 c-6 0 -8 -4 -8 -9 z" fill="#f48aa0" stroke="#a8324d" stroke-width="2.6" stroke-linejoin="round"/>'+
+    '<path d="M38 24 c5 1 8 5 8 10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".75"/>'+
+    '<path d="M20 44 c4 4 10 5 16 3" fill="none" stroke="#a8324d" stroke-width="1.8" stroke-linecap="round" opacity=".5"/></svg>'
+};
+function catIco(cat){ return (cat && SVG_CATEGORIA[cat.id]) || (cat ? cat.emoji : ''); }
 function catLabel(catId){ const c = getCat(catId); return c ? (c.emoji+' '+c.nome) : catId; }
 
 const NIVEL_LABEL = {basico:'Básico', intermediario:'Intermediário', avancado:'Avançado', especialista:'Especialista'};
@@ -976,7 +1002,7 @@ function renderSidebar(){
   html += DATA.categorias.map(cat => {
     const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
     return '<div class="cat-header" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
-      '<span class="cat-emoji">'+cat.emoji+'</span><span class="cat-nome">'+esc(cat.nome)+'</span>'+
+      '<span class="cat-emoji">'+catIco(cat)+'</span><span class="cat-nome">'+esc(cat.nome)+'</span>'+
       '<span class="cat-count">'+n+'</span></div>';
   }).join('');
   list.innerHTML = html;
@@ -1005,6 +1031,7 @@ function abrirCaso(id){
   });
   state.casoId = id; state.casoStepIndex = 0; state.casoPontosGanhos = 0; state.casoPontosMax = max;
   state.casoAcertosComp = []; state.casoRespostaAtual = null; state.casoRespostasPorEtapa = {};
+  Object.keys(ORDEM_OPCOES).forEach(k => { if(k.indexOf('caso:'+id+':') === 0) delete ORDEM_OPCOES[k]; });
   setView('caso');
 }
 function selecionarOpcaoCaso(idxOpcao){
@@ -1051,6 +1078,16 @@ function finalizarCaso(){
 }
 
 /* ---------------- QUIZ ---------------- */
+// 12/11/2026: as alternativas são exibidas em ordem aleatória. No banco, a
+// resposta certa do quiz estava na A ou B em ~79% das questões e a melhor
+// conduta dos casos era a 1ª opção em ~36% -- dava para "chutar". A ordem é
+// sorteada uma vez por questão/etapa (estável enquanto a página está aberta);
+// os índices originais continuam sendo usados na correção e na pontuação.
+const ORDEM_OPCOES = {};
+function ordemOpcoes(chave, n){
+  if(!ORDEM_OPCOES[chave] || ORDEM_OPCOES[chave].length !== n) ORDEM_OPCOES[chave] = shuffle(Array.from({length:n}, (_, i) => i));
+  return ORDEM_OPCOES[chave];
+}
 function shuffle(arr){ const a = arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
 function iniciarQuiz(){
@@ -1334,7 +1371,7 @@ function viewPlantao(){
     '<p>'+f.res.length+' de '+f.total+' pacientes atendidos · média de <b>'+f.media+'%</b> · tempo total <b>'+fmtTempo(f.tempo)+'</b>'+(state.plantaoRecorde ? ' · <b class="pr-rec">Novo recorde!</b>' : '')+'</p>' +
     (progresso.melhorPlantao ? '<small>Melhor plantão: '+progresso.melhorPlantao.media+'% em '+fmtTempo(progresso.melhorPlantao.tempo)+'</small>' : '')+'</div></div>' +
     '<div class="pr-lista">'+f.res.map((r, i) => { const c = CASO_BY_ID[r.id], cat = getCat(c.categoria);
-      return '<div class="pr-item"><span class="pr-i">'+(i + 1)+'</span><div class="pr-txt"><b>'+esc(c.titulo)+'</b><small>'+cat.emoji+' '+esc(cat.nome)+(c.foco === 'sinal-alerta' ? ' · 🚨 sinal de alerta' : '')+' · '+fmtTempo(r.tempo)+'</small></div><span class="pr-pct pi-'+(r.pct >= 70 ? 'ok' : 'mal')+'">'+r.pct+'%</span><button class="btn" onclick="abrirCaso(\''+r.id+'\')">Refazer</button></div>'; }).join('')+'</div>' +
+      return '<div class="pr-item"><span class="pr-i">'+(i + 1)+'</span><div class="pr-txt"><b>'+esc(c.titulo)+'</b><small>'+catIco(cat)+' '+esc(cat.nome)+(c.foco === 'sinal-alerta' ? ' · 🚨 sinal de alerta' : '')+' · '+fmtTempo(r.tempo)+'</small></div><span class="pr-pct pi-'+(r.pct >= 70 ? 'ok' : 'mal')+'">'+r.pct+'%</span><button class="btn" onclick="abrirCaso(\''+r.id+'\')">Refazer</button></div>'; }).join('')+'</div>' +
     '<p class="ref-nota">Casos com decisões erradas entram na sua revisão espaçada e voltam amanhã.</p>' +
     '<div class="plantao-acoes"><button class="btn btn-primary" onclick="iniciarPlantao()">Novo plantão</button><button class="btn" onclick="setView(\'inicio\')">'+icon('back')+'Início</button></div></div>';
   return h;
@@ -1400,12 +1437,12 @@ function viewInicio(){
   h += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
     const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
     return '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
-      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-icon">'+catIco(cat)+'</div><h4>'+esc(cat.nome)+'</h4>'+
       '<div class="ct-count">'+n+' caso'+(n===1?'':'s')+'</div></div>';
   }).join('')+'</div>';
 
   h += disclaimerBox();
-  return h;
+  return '<div class="home-wrap">'+h+'</div>';
 }
 function quickCard(iconName, cor, titulo, desc, onclick){
   return '<div class="quick-card" '+ccStyle(cor)+' onclick="'+onclick+'">'+
@@ -1428,7 +1465,7 @@ function viewCategoria(){
   const quizN = DATA.quiz.filter(q=>q.categoria===cat.id).length;
   const fcN = DATA.flashcards.filter(f=>f.categoria===cat.id).length;
   let h = breadcrumb([{label:'Início', action:"setView('inicio')"}, {label:cat.nome}]);
-  h += '<div class="home-hero" '+ccStyle(cat.cor)+'><h2 style="color:var(--cc)">'+cat.emoji+' '+esc(cat.nome)+'</h2><p>'+esc(cat.descricao)+'</p></div>';
+  h += '<div class="home-hero" '+ccStyle(cat.cor)+'><h2 style="color:var(--cc)">'+catIco(cat)+' '+esc(cat.nome)+'</h2><p>'+esc(cat.descricao)+'</p></div>';
 
   h += '<div class="section-title">'+icon('cases')+'Casos Clínicos ('+casos.length+')</div>';
   h += casos.length ? '<div class="case-grid">'+casos.map(caseCard).join('')+'</div>' :
@@ -1461,7 +1498,7 @@ function viewCasosArea(){
   h += '<div class="tiles-grid">'+DATA.categorias.map(cat=>{
     const n = DATA.casos.filter(c=>c.categoria===cat.id).length;
     return '<div class="cat-tile" '+ccStyle(cat.cor)+' onclick="abrirCategoria(\''+cat.id+'\')">'+
-      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-icon">'+catIco(cat)+'</div><h4>'+esc(cat.nome)+'</h4>'+
       '<div class="ct-count">'+n+' caso'+(n===1?'':'s')+'</div></div>';
   }).join('')+'</div>';
   return h;
@@ -1519,7 +1556,7 @@ function viewCasoPlayer(){
   if(etapa.tipo === 'info'){
     h += '<div class="player-footer"><button class="btn btn-primary" onclick="avancarEtapaCaso()">Continuar '+icon('chev')+'</button></div>';
   }else{
-    h += '<div class="opcoes-list">'+etapa.opcoes.map((op,i)=>{
+    h += '<div class="opcoes-list">'+ordemOpcoes('caso:'+state.casoId+':'+state.casoStepIndex, etapa.opcoes.length).map(i=>{ const op = etapa.opcoes[i];
       let cls = 'opcao-btn';
       let disabled = '';
       if(state.casoRespostaAtual !== null){
@@ -1639,7 +1676,7 @@ function viewQuizPlayer(){
     return '<div class="pp-seg '+cls+'"></div>';
   }).join('')+'</div>';
   h += '<div class="player-texto">'+esc(q.pergunta)+'</div>';
-  h += '<div class="opcoes-list">'+q.opcoes.map((op,i)=>{
+  h += '<div class="opcoes-list">'+ordemOpcoes('quiz:'+q.id, q.opcoes.length).map(i=>{ const op = q.opcoes[i];
     let cls = 'opcao-btn'; let disabled = '';
     if(state.quizRespostaAtual !== null){
       disabled = 'disabled';
@@ -1694,7 +1731,7 @@ function viewFlashConfig(){
     return '<div class="cat-tile flash-cat-chip'+(ativo?' selected':'')+(n===0?' disabled':'')+'" '+ccStyle(cat.cor)+
       (n>0 ? ' onclick="toggleFlashCategoria(\''+cat.id+'\')"' : '')+'>'+
       (ativo?'<div class="fc-check">'+icon('check')+'</div>':'')+
-      '<div class="ct-icon">'+cat.emoji+'</div><h4>'+esc(cat.nome)+'</h4>'+
+      '<div class="ct-icon">'+catIco(cat)+'</div><h4>'+esc(cat.nome)+'</h4>'+
       '<div class="ct-count">'+n+(n===1?' cartão':' cartões')+'</div></div>';
   }).join('');
   h += '</div>';

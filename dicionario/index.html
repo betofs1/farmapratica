@@ -440,8 +440,11 @@
   .chip-link .cl-dot{ width:6px; height:6px; border-radius:50%; background:var(--cc,var(--red-bright)); }
 
   .naoconfunda-box{ border:1px solid rgba(185,140,240,.35); background:rgba(185,140,240,.08); border-radius:13px; padding:16px 18px; }
-  .naoconfunda-box h5{ color:#b98cf0; }
-  .naoconfunda-box h5 svg{ color:#b98cf0; }
+  /* 12/11/2026: o bloco "Não Confunda" não é .term-block, então o ícone do título
+     ficava sem tamanho e o SVG ocupava a largura inteira. */
+  .naoconfunda-box h5{ font-family:'Inter',sans-serif; font-size:.74rem; text-transform:uppercase; letter-spacing:.5px; margin:0 0 9px; color:#b98cf0; display:flex; align-items:center; gap:7px; }
+  .naoconfunda-box h5 svg{ width:14px; height:14px; flex-shrink:0; color:#b98cf0; }
+  .nc-link svg{ width:16px; height:16px; flex-shrink:0; }
   .nc-link{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 12px; background:var(--panel); border:1px solid var(--border); border-radius:10px; cursor:pointer; margin-top:4px; }
   .nc-link:hover{ border-color:#b98cf0; }
   .nc-link span{ font-size:.85rem; font-weight:700; }
