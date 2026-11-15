@@ -1,6 +1,6 @@
-# Revisão Farmacêutica Pendente — Calculadora de Doses
+# Revisão Farmacêutica Pendente — Cálculo de Doses
 
-Este documento reúne os pontos levantados durante a pesquisa de literatura que fundamentou as novas doses de adulto (e a revisão da base pediátrica existente) na Calculadora de Doses. São **9 fármacos, de 72 pesquisados**, com sugestões ou divergências que exigem sua avaliação como farmacêutico responsável pela base antes de qualquer alteração — nada listado aqui foi modificado automaticamente no `dados.json`.
+Este documento reúne os pontos levantados durante a pesquisa de literatura que fundamentou as novas doses de adulto (e a revisão da base pediátrica existente) na Cálculo de Doses. São **9 fármacos, de 72 pesquisados**, com sugestões ou divergências que exigem sua avaliação como farmacêutico responsável pela base antes de qualquer alteração — nada listado aqui foi modificado automaticamente no `dados.json`.
 
 ## 1. Amoxicilina + Clavulanato
 

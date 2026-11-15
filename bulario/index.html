@@ -861,6 +861,21 @@
   }
 
 </style>
+<style id="fp-titulo-centro">
+  /* 15/11/2026 — título da ferramenta centralizado na largura total do cabeçalho
+     (antes ficava centralizado só no espaço entre a marca e os botões, parecendo torto).
+     A classe .fp-centro é aplicada pelo script abaixo apenas quando há espaço
+     suficiente; caso contrário, mantém o layout original. */
+  .topbar-app.fp-centro > .titulo-central{
+    position:absolute !important; left:50% !important; top:50% !important;
+    transform:translate(-50%, -50%) !important;
+    width:max-content !important; min-width:0 !important;
+    padding:0 !important; margin:0 !important; grid-column:auto !important; z-index:1;
+  }
+  .topbar-app.fp-centro > .titulo-central .titulo-principal{ justify-content:center; }
+  .topbar-app.fp-centro > .titulo-central + *{ margin-left:auto; }
+  .topbar-app.fp-compacto > .titulo-central .titulo-descricao{ display:none !important; }
+</style>
 </head>
 <body>
 <script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
@@ -920,5 +935,41 @@
 
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script id="fp-titulo-centro-js">
+(function(){
+  function centrar(){
+    var tb = document.querySelector('.topbar-app');
+    var tc = tb && tb.querySelector(':scope > .titulo-central');
+    if(!tc) return;
+    tb.classList.remove('fp-centro', 'fp-compacto'); tc.style.maxWidth = '';
+    if(window.innerWidth < 1024) return;
+    tb.classList.add('fp-centro');
+    var box = tb.getBoundingClientRect(), mid = box.left + box.width / 2;
+    var L = box.left, R = box.right;
+    tb.querySelectorAll('.brand-text, .brand img, .logo-wrap img').forEach(function(el){
+      var r = el.getBoundingClientRect(); if(r.width && r.right < mid) L = Math.max(L, r.right);
+    });
+    Array.prototype.forEach.call(tb.children, function(filho){
+      if(filho === tc) return;
+      [filho].concat(Array.prototype.slice.call(filho.querySelectorAll('*'))).forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(!r.width || r.width > box.width * 0.35 || getComputedStyle(el).visibility === 'hidden') return;
+        if(r.left > mid) R = Math.min(R, r.left);
+      });
+    });
+    var meia = Math.min(mid - L, R - mid) - 24;
+    if(meia * 2 < 200){ tb.classList.remove('fp-centro'); return; }
+    if(meia * 2 < 340) tb.classList.add('fp-compacto'); // pouco espaço: esconde a descrição, mantém o título centralizado
+    tc.style.maxWidth = Math.min(meia * 2, 680) + 'px';
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', centrar); else centrar();
+  window.addEventListener('load', centrar);
+  var t; function agendar(){ clearTimeout(t); t = setTimeout(centrar, 80); }
+  window.addEventListener('resize', agendar);
+  // conteúdo do cabeçalho que muda depois do carregamento (contadores, selos) recalcula o espaço
+  var tbo = document.querySelector('.topbar-app');
+  if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
+})();
+</script>
 </body>
 </html>

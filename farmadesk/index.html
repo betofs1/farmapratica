@@ -1238,7 +1238,7 @@
   .legal-box p:last-child{margin-bottom:0;}
   .legal-meta{font-style:italic; color:var(--muted);}
 
-  /* MODAL - calculadora pediátrica */
+  /* MODAL - cálculo de doses */
   .modal-overlay{
     position:fixed; inset:0;
     background:rgba(0,0,0,0.7);
@@ -1759,7 +1759,7 @@
   }
 
   /* Placa "Indicação, Dispensação e Orientação Farmacêutica" — realocada do cabeçalho para o topo da lista (15/11/2026) */
-  .fd-eyebrow{ display:flex; width:fit-content; align-items:center; gap:8px; margin:0 0 32px; padding:5px 12px 5px 10px; border-radius:999px;
+  .fd-eyebrow{ display:flex; width:fit-content; align-items:center; gap:8px; margin:0 auto 32px; padding:5px 12px 5px 10px; border-radius:999px;
     border:1px solid rgba(228,23,44,.35); background:rgba(228,23,44,.08); color:var(--ink, #f5f2f0);
     font:700 10.5px/1.2 'Inter',system-ui,sans-serif; letter-spacing:.09em; text-transform:uppercase; }
   .fd-eyebrow-dot{ width:6px; height:6px; border-radius:50%; background:var(--red); flex-shrink:0; animation:pulseDot 1.8s infinite; }
@@ -1976,13 +1976,13 @@
   </div>
 </div>
 
-<!-- MODAL CALCULADORA PEDIÁTRICA -->
+<!-- MODAL CÁLCULO DE DOSES -->
 
 <div class="modal-overlay" id="calcOverlay">
   <div class="modal" style="max-width:560px;">
     <div class="modal-head">
       <div>
-        <h3>Calculadora Pediátrica</h3>
+        <h3>Cálculo de Doses</h3>
         <p>Dose por peso — baseada em bulas e diretrizes (ANVISA/SBP/OMS)</p>
       </div>
       <button class="modal-close" id="closeCalc" type="button">
@@ -2366,7 +2366,7 @@ function renderSidebar(){
       ${s.slug === 'all' ? `
       <span class="sys-all-hint" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="11 6 5 12 11 18"/></svg>
-        Clique aqui
+        Comece aqui
       </span>` : ''}
     </button>
   `).join('');
@@ -2491,8 +2491,8 @@ function isDrugName(text) {
   return true;
 }
 
-// ---------- INTEGRAÇÃO CRUZADA: Calculadora de Doses e Substituição de Medicamentos ----------
-// Reaproveita a lista real de fármacos da Calculadora de Doses (dosespediatricas) para
+// ---------- INTEGRAÇÃO CRUZADA: Cálculo de Doses e Substituição de Medicamentos ----------
+// Reaproveita a lista real de fármacos da Cálculo de Doses (dosespediatricas) para
 // só oferecer o link de dose quando o fármaco realmente existir lá. O casamento usa
 // matchKey() (abaixo) em vez do nome bruto, pois o FarmaDesk costuma incluir dosagem/forma
 // farmacêutica no texto (ex.: "Amoxicilina 500mg"), o que impediria o match exato.
@@ -2539,21 +2539,21 @@ async function loadPediatricDrugMap(){
       if(key) PEDIATRIC_DRUG_MAP[key] = f.id;
     });
   }catch(e){
-    // Calculadora de Doses pode não estar acessível (ex.: aberto localmente sem
+    // Cálculo de Doses pode não estar acessível (ex.: aberto localmente sem
     // servidor, ou pasta movida) — o link de dose simplesmente não aparece,
     // sem quebrar nada do restante da página.
   }
 }
-// Trava de segurança: alguns itens da Calculadora de Doses só existem numa forma/via bem
+// Trava de segurança: alguns itens da Cálculo de Doses só existem numa forma/via bem
 // restrita (ex.: colírio, solução otológica, suspensão para nebulização). Como matchKey()
 // descarta palavras de forma farmacêutica para maximizar o casamento, uma menção do MESMO
 // princípio ativo em outra via no FarmaDesk (ex.: "Ciprofloxacino 500mg" via oral) poderia
 // ser incorretamente ligada a um item de via totalmente diferente (ex.: a solução otológica).
 // Este mapa rejeita o casamento quando o texto original do FarmaDesk sinaliza uma via
-// claramente incompatível com a do item da Calculadora de Doses — preferindo não mostrar o
+// claramente incompatível com a do item da Cálculo de Doses — preferindo não mostrar o
 // link de dose a mostrar um link que levaria a uma posologia da via errada.
 const ROUTE_GUARD = {
-  // Único item de ciprofloxacino na Calculadora de Doses é a solução otológica; o FarmaDesk
+  // Único item de ciprofloxacino na Cálculo de Doses é a solução otológica; o FarmaDesk
   // só menciona Ciprofloxacino em uso oral/oftálmico, nunca otológico — bloqueia sempre.
   'ciprofloxacino_otologico': /.*/,
   // Item é suspensão para NEBULIZAÇÃO; não deve casar com spray NASAL (rinite/sinusite).
@@ -2670,7 +2670,7 @@ if (parentLi && parentLi.querySelector('ul')) {
 
       // Para cada nome de medicamento na lista, inserir um grupo de ícones após a strong
       // correspondente: foto da embalagem (sempre) e dose pediátrica (quando o fármaco
-      // existir na Calculadora Pediátrica). Botão de equivalentes/substituição removido
+      // existir na Cálculo de Doses). Botão de equivalentes/substituição removido
       // a pedido do usuário em 28/08/2026.
       const mainDrug = drugParts[0].replace(/[:\s]+$/,'').trim();
 
@@ -2691,7 +2691,7 @@ if (parentLi && parentLi.querySelector('ul')) {
       if(pedId){
         const pedLink = document.createElement('a');
         pedLink.href = `../dosespediatricas/?farmaco=${encodeURIComponent(pedId)}`;
-        pedLink.title = `Abrir "${mainDrug}" direto na Calculadora de Doses`;
+        pedLink.title = `Abrir "${mainDrug}" direto na Cálculo de Doses`;
         pedLink.className = 'drug-link-secondary drug-ped-link';
         pedLink.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg> dose`;
         group.appendChild(pedLink);
@@ -3152,7 +3152,7 @@ aboutOverlay.addEventListener('click', (e) => {
 });
 
 // ============================================================
-// CALCULADORA PEDIÁTRICA — Base de dados de fármacos
+// CÁLCULO DE DOSES — Base de dados de fármacos
 // Fontes: bulas ANVISA, SBP, OMS, Taketomo (Pediatric Dosage Handbook)
 // ============================================================
 const DRUG_DB = {

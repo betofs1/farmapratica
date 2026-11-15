@@ -1179,6 +1179,29 @@
     @page{ margin: 16mm 12mm; }
   }
 </style>
+<style id="fp-titulo-centro">
+  /* 15/11/2026 — título da ferramenta centralizado na largura total do cabeçalho
+     (antes ficava centralizado só no espaço entre a marca e os botões, parecendo torto).
+     A classe .fp-centro é aplicada pelo script abaixo apenas quando há espaço
+     suficiente; caso contrário, mantém o layout original. */
+  .topbar-app.fp-centro > .titulo-central{
+    position:absolute !important; left:50% !important; top:50% !important;
+    transform:translate(-50%, -50%) !important;
+    width:max-content !important; min-width:0 !important;
+    padding:0 !important; margin:0 !important; grid-column:auto !important; z-index:1;
+  }
+  .topbar-app.fp-centro > .titulo-central .titulo-principal{ justify-content:center; }
+  .topbar-app.fp-centro > .titulo-central + *{ margin-left:auto; }
+  .topbar-app.fp-compacto > .titulo-central .titulo-descricao{ display:none !important; }
+  .topbar-app.fp-entre > .titulo-central{ transform:translateY(-50%) !important; }
+  .topbar-app.fp-entre > .titulo-central .titulo-principal{ font-size:.95rem !important; }
+  /* pouco espaço: botões do cabeçalho só com ícone (texto continua no title/aria-label) */
+  .topbar-app.fp-acoes-compactas .bl-label,
+  .topbar-app.fp-acoes-compactas #modo-texto,
+  .topbar-app.fp-acoes-compactas .btn-relatorio-txt,
+  .topbar-app.fp-acoes-compactas .estab-header-btn span{ display:none !important; }
+  .topbar-app.fp-acoes-compactas #ambiente-select{ max-width:160px; text-overflow:ellipsis; }
+</style>
 </head>
 <body class="mobile-menu-only">
 <script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
@@ -3206,5 +3229,55 @@ renderMain();
 </script>
 
 <script src="../assets/tempo-uso.js" data-tool="checklist"></script>
+<script id="fp-titulo-centro-js">
+(function(){
+  var ultL = 0, ultR = 0;
+  function centrar(){
+    var tb = document.querySelector('.topbar-app');
+    var tc = tb && tb.querySelector(':scope > .titulo-central');
+    if(!tc) return;
+    tb.classList.remove('fp-centro', 'fp-compacto', 'fp-acoes-compactas', 'fp-entre'); tc.style.maxWidth = ''; tc.style.left = '';
+    if(window.innerWidth < 801) return;
+    tb.classList.add('fp-centro');
+    if(medir() < 340){ tb.classList.add('fp-acoes-compactas'); }
+    var meia2 = medir();
+    if(meia2 < 200){
+      // sem espaço para centralizar: encaixa o título no vão entre a marca e os botões
+      tb.classList.add('fp-compacto', 'fp-entre');
+      var bx = tb.getBoundingClientRect();
+      tc.style.setProperty('left', (ultL - bx.left + 12) + 'px', 'important');
+      tc.style.maxWidth = Math.max(ultR - ultL - 24, 120) + 'px';
+      return;
+    }
+    if(meia2 < 340) tb.classList.add('fp-compacto');
+    tc.style.maxWidth = Math.min(meia2, 680) + 'px';
+    return;
+    function medir(){
+    var box = tb.getBoundingClientRect(), mid = box.left + box.width / 2;
+    var L = box.left, R = box.right;
+    tb.querySelectorAll('.brand-text, .brand img, .logo-wrap img').forEach(function(el){
+      var r = el.getBoundingClientRect(); if(r.width && r.right < mid) L = Math.max(L, r.right);
+    });
+    Array.prototype.forEach.call(tb.children, function(filho){
+      if(filho === tc) return;
+      [filho].concat(Array.prototype.slice.call(filho.querySelectorAll('*'))).forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(!r.width || r.width > box.width * 0.35 || getComputedStyle(el).visibility === 'hidden') return;
+        if(r.left > mid) R = Math.min(R, r.left);
+      });
+    });
+    ultL = L; ultR = R;
+    return (Math.min(mid - L, R - mid) - 24) * 2;
+    }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', centrar); else centrar();
+  window.addEventListener('load', centrar);
+  var t; function agendar(){ clearTimeout(t); t = setTimeout(centrar, 80); }
+  window.addEventListener('resize', agendar);
+  // conteúdo do cabeçalho que muda depois do carregamento (contadores, selos) recalcula o espaço
+  var tbo = document.querySelector('.topbar-app');
+  if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
+})();
+</script>
 </body>
 </html>

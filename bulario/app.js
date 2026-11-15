@@ -913,7 +913,7 @@
 
   // ---------- Atalhos para as outras ferramentas do FarmaPrática ----------
   // atalhos.json é gerado por scripts/gerar_atalhos_bulario.py (cruzamento por
-  // nome com Interações, Calculadora Pediátrica, Controle Especial e CMED).
+  // nome com Interações, Cálculo de Doses, Controle Especial e CMED).
   let atalhosPromise = null;
   function carregarAtalhos() {
     if (!atalhosPromise) {
@@ -943,7 +943,7 @@
       if (!a) return;
       const html = [];
       if (a.interacoes) html.push(atalhoLink("../interacoes/?med=" + encodeURIComponent(a.interacoes), "interacoes", "Checar interações", "Interações Medicamentosas"));
-      if (a.calc) html.push(atalhoLink("../dosespediatricas/?farmaco=" + encodeURIComponent(a.calc), "calc", "Calcular dose", "Calculadora de Doses"));
+      if (a.calc) html.push(atalhoLink("../dosespediatricas/?farmaco=" + encodeURIComponent(a.calc), "calc", "Calcular dose", "Cálculo de Doses"));
       if (a.medinter) html.push(atalhoLink("../medinter/?med=" + encodeURIComponent(a.medinter), "medinter", "Equivalentes e preços", "Substituição de Medicamentos"));
       if (a.controlado) {
         const lista = a.controlado.lista === "ANTIMICROBIANO" ? "Antimicrobiano (retenção de receita)" : "Controle especial · Lista " + a.controlado.lista;
@@ -1078,7 +1078,7 @@
     ["dirigir", "🚗", "Dirigir e máquinas"],
     ["sinaisAlerta", "🚨", "Procure atendimento se"],
   ];
-  const PROF_KEY = "fp-etiqueta-profissional"; // compartilhado com a etiqueta da Calculadora
+  const PROF_KEY = "fp-etiqueta-profissional"; // compartilhado com a etiqueta do Cálculo de Doses
   let cartaoMedId = null;
   function lerProf() { try { return JSON.parse(localStorage.getItem(PROF_KEY) || "{}"); } catch (e) { return {}; } }
   function garantirModalCartao() {

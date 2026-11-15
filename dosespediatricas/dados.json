@@ -4301,7 +4301,7 @@
   },
   {
    "id": "butilbrometo_escopolamina",
-   "nome": "Butilbrometo de Escopolamina",
+   "nome": "Butilbrometo de Escopolamina (Buscopan®)",
    "categoria": "Gastrointestinal",
    "doseBase": {
     "tipo": "faixa_fixa",
@@ -4333,6 +4333,41 @@
      "mgPorGota": 0.5,
      "apresentacaoTexto": "frasco gotejador",
      "exibirEmAdulto": true
+    },
+    {
+     "tipo": "gotas",
+     "rotulo": "Solução oral gotas 10 mg/mL — cálculo por peso (bula, até 6 anos)",
+     "viaTexto": "via oral, 3 vezes ao dia",
+     "mgPorGota": 0.5,
+     "apresentacaoTexto": "frasco gotejador com 20 mL (1 mL = 20 gotas)",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 2,
+       "mgPorKg": 4.5,
+       "fracionamento": 3,
+       "descricao": "crianças até 3 meses — 1,5 mg/kg/dose, 3 vezes ao dia"
+      },
+      {
+       "idadeMaxMeses": 11,
+       "mgPorKg": 2.1,
+       "fracionamento": 3,
+       "descricao": "crianças de 3 a 11 meses — 0,7 mg/kg/dose, 3 vezes ao dia"
+      },
+      {
+       "idadeMaxMeses": 72,
+       "mgPorKgMin": 0.9,
+       "mgPorKgMax": 1.5,
+       "fracionamento": 3,
+       "descricao": "crianças de 1 a 6 anos — 0,3 a 0,5 mg/kg/dose, 3 vezes ao dia"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "Acima de 6 anos a dose é igual à de adulto: 20 a 40 gotas (10 a 20 mg), 3 a 5 vezes ao dia."
+      }
+     ],
+     "restricoes": [
+      "Alternativa da própria bula ao esquema fixo por idade: 'a posologia baseada no peso corpóreo de uma criança até os seis anos de idade pode ser calculada' em mg/kg/dose, sempre 3 vezes ao dia."
+     ]
     },
     {
      "tipo": "comprimido",
@@ -4379,13 +4414,17 @@
     }
    ],
    "observacoesExtras": [
+    "Contraindicado em miastenia grave e megacólon e em hipersensibilidade ao butilbrometo de escopolamina; não é indicado na diarreia aguda ou persistente da criança. Cautela (risco anticolinérgico): glaucoma de ângulo fechado, obstrução intestinal ou urinária e taquiarritmias.",
     "Drágea contém sacarose (41,2 mg por drágea; até 411,8 mg na dose máxima diária recomendada) — usar com cautela em diabéticos; contraindicada em condições hereditárias raras de intolerância à frutose, má-absorção de glicose-galactose ou deficiência de sacarase-isomaltase.",
     "Solução gotas contém sódio (28 mg por dose única máxima; até 140 mg na dose diária máxima para adultos e crianças acima de 6 anos) — usar com cautela em pacientes com dieta hipossódica controlada.",
-    "Fonte: bula profissional Buscopan® drágea e solução gotas (CosMed Indústria de Cosméticos e Medicamentos S.A., Registro MS 1.7817.0890) e bula profissional Buscopan® solução injetável (Boehringer Ingelheim/CosMed, Registro MS 1.0367.0014) — bulas enviadas pelo usuário (farmacêutico responsável pela base) e conferidas diretamente em 07/11/2026."
+    "Fonte: bula profissional Buscopan® drágea e solução gotas (CosMed Indústria de Cosméticos e Medicamentos S.A., Registro MS 1.7817.0890) e bula profissional Buscopan® solução injetável (Boehringer Ingelheim/CosMed, Registro MS 1.0367.0014) — bulas enviadas pelo usuário (farmacêutico responsável pela base) e conferidas diretamente em 07/11/2026.",
+    "Revisado em 15/11/2026 com a bula Buscopan® drágea e solução oral gotas (Boehringer Ingelheim, Registro MS 1.0367.0014) enviada pelo usuário: posologia por idade confirmada (lactentes 10 gotas 3x/dia; 1 a 6 anos 10 a 20 gotas 3x/dia; > 6 anos e adultos 20 a 40 gotas ou 1 a 2 drágeas, 3 a 5x/dia) e acrescentado o cálculo por peso previsto em bula para até 6 anos."
    ],
-   "fonte": "Bula profissional Buscopan® — drágea e solução gotas (Registro MS 1.7817.0890) e solução injetável (Registro MS 1.0367.0014)",
+   "fonte": "Bula profissional Buscopan® — drágea e solução gotas (Registro MS 1.7817.0890) e solução injetável (Registro MS 1.0367.0014); bula Buscopan® drágea e gotas (Boehringer Ingelheim, MS 1.0367.0014)",
    "nomesComerciais": [
-    "Buscopan"
+    "Buscopan",
+    "Buscopan Simples",
+    "Butilbrometo de escopolamina (genérico)"
    ],
    "doseAdulto": {
     "modo": "fixa",
@@ -4396,6 +4435,164 @@
     "vezesDia": 5,
     "doseMaximaDiaMg": 100
    }
+  },
+  {
+   "id": "escopolamina_dipirona",
+   "nome": "Butilbrometo de Escopolamina + Dipirona (Buscopan® Composto)",
+   "categoria": "Gastrointestinal",
+   "doseBase": {
+    "tipo": "individualizado",
+    "_nota": "Associação em dose fixa — posologia por comprimido conforme bula, sem cálculo por peso."
+   },
+   "idadeMinimaMeses": 12,
+   "bloquearAbaixoIdadeMinima": true,
+   "textoAlertaIdadeMinima": "Buscopan® Composto é contraindicado em menores de 12 meses (bula; gotas: uso a partir de 1 ano). Nesses casos a bula recomenda Buscopan® (butilbrometo de escopolamina isolado, sem dipirona).",
+   "formulacoes": [
+    {
+     "tipo": "gotas",
+     "rotulo": "Solução oral gotas 6,67 mg/mL + 333,4 mg/mL (0,33 mg de escopolamina + 16,67 mg de dipirona por gota)",
+     "viaTexto": "via oral, 3 a 4 vezes ao dia — pode dissolver as gotas em um pouco de água",
+     "apresentacaoTexto": "frasco gotejador com 20 mL (1 mL = 20 gotas)",
+     "exibirEmAdulto": true,
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 72,
+       "texto": "5 a 10 gotas, 3 a 4 vezes ao dia (crianças de 1 a 6 anos)."
+      },
+      {
+       "idadeMaxMeses": 144,
+       "texto": "10 a 20 gotas, 3 a 4 vezes ao dia (crianças acima de 6 anos)."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "20 a 40 gotas, 3 a 4 vezes ao dia (adultos; acima de 12 anos a dose é igual à de adultos)."
+      }
+     ],
+     "restricoes": [
+      "Contém 21,8 mg de sódio por mL (20 gotas): até 174,4 mg na dose diária máxima de adulto — considerar em dieta com restrição de sódio."
+     ]
+    },
+    {
+     "tipo": "gotas",
+     "rotulo": "Solução oral gotas 6,67 mg/mL + 333,4 mg/mL — cálculo por peso (bula, 1 a 12 anos)",
+     "viaTexto": "via oral, 3 a 4 vezes ao dia",
+     "mgPorGota": 0.33,
+     "apresentacaoTexto": "frasco gotejador com 20 mL (1 mL = 20 gotas)",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 72,
+       "mgPorKgMin": 0.1,
+       "mgPorKgMax": 0.2,
+       "fracionamento": 1,
+       "frequenciaTexto": "por dose",
+       "descricao": "crianças de 1 a 6 anos — 0,1 a 0,2 mg/kg/dose de butilbrometo de escopolamina"
+      },
+      {
+       "idadeMaxMeses": 144,
+       "mgPorKgMin": 0.2,
+       "mgPorKgMax": 0.2,
+       "fracionamento": 1,
+       "frequenciaTexto": "por dose",
+       "descricao": "crianças acima de 6 anos — 0,2 mg/kg/dose de butilbrometo de escopolamina"
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "Acima de 12 anos a dose é igual à de adultos: 20 a 40 gotas, 3 a 4 vezes ao dia."
+      }
+     ],
+     "restricoes": [
+      "Bula: a posologia por peso é calculada com base na dose de butilbrometo de escopolamina (0,33 mg/gota); cada gota contém também 16,67 mg de dipirona sódica."
+     ]
+    },
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido revestido 10 mg + 250 mg (butilbrometo de escopolamina + dipirona sódica)",
+     "viaTexto": "via oral, 3 a 4 vezes ao dia, sem mastigar, com um pouco de água",
+     "mgPorComprimido": null,
+     "apresentacaoTexto": "embalagem com 20 comprimidos revestidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 215,
+       "alerta": true,
+       "texto": "Comprimido revestido de uso adulto, conforme bula. Para crianças a partir de 1 ano, usar a solução oral (gotas)."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 a 2 comprimidos, 3 a 4 vezes ao dia (máx. 8 comprimidos/dia = 80 mg de escopolamina + 2 g de dipirona)."
+      }
+     ],
+     "restricoes": [
+      "Este medicamento não pode ser partido ou mastigado.",
+      "Não usar em altas doses ou por tempo prolongado sem controle médico."
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "Contraindicações: hipersensibilidade ao butilbrometo de escopolamina ou a derivados pirazolônicos (dipirona); porfiria; deficiência congênita de G6PD; granulocitopenia; terceiro trimestre da gravidez; menores de 12 meses (gotas: uso a partir de 1 ano; comprimido: uso adulto); idosos especialmente sensíveis a efeitos antimuscarínicos (boca seca, retenção urinária).",
+    "Uso só sob supervisão médica e/ou exames: alterações prévias do hemograma (ex.: terapia citostática), PA sistólica < 100 mmHg, instabilidade circulatória, infarto do miocárdio.",
+    "Suspender e procurar o médico se surgirem coceira, placas vermelhas, inchaço de lábios/boca/garganta, dor de garganta ou outras alterações na boca (sinais possíveis de agranulocitose).",
+    "Cautela anticolinérgica: glaucoma, taquicardia, estenoses do trato gastrintestinal, megacólon, miastenia grave e hipertrofia prostática com retenção urinária.",
+    "Não somar a outros medicamentos que contenham dipirona (respeitar o teto diário de dipirona)."
+   ],
+   "fonte": "Bulas Buscopan® Composto comprimidos revestidos e solução oral gotas (Boehringer Ingelheim, Registro MS 1.0367.0013) — enviadas pelo usuário em 15/11/2026",
+   "nomesComerciais": [
+    "Buscopan Composto",
+    "Butilbrometo de escopolamina + dipirona (genérico)"
+   ],
+   "fontesAdulto": [
+    "Bula Buscopan® Composto (MS 1.0367.0013): comprimidos revestidos, uso adulto — 1 a 2 comprimidos, 3 a 4 vezes ao dia.",
+    "Bula Buscopan® Composto solução oral gotas: adultos 20 a 40 gotas, 3 a 4 vezes ao dia."
+   ]
+  },
+  {
+   "id": "escopolamina_paracetamol",
+   "nome": "Butilbrometo de Escopolamina + Paracetamol (BuscoDuo®)",
+   "categoria": "Gastrointestinal",
+   "doseBase": {
+    "tipo": "individualizado",
+    "_nota": "Associação em dose fixa — posologia por comprimido conforme bula, sem cálculo por peso."
+   },
+   "idadeMinimaMeses": 120,
+   "bloquearAbaixoIdadeMinima": true,
+   "textoAlertaIdadeMinima": "Os comprimidos de BuscoDuo® não são apropriados para crianças menores de 10 anos (bula).",
+   "formulacoes": [
+    {
+     "tipo": "comprimido",
+     "rotulo": "Comprimido revestido 10 mg + 500 mg (butilbrometo de escopolamina + paracetamol)",
+     "viaTexto": "via oral, 3 vezes ao dia, inteiro, com água",
+     "mgPorComprimido": null,
+     "apresentacaoTexto": "embalagens com 20 e 120 comprimidos revestidos",
+     "faixasTexto": [
+      {
+       "idadeMaxMeses": 215,
+       "alerta": true,
+       "texto": "Comprimido de uso adulto (bula BuscoDuo®): não há posologia definida para 10 a 17 anos — avaliar com o prescritor."
+      },
+      {
+       "idadeMaxMeses": 9999,
+       "texto": "1 a 2 comprimidos, 3 vezes ao dia — não ultrapassar 6 comprimidos/dia (60 mg de escopolamina + 3 g de paracetamol)."
+      }
+     ],
+     "restricoes": [
+      "Não usar por mais de 3 dias sem orientação médica.",
+      "Não partir nem mastigar."
+     ]
+    }
+   ],
+   "observacoesExtras": [
+    "Contraindicações: hipersensibilidade aos componentes; miastenia gravis; megacólon; insuficiência hepatocelular grave (Child-Pugh C).",
+    "Não usar junto com outro produto que contenha paracetamol (risco de superdose e lesão hepática).",
+    "Cautela e, se necessário, dose reduzida ou intervalo maior: deficiência de G6PD, disfunção renal ou hepática (inclusive etilismo crônico e hepatite), síndrome de Gilbert, Child-Pugh A/B. Monitorar hemograma e funções renal e hepática em uso prolongado.",
+    "Procurar atendimento imediato se a dor abdominal for intensa, persistente ou vier com febre, vômitos, queda de pressão, desmaio ou sangue nas fezes.",
+    "Cautela anticolinérgica: glaucoma de ângulo fechado, obstrução intestinal ou urinária e taquiarritmias."
+   ],
+   "fonte": "Bula profissional BuscoDuo® (Boehringer Ingelheim, 2011) — enviada pelo usuário em 15/11/2026",
+   "nomesComerciais": [
+    "BuscoDuo"
+   ],
+   "fontesAdulto": [
+    "Bula profissional BuscoDuo®: adultos 1 a 2 comprimidos, 3 vezes ao dia; não ultrapassar 6 comprimidos/dia; máximo 3 dias sem orientação médica."
+   ]
   },
   {
    "id": "dexametasona",
