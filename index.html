@@ -2130,6 +2130,149 @@
   @media (max-width:520px){
     .site-footer{grid-template-columns:1fr;gap:22px;}
   }
+
+  /* =====================================================================
+     15/11/2026 — Tema CLARO da página inicial: cards de ferramenta em cor
+     sólida (degradê da cor da ferramenta, texto branco), para dar contraste
+     forte com o fundo cinza. O tema escuro não muda.
+     ===================================================================== */
+  body.light .tools-hub-section{ position:relative; }
+  body.light .tools-hub-card{
+    border:none !important;
+    background:transparent;
+    box-shadow:
+      0 5px 0 0 color-mix(in srgb, var(--hub-color) 45%, #1a1d24),
+      0 16px 28px -14px color-mix(in srgb, var(--hub-color) 55%, rgba(20,24,32,.55)),
+      0 2px 6px rgba(20,24,32,.12) !important;
+  }
+  body.light .tools-hub-card-body{
+    border-radius:16px !important;
+    background:
+      linear-gradient(150deg,
+        color-mix(in srgb, var(--hub-color) 92%, #ffffff 8%) 0%,
+        color-mix(in srgb, var(--hub-color) 78%, #141821 22%) 55%,
+        color-mix(in srgb, var(--hub-color) 58%, #141821 42%) 100%) !important;
+  }
+  /* textura "saúde": malha discreta de cruzes (+) concentrada no canto superior
+     direito — substitui os círculos (traçado de ECG removido a pedido do usuário) */
+  body.light .tools-hub-card-body::before{
+    content:""; position:absolute; pointer-events:none; z-index:0;
+  }
+  body.light .tools-hub-card-body::before{
+    inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2726%27%20height%3D%2726%27%20viewBox%3D%270%200%2026%2026%27%3E%3Cpath%20d%3D%27M11.5%208h3v3.5H18v3h-3.5V18h-3v-3.5H8v-3h3.5z%27%20fill%3D%27white%27/%3E%3C/svg%3E");
+    background-size:26px 26px;
+    opacity:.16;
+    -webkit-mask-image:radial-gradient(circle at 100% 0%, #000 0%, rgba(0,0,0,.55) 38%, transparent 68%);
+            mask-image:radial-gradient(circle at 100% 0%, #000 0%, rgba(0,0,0,.55) 38%, transparent 68%);
+    transition:opacity .25s ease;
+  }
+  body.light .tools-hub-card-body > *:not(.tools-hub-soon-badge){ position:relative; z-index:1; }
+  body.light .tools-hub-card:hover .tools-hub-card-body::before{ opacity:.24; }
+  body.light .tools-hub-card:hover{
+    transform:translateY(-6px);
+    box-shadow:
+      0 10px 0 0 color-mix(in srgb, var(--hub-color) 45%, #1a1d24),
+      0 26px 36px -16px color-mix(in srgb, var(--hub-color) 65%, rgba(20,24,32,.6)),
+      0 2px 6px rgba(20,24,32,.12) !important;
+  }
+  body.light .tools-hub-card:hover .tools-hub-card-body{
+    background:
+      linear-gradient(150deg,
+        var(--hub-color) 0%,
+        color-mix(in srgb, var(--hub-color) 82%, #141821 18%) 55%,
+        color-mix(in srgb, var(--hub-color) 62%, #141821 38%) 100%) !important;
+  }
+  body.light .tools-hub-card:active{
+    transform:translateY(3px);
+    box-shadow:0 1px 0 0 color-mix(in srgb, var(--hub-color) 45%, #1a1d24), 0 6px 10px -8px rgba(20,24,32,.4) !important;
+  }
+  body.light .tools-hub-card h3{ color:#ffffff !important; text-shadow:0 1px 2px rgba(0,0,0,.28); }
+  body.light .tools-hub-card p{ color:rgba(255,255,255,.9) !important; text-shadow:0 1px 1px rgba(0,0,0,.22); }
+  body.light .tools-hub-icon,
+  body.light .tools-hub-card:hover .tools-hub-icon{
+    background:rgba(255,255,255,.22) !important; color:#ffffff !important;
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55), 0 6px 14px -6px rgba(0,0,0,.35) !important;
+    backdrop-filter:blur(2px);
+  }
+  body.light .tools-hub-arrow{
+    background:rgba(255,255,255,.18) !important; color:#ffffff !important;
+    border-color:rgba(255,255,255,.65) !important; box-shadow:none !important;
+  }
+  body.light .tools-hub-card:hover .tools-hub-arrow{ background:#ffffff !important; color:color-mix(in srgb, var(--hub-color) 70%, #141821) !important; }
+  body.light .tools-hub-soon-badge{ background:rgba(255,255,255,.92) !important; color:color-mix(in srgb, var(--hub-color) 70%, #141821) !important; }
+  /* título da seção com mais presença sobre o cinza */
+  body.light .tools-hub-header h2{ text-shadow:none; color:#1d2127; }
+  body.light .tools-hub-header p{ color:#4a5058; }
+
+  /* 15/11/2026: no tema claro, a faixa de saudação e o seletor de cor de fundo
+     ficam sempre brancos (como o cabeçalho), sem escurecer com o nível de iluminação */
+  body.light .greeting-banner{
+    background:linear-gradient(135deg, #ffffff 0%, #fbfbfc 60%, #f6f7f9 100%) !important;
+    border-color:#d9dde2 !important;
+  }
+  body.light .color-theme-popover{
+    background:#ffffff !important; border-color:#d9dde2 !important;
+    box-shadow:0 18px 40px -16px rgba(20,24,32,.35), 0 2px 6px rgba(20,24,32,.08) !important;
+  }
+  /* cabeçalho/menu também fixos: busca, resultados e menu lateral não escurecem com o nível */
+  body.light .search-box{ background:#f6f7f9 !important; border-color:#d9dde2 !important; }
+  body.light .search-box .kbd{ background:#ffffff !important; border-color:#d9dde2 !important; }
+  body.light .search-results{ background:#ffffff !important; border-color:#d9dde2 !important; }
+  body.light .sidebar{ background:#ffffff !important; border-right-color:#d9dde2 !important; }
+  /* texto de apoio sobre o fundo: continua legível mesmo com o fundo bem escuro */
+  body.light .tools-hub-header p{ color:color-mix(in srgb, #2b3036 85%, var(--bg) 15%); }
+
+  /* 15/11/2026 — devolve o efeito "botão gamer" aos cards coloridos (somente tema claro):
+     aro na cor da ferramenta, bisel (luz em cima / sombra embaixo), degrau sólido
+     que cresce no hover com brilho, e "afundar" ao clicar. */
+  body.light .tools-hub-grid .tools-hub-card{
+    border:2px solid color-mix(in srgb, var(--hub-color) 65%, #ffffff 35%) !important;
+    border-bottom-color:color-mix(in srgb, var(--hub-color) 70%, #141821 30%) !important;
+    transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease, filter .2s ease, border-color .2s ease !important;
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.28),
+      inset 0 -3px 0 rgba(0,0,0,.16),
+      0 6px 0 0 color-mix(in srgb, var(--hub-color) 50%, #10131a),
+      0 16px 26px -14px color-mix(in srgb, var(--hub-color) 55%, rgba(10,12,18,.6)) !important;
+  }
+  body.light .tools-hub-grid .tools-hub-card-body{ border-radius:13px !important; }
+  body.light .tools-hub-grid .tools-hub-card:hover{
+    transform:translateY(-7px) scale(1.02) !important;
+    border-color:color-mix(in srgb, var(--hub-color) 35%, #ffffff 65%) !important;
+    filter:saturate(1.08);
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.4),
+      inset 0 -3px 0 rgba(0,0,0,.16),
+      0 12px 0 0 color-mix(in srgb, var(--hub-color) 50%, #10131a),
+      0 0 0 3px color-mix(in srgb, var(--hub-color) 30%, transparent),
+      0 0 26px -2px color-mix(in srgb, var(--hub-color) 70%, transparent),
+      0 30px 36px -18px color-mix(in srgb, var(--hub-color) 60%, rgba(10,12,18,.6)) !important;
+  }
+  body.light .tools-hub-grid .tools-hub-card:hover{
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,.4),
+      inset 0 -3px 0 rgba(0,0,0,.16),
+      0 12px 0 0 color-mix(in srgb, var(--hub-color) 50%, #10131a),
+      0 0 0 3px color-mix(in srgb, var(--hub-color) 25%, transparent),
+      0 0 22px -4px color-mix(in srgb, var(--hub-color) 55%, transparent),
+      0 30px 36px -18px color-mix(in srgb, var(--hub-color) 55%, rgba(10,12,18,.5)) !important;
+  }
+  body.light .tools-hub-grid .tools-hub-card:active{
+    transform:translateY(5px) scale(.985) !important;
+    filter:brightness(.95);
+    transition-duration:.06s !important;
+    box-shadow:
+      inset 0 3px 8px rgba(0,0,0,.25),
+      inset 0 -1px 0 rgba(255,255,255,.15),
+      0 1px 0 0 color-mix(in srgb, var(--hub-color) 50%, #10131a),
+      0 4px 8px -6px rgba(10,12,18,.5) !important;
+  }
+  body.light .tools-hub-grid .tools-hub-card:hover .tools-hub-icon{
+    transform:translateY(-2px) scale(1.12) rotate(-4deg) !important;
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.75), 0 8px 16px -6px rgba(0,0,0,.4) !important;
+  }
+  body.light .tools-hub-grid .tools-hub-card:active .tools-hub-icon{ transform:scale(.96) !important; }
 </style>
 </head>
 <body>
@@ -2729,12 +2872,13 @@
   var BG_LEVEL_KEY_DARK = 'fp-bg-level-dark';
   var BG_LEVEL_KEY_LIGHT = 'fp-bg-level-light';
   var BG_LEVEL_DEFAULT = 50;
+  var BG_LEVEL_DEFAULT_LIGHT = 40; // 15/11/2026: tema claro abre com o fundo em 40 por padrão (pedido do usuário); 50 continua sendo o ponto neutro da escala
   var BG_LEVEL_MAX_DARK_MIX = 0.6; // acima de 50, nunca mistura mais que 60% preto — "mais escuro", não necessariamente preto
   var BG_LEVEL_MAX_LIGHT_MIX_DARKTHEME = 0.3; // no tema escuro, abaixo de 50 nunca mistura mais que 30% branco (clareia o roxo/azul/etc. levemente, sem lavar pra branco)
   var currentPaletteName = {dark: BG_THEME_DEFAULT_DARK, light: BG_THEME_DEFAULT_LIGHT};
   function getBgLevel(isLight){
     var key = isLight ? BG_LEVEL_KEY_LIGHT : BG_LEVEL_KEY_DARK;
-    var v = BG_LEVEL_DEFAULT;
+    var v = isLight ? BG_LEVEL_DEFAULT_LIGHT : BG_LEVEL_DEFAULT;
     try{
       var raw = localStorage.getItem(key);
       if(raw !== null){
