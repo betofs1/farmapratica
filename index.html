@@ -2453,7 +2453,7 @@
       <div class="greeting-banner">
         <div class="greeting-smoke" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="greeting-banner-text">
-          <h1 id="greeting-h1">Olá, Valberto! 👋</h1>
+          <h1 id="greeting-h1">Olá, Usuário! 👋</h1>
           <p id="greeting-p">Em que posso te ajudar hoje?</p>
         </div>
         <div class="greeting-clock" id="greeting-clock" aria-hidden="true">
@@ -3494,7 +3494,7 @@
     var hour = new Date().getHours();
     var saudacao = hour < 12 ? 'Bom dia' : (hour < 18 ? 'Boa tarde' : 'Boa noite');
     var emoji = hour < 12 ? '☀️' : (hour < 18 ? '👋' : '🌙');
-    h1.textContent = saudacao + ', Valberto! ' + emoji;
+    h1.textContent = saudacao + ', Usuário! ' + emoji;
 
     p.textContent = 'Em que posso te ajudar hoje?';
   }
