@@ -134,7 +134,7 @@
     "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
     "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
   },
-  "cefefpiroma": {
+  "cefpiroma": {
     "classe": "Antibiótico betalactâmico (cefalosporina)",
     "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
     "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
@@ -144,7 +144,7 @@
     "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
     "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
   },
-  "ceftadizima": {
+  "ceftazidima": {
     "classe": "Antibiótico betalactâmico (cefalosporina)",
     "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
     "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
@@ -534,12 +534,12 @@
     "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
     "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
   },
-  "capreomicin": {
+  "capreomicina": {
     "classe": "Antimicobacteriano (tuberculostático)",
     "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
     "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
   },
-  "delamanide": {
+  "delamanida": {
     "classe": "Antimicobacteriano (tuberculostático)",
     "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
     "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
@@ -1868,5 +1868,30 @@
     "classe": "Imunomodulador (inibidor da síntese de pirimidinas)",
     "indicacoes": "Esclerose múltipla remitente-recorrente (teriflunomida); artrite reumatoide (leflunomida).",
     "mecanismo": "Inibe a enzima di-hidro-orotato desidrogenase, reduzindo a proliferação de linfócitos ativados."
+  },
+  "semaglutida": {
+    "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+    "indicacoes": "DM2 (Ozempic®, Rybelsus®) e obesidade/sobrepeso com comorbidade (Wegovy®), conforme registro.",
+    "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+  },
+  "liraglutida": {
+    "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+    "indicacoes": "DM2 (Victoza®) e obesidade/sobrepeso com comorbidade (Saxenda®), conforme registro.",
+    "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+  },
+  "dulaglutida": {
+    "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+    "indicacoes": "DM2 (Trulicity®).",
+    "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+  },
+  "tirzepatida": {
+    "classe": "Agonista duplo dos receptores de GIP e GLP-1",
+    "indicacoes": "DM2 e obesidade/sobrepeso com comorbidade (Mounjaro®), conforme registro.",
+    "mecanismo": "Ativa os receptores de GIP e de GLP-1, com efeito incretínico sobre insulina e glucagon, retardo do esvaziamento gástrico e redução do apetite."
+  },
+  "lixisenatida": {
+    "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+    "indicacoes": "DM2, em associação com insulina glargina (Soliqua®).",
+    "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
   }
 }

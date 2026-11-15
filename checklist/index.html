@@ -1378,6 +1378,18 @@ const NORMAS = {
     contexto: 'Publicada em dezembro de 2022 (alterada pela RDC 808/2023), revogou a RDC 71/2009 — que já havia substituído a RDC 333/2003. Define a destinação comercial, hospitalar e governamental das embalagens e os dizeres obrigatórios, como "PROIBIDA A VENDA" para medicamentos de destinação governamental; produtos com destinação hospitalar ou governamental não podem ser vendidos ao consumidor final em farmácias e drogarias.',
     link: 'https://www.in.gov.br/en/web/dou/-/resolucao-rdc-n-768-de-12-de-dezembro-de-2022-450312757'
   },
+  lei9787_1999: {
+    tipo: 'Lei Federal', numero: 'nº 9.787/1999', orgao: 'Congresso Nacional',
+    titulo: 'Lei dos Medicamentos Genéricos',
+    contexto: 'Estabelece o medicamento genérico, a utilização de nomes genéricos (DCB) e os critérios de intercambialidade, respeitada a decisão expressa de não intercambialidade do prescritor; determina ampla informação sobre genéricos.',
+    link: 'https://www.planalto.gov.br/ccivil_03/leis/l9787.htm'
+  },
+  rdc16_2007: {
+    tipo: 'RDC', numero: 'nº 16/2007', orgao: 'Anvisa',
+    titulo: 'Regulamento Técnico para Medicamentos Genéricos',
+    contexto: 'Define os critérios de registro dos genéricos e as regras de intercambialidade: a substituição do medicamento de referência pelo genérico é feita pelo farmacêutico, com base na relação de genéricos registrados pela Anvisa, e deve ser registrada na receita.',
+    link: 'https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2007/rdc0016_02_03_2007.html'
+  },
   lei9965_2000: {
     tipo: 'Lei Federal', numero: 'nº 9.965/2000', orgao: 'Congresso Nacional',
     titulo: 'Restrição à venda de esteroides ou peptídeos anabolizantes',
@@ -1583,10 +1595,10 @@ const DATA = {
           motivo:'Drogarias sem laboratório de manipulação próprio não podem captar nem intermediar receitas desse tipo entre farmácias.',
           correcao:'Orientar o paciente a procurar diretamente uma farmácia de manipulação licenciada.',
           normas:['lei11951_2009','lei5991_1973'] },
-        { id:'m9', texto:'Lista de medicamentos genéricos disponível para consulta dos usuários', crit:'baixa',
-          motivo:'A disponibilização da lista favorece o acesso à opção mais econômica pelo paciente.',
-          correcao:'Disponibilizar a lista atualizada em local visível ou de fácil acesso ao balcão.',
-          normas:['rdc44_2009'] },
+        { id:'m9', texto:'Lista atualizada de medicamentos genéricos registrados pela Anvisa disponível para consulta da equipe e dos usuários', crit:'baixa',
+          motivo:'A intercambialidade do medicamento de referência pelo genérico deve se pautar na relação de genéricos registrados pela Anvisa (RDC 16/2007); a lista também apoia a orientação ao usuário sobre a opção mais econômica (Lei 9.787/1999).',
+          correcao:'Manter acesso à lista vigente publicada pela Anvisa (impressa ou digital) no balcão e registrar a intercambialidade na receita quando realizada.',
+          normas:['rdc16_2007','lei9787_1999'] },
         { id:'m10', texto:'Aquisição de medicamentos restrita a fornecedores/distribuidores qualificados e regularizados', crit:'media',
           motivo:'Comprar de fornecedores não regularizados aumenta o risco de produtos falsificados, roubados ou adulterados entrarem no estoque.',
           correcao:'Suspender compras do fornecedor até regularização e verificar a procedência do lote já recebido.',

@@ -3206,5 +3206,162 @@
       "daktarin gel oral",
       "miconazol oral"
     ]
+  },
+  {
+    "id": "colchicina",
+    "nome": "Colchicina",
+    "classeTerapeutica": [
+      "colchicina"
+    ],
+    "aliases": [
+      "colchis",
+      "colchicina 0,5 mg"
+    ]
+  },
+  {
+    "id": "tizanidina",
+    "nome": "Tizanidina",
+    "classeTerapeutica": [
+      "tizanidina",
+      "relaxante_muscular_central"
+    ],
+    "aliases": [
+      "sirdalud"
+    ]
+  },
+  {
+    "id": "fluvoxamina",
+    "nome": "Fluvoxamina",
+    "classeTerapeutica": [
+      "fluvoxamina",
+      "isrs",
+      "antidepressivo_serotoninergico"
+    ],
+    "aliases": [
+      "luvox"
+    ]
+  },
+  {
+    "id": "meropenem",
+    "nome": "Meropenem",
+    "classeTerapeutica": [
+      "meropenem",
+      "carbapenem"
+    ],
+    "aliases": [
+      "meronem"
+    ]
+  },
+  {
+    "id": "ertapenem",
+    "nome": "Ertapenem",
+    "classeTerapeutica": [
+      "ertapenem",
+      "carbapenem"
+    ],
+    "aliases": [
+      "invanz"
+    ]
+  },
+  {
+    "id": "sumatriptana",
+    "nome": "Sumatriptana",
+    "classeTerapeutica": [
+      "sumatriptana",
+      "triptano"
+    ],
+    "aliases": [
+      "sumax",
+      "imigran"
+    ]
+  },
+  {
+    "id": "rizatriptana",
+    "nome": "Rizatriptana",
+    "classeTerapeutica": [
+      "rizatriptana",
+      "triptano"
+    ],
+    "aliases": [
+      "maxalt"
+    ]
+  },
+  {
+    "id": "naratriptana",
+    "nome": "Naratriptana",
+    "classeTerapeutica": [
+      "naratriptana",
+      "triptano"
+    ],
+    "aliases": [
+      "naramig"
+    ]
+  },
+  {
+    "id": "antiacido_aluminio_magnesio",
+    "nome": "Hidróxido de Alumínio + Hidróxido de Magnésio",
+    "classeTerapeutica": [
+      "antiacido"
+    ],
+    "aliases": [
+      "antiácido",
+      "mylanta",
+      "maalox",
+      "hidroxido de aluminio",
+      "hidroxido de magnesio",
+      "leite de magnesia"
+    ]
+  },
+  {
+    "id": "orlistate",
+    "nome": "Orlistate",
+    "classeTerapeutica": [
+      "orlistate"
+    ],
+    "aliases": [
+      "xenical"
+    ]
+  },
+  {
+    "id": "isotretinoina",
+    "nome": "Isotretinoína",
+    "classeTerapeutica": [
+      "isotretinoina"
+    ],
+    "aliases": [
+      "roacutan",
+      "isotretinoina oral"
+    ]
+  },
+  {
+    "id": "ticagrelor",
+    "nome": "Ticagrelor",
+    "classeTerapeutica": [
+      "ticagrelor"
+    ],
+    "aliases": [
+      "brilinta"
+    ]
+  },
+  {
+    "id": "alendronato",
+    "nome": "Alendronato de Sódio",
+    "classeTerapeutica": [
+      "bisfosfonato_oral"
+    ],
+    "aliases": [
+      "fosamax",
+      "alendronato"
+    ]
+  },
+  {
+    "id": "risedronato",
+    "nome": "Risedronato de Sódio",
+    "classeTerapeutica": [
+      "bisfosfonato_oral"
+    ],
+    "aliases": [
+      "actonel"
+    ]
   }
 ]

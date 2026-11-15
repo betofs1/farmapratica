@@ -774,7 +774,7 @@
       "efeito_aditivo",
       "hipercalemia"
     ],
-    "mecanismo": "Both IECA and diuréticos poupadores de potássio (espironolactona, amilorida, triantereno) reduzem a excreção renal de potássio por vias diferentes (redução de aldosterona vs. bloqueio direto do ENaC), com risco somado de hipercalemia grave, especialmente em idosos, diabéticos ou insuficiência renal.",
+    "mecanismo": "Tanto o IECA quanto os diuréticos poupadores de potássio (espironolactona, amilorida, triantereno) reduzem a excreção renal de potássio por vias diferentes (redução de aldosterona vs. bloqueio direto do ENaC), com risco somado de hipercalemia grave, especialmente em idosos, diabéticos ou insuficiência renal.",
     "conduta": "Monitorar potássio sérico e função renal, principalmente nas primeiras semanas de associação; evitar em insuficiência renal significativa.",
     "acaoBalcao": "Encaminhar para avaliação médica se associação persistente sem monitorização recente de potássio/creatinina.",
     "fonte": "Guia de Classes Terapêuticas e Medicamentos / Anti-hipertensivos (material de referência farmacêutica); farmacologia clínica estabelecida"
@@ -2076,7 +2076,7 @@
     "efeitoClinico": [
       "efeito_aditivo"
     ],
-    "mecanismo": "O uso crônico de álcool induz o CYP2E1, aumentando a formação do metabólito hepatotóxico do paracetamol (NAPQI) mesmo em doses terapêuticas, elevando o risco de hepatotoxicidade. O risco é bem menor em consumo ocasional/social.",
+    "mecanismo": "O uso crônico de álcool induz o CYP2E1 e reduz as reservas hepáticas de glutationa, aumentando a formação e diminuindo a neutralização do metabólito hepatotóxico do paracetamol (NAPQI), com risco de hepatotoxicidade mesmo em doses terapêuticas.",
     "conduta": "Evitar uso regular de paracetamol em pacientes etilistas crônicos; nesses casos, considerar alternativa analgésica quando possível.",
     "acaoBalcao": "Perguntar sobre padrão de consumo de álcool ao dispensar paracetamol para uso contínuo, não apenas uso pontual.",
     "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
@@ -2091,7 +2091,7 @@
     "efeitoClinico": [
       "efeito_aditivo"
     ],
-    "mecanismo": "Indutores enzimáticos (rifampicina, carbamazepina, fenitoína, fenobarbital) aumentam a formação do metabólito hepatotóxico do paracetamol (NAPQI) pela mesma via do CYP2E1/CYP3A4, elevando o risco de hepatotoxicidade mesmo em doses terapêuticas.",
+    "mecanismo": "Indutores enzimáticos (rifampicina, carbamazepina, fenitoína, fenobarbital) induzem enzimas do citocromo P450 (sobretudo CYP3A4/1A2) e a glicuronidação, desviando parte do paracetamol para a formação do metabólito hepatotóxico NAPQI e reduzindo seu efeito analgésico.",
     "conduta": "Evitar uso prolongado de paracetamol em doses altas nesses pacientes; preferir a menor dose eficaz pelo menor tempo possível.",
     "acaoBalcao": "Perguntar sobre uso de anticonvulsivantes/rifampicina ao orientar sobre limites de dose diária de paracetamol.",
     "fonte": "Guia de Classes Terapêuticas e Medicamentos (material de referência farmacêutica); farmacologia clínica estabelecida"
@@ -3314,13 +3314,13 @@
     "id": "INT217",
     "medicamentoA": "tramadol",
     "medicamentoB": "bromocriptina",
-    "gravidade": "grave",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
       "sindrome_serotoninergica"
     ],
-    "mecanismo": "Risco de síndrome serotoninérgica pela atividade serotonérgica do tramadol associada a agonistas dopaminérgicos derivados do ergot.",
+    "mecanismo": "Os derivados do ergot (bromocriptina) têm alguma atividade serotoninérgica e há alerta em bula para associação com fármacos serotoninérgicos como o tramadol, com possível aumento do risco de síndrome serotoninérgica; evidência baseada em relatos.",
     "conduta": "Monitorar o paciente observando os sinais da síndrome serotoninérgica (agitação, hiper-reflexia, tremores).",
     "acaoBalcao": "Perguntar sobre uso de bromocriptina antes de dispensar tramadol.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
@@ -3562,8 +3562,8 @@
       "hipotensao",
       "efeito_aditivo"
     ],
-    "mecanismo": "Efeito aditivo sobre a condução cardíaca, com risco de hipotensão arterial, bradicardia e parada cardíaca. Atenolol apresenta menor risco em relação aos demais betabloqueadores.",
-    "conduta": "Monitorar sinais e sintomas de bradicardia e hipotensão. Exceção relativa: atenolol.",
+    "mecanismo": "Efeito aditivo sobre o nó sinusal e a condução AV, com risco de bradicardia grave, bloqueio AV, hipotensão e parada cardíaca. A amiodarona também inibe o CYP2D6, elevando os níveis de metoprolol, propranolol e carvedilol; atenolol e bisoprolol não sofrem essa interação farmacocinética, mas o efeito aditivo sobre a condução persiste.",
+    "conduta": "Monitorar frequência cardíaca, ECG e pressão arterial, sobretudo no início da associação; a combinação é usada na prática cardiológica, mas exige acompanhamento.",
     "acaoBalcao": "Perguntar sobre uso de amiodarona antes de dispensar betabloqueadores.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -3921,14 +3921,14 @@
     "id": "INT257",
     "medicamentoA": "calcio",
     "medicamentoB": "bcc",
-    "gravidade": "moderada",
+    "gravidade": "leve",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
       "antagonismo"
     ],
     "mecanismo": "O cálcio pode antagonizar o efeito anti-hipertensivo dos bloqueadores de canal de cálcio, que atuam bloqueando a entrada desse íon nas células musculares lisas.",
-    "conduta": "Monitorar a pressão arterial.",
+    "conduta": "Relevância clínica baixa com suplementos orais de cálcio; o antagonismo é significativo com cálcio intravenoso (usado inclusive como antídoto na intoxicação por BCC). Monitorar a pressão arterial.",
     "acaoBalcao": "Perguntar sobre uso de suplementos de cálcio antes de recomendar bloqueadores de canal de cálcio.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -3987,8 +3987,8 @@
     "efeitoClinico": [
       "efeito_aditivo"
     ],
-    "mecanismo": "Os antifúngicos azólicos inibem o CYP3A4, reduzindo o metabolismo dos indutores enzimáticos (ex.: carbamazepina) e aumentando seus efeitos tóxicos.",
-    "conduta": "Monitorar efeitos tóxicos (ataxia, sonolência, leucopenia).",
+    "mecanismo": "Interação bidirecional: indutores enzimáticos (rifampicina, carbamazepina, fenitoína, fenobarbital) reduzem acentuadamente os níveis de itraconazol, voriconazol e cetoconazol, com risco de falha do antifúngico; os azólicos, por sua vez, inibem o CYP3A4 e podem elevar os níveis de carbamazepina e fenitoína.",
+    "conduta": "Evitar a associação (voriconazol com rifampicina, carbamazepina ou fenobarbital é contraindicado em bula); se indispensável, monitorar resposta antifúngica e sinais de toxicidade do anticonvulsivante (ataxia, sonolência, nistagmo).",
     "acaoBalcao": "Perguntar sobre uso de carbamazepina/fenitoína/fenobarbital antes de dispensar antifúngicos orais.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -4177,14 +4177,14 @@
     "id": "INT274",
     "medicamentoA": "clindamicina",
     "medicamentoB": "macrolideo",
-    "gravidade": "grave",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
       "antagonismo"
     ],
     "mecanismo": "Antagonismo pelo mesmo sítio de ligação ribossomal (subunidade 50S), reduzindo o efeito terapêutico de ambos.",
-    "conduta": "O uso concomitante deve ser evitado.",
+    "conduta": "Evitar o uso concomitante; não há ganho terapêutico em associar dois agentes que competem pelo mesmo sítio ribossomal.",
     "acaoBalcao": "Perguntar sobre uso concomitante antes de dispensar; alertar sobre a redução de eficácia.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -4192,7 +4192,7 @@
     "id": "INT275",
     "medicamentoA": "estatina",
     "medicamentoB": "aine",
-    "gravidade": "moderada",
+    "gravidade": "leve",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -4207,7 +4207,7 @@
     "id": "INT276",
     "medicamentoA": "estatina",
     "medicamentoB": "ipde5",
-    "gravidade": "moderada",
+    "gravidade": "leve",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -4297,7 +4297,7 @@
     "id": "INT282",
     "medicamentoA": "ibp_potente",
     "medicamentoB": "estatina",
-    "gravidade": "moderada",
+    "gravidade": "leve",
     "tipo": "farmacocinetica",
     "subtipo": "metabolismo",
     "efeitoClinico": [
@@ -4546,8 +4546,8 @@
       "hipotensao",
       "efeito_aditivo"
     ],
-    "mecanismo": "Efeito hipotensor aditivo; betabloqueadores não seletivos apresentam maior risco (atenolol é a exceção relativa).",
-    "conduta": "Monitorar pressão arterial; considerar troca por betabloqueador não interagente (atenolol).",
+    "mecanismo": "A hidroxicloroquina inibe o CYP2D6, podendo elevar os níveis de betabloqueadores metabolizados por essa via (metoprolol, propranolol, carvedilol) e potencializar bradicardia e hipotensão; atenolol e bisoprolol não dependem do CYP2D6.",
+    "conduta": "Monitorar frequência cardíaca e pressão arterial; se necessário, considerar betabloqueador não dependente do CYP2D6 (atenolol, bisoprolol).",
     "acaoBalcao": "Perguntar sobre uso de hidroxicloroquina antes de dispensar betabloqueadores.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -4676,7 +4676,7 @@
     "id": "INT307",
     "medicamentoA": "lidocaina_ev",
     "medicamentoB": "tramadol",
-    "gravidade": "grave",
+    "gravidade": "moderada",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
@@ -5073,14 +5073,14 @@
     "id": "INT333",
     "medicamentoA": "calcio",
     "medicamentoB": "bcc_naodiidro",
-    "gravidade": "moderada",
+    "gravidade": "leve",
     "tipo": "farmacodinamica",
     "subtipo": null,
     "efeitoClinico": [
       "antagonismo"
     ],
     "mecanismo": "O cálcio pode antagonizar o efeito terapêutico de diltiazem e verapamil, que atuam bloqueando a entrada desse íon nas células musculares lisas e no miocárdio.",
-    "conduta": "Monitorar a pressão arterial.",
+    "conduta": "Relevância clínica baixa com suplementos orais de cálcio; o antagonismo é significativo com cálcio intravenoso (usado inclusive como antídoto na intoxicação por BCC). Monitorar a pressão arterial.",
     "acaoBalcao": "Perguntar sobre uso de suplementos de cálcio antes de recomendar diltiazem/verapamil.",
     "fonte": "UFG/Hospital das Clínicas - Guia de Interações Medicamentosas (Goiânia, 2011); Stockley's Drug Interactions"
   },
@@ -7025,5 +7025,1080 @@
     "acaoBalcao": "Alertar sobre sinais de hipoglicemia ao recomendar AAS em dose anti-inflamatória plena para quem usa insulina.",
     "fonte": "Bulário Farmacêutico FarmaPrática; Micromedex; UpToDate",
     "id": "INT461"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "macrolideo",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Claritromicina e eritromicina inibem fortemente o CYP3A4 e a glicoproteína-P, vias de eliminação da colchicina, elevando seus níveis 2 a 3 vezes; há casos de toxicidade fatal (pancitopenia, rabdomiólise, falência de múltiplos órgãos), sobretudo em insuficiência renal. A azitromicina tem efeito bem menor.",
+    "conduta": "Evitar claritromicina/eritromicina com colchicina; associação contraindicada em insuficiência renal ou hepática. Se indispensável com função normal, reduzir a dose de colchicina (inclusive até 14 dias após o macrolídeo) ou preferir azitromicina/outro antibiótico.",
+    "acaoBalcao": "Contatar o prescritor antes de dispensar; orientar a suspender a colchicina e procurar atendimento se surgirem diarreia intensa, vômitos, dor muscular ou fraqueza.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT462"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Azólicos sistêmicos (itraconazol, cetoconazol, voriconazol, posaconazol; fluconazol em menor grau) inibem o CYP3A4 e, alguns, a glicoproteína-P, aumentando a exposição à colchicina e o risco de toxicidade grave.",
+    "conduta": "Contraindicada em insuficiência renal ou hepática; nos demais, reduzir a dose de colchicina ou escolher alternativa, com monitorização de sinais de toxicidade.",
+    "acaoBalcao": "Confirmar com o prescritor; orientar sinais precoces de intoxicação por colchicina (diarreia, vômitos, mialgia).",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT463"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Ritonavir (inclusive no nirmatrelvir/ritonavir) é inibidor potente do CYP3A4 e da glicoproteína-P, podendo elevar drasticamente os níveis de colchicina, com toxicidade potencialmente fatal.",
+    "conduta": "Não associar em insuficiência renal ou hepática. Nos demais casos, suspender temporariamente a colchicina durante o curso curto de nirmatrelvir/ritonavir ou reduzir a dose conforme bula.",
+    "acaoBalcao": "Ao dispensar Paxlovid, perguntar ativamente sobre uso de colchicina e encaminhar ao prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT464"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "toxicidade",
+      "miopatia"
+    ],
+    "mecanismo": "A ciclosporina inibe a glicoproteína-P, aumentando a exposição à colchicina; há relatos de miopatia e neuromiopatia graves. A colchicina também pode elevar os níveis de ciclosporina.",
+    "conduta": "Evitar a associação; se indispensável, reduzir a dose de colchicina e monitorar CK, função renal e sinais neuromusculares.",
+    "acaoBalcao": "Encaminhar ao prescritor; orientar a relatar fraqueza ou dor muscular.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT465"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Verapamil e diltiazem inibem moderadamente o CYP3A4 (e o verapamil também a glicoproteína-P), elevando os níveis de colchicina.",
+    "conduta": "Reduzir a dose de colchicina conforme bula e monitorar toxicidade, sobretudo em idosos e com função renal reduzida.",
+    "acaoBalcao": "Orientar sinais de toxicidade (diarreia, vômitos, fraqueza muscular) e reforçar a dose prescrita.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT466"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "estatina",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "miopatia"
+    ],
+    "mecanismo": "Colchicina e estatinas podem causar miopatia; a associação soma o risco de miopatia e rabdomiólise, especialmente com sinvastatina/atorvastatina e em insuficiência renal.",
+    "conduta": "Monitorar sintomas musculares e CK quando houver queixa; preferir estatina menos dependente do CYP3A4 (rosuvastatina, pravastatina) em pacientes de risco.",
+    "acaoBalcao": "Orientar a relatar dor, fraqueza muscular ou urina escura.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT467"
+  },
+  {
+    "medicamentoA": "colchicina",
+    "medicamentoB": "fibrato",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "miopatia"
+    ],
+    "mecanismo": "Efeito miotóxico aditivo entre colchicina e fibratos, com relatos de miopatia e rabdomiólise.",
+    "conduta": "Monitorar sintomas musculares e CK, especialmente em idosos e com função renal reduzida.",
+    "acaoBalcao": "Orientar a relatar dor ou fraqueza muscular.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT468"
+  },
+  {
+    "medicamentoA": "tizanidina",
+    "medicamentoB": "ciprofloxacino",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "hipotensao",
+      "sedacao"
+    ],
+    "mecanismo": "O ciprofloxacino inibe o CYP1A2, principal via de metabolização da tizanidina, aumentando sua exposição em cerca de 10 vezes, com hipotensão grave, bradicardia e sedação excessiva.",
+    "conduta": "Associação contraindicada em bula; escolher outro antibiótico ou outro relaxante muscular.",
+    "acaoBalcao": "Não dispensar sem contato com o prescritor; explicar o risco de queda de pressão e sonolência intensa.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT469"
+  },
+  {
+    "medicamentoA": "tizanidina",
+    "medicamentoB": "fluvoxamina",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "hipotensao",
+      "sedacao"
+    ],
+    "mecanismo": "A fluvoxamina é inibidor potente do CYP1A2 e aumenta a exposição à tizanidina em cerca de 33 vezes, com hipotensão profunda e sedação.",
+    "conduta": "Associação contraindicada em bula.",
+    "acaoBalcao": "Não dispensar sem contato com o prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT470"
+  },
+  {
+    "medicamentoA": "tizanidina",
+    "medicamentoB": "contraceptivo",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "hipotensao",
+      "sedacao"
+    ],
+    "mecanismo": "O etinilestradiol dos contraceptivos orais inibe o CYP1A2, reduzindo o clearance da tizanidina em cerca de 50%.",
+    "conduta": "Iniciar a tizanidina com dose menor e titular com cautela; observar hipotensão e sonolência. Não se aplica a métodos só de progestágeno não orais.",
+    "acaoBalcao": "Orientar cuidado com sonolência e tontura, sobretudo ao levantar-se.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT471"
+  },
+  {
+    "medicamentoA": "tizanidina",
+    "medicamentoB": "anti_hipertensivo",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipotensao"
+    ],
+    "mecanismo": "A tizanidina, agonista alfa-2 central, reduz a pressão arterial e soma-se ao efeito dos anti-hipertensivos (especialmente clonidina), com risco de hipotensão e bradicardia.",
+    "conduta": "Monitorar pressão arterial ao iniciar ou titular a tizanidina; evitar associação com clonidina.",
+    "acaoBalcao": "Orientar levantar-se devagar e relatar tontura ou desmaio.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT472"
+  },
+  {
+    "medicamentoA": "fluvoxamina",
+    "medicamentoB": "teofilina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "A fluvoxamina inibe fortemente o CYP1A2, reduzindo o clearance da teofilina (índice terapêutico estreito) em cerca de 3 vezes, com risco de convulsões e arritmias.",
+    "conduta": "Evitar a associação; se necessária, reduzir a dose de teofilina a cerca de 1/3 e monitorar a teofilinemia.",
+    "acaoBalcao": "Encaminhar ao prescritor; orientar sinais de toxicidade (náusea, taquicardia, tremor).",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT473"
+  },
+  {
+    "medicamentoA": "fluvoxamina",
+    "medicamentoB": "clozapina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "toxicidade",
+      "sedacao"
+    ],
+    "mecanismo": "Inibição potente do CYP1A2 pela fluvoxamina, com aumento de até 5 a 10 vezes dos níveis de clozapina (sedação, hipotensão, convulsões).",
+    "conduta": "Evitar ou reduzir significativamente a dose de clozapina com monitorização de níveis séricos.",
+    "acaoBalcao": "Encaminhar ao prescritor antes de dispensar.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT474"
+  },
+  {
+    "medicamentoA": "fluvoxamina",
+    "medicamentoB": "benzodiazepinico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "A fluvoxamina inibe CYP3A4/CYP2C19/CYP1A2, elevando os níveis de alprazolam, diazepam e midazolam (lorazepam não é afetado).",
+    "conduta": "Reduzir a dose do benzodiazepínico (ex.: alprazolam à metade) ou preferir lorazepam.",
+    "acaoBalcao": "Orientar sobre sonolência excessiva e risco de quedas.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT475"
+  },
+  {
+    "medicamentoA": "carbapenem",
+    "medicamentoB": "acido_valproico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia",
+      "convulsao"
+    ],
+    "mecanismo": "Os carbapenêmicos (meropenem, ertapenem, imipenem) reduzem rapidamente os níveis séricos de ácido valproico em 60 a 100% em 24 horas, por inibição da hidrólise do conjugado glicuronídeo; o aumento da dose de valproato não compensa.",
+    "conduta": "Evitar a associação; usar antibiótico alternativo ou anticonvulsivante adicional durante o curso do carbapenêmico, com monitorização dos níveis de valproato.",
+    "acaoBalcao": "Contexto hospitalar: alertar a equipe sobre risco de convulsões.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT476"
+  },
+  {
+    "medicamentoA": "triptano",
+    "medicamentoB": "antidepressivo_serotoninergico",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Triptanos (agonistas 5-HT1B/1D) associados a ISRS/IRSN podem aumentar o risco de síndrome serotoninérgica, embora o risco absoluto seja baixo.",
+    "conduta": "A associação é frequente e geralmente mantida; orientar sinais de síndrome serotoninérgica, sobretudo ao iniciar ou aumentar doses.",
+    "acaoBalcao": "Orientar sinais de alerta: agitação, tremor, sudorese, febre, taquicardia, diarreia.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT477"
+  },
+  {
+    "medicamentoA": "triptano",
+    "medicamentoB": "imao_b",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sindrome_serotoninergica",
+      "hipertensao"
+    ],
+    "mecanismo": "IMAO reduzem a degradação de sumatriptana e rizatriptana (metabolizados pela MAO-A), aumentando sua exposição e o risco de síndrome serotoninérgica; a linezolida é IMAO não seletivo.",
+    "conduta": "Sumatriptana e rizatriptana são contraindicadas com IMAO e até 2 semanas após sua suspensão; considerar naratriptana apenas sob orientação médica.",
+    "acaoBalcao": "Não dispensar sem confirmar com o prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT478"
+  },
+  {
+    "medicamentoA": "antiacido",
+    "medicamentoB": "quinolona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Alumínio e magnésio quelam as fluoroquinolonas no trato gastrointestinal, reduzindo a absorção em até 90%.",
+    "conduta": "Administrar a quinolona 2 horas antes ou 6 horas depois do antiácido.",
+    "acaoBalcao": "Orientar o intervalo entre as tomadas; muitos pacientes usam antiácido por conta própria.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT479"
+  },
+  {
+    "medicamentoA": "antiacido",
+    "medicamentoB": "tetraciclina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Cátions de alumínio e magnésio formam quelatos insolúveis com as tetraciclinas, reduzindo sua absorção e eficácia.",
+    "conduta": "Espaçar pelo menos 2 a 3 horas entre os medicamentos.",
+    "acaoBalcao": "Orientar o intervalo entre as tomadas.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT480"
+  },
+  {
+    "medicamentoA": "antiacido",
+    "medicamentoB": "levotiroxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Hidróxido de alumínio e de magnésio adsorvem a levotiroxina no trato gastrointestinal, reduzindo sua absorção.",
+    "conduta": "Tomar a levotiroxina em jejum e o antiácido pelo menos 4 horas depois.",
+    "acaoBalcao": "Reforçar o horário da levotiroxina e o intervalo com antiácidos.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT481"
+  },
+  {
+    "medicamentoA": "antiacido",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "A elevação do pH gástrico e a formação de complexos reduzem a absorção do ferro oral.",
+    "conduta": "Tomar o ferro 1 hora antes ou 2 horas depois do antiácido.",
+    "acaoBalcao": "Orientar o intervalo; sugerir tomar o ferro com suco cítrico, longe de antiácidos.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT482"
+  },
+  {
+    "medicamentoA": "orlistate",
+    "medicamentoB": "levotiroxina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "O orlistate pode reduzir a absorção da levotiroxina, com relatos de hipotireoidismo.",
+    "conduta": "Separar as administrações em pelo menos 4 horas e monitorar TSH.",
+    "acaoBalcao": "Orientar o intervalo entre os medicamentos.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT483"
+  },
+  {
+    "medicamentoA": "orlistate",
+    "medicamentoB": "ciclosporina",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "O orlistate reduz a absorção da ciclosporina, com queda dos níveis séricos e risco de rejeição de enxerto.",
+    "conduta": "Evitar a associação; se necessária, administrar a ciclosporina pelo menos 3 horas após o orlistate e monitorar níveis séricos.",
+    "acaoBalcao": "Encaminhar ao prescritor antes de dispensar o orlistate a pacientes transplantados.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT484"
+  },
+  {
+    "medicamentoA": "orlistate",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "O orlistate reduz a absorção de vitamina K, podendo potencializar o efeito da varfarina e alterar o RNI.",
+    "conduta": "Monitorar RNI ao iniciar ou suspender o orlistate.",
+    "acaoBalcao": "Orientar o paciente a avisar o serviço de anticoagulação sobre o início do orlistate.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT485"
+  },
+  {
+    "medicamentoA": "orlistate",
+    "medicamentoB": "amiodarona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "O orlistate reduz a absorção da amiodarona, diminuindo sua exposição sistêmica.",
+    "conduta": "Monitorar resposta clínica e ECG ao associar.",
+    "acaoBalcao": "Orientar o paciente a informar o cardiologista.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT486"
+  },
+  {
+    "medicamentoA": "isotretinoina",
+    "medicamentoB": "tetraciclina",
+    "gravidade": "contraindicada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Isotretinoína e tetraciclinas (doxiciclina, minociclina) aumentam o risco de hipertensão intracraniana benigna (pseudotumor cerebral).",
+    "conduta": "Associação contraindicada em bula.",
+    "acaoBalcao": "Não dispensar a associação; contatar o prescritor. Orientar sinais: cefaleia intensa, náusea, alterações visuais.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT487"
+  },
+  {
+    "medicamentoA": "isotretinoina",
+    "medicamentoB": "vitamina_a",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "A isotretinoína é derivado da vitamina A; a suplementação soma o risco de hipervitaminose A.",
+    "conduta": "Evitar suplementos com vitamina A durante o tratamento.",
+    "acaoBalcao": "Orientar a não usar polivitamínicos com vitamina A durante o tratamento.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT488"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "aas",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "reducao_eficacia",
+      "sangramento"
+    ],
+    "mecanismo": "Doses de manutenção de AAS acima de 100 mg/dia reduzem a eficácia do ticagrelor (estudo PLATO); a dupla antiagregação também aumenta o risco de sangramento.",
+    "conduta": "Manter AAS em 75 a 100 mg/dia quando associado ao ticagrelor.",
+    "acaoBalcao": "Conferir a dose de AAS prescrita; orientar a não usar AAS 500 mg para dor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT489"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Inibidores potentes do CYP3A4 (cetoconazol, itraconazol, voriconazol, posaconazol) aumentam muito a exposição ao ticagrelor; com cetoconazol, a área sob a curva aumenta cerca de 7 vezes.",
+    "conduta": "Contraindicado com inibidores potentes do CYP3A4; com fluconazol (inibidor moderado), usar com cautela.",
+    "acaoBalcao": "Encaminhar ao prescritor antes de dispensar o antifúngico.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT490"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Ritonavir é inibidor potente do CYP3A4 e aumenta acentuadamente os níveis de ticagrelor, com risco de sangramento grave.",
+    "conduta": "Associação contraindicada em bula; avaliar alternativa ao nirmatrelvir/ritonavir com o prescritor.",
+    "acaoBalcao": "Não dispensar Paxlovid a usuário de ticagrelor sem avaliação médica.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT491"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "indutor_enzimatico",
+    "gravidade": "grave",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "Indutores potentes do CYP3A4 (rifampicina, carbamazepina, fenitoína, fenobarbital) reduzem a exposição ao ticagrelor em até 86%, com risco de trombose de stent.",
+    "conduta": "Evitar a associação.",
+    "acaoBalcao": "Encaminhar ao prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT492"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "estatina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "miopatia"
+    ],
+    "mecanismo": "O ticagrelor inibe fracamente o CYP3A4 e aumenta os níveis de sinvastatina (cerca de 2 vezes).",
+    "conduta": "Não ultrapassar 40 mg/dia de sinvastatina; atorvastatina e rosuvastatina podem ser usadas sem ajuste.",
+    "acaoBalcao": "Conferir a dose de sinvastatina.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT493"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "doac",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Antiagregante potente somado ao anticoagulante oral direto aumenta substancialmente o risco de sangramento.",
+    "conduta": "Usar apenas quando indicado (ex.: fibrilação atrial pós-angioplastia), pelo menor tempo e com reavaliação programada.",
+    "acaoBalcao": "Confirmar que a associação é intencional; orientar sinais de sangramento.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT494"
+  },
+  {
+    "medicamentoA": "ticagrelor",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "AINEs somam lesão de mucosa gastrointestinal e efeito antiplaquetário ao ticagrelor.",
+    "conduta": "Evitar AINE; preferir paracetamol e considerar proteção gástrica.",
+    "acaoBalcao": "Não indicar AINE isento de prescrição a usuários de ticagrelor.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT495"
+  },
+  {
+    "medicamentoA": "bisfosfonato_oral",
+    "medicamentoB": "calcio",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "O cálcio forma complexos com o bisfosfonato oral e reduz drasticamente sua absorção, que já é inferior a 1%.",
+    "conduta": "Tomar o bisfosfonato em jejum, com água, e o cálcio pelo menos 30 minutos depois (de preferência em outro horário do dia).",
+    "acaoBalcao": "Reforçar a técnica: em jejum, com copo cheio de água, permanecer em pé por 30 minutos.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT496"
+  },
+  {
+    "medicamentoA": "bisfosfonato_oral",
+    "medicamentoB": "antiacido",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Cátions de alumínio e magnésio reduzem a absorção dos bisfosfonatos orais.",
+    "conduta": "Aguardar pelo menos 30 minutos após o bisfosfonato antes do antiácido.",
+    "acaoBalcao": "Orientar o intervalo.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT497"
+  },
+  {
+    "medicamentoA": "bisfosfonato_oral",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Sais de ferro reduzem a absorção dos bisfosfonatos orais.",
+    "conduta": "Tomar o ferro em outro horário, pelo menos 30 minutos após o bisfosfonato.",
+    "acaoBalcao": "Orientar o intervalo.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT498"
+  },
+  {
+    "medicamentoA": "bisfosfonato_oral",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "Bisfosfonatos orais e AINEs podem lesar a mucosa do trato gastrointestinal superior; a associação aumenta o risco de irritação, úlcera e sangramento.",
+    "conduta": "Usar AINE com cautela e pelo menor tempo; reforçar a técnica de administração do bisfosfonato.",
+    "acaoBalcao": "Orientar a procurar atendimento se houver dor ao engolir ou dor retroesternal.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT499"
+  },
+  {
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "poupador_potassio",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "A trimetoprima bloqueia o canal epitelial de sódio no túbulo distal (efeito semelhante à amilorida); com espironolactona ou amilorida, há hipercalemia grave e mortes súbitas descritas em idosos.",
+    "conduta": "Evitar a associação em idosos e em doença renal; se necessária, dosar potássio em 3 a 5 dias.",
+    "acaoBalcao": "Encaminhar ao prescritor; perguntar sobre uso de espironolactona ao dispensar sulfametoxazol + trimetoprima.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT500"
+  },
+  {
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "ieca",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "A trimetoprima reduz a excreção renal de potássio e soma-se ao efeito dos IECA, com risco de hipercalemia, sobretudo em idosos e com função renal reduzida.",
+    "conduta": "Monitorar potássio sérico e função renal em pacientes de risco.",
+    "acaoBalcao": "Orientar sinais de hipercalemia (fraqueza, palpitações).",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT501"
+  },
+  {
+    "medicamentoA": "sulfonamida_trimetoprima",
+    "medicamentoB": "bra",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "A trimetoprima reduz a excreção renal de potássio e soma-se ao efeito dos BRA, com risco de hipercalemia.",
+    "conduta": "Monitorar potássio sérico e função renal em pacientes de risco.",
+    "acaoBalcao": "Orientar sinais de hipercalemia (fraqueza, palpitações).",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT502"
+  },
+  {
+    "medicamentoA": "poupador_potassio",
+    "medicamentoB": "aine",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipercalemia"
+    ],
+    "mecanismo": "AINEs reduzem a renina e a aldosterona e a perfusão renal; associados a diuréticos poupadores de potássio, aumentam o risco de hipercalemia e de lesão renal aguda.",
+    "conduta": "Evitar uso regular de AINE; monitorar potássio e creatinina se a associação for necessária.",
+    "acaoBalcao": "Não indicar AINE isento de prescrição a usuários de espironolactona sem avaliação.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT503"
+  },
+  {
+    "medicamentoA": "anlodipino",
+    "medicamentoB": "sinvastatina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "miopatia"
+    ],
+    "mecanismo": "O anlodipino inibe fracamente o CYP3A4 e aumenta a exposição à sinvastatina, elevando o risco de miopatia.",
+    "conduta": "Limitar a sinvastatina a 20 mg/dia quando associada ao anlodipino, ou usar outra estatina.",
+    "acaoBalcao": "Conferir a dose de sinvastatina.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT504"
+  },
+  {
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "clopidogrel",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Antidepressivos serotoninérgicos reduzem a serotonina plaquetária e prejudicam a agregação; somados ao clopidogrel, aumentam o risco de sangramento, sobretudo gastrointestinal.",
+    "conduta": "Considerar proteção gástrica (preferir pantoprazol) e monitorar sinais de sangramento.",
+    "acaoBalcao": "Orientar sinais de sangramento (fezes escuras, hematomas).",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT505"
+  },
+  {
+    "medicamentoA": "antidepressivo_serotoninergico",
+    "medicamentoB": "aas",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "A redução da serotonina plaquetária pelos antidepressivos serotoninérgicos soma-se ao efeito antiplaquetário e gástrico do AAS, elevando o risco de sangramento gastrointestinal.",
+    "conduta": "Considerar proteção gástrica em idosos ou com histórico de sangramento.",
+    "acaoBalcao": "Orientar sinais de sangramento gastrointestinal.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT506"
+  },
+  {
+    "medicamentoA": "tramadol",
+    "medicamentoB": "ondansetrona",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "reducao_eficacia",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "A ondansetrona bloqueia receptores 5-HT3 envolvidos na analgesia do tramadol, podendo reduzir seu efeito, e há relatos de síndrome serotoninérgica.",
+    "conduta": "Monitorar a analgesia; pode ser necessário ajuste de dose ou outro antiemético.",
+    "acaoBalcao": "Orientar a relatar dor não controlada ou sinais de síndrome serotoninérgica.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT507"
+  },
+  {
+    "medicamentoA": "codeina",
+    "medicamentoB": "inibidor_cyp2d6_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "A codeína é pró-fármaco ativado a morfina pelo CYP2D6; inibidores potentes (fluoxetina, paroxetina, bupropiona, quinidina) reduzem a analgesia.",
+    "conduta": "Considerar analgésico que não dependa do CYP2D6 se a dor não for controlada.",
+    "acaoBalcao": "Orientar a relatar falta de efeito em vez de aumentar a dose por conta própria.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT508"
+  },
+  {
+    "medicamentoA": "tramadol",
+    "medicamentoB": "inibidor_cyp2d6_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia",
+      "sindrome_serotoninergica"
+    ],
+    "mecanismo": "Inibidores potentes do CYP2D6 reduzem a formação do metabólito ativo opioide do tramadol (menor analgesia) e aumentam o tramadol inalterado, de ação serotoninérgica, elevando o risco de síndrome serotoninérgica e convulsões.",
+    "conduta": "Monitorar analgesia e sinais serotoninérgicos; considerar outro analgésico.",
+    "acaoBalcao": "Orientar sinais de síndrome serotoninérgica.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT509"
+  },
+  {
+    "medicamentoA": "bupropiona",
+    "medicamentoB": "tramadol",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "convulsao"
+    ],
+    "mecanismo": "Bupropiona e tramadol reduzem o limiar convulsivo; a bupropiona também inibe o CYP2D6, aumentando o tramadol inalterado.",
+    "conduta": "Evitar em pacientes com fatores de risco para convulsão; usar as menores doses eficazes.",
+    "acaoBalcao": "Orientar a não exceder a dose de tramadol.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT510"
+  },
+  {
+    "medicamentoA": "tramadol",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Há relatos de aumento do RNI e de sangramento com a associação, por mecanismo não totalmente esclarecido.",
+    "conduta": "Monitorar RNI ao iniciar ou suspender o tramadol.",
+    "acaoBalcao": "Orientar sinais de sangramento e o controle do RNI.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT511"
+  },
+  {
+    "medicamentoA": "carbamazepina",
+    "medicamentoB": "clozapina",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "mielossupressao"
+    ],
+    "mecanismo": "Soma do risco de agranulocitose/mielossupressão; além disso, a carbamazepina induz o metabolismo da clozapina e reduz seus níveis.",
+    "conduta": "Evitar a associação.",
+    "acaoBalcao": "Encaminhar ao prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT512"
+  },
+  {
+    "medicamentoA": "acido_valproico",
+    "medicamentoB": "topiramato",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "A associação está ligada a hiperamonemia, com ou sem encefalopatia, e a hipotermia.",
+    "conduta": "Dosar amônia se surgirem letargia, vômitos ou confusão.",
+    "acaoBalcao": "Orientar a procurar atendimento se houver sonolência excessiva ou confusão.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT513"
+  },
+  {
+    "medicamentoA": "levodopa_carbidopa",
+    "medicamentoB": "ferro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "Sais de ferro formam quelatos com a levodopa e reduzem sua absorção, podendo piorar o controle motor.",
+    "conduta": "Separar as administrações em pelo menos 2 horas.",
+    "acaoBalcao": "Orientar o intervalo entre as tomadas.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT514"
+  },
+  {
+    "medicamentoA": "cimetidina",
+    "medicamentoB": "metformina",
+    "gravidade": "leve",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "toxicidade"
+    ],
+    "mecanismo": "A cimetidina inibe a secreção tubular da metformina (OCT2/MATE), aumentando seus níveis em cerca de 50%.",
+    "conduta": "Geralmente sem relevância clínica; preferir famotidina em pacientes com função renal reduzida.",
+    "acaoBalcao": "Sugerir outro antiácido/antissecretor quando apropriado.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT515"
+  },
+  {
+    "medicamentoA": "doac",
+    "medicamentoB": "bcc_naodiidro",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "excrecao",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Verapamil e diltiazem inibem a glicoproteína-P (e o diltiazem também o CYP3A4), aumentando os níveis de dabigatrana, rivaroxabana, apixabana e edoxabana.",
+    "conduta": "Com dabigatrana e verapamil, a bula recomenda redução de dose; monitorar sinais de sangramento, sobretudo com função renal reduzida.",
+    "acaoBalcao": "Orientar sinais de sangramento.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT516"
+  },
+  {
+    "medicamentoA": "tirzepatida",
+    "medicamentoB": "anticoncepcional_oral",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "A tirzepatida retarda o esvaziamento gástrico e reduz a absorção dos contraceptivos orais (AUC cerca de 20% menor), de forma mais intensa após o início e após cada aumento de dose.",
+    "conduta": "Usar método de barreira ou trocar por método não oral por 4 semanas após o início e após cada aumento de dose (bula; FEBRASGO 2025). Não se aplica aos demais agonistas de GLP-1.",
+    "acaoBalcao": "Orientar o uso de preservativo nessas fases.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT517"
+  },
+  {
+    "medicamentoA": "tirzepatida",
+    "medicamentoB": "etinilestradiol_drospirenona",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "A tirzepatida retarda o esvaziamento gástrico e reduz a absorção do contraceptivo oral, sobretudo após o início e após aumentos de dose.",
+    "conduta": "Usar método de barreira ou trocar por método não oral por 4 semanas após o início e após cada aumento de dose.",
+    "acaoBalcao": "Orientar o uso de preservativo nessas fases.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT518"
+  },
+  {
+    "medicamentoA": "tirzepatida",
+    "medicamentoB": "desogestrel",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "A tirzepatida retarda o esvaziamento gástrico e pode reduzir a absorção do progestágeno oral, cuja janela de eficácia é estreita.",
+    "conduta": "Usar método de barreira por 4 semanas após o início e após cada aumento de dose.",
+    "acaoBalcao": "Orientar o uso de preservativo nessas fases.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT519"
+  },
+  {
+    "medicamentoA": "corticoide_sistemico",
+    "medicamentoB": "varfarina",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Corticoides sistêmicos em doses altas podem elevar o RNI e aumentam o risco de úlcera e sangramento gastrointestinal.",
+    "conduta": "Monitorar RNI ao iniciar pulsos ou ciclos de corticoide.",
+    "acaoBalcao": "Orientar sinais de sangramento e o controle do RNI.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT520"
+  },
+  {
+    "medicamentoA": "antidepressivo_triciclico",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "O álcool potencializa a sedação e o comprometimento psicomotor dos tricíclicos.",
+    "conduta": "Orientar a evitar álcool.",
+    "acaoBalcao": "Orientar o risco de sonolência ao dirigir.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT521"
+  },
+  {
+    "medicamentoA": "anti_histaminico_sedativo",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "sedacao"
+    ],
+    "mecanismo": "Os anti-histamínicos de 1ª geração somam depressão do SNC ao álcool.",
+    "conduta": "Evitar álcool; preferir anti-histamínico de 2ª geração.",
+    "acaoBalcao": "Ao indicar anti-histamínico isento de prescrição, perguntar sobre consumo de álcool e atividades que exijam atenção.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT522"
+  },
+  {
+    "medicamentoA": "varfarina",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "sangramento"
+    ],
+    "mecanismo": "Consumo agudo de álcool inibe o metabolismo da varfarina (eleva o RNI), enquanto o uso crônico o induz (reduz o RNI); a hepatopatia alcoólica também altera a síntese de fatores de coagulação.",
+    "conduta": "Orientar consumo baixo e estável; evitar episódios de consumo excessivo.",
+    "acaoBalcao": "Orientar sinais de sangramento.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT523"
+  },
+  {
+    "medicamentoA": "insulina",
+    "medicamentoB": "alcool",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "hipoglicemia"
+    ],
+    "mecanismo": "O álcool inibe a gliconeogênese hepática e pode causar hipoglicemia grave e tardia (inclusive noturna), mascarada pelos sintomas da embriaguez.",
+    "conduta": "Orientar a não consumir álcool em jejum e a monitorar a glicemia.",
+    "acaoBalcao": "Orientar a sempre ingerir carboidrato junto com bebida alcoólica.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT524"
+  },
+  {
+    "medicamentoA": "dipirona",
+    "medicamentoB": "metotrexato",
+    "gravidade": "grave",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "mielossupressao"
+    ],
+    "mecanismo": "Bula da dipirona: a associação pode aumentar a hematotoxicidade do metotrexato, particularmente em idosos.",
+    "conduta": "A bula recomenda evitar a associação; preferir paracetamol como analgésico.",
+    "acaoBalcao": "Ao dispensar dipirona, perguntar sobre uso de metotrexato e sugerir alternativa.",
+    "fonte": "Bula da dipirona (Anvisa)",
+    "id": "INT525"
+  },
+  {
+    "medicamentoA": "dipirona",
+    "medicamentoB": "bupropiona",
+    "gravidade": "leve",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "A dipirona é indutor fraco do CYP2B6 e pode reduzir as concentrações de bupropiona.",
+    "conduta": "Cautela com uso regular da dipirona; monitorar resposta clínica.",
+    "acaoBalcao": "Orientar a informar o prescritor sobre o uso contínuo de dipirona.",
+    "fonte": "Bula da dipirona (Anvisa)",
+    "id": "INT526"
+  },
+  {
+    "medicamentoA": "dipirona",
+    "medicamentoB": "aas",
+    "gravidade": "moderada",
+    "tipo": "farmacodinamica",
+    "subtipo": null,
+    "efeitoClinico": [
+      "antagonismo"
+    ],
+    "mecanismo": "Bula da dipirona: ela pode reduzir o efeito do AAS na agregação plaquetária quando administrados juntos.",
+    "conduta": "Em pacientes que usam AAS em baixa dose para cardioproteção, usar dipirona com cautela; considerar paracetamol.",
+    "acaoBalcao": "Sugerir tomar o AAS antes e reavaliar o uso regular de dipirona.",
+    "fonte": "Bula da dipirona (Anvisa)",
+    "id": "INT527"
+  },
+  {
+    "medicamentoA": "dipirona",
+    "medicamentoB": "acido_valproico",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "reducao_eficacia"
+    ],
+    "mecanismo": "Bula da dipirona: ela pode diminuir os níveis séricos de valproato, com possível perda de eficácia.",
+    "conduta": "Monitorar controle de crises e níveis de valproato em uso regular de dipirona.",
+    "acaoBalcao": "Orientar a informar o prescritor sobre o uso contínuo de dipirona.",
+    "fonte": "Bula da dipirona (Anvisa)",
+    "id": "INT528"
+  },
+  {
+    "medicamentoA": "levotiroxina",
+    "medicamentoB": "ibp_potente",
+    "gravidade": "moderada",
+    "tipo": "farmacocinetica",
+    "subtipo": "absorcao",
+    "efeitoClinico": [
+      "reducao_absorcao"
+    ],
+    "mecanismo": "A redução da acidez gástrica pelos IBP diminui a dissolução e a absorção da levotiroxina em comprimido, podendo elevar o TSH.",
+    "conduta": "Monitorar TSH após iniciar uso prolongado de IBP; pode ser necessário ajuste de dose.",
+    "acaoBalcao": "Orientar a manter a levotiroxina em jejum, 30 a 60 minutos antes do café.",
+    "fonte": "Bulas dos medicamentos (Anvisa); Micromedex; Stockley's Drug Interactions",
+    "id": "INT529"
+  },
+  {
+    "medicamentoA": "domperidona",
+    "medicamentoB": "macrolideo",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Claritromicina e eritromicina inibem o CYP3A4 e aumentam os níveis de domperidona, somando prolongamento do QT, com risco de arritmia ventricular.",
+    "conduta": "A bula da domperidona contraindica inibidores potentes do CYP3A4 que prolongam o QT; usar outro antiemético ou antibiótico.",
+    "acaoBalcao": "Não dispensar a associação sem contato com o prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT530"
+  },
+  {
+    "medicamentoA": "domperidona",
+    "medicamentoB": "antifungico_azolico_sistemico",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Cetoconazol, itraconazol, voriconazol e posaconazol aumentam os níveis de domperidona por inibição do CYP3A4, com prolongamento do QT.",
+    "conduta": "Associação contraindicada com inibidores potentes do CYP3A4.",
+    "acaoBalcao": "Não dispensar a associação sem contato com o prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT531"
+  },
+  {
+    "medicamentoA": "domperidona",
+    "medicamentoB": "ritonavir_potente",
+    "gravidade": "contraindicada",
+    "tipo": "farmacocinetica",
+    "subtipo": "metabolismo",
+    "efeitoClinico": [
+      "prolongamento_qt"
+    ],
+    "mecanismo": "Ritonavir inibe fortemente o CYP3A4, elevando os níveis de domperidona e o risco de arritmias.",
+    "conduta": "Associação contraindicada.",
+    "acaoBalcao": "Não dispensar a associação sem contato com o prescritor.",
+    "fonte": "Bula do fabricante (Anvisa/FDA); Micromedex",
+    "id": "INT532"
   }
 ]

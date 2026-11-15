@@ -216,6 +216,10 @@ def montar_lista_antimicrobianos():
     itens = [i.strip().rstrip(';,.').strip() for i in itens if i.strip()]
     itens = [re.sub(r',\s*e$', '', i, flags=re.IGNORECASE).strip() for i in itens]
     itens = [i for i in itens if i]
+    # Corrige erros de grafia do texto publicado da IN 360/2025 (a numeração oficial pula o item 42).
+    GRAFIA_IN = {"capreomicin": "capreomicina", "cefefpiroma": "cefpiroma",
+                 "ceftadizima": "ceftazidima", "delamanide": "delamanida"}
+    itens = [GRAFIA_IN.get(i.lower(), i) for i in itens]
 
     print(f"   ANTIMICROBIANO: {len(itens)} substância(s)")
 
@@ -259,6 +263,20 @@ IGNORAR_AVISOS_ADENDO = {
     ("A1", "3", "morfina"),  # adendo do ópio usa "morfina anidra" só como medida do teor
 }
 
+
+
+def montar_lista_glp1():
+    """Agonistas do receptor de GLP-1 (IN 360/2025, Art. 2º; RDC 471/2021 alterada pela RDC 973/2025).
+    Lista curta e estável: mantida aqui de forma estática."""
+    return {
+        "titulo": "Agonistas do receptor de GLP-1 — uso sob prescrição com retenção de receita (IN 360/2025)",
+        "regra": {"receita": "Receita simples, 2 vias (retenção da 2ª via)", "vias": 2, "validade_dias": 90, "retencao": True},
+        "substancias": ["semaglutida", "liraglutida", "dulaglutida", "tirzepatida", "lixisenatida"],
+        "adendo": ("Não são substâncias da Portaria 344/98: seguem a RDC 471/2021 (alterada pela RDC 973/2025), "
+                   "com receita em 2 vias válida por 90 dias a contar da emissão, retenção da 2ª via e escrituração no SNGPC. "
+                   "Receita sujeita à retenção e Receita de Controle Especial são categorias distintas. "
+                   "A manipulação de semaglutida não é permitida (Nota Técnica Anvisa nº 200/2025)."),
+    }
 
 def normalizar(texto: str) -> str:
     """Minúsculas, sem acentos, aspas unificadas e espaços colapsados -- para comparar trechos."""
@@ -410,10 +428,12 @@ def main():
         listas = anterior["listas"]
         for codigo, l in listas.items():
             l["regra"] = REGRAS_POR_LISTA.get(codigo, REGRA_ANTIMICROBIANO if codigo == "ANTIMICROBIANO" else l.get("regra"))
+        listas["GLP1"] = montar_lista_glp1()
         capturado_em = anterior.get("_capturado_em", "")
     else:
         listas = montar_listas_portaria()
         listas["ANTIMICROBIANO"] = montar_lista_antimicrobianos()
+        listas["GLP1"] = montar_lista_glp1()
         capturado_em = date.today().isoformat()
 
     detalhes = carregar_json_opcional(pasta / "detalhes_farmacologicos.json", "Detalhes farmacológicos", {})

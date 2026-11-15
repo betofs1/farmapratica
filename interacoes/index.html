@@ -451,6 +451,347 @@
   body.light .disclaimer{
     box-shadow:0 2px 8px rgba(23,26,32,.05);
   }
+
+  /* =====================================================================
+     15/11/2026 — Interface modernizada das Interações Medicamentosas
+     ===================================================================== */
+  :root{
+    --sv-contraindicada:#f43f5e; --sv-grave:#fb7a2e; --sv-moderada:#f5b014; --sv-leve:#4f9df0; --sv-ok:#22c08a; --sv-nao_classificada:#8b9099;
+    --ix-r:16px; --ix-shadow:0 14px 34px -18px rgba(0,0,0,.7);
+  }
+  body.light{
+    --sv-contraindicada:#d61f45; --sv-grave:#d9560c; --sv-moderada:#b7790a; --sv-leve:#1f6fd1; --sv-ok:#14935f; --sv-nao_classificada:#6b7280;
+    --ix-shadow:0 14px 34px -20px rgba(15,23,42,.35);
+  }
+  .db-pill{ display:none !important; }
+  .sv-contraindicada{ --sv:var(--sv-contraindicada); } .sv-grave{ --sv:var(--sv-grave); } .sv-moderada{ --sv:var(--sv-moderada); }
+  .sv-leve{ --sv:var(--sv-leve); } .sv-ok{ --sv:var(--sv-ok); } .sv-nao_classificada{ --sv:var(--sv-nao_classificada); }
+  .c0{--tc:#e4572e} .c1{--tc:#3fb87f} .c2{--tc:#4f9df0} .c3{--tc:#a66cf5} .c4{--tc:#e0479e} .c5{--tc:#2bc4b5} .c6{--tc:#f5a524} .desc{--tc:#8b9099}
+
+  .ix-shell{ width:100%; max-width:1320px; margin:0 auto; padding:26px 28px 56px; flex:1; }
+  .ix-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--ix-r); padding:18px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+  .ix-muted{ color:var(--text-dim); font-size:.86rem; line-height:1.5; }
+  .ix-eyebrow{ font-size:.68rem; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:var(--text-dim); }
+  .ix-link{ border:0; background:none; color:var(--accent); font-weight:700; font-size:.78rem; cursor:pointer; padding:4px 6px; border-radius:6px; }
+  .ix-link:hover{ background:var(--accent-glow); }
+  kbd{ font:700 .7rem/1 'Inter',sans-serif; color:var(--text-dim); border:1px solid var(--border); border-bottom-width:2px; border-radius:6px; padding:3px 6px; background:var(--panel); }
+
+  /* ---------- Composer ---------- */
+  .ix-composer{
+    position:relative; z-index:5; padding:20px; border-radius:20px;
+    background:linear-gradient(140deg, color-mix(in srgb, var(--accent) 8%, var(--card)), var(--card) 45%);
+    border:1px solid var(--border); box-shadow:var(--ix-shadow); margin-bottom:22px;
+  }
+  .ix-search{
+    position:relative; display:flex; align-items:center; gap:12px; height:58px; padding:0 14px 0 18px;
+    border-radius:14px; background:var(--panel); border:1.5px solid var(--border);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .ix-search:focus-within{ border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-glow); }
+  .ix-search-ico{ display:flex; color:var(--accent); } .ix-search-ico svg{ width:22px; height:22px; }
+  .ix-search input{ flex:1; min-width:0; height:100%; border:0; outline:0; background:transparent; color:var(--text); font-size:1.05rem; font-weight:500; }
+  .ix-search input::placeholder{ color:var(--text-dim); font-weight:400; }
+  .ix-search:focus-within .ix-kbd{ display:none; }
+  .ix-modo-assoc{ font-size:.74rem; color:var(--text-dim); white-space:nowrap; background:var(--accent-glow); border-radius:999px; padding:5px 6px 5px 11px; display:flex; align-items:center; gap:4px; max-width:45%; overflow:hidden; text-overflow:ellipsis; }
+  .ix-modo-assoc[hidden]{ display:none; }
+  .ix-modo-assoc b{ color:var(--text); overflow:hidden; text-overflow:ellipsis; }
+  .ix-modo-assoc button{ border:0; background:transparent; color:var(--text-dim); cursor:pointer; font-size:1rem; line-height:1; padding:0 4px; }
+
+  .ix-sug{
+    position:absolute; left:0; right:0; top:calc(100% + 8px); z-index:40; padding:6px;
+    background:var(--card); border:1px solid var(--border); border-radius:14px;
+    box-shadow:0 26px 50px -18px rgba(0,0,0,.65); max-height:min(64vh,460px); overflow:auto;
+    animation:ixDrop .15s ease-out;
+  }
+  body.light .ix-sug{ box-shadow:0 26px 50px -20px rgba(15,23,42,.35); }
+  @keyframes ixDrop{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:none; } }
+  .ix-sug-item{ display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:10px; cursor:pointer; }
+  .ix-sug-item.ativo{ background:color-mix(in srgb, var(--accent) 12%, transparent); }
+  .ix-sug-item.ja{ opacity:.45; }
+  .ix-sug-txt{ display:flex; flex-direction:column; min-width:0; flex:1; }
+  .ix-sug-txt b{ font-weight:650; font-size:.93rem; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ix-sug-txt b em{ font-style:normal; font-weight:500; color:var(--text-dim); font-size:.82rem; }
+  .ix-sug-txt small{ font-size:.74rem; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ix-sug-n{ font-size:.7rem; font-weight:800; color:var(--text-dim); background:var(--panel); border:1px solid var(--border); border-radius:999px; padding:2px 8px; }
+  .ix-sug mark{ background:color-mix(in srgb, var(--accent) 28%, transparent); color:inherit; border-radius:3px; }
+  .ix-sug-rodape{ display:flex; gap:14px; justify-content:flex-end; padding:8px 10px 4px; border-top:1px solid var(--border); margin-top:4px; font-size:.7rem; color:var(--text-dim); }
+  .ix-sug-rodape kbd{ margin-right:3px; }
+  .ix-sug-vazio{ padding:12px; font-size:.84rem; color:var(--text-dim); } .ix-sug-vazio span{ display:block; font-size:.76rem; margin-top:3px; }
+
+  .ix-tray{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; min-height:44px; align-items:center; }
+  .ix-tray-vazia{ font-size:.84rem; color:var(--text-dim); }
+  .ix-prod{
+    display:flex; align-items:center; gap:4px; padding:4px; border-radius:14px;
+    border:1px dashed transparent; transition:border-color .15s ease, background-color .15s ease;
+  }
+  .ix-prod.assoc{ border-color:var(--accent); background:var(--accent-glow); }
+  .ix-tag{
+    display:inline-flex; align-items:center; gap:8px; padding:5px 6px 5px 5px; border-radius:12px;
+    background:color-mix(in srgb, var(--tc) 13%, var(--card)); border:1px solid color-mix(in srgb, var(--tc) 40%, var(--border));
+    font-weight:650; font-size:.88rem; color:var(--text); animation:ixIn .2s ease-out;
+  }
+  @keyframes ixIn{ from{ opacity:0; transform:scale(.9); } to{ opacity:1; transform:none; } }
+  .ix-tag.pulsa{ animation:ixPulsa .5s ease; }
+  @keyframes ixPulsa{ 30%{ transform:scale(1.08); box-shadow:0 0 0 4px color-mix(in srgb, var(--tc) 35%, transparent); } }
+  .ix-tag.nao-rec{ border-style:dashed; }
+  .ix-tag-av{
+    width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:inline-flex; align-items:center; justify-content:center;
+    font-size:.7rem; font-weight:800; color:var(--tc, var(--accent));
+    background:color-mix(in srgb, var(--tc, var(--accent)) 22%, transparent);
+  }
+  .ix-tag button{ border:0; background:transparent; color:var(--text-dim); cursor:pointer; width:24px; height:24px; border-radius:7px; display:flex; align-items:center; justify-content:center; }
+  .ix-tag button:hover{ background:color-mix(in srgb, var(--sv-contraindicada) 18%, transparent); color:var(--sv-contraindicada); }
+  .ix-tag button svg{ width:12px; height:12px; }
+  .ix-plus{ color:var(--text-dim); font-weight:800; }
+  .ix-assoc-btn{ width:28px; height:28px; border-radius:9px; border:1px dashed var(--border); background:transparent; color:var(--text-dim); cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:.6; transition:opacity .15s ease, border-color .15s ease, color .15s ease; }
+  .ix-prod:hover .ix-assoc-btn, .ix-prod.assoc .ix-assoc-btn{ opacity:1; }
+  .ix-assoc-btn:hover{ border-color:var(--accent); color:var(--accent); }
+  .ix-assoc-btn svg{ width:13px; height:13px; }
+
+  .ix-composer-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:14px; flex-wrap:wrap; }
+  .ix-exemplos[hidden]{ display:none; }
+  .ix-exemplos{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .ix-exemplos-rot{ font-size:.72rem; font-weight:800; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-right:4px; }
+  .ix-ex{ border:1px solid var(--border); background:var(--card); color:var(--text-dim); font-size:.76rem; font-weight:600; border-radius:999px; padding:6px 11px; cursor:pointer; transition:color .15s ease, border-color .15s ease, transform .15s ease; }
+  .ix-ex:hover{ color:var(--text); border-color:var(--accent); transform:translateY(-1px); }
+
+  .ix-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; height:40px; padding:0 15px; cursor:pointer;
+    border-radius:11px; font-weight:700; font-size:.8rem; border:1px solid transparent; white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .ix-btn svg{ width:17px; height:17px; }
+  .ix-btn-ghost{ background:var(--card); border-color:var(--border); color:var(--text); }
+  .ix-btn-ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); box-shadow:0 8px 18px -12px var(--accent); }
+  .ix-btn-sm{ height:34px; font-size:.76rem; padding:0 12px; background:var(--panel); border-color:var(--border); color:var(--text); }
+  .ix-btn-sm:hover{ border-color:var(--sv, var(--accent)); color:var(--sv, var(--accent)); }
+  .ix-btn.copiado{ border-color:var(--sv-ok) !important; color:var(--sv-ok) !important; }
+
+  /* ---------- Grade principal ---------- */
+  .ix-grid{ display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:22px; align-items:start; }
+  .ix-main{ display:flex; flex-direction:column; gap:14px; min-width:0; }
+  .ix-side{ display:flex; flex-direction:column; gap:14px; position:sticky; top:16px; }
+  .ix-side h3{ margin:0 0 10px; font-size:.84rem; font-weight:800; display:flex; align-items:center; gap:7px; }
+  .ix-side h3 svg{ width:16px; height:16px; color:var(--accent); }
+  .ix-side-head{ display:flex; align-items:center; justify-content:space-between; }
+  .ix-side-head h3{ margin:0; }
+
+  .ix-stat-top{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .ix-stat b{ display:block; font-size:1.45rem; font-weight:800; letter-spacing:-.5px; }
+  .ix-stat span{ font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); }
+  .ix-stat:first-child b{ color:var(--accent); }
+  .ix-dist{ display:flex; height:8px; border-radius:99px; overflow:hidden; margin-top:14px; gap:2px; }
+  .ix-dist span{ background:var(--sv); }
+  .ix-dist-leg{ display:flex; justify-content:space-between; margin-top:7px; font-size:.7rem; font-weight:700; color:var(--text-dim); }
+  .ix-dist-leg i{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--sv); margin-right:4px; }
+
+  .ix-rec-lista{ display:flex; flex-direction:column; gap:6px; margin-top:10px; }
+  .ix-rec{ display:flex; align-items:flex-start; gap:10px; text-align:left; border:1px solid var(--border); background:var(--panel); border-radius:11px; padding:9px 10px; cursor:pointer; color:var(--text); transition:border-color .15s ease, transform .15s ease; }
+  .ix-rec:hover{ border-color:var(--sv); transform:translateX(2px); }
+  .ix-dot{ width:9px; height:9px; flex:0 0 9px; border-radius:50%; margin-top:5px; background:var(--sv); box-shadow:0 0 0 3px color-mix(in srgb, var(--sv) 22%, transparent); }
+  .ix-rec-txt{ display:flex; flex-direction:column; min-width:0; }
+  .ix-rec-txt b{ font-size:.78rem; font-weight:650; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+  .ix-rec-txt small{ font-size:.68rem; color:var(--text-dim); margin-top:2px; }
+  .ix-rec-vazio{ margin:10px 0 0; font-size:.8rem; }
+
+  .ix-legenda ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px; }
+  .ix-legenda li{ font-size:.76rem; color:var(--text-dim); display:flex; align-items:center; gap:8px; }
+  .ix-legenda li span{ width:10px; height:10px; border-radius:3px; background:var(--sv); flex-shrink:0; }
+  .ix-legenda li b{ color:var(--text); font-weight:700; min-width:96px; }
+
+  /* ---------- Boas-vindas / vazio ---------- */
+  .ix-welcome{ padding:30px; position:relative; overflow:hidden; }
+  .ix-welcome h2{ margin:0 0 14px; font-size:1.3rem; letter-spacing:-.3px; max-width:520px; }
+  .ix-welcome-art{ position:absolute; right:-30px; top:-30px; width:220px; height:220px; pointer-events:none; opacity:.9; }
+  .ix-welcome-art span{ position:absolute; border-radius:50%; filter:blur(2px); }
+  .ix-welcome-art .b1{ width:120px; height:120px; right:40px; top:40px; background:radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--sv-grave) 55%, transparent), transparent 70%); }
+  .ix-welcome-art .b2{ width:90px; height:90px; right:110px; top:110px; background:radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--sv-leve) 55%, transparent), transparent 70%); }
+  .ix-welcome-art .b3{ width:70px; height:70px; right:30px; top:140px; background:radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 70%); }
+  .ix-passos{ margin:0 0 16px; padding:0; list-style:none; counter-reset:p; display:flex; flex-direction:column; gap:10px; max-width:620px; }
+  .ix-passos li{ counter-increment:p; position:relative; padding-left:40px; font-size:.9rem; line-height:1.5; color:var(--text-gray); }
+  .ix-passos li::before{ content:counter(p); position:absolute; left:0; top:-1px; width:28px; height:28px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.8rem; color:var(--accent); background:var(--accent-glow); }
+  .ix-passos b{ color:var(--text); }
+  .ix-dica{ font-size:.78rem; color:var(--text-dim); margin:0; }
+  .ix-vazio{ text-align:center; padding:36px 22px; }
+  .ix-vazio-ico{ display:inline-flex; width:56px; height:56px; border-radius:50%; align-items:center; justify-content:center; color:var(--sv, var(--accent)); background:color-mix(in srgb, var(--sv, var(--accent)) 14%, transparent); margin-bottom:8px; }
+  .ix-vazio.ok{ --sv:var(--sv-ok); }
+  .ix-vazio-ico svg{ width:28px; height:28px; }
+  .ix-vazio h3{ margin:4px 0 6px; } .ix-vazio p{ margin:0 auto; max-width:520px; color:var(--text-dim); font-size:.87rem; line-height:1.5; }
+
+  /* ---------- Banner de risco ---------- */
+  .ix-risco{
+    display:flex; align-items:center; gap:16px; padding:18px 20px; border-radius:var(--ix-r);
+    background:linear-gradient(120deg, color-mix(in srgb, var(--sv) 20%, var(--card)), var(--card) 70%);
+    border:1px solid color-mix(in srgb, var(--sv) 45%, var(--border)); box-shadow:var(--ix-shadow);
+  }
+  .ix-risco-ico{ width:52px; height:52px; flex:0 0 52px; border-radius:15px; display:flex; align-items:center; justify-content:center; color:#fff; background:var(--sv); box-shadow:0 10px 22px -10px var(--sv); }
+  .ix-risco.sv-contraindicada .ix-risco-ico, .ix-risco.sv-grave .ix-risco-ico{ animation:ixAlerta 2.4s ease-in-out infinite; }
+  @keyframes ixAlerta{ 50%{ box-shadow:0 0 0 8px color-mix(in srgb, var(--sv) 18%, transparent); } }
+  .ix-risco-ico svg{ width:26px; height:26px; }
+  .ix-risco-txt{ flex:1; min-width:0; }
+  .ix-risco-txt h2{ margin:2px 0 2px; font-size:1.18rem; letter-spacing:-.2px; }
+  .ix-risco-txt p{ margin:0; font-size:.84rem; color:var(--text-dim); }
+  .ix-risco-acoes{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .ix-sevbar{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .ix-sevchip{
+    display:inline-flex; align-items:center; gap:7px; cursor:pointer; padding:7px 12px; border-radius:999px; font-size:.78rem; font-weight:600;
+    border:1px solid color-mix(in srgb, var(--sv) 40%, var(--border)); background:color-mix(in srgb, var(--sv) 10%, var(--card)); color:var(--text);
+    transition:background-color .15s ease, transform .15s ease;
+  }
+  .ix-sevchip svg{ width:15px; height:15px; color:var(--sv); }
+  .ix-sevchip b{ color:var(--sv); }
+  .ix-sevchip:hover{ transform:translateY(-1px); }
+  .ix-sevchip.ativo{ background:var(--sv); color:#fff; border-color:var(--sv); }
+  .ix-sevchip.ativo svg, .ix-sevchip.ativo b{ color:#fff; }
+  .ix-filtro{ flex:1; min-width:180px; height:36px; border-radius:10px; border:1px solid var(--border); background:var(--panel); color:var(--text); padding:0 12px; font-size:.82rem; outline:0; }
+  .ix-filtro:focus{ border-color:var(--accent); }
+
+  .ix-aviso{ display:flex; gap:10px; align-items:flex-start; padding:12px 14px; border-radius:12px; font-size:.82rem; line-height:1.45; color:var(--text-gray);
+    background:color-mix(in srgb, var(--sv-moderada) 12%, var(--card)); border:1px solid color-mix(in srgb, var(--sv-moderada) 40%, var(--border)); }
+  .ix-aviso svg{ width:18px; height:18px; flex-shrink:0; color:var(--sv-moderada); }
+
+  /* ---------- Matriz ---------- */
+  .ix-matriz-wrap{ overflow-x:auto; }
+  .ix-matriz-tit{ font-size:.82rem; font-weight:800; margin-bottom:12px; }
+  .ix-matriz-tit small{ font-weight:500; color:var(--text-dim); margin-left:6px; }
+  .ix-matriz{ display:grid; gap:4px; min-width:max-content; }
+  .ix-mx-col{ display:flex; align-items:center; justify-content:center; }
+  .ix-mx-col span, .ix-mx-av{ font-size:.66rem; font-weight:800; color:var(--text-dim); background:var(--panel); border-radius:7px; padding:3px 5px; }
+  .ix-mx-row{ display:flex; align-items:center; gap:8px; font-size:.76rem; font-weight:600; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; padding-right:6px; }
+  .ix-mx-cel{ height:34px; border-radius:8px; border:0; }
+  .ix-mx-cel.eu{ background:repeating-linear-gradient(45deg, transparent 0 5px, color-mix(in srgb, var(--border) 60%, transparent) 5px 6px); }
+  .ix-mx-cel.nada{ background:color-mix(in srgb, var(--sv-ok) 10%, var(--panel)); }
+  button.ix-mx-cel{ background:var(--sv); cursor:pointer; transition:transform .12s ease, box-shadow .12s ease; }
+  button.ix-mx-cel:hover{ transform:scale(1.08); box-shadow:0 6px 14px -6px var(--sv); }
+
+  /* ---------- Cards de interação ---------- */
+  .ix-cards{ display:flex; flex-direction:column; gap:10px; }
+  .ix-int, .ix-perfil-item{
+    border:1px solid var(--border); border-radius:14px; background:var(--card); overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.06); transition:border-color .15s ease, box-shadow .2s ease;
+    position:relative;
+  }
+  .ix-int::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--sv); }
+  .ix-int[open]{ border-color:color-mix(in srgb, var(--sv) 45%, var(--border)); }
+  .ix-int.flash{ animation:ixFlash 1.1s ease; }
+  @keyframes ixFlash{ 25%{ box-shadow:0 0 0 4px color-mix(in srgb, var(--sv) 40%, transparent); } }
+  .ix-int summary, .ix-perfil-item summary{ list-style:none; display:flex; align-items:center; gap:12px; padding:14px 16px 14px 18px; cursor:pointer; }
+  .ix-int summary::-webkit-details-marker, .ix-perfil-item summary::-webkit-details-marker{ display:none; }
+  .ix-int summary:hover, .ix-perfil-item summary:hover{ background:color-mix(in srgb, var(--sv) 6%, transparent); }
+  .ix-int-ico{ width:34px; height:34px; flex:0 0 34px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--sv); background:color-mix(in srgb, var(--sv) 15%, transparent); }
+  .ix-int-ico svg{ width:18px; height:18px; }
+  .ix-int-par{ flex:1; min-width:0; display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:.95rem; }
+  .ix-x{ color:var(--text-dim); font-weight:400; }
+  .ix-badge{ font-size:.68rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase; color:var(--sv); background:color-mix(in srgb, var(--sv) 15%, transparent); border:1px solid color-mix(in srgb, var(--sv) 35%, transparent); border-radius:999px; padding:4px 10px; white-space:nowrap; }
+  .ix-chev{ color:var(--text-dim); font-size:1.3rem; line-height:1; transition:transform .2s ease; }
+  details[open] > summary .ix-chev{ transform:rotate(90deg); }
+  .ix-int-corpo, .ix-perfil-corpo{ padding:2px 18px 18px 18px; display:flex; flex-direction:column; gap:12px; animation:ixIn .18s ease-out; }
+  .ix-pills{ display:flex; flex-wrap:wrap; gap:6px; }
+  .ix-pill{ font-size:.7rem; font-weight:700; padding:4px 10px; border-radius:999px; background:var(--panel); border:1px solid var(--border); color:var(--text-dim); }
+  .ix-pill-forte{ color:var(--accent); border-color:color-mix(in srgb, var(--accent) 35%, var(--border)); background:var(--accent-glow); }
+  .ix-bloco{ border-radius:12px; padding:12px 14px; background:var(--panel); border:1px solid var(--border); }
+  .ix-bloco p{ margin:4px 0 0; font-size:.88rem; line-height:1.6; color:var(--text); }
+  .ix-bloco-rot{ display:flex; align-items:center; gap:7px; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--text-dim); }
+  .ix-bloco-rot svg{ width:14px; height:14px; }
+  .ix-bloco-conduta{ background:color-mix(in srgb, var(--sv, var(--accent)) 8%, var(--panel)); border-color:color-mix(in srgb, var(--sv, var(--accent)) 30%, var(--border)); }
+  .ix-bloco-conduta .ix-bloco-rot{ color:var(--sv, var(--accent)); }
+  .ix-bloco-balcao{ background:color-mix(in srgb, var(--sv-leve) 8%, var(--panel)); border-color:color-mix(in srgb, var(--sv-leve) 28%, var(--border)); }
+  .ix-bloco-balcao .ix-bloco-rot{ color:var(--sv-leve); }
+  .ix-fonte{ font-size:.72rem; color:var(--text-dim); }
+  .ix-int-acoes{ display:flex; justify-content:flex-end; }
+  .ix-via{ font-size:.76rem; color:var(--text-dim); }
+
+  /* ---------- Perfil ---------- */
+  .ix-perfil{ display:flex; flex-direction:column; gap:14px; }
+  .ix-perfil-head{ display:flex; align-items:center; gap:14px; }
+  .ix-perfil-head h2{ margin:2px 0 6px; font-size:1.3rem; letter-spacing:-.3px; }
+  .ix-perfil-av{ width:54px; height:54px; flex:0 0 54px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; color:var(--tc); background:color-mix(in srgb, var(--tc) 18%, transparent); border:1px solid color-mix(in srgb, var(--tc) 35%, transparent); }
+  .ix-classes{ display:flex; flex-wrap:wrap; gap:6px; }
+  .ix-classes span{ font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--panel); border:1px solid var(--border); color:var(--text-dim); }
+  .ix-perfil-lista{ display:flex; flex-direction:column; gap:8px; }
+  .ix-perfil-item summary{ padding:11px 14px; }
+  .ix-perfil-item .ix-dot{ margin-top:0; }
+  .ix-perfil-nome{ flex:1; min-width:0; display:flex; flex-direction:column; }
+  .ix-perfil-nome b{ font-size:.9rem; }
+  .ix-perfil-nome small{ font-size:.72rem; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ix-perfil-item[open]{ border-color:color-mix(in srgb, var(--sv) 45%, var(--border)); }
+
+  .ix-disclaimer{ margin-top:26px; font-size:.76rem; line-height:1.55; color:var(--text-dim); padding:14px 16px; border-radius:12px; border:1px solid var(--border); background:var(--panel); }
+  .ix-disclaimer a{ color:var(--accent); }
+
+  @media (max-width:980px){
+    .ix-grid{ grid-template-columns:1fr; }
+    .ix-side{ position:static; }
+  }
+  @media (max-width:768px){
+    .ix-shell{ padding:16px 14px 44px; }
+    .ix-composer{ padding:14px; border-radius:16px; }
+    .ix-search{ height:52px; }
+    .ix-kbd{ display:none; }
+    .ix-risco{ flex-wrap:wrap; padding:14px; }
+    .ix-risco-acoes{ width:100%; }
+    .ix-risco-acoes .ix-btn{ flex:1; }
+    .ix-sug-rodape{ display:none; }
+    .ix-modo-assoc{ display:none !important; }
+    .ix-int summary{ flex-wrap:wrap; }
+    .ix-int-par{ flex-basis:calc(100% - 50px); }
+    .ix-int summary .ix-badge{ margin-left:46px; }
+    .ix-welcome{ padding:20px; }
+  }
+  @media print{
+    .topbar-app, .ix-composer, .ix-side, .ix-risco-acoes, .ix-sevbar, .ix-int-acoes{ display:none !important; }
+    .ix-grid{ display:block; }
+    .ix-int{ break-inside:avoid; }
+    .ix-int-corpo{ display:flex !important; }
+    body{ background:#fff !important; color:#000 !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ix-sug, .ix-tag, .ix-int-corpo, .ix-perfil-corpo, .ix-risco-ico{ animation:none !important; }
+  }
+
+
+  /* 15/11/2026 (b) — dois campos visíveis desde o início, com "+" vermelho entre eles */
+  .ix-btn[hidden], .ix-slots-dica[hidden]{ display:none !important; }
+  .ix-slots{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+  .ix-slot{
+    position:relative; flex:1 1 260px; min-width:0; display:flex; align-items:center; gap:10px;
+    min-height:58px; padding:6px 12px 6px 8px; border-radius:14px;
+    background:var(--panel); border:1.5px solid var(--border);
+    transition:border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  .ix-slot-input:focus-within{ border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-glow); }
+  .ix-slot-input .ix-in{ flex:1; min-width:0; height:44px; border:0; outline:0; background:transparent; color:var(--text); font-size:1rem; font-weight:500; }
+  .ix-slot-input .ix-in::placeholder{ color:var(--text-dim); font-weight:400; }
+  .ix-slot-ico{ display:flex; color:var(--text-dim); } .ix-slot-ico svg{ width:19px; height:19px; }
+  .ix-slot-input:focus-within .ix-slot-ico{ color:var(--accent); }
+  .ix-slot-num{
+    width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.8rem; color:var(--text-dim); background:var(--card); border:1px solid var(--border);
+  }
+  .ix-slot-input:focus-within .ix-slot-num{ color:var(--accent); border-color:color-mix(in srgb, var(--accent) 45%, var(--border)); }
+  .ix-slot-cheio{ background:color-mix(in srgb, var(--accent) 4%, var(--card)); border-style:solid; }
+  .ix-slot-cheio .ix-slot-num{ color:var(--text); }
+  .ix-slot-tags{ flex:1; min-width:0; display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+  .ix-slot-tags .ix-tag{ max-width:100%; }
+  .ix-tag-nome{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .ix-slot.assoc{ border-color:var(--accent); border-style:dashed; background:var(--accent-glow); }
+  .ix-slot .ix-sug{ left:-2px; right:-2px; }
+  .ix-slot-cheio .ix-assoc-btn{ opacity:.55; }
+  .ix-slot-cheio:hover .ix-assoc-btn, .ix-slot-cheio.assoc .ix-assoc-btn{ opacity:1; }
+  .ix-mais{
+    width:34px; height:34px; flex:0 0 34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    color:#fff; background:linear-gradient(145deg, var(--accent-bright), var(--accent-dark));
+    box-shadow:0 6px 14px -6px var(--accent), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .ix-mais svg{ width:16px; height:16px; }
+  .ix-slots-dica{ margin:12px 2px 0; font-size:.82rem; color:var(--text-dim); }
+  .ix-slots-dica b{ color:var(--text); }
+  @media (max-width:768px){
+    .ix-slots{ flex-direction:column; align-items:stretch; gap:6px; }
+    .ix-slot{ flex:1 1 auto; }
+    .ix-mais{ align-self:center; width:28px; height:28px; flex-basis:28px; }
+  }
 </style>
 </head>
 
@@ -496,671 +837,714 @@
   </div>
 </div>
 
-<div class="app-shell">
+<main class="ix-shell">
 
-  <!-- ===================== Coluna esquerda: formulário ===================== -->
-  <div class="sidebar-panel">
-    <div class="sidebar-title">Nova interação</div>
-    <div class="sidebar-sub">Adicione dois ou mais medicamentos. Produtos combinados (ex.: losartana + hidroclorotiazida) podem ser lançados na mesma linha.</div>
-    <div id="medRows"></div>
-    <button class="btn-add-row" id="btnAddRow" onclick="adicionarLinha()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Adicionar outro medicamento
-    </button>
-    <button class="btn-ver-resultado" id="btnVerResultado" onclick="verResultado()" disabled>Ver resultado</button>
-    <div class="sidebar-hint">Digite o nome e toque em <strong>+</strong> (ou Enter) para confirmar cada medicamento.</div>
-  </div>
+  <!-- ===================== Montagem da prescrição ===================== -->
+  <section class="ix-composer" aria-label="Medicamentos a verificar">
+    <div class="ix-slots" id="ixSlots" aria-live="polite"></div>
+    <p class="ix-slots-dica" id="ixDica">Informe <b>pelo menos dois medicamentos</b> para verificar as interações entre eles — ou apenas um para ver o perfil de interações dele.</p>
 
-  <!-- ===================== Coluna direita ===================== -->
-  <div class="results-panel">
-
-    <!-- Estado padrão: Recentes -->
-    <div class="default-view" id="defaultView">
-      <div class="recentes-header">
-        <div class="recentes-titulo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
-          Recentes
-        </div>
-        <button class="btn-limpar-historico" onclick="limparHistorico()">Excluir histórico</button>
-      </div>
-      <div id="recentesBody"></div>
-    </div>
-
-    <!-- Estado de resultado -->
-    <div class="resultado-view" id="resultadoView">
-      <div class="resultado-top">
-        <div class="resultado-top-left">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
-          Análise completada
-        </div>
-        <button class="btn-nova-analise" onclick="novaAnalise()">Nova análise</button>
-      </div>
-      <div class="resultado-chips" id="resultadoChips"></div>
-      <div id="resultadoCorpo"></div>
-
-      <div class="diferencial-box" id="notificarBox" style="display:none">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span>Interação(ões) de gravidade elevada identificada(s). Caso o paciente já apresente sinais/sintomas relacionados, avalie notificar o evento em <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacovigilancia" target="_blank" rel="noopener">Farmacovigilância — Anvisa (VigiMed/Notivisa)</a>.</span>
-      </div>
-
-      <div class="disclaimer">
-        <strong>⚠ Uso profissional:</strong> ferramenta de apoio à decisão farmacêutica, com base própria, curada em português (mecanismo, tipo de interação, conduta e ação de balcão) para os princípios ativos cadastrados. É uma base inicial, em expansão contínua — a ausência de um par nesta lista não descarta interação clinicamente relevante. Não substitui o julgamento clínico nem bases especializadas de referência (ex.: Micromedex, UpToDate, Stockley's Drug Interactions, bula do medicamento). Sempre avalie o contexto clínico completo do paciente.
+    <div class="ix-composer-foot">
+      <div class="ix-exemplos" id="ixExemplos"></div>
+      <div class="ix-composer-acoes">
+        <button type="button" class="ix-btn ix-btn-ghost" id="ixLimpar" onclick="limparTudo()" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>Limpar
+        </button>
       </div>
     </div>
+  </section>
 
+  <div class="ix-grid">
+    <!-- ===================== Resultado / perfil / boas-vindas ===================== -->
+    <section class="ix-main" id="ixMain" aria-live="polite"></section>
+
+    <!-- ===================== Coluna lateral ===================== -->
+    <aside class="ix-side">
+      <div class="ix-card ix-stats" id="ixStats"></div>
+      <div class="ix-card">
+        <div class="ix-side-head">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Recentes</h3>
+          <button type="button" class="ix-link" onclick="limparHistorico()">Limpar</button>
+        </div>
+        <div id="recentesBody"></div>
+      </div>
+      <div class="ix-card ix-legenda">
+        <h3>Gravidade</h3>
+        <ul>
+          <li class="sv-contraindicada"><span></span><b>Contraindicada</b> não associar</li>
+          <li class="sv-grave"><span></span><b>Grave</b> evitar ou intervir</li>
+          <li class="sv-moderada"><span></span><b>Moderada</b> monitorar / ajustar</li>
+          <li class="sv-leve"><span></span><b>Leve</b> baixa relevância clínica</li>
+        </ul>
+      </div>
+    </aside>
   </div>
-</div>
+
+  <div class="ix-disclaimer">
+    <strong>Uso profissional:</strong> ferramenta de apoio à decisão farmacêutica com base própria, curada em português (mecanismo, tipo de interação, conduta e ação de balcão). A base está em expansão contínua — a ausência de um par não descarta interação clinicamente relevante. Não substitui o julgamento clínico nem bases de referência (Micromedex, UpToDate, Stockley's Drug Interactions, bula). Interações graves com evento suspeito podem ser notificadas no <a href="https://www.gov.br/anvisa/pt-br/assuntos/fiscalizacao-e-monitoramento/notificacoes/vigimed" target="_blank" rel="noopener">VigiMed (Anvisa)</a>.
+  </div>
+</main>
 
 <script>
 /* =====================================================================
-   Base de interações — conjunto inicial curado (farmacologia clínica
-   consolidada). Chaves normalizadas (sem acento, minúsculas). Ver
-   ALIASES para os sinônimos/nomes comerciais aceitos na busca.
-   Esta base é um ponto de partida: recomenda-se evoluir para uma base
-   de referência validada (ver conversa com o desenvolvedor).
-===================================================================== */
-/* =====================================================================
-   Base de dados própria — medicamentos.json + interacoes.json.
-   Substitui a antiga base curada + camada ampla DDInter por uma única
-   base de dados própria, extensível e sem dependência de terceiros.
-   medicamentos.json: cadastro (id, nome, classeTerapeutica, aliases).
-   interacoes.json: relações entre medicamentos/classes (gravidade,
-   tipo de interação, mecanismo, conduta, ação de balcão, fonte).
-   Carregados de forma assíncrona no início da página.
-===================================================================== */
+   INTERAÇÕES MEDICAMENTOSAS — FarmaPrática (interface 15/11/2026)
+   Base própria: medicamentos.json (cadastro, classes, aliases) +
+   interacoes.json (pares por substância ou por classe terapêutica).
+   ===================================================================== */
 let MEDICAMENTOS = [];
 let INTERACOES = [];
-let MED_BY_ALIAS = {};   // nome normalizado (nome/id/alias) -> medicamento
-let INTERACOES_MAP = {}; // "chaveA|chaveB" (ordenado) -> registro de interação
+let MED_BY_ALIAS = {};
+let MED_BY_ID = {};
+let INTERACOES_MAP = {};
 let BASE_READY = false;
 
 function norm(s){
   return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim().replace(/\s+/g,' ');
 }
+function escapeHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
 
 function indexarBase(){
-  MED_BY_ALIAS = {};
+  MED_BY_ALIAS = {}; MED_BY_ID = {};
   MEDICAMENTOS.forEach(function(m){
-    const nomes = [m.id.replace(/_/g,' '), m.nome].concat(m.aliases || []);
-    nomes.forEach(function(n){
-      const k = norm(n);
-      if(k) MED_BY_ALIAS[k] = m;
+    MED_BY_ID[m.id] = m;
+    [m.id.replace(/_/g,' '), m.nome].concat(m.aliases || []).forEach(function(n){
+      const k = norm(n); if(k && !MED_BY_ALIAS[k]) MED_BY_ALIAS[k] = m;
     });
   });
   INTERACOES_MAP = {};
   INTERACOES.forEach(function(it){
-    const k = [it.medicamentoA, it.medicamentoB].sort().join('|');
-    INTERACOES_MAP[k] = it;
+    INTERACOES_MAP[[it.medicamentoA, it.medicamentoB].sort().join('|')] = it;
   });
 }
 
 const BASE_LOAD_PROMISE = Promise.all([
   fetch('medicamentos.json').then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); }),
   fetch('interacoes.json').then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
-]).then(function(resultados){
-  MEDICAMENTOS = resultados[0];
-  INTERACOES = resultados[1];
-  indexarBase();
-  BASE_READY = true;
-  construirVocabulario();
-  atualizarDbLabel();
+]).then(function(res){
+  MEDICAMENTOS = res[0]; INTERACOES = res[1];
+  indexarBase(); BASE_READY = true;
+  construirVocabulario(); renderStats(); render();
 }).catch(function(err){
-  console.warn('Falha ao carregar a base de medicamentos/interações:', err);
-  BASE_READY = false;
-  atualizarDbLabel();
+  console.warn('Falha ao carregar a base:', err);
+  BASE_READY = false; renderStats(); render();
 });
 
-/* encontrarMedicamento: resolve um nome digitado para o cadastro (ou null
-   se não reconhecido). chavesDoMedicamento: chaves de busca para cruzar
-   com interacoes.json — o próprio id do medicamento e todas as suas
-   classes terapêuticas (permite tanto um par específico por substância
-   quanto um par genérico por classe, ex.: "aine"). Nomes não reconhecidos
-   caem no fallback (norm do texto digitado), mantendo o comportamento
-   anterior para o caso raro de digitação de algo fora do cadastro. */
-function encontrarMedicamento(nomeDigitado){
-  return MED_BY_ALIAS[norm(nomeDigitado)] || null;
-}
-function chavesDoMedicamento(nomeDigitado){
-  const med = encontrarMedicamento(nomeDigitado);
+function encontrarMedicamento(nome){ return MED_BY_ALIAS[norm(nome)] || null; }
+function chavesDoMedicamento(nome){
+  const med = encontrarMedicamento(nome);
   if(med) return [med.id].concat(med.classeTerapeutica || []);
-  return [norm(nomeDigitado)];
+  return [norm(nome)];
 }
 
+/* ---------------- Rótulos ---------------- */
 const SEVERIDADE_ORDEM = ['contraindicada','grave','moderada','leve','nao_classificada'];
-const SEVERIDADE_LABEL = {contraindicada:'Contraindicadas', grave:'Graves', moderada:'Moderadas', leve:'Leves', nao_classificada:'Não Classificadas'};
-const SEVERIDADE_ICON = {
+const SEV_NOME = {contraindicada:'Contraindicada', grave:'Grave', moderada:'Moderada', leve:'Leve', nao_classificada:'Não classificada'};
+const SEV_PLURAL = {contraindicada:'Contraindicadas', grave:'Graves', moderada:'Moderadas', leve:'Leves', nao_classificada:'Não classificadas'};
+const SEV_PESO = {contraindicada:4, grave:3, moderada:2, leve:1, nao_classificada:0};
+const SEV_ICON = {
   contraindicada:'<circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>',
   grave:'<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
   moderada:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
   leve:'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
   nao_classificada:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>'
 };
-
-/* Tipo de interação — classificação farmacológica além da gravidade,
-   pensada para uso didático/estudo (não só "o que fazer", mas "por que
-   acontece" e "que tipo de efeito esperar"). */
 const TIPO_LABEL = {farmacocinetica:'Farmacocinética', farmacodinamica:'Farmacodinâmica'};
 const SUBTIPO_LABEL = {absorcao:'Absorção', metabolismo:'Metabolismo', excrecao:'Excreção'};
 const EFEITO_LABEL = {
   efeito_aditivo:'Efeito aditivo', antagonismo:'Antagonismo', prolongamento_qt:'Prolongamento de QT',
   sangramento:'Sangramento', sedacao:'Sedação', hipotensao:'Hipotensão', hipercalemia:'Hipercalemia',
-  sindrome_serotoninergica:'Síndrome serotoninérgica', hipertensao:'Hipertensão'
+  sindrome_serotoninergica:'Síndrome serotoninérgica', hipertensao:'Hipertensão', toxicidade:'Toxicidade',
+  miopatia:'Miopatia', mielossupressao:'Mielossupressão', reducao_eficacia:'Perda de eficácia',
+  reducao_absorcao:'Menor absorção', convulsao:'Convulsões', hipoglicemia:'Hipoglicemia'
 };
+const CLASSE_LABEL = {
+  aine:'AINEs', aine_coxibe:'Coxibes (AINE seletivo COX-2)', alfabloqueador:'Alfabloqueadores', aminoglicosideo:'Aminoglicosídeos',
+  anti_hipertensivo:'Anti-hipertensivos', anti_histaminico_sedativo:'Anti-histamínicos sedativos (1ª geração)', antibiotico_amplo:'Aminopenicilinas/cefalosporinas orais',
+  anticolinergico:'Anticolinérgicos', antidepressivo_serotoninergico:'Antidepressivos serotoninérgicos', antidepressivo_triciclico:'Antidepressivos tricíclicos',
+  antidiabetico:'Antidiabéticos (insulina/metformina/sulfonilureias)', antifungico_azolico_sistemico:'Antifúngicos azólicos sistêmicos', antipsicotico:'Antipsicóticos',
+  bcc:'Bloqueadores de canal de cálcio di-hidropiridínicos', bcc_naodiidro:'Verapamil / diltiazem', benzodiazepinico:'Benzodiazepínicos e zolpidem',
+  beta2_agonista:'Agonistas beta-2', betabloqueador:'Betabloqueadores', betabloqueador_cyp2d6:'Betabloqueadores metabolizados pelo CYP2D6', bra:'BRA (sartanas)',
+  calcio:'Sais de cálcio', cefalosporina:'Cefalosporinas', contraceptivo:'Contraceptivos hormonais', corticoide_inalatorio:'Corticoides inalatórios',
+  corticoide_sistemico:'Corticoides sistêmicos', descongestionante_nasal:'Descongestionantes simpaticomiméticos', digoxina:'Digitálicos', diuretico_alca:'Diuréticos de alça',
+  doac:'Anticoagulantes orais diretos (DOAC)', dopaminergico_parkinson:'Dopaminérgicos (Parkinson)', estatina:'Estatinas', ferro:'Sais de ferro', fibrato:'Fibratos',
+  fitoterapico_antiplaquetario:'Fitoterápicos antiplaquetários', gabapentinoide:'Gabapentinoides', gliptina:'Gliptinas (iDPP-4)', glp1_agonista:'Agonistas de GLP-1',
+  heparina:'Heparinas', hidroclorotiazida:'Diuréticos tiazídicos', ibp_potente:'Inibidores da bomba de prótons', ieca:'IECA', imao_b:'Inibidores da MAO',
+  indutor_enzimatico:'Indutores enzimáticos', inibidor_cyp2c19:'Inibidores do CYP2C19', inibidor_cyp2d6_potente:'Inibidores potentes do CYP2D6', ipde5:'Inibidores da PDE-5',
+  isrs:'ISRS', irsn:'IRSN', laxante:'Laxantes', macrolideo:'Macrolídeos', metoclopramida:'Antieméticos antidopaminérgicos', metronidazol:'Nitroimidazólicos',
+  nitrato:'Nitratos', opioide:'Opioides', poupador_potassio:'Diuréticos poupadores de potássio', prolonga_qt:'Fármacos que prolongam o QT', quinolona:'Fluoroquinolonas',
+  relaxante_muscular_central:'Relaxantes musculares centrais', ritonavir_potente:'Ritonavir e esquemas potencializados', sglt2:'Inibidores de SGLT2',
+  simpaticolitico_central:'Simpaticolíticos centrais', sulfonamida_trimetoprima:'Sulfametoxazol + trimetoprima', sulfonilureia:'Sulfonilureias',
+  suplemento_potassio:'Suplementos de potássio', tetraciclina:'Tetraciclinas', tiazolidinediona:'Glitazonas', vasodilatador_direto:'Vasodilatadores diretos',
+  triptano:'Triptanos', antiacido:'Antiácidos (Al/Mg)', bisfosfonato_oral:'Bisfosfonatos orais', carbapenem:'Carbapenêmicos', tramadol:'Tramadol e similares',
+  antiviral_herpes:'Antivirais (herpes)', lincosamida:'Lincosamidas', antiarritmico_ia:'Antiarrítmicos classe IA'
+};
+const MEMBROS_CLASSE = {};
+function rotuloChave(k){
+  if(MED_BY_ID[k] && !CLASSE_LABEL[k]) return MED_BY_ID[k].nome;
+  if(CLASSE_LABEL[k]) return CLASSE_LABEL[k];
+  if(MED_BY_ID[k]) return MED_BY_ID[k].nome;
+  return k.replace(/_/g,' ').replace(/^./, function(c){ return c.toUpperCase(); });
+}
+function ehClasse(k){ return !!(MEMBROS_CLASSE[k] && MEMBROS_CLASSE[k].length) && !(MED_BY_ID[k] && MEMBROS_CLASSE[k].length <= 1); }
+function iniciais(nome){
+  const p = String(nome||'').replace(/\(.*?\)/g,'').split(/[\s+]+/).filter(function(w){ return w.length > 2; });
+  return (((p[0]||'?')[0]) + (p[1] ? p[1][0] : ((p[0]||'')[1]||''))).toUpperCase();
+}
 function tipoBadgesHtml(info){
   const pills = [];
-  if(info.tipo) pills.push('<span class="tipo-pill tipo-principal">'+escapeHtml(TIPO_LABEL[info.tipo] || info.tipo)+'</span>');
-  if(info.subtipo) pills.push('<span class="tipo-pill">'+escapeHtml(SUBTIPO_LABEL[info.subtipo] || info.subtipo)+'</span>');
-  (info.efeitoClinico || []).forEach(function(e){
-    pills.push('<span class="tipo-pill">'+escapeHtml(EFEITO_LABEL[e] || e)+'</span>');
-  });
-  return pills.length ? '<div class="tipo-badges">'+pills.join('')+'</div>' : '';
+  if(info.tipo) pills.push('<span class="ix-pill ix-pill-forte">'+escapeHtml(TIPO_LABEL[info.tipo] || info.tipo)+'</span>');
+  if(info.subtipo) pills.push('<span class="ix-pill">'+escapeHtml(SUBTIPO_LABEL[info.subtipo] || info.subtipo)+'</span>');
+  (info.efeitoClinico || []).forEach(function(e){ pills.push('<span class="ix-pill">'+escapeHtml(EFEITO_LABEL[e] || e)+'</span>'); });
+  return pills.length ? '<div class="ix-pills">'+pills.join('')+'</div>' : '';
 }
 
-/* ===================== Autocomplete de medicamentos =====================
-   Sugestões enquanto o usuário digita (ex.: "ibu" -> "Ibuprofeno"). O
-   vocabulário é construído a partir de medicamentos.json (nome + aliases
-   de cada cadastro) assim que a base carrega. */
+/* ---------------- Vocabulário / autocomplete ---------------- */
 let VOCAB = [];
-let sugestaoAtiva = -1;
-let fecharSugestoesTimeout = null;
-let sugestaoLinhaAtual = null; // qual linha tem o dropdown aberto no momento (só uma por vez)
-
-function capitalizarTermo(s){
-  return s.replace(/(^|\s)([a-zà-öø-ÿ])/g, function(m,p1,p2){ return p1+p2.toUpperCase(); });
-}
 function construirVocabulario(){
-  const vistos = new Set();
-  const lista = [];
+  const vistos = new Set(); const lista = [];
   MEDICAMENTOS.forEach(function(m){
-    const kNome = norm(m.nome);
-    if(!vistos.has(kNome)){
-      vistos.add(kNome);
-      lista.push({norm:kNome, display:m.nome});
-    }
-    (m.aliases || []).forEach(function(a){
-      const k = norm(a);
-      if(vistos.has(k)) return;
-      vistos.add(k);
-      lista.push({norm:k, display:capitalizarTermo(a)});
+    (m.classeTerapeutica||[]).forEach(function(c){ (MEMBROS_CLASSE[c] = MEMBROS_CLASSE[c] || []).push(m.id); });
+    [[m.nome, true]].concat((m.aliases||[]).map(function(a){ return [a, false]; })).forEach(function(par){
+      const k = norm(par[0]); if(!k || vistos.has(k)) return; vistos.add(k);
+      lista.push({norm:k, display: par[1] ? m.nome : par[0].replace(/(^|\s)(\S)/g, function(x,a,b){ return a+b.toUpperCase(); }), med:m, alias:!par[1]});
     });
   });
-  lista.sort(function(a,b){ return a.display.localeCompare(b.display,'pt-BR'); });
   VOCAB = lista;
 }
-
-function mostrarSugestoes(linhaId, inputEl){
-  if(fecharSugestoesTimeout){ clearTimeout(fecharSugestoesTimeout); fecharSugestoesTimeout = null; }
-  if(sugestaoLinhaAtual !== null && sugestaoLinhaAtual !== linhaId){
-    ocultarSugestoes(sugestaoLinhaAtual); // só um dropdown aberto por vez (evita sobreposição entre linhas)
-  }
-  const box = document.getElementById('autoList'+linhaId);
-  if(!box) return;
-  const termo = norm(inputEl.value);
-  sugestaoAtiva = -1;
-  if(termo.length < 2){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; sugestaoLinhaAtual=null; return; }
-  const comeca = [];
-  const contem = [];
-  for(let i=0;i<VOCAB.length && comeca.length < 8;i++){
-    const item = VOCAB[i];
-    if(item.norm === termo) continue;
-    const idx = item.norm.indexOf(termo);
-    if(idx === 0) comeca.push(item);
-    else if(idx > 0 && contem.length < 8) contem.push(item);
-  }
-  const resultado = comeca.concat(contem).slice(0,8);
-  if(resultado.length === 0){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; sugestaoLinhaAtual=null; return; }
-  box.innerHTML = resultado.map(function(item, i){
-    return '<button type="button" class="autocomplete-item" data-idx="'+i+'">'+escapeHtml(item.display)+'</button>';
-  }).join('');
-  box._itens = resultado;
-  box.onmousedown = function(ev){
-    ev.preventDefault();
-    const btn = ev.target.closest('.autocomplete-item');
-    if(!btn) return;
-    const item = box._itens[parseInt(btn.getAttribute('data-idx'),10)];
-    if(item) selecionarSugestao(linhaId, item.display);
-  };
-  box.classList.add('show');
-  sugestaoLinhaAtual = linhaId;
+function pontuarTermo(n, termo){
+  if(n === termo) return 100;
+  if(n.startsWith(termo)) return 80;
+  if((' '+n).indexOf(' '+termo) >= 0) return 60;
+  if(n.indexOf(termo) >= 0) return 30;
+  return 0;
 }
-function ocultarSugestoes(linhaId){
-  const box = document.getElementById('autoList'+linhaId);
-  if(box){ box.innerHTML=''; box.classList.remove('show'); box._itens=[]; }
-  sugestaoAtiva = -1;
-  if(sugestaoLinhaAtual === linhaId) sugestaoLinhaAtual = null;
+function destacar(texto, q){
+  const t = String(texto||''), base = norm(t), term = norm(q);
+  if(!term || base.length !== t.length) return escapeHtml(t);
+  const i = base.indexOf(term);
+  if(i < 0) return escapeHtml(t);
+  return escapeHtml(t.slice(0,i))+'<mark>'+escapeHtml(t.slice(i,i+term.length))+'</mark>'+escapeHtml(t.slice(i+term.length));
 }
-function agendarFecharSugestoes(linhaId){
-  fecharSugestoesTimeout = setTimeout(function(){ ocultarSugestoes(linhaId); }, 150);
-}
-function selecionarSugestao(linhaId, valor){
-  const linha = linhas.find(function(l){ return l.id === linhaId; });
-  if(linha){ linha.chips.push(valor); }
-  ocultarSugestoes(linhaId);
-  renderLinhas();
-  const inp = document.querySelector('.med-row input[data-linha="'+linhaId+'"]');
-  if(inp) inp.focus();
-}
-function destacarSugestao(box){
-  if(!box) return;
-  const els = box.querySelectorAll('.autocomplete-item');
-  els.forEach(function(el, i){ el.classList.toggle('ativo', i===sugestaoAtiva); });
-}
-function tratarTeclaInput(event, linhaId, inputEl){
-  const box = document.getElementById('autoList'+linhaId);
-  const itens = (box && box.classList.contains('show')) ? (box._itens||[]) : [];
-  if(event.key === 'ArrowDown' && itens.length){
-    event.preventDefault();
-    sugestaoAtiva = Math.min(sugestaoAtiva+1, itens.length-1);
-    destacarSugestao(box);
-    return;
-  }
-  if(event.key === 'ArrowUp' && itens.length){
-    event.preventDefault();
-    sugestaoAtiva = Math.max(sugestaoAtiva-1, -1);
-    destacarSugestao(box);
-    return;
-  }
-  if(event.key === 'Escape'){
-    ocultarSugestoes(linhaId);
-    return;
-  }
-  if(event.key === 'Enter'){
-    event.preventDefault();
-    if(itens.length && sugestaoAtiva >= 0){
-      selecionarSugestao(linhaId, itens[sugestaoAtiva].display);
-    } else {
-      confirmarChip(linhaId, inputEl);
-      ocultarSugestoes(linhaId);
-    }
-  }
-}
-
-/* ===================== Estado / linhas de medicamento ===================== */
-let linhas = [ {id:1, chips:[]}, {id:2, chips:[]} ];
-let seqId = 3;
-const MAX_LINHAS = 6;
-
-function totalChips(){ return linhas.reduce(function(a,l){return a+l.chips.length;}, 0); }
-
-function renderLinhas(){
-  const wrap = document.getElementById('medRows');
-  wrap.innerHTML = '';
-  linhas.forEach(function(linha){
-    const row = document.createElement('div');
-    row.className = 'med-row';
-    let chipsHtml = '';
-    linha.chips.forEach(function(chip, idx){
-      chipsHtml += '<span class="med-chip">'+escapeHtml(chip)+
-        '<button type="button" onclick="removerChip('+linha.id+','+idx+')" title="Remover">'+
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></span>';
-    });
-    row.innerHTML = chipsHtml +
-      '<div class="med-row-input">'+
-        '<input type="text" placeholder="Adicione um medicamento" data-linha="'+linha.id+'" autocomplete="off" '+
-          'oninput="mostrarSugestoes('+linha.id+',this)" '+
-          'onfocus="mostrarSugestoes('+linha.id+',this)" '+
-          'onblur="agendarFecharSugestoes('+linha.id+')" '+
-          'onkeydown="tratarTeclaInput(event,'+linha.id+',this)">'+
-        '<button type="button" class="btn-add-chip" title="Adicionar" onclick="confirmarChip('+linha.id+', this.previousElementSibling)">'+
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>'+
-      '</div>'+
-      '<div class="autocomplete-list" id="autoList'+linha.id+'"></div>';
-    if(linhas.length > 2){
-      const btnDel = document.createElement('button');
-      btnDel.type = 'button';
-      btnDel.className = 'btn-remove-row';
-      btnDel.title = 'Remover esta linha';
-      btnDel.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
-      btnDel.onclick = function(){ removerLinha(linha.id); };
-      row.appendChild(btnDel);
-    }
-    wrap.appendChild(row);
+function sugerir(q){
+  const termo = norm(q);
+  if(termo.length < 2) return [];
+  const porMed = new Map();
+  VOCAB.forEach(function(v){
+    const sc = pontuarTermo(v.norm, termo) + (v.alias ? 0 : 5);
+    if(sc <= 5) return;
+    const atual = porMed.get(v.med.id);
+    if(!atual || sc > atual.sc) porMed.set(v.med.id, {sc:sc, v:v});
   });
-  document.getElementById('btnAddRow').disabled = linhas.length >= MAX_LINHAS;
-  atualizarBotaoResultado();
+  return Array.from(porMed.values()).sort(function(a,b){ return b.sc - a.sc || a.v.med.nome.localeCompare(b.v.med.nome,'pt-BR'); }).slice(0,8);
 }
 
-function confirmarChip(linhaId, inputEl){
-  const val = (inputEl.value || '').trim();
-  if(!val) return;
-  const linha = linhas.find(function(l){ return l.id === linhaId; });
-  if(linha){ linha.chips.push(val); }
-  renderLinhas();
+/* ---------------- Estado ---------------- */
+// linhas: cada linha é um produto (1 substância ou associação em dose fixa)
+let linhas = [];
+let seqId = 1;
+const MAX_LINHAS = 12;
+let assocLinha = null;      // id da linha recebendo um componente associado
+let filtroSev = null;       // filtro de gravidade no resultado
+let ultimoHistKey = '';
+
+function entradas(){ const e = []; linhas.forEach(function(l){ l.chips.forEach(function(c){ e.push(c); }); }); return e; }
+
+function adicionarNome(nome){
+  nome = (nome||'').trim(); if(!nome) return;
+  const med = encontrarMedicamento(nome);
+  const display = med ? med.nome : nome.replace(/(^|\s)(\S)/g, function(x,a,b){ return a+b.toUpperCase(); });
+  if(entradas().some(function(e){ return norm(e) === norm(display); })){ pulsar(display); return; }
+  if(assocLinha !== null){
+    const l = linhas.find(function(x){ return x.id === assocLinha; });
+    if(l) l.chips.push(display);
+    assocLinha = null;
+  } else {
+    if(linhas.length >= MAX_LINHAS) return;
+    linhas.push({id:seqId++, chips:[display]});
+  }
+  render();
+}
+function adicionarTexto(txt){
+  const partes = String(txt).split('+').map(function(s){ return s.trim(); }).filter(Boolean);
+  if(partes.length > 1 && assocLinha === null){
+    const resolvidas = partes.map(function(p){ const m = encontrarMedicamento(p); return m ? m.nome : p; });
+    linhas.push({id:seqId++, chips:resolvidas}); render(); return;
+  }
+  partes.forEach(adicionarNome);
 }
 function removerChip(linhaId, idx){
-  const linha = linhas.find(function(l){ return l.id === linhaId; });
-  if(linha){ linha.chips.splice(idx,1); }
-  renderLinhas();
+  const l = linhas.find(function(x){ return x.id === linhaId; });
+  if(!l) return;
+  l.chips.splice(idx,1);
+  if(!l.chips.length) linhas = linhas.filter(function(x){ return x.id !== linhaId; });
+  if(assocLinha === linhaId && !linhas.some(function(x){ return x.id === linhaId; })) assocLinha = null;
+  render();
 }
-function adicionarLinha(){
-  if(linhas.length >= MAX_LINHAS) return;
-  linhas.push({id:seqId++, chips:[]});
-  renderLinhas();
+function iniciarAssociacao(linhaId){
+  assocLinha = assocLinha === linhaId ? null : linhaId;
+  renderTray(true);
 }
-function removerLinha(id){
-  linhas = linhas.filter(function(l){ return l.id !== id; });
-  renderLinhas();
-}
-function atualizarBotaoResultado(){
-  const btn = document.getElementById('btnVerResultado');
-  const ok = totalChips() >= 2;
-  btn.disabled = !ok;
-  btn.classList.toggle('ativo', ok);
+function limparTudo(){ linhas = []; assocLinha = null; filtroSev = null; render(); focarSlot(); }
+function pulsar(nome){
+  const el = Array.from(document.querySelectorAll('.ix-tag')).find(function(t){ return norm(t.dataset.nome) === norm(nome); });
+  if(el){ el.classList.remove('pulsa'); void el.offsetWidth; el.classList.add('pulsa'); }
 }
 
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-  });
+/* ---------------- Render: bandeja de medicamentos ---------------- */
+function corDoMed(nome){
+  const m = encontrarMedicamento(nome);
+  if(!m) return 'desc';
+  let h = 0; const s = (m.classeTerapeutica||[m.id]).slice(-1)[0] || m.id;
+  for(let i=0;i<s.length;i++) h = (h*31 + s.charCodeAt(i)) % 7;
+  return 'c'+h;
 }
-
-/* ===================== Análise ===================== */
-function coletarEntradas(){
-  const entradas = [];
-  linhas.forEach(function(l){
-    l.chips.forEach(function(c){ entradas.push(c); });
-  });
-  return entradas;
+const SVG_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+const SVG_MAIS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+const MAIS_HTML = '<span class="ix-mais" aria-hidden="true">'+SVG_MAIS+'</span>';
+function slotInputHtml(k, ph, assoc){
+  return '<div class="ix-slot ix-slot-input'+(assoc?' assoc':'')+'">'+
+    '<span class="ix-slot-num">'+(assoc ? '+' : k)+'</span>'+
+    '<input type="text" class="ix-in" autocomplete="off" spellcheck="false" placeholder="'+escapeHtml(ph)+'" aria-label="'+escapeHtml(ph)+'" role="combobox" aria-expanded="false" aria-autocomplete="list">'+
+    '<span class="ix-slot-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>'+
+    '<div class="ix-sug" role="listbox" hidden></div></div>';
 }
-
-function analisarPares(nomes){
-  const vistos = new Set(); // dedup só para não repetir o mesmo card de classe (ex.: dois AINEs diferentes + a mesma ARB)
-  const pares = [];
-  const naoReconhecidos = new Set();
-  nomes.forEach(function(n){
-    if(!encontrarMedicamento(n)) naoReconhecidos.add(n);
+function renderTray(focar){
+  const wrap = document.getElementById('ixSlots');
+  const partes = [];
+  const lAssoc = linhas.find(function(x){ return x.id === assocLinha; });
+  linhas.forEach(function(l, n){
+    const tags = l.chips.map(function(c, i){
+      const rec = !!encontrarMedicamento(c);
+      return (i ? '<span class="ix-plus">+</span>' : '')+
+        '<span class="ix-tag '+corDoMed(c)+(rec?'':' nao-rec')+'" data-nome="'+escapeHtml(c)+'" title="'+(rec?'':'Não consta no cadastro')+'">'+
+        '<span class="ix-tag-av">'+escapeHtml(iniciais(c))+'</span><span class="ix-tag-nome">'+escapeHtml(c)+'</span>'+
+        '<button type="button" onclick="removerChip('+l.id+','+i+')" aria-label="Remover '+escapeHtml(c)+'">'+SVG_X+'</button></span>';
+    }).join('');
+    partes.push('<div class="ix-slot ix-slot-cheio'+(assocLinha===l.id?' assoc':'')+'"><span class="ix-slot-num">'+(n+1)+'</span><div class="ix-slot-tags">'+tags+'</div>'+
+      '<button type="button" class="ix-assoc-btn" onclick="iniciarAssociacao('+l.id+')" title="Associar outra substância a este produto (dose fixa, ex.: losartana + hidroclorotiazida)">'+SVG_MAIS+'</button></div>');
   });
-  for(let i=0;i<nomes.length;i++){
-    for(let j=i+1;j<nomes.length;j++){
-      // Quando as duas entradas caem na MESMA classe canônica (ex.: dois
-      // benzodiazepínicos diferentes) a chave vira "classe|classe" e é
-      // buscada normalmente: só gera card se houver uma entrada própria de
-      // "duplicidade terapêutica" cadastrada para aquela classe (ex.:
-      // benzodiazepinico); classes sem entrada própria (ex.: duas BRAs
-      // diferentes) continuam sem card, como antes. Duas entradas que são
-      // literalmente a mesma substância digitada duas vezes são ignoradas.
-      const mesmaSubstancia = norm(nomes[i]) === norm(nomes[j]);
-      if(mesmaSubstancia) continue;
-      const chavesA = chavesDoMedicamento(nomes[i]);
-      const chavesB = chavesDoMedicamento(nomes[j]);
-      let dado = null, key = null;
-      for(let x=0;x<chavesA.length && !dado;x++){
-        for(let y=0;y<chavesB.length && !dado;y++){
-          const k = [chavesA[x], chavesB[y]].sort().join('|');
-          if(INTERACOES_MAP[k]){ dado = INTERACOES_MAP[k]; key = k; }
-        }
-      }
-      if(dado && !vistos.has(key)){
-        vistos.add(key);
-        pares.push({ nomeA: nomes[i], nomeB: nomes[j], info: dado });
-      }
+  if(lAssoc){
+    partes.push(slotInputHtml('+', 'Substância associada a '+lAssoc.chips.join(' + ')+'…', true));
+  } else {
+    const vazios = Math.max(1, 2 - linhas.length);
+    for(let k=0;k<vazios;k++){
+      const num = linhas.length + k + 1;
+      const ph = linhas.length >= 2 ? 'Adicionar outro medicamento…' : (num === 1 ? '1º medicamento' : '2º medicamento');
+      partes.push(slotInputHtml(num, ph, false));
     }
   }
-  return { pares: pares, naoReconhecidos: Array.from(naoReconhecidos) };
+  wrap.innerHTML = partes.join(MAIS_HTML);
+  wrap.querySelectorAll('.ix-in').forEach(ligarAutocomplete);
+  const dica = document.getElementById('ixDica');
+  if(dica) dica.hidden = linhas.length >= 2;
+  document.getElementById('ixLimpar').hidden = !linhas.length;
+  document.getElementById('ixExemplos').hidden = !!linhas.length;
+  if(focar) focarSlot();
+}
+function focarSlot(){
+  const inp = document.querySelector('#ixSlots .ix-in');
+  if(inp) inp.focus();
 }
 
-function verResultado(){
-  const entradas = coletarEntradas();
-  if(entradas.length < 2) return;
-  const btn = document.getElementById('btnVerResultado');
-  const rodar = function(){
-    btn.classList.remove('carregando');
-    btn.textContent = 'Ver resultado';
-    const resultado = analisarPares(entradas);
-    renderResultado(entradas, resultado.pares, resultado.naoReconhecidos);
-    salvarHistorico(entradas, resultado.pares);
-    document.getElementById('defaultView').classList.add('hide');
-    document.getElementById('resultadoView').classList.add('show');
-    window.scrollTo({top:0, behavior:'smooth'});
-  };
-  // Aguarda a base carregar — sucesso ou falha — antes de analisar; se ela
-  // já tiver carregado antes (caso comum), a promise resolvida retorna
-  // praticamente na hora.
-  btn.classList.add('carregando');
-  btn.textContent = 'Analisando…';
-  BASE_LOAD_PROMISE.finally(rodar);
+/* ---------------- Exemplos ---------------- */
+const EXEMPLOS = [
+  ['Varfarina','AAS (Ácido Acetilsalicílico)','Omeprazol'],
+  ['Sinvastatina','Claritromicina'],
+  ['Sildenafila','Isossorbida'],
+  ['Fluoxetina','Tramadol'],
+  ['Losartana','Espironolactona','Ibuprofeno'],
+  ['Colchicina','Claritromicina']
+];
+function renderExemplos(){
+  document.getElementById('ixExemplos').innerHTML = '<span class="ix-exemplos-rot">Experimente:</span>'+EXEMPLOS.map(function(ex, i){
+    return '<button type="button" class="ix-ex" onclick="carregarExemplo('+i+')">'+escapeHtml(ex.map(function(n){ return n.replace(/ \(.*\)/,''); }).join(' + '))+'</button>';
+  }).join('');
+}
+function carregarExemplo(i){
+  linhas = EXEMPLOS[i].map(function(n){ return {id:seqId++, chips:[n]}; });
+  assocLinha = null; filtroSev = null; render();
 }
 
-function novaAnalise(){
-  document.getElementById('resultadoView').classList.remove('show');
-  document.getElementById('defaultView').classList.remove('hide');
+/* ---------------- Análise ---------------- */
+function analisarPares(nomes){
+  const vistos = new Set(); const pares = []; const naoRec = new Set();
+  nomes.forEach(function(n){ if(!encontrarMedicamento(n)) naoRec.add(n); });
+  for(let i=0;i<nomes.length;i++){
+    for(let j=i+1;j<nomes.length;j++){
+      if(norm(nomes[i]) === norm(nomes[j])) continue;
+      const cA = chavesDoMedicamento(nomes[i]), cB = chavesDoMedicamento(nomes[j]);
+      let dado = null, key = null;
+      for(let x=0;x<cA.length && !dado;x++) for(let y=0;y<cB.length && !dado;y++){
+        const k = [cA[x], cB[y]].sort().join('|');
+        if(INTERACOES_MAP[k]){ dado = INTERACOES_MAP[k]; key = k; }
+      }
+      if(dado && !vistos.has(key)){ vistos.add(key); pares.push({nomeA:nomes[i], nomeB:nomes[j], info:dado, i:i, j:j}); }
+    }
+  }
+  pares.sort(function(a,b){ return SEV_PESO[b.info.gravidade] - SEV_PESO[a.info.gravidade]; });
+  return {pares:pares, naoReconhecidos:Array.from(naoRec)};
 }
 
-function renderResultado(entradas, pares, naoReconhecidos){
-  // Chips de entrada, agrupados por linha (para refletir combinações)
-  const chipsWrap = document.getElementById('resultadoChips');
-  chipsWrap.innerHTML = '';
-  linhas.forEach(function(l){
-    if(l.chips.length === 0) return;
-    const span = document.createElement('span');
-    span.className = 'resultado-chip';
-    span.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>' + escapeHtml(l.chips.join(' + '));
-    chipsWrap.appendChild(span);
-  });
-
-  const corpo = document.getElementById('resultadoCorpo');
-  const notificarBox = document.getElementById('notificarBox');
-
-  // Nota sobre medicamentos digitados que não constam no cadastro — evita
-  // que a ausência de card seja lida como "confirmado, sem interação"
-  // quando na verdade o medicamento nem foi reconhecido pela base.
-  const notaNaoReconhecidos = (naoReconhecidos && naoReconhecidos.length)
-    ? '<div class="naoreconhecido-nota">⚠ '+(naoReconhecidos.length === 1 ? 'O medicamento a seguir não consta' : 'Os medicamentos a seguir não constam')+' no cadastro atual: <strong>'+escapeHtml(naoReconhecidos.join(', '))+'</strong>. A ausência de interação exibida abaixo não cobre esse(s) item(ns) — confirme em uma base especializada de referência.</div>'
-    : '';
-
-  if(pares.length === 0){
-    corpo.innerHTML = '<div class="sem-interacao">'+
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>'+
-      '<div class="t">Nenhuma interação conhecida encontrada</div>'+
-      '<div class="d">Na base atual não foram identificadas interações relevantes entre os medicamentos informados. Isso não descarta a existência de interação — confirme em uma base especializada de referência caso haja dúvida clínica.</div>'+
-    '</div>'+notaNaoReconhecidos;
-    notificarBox.style.display = 'none';
+/* ---------------- Render principal ---------------- */
+function render(){
+  renderTray();
+  const main = document.getElementById('ixMain');
+  if(!BASE_READY){
+    main.innerHTML = '<div class="ix-card ix-vazio"><div class="ix-vazio-ico">'+svg(SEV_ICON.nao_classificada)+'</div><h3>Carregando a base…</h3><p>Se esta mensagem persistir, recarregue a página.</p></div>';
     return;
   }
+  const ents = entradas();
+  if(ents.length === 0){ renderBoasVindas(main); return; }
+  if(ents.length === 1){ renderPerfil(main, ents[0]); return; }
+  renderResultado(main, ents);
+}
+function svg(path, cls){ return '<svg'+(cls?' class="'+cls+'"':'')+' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+path+'</svg>'; }
 
-  const grupos = {};
-  pares.forEach(function(p){
-    const s = p.info.gravidade;
-    (grupos[s] = grupos[s] || []).push(p);
-  });
-
-  let html = '';
-  let temGrave = false;
-  SEVERIDADE_ORDEM.forEach(function(sev){
-    const lista = grupos[sev];
-    if(!lista || lista.length === 0) return;
-    if(sev === 'grave' || sev === 'contraindicada') temGrave = true;
-    html += '<div class="severidade-grupo sev-'+sev+'">';
-    html += '<div class="severidade-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+SEVERIDADE_ICON[sev]+'</svg>'+
-      'Interações '+SEVERIDADE_LABEL[sev]+'<span class="n">'+lista.length+' interação(ões) encontrada(s)</span></div>';
-    lista.forEach(function(p, idx){
-      const cardId = 'card_'+sev+'_'+idx;
-      html += '<div class="interacao-card">'+
-        '<div class="interacao-head">'+
-          '<div><div class="interacao-par-label">Interação</div><div class="interacao-par">'+escapeHtml(p.nomeA)+' + '+escapeHtml(p.nomeB)+'</div></div>'+
-          '<span class="interacao-badge badge-'+sev+'">'+BADGE_LABEL[sev]+'</span>'+
-        '</div>'+
-        tipoBadgesHtml(p.info)+
-        '<div class="bloco-label">Mecanismo farmacológico</div>'+
-        '<div class="bloco-texto">'+escapeHtml(p.info.mecanismo)+'</div>'+
-        '<div class="bloco-label">Conduta clínica recomendada</div>'+
-        '<div class="bloco-conduta bloco-texto">'+escapeHtml(p.info.conduta)+'</div>'+
-        '<div class="bloco-label">Ação sugerida no balcão <span style="opacity:.7;font-weight:500;text-transform:none;">(diferencial farmacêutico)</span></div>'+
-        '<div class="bloco-balcao bloco-texto">'+escapeHtml(p.info.acaoBalcao)+'</div>'+
-        '<div class="card-actions">'+
-          '<button class="btn-copiar" id="'+cardId+'" onclick="copiarIntervencao(this,\''+escapeAttr(p.nomeA)+'\',\''+escapeAttr(p.nomeB)+'\',\''+sev+'\',\''+escapeAttr(p.info.conduta)+'\',\''+escapeAttr(p.info.acaoBalcao)+'\')">'+
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'+
-            'Registrar intervenção farmacêutica</button>'+
-          (p.info.fonte ? '<span class="fonte-tag">Fonte: '+escapeHtml(p.info.fonte)+'</span>' : '')+
-        '</div>'+
-      '</div>';
-    });
-    html += '</div>';
-  });
-
-  corpo.innerHTML = html + notaNaoReconhecidos;
-  notificarBox.style.display = temGrave ? 'flex' : 'none';
+function renderBoasVindas(main){
+  main.innerHTML = '<div class="ix-card ix-welcome">'+
+    '<div class="ix-welcome-art" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>'+
+    '<h2>Verifique uma prescrição em segundos</h2>'+
+    '<ol class="ix-passos">'+
+      '<li><b>Digite</b> cada medicamento (genérico, marca ou associação, ex.: <i>losartana + hidroclorotiazida</i>).</li>'+
+      '<li>A análise é <b>automática</b>: interações aparecem ordenadas da mais grave à mais leve.</li>'+
+      '<li>Com <b>um só</b> medicamento, você vê o <b>perfil completo</b> de interações dele.</li>'+
+    '</ol>'+
+    '<p class="ix-dica">Atalho: tecle <kbd>/</kbd> para buscar. Use <kbd>Enter</kbd> para adicionar e <kbd>Backspace</kbd> com o campo vazio para remover o último.</p>'+
+  '</div>';
 }
 
-const BADGE_LABEL = {leve:'Leve', moderada:'Moderada', grave:'Grave', contraindicada:'Contraindicada', nao_classificada:'Não classificada'};
-function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
-function escapeAttr(s){ return String(s).replace(/'/g, "\\'"); }
+function renderPerfil(main, nome){
+  const med = encontrarMedicamento(nome);
+  if(!med){
+    main.innerHTML = '<div class="ix-card ix-vazio"><div class="ix-vazio-ico">'+svg(SEV_ICON.nao_classificada)+'</div><h3>“'+escapeHtml(nome)+'” não consta no cadastro</h3><p>Verifique a grafia ou tente o princípio ativo. Adicione outro medicamento para seguir com a verificação.</p></div>';
+    return;
+  }
+  const chaves = [med.id].concat(med.classeTerapeutica||[]);
+  const set = new Set(chaves);
+  const itens = [];
+  INTERACOES.forEach(function(it){
+    let outro = null, via = null;
+    if(set.has(it.medicamentoA)){ outro = it.medicamentoB; via = it.medicamentoA; }
+    else if(set.has(it.medicamentoB)){ outro = it.medicamentoA; via = it.medicamentoB; }
+    if(outro === null) return;
+    itens.push({it:it, outro:outro, via:via});
+  });
+  itens.sort(function(a,b){ return SEV_PESO[b.it.gravidade]-SEV_PESO[a.it.gravidade] || rotuloChave(a.outro).localeCompare(rotuloChave(b.outro),'pt-BR'); });
+  const cont = {}; itens.forEach(function(x){ cont[x.it.gravidade] = (cont[x.it.gravidade]||0)+1; });
+  const classes = (med.classeTerapeutica||[]).filter(function(c){ return c !== med.id && CLASSE_LABEL[c]; });
+  let html = '<div class="ix-card ix-perfil">'+
+    '<div class="ix-perfil-head"><span class="ix-perfil-av '+corDoMed(med.nome)+'">'+escapeHtml(iniciais(med.nome))+'</span>'+
+      '<div><div class="ix-eyebrow">Perfil de interações</div><h2>'+escapeHtml(med.nome)+'</h2>'+
+      (classes.length ? '<div class="ix-classes">'+classes.map(function(c){ return '<span>'+escapeHtml(CLASSE_LABEL[c])+'</span>'; }).join('')+'</div>' : '')+'</div></div>'+
+    '<div class="ix-sevbar">'+SEVERIDADE_ORDEM.filter(function(s){ return cont[s]; }).map(function(s){
+      return '<button type="button" class="ix-sevchip sv-'+s+(filtroSev===s?' ativo':'')+'" onclick="toggleFiltro(\''+s+'\')">'+svg(SEV_ICON[s])+'<b>'+cont[s]+'</b> '+SEV_PLURAL[s]+'</button>';
+    }).join('')+
+    '<input type="search" class="ix-filtro" id="ixFiltroPerfil" placeholder="Filtrar por medicamento ou classe…" oninput="filtrarPerfil(this.value)"></div>';
+  if(!itens.length){
+    html += '<p class="ix-muted">Nenhuma interação cadastrada para este medicamento na base atual. Isso não descarta interações — confirme em base de referência.</p>';
+  } else {
+    html += '<div class="ix-perfil-lista">';
+    itens.forEach(function(x, idx){
+      const s = x.it.gravidade;
+      if(filtroSev && filtroSev !== s) return;
+      const membros = (MEMBROS_CLASSE[x.outro]||[]).filter(function(id){ return id !== x.outro; }).map(function(id){ return MED_BY_ID[id].nome; });
+      html += '<details class="ix-perfil-item sv-'+s+'" data-busca="'+escapeHtml(norm(rotuloChave(x.outro)+' '+membros.join(' ')))+'">'+
+        '<summary><span class="ix-dot"></span><span class="ix-perfil-nome"><b>'+escapeHtml(rotuloChave(x.outro))+'</b>'+
+        (membros.length ? '<small>inclui '+escapeHtml(membros.slice(0,4).join(', '))+(membros.length>4?' e outros':'')+'</small>' : '')+'</span>'+
+        '<span class="ix-badge sv-'+s+'">'+SEV_NOME[s]+'</span><span class="ix-chev">›</span></summary>'+
+        '<div class="ix-perfil-corpo">'+tipoBadgesHtml(x.it)+
+        (x.via !== med.id ? '<div class="ix-via">Interação de classe: '+escapeHtml(rotuloChave(x.via))+'</div>' : '')+
+        blocos(x.it)+'</div></details>';
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  main.innerHTML = html;
+  const f = document.getElementById('ixFiltroPerfil');
+  if(f && PERFIL_FILTRO){ f.value = PERFIL_FILTRO; filtrarPerfil(PERFIL_FILTRO); }
+}
+let PERFIL_FILTRO = '';
+function filtrarPerfil(v){
+  PERFIL_FILTRO = v; const q = norm(v);
+  document.querySelectorAll('.ix-perfil-item').forEach(function(el){ el.hidden = q && el.dataset.busca.indexOf(q) < 0; });
+}
+function toggleFiltro(s){ filtroSev = filtroSev === s ? null : s; render(); }
 
-function copiarIntervencao(btn, a, b, sev, conduta, balcao){
+function blocos(info){
+  return '<div class="ix-bloco"><div class="ix-bloco-rot">'+svg('<circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>')+'Mecanismo</div><p>'+escapeHtml(info.mecanismo)+'</p></div>'+
+    '<div class="ix-bloco ix-bloco-conduta"><div class="ix-bloco-rot">'+svg('<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>')+'Conduta clínica</div><p>'+escapeHtml(info.conduta)+'</p></div>'+
+    (info.acaoBalcao ? '<div class="ix-bloco ix-bloco-balcao"><div class="ix-bloco-rot">'+svg('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>')+'No balcão</div><p>'+escapeHtml(info.acaoBalcao)+'</p></div>' : '')+
+    (info.fonte ? '<div class="ix-fonte">Fonte: '+escapeHtml(info.fonte)+'</div>' : '');
+}
+
+function renderResultado(main, ents){
+  const r = analisarPares(ents);
+  const pares = r.pares;
+  const cont = {}; pares.forEach(function(p){ cont[p.info.gravidade] = (cont[p.info.gravidade]||0)+1; });
+  const pior = pares.length ? pares[0].info.gravidade : null;
+  const titulo = pior ? (pior === 'contraindicada' ? 'Associação contraindicada identificada' : pior === 'grave' ? 'Interação grave identificada' : pior === 'moderada' ? 'Interações moderadas identificadas' : 'Somente interações leves') : 'Nenhuma interação conhecida na base';
+  const sub = pares.length ? pares.length+(pares.length>1?' interações':' interação')+' entre '+ents.length+' medicamentos' : 'entre os '+ents.length+' medicamentos informados';
+  let html = '<div class="ix-risco sv-'+(pior||'ok')+'">'+
+    '<div class="ix-risco-ico">'+svg(pior ? SEV_ICON[pior] : '<circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/>')+'</div>'+
+    '<div class="ix-risco-txt"><div class="ix-eyebrow">Resultado da análise</div><h2>'+titulo+'</h2><p>'+sub+'</p></div>'+
+    '<div class="ix-risco-acoes">'+
+      (pares.length ? '<button type="button" class="ix-btn ix-btn-ghost" onclick="copiarRelatorio(this)">'+svg('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>')+'Copiar relatório</button>' : '')+
+      '<button type="button" class="ix-btn ix-btn-ghost" onclick="window.print()">'+svg('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>')+'Imprimir</button>'+
+    '</div></div>';
+
+  if(pares.length){
+    html += '<div class="ix-sevbar">'+SEVERIDADE_ORDEM.filter(function(s){ return cont[s]; }).map(function(s){
+      return '<button type="button" class="ix-sevchip sv-'+s+(filtroSev===s?' ativo':'')+'" onclick="toggleFiltro(\''+s+'\')">'+svg(SEV_ICON[s])+'<b>'+cont[s]+'</b> '+SEV_PLURAL[s]+'</button>';
+    }).join('')+(filtroSev ? '<button type="button" class="ix-link" onclick="toggleFiltro(\''+filtroSev+'\')">mostrar todas</button>' : '')+'</div>';
+  }
+
+  if(ents.length >= 3) html += matrizHtml(ents, pares);
+
+  if(r.naoReconhecidos.length){
+    html += '<div class="ix-aviso">'+svg(SEV_ICON.grave)+'<span>'+(r.naoReconhecidos.length===1?'Não consta':'Não constam')+' no cadastro: <b>'+escapeHtml(r.naoReconhecidos.join(', '))+'</b>. A análise não cobre esse(s) item(ns) — confirme em base de referência.</span></div>';
+  }
+
+  if(!pares.length){
+    html += '<div class="ix-card ix-vazio ok"><div class="ix-vazio-ico">'+svg('<circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/>')+'</div><h3>Nenhuma interação conhecida encontrada</h3><p>A base atual não registra interação relevante entre esses medicamentos. Isso não descarta interação — em caso de dúvida clínica, confirme em base de referência.</p></div>';
+  } else {
+    html += '<div class="ix-cards">';
+    pares.forEach(function(p, idx){
+      const s = p.info.gravidade;
+      if(filtroSev && filtroSev !== s) return;
+      const aberto = SEV_PESO[s] >= 3 || pares.length <= 2;
+      html += '<details class="ix-int sv-'+s+'" id="par'+idx+'"'+(aberto?' open':'')+'>'+
+        '<summary><span class="ix-int-ico">'+svg(SEV_ICON[s])+'</span>'+
+        '<span class="ix-int-par"><b>'+escapeHtml(p.nomeA)+'</b><span class="ix-x">×</span><b>'+escapeHtml(p.nomeB)+'</b></span>'+
+        '<span class="ix-badge sv-'+s+'">'+SEV_NOME[s]+'</span><span class="ix-chev">›</span></summary>'+
+        '<div class="ix-int-corpo">'+tipoBadgesHtml(p.info)+blocos(p.info)+
+          '<div class="ix-int-acoes"><button type="button" class="ix-btn ix-btn-sm" onclick="copiarIntervencao(this,'+idx+')">'+svg('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>')+'Registrar intervenção</button></div>'+
+        '</div></details>';
+    });
+    html += '</div>';
+  }
+  main.innerHTML = html;
+  ULTIMOS_PARES = pares;
+  agendarHistorico(ents, pares);
+}
+let ULTIMOS_PARES = [];
+
+function matrizHtml(ents, pares){
+  const mapa = {};
+  pares.forEach(function(p, idx){ mapa[p.i+'_'+p.j] = {s:p.info.gravidade, idx:idx}; });
+  let h = '<div class="ix-card ix-matriz-wrap"><div class="ix-matriz-tit">Mapa de interações <small>clique numa célula para ir ao detalhe</small></div><div class="ix-matriz" style="grid-template-columns:minmax(110px,170px) repeat('+ents.length+', minmax(34px,1fr))">';
+  h += '<div></div>'+ents.map(function(e){ return '<div class="ix-mx-col" title="'+escapeHtml(e)+'"><span>'+escapeHtml(iniciais(e))+'</span></div>'; }).join('');
+  ents.forEach(function(a, i){
+    h += '<div class="ix-mx-row" title="'+escapeHtml(a)+'"><span class="ix-mx-av">'+escapeHtml(iniciais(a))+'</span>'+escapeHtml(a)+'</div>';
+    ents.forEach(function(b, j){
+      if(i === j){ h += '<div class="ix-mx-cel eu"></div>'; return; }
+      const c = mapa[Math.min(i,j)+'_'+Math.max(i,j)];
+      h += c ? '<button type="button" class="ix-mx-cel sv-'+c.s+'" title="'+escapeHtml(a+' × '+b+': '+SEV_NOME[c.s])+'" onclick="irParaPar('+c.idx+')"></button>' : '<div class="ix-mx-cel nada" title="'+escapeHtml(a+' × '+b+': sem interação na base')+'"></div>';
+    });
+  });
+  return h + '</div></div>';
+}
+function irParaPar(idx){
+  if(filtroSev){ filtroSev = null; render(); }
+  const el = document.getElementById('par'+idx);
+  if(el){ el.open = true; el.scrollIntoView({behavior:'smooth', block:'start'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }
+}
+
+/* ---------------- Cópia / relatório ---------------- */
+function capitalize(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function copiarIntervencao(btn, idx){
+  const p = ULTIMOS_PARES[idx]; if(!p) return;
   const hoje = new Date().toLocaleDateString('pt-BR');
-  const texto = 'REGISTRO DE INTERVENÇÃO FARMACÊUTICA\\n'+
-    'Data: '+hoje+'\\n'+
-    'Medicamentos envolvidos: '+a+' + '+b+'\\n'+
-    'Gravidade da interação: '+capitalize(sev)+'\\n'+
-    'Conduta clínica: '+conduta+'\\n'+
-    'Ação farmacêutica no atendimento: '+balcao+'\\n'+
+  const texto = 'REGISTRO DE INTERVENÇÃO FARMACÊUTICA\n'+
+    'Data: '+hoje+'\n'+
+    'Medicamentos envolvidos: '+p.nomeA+' + '+p.nomeB+'\n'+
+    'Gravidade da interação: '+SEV_NOME[p.info.gravidade]+'\n'+
+    'Conduta clínica: '+p.info.conduta+'\n'+
+    'Ação farmacêutica no atendimento: '+(p.info.acaoBalcao||'')+'\n'+
     'Farmacêutico(a) responsável: ____________________  CRF: ________';
   copiarTexto(texto, btn);
 }
-
+function copiarRelatorio(btn){
+  const ents = entradas();
+  let t = 'ANÁLISE DE INTERAÇÕES MEDICAMENTOSAS — '+new Date().toLocaleDateString('pt-BR')+'\n'+
+    'Medicamentos: '+linhas.map(function(l){ return l.chips.join(' + '); }).join('; ')+'\n\n';
+  ULTIMOS_PARES.forEach(function(p, i){
+    t += (i+1)+'. '+p.nomeA+' + '+p.nomeB+' — '+SEV_NOME[p.info.gravidade].toUpperCase()+'\n'+
+      '   Mecanismo: '+p.info.mecanismo+'\n   Conduta: '+p.info.conduta+'\n\n';
+  });
+  t += 'Gerado no FarmaPrática (base própria; não substitui o julgamento clínico).';
+  copiarTexto(t, btn);
+}
 function copiarTexto(texto, btn){
-  const marcarSucesso = function(){
-    if(!btn) return;
-    const original = btn.innerHTML;
-    btn.classList.add('copiado');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Copiado!';
-    setTimeout(function(){ btn.classList.remove('copiado'); btn.innerHTML = original; }, 1800);
+  const ok = function(){
+    if(!btn) return; const o = btn.innerHTML; btn.classList.add('copiado');
+    btn.innerHTML = svg('<polyline points="20 6 9 17 4 12"/>')+'Copiado!';
+    setTimeout(function(){ btn.classList.remove('copiado'); btn.innerHTML = o; }, 1800);
   };
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(texto).then(marcarSucesso).catch(function(){ fallbackCopiar(texto, marcarSucesso); });
-  } else {
-    fallbackCopiar(texto, marcarSucesso);
-  }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(texto).then(ok).catch(function(){ fallbackCopiar(texto, ok); }); }
+  else fallbackCopiar(texto, ok);
 }
 function fallbackCopiar(texto, cb){
-  const ta = document.createElement('textarea');
-  ta.value = texto; ta.style.position='fixed'; ta.style.opacity='0';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); cb && cb(); }catch(e){}
-  document.body.removeChild(ta);
+  const ta = document.createElement('textarea'); ta.value = texto; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); cb && cb(); }catch(e){} document.body.removeChild(ta);
 }
 
-/* ===================== Histórico (Recentes) ===================== */
+/* ---------------- Histórico ---------------- */
 const HIST_KEY = 'fp_interacoes_historico_v1';
-function carregarHistorico(){
-  try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; }
+function carregarHistorico(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+let histTimer = null;
+function agendarHistorico(ents, pares){
+  clearTimeout(histTimer);
+  histTimer = setTimeout(function(){ salvarHistorico(pares); }, 1500);
 }
-function gravidadeDoPar(p){
-  return p.info.gravidade;
-}
-function salvarHistorico(entradas, pares){
-  const hist = carregarHistorico();
-  const ordem = {contraindicada:4, grave:3, moderada:2, leve:1, nao_classificada:0};
-  let piorGravidade = null;
-  pares.forEach(function(p){
-    const g = gravidadeDoPar(p);
-    if(piorGravidade === null || ordem[g] > ordem[piorGravidade]) piorGravidade = g;
-  });
-  hist.unshift({
-    ts: Date.now(),
-    linhas: linhas.filter(function(l){return l.chips.length>0;}).map(function(l){ return l.chips.slice(); }),
-    nInteracoes: pares.length,
-    gravidade: piorGravidade
-  });
-  localStorage.setItem(HIST_KEY, JSON.stringify(hist.slice(0,25)));
+function salvarHistorico(pares){
+  const ls = linhas.map(function(l){ return l.chips.slice(); });
+  const key = JSON.stringify(ls.map(function(x){ return x.map(norm).sort(); }).sort());
+  if(key === ultimoHistKey) return;
+  let hist = carregarHistorico();
+  // se a análise anterior era um subconjunto desta (o usuário só acrescentou itens), substitui
+  if(hist.length){
+    const ant = new Set([].concat.apply([], hist[0].linhas).map(norm));
+    const nova = new Set([].concat.apply([], ls).map(norm));
+    if(Date.now() - hist[0].ts < 10*60*1000 && Array.from(ant).every(function(x){ return nova.has(x); })) hist.shift();
+  }
+  let pior = null;
+  pares.forEach(function(p){ if(pior === null || SEV_PESO[p.info.gravidade] > SEV_PESO[pior]) pior = p.info.gravidade; });
+  hist.unshift({ts:Date.now(), linhas:ls, nInteracoes:pares.length, gravidade:pior});
+  try{ localStorage.setItem(HIST_KEY, JSON.stringify(hist.slice(0,25))); }catch(e){}
+  ultimoHistKey = key;
   renderRecentes();
 }
-function limparHistorico(){
-  localStorage.removeItem(HIST_KEY);
-  renderRecentes();
-}
+function limparHistorico(){ try{ localStorage.removeItem(HIST_KEY); }catch(e){} renderRecentes(); }
 function renderRecentes(){
   const hist = carregarHistorico();
   const body = document.getElementById('recentesBody');
-  if(hist.length === 0){
-    body.innerHTML = '<div class="recentes-empty">'+
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>'+
-      '<div class="t">Nenhuma análise recente</div>'+
-      '<div class="d">As interações que você verificar aparecerão aqui, para consulta rápida durante o atendimento.</div>'+
-    '</div>';
-    return;
-  }
-  let html = '<div class="recentes-list">';
-  hist.forEach(function(h, idx){
+  if(!hist.length){ body.innerHTML = '<p class="ix-muted ix-rec-vazio">As análises que você fizer aparecem aqui.</p>'; return; }
+  body.innerHTML = '<div class="ix-rec-lista">'+hist.slice(0,8).map(function(h, idx){
     const d = new Date(h.ts);
-    const dataStr = d.toLocaleDateString('pt-BR')+' · '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-    const meds = h.linhas.map(function(l){ return l.join(' + '); }).join('  |  ');
-    let badge = '<span class="recente-badge" style="background:rgba(16,185,129,.15);color:#10b981;">sem interação</span>';
-    if(h.nInteracoes > 0){
-      const cores = {leve:'#3b82f6', moderada:'#b45309', grave:'#c2410c', contraindicada:'#dc2626', nao_classificada:'#565e68'};
-      badge = '<span class="recente-badge" style="background:'+cores[h.gravidade]+'22;color:'+cores[h.gravidade]+';">'+h.nInteracoes+' interação(ões)</span>';
-    }
-    html += '<div class="recente-item" onclick="reabrirHistorico('+idx+')">'+
-      '<div><div class="recente-meds">'+escapeHtml(meds)+'</div><div class="recente-meta">'+dataStr+'</div></div>'+
-      badge+
-    '</div>';
-  });
-  html += '</div>';
-  body.innerHTML = html;
+    const quando = d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' · '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+    const s = h.nInteracoes ? h.gravidade : 'ok';
+    return '<button type="button" class="ix-rec sv-'+s+'" onclick="reabrirHistorico('+idx+')"><span class="ix-dot"></span>'+
+      '<span class="ix-rec-txt"><b>'+escapeHtml(h.linhas.map(function(l){ return l.join(' + '); }).join(' · '))+'</b>'+
+      '<small>'+quando+' · '+(h.nInteracoes ? h.nInteracoes+' interaç'+(h.nInteracoes>1?'ões':'ão') : 'sem interação')+'</small></span></button>';
+  }).join('')+'</div>';
 }
 function reabrirHistorico(idx){
-  const hist = carregarHistorico();
-  const item = hist[idx];
-  if(!item) return;
-  linhas = item.linhas.map(function(chips){ return {id:seqId++, chips: chips.slice()}; });
-  if(linhas.length < 2){ linhas.push({id:seqId++, chips:[]}); }
-  renderLinhas();
-  verResultado();
+  const item = carregarHistorico()[idx]; if(!item) return;
+  linhas = item.linhas.map(function(chips){ return {id:seqId++, chips:chips.slice()}; });
+  assocLinha = null; filtroSev = null;
+  ultimoHistKey = JSON.stringify(linhas.map(function(l){ return l.chips.map(norm).sort(); }).sort());
+  render(); window.scrollTo({top:0, behavior:'smooth'});
 }
 
-/* ===================== Tema ===================== */
-function toggleTheme(){
-  document.body.classList.toggle('light');
-  localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+/* ---------------- Estatísticas ---------------- */
+function renderStats(){
+  const el = document.getElementById('ixStats');
+  if(!BASE_READY){ el.innerHTML = '<div class="ix-stat"><b>—</b><span>base indisponível</span></div>'; return; }
+  const cont = {}; INTERACOES.forEach(function(i){ cont[i.gravidade] = (cont[i.gravidade]||0)+1; });
+  const total = INTERACOES.length;
+  el.innerHTML = '<div class="ix-stat-top"><div class="ix-stat"><b>'+MEDICAMENTOS.length+'</b><span>medicamentos</span></div><div class="ix-stat"><b>'+total+'</b><span>interações</span></div></div>'+
+    '<div class="ix-dist" title="Distribuição por gravidade">'+['contraindicada','grave','moderada','leve'].map(function(s){
+      return cont[s] ? '<span class="sv-'+s+'" style="flex:'+cont[s]+'" title="'+SEV_PLURAL[s]+': '+cont[s]+'"></span>' : '';
+    }).join('')+'</div><div class="ix-dist-leg">'+['contraindicada','grave','moderada','leve'].map(function(s){
+      return '<span class="sv-'+s+'"><i></i>'+(cont[s]||0)+'</span>';
+    }).join('')+'</div>';
 }
-// 20/10/2026: a página agora inicia em modo escuro por padrão, lendo de
-// volta a preferência salva (script inline logo após o <body>) — a chave é
-// compartilhada com as demais ferramentas do FarmaPrática.
 
-/* ===================== db-pill (contador do cabeçalho) ===================== */
-function atualizarDbLabel(){
-  const el = document.getElementById('dbLabel');
-  const dot = document.querySelector('.db-dot');
-  if(BASE_READY){
-    el.textContent = MEDICAMENTOS.length + ' medicamentos · ' + INTERACOES.length + ' interações mapeadas · base própria';
-    if(dot){ dot.style.background = '#10b981'; dot.style.boxShadow = '0 0 0 3px rgba(16,185,129,.2)'; }
-  } else {
-    el.textContent = 'Base indisponível — recarregue a página';
-    if(dot){ dot.style.background = '#dc2626'; dot.style.boxShadow = '0 0 0 3px rgba(220,38,38,.2)'; }
+/* ---------------- Busca: autocomplete em cada campo ---------------- */
+function ligarAutocomplete(inp){
+  const box = inp.parentElement.querySelector('.ix-sug');
+  let itens = [], sel = -1;
+  function fechar(){ box.hidden = true; inp.setAttribute('aria-expanded','false'); sel = -1; }
+  function marcar(i){
+    const els = box.querySelectorAll('.ix-sug-item');
+    els.forEach(function(e,k){ e.classList.toggle('ativo', k===i); });
+    if(els[i]) els[i].scrollIntoView({block:'nearest'});
+    sel = i;
   }
-}
-
-/* ===================== Inicialização ===================== */
-atualizarDbLabel();
-renderLinhas();
-renderRecentes();
-
-/* Link direto vindo de outras ferramentas (Bulário, busca da página inicial):
-   ?med=<id>[,<id>...] — pré-preenche os medicamentos (um por linha) e, com
-   2 ou mais reconhecidos, já executa a análise. Com 1 só, foca a próxima linha. */
-(function(){
-  let ids = [];
-  try{
-    const v = new URLSearchParams(location.search).get('med');
-    if(v) ids = v.split(',').map(function(x){ return x.trim(); }).filter(Boolean).slice(0, MAX_LINHAS);
-  }catch(e){ return; }
-  if(!ids.length) return;
-  BASE_LOAD_PROMISE.then(function(){
-    const nomes = ids.map(function(id){
-      const med = MEDICAMENTOS.find(function(m){ return m.id === id; }) || encontrarMedicamento(id);
-      return med ? med.nome : null;
-    }).filter(Boolean);
-    if(!nomes.length) return;
-    linhas = nomes.map(function(n){ return {id:seqId++, chips:[n]}; });
-    if(linhas.length < 2) linhas.push({id:seqId++, chips:[]});
-    renderLinhas();
-    if(nomes.length >= 2){ verResultado(); }
-    else{
-      const inp = document.querySelector('input[data-linha="'+linhas[1].id+'"]');
-      if(inp) inp.focus();
+  function escolher(i){
+    const it = itens[i]; if(!it) return;
+    fechar(); adicionarNome(it.med.nome); focarSlot();
+  }
+  function atualizar(){
+    const q = inp.value;
+    if(q.indexOf('+') >= 0){ fechar(); return; }
+    itens = sugerir(q).map(function(x){ return {med:x.v.med, v:x.v}; });
+    if(!itens.length){
+      if(norm(q).length >= 2){
+        box.innerHTML = '<div class="ix-sug-vazio">Nenhum medicamento no cadastro com “'+escapeHtml(q)+'”. <span>Enter adiciona assim mesmo (sem análise).</span></div>';
+        box.hidden = false;
+      } else fechar();
+      return;
+    }
+    const jaTem = new Set(entradas().map(norm));
+    box.innerHTML = itens.map(function(x, i){
+      const m = x.med;
+      const cls = (m.classeTerapeutica||[]).filter(function(c){ return c !== m.id && CLASSE_LABEL[c]; }).map(function(c){ return CLASSE_LABEL[c]; });
+      return '<div class="ix-sug-item'+(jaTem.has(norm(m.nome))?' ja':'')+'" role="option" data-i="'+i+'">'+
+        '<span class="ix-tag-av '+corDoMed(m.nome)+'">'+escapeHtml(iniciais(m.nome))+'</span>'+
+        '<span class="ix-sug-txt"><b>'+(x.v.alias ? escapeHtml(m.nome)+' <em>'+destacar(x.v.display, q)+'</em>' : destacar(m.nome, q))+'</b>'+
+        '<small>'+escapeHtml(cls.slice(0,2).join(' · ') || 'Medicamento')+'</small></span>'+
+        '<span class="ix-sug-n" title="interações cadastradas">'+contarInteracoes(m)+'</span></div>';
+    }).join('')+'<div class="ix-sug-rodape"><span><kbd>↑</kbd><kbd>↓</kbd> navegar</span><span><kbd>Enter</kbd> adicionar</span><span><kbd>Esc</kbd> fechar</span></div>';
+    box.hidden = false; inp.setAttribute('aria-expanded','true'); marcar(0);
+  }
+  inp.addEventListener('input', atualizar);
+  inp.addEventListener('focus', function(){ if(inp.value.trim().length >= 2) atualizar(); });
+  inp.addEventListener('blur', function(){ setTimeout(fechar, 120); });
+  inp.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown' && !box.hidden){ e.preventDefault(); marcar(Math.min(sel+1, itens.length-1)); }
+    else if(e.key === 'ArrowUp' && !box.hidden){ e.preventDefault(); marcar(Math.max(sel-1, 0)); }
+    else if(e.key === 'Escape'){ if(!box.hidden) fechar(); else if(assocLinha !== null){ assocLinha = null; renderTray(true); } }
+    else if(e.key === 'Enter'){
+      e.preventDefault();
+      if(!box.hidden && sel >= 0 && itens[sel]) escolher(sel);
+      else if(inp.value.trim()){ const v = inp.value; inp.value = ''; fechar(); adicionarTexto(v); focarSlot(); }
+    }
+    else if(e.key === 'Backspace' && !inp.value && linhas.length){
+      const l = linhas[linhas.length-1]; removerChip(l.id, l.chips.length-1); focarSlot();
     }
   });
+  box.addEventListener('mousedown', function(e){ const el = e.target.closest('.ix-sug-item'); if(el){ e.preventDefault(); escolher(+el.dataset.i); } });
+  box.addEventListener('mousemove', function(e){ const el = e.target.closest('.ix-sug-item'); if(el && +el.dataset.i !== sel) marcar(+el.dataset.i); });
+}
+document.addEventListener('keydown', function(e){
+  const t = (e.target.tagName||'').toLowerCase();
+  if((e.key === '/' && t !== 'input' && t !== 'textarea') || ((e.ctrlKey||e.metaKey) && e.key.toLowerCase() === 'k')){ e.preventDefault(); focarSlot(); }
+});
+const CONT_CACHE = {};
+function contarInteracoes(m){
+  if(CONT_CACHE[m.id] != null) return CONT_CACHE[m.id];
+  const set = new Set([m.id].concat(m.classeTerapeutica||[]));
+  let n = 0; INTERACOES.forEach(function(it){ if(set.has(it.medicamentoA) || set.has(it.medicamentoB)) n++; });
+  return (CONT_CACHE[m.id] = n);
+}
+
+/* ---------------- Tema ---------------- */
+function toggleTheme(){
+  document.body.classList.toggle('light');
+  try{ localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+}
+
+/* ---------------- Inicialização ---------------- */
+renderExemplos(); renderRecentes(); render();
+
+/* Link direto (Bulário, busca da página inicial): ?med=<id>[,<id>...] */
+(function(){
+  let ids = [];
+  try{ const v = new URLSearchParams(location.search).get('med'); if(v) ids = v.split(',').map(function(x){ return x.trim(); }).filter(Boolean).slice(0, MAX_LINHAS); }catch(e){ return; }
+  if(!ids.length) return;
+  BASE_LOAD_PROMISE.then(function(){
+    const nomes = ids.map(function(id){ const m = MED_BY_ID[id] || encontrarMedicamento(id); return m ? m.nome : null; }).filter(Boolean);
+    if(!nomes.length) return;
+    linhas = nomes.map(function(n){ return {id:seqId++, chips:[n]}; });
+    render();
+  });
 })();
+window.addEventListener('beforeprint', function(){ document.querySelectorAll('details').forEach(function(d){ d.open = true; }); });
 </script>
 <script src="../assets/tempo-uso.js" data-tool="interacoes"></script>
 </body>

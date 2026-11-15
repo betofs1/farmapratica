@@ -3,7 +3,7 @@
   "_fonte_controlados": "https://anvisalegis.datalegis.net/action/ActionDatalegis.php?acao=abrirTextoAto&tipo=POR&numeroAto=00000344&seqAto=000&valorAno=1998&orgao=SVS%2FMS&codTipo=&desItem=&desItemFim=&cod_menu=1696&cod_modulo=134&pesquisa=true",
   "_fonte_antimicrobianos": "https://anvisalegis.datalegis.net/action/ActionDatalegis.php?acao=abrirTextoAto&link=S&tipo=INM&numeroAto=00000360&seqAto=000&valorAno=2025&orgao=DC%2FANVISA%2FMS&cod_modulo=310&cod_menu=9431",
   "_capturado_em": "2026-11-03",
-  "_curadoria_validada_em": "2026-11-12",
+  "_curadoria_validada_em": "2026-11-15",
   "listas": {
     "A1": {
       "titulo": "LISTA DAS SUBSTÂNCIAS ENTORPECENTES (Sujeitas à Notificação de Receita \"A\")",
@@ -612,7 +612,7 @@
         "bacitracina",
         "besifloxacino",
         "brodimoprima",
-        "capreomicin",
+        "capreomicina",
         "carbenicilina",
         "cefaclor",
         "cefadroxil",
@@ -625,9 +625,9 @@
         "cefotaxima",
         "cefoxitina",
         "cefpodoxima",
-        "cefefpiroma",
+        "cefpiroma",
         "cefprozil",
-        "ceftadizima",
+        "ceftazidima",
         "ceftarolina fosamila",
         "ceftobiprol",
         "ceftriaxona",
@@ -642,7 +642,7 @@
         "dactinomicina",
         "daptomicina",
         "dapsona",
-        "delamanide",
+        "delamanida",
         "dicloxacilina",
         "difenilsulfona",
         "diidroestreptomicina",
@@ -731,6 +731,23 @@
         "vancomicina"
       ],
       "adendo": "Lista não se aplica a antimicrobianos de uso exclusivo hospitalar. Receita válida por 10 dias a contar da emissão; dispensação mediante retenção da 2ª via, devolvendo a 1ª via ao paciente."
+    },
+    "GLP1": {
+      "titulo": "Agonistas do receptor de GLP-1 — uso sob prescrição com retenção de receita (IN 360/2025)",
+      "regra": {
+        "receita": "Receita simples, 2 vias (retenção da 2ª via)",
+        "vias": 2,
+        "validade_dias": 90,
+        "retencao": true
+      },
+      "substancias": [
+        "semaglutida",
+        "liraglutida",
+        "dulaglutida",
+        "tirzepatida",
+        "lixisenatida"
+      ],
+      "adendo": "Não são substâncias da Portaria 344/98: seguem a RDC 471/2021 (alterada pela RDC 973/2025), com receita em 2 vias válida por 90 dias a contar da emissão, retenção da 2ª via e escrituração no SNGPC. Receita sujeita à retenção e Receita de Controle Especial são categorias distintas. A manipulação de semaglutida não é permitida (Nota Técnica Anvisa nº 200/2025)."
     }
   },
   "detalhes": {
@@ -869,7 +886,7 @@
       "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
       "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
     },
-    "cefefpiroma": {
+    "cefpiroma": {
       "classe": "Antibiótico betalactâmico (cefalosporina)",
       "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
       "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
@@ -879,7 +896,7 @@
       "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
       "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
     },
-    "ceftadizima": {
+    "ceftazidima": {
       "classe": "Antibiótico betalactâmico (cefalosporina)",
       "indicacoes": "Infecções respiratórias, urinárias, de pele e partes moles, e infecções mais graves conforme a geração do fármaco.",
       "mecanismo": "Inibe a síntese da parede celular bacteriana ligando-se às PBPs, de forma semelhante às penicilinas."
@@ -1269,12 +1286,12 @@
       "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
       "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
     },
-    "capreomicin": {
+    "capreomicina": {
       "classe": "Antimicobacteriano (tuberculostático)",
       "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
       "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
     },
-    "delamanide": {
+    "delamanida": {
       "classe": "Antimicobacteriano (tuberculostático)",
       "indicacoes": "Tratamento da tuberculose, geralmente em esquemas combinados.",
       "mecanismo": "Mecanismos variados conforme o fármaco: interferência na síntese do ácido micólico da parede micobacteriana, na síntese proteica ou em outras vias metabólicas essenciais ao bacilo."
@@ -2603,6 +2620,31 @@
       "classe": "Imunomodulador (inibidor da síntese de pirimidinas)",
       "indicacoes": "Esclerose múltipla remitente-recorrente (teriflunomida); artrite reumatoide (leflunomida).",
       "mecanismo": "Inibe a enzima di-hidro-orotato desidrogenase, reduzindo a proliferação de linfócitos ativados."
+    },
+    "semaglutida": {
+      "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+      "indicacoes": "DM2 (Ozempic®, Rybelsus®) e obesidade/sobrepeso com comorbidade (Wegovy®), conforme registro.",
+      "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+    },
+    "liraglutida": {
+      "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+      "indicacoes": "DM2 (Victoza®) e obesidade/sobrepeso com comorbidade (Saxenda®), conforme registro.",
+      "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+    },
+    "dulaglutida": {
+      "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+      "indicacoes": "DM2 (Trulicity®).",
+      "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
+    },
+    "tirzepatida": {
+      "classe": "Agonista duplo dos receptores de GIP e GLP-1",
+      "indicacoes": "DM2 e obesidade/sobrepeso com comorbidade (Mounjaro®), conforme registro.",
+      "mecanismo": "Ativa os receptores de GIP e de GLP-1, com efeito incretínico sobre insulina e glucagon, retardo do esvaziamento gástrico e redução do apetite."
+    },
+    "lixisenatida": {
+      "classe": "Agonista do receptor de GLP-1 (incretinomimético)",
+      "indicacoes": "DM2, em associação com insulina glargina (Soliqua®).",
+      "mecanismo": "Ativa o receptor de GLP-1: aumenta a secreção de insulina dependente de glicose, reduz o glucagon, retarda o esvaziamento gástrico e aumenta a saciedade."
     }
   },
   "excecoes": {

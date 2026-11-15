@@ -181,10 +181,89 @@
     });
   }
 
+
+  /* ---------------------------------------------------------------------
+     15/11/2026 — Busca modernizada: ranking por relevância, múltiplos
+     termos, destaque do trecho encontrado e sugestões instantâneas.
+  --------------------------------------------------------------------- */
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function termos(q) { return normalize(q).split(/[\s+/,-]+/).filter(Boolean); }
+  // Destaca (sem acento/maiúsculas) os termos buscados dentro do texto original.
+  function destacar(texto, q) {
+    const t = String(texto || "");
+    const ts = termos(q || "");
+    if (!ts.length || !t) return esc(t);
+    const base = normalize(t);
+    // normalize() pode remover combinações de acento sem mudar o comprimento visual;
+    // mapeamos índice a índice pela versão NFD sem diacríticos.
+    const marcas = new Array(t.length).fill(false);
+    ts.forEach((term) => {
+      let i = base.indexOf(term);
+      while (i !== -1 && term) { for (let k = i; k < i + term.length && k < t.length; k++) marcas[k] = true; i = base.indexOf(term, i + term.length); }
+    });
+    if (base.length !== t.length) return esc(t);
+    let out = "", aberto = false;
+    for (let i = 0; i < t.length; i++) {
+      if (marcas[i] && !aberto) { out += "<mark>"; aberto = true; }
+      if (!marcas[i] && aberto) { out += "</mark>"; aberto = false; }
+      out += esc(t[i]);
+    }
+    return out + (aberto ? "</mark>" : "");
+  }
+  function pontuar(nome, resto, ts) {
+    const n = normalize(nome);
+    let total = 0;
+    for (const term of ts) {
+      if (n === term) total += 120;
+      else if (n.startsWith(term)) total += 90;
+      else if (new RegExp("(^|[\\s(+/-])" + escRe(term)).test(n)) total += 70;
+      else if (n.includes(term)) total += 45;
+      else if (resto.includes(term)) total += 15;
+      else return 0; // todos os termos precisam aparecer
+    }
+    return total - Math.min(n.length, 60) / 60; // nomes mais curtos primeiro em empate
+  }
+  function buscarRanqueado(query, limite) {
+    const ts = termos(query);
+    if (!ts.length) return [];
+    const res = [];
+    SEARCH_INDEX.forEach((e) => {
+      const sc = pontuar(e.nomeGenerico, e.texto, ts);
+      if (sc > 0) res.push({ id: e.id, sc });
+    });
+    res.sort((x, y) => y.sc - x.sc || MEDICAMENTOS[x.id].nomeGenerico.localeCompare(MEDICAMENTOS[y.id].nomeGenerico, "pt-BR"));
+    return (limite ? res.slice(0, limite) : res).map((r) => r.id);
+  }
+  function buscarComerciaisRanqueado(query, limite) {
+    const ts = termos(query);
+    if (!ts.length) return [];
+    const vistos = new Map();
+    COMERCIAL_INDEX.forEach((c) => {
+      const chave = normalize(c.nome).replace(/[^a-z0-9]/g, "") + "|" + c.medId;
+      if (vistos.has(chave)) return;
+      const sc = pontuar(c.nome, "", ts);
+      if (sc > 0) vistos.set(chave, { ...c, sc });
+    });
+    const arr = Array.from(vistos.values()).sort((x, y) => y.sc - x.sc || x.nome.localeCompare(y.nome, "pt-BR"));
+    return limite ? arr.slice(0, limite) : arr;
+  }
+  function buscarGrupos(query) {
+    const ts = termos(query);
+    if (!ts.length) return [];
+    const res = [];
+    GRUPOS.forEach((g) => {
+      const scG = pontuar(g.nome, "", ts);
+      if (scG > 0) res.push({ tipo: "grupo", grupo: g, nome: g.nome, sc: scG + 5, total: g.subclasses.reduce((a, s) => a + s.medicamentos.length, 0) });
+      g.subclasses.forEach((s, i) => {
+        const sc = pontuar(s.nome, "", ts);
+        if (sc > 0) res.push({ tipo: "subclasse", grupo: g, idx: i, nome: s.nome, sc, total: s.medicamentos.length });
+      });
+    });
+    return res.sort((x, y) => y.sc - x.sc);
+  }
+
   function buscarMedicamentos(query) {
-    const q = normalize(query);
-    if (!q) return [];
-    return SEARCH_INDEX.filter((entry) => entry.texto.includes(q)).map((e) => e.id);
+    return buscarRanqueado(query);
   }
 
   function buscarPorNomeComercial(query) {
@@ -288,21 +367,36 @@
     return !!(m && m.mecanismoAcao);
   }
 
-  function medItemButton(medId) {
+  function iniciais(nome) {
+    const p = String(nome || "").replace(/\(.*?\)/g, "").split(/[\s+]+/).filter((w) => w.length > 2);
+    return ((p[0] || "?")[0] + (p[1] ? p[1][0] : (p[0] || "")[1] || "")).toUpperCase();
+  }
+  function medItemButton(medId, q) {
     const m = MEDICAMENTOS[medId];
     if (!m) return "";
-    const fav = isFavorito(medId) ? "star-on" : "";
+    const fav = isFavorito(medId);
     const completo = fichaCompleta(m);
     const cor = MED_GRUPO_COR[medId];
     return `
-      <button class="med-item${completo ? " med-item-completo" : ""}" data-med="${medId}"${cor ? ` data-cor="${cor}"` : ""} onclick="irPara('#/medicamento/${medId}')">
+      <div class="med-item${completo ? " med-item-completo" : ""}" role="link" tabindex="0" data-med="${medId}"${cor ? ` data-cor="${cor}"` : ""}
+        onclick="irPara('#/medicamento/${medId}')" onkeydown="if(event.key==='Enter'){irPara('#/medicamento/${medId}')}">
+        <span class="med-avatar" aria-hidden="true">${esc(iniciais(m.nomeGenerico))}</span>
         <span class="med-item-main">
-          <span class="med-item-nome">${esc(m.nomeGenerico)}</span>
+          <span class="med-item-nome">${q ? destacar(m.nomeGenerico, q) : esc(m.nomeGenerico)}</span>
           <span class="med-item-sub">${esc(m.classeTerapeutica || "")}</span>
         </span>
-        <span class="med-item-fav ${fav}" title="Favorito" aria-hidden="true">★</span>
-      </button>`;
+        <button type="button" class="med-item-fav ${fav ? "star-on" : ""}" title="${fav ? "Remover dos favoritos" : "Adicionar aos favoritos"}" aria-label="${fav ? "Remover dos favoritos" : "Adicionar aos favoritos"}" aria-pressed="${fav}"
+          onclick="event.stopPropagation(); bxToggleFav(this, '${medId}')">★</button>
+        <span class="med-item-seta" aria-hidden="true">›</span>
+      </div>`;
   }
+  window.bxToggleFav = function (btn, medId) {
+    const on = toggleFavorito(medId);
+    btn.classList.toggle("star-on", on);
+    btn.setAttribute("aria-pressed", on);
+    btn.title = on ? "Remover dos favoritos" : "Adicionar aos favoritos";
+    btn.classList.remove("pop"); void btn.offsetWidth; btn.classList.add("pop");
+  };
 
   function grupoCard(g) {
     const totalMeds = g.subclasses.reduce((acc, s) => acc + s.medicamentos.length, 0);
@@ -322,37 +416,43 @@
     setTituloTopo("Bulário Farmacêutico", `Consulte informações farmacológicas, clínicas e farmacoterapêuticas de medicamentos de forma rápida e organizada. ${totalMedicamentos.toLocaleString("pt-BR")} medicamentos catalogados.`);
     const favs = getFavoritos().filter((id) => MEDICAMENTOS[id]);
     const recentes = getRecentes().filter((id) => MEDICAMENTOS[id]).slice(0, 10);
-
     const gruposFiltrados = filtroGrupo
       ? GRUPOS.filter((g) => normalize(g.nome).includes(normalize(filtroGrupo)))
       : GRUPOS;
+    const totalSub = GRUPOS.reduce((a, g) => a + g.subclasses.length, 0);
 
     app.innerHTML = `
       <div class="home-view">
+        <section class="bx-stats" aria-label="Resumo do Bulário">
+          <div class="bx-stat"><strong>${totalMedicamentos.toLocaleString("pt-BR")}</strong><span>medicamentos</span></div>
+          <div class="bx-stat"><strong>${GRUPOS.length}</strong><span>grupos ATC</span></div>
+          <div class="bx-stat"><strong>${totalSub}</strong><span>subclasses</span></div>
+          <div class="bx-stat"><strong>${favs.length}</strong><span>favoritos</span></div>
+          <button type="button" class="bx-btn bx-btn-ghost bx-sorteio" onclick="bxSortear()" title="Abrir a ficha de um medicamento aleatório — bom para estudar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/></svg>
+            Fármaco aleatório
+          </button>
+        </section>
         ${
           favs.length
             ? `<section class="quick-section">
-                <h2>⭐ Meus Medicamentos</h2>
-                <div class="med-list-flat">${favs.map(medItemButton).join("")}</div>
+                <div class="bx-sec-head"><h2>Meus medicamentos</h2><span class="bx-sec-dica">${favs.length} favorito${favs.length === 1 ? "" : "s"}</span></div>
+                <div class="med-list-flat med-grid">${favs.map((id) => medItemButton(id)).join("")}</div>
               </section>`
             : ""
         }
         <section class="quick-section">
-          <h2>Grupos Farmacológicos</h2>
+          <div class="bx-sec-head"><h2>Grupos farmacológicos</h2><span class="bx-sec-dica">classificação ATC</span></div>
           <div class="grupos-grid" id="grupos-grid">
             ${gruposFiltrados.map(grupoCard).join("") || `<p class="empty-msg">Nenhum grupo encontrado para esse filtro.</p>`}
           </div>
         </section>
-        ${
-          recentes.length
-            ? `<section class="quick-section">
-                <h2>🕘 Recentemente Consultados</h2>
-                <div class="med-list-flat">${recentes.map(medItemButton).join("")}</div>
-              </section>`
-            : ""
-        }
       </div>`;
   }
+  window.bxSortear = function () {
+    const ids = Object.keys(MEDICAMENTOS).filter((id) => fichaCompleta(MEDICAMENTOS[id]));
+    if (ids.length) irPara("#/medicamento/" + ids[Math.floor(Math.random() * ids.length)]);
+  };
 
   /* ---------------------------------------------------------------------
      VIEW: Grupo (subclasses em acordeão + lista de medicamentos)
@@ -378,7 +478,7 @@
                 <span class="subclasse-count">${s.medicamentos.length}</span>
               </button>
               <div class="subclasse-itens">
-                <div class="med-list-flat">${s.medicamentos.map(medItemButton).join("")}</div>
+                <div class="med-list-flat">${s.medicamentos.map((id) => medItemButton(id)).join("")}</div>
               </div>
             </div>`
             )
@@ -393,39 +493,76 @@
   /* ---------------------------------------------------------------------
      VIEW: Busca
   --------------------------------------------------------------------- */
+  let ESCOPO_BUSCA = "tudo";
   function renderBusca(query) {
     setTituloTopo("Resultado da busca", `"${query}"`);
-    const idsGenericos = buscarMedicamentos(query);
-    const comerciais = buscarPorNomeComercial(query);
+    const ids = buscarRanqueado(query);
+    const comerciais = buscarComerciaisRanqueado(query);
+    const grupos = buscarGrupos(query);
+    const n = { tudo: ids.length + comerciais.length + grupos.length, med: ids.length, com: comerciais.length, grp: grupos.length };
+    if (ESCOPO_BUSCA !== "tudo" && !n[ESCOPO_BUSCA]) ESCOPO_BUSCA = "tudo";
+    const aba = (k, rot) => `<button type="button" class="bx-tab${ESCOPO_BUSCA === k ? " ativo" : ""}" onclick="bxEscopo('${k}')"${n[k] || k === "tudo" ? "" : " disabled"}>${rot}<span>${n[k]}</span></button>`;
+    const ver = (k) => ESCOPO_BUSCA === "tudo" || ESCOPO_BUSCA === k;
+    const LIM = 12;
 
-    let html = `<div class="busca-view"><a href="#/" class="btn-voltar">‹ Voltar</a>`;
-    html += `<h1 class="grupo-titulo">Resultados para "${esc(query)}"</h1>`;
+    let html = `<div class="busca-view">
+      <div class="bx-busca-head">
+        <h1 class="grupo-titulo">Resultados para <span class="bx-q">“${esc(query)}”</span></h1>
+        <div class="bx-tabs" role="tablist">${aba("tudo", "Tudo")}${aba("med", "Medicamentos")}${aba("com", "Nomes comerciais")}${aba("grp", "Grupos e classes")}</div>
+      </div>`;
 
-    if (!idsGenericos.length && !comerciais.length) {
-      html += `<p class="empty-msg">Nenhum medicamento encontrado. Tente buscar pelo princípio ativo, nome comercial ou classe farmacológica.</p>`;
+    if (!n.tudo) {
+      html += `<div class="bx-vazio"><div class="bx-vazio-ico">${'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'}</div>
+        <h3>Nada encontrado para “${esc(query)}”</h3>
+        <p>Confira a grafia ou tente o princípio ativo, um nome comercial ou a classe (ex.: “estatina”, “IECA”, “antifúngico”).</p></div>`;
     }
 
-    if (idsGenericos.length) {
-      html += `<section class="quick-section"><h2>Medicamentos</h2><div class="med-list-flat">${idsGenericos.map(medItemButton).join("")}</div></section>`;
+    if (ids.length && ver("med")) {
+      const mostrar = ESCOPO_BUSCA === "tudo" ? ids.slice(0, LIM) : ids;
+      html += `<section class="quick-section"><div class="bx-sec-head"><h2>Medicamentos</h2><span class="bx-sec-dica">${ids.length} encontrado${ids.length === 1 ? "" : "s"} · por relevância</span></div>
+        <div class="med-list-flat med-grid">${mostrar.map((id) => medItemButton(id, query)).join("")}</div>
+        ${ESCOPO_BUSCA === "tudo" && ids.length > LIM ? `<button class="bx-btn bx-btn-ghost bx-ver-mais" onclick="bxEscopo('med')">Ver todos os ${ids.length} medicamentos</button>` : ""}</section>`;
     }
-
-    if (comerciais.length) {
-      html += `<section class="quick-section"><h2>Nomes comerciais encontrados</h2><div class="comercial-list">`;
-      comerciais.forEach((c) => {
+    if (grupos.length && ver("grp")) {
+      html += `<section class="quick-section"><div class="bx-sec-head"><h2>Grupos e classes</h2><span class="bx-sec-dica">${grupos.length}</span></div><div class="bx-grp-list">`;
+      grupos.forEach((r) => {
+        html += `<button class="bx-grp-item" data-cor="${r.grupo.cor}" onclick="bxAbrirGrupo('${r.grupo.id}', ${r.tipo === "subclasse" ? r.idx : -1})">
+            <span class="bx-grp-ico" aria-hidden="true">${r.grupo.icone}</span>
+            <span class="bx-grp-txt"><strong>${destacar(r.nome, query)}</strong><small>${r.tipo === "subclasse" ? "Subclasse de " + esc(r.grupo.nome) : "Grupo farmacológico"} · ${r.total} medicamento${r.total === 1 ? "" : "s"}</small></span>
+            <span class="med-item-seta" aria-hidden="true">›</span></button>`;
+      });
+      html += `</div></section>`;
+    }
+    if (comerciais.length && ver("com")) {
+      const mostrar = ESCOPO_BUSCA === "tudo" ? comerciais.slice(0, LIM) : comerciais;
+      html += `<section class="quick-section"><div class="bx-sec-head"><h2>Nomes comerciais</h2><span class="bx-sec-dica">${comerciais.length}</span></div><div class="comercial-list">`;
+      mostrar.forEach((c) => {
         const m = MEDICAMENTOS[c.medId];
         html += `
-          <button class="comercial-item" onclick="irPara('#/medicamento/${c.medId}')">
-            <span class="comercial-nome">${esc(c.nome)}</span>
+          <button class="comercial-item" data-cor="${MED_GRUPO_COR[c.medId] || ""}" onclick="irPara('#/medicamento/${c.medId}')">
+            <span class="comercial-nome">${destacar(c.nome, query)}</span>
             <span class="comercial-seta" aria-hidden="true">→</span>
             <span class="comercial-generico">${esc(m.principioAtivo || m.nomeGenerico)}</span>
           </button>`;
       });
-      html += `</div></section>`;
+      html += `</div>${ESCOPO_BUSCA === "tudo" && comerciais.length > LIM ? `<button class="bx-btn bx-btn-ghost bx-ver-mais" onclick="bxEscopo('com')">Ver todos os ${comerciais.length} nomes comerciais</button>` : ""}</section>`;
     }
-
     html += `</div>`;
     app.innerHTML = html;
   }
+  window.bxEscopo = function (k) {
+    ESCOPO_BUSCA = k;
+    const q = decodeURIComponent(location.hash).replace("#/busca/", "");
+    renderBusca(q);
+  };
+  window.bxAbrirGrupo = function (gid, idx) {
+    irPara("#/grupo/" + gid);
+    if (idx >= 0) setTimeout(() => {
+      const blocos = $all(".subclasse-bloco", app);
+      blocos.forEach((b, i) => b.classList.toggle("aberto", i === idx));
+      if (blocos[idx]) blocos[idx].scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  };
 
   /* ---------------------------------------------------------------------
      VIEW: Ficha do medicamento
@@ -720,8 +857,8 @@
           <div class="ficha-titulo-row">
             <h1 class="ficha-titulo">${esc(m.nomeGenerico)}</h1>
             <div class="ficha-acoes">
-              <button class="btn-ficha-acao" type="button" onclick="compararCom('${medId}')" title="Comparar com outro fármaco">⇄ Comparar</button>
-              <button class="btn-ficha-acao" type="button" onclick="abrirCartaoPaciente('${medId}')" title="Cartão de orientação para entregar ao paciente">🗂 Cartão do paciente</button>
+              <button class="btn-ficha-acao" type="button" onclick="compararCom('${medId}')" title="Comparar com outro fármaco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 3 8l4 4"/><path d="M3 8h13"/><path d="m17 20 4-4-4-4"/><path d="M21 16H8"/></svg>Comparar</button>
+              <button class="btn-ficha-acao" type="button" onclick="abrirCartaoPaciente('${medId}')" title="Cartão de orientação para entregar ao paciente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6.5 16c.6-1.4 1.5-2 2.5-2s1.9.6 2.5 2"/><path d="M14 10h4M14 13.5h3"/></svg>Cartão do paciente</button>
               <button class="btn-favoritar ${fav ? "ativo" : ""}" id="btn-fav" title="Favoritar medicamento" aria-label="Favoritar medicamento">
                 <span class="estrela">★</span><span class="btn-favoritar-label">${fav ? "Favoritado" : "Favoritar"}</span>
               </button>
@@ -1077,45 +1214,112 @@
 
   function initBusca() {
     const inputMed = $("#busca-medicamento");
-    const inputGrupo = $("#busca-grupo");
     const clearMed = $("#clear-busca-medicamento");
+    const box = $("#bx-sugestoes");
+    let itens = [], sel = -1;
 
-    const executarBuscaMedicamento = debounce(() => {
+    function fechar() { box.hidden = true; inputMed.setAttribute("aria-expanded", "false"); sel = -1; }
+    function marcar(i) {
+      const els = $all(".bx-sug", box);
+      els.forEach((e, k) => e.classList.toggle("ativo", k === i));
+      if (els[i]) { els[i].scrollIntoView({ block: "nearest" }); inputMed.setAttribute("aria-activedescendant", els[i].id); }
+      sel = i;
+    }
+    function abrir(i) {
+      const it = itens[i];
+      if (!it) return;
+      fechar();
+      if (it.href) irPara(it.href); else if (it.fn) it.fn();
+    }
+    function sugerir() {
       const q = inputMed.value.trim();
       clearMed.hidden = !q;
-      if (!q) {
-        if (location.hash.startsWith("#/busca/")) irPara("#/");
-        return;
+      if (q.length < 2) { fechar(); return; }
+      const meds = buscarRanqueado(q, 6);
+      const coms = buscarComerciaisRanqueado(q, 4).filter((c) => !meds.includes(c.medId));
+      const grps = buscarGrupos(q).slice(0, 3);
+      itens = [];
+      let html = "";
+      const sec = (t) => `<div class="bx-sug-titulo">${t}</div>`;
+      if (meds.length) {
+        html += sec("Medicamentos");
+        meds.forEach((id) => {
+          const m = MEDICAMENTOS[id]; const k = itens.length;
+          itens.push({ href: "#/medicamento/" + id });
+          html += `<div class="bx-sug" id="bx-sug-${k}" role="option" data-i="${k}" data-cor="${MED_GRUPO_COR[id] || ""}"><span class="med-avatar">${esc(iniciais(m.nomeGenerico))}</span><span class="bx-sug-txt"><strong>${destacar(m.nomeGenerico, q)}</strong><small>${esc(m.classeTerapeutica || "")}</small></span></div>`;
+        });
       }
-      irPara("#/busca/" + encodeURIComponent(q));
-    }, 220);
+      if (coms.length) {
+        html += sec("Nomes comerciais");
+        coms.forEach((c) => {
+          const m = MEDICAMENTOS[c.medId]; const k = itens.length;
+          itens.push({ href: "#/medicamento/" + c.medId });
+          html += `<div class="bx-sug" id="bx-sug-${k}" role="option" data-i="${k}" data-cor="${MED_GRUPO_COR[c.medId] || ""}"><span class="bx-sug-tag">®</span><span class="bx-sug-txt"><strong>${destacar(c.nome, q)}</strong><small>→ ${esc(m.principioAtivo || m.nomeGenerico)}</small></span></div>`;
+        });
+      }
+      if (grps.length) {
+        html += sec("Grupos e classes");
+        grps.forEach((r) => {
+          const k = itens.length;
+          itens.push({ fn: () => window.bxAbrirGrupo(r.grupo.id, r.tipo === "subclasse" ? r.idx : -1) });
+          html += `<div class="bx-sug" id="bx-sug-${k}" role="option" data-i="${k}" data-cor="${r.grupo.cor}"><span class="bx-sug-tag bx-sug-emoji">${r.grupo.icone}</span><span class="bx-sug-txt"><strong>${destacar(r.nome, q)}</strong><small>${r.total} medicamento${r.total === 1 ? "" : "s"}</small></span></div>`;
+        });
+      }
+      const k = itens.length;
+      itens.push({ href: "#/busca/" + encodeURIComponent(q) });
+      html += `<div class="bx-sug bx-sug-todos" id="bx-sug-${k}" role="option" data-i="${k}">${'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'}<span>Ver todos os resultados para “${esc(q)}”</span><kbd>Enter</kbd></div>`;
+      box.innerHTML = html;
+      box.hidden = false;
+      inputMed.setAttribute("aria-expanded", "true");
+      sel = -1;
+    }
 
-    inputMed.addEventListener("input", executarBuscaMedicamento);
+    inputMed.addEventListener("input", debounce(sugerir, 90));
+    inputMed.addEventListener("focus", () => { if (inputMed.value.trim().length >= 2) sugerir(); });
     inputMed.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
+      if (e.key === "ArrowDown" && !box.hidden) { e.preventDefault(); marcar(Math.min(sel + 1, itens.length - 1)); }
+      else if (e.key === "ArrowUp" && !box.hidden) { e.preventDefault(); marcar(Math.max(sel - 1, 0)); }
+      else if (e.key === "Escape") { if (!box.hidden) fechar(); else inputMed.blur(); }
+      else if (e.key === "Enter") {
         e.preventDefault();
         const q = inputMed.value.trim();
-        if (q) irPara("#/busca/" + encodeURIComponent(q));
+        if (!box.hidden && sel >= 0) abrir(sel);
+        else if (q) { fechar(); ESCOPO_BUSCA = "tudo"; irPara("#/busca/" + encodeURIComponent(q)); }
       }
     });
+    box.addEventListener("mousedown", (e) => {
+      const el = e.target.closest(".bx-sug");
+      if (!el) return;
+      e.preventDefault();
+      abrir(+el.dataset.i);
+    });
+    box.addEventListener("mousemove", (e) => {
+      const el = e.target.closest(".bx-sug");
+      if (el && +el.dataset.i !== sel) marcar(+el.dataset.i);
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest("#bx-search")) fechar(); });
     clearMed.addEventListener("click", () => {
       inputMed.value = "";
       clearMed.hidden = true;
+      fechar();
       inputMed.focus();
       if (location.hash.startsWith("#/busca/")) irPara("#/");
     });
-
-    inputGrupo.addEventListener(
-      "input",
-      debounce(() => {
-        if (!location.hash || location.hash === "#/" || location.hash === "") {
-          renderHome(inputGrupo.value.trim());
-        } else {
-          irPara("#/");
-          setTimeout(() => renderHome(inputGrupo.value.trim()), 0);
-        }
-      }, 150)
-    );
+    // Atalhos: "/" ou Ctrl/⌘+K focam a busca
+    document.addEventListener("keydown", (e) => {
+      const tag = (e.target.tagName || "").toLowerCase();
+      const digitando = tag === "input" || tag === "textarea" || tag === "select" || e.target.isContentEditable;
+      if ((e.key === "/" && !digitando) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k")) {
+        e.preventDefault(); inputMed.focus(); inputMed.select();
+      }
+    });
+    // Mantém o texto da busca sincronizado com a rota
+    window.addEventListener("hashchange", () => {
+      fechar();
+      const h = decodeURIComponent(location.hash || "");
+      if (h.startsWith("#/busca/")) { inputMed.value = h.replace("#/busca/", ""); clearMed.hidden = false; }
+      else if (document.activeElement !== inputMed) { inputMed.value = ""; clearMed.hidden = true; }
+    });
   }
 
   /* ---------------------------------------------------------------------

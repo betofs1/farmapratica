@@ -612,6 +612,254 @@
     .ficha-acoes{ width:100%; }
     .btn-ficha-acao, .ficha-acoes .btn-favoritar{ flex:1; justify-content:center; padding:0 8px; font-size:.7rem; }
   }
+
+  /* =====================================================================
+     15/11/2026 — Modernização do Bulário: busca única com sugestões
+     instantâneas, abas de resultado, cards com avatar e botões unificados.
+     ===================================================================== */
+  :root{ --bx-radius:16px; --bx-shadow:0 10px 30px -12px rgba(0,0,0,.55); --bx-ring:0 0 0 4px var(--accent-glow); }
+  body.light{ --bx-shadow:0 12px 30px -14px rgba(15,23,42,.28); }
+
+  /* ---------- Barra de busca (hero) ---------- */
+  .search-bar-row.bx-hero{
+    display:block; position:sticky; top:0; z-index:20;
+    padding:16px 0 14px; background:linear-gradient(180deg, var(--bg) 78%, transparent);
+  }
+  .bx-search{
+    position:relative; display:flex; align-items:center; gap:12px;
+    height:60px; padding:0 14px 0 20px; border-radius:var(--bx-radius);
+    background:linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, var(--card)), var(--card) 55%);
+    border:1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+    box-shadow:var(--bx-shadow), inset 0 1px 0 rgba(255,255,255,.06);
+    transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  }
+  .bx-search::before{
+    content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
+    background:linear-gradient(120deg, var(--accent), transparent 35%, transparent 65%, var(--red));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .25s ease;
+  }
+  .bx-search:focus-within{ border-color:transparent; box-shadow:var(--bx-shadow), var(--bx-ring); }
+  .bx-search:focus-within::before{ opacity:1; }
+  .bx-search-ico{ display:flex; color:var(--accent); flex-shrink:0; }
+  .bx-search-ico svg{ width:22px; height:22px; }
+  .bx-search input{
+    flex:1; min-width:0; height:100%; border:0; outline:0; background:transparent;
+    color:var(--text); font-size:1.05rem; font-weight:500; letter-spacing:.1px;
+  }
+  .bx-search input::placeholder{ color:var(--text-dim); font-weight:400; }
+  .bx-search .clear-btn{ width:32px; height:32px; border-radius:10px; }
+  .bx-search .clear-btn svg{ width:15px; height:15px; }
+  .bx-kbd, .bx-sug-todos kbd{
+    font:700 .72rem/1 'Inter',sans-serif; color:var(--text-dim);
+    border:1px solid var(--border); border-bottom-width:2px; border-radius:7px;
+    padding:5px 8px; background:var(--panel); flex-shrink:0;
+  }
+  .bx-search:focus-within .bx-kbd{ display:none; }
+
+  /* ---------- Sugestões instantâneas ---------- */
+  .bx-sugestoes{
+    position:absolute; left:0; right:0; top:calc(100% + 8px); z-index:30;
+    max-height:min(70vh, 520px); overflow:auto; padding:8px;
+    background:var(--card); border:1px solid var(--border); border-radius:var(--bx-radius);
+    box-shadow:0 24px 50px -16px rgba(0,0,0,.6);
+    animation:bxDrop .16s ease-out;
+  }
+  body.light .bx-sugestoes{ box-shadow:0 24px 50px -18px rgba(15,23,42,.35); }
+  @keyframes bxDrop{ from{ opacity:0; transform:translateY(-6px) scale(.99); } to{ opacity:1; transform:none; } }
+  .bx-sug-titulo{ font-size:.66rem; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:var(--text-dim); padding:10px 10px 6px; }
+  .bx-sug{
+    display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:11px; cursor:pointer;
+    transition:background-color .12s ease;
+  }
+  .bx-sug.ativo{ background:color-mix(in srgb, var(--gc, var(--accent)) 14%, transparent); }
+  .bx-sug-txt{ display:flex; flex-direction:column; min-width:0; }
+  .bx-sug-txt strong{ font-size:.92rem; font-weight:650; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .bx-sug-txt small{ font-size:.74rem; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .bx-sug-tag{
+    width:34px; height:34px; flex:0 0 34px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.9rem; color:var(--gc, var(--accent));
+    background:color-mix(in srgb, var(--gc, var(--accent)) 15%, transparent);
+  }
+  .bx-sug-emoji{ font-size:1.05rem; }
+  .bx-sug-emoji svg{ width:20px; height:20px; }
+  .bx-sug-todos{ margin-top:6px; border-top:1px solid var(--border); border-radius:0 0 11px 11px; color:var(--accent); font-weight:700; font-size:.86rem; padding:12px 10px; }
+  .bx-sug-todos svg{ width:17px; height:17px; flex-shrink:0; }
+  .bx-sug-todos span{ flex:1; }
+  .bx-sugestoes mark, .med-item-nome mark, .comercial-nome mark, .bx-grp-txt mark{
+    background:color-mix(in srgb, var(--accent) 26%, transparent); color:inherit; border-radius:4px; padding:0 1px;
+  }
+
+  /* ---------- Avatar dos medicamentos ---------- */
+  .med-avatar{
+    width:38px; height:38px; flex:0 0 38px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.8rem; letter-spacing:.3px; color:var(--gc, var(--accent));
+    background:linear-gradient(145deg, color-mix(in srgb, var(--gc, var(--accent)) 26%, transparent), color-mix(in srgb, var(--gc, var(--accent)) 8%, transparent));
+    border:1px solid color-mix(in srgb, var(--gc, var(--accent)) 30%, transparent);
+  }
+  .bx-sug .med-avatar{ width:34px; height:34px; flex-basis:34px; font-size:.74rem; border-radius:10px; }
+
+  /* ---------- Cards de medicamento ---------- */
+  .med-grid{ display:grid !important; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:10px !important; }
+  .med-item, .med-item.med-item-completo{
+    display:flex; align-items:center; gap:12px; position:relative;
+    background:var(--card); border:1px solid var(--border); border-left:1px solid var(--border);
+    border-radius:14px; padding:11px 12px; cursor:pointer; outline:none;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+    transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+  }
+  .med-item::before{
+    content:""; position:absolute; left:0; top:12px; bottom:12px; width:3px; border-radius:0 3px 3px 0;
+    background:var(--gc, var(--accent)); opacity:.85;
+  }
+  .med-item:hover, .med-item:focus-visible, .med-item.med-item-completo:hover{
+    transform:translateY(-2px); background:var(--card);
+    border-color:color-mix(in srgb, var(--gc, var(--accent)) 55%, var(--border));
+    box-shadow:0 10px 24px -14px color-mix(in srgb, var(--gc, var(--accent)) 70%, black);
+  }
+  .med-item:focus-visible{ box-shadow:var(--bx-ring); }
+  .med-item-main{ flex:1; }
+  .med-item-nome{ font-size:.92rem; font-weight:700; color:var(--text); }
+  .med-item-sub{ display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .med-item-fav{
+    border:0; background:transparent; cursor:pointer; color:var(--border); font-size:1.15rem; line-height:1;
+    width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    transition:color .15s ease, background-color .15s ease, transform .15s ease;
+  }
+  .med-item-fav:hover{ background:var(--hover-tint); color:var(--amber); }
+  .med-item-fav.star-on{ color:var(--amber); text-shadow:0 0 12px rgba(245,158,11,.45); }
+  .med-item-fav.pop{ animation:bxPop .35s ease; }
+  @keyframes bxPop{ 40%{ transform:scale(1.45) rotate(-12deg); } 100%{ transform:none; } }
+  .med-item-seta{ color:var(--text-dim); font-size:1.4rem; line-height:1; opacity:.5; transition:transform .16s ease, opacity .16s ease; }
+  .med-item:hover .med-item-seta, .bx-grp-item:hover .med-item-seta{ transform:translateX(3px); opacity:1; color:var(--gc, var(--accent)); }
+
+  /* ---------- Home: números, retomada e cabeçalhos ---------- */
+  .bx-stats{
+    display:flex; flex-wrap:wrap; align-items:stretch; gap:10px; margin:4px 0 30px;
+  }
+  .bx-stat{
+    display:flex; flex-direction:column; justify-content:center; min-width:120px;
+    padding:12px 18px; border-radius:14px; background:var(--card); border:1px solid var(--border);
+  }
+  .bx-stat strong{ font-size:1.35rem; font-weight:800; letter-spacing:-.4px; color:var(--text); line-height:1.1; }
+  .bx-stat span{ font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--text-dim); }
+  .bx-stat:first-child strong{ color:var(--accent); }
+  .bx-sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px; }
+  .bx-sec-head h2{ margin:0 !important; font-size:1.05rem; font-weight:800; letter-spacing:-.2px; }
+  .bx-sec-dica{ font-size:.72rem; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; }
+  .bx-chips-scroll{ display:flex; gap:8px; overflow-x:auto; padding:2px 2px 8px; scrollbar-width:thin; }
+  .bx-chip{
+    display:inline-flex; align-items:center; gap:8px; flex-shrink:0; cursor:pointer;
+    padding:9px 14px; border-radius:999px; border:1px solid var(--border); background:var(--card);
+    color:var(--text); font-weight:600; font-size:.82rem; white-space:nowrap;
+    transition:border-color .15s ease, transform .15s ease, background-color .15s ease;
+  }
+  .bx-chip:hover{ border-color:var(--gc, var(--accent)); transform:translateY(-2px); background:color-mix(in srgb, var(--gc, var(--accent)) 10%, var(--card)); }
+  .bx-chip-dot{ width:8px; height:8px; border-radius:50%; background:var(--gc, var(--accent)); box-shadow:0 0 0 3px color-mix(in srgb, var(--gc, var(--accent)) 22%, transparent); }
+
+  /* ---------- Botões unificados ---------- */
+  .bx-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;
+    height:42px; padding:0 18px; border-radius:12px; font-weight:700; font-size:.84rem;
+    border:1px solid transparent; transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease, border-color .15s ease;
+  }
+  .bx-btn svg{ width:18px; height:18px; }
+  .bx-btn-ghost{ background:var(--card); border-color:var(--border); color:var(--text); }
+  .bx-btn-ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); box-shadow:0 8px 18px -12px var(--accent); }
+  .bx-btn:active{ transform:translateY(1px); }
+  .bx-sorteio{ margin-left:auto; align-self:center; }
+  .bx-ver-mais{ margin-top:12px; }
+
+  .btn-voltar{
+    padding:7px 12px 7px 10px; border-radius:10px; border:1px solid var(--border); background:var(--card);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .btn-voltar:hover{ border-color:var(--accent); }
+
+  .ficha-acoes{ display:flex; gap:8px; flex-wrap:wrap; }
+  .btn-ficha-acao, .btn-favoritar{
+    height:40px !important; border-radius:12px !important; padding:0 15px !important;
+    background:var(--card) !important; border:1px solid var(--border) !important; color:var(--text) !important;
+    font-weight:700 !important; font-size:.8rem !important; text-transform:none !important; letter-spacing:0 !important;
+    gap:8px !important; transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease !important;
+  }
+  .btn-ficha-acao svg{ width:17px; height:17px; color:var(--accent); }
+  .btn-ficha-acao:hover, .btn-favoritar:hover{ transform:translateY(-1px); border-color:var(--accent) !important; box-shadow:0 8px 18px -12px var(--accent); }
+  .btn-favoritar .estrela{ color:var(--amber); }
+  .btn-favoritar.ativo{ background:color-mix(in srgb, var(--amber) 16%, var(--card)) !important; border-color:var(--amber) !important; color:var(--amber) !important; }
+
+  /* ---------- Página de resultados ---------- */
+  .bx-busca-head{ display:flex; flex-direction:column; gap:14px; margin-bottom:22px; }
+  .bx-busca-head .grupo-titulo{ margin:0; font-size:1.25rem; }
+  .bx-q{ color:var(--accent); }
+  .bx-tabs{ display:flex; gap:6px; flex-wrap:wrap; padding:5px; border-radius:14px; background:var(--panel); border:1px solid var(--border); width:max-content; max-width:100%; }
+  .bx-tab{
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:0; background:transparent;
+    padding:8px 14px; border-radius:10px; font-weight:700; font-size:.8rem; color:var(--text-dim);
+    transition:background-color .15s ease, color .15s ease;
+  }
+  .bx-tab span{ font-size:.7rem; padding:2px 8px; border-radius:999px; background:var(--card); color:var(--text-dim); }
+  .bx-tab:hover:not(:disabled){ color:var(--text); }
+  .bx-tab.ativo{ background:var(--card); color:var(--text); box-shadow:0 4px 12px -6px rgba(0,0,0,.45); }
+  .bx-tab.ativo span{ background:var(--accent); color:#fff; }
+  .bx-tab:disabled{ opacity:.4; cursor:default; }
+
+  .comercial-item{ border-radius:12px; padding:12px 16px; gap:12px; transition:border-color .15s ease, transform .15s ease; }
+  .comercial-item:hover{ transform:translateX(3px); border-color:var(--gc, var(--accent)); }
+  .comercial-nome{ font-weight:700; }
+  .comercial-seta{ color:var(--gc, var(--accent)); }
+
+  .bx-grp-list{ display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:10px; }
+  .bx-grp-item{
+    display:flex; align-items:center; gap:12px; text-align:left; cursor:pointer; color:var(--text);
+    padding:12px 14px; border-radius:14px; border:1px solid var(--border); background:var(--card);
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .bx-grp-item:hover{ transform:translateY(-2px); border-color:var(--gc, var(--accent)); }
+  .bx-grp-ico{
+    width:40px; height:40px; flex:0 0 40px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.15rem;
+    background:color-mix(in srgb, var(--gc, var(--accent)) 16%, transparent);
+  }
+  .bx-grp-ico svg{ width:22px; height:22px; }
+  .bx-grp-txt{ display:flex; flex-direction:column; flex:1; min-width:0; }
+  .bx-grp-txt strong{ font-size:.9rem; }
+  .bx-grp-txt small{ font-size:.74rem; color:var(--text-dim); }
+
+  .bx-vazio{ text-align:center; padding:48px 20px; border:1px dashed var(--border); border-radius:18px; background:var(--panel); }
+  .bx-vazio-ico{ display:inline-flex; width:56px; height:56px; border-radius:50%; align-items:center; justify-content:center; color:var(--accent); background:var(--accent-glow); margin-bottom:10px; }
+  .bx-vazio-ico svg{ width:26px; height:26px; }
+  .bx-vazio h3{ margin:4px 0 6px; }
+  .bx-vazio p{ margin:0 auto; max-width:520px; color:var(--text-dim); font-size:.88rem; line-height:1.5; }
+
+  /* ---------- Grupo: subclasses ---------- */
+  .subclasse-bloco{ border-radius:14px; transition:border-color .15s ease; }
+  .subclasse-bloco.aberto{ border-color:color-mix(in srgb, var(--gc, var(--accent)) 45%, var(--border)); }
+  .subclasse-header{ padding:14px 16px; }
+  .subclasse-header::after{ content:"›"; margin-left:10px; font-size:1.2rem; color:var(--text-dim); transition:transform .2s ease; }
+  .subclasse-bloco.aberto .subclasse-header::after{ transform:rotate(90deg); }
+  .subclasse-header > span:first-child{ flex:1; }
+  .subclasse-itens .med-list-flat{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:8px; }
+
+  @media (max-width:800px){
+    .search-bar-row.bx-hero{ padding:10px 0; }
+    .bx-search{ height:54px; padding:0 10px 0 16px; }
+    .bx-search input{ font-size:1rem; }
+    .bx-kbd{ display:none; }
+    .bx-stats{ gap:6px; margin-bottom:22px; }
+    .bx-stat{ min-width:0; flex:1 1 calc(25% - 6px); padding:8px 6px; align-items:center; text-align:center; border-radius:12px; }
+    .bx-stat strong{ font-size:1rem; }
+    .bx-stat span{ font-size:.52rem; letter-spacing:.3px; }
+    .bx-sorteio{ flex:1 1 100%; margin-left:0; }
+    .med-grid, .bx-grp-list, .subclasse-itens .med-list-flat{ grid-template-columns:1fr; }
+    .bx-tabs{ width:100%; overflow-x:auto; flex-wrap:nowrap; }
+    .bx-tab{ flex-shrink:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .bx-sugestoes, .med-item-fav.pop{ animation:none; }
+    .med-item, .bx-chip, .bx-btn, .bx-grp-item{ transition:none; }
+  }
+
 </style>
 </head>
 <body>
@@ -641,7 +889,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
     </button>
     <button class="topbar-icon-btn" onclick="irPara('#/')" title="Início do Bulário" aria-label="Início do Bulário">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5v-2Z"/><path d="M8 7h7M8 11h5"/></svg>
     </button>
     <a href="../" class="home-btn-desktop" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
@@ -652,21 +900,14 @@
 </div>
 
 <main class="page-wrap">
-  <div class="search-bar-row">
-    <div class="search-field-wrap">
-      <label for="busca-medicamento">🔎 Buscar medicamento</label>
-      <div class="search-box">
-        <span aria-hidden="true">🔍</span>
-        <input type="text" id="busca-medicamento" placeholder="Nome genérico, comercial, princípio ativo ou classe..." autocomplete="off">
-        <button class="clear-btn" id="clear-busca-medicamento" title="Limpar busca" aria-label="Limpar busca" hidden>✕</button>
-      </div>
-    </div>
-    <div class="search-field-wrap">
-      <label for="busca-grupo">🔎 Buscar grupo farmacológico</label>
-      <div class="search-box">
-        <span aria-hidden="true">🔍</span>
-        <input type="text" id="busca-grupo" placeholder="Ex.: antidepressivos, antibióticos..." autocomplete="off">
-      </div>
+  <div class="search-bar-row bx-hero">
+    <div class="bx-search" id="bx-search">
+      <span class="bx-search-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+      <input type="text" id="busca-medicamento" placeholder="Buscar fármaco, marca, classe ou grupo…" autocomplete="off" spellcheck="false"
+        role="combobox" aria-expanded="false" aria-controls="bx-sugestoes" aria-autocomplete="list" aria-label="Buscar no Bulário">
+      <button class="clear-btn" id="clear-busca-medicamento" title="Limpar busca" aria-label="Limpar busca" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <kbd class="bx-kbd" title="Atalho: tecle / para buscar">/</kbd>
+      <div class="bx-sugestoes" id="bx-sugestoes" role="listbox" hidden></div>
     </div>
   </div>
 

@@ -1,7 +1,7 @@
 {
   "_aviso": "Gerado cruzando o CMED/ANVISA com as substâncias controladas/antimicrobianas do controlados.json. Cobre só marcas cujo princípio ativo é uma substância rastreada nesta consulta.",
-  "_total_marcas": 1120,
-  "_total_substancias_com_marca": 217,
+  "_total_marcas": 1148,
+  "_total_substancias_com_marca": 222,
   "marcas": {
     "NEOTIGASON": {
       "substancia": "Acitretina",
@@ -725,6 +725,34 @@
     },
     "ZINFORO": {
       "substancia": "ceftarolina fosamila",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTAZIDON": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "KEFADIM": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTAFOR": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFAZIMA": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "TORGENA": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "CEFTAZIDIMA PENTAIDRATADA + AVIBACTAM SODICO": {
+      "substancia": "ceftazidima",
+      "codigo": "ANTIMICROBIANO"
+    },
+    "RYAMBIC": {
+      "substancia": "ceftazidima",
       "codigo": "ANTIMICROBIANO"
     },
     "ZEVTERA": {
@@ -2051,10 +2079,6 @@
       "substancia": "Nandrolona",
       "codigo": "C5"
     },
-    "DELTYBA": {
-      "substancia": "delamanide",
-      "codigo": "ANTIMICROBIANO"
-    },
     "ADINOS GEN": {
       "substancia": "gentamicina",
       "codigo": "ANTIMICROBIANO"
@@ -2278,6 +2302,10 @@
     "DROPERDAL": {
       "substancia": "Droperidol",
       "codigo": "C1"
+    },
+    "TRULICITY": {
+      "substancia": "dulaglutida",
+      "codigo": "GLP1"
     },
     "FLUFENAN DEPOT": {
       "substancia": "Flufenazina",
@@ -3011,6 +3039,34 @@
       "substancia": "linezolida",
       "codigo": "ANTIMICROBIANO"
     },
+    "LIRUX": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "OLIRE": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "LIRACLICK": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "VICTOZA": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "SAXENDA": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "XULTOPHY": {
+      "substancia": "liraglutida",
+      "codigo": "GLP1"
+    },
+    "SOLIQUA": {
+      "substancia": "lixisenatida",
+      "codigo": "GLP1"
+    },
     "LORAZEPAM (PORT.344/98, LISTA B1)": {
       "substancia": "Lorazepam",
       "codigo": "B1"
@@ -3699,6 +3755,54 @@
       "substancia": "Rufinamida",
       "codigo": "C1"
     },
+    "OZIVY": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "SEMACLIQUE": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "OZEMPIC": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "RYBELSUS": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "WEGOVY": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "POVIZTRA": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "EXTENSIOR": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "ORSEMA": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "OWOZY": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "SEEMASUN": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "ZEMPNEO": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
+    "SEMAVY": {
+      "substancia": "semaglutida",
+      "codigo": "GLP1"
+    },
     "SEVOCRIS": {
       "substancia": "Sevoflurano",
       "codigo": "C1"
@@ -4250,6 +4354,14 @@
     "THIOPENTAX": {
       "substancia": "Tiopental",
       "codigo": "B1"
+    },
+    "MOUNJARO": {
+      "substancia": "tirzepatida",
+      "codigo": "GLP1"
+    },
+    "MOUNJARO MULTIDOSE": {
+      "substancia": "tirzepatida",
+      "codigo": "GLP1"
     },
     "BRAMITOB": {
       "substancia": "tobramicina",
