@@ -2312,6 +2312,16 @@
     body:not(.light) .tools-hub-card{ border-radius:17px; }
     body:not(.light) .tools-hub-card-body{ border-radius:15px; }
   }
+
+  /* 17/11/2026 — MOBILE: os cantos de 28px ficavam exagerados nos cards
+     pequenos (o @container não consegue estilizar o próprio card). No celular
+     usa-se um raio proporcional ao card menor; o desktop continua com 28px. */
+  @media (max-width:768px){
+    body:not(.light) .tools-hub-card{ border-radius:18px !important; }
+    body:not(.light) .tools-hub-card-body{ border-radius:15px !important; }
+    body.light .tools-hub-grid .tools-hub-card{ border-radius:18px !important; border-width:2px !important; }
+    body.light .tools-hub-grid .tools-hub-card-body{ inset:2px !important; border-radius:14px !important; }
+  }
 </style>
 </head>
 <body>
