@@ -769,7 +769,7 @@
 </style>
 </head>
 <body>
-<script>try{ if(localStorage.getItem('farmadic-tema')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <header class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Página inicial">
@@ -1019,7 +1019,7 @@ function addHistorico(id){
 /* ---------------- Tema / navegação básica ---------------- */
 function toggleTheme(){
   document.body.classList.toggle('light');
-  try{ localStorage.setItem('farmadic-tema', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+  try{ localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
 }
 function abrirMenuMobile(){ document.body.classList.add('mobile-menu-only'); }
 function fecharMenuMobile(){ document.body.classList.remove('mobile-menu-only'); }
@@ -1858,5 +1858,7 @@ fetch('dicionario.json').then(r=>r.json()).then(data=>{
   if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
 })();
 </script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{var l=localStorage.getItem('farmapratica-theme')==='light';if(document.body.classList.contains('light')!==l&&typeof toggleTheme==='function'){toggleTheme();}}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
+<script src="../assets/tempo-uso.js" data-tool="dicionario"></script>
 </body>
 </html>

@@ -428,7 +428,7 @@
           <div class="bx-stat"><strong>${GRUPOS.length}</strong><span>grupos ATC</span></div>
           <div class="bx-stat"><strong>${totalSub}</strong><span>subclasses</span></div>
           <div class="bx-stat"><strong>${favs.length}</strong><span>favoritos</span></div>
-          <button type="button" class="bx-btn bx-btn-ghost bx-sorteio" onclick="bxSortear()" title="Abrir a ficha de um medicamento aleatório — bom para estudar">
+          <button type="button" class="bx-btn bx-btn-ghost bx-sorteio" onclick="bxSortear()" title="Abrir a ficha de um medicamento aleatório, bom para estudar">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/></svg>
             Fármaco aleatório
           </button>
@@ -720,7 +720,7 @@
         id: "apresentacoes",
         titulo: "Apresentações",
         html: `<ul>${m.apresentacoes
-          .map((a) => `<li><strong>${esc(a.forma)}:</strong> ${a.concentracoes.map(esc).join(", ")}${a.obs ? ` — <span class="texto-dim">${esc(a.obs)}</span>` : ""}</li>`)
+          .map((a) => `<li><strong>${esc(a.forma)}:</strong> ${a.concentracoes.map(esc).join(", ")}${a.obs ? `: <span class="texto-dim">${esc(a.obs)}</span>` : ""}</li>`)
           .join("")}</ul>`,
       });
     }
@@ -796,10 +796,10 @@
     }
 
     if (m.gestacao) {
-      secoes.push({ id: "gestacao", titulo: "🤰 Gestação", tituloExtra: riscoDotHtml(m.gestacaoCategoria, "gestacao"), html: `<p>${esc(m.gestacao)}</p>` });
+      secoes.push({ id: "gestacao", titulo: "Gestação", tituloExtra: riscoDotHtml(m.gestacaoCategoria, "gestacao"), html: `<p>${esc(m.gestacao)}</p>` });
     }
     if (m.lactacao) {
-      secoes.push({ id: "lactacao", titulo: "🤱 Lactação", tituloExtra: riscoDotHtml(m.lactacaoCategoria, "lactacao"), html: `<p>${esc(m.lactacao)}</p>` });
+      secoes.push({ id: "lactacao", titulo: "Lactação", tituloExtra: riscoDotHtml(m.lactacaoCategoria, "lactacao"), html: `<p>${esc(m.lactacao)}</p>` });
     }
 
     const especiais = [
@@ -875,13 +875,14 @@
 
         <div class="ficha-corpo">
           <aside class="ficha-sidebar" aria-label="Menu de seções">
+            <p class="ficha-sidebar-titulo">Nesta ficha</p>
             <ul>
               ${secoes.map((s) => `<li><a href="#sec-${s.id}" data-target="sec-${s.id}">${esc(s.titulo)}</a></li>`).join("")}
             </ul>
           </aside>
           <div class="ficha-conteudo">
             ${secoes.map((s) => `<section id="sec-${s.id}" class="ficha-secao"><h2>${esc(s.titulo)}${s.tituloExtra || ""}</h2>${s.html}</section>`).join("")}
-            <p class="aviso-secao-final">Alguma informação desta ficha não estava disponível na base consultada? Ela foi omitida em vez de presumida — consulte sempre a bula vigente e o julgamento clínico.</p>
+            <p class="aviso-secao-final">Alguma informação desta ficha não estava disponível na base consultada? Ela foi omitida em vez de presumida. Consulte sempre a bula vigente e o julgamento clínico.</p>
           </div>
         </div>
       </div>`;
@@ -968,7 +969,7 @@
     const completa = fichaCompleta(m);
     const nRef = (m.referencias || []).length;
     if (!completa) {
-      return `<div class="ficha-selo selo-pendente"><span class="selo-tag">◔ Ficha mínima</span><span>Conteúdo farmacoterapêutico em revisão — confira a bula vigente.</span></div>`;
+      return `<div class="ficha-selo selo-pendente"><span class="selo-tag">◔ Ficha mínima</span><span>Conteúdo farmacoterapêutico em revisão. Confira a bula vigente.</span></div>`;
     }
     return `<div class="ficha-selo"><span class="selo-tag">✓ Ficha completa</span>` +
       (m.ultimaAtualizacao ? `<span>Revisada em <b>${esc(dataBR(m.ultimaAtualizacao))}</b></span>` : "") +
@@ -986,8 +987,8 @@
     ["Classe terapêutica", (m) => textoCurto(m.classeTerapeutica)],
     ["Mecanismo de ação", (m) => textoCurto(m.mecanismoAcao)],
     ["Indicações", (m) => textoCurto(m.indicacoes)],
-    ["Posologia — adultos", (m) => textoCurto(m.posologia && m.posologia.adultos)],
-    ["Posologia — pediátrica", (m) => textoCurto(m.posologia && m.posologia.pediatrica)],
+    ["Posologia: adultos", (m) => textoCurto(m.posologia && m.posologia.adultos)],
+    ["Posologia: pediátrica", (m) => textoCurto(m.posologia && m.posologia.pediatrica)],
     ["Contraindicações", (m) => textoCurto(m.contraindicacoes)],
     ["Interações graves", (m) => { const g = (m.interacoes && m.interacoes.graves) || []; return g.length ? `<p class="cmp-num">${g.length}</p>` + textoCurto(g.map((x) => x.par)) : `<p class="texto-dim">Nenhuma registrada</p>`; }],
     ["Reações adversas comuns", (m) => { const r = m.reacoesAdversas || {}; return textoCurto([].concat(r.muitoComuns || [], r.comuns || [])); }],

@@ -1818,6 +1818,82 @@
   .topbar-app.fp-centro > .titulo-central .titulo-principal{ justify-content:center; }
   .topbar-app.fp-centro > .titulo-central + *{ margin-left:auto; }
   .topbar-app.fp-compacto > .titulo-central .titulo-descricao{ display:none !important; }
+
+  /* =====================================================================
+     18/11/2026 — Menu lateral modernizado (desktop): navegação em árvore,
+     sem "caixas dentro de caixas". Categoria = linha com selo colorido,
+     nome, contador e seta; fármacos = linhas leves ligadas por um trilho
+     na cor da categoria. Mobile (até 800px) mantém o layout próprio.
+     ===================================================================== */
+  @media (min-width: 801px){
+    .sidebar .sidebar-list{ padding:8px 12px 28px; }
+    .sidebar .cat-group{ margin-top:4px !important; }
+    .sidebar .cat-group:first-child{ margin-top:2px !important; }
+    .sidebar .cat-header{
+      position:sticky; top:0; z-index:3;
+      gap:10px; padding:8px 8px !important; margin:0 !important;
+      background:var(--sidebar) !important;
+      border:0 !important; border-radius:10px !important;
+      box-shadow:none !important; transform:none !important;
+    }
+    .sidebar .cat-header::after{
+      content:""; position:absolute; inset:0; border-radius:10px; pointer-events:none;
+      background:color-mix(in srgb, var(--cat-accent) 0%, transparent); transition:background .18s ease;
+    }
+    .sidebar .cat-header:hover::after{ background:color-mix(in srgb, var(--cat-accent) 10%, transparent); }
+    body.light .sidebar .cat-header{ box-shadow:none !important; }
+    .sidebar .cat-badge{
+      width:28px; height:28px; border-radius:9px; transform:none !important;
+      background:color-mix(in srgb, var(--cat-accent) 16%, transparent) !important;
+      border:0 !important;
+      box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--cat-accent) 38%, transparent) !important;
+    }
+    .sidebar .cat-dot{ width:10px; height:10px; border-radius:3px; background:var(--cat-accent) !important; box-shadow:0 0 10px -1px var(--cat-accent) !important; }
+    .sidebar .cat-label{ gap:10px; }
+    .sidebar .cat-label > span:last-child{
+      font-size:13px; font-weight:700; letter-spacing:.1px; text-transform:none;
+      color:var(--text); line-height:1.25; white-space:normal;
+    }
+    .sidebar .cat-count-mini{
+      font-size:11px; font-weight:700; padding:2px 8px; border:0;
+      color:color-mix(in srgb, var(--cat-accent) 80%, var(--text));
+      background:color-mix(in srgb, var(--cat-accent) 14%, transparent);
+    }
+    .sidebar .cat-chevron{ width:16px; height:16px; color:var(--text-dim); transition:transform .2s ease; }
+    .sidebar .cat-header:hover .cat-badge{ transform:none !important; }
+
+    .sidebar .cat-items{
+      position:relative; margin:2px 0 10px 21px; padding-left:10px;
+      border-left:2px solid color-mix(in srgb, var(--cat-accent) 28%, transparent);
+    }
+    .sidebar .cat-group.colapsado .cat-items{ margin-bottom:0; }
+    .sidebar .drug-item{
+      position:relative; gap:8px; margin:1px 0 !important; padding:7px 10px !important;
+      font-size:13px; font-weight:500; color:var(--text-gray);
+      background:transparent !important; border:0 !important; border-radius:8px !important;
+      box-shadow:none !important; transform:none !important;
+    }
+    body.light .sidebar .drug-item{ box-shadow:none !important; }
+    .sidebar .drug-item .drug-dot{ display:none; }
+    .sidebar .drug-item:hover{ background:color-mix(in srgb, var(--cat-accent) 10%, transparent) !important; color:var(--text); }
+    .sidebar .drug-item.active{
+      background:color-mix(in srgb, var(--cat-accent) 18%, transparent) !important;
+      color:var(--text) !important; font-weight:700;
+    }
+    .sidebar .drug-item.active::before{
+      content:""; position:absolute; left:0; top:7px; bottom:7px; width:3px; border-radius:2px;
+      background:var(--cat-accent); box-shadow:0 0 8px var(--cat-accent);
+    }
+    .sidebar .drug-item .drug-marca{ font-size:11px; color:var(--text-dim); font-weight:500; }
+
+    /* Favoritos no topo da lista */
+    .sidebar .fav-group{ margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+    .sidebar .fav-header{
+      background:transparent; border:0; padding:6px 8px; margin:0 0 2px;
+      font-size:11px; letter-spacing:1px; color:var(--amber);
+    }
+    .sidebar .fav-group .drug-item{ --cat-accent:var(--amber); }
+  }
 </style>
 </head>
 <body class="gate-aberto">
@@ -2403,6 +2479,7 @@ function renderSidebar(filtro=''){
     const colapsada = !termo && categoriasColapsadas.has(cat);
     const group = document.createElement('div');
     group.className = 'cat-group' + (colapsada ? ' colapsado' : '');
+    group.style.setProperty('--cat-accent', accent.cor);
 
     const header = document.createElement('div');
     header.className = 'cat-header' + (colapsada ? ' colapsado' : '');
@@ -3751,5 +3828,6 @@ function formatarIdadeMinima(meses){
   if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
 })();
 </script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{var l=localStorage.getItem('farmapratica-theme')==='light';if(document.body.classList.contains('light')!==l&&typeof toggleTheme==='function'){toggleTheme();}}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
 </body>
 </html>

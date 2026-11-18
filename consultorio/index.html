@@ -2474,5 +2474,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
 })();
 </script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{applyTheme(localStorage.getItem('farmapratica-theme')||'dark');}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
+<script src="../assets/tempo-uso.js" data-tool="consultorio"></script>
 </body>
 </html>

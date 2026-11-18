@@ -421,13 +421,32 @@
 
   .ficha-corpo{ display:grid; grid-template-columns:230px 1fr; gap:28px; align-items:start; margin-top:18px; }
   .ficha-sidebar{ position:sticky; top:88px; }
-  .ficha-sidebar ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; border-left:2px solid var(--border); }
-  .ficha-sidebar a{
-    display:block; padding:7px 14px; font-size:.8rem; color:var(--text-dim); text-decoration:none;
-    border-left:2px solid transparent; margin-left:-2px;
+  /* 17/11/2026: menu de seções em cartão, com marcador e destaque em "pílula" */
+  .ficha-sidebar{
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:14px 10px 12px; max-height:calc(100vh - 110px); overflow-y:auto;
+    box-shadow:0 10px 28px -18px rgba(0,0,0,.45);
+    scrollbar-width:thin;
   }
-  .ficha-sidebar a:hover{ color:var(--text); }
-  .ficha-sidebar a.ativo{ color:var(--accent); border-left-color:var(--accent); font-weight:700; }
+  .ficha-sidebar-titulo{
+    margin:0 0 8px; padding:0 10px 10px; border-bottom:1px solid var(--border);
+    font-size:.68rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim);
+  }
+  .ficha-sidebar ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; }
+  .ficha-sidebar a{
+    position:relative; display:flex; align-items:center; gap:10px;
+    padding:7px 10px 7px 12px; border-radius:9px;
+    font-size:.79rem; line-height:1.3; color:var(--text-dim); text-decoration:none;
+    transition:background .18s ease, color .18s ease;
+  }
+  .ficha-sidebar a::before{
+    content:""; flex:none; width:6px; height:6px; border-radius:50%;
+    background:var(--border); transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .ficha-sidebar a:hover{ color:var(--text); background:color-mix(in srgb, var(--accent) 7%, transparent); }
+  .ficha-sidebar a:hover::before{ background:var(--text-dim); }
+  .ficha-sidebar a.ativo{ color:var(--accent); background:var(--accent-glow); font-weight:700; }
+  .ficha-sidebar a.ativo::before{ background:var(--accent); transform:scale(1.25); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
 
   .ficha-conteudo{ min-width:0; }
   .ficha-secao{ padding-bottom:26px; margin-bottom:26px; border-bottom:1px solid var(--border); scroll-margin-top:14px; overflow-wrap:break-word; word-break:break-word; }
@@ -930,7 +949,7 @@
 </main>
 
 <footer class="rodape-aviso">
-  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Catálogo com 2.268 fármacos, classificados por classe terapêutica em 17 grupos e 541 subclasses — fichas farmacoterapêuticas completas (mecanismo de ação, posologia, interações, contraindicações etc.) em expansão e revisão manual contínuas, medicamento por medicamento.</p>
+  <p><strong>Conteúdo destinado a profissionais e estudantes da área da saúde.</strong> As informações não substituem a bula aprovada, protocolos institucionais, diretrizes clínicas ou avaliação individual do paciente. Catálogo com 2.268 fármacos, classificados por classe terapêutica em 17 grupos e 541 subclasses; fichas farmacoterapêuticas completas (mecanismo de ação, posologia, interações, contraindicações etc.) em expansão e revisão manual contínuas, medicamento por medicamento.</p>
 </footer>
 
 <script src="data.js"></script>
@@ -971,5 +990,7 @@
   if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
 })();
 </script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{var l=localStorage.getItem('farmapratica-theme')==='light';if(document.body.classList.contains('light')!==l&&typeof toggleTheme==='function'){toggleTheme();}}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
+<script src="../assets/tempo-uso.js" data-tool="bulario"></script>
 </body>
 </html>

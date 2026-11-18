@@ -2322,9 +2322,163 @@
     body.light .tools-hub-grid .tools-hub-card{ border-radius:18px !important; border-width:2px !important; }
     body.light .tools-hub-grid .tools-hub-card-body{ inset:2px !important; border-radius:14px !important; }
   }
+
+  /* =====================================================================
+     18/11/2026 — Painel pessoal redesenhado (Favoritos, Notas, Uso das
+     ferramentas), banner, atalhos e rodapé. Visual único nos dois temas.
+     ===================================================================== */
+  .dash{margin-top:8px;}
+  .dash-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1.35fr);gap:18px;align-items:stretch;}
+  @media (max-width:1280px){ .dash-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);} .dash-usage{grid-column:1 / -1;} }
+  @media (max-width:760px){ .dash-grid{grid-template-columns:minmax(0,1fr);gap:14px;} }
+  .dash-card{
+    position:relative;display:flex;flex-direction:column;min-width:0;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--bg-panel) 92%, #ffffff 8%) 0%, var(--bg-panel) 100%);
+    border:1px solid var(--card-border);border-radius:18px;
+    padding:18px 18px 16px;
+    box-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 14px 30px -22px rgba(0,0,0,.55);
+    transition:box-shadow .3s ease;
+  }
+  .dash-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .dash-ico{
+    width:36px;height:36px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;
+    color:var(--ic);background:color-mix(in srgb, var(--ic) 16%, transparent);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--ic) 38%, transparent);
+  }
+  .dash-ico svg{width:18px;height:18px;}
+  .dash-title{flex:1;min-width:0;}
+  .dash-title h3{font-family:var(--font-display);font-size:15.5px;font-weight:800;letter-spacing:-.1px;margin:0;color:var(--text-white);line-height:1.2;}
+  .dash-title p{font-size:12px;color:var(--text-gray-dim);margin:2px 0 0;line-height:1.3;}
+  /* listas internas */
+  .dash-card .fav-list,.dash-card .notes-list{max-height:260px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--card-border) transparent;}
+  #panel-favoritos .fav-list{flex:1;display:flex;flex-direction:column;gap:8px;}
+  #panel-favoritos .fav-list:has(.fav-empty){border:1px dashed var(--card-border);border-radius:14px;justify-content:center;min-height:170px;}
+  #panel-favoritos .fav-empty{border:none !important;background:none !important;}
+  #panel-notas .note-category-row{margin-bottom:10px;}
+  #panel-notas .notes-list:has(.notes-empty){border:1px dashed var(--card-border);border-radius:14px;}
+  #panel-notas .notes-empty{border:none !important;background:none !important;}
+  /* seletor Hoje/Semana */
+  .dash-seg{display:inline-flex;flex:none;padding:3px;border-radius:999px;background:color-mix(in srgb, var(--card-border) 45%, transparent);border:1px solid var(--card-border);}
+  .dash-seg-btn{border:0;background:transparent;cursor:pointer;font-family:var(--font-display);font-size:11.5px;font-weight:700;color:var(--text-gray);padding:5px 11px;border-radius:999px;transition:background .2s ease,color .2s ease,box-shadow .2s ease;}
+  .dash-seg-btn.active{background:var(--card-bg);color:var(--text-white);box-shadow:0 1px 3px rgba(0,0,0,.25);}
+  /* KPI + rosca */
+  .dash-usage-top{display:flex;align-items:center;gap:16px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb, var(--card-border) 22%, transparent);margin-bottom:12px;}
+  .dash-kpi{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;}
+  .dash-kpi-value{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-.5px;line-height:1.05;color:var(--text-white);}
+  .dash-kpi-label{font-size:12px;color:var(--text-gray-dim);}
+  .dash-delta{margin-top:6px;display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;width:fit-content;padding:3px 8px;border-radius:999px;}
+  .dash-delta-ico{display:inline-flex;}
+  .dash-delta-ico svg{width:12px;height:12px;}
+  .dash-delta.is-up{color:#22c55e;background:rgba(34,197,94,.12);}
+  .dash-delta.is-down{color:#f97316;background:rgba(249,115,22,.12);}
+  .dash-delta.is-none{color:var(--text-gray-dim);background:color-mix(in srgb, var(--card-border) 40%, transparent);}
+  .dash-donut{position:relative;width:92px;height:92px;flex:none;}
+  .dash-donut svg{width:100%;height:100%;display:block;}
+  .dash-donut-track{stroke:color-mix(in srgb, var(--card-border) 75%, transparent);}
+  .dash-donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;}
+  .dash-donut-center strong{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--text-white);}
+  .dash-donut-center span{font-size:10.5px;color:var(--text-gray-dim);margin-top:3px;}
+  /* lista das 12 ferramentas */
+  .dash-usage-empty{font-size:12px;color:var(--text-gray-dim);margin:0 2px 10px;line-height:1.45;}
+  .dash-tools{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 14px;}
+  @media (max-width:520px){ .dash-tools{grid-template-columns:minmax(0,1fr);} }
+  .dash-tools a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:8px;row-gap:4px;align-items:center;padding:6px 8px;border-radius:9px;text-decoration:none;color:inherit;transition:background .15s ease;}
+  .dash-tools a:hover{background:color-mix(in srgb, var(--tc) 10%, transparent);}
+  .dash-tool-dot{width:8px;height:8px;border-radius:50%;background:var(--tc);box-shadow:0 0 0 3px color-mix(in srgb, var(--tc) 20%, transparent);}
+  .dash-tool-name{font-size:12.5px;font-weight:600;color:var(--text-white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .dash-tool-time{font-size:11px;font-weight:700;color:var(--text-gray);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .dash-tool-bar{grid-column:2 / 4;height:4px;border-radius:4px;background:color-mix(in srgb, var(--card-border) 55%, transparent);overflow:hidden;}
+  .dash-tool-bar i{display:block;height:100%;border-radius:4px;background:var(--tc);}
+  .dash-tools li.is-zero .dash-tool-name,.dash-tools li.is-zero .dash-tool-time{color:var(--text-gray-dim);font-weight:500;}
+  .dash-tools li.is-zero .dash-tool-dot{opacity:.55;box-shadow:none;}
+  /* faixa inferior: banner + atalhos */
+  .dash-bottom{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:18px;margin-top:18px;}
+  @media (max-width:980px){ .dash-bottom{grid-template-columns:minmax(0,1fr);} }
+  .dash-banner{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--card-border);min-height:168px;display:flex;align-items:center;
+    background:linear-gradient(100deg, var(--bg-panel) 0%, var(--bg-panel) 42%, transparent 78%);}
+  .dash-banner-visual{position:absolute;inset:0;z-index:0;background:url("images/banner-farmapratica.png") right center / cover no-repeat;
+    -webkit-mask-image:linear-gradient(90deg, transparent 30%, #000 75%);mask-image:linear-gradient(90deg, transparent 30%, #000 75%);opacity:.9;}
+  .dash-banner::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg, var(--bg-panel) 35%, color-mix(in srgb, var(--bg-panel) 55%, transparent) 62%, transparent 100%);}
+  .dash-banner-text{position:relative;z-index:2;padding:24px 28px;max-width:520px;}
+  .dash-eyebrow{display:inline-block;font-family:var(--font-display);font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+  .dash-banner h2{font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-.4px;margin:0 0 6px;color:var(--text-white);}
+  .dash-banner p{font-size:13.5px;color:var(--text-gray);line-height:1.55;margin:0 0 14px;}
+  .dash-banner-cta{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-family:var(--font-display);font-size:13px;font-weight:700;color:#fff;padding:9px 16px;border-radius:999px;background:var(--red);box-shadow:0 8px 18px -10px var(--red);transition:transform .15s ease,filter .15s ease;}
+  .dash-banner-cta:hover{filter:brightness(1.08);transform:translateY(-1px);}
+  .dash-banner-cta svg{width:15px;height:15px;}
+  @media (max-width:760px){ .dash-banner-visual{display:none;} .dash-banner::before{display:none;} .dash-banner{background:var(--bg-panel);} }
+  .dash-tips{border-radius:18px;border:1px solid var(--card-border);background:var(--bg-panel);padding:18px 20px;}
+  .dash-tips h3{font-family:var(--font-display);font-size:13px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--text-gray-dim);margin:0 0 12px;}
+  .dash-tips ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .dash-tips li{display:flex;align-items:flex-start;gap:12px;font-size:12.8px;line-height:1.45;color:var(--text-gray);}
+  .dash-tip-key{display:inline-flex;gap:3px;flex:none;min-width:58px;}
+  .dash-tip-key kbd{font-family:var(--font-display);font-size:10.5px;font-weight:700;padding:3px 6px;border-radius:6px;border:1px solid var(--card-border);background:var(--card-bg);color:var(--text-white);box-shadow:0 1px 0 var(--card-border);}
+  .dash-tip-ico{flex:none;min-width:58px;display:inline-flex;}
+  .dash-tip-ico svg{width:17px;height:17px;color:var(--text-gray-dim);}
+  /* rodapé */
+  .fp-footer{margin-top:34px;border-top:1px solid var(--card-border);text-align:left;background:transparent;padding:0;}
+  .fp-footer-col, .fp-footer-brand{text-align:left;}
+  .fp-footer-inner{max-width:1400px;margin:0 auto;padding:30px 28px 22px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr) minmax(0,.9fr);gap:28px;}
+  @media (max-width:900px){ .fp-footer-inner{grid-template-columns:minmax(0,1fr);gap:22px;} }
+  .fp-footer-brand h3{font-family:var(--font-display);font-size:18px;font-weight:800;margin:0 0 8px;color:var(--text-white);}
+  .fp-footer-brand h3 span{color:var(--red);}
+  .fp-footer-brand p{font-size:13px;color:var(--text-gray-dim);line-height:1.55;margin:0 0 14px;max-width:340px;}
+  .fp-footer-social{display:flex;gap:8px;}
+  .fp-footer-social a{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid var(--card-border);color:var(--text-gray);transition:color .15s ease,border-color .15s ease;}
+  .fp-footer-social a:hover{color:var(--red);border-color:var(--red);}
+  .fp-footer-social svg{width:16px;height:16px;}
+  .fp-footer-col h4{font-family:var(--font-display);font-size:11.5px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:var(--text-white);margin:0 0 12px;}
+  .fp-footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .fp-footer-tools ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;}
+  .fp-footer-col a{font-size:13px;color:var(--text-gray-dim);text-decoration:none;transition:color .15s ease;}
+  .fp-footer-col a:hover{color:var(--text-white);}
+  .fp-footer-bottom{max-width:1400px;margin:0 auto;padding:14px 28px 22px;border-top:1px solid color-mix(in srgb, var(--card-border) 70%, transparent);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--text-gray-dim);}
+  @media (max-width:760px){ .fp-footer{margin-bottom:76px;} }
+
+  /* ---------- Tema claro: superfícies em "pérola lilás", sem branco absoluto ---------- */
+  body.light{ --lt-surface:#f3f2f7; --lt-surface-2:#e9e7f0; --lt-border:#d8d5e2; }
+  body.light header{ background:var(--lt-surface) !important; }
+  body.light .greeting-banner{ background:linear-gradient(135deg, #f5f4f9 0%, var(--lt-surface) 60%, #eeedf4 100%) !important; border-color:var(--lt-border) !important; }
+  body.light .color-theme-popover{ background:var(--lt-surface) !important; border-color:var(--lt-border) !important; }
+  body.light .search-box{ background:var(--lt-surface-2) !important; border-color:var(--lt-border) !important; }
+  body.light .search-box .kbd{ background:var(--lt-surface) !important; border-color:var(--lt-border) !important; }
+  body.light .search-results{ background:var(--lt-surface) !important; border-color:var(--lt-border) !important; }
+  body.light .sidebar{ background:var(--lt-surface) !important; border-right-color:var(--lt-border) !important; }
+  body.light .dash-card, body.light .dash-tips{ background:var(--lt-surface); border-color:var(--lt-border); box-shadow:0 1px 2px rgba(40,30,70,.05), 0 14px 28px -20px rgba(40,30,70,.28); }
+  body.light .dash-banner{ border-color:var(--lt-border); background:var(--lt-surface); }
+  body.light .dash-banner::before{ background:linear-gradient(90deg, var(--lt-surface) 35%, color-mix(in srgb, var(--lt-surface) 55%, transparent) 62%, transparent 100%); }
+  body.light .dash-usage-top{ background:var(--lt-surface-2); }
+  body.light .dash-seg{ background:var(--lt-surface-2); border-color:var(--lt-border); }
+  body.light .dash-seg-btn.active{ background:var(--lt-surface); color:#1d2127; box-shadow:0 1px 3px rgba(40,30,70,.18); }
+  body.light .dash-tip-key kbd{ background:var(--lt-surface-2); border-color:var(--lt-border); color:#1d2127; }
+  body.light .fp-footer{ border-top-color:var(--lt-border); }
+  body.light #panel-notas .note-category-chip{ border:1px solid var(--lt-border); border-left:3px solid var(--chip-color); background:var(--lt-surface-2); }
+
+  /* 18/11/2026: Uso das ferramentas em gráfico de colunas */
+  .dash-tool-list{margin-top:2px;}
+  .dash-chart{position:relative;padding:6px 2px 0 34px;}
+  .dash-chart-plot{position:relative;height:170px;margin-bottom:64px;}
+  .dash-chart-tick{position:absolute;left:0;right:0;height:0;border-top:1px dashed color-mix(in srgb, var(--card-border) 80%, transparent);}
+  .dash-chart-tick:first-child{border-top-style:solid;}
+  .dash-chart-tick span{position:absolute;right:calc(100% + 6px);top:-7px;font-size:10px;font-weight:600;color:var(--text-gray-dim);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .dash-chart-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;align-items:end;}
+  .dash-col{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-decoration:none;color:inherit;}
+  .dash-col-bar{position:relative;width:100%;max-width:26px;border-radius:7px 7px 3px 3px;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--tc) 85%, #ffffff 15%) 0%, var(--tc) 100%);
+    box-shadow:0 6px 14px -8px var(--tc);transition:filter .15s ease, transform .15s ease;transform-origin:bottom;animation:dashColGrow .6s cubic-bezier(.2,.8,.2,1) both;}
+  .dash-col:hover .dash-col-bar{filter:brightness(1.12);transform:scaleY(1.02);}
+  .dash-col-bar em{position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);font-style:normal;font-size:9.5px;font-weight:800;color:var(--text-white);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .dash-col-label{position:absolute;top:calc(100% + 8px);right:50%;transform-origin:100% 0;transform:rotate(-48deg);flex-direction:row-reverse;display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--text-gray);white-space:nowrap;}
+  .dash-col-label i{width:6px;height:6px;border-radius:50%;background:var(--tc);flex:none;}
+  .dash-col.is-zero .dash-col-label{color:var(--text-gray-dim);opacity:.85;}
+  .dash-col.is-zero::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,26px);height:3px;border-radius:3px;background:color-mix(in srgb, var(--tc) 35%, transparent);}
+  .dash-chart-empty{position:absolute;left:0;right:0;top:34%;text-align:center;font-size:12px;line-height:1.5;color:var(--text-gray-dim);margin:0;padding:0 8px;}
+  @keyframes dashColGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+  @media (max-width:520px){ .dash-chart-cols{gap:3px;} .dash-col-bar em{font-size:8.5px;} .dash-col-label{font-size:9.5px;} }
 </style>
 </head>
 <body>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeMobileMenu()"></div>
 <aside class="sidebar" id="sidebar">
@@ -2674,22 +2828,23 @@
       </div>
     </section>
 
-    <!-- Favoritos + Notas de Rotina lado a lado -->
-    <section class="card stats-card">
-      <div class="quad-panel trio-panel">
-        <div class="stat-block" id="panel-favoritos">
-          <div class="stats-card-head" style="margin-bottom:16px;">
-            <h4><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>Favoritos</h4>
+    <!-- 18/11/2026: painel pessoal redesenhado (Favoritos, Notas de Rotina e Uso das ferramentas) -->
+    <section class="dash" aria-label="Seu painel">
+      <div class="dash-grid">
+        <article class="dash-card" id="panel-favoritos">
+          <div class="dash-head">
+            <span class="dash-ico" style="--ic:#f59e0b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span>
+            <div class="dash-title"><h3>Favoritos</h3><p>Itens salvos nas ferramentas</p></div>
           </div>
           <div class="fav-list" id="fav-list">
             <!-- preenchido via JS -->
           </div>
-        </div>
+        </article>
 
-        <div class="stat-block" id="panel-notas">
-          <div class="stats-card-head" style="margin-bottom:16px;">
-            <h4><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>Notas de Rotina</h4>
-            <button type="button" class="ver-todas-btn" onclick="document.getElementById('notes-list').scrollIntoView({behavior:'smooth',block:'center'});" title="Ver todas as notas">Ver todas</button>
+        <article class="dash-card" id="panel-notas">
+          <div class="dash-head">
+            <span class="dash-ico" style="--ic:#3b82f6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>
+            <div class="dash-title"><h3>Notas de Rotina</h3><p>Lembretes e checklists do balcão</p></div>
           </div>
           <!-- Chips de categoria: preenchem o título ao criar uma nova nota (atalhos, não uma segunda fonte de dados) -->
           <div class="note-category-row">
@@ -2735,94 +2890,89 @@
           <div class="notes-list" id="notes-list">
             <!-- preenchido via JS -->
           </div>
-        </div>
+        </article>
 
-        <!-- Suas ferramentas mais utilizadas — agora na mesma linha de Favoritos/Notas -->
-        <div class="stats-footer">
-          <h3><span class="stat-icon-badge badge-neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.287 1.288L3 12l5.8 1.9a2 2 0 0 1 1.288 1.287L12 21l1.9-5.8a2 2 0 0 1 1.287-1.288L21 12l-5.8-1.9a2 2 0 0 1-1.288-1.287Z"/></svg></span>Suas ferramentas mais utilizadas</h3>
-          <div class="stats-footer-inner">
-            <div id="usage-donut-wrap">
-              <!-- preenchido via JS a partir dos favoritos (ou distribuição ilustrativa quando vazio) -->
-            </div>
-            <!-- Tempo de uso real, contabilizado por assets/tempo-uso.js em cada ferramenta (aba visível + em foco) -->
-            <div class="time-saved-card">
-              <div class="time-saved-top">
-                <span class="time-saved-eyebrow">Tempo de Uso</span>
-                <div class="usage-period-toggle" id="usage-period-toggle" data-active="day" role="group" aria-label="Período do tempo de uso">
-                  <button type="button" class="usage-period-btn active" id="usage-period-btn-day" onclick="setUsagePeriod('day')" title="Hoje">D</button>
-                  <button type="button" class="usage-period-btn" id="usage-period-btn-week" onclick="setUsagePeriod('week')" title="Esta semana">S</button>
-                </div>
-              </div>
-              <span class="time-saved-value" id="usage-time-value">0h00m</span>
-              <span class="time-saved-label" id="usage-time-label">tempo usando as ferramentas hoje</span>
-              <span class="time-saved-delta" id="usage-time-delta">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                <span id="usage-time-delta-text">sem dados de ontem ainda</span>
-              </span>
+        <article class="dash-card dash-usage" id="panel-uso">
+          <div class="dash-head">
+            <span class="dash-ico" style="--ic:#22c55e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
+            <div class="dash-title"><h3>Uso das ferramentas</h3><p>Tempo registrado automaticamente</p></div>
+            <div class="dash-seg" id="usage-period-toggle" data-active="day" role="group" aria-label="Período">
+              <button type="button" class="dash-seg-btn active" id="usage-period-btn-day" onclick="setUsagePeriod('day')">Hoje</button>
+              <button type="button" class="dash-seg-btn" id="usage-period-btn-week" onclick="setUsagePeriod('week')">Semana</button>
             </div>
           </div>
-        </div>
+          <div class="dash-usage-top">
+            <div class="dash-kpi">
+              <span class="dash-kpi-value" id="usage-time-value">0h00m</span>
+              <span class="dash-kpi-label" id="usage-time-label">tempo usando as ferramentas hoje</span>
+              <span class="dash-delta is-none" id="usage-time-delta"><span class="dash-delta-ico" id="usage-time-delta-ico"></span><span id="usage-time-delta-text">ainda sem histórico suficiente</span></span>
+            </div>
+            <div class="dash-donut" id="usage-donut"></div>
+          </div>
+          <div id="usage-donut-wrap" class="dash-tool-list">
+            <!-- preenchido via JS com as 12 ferramentas -->
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Banner institucional + dica de atalho Ctrl+K -->
-    <div class="bottom-row">
-      <section class="card institutional-banner">
-        <div class="institutional-banner-text">
+    <!-- Banner institucional + atalhos (18/11/2026) -->
+    <div class="dash-bottom">
+      <section class="dash-banner">
+        <div class="dash-banner-text">
+          <span class="dash-eyebrow">FarmaPrática</span>
           <h2>Da teoria à prática, em um só lugar.</h2>
-          <p>O FarmaPrática reúne as ferramentas do seu dia a dia de balcão — para decidir mais rápido, com respaldo técnico e legislação sempre à mão.</p>
+          <p>Ferramentas do dia a dia de balcão para decidir mais rápido, com respaldo técnico e legislação sempre à mão.</p>
+          <button type="button" class="dash-banner-cta" onclick="openAboutModal()">Conheça o projeto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
         </div>
-        <!-- CTA placeholder: sem destino definido ainda -->
-        <a href="#" class="btn btn-primary institutional-cta">
-          Saiba mais
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <div class="institutional-banner-visual" aria-hidden="true"></div>
+        <div class="dash-banner-visual" aria-hidden="true"></div>
       </section>
 
-      <div class="quick-tip-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <div>
-          <strong>Dica:</strong> use <kbd>Ctrl</kbd> + <kbd>K</kbd> para buscar por qualquer medicamento ou condição em todas as ferramentas do FarmaPrática, sem sair da página inicial.
-        </div>
-      </div>
+      <aside class="dash-tips" aria-label="Atalhos e dicas">
+        <h3>Atalhos e dicas</h3>
+        <ul>
+          <li><span class="dash-tip-key"><kbd>Ctrl</kbd><kbd>K</kbd></span><span>Busca global por medicamento ou condição em todas as ferramentas.</span></li>
+          <li><span class="dash-tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></span><span>O tema claro ou escuro escolhido vale para todas as ferramentas.</span></li>
+          <li><span class="dash-tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span><span>Favorite itens dentro das ferramentas para encontrá-los aqui.</span></li>
+        </ul>
+      </aside>
     </div>
 
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="footer-brand">
-    <h3 style="font-family:var(--font-display);font-size:17px;font-weight:800;">Farma<span style="color:var(--red);">Prática</span></h3>
-    <p>Ferramentas farmacêuticas reunidas em um só lugar, para decisões mais rápidas e seguras no balcão.</p>
+<footer class="fp-footer">
+  <div class="fp-footer-inner">
+    <div class="fp-footer-brand">
+      <h3>Farma<span>Prática</span></h3>
+      <p>Ferramentas farmacêuticas reunidas em um só lugar, para decisões mais rápidas e seguras no balcão.</p>
+      <div class="fp-footer-social">
+        <a href="https://instagram.com/betofs1" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://wa.me/5584999326141" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        <a href="mailto:betofs1@live.com" title="E-mail" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></a>
+      </div>
+    </div>
+    <nav class="fp-footer-col fp-footer-tools" aria-label="Ferramentas">
+      <h4>Ferramentas</h4>
+      <ul><li><a href="farmadesk/">Guia de Dispensação</a></li><li><a href="medinter/">Substituição de Medicamentos</a></li><li><a href="dosespediatricas/">Cálculo de Doses</a></li><li><a href="receitas/">Conferência de Receitas</a></li><li><a href="consultacontrolados/">Medicamentos de Controle Especial</a></li><li><a href="checklist/">Checklist de Rotina</a></li><li><a href="interacoes/">Interações Medicamentosas</a></li><li><a href="exames/">Exames Laboratoriais</a></li><li><a href="consultorio/">Consultório Farmacêutico</a></li><li><a href="bulario/">Bulário Farmacêutico</a></li><li><a href="desafio/">Desafio Clínico</a></li><li><a href="dicionario/">Dicionário Farmacêutico</a></li></ul>
+    </nav>
+    <div class="fp-footer-col">
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="#" onclick="openAboutModal();return false;">Sobre o FarmaPrática</a></li>
+        <li><a href="mailto:betofs1@live.com">betofs1@live.com</a></li>
+        <li><a href="https://instagram.com/betofs1" target="_blank" rel="noopener">Instagram @betofs1</a></li>
+        <li><a href="https://wa.me/5584999326141" target="_blank" rel="noopener">WhatsApp (84) 99932-6141</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-col">
-    <h4>Ferramentas</h4>
-    <ul>
-      <li><a href="farmadesk/">Guia de Dispensação</a></li>
-      <li><a href="medinter/">Substituição de Medicamentos</a></li>
-      <li><a href="dosespediatricas/">Cálculo de Doses</a></li>
-      <li><a href="receitas/">Conferência de Receitas</a></li>
-      <li><a href="bulario/">Bulário Farmacêutico</a></li>
-    </ul>
-  </div>
-  <div class="footer-col">
-    <h4>Institucional</h4>
-    <ul>
-      <li><a href="#" onclick="openAboutModal();return false;">Sobre o FarmaPrática</a></li>
-      <li><a href="mailto:betofs1@live.com">betofs1@live.com</a></li>
-      <li><a href="https://instagram.com/betofs1" target="_blank" rel="noopener">Instagram @betofs1</a></li>
-      <li><a href="https://wa.me/5584999326141" target="_blank" rel="noopener">WhatsApp (84) 99932-6141</a></li>
-    </ul>
+  <div class="fp-footer-bottom">
+    <span>© 2026 FarmaPrática. Todos os direitos reservados.</span>
+    <span>Idealizado por Valberto Ferreira · CRF-RN 7652</span>
   </div>
 </footer>
-<div class="footer-bottom">
-  <span>© 2026 FarmaPrática. Todos os direitos reservados. Idealizado por Valberto Ferreira | CRF-RN 7652.</span>
-  <div class="footer-socials">
-    <a href="https://instagram.com/betofs1" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:betofs1@live.com" title="E-mail" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 7 12 13 22 7"/></svg></a>
-  </div>
-</div>
 
 <!-- Menu inferior (mobile) — botões genéricos por enquanto, funcionalidade a definir -->
 <nav class="bottom-nav" id="bottom-nav" aria-label="Navegação principal">
@@ -2888,16 +3038,29 @@
 
 <script>
 // ---------- TEMA ----------
+  // 18/11/2026: tema compartilhado com todas as ferramentas (chave única 'farmapratica-theme')
+  var THEME_SHARED_KEY = 'farmapratica-theme';
   function toggleTheme(){
     document.body.classList.toggle('light');
+    try{ localStorage.setItem(THEME_SHARED_KEY, document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
     loadAndApplyBgTheme();
   }
+  function syncSharedTheme(){
+    var wantLight = false;
+    try{ wantLight = localStorage.getItem(THEME_SHARED_KEY) === 'light'; }catch(e){}
+    if(document.body.classList.contains('light') !== wantLight){
+      document.body.classList.toggle('light', wantLight);
+      loadAndApplyBgTheme();
+    }
+  }
+  window.addEventListener('pageshow', syncSharedTheme);
+  window.addEventListener('storage', function(e){ if(e.key === THEME_SHARED_KEY) syncSharedTheme(); });
 
   // ---------- COR DE FUNDO (tema de cor, escuro e claro) ----------
   var BG_THEME_KEY_DARK = 'fp-bg-theme-dark';
   var BG_THEME_KEY_LIGHT = 'fp-bg-theme-light';
-  var BG_THEME_DEFAULT_DARK = 'azul';
-  var BG_THEME_DEFAULT_LIGHT = 'atual';
+  var BG_THEME_DEFAULT_DARK = 'roxo'; // 18/11/2026: roxo profundo por padrão
+  var BG_THEME_DEFAULT_LIGHT = 'lilas'; // 18/11/2026: lilás-claro por padrão
   // 24/08/2026: todas as 5 paletas escuras clareadas ~10% (menos preto, mais cinza — testado
   // e aprovado pelo usuário numa página de teste antes de aplicar aqui oficialmente).
   var bgPalettesDark = {
@@ -2909,11 +3072,11 @@
   };
   var bgPalettesLight = {
     // 12/11/2026: superfícies brancas (cards, menu lateral, painéis) sobre fundo neutro um pouco mais profundo
-    atual: {bg:'#dde1e6', bgPanel:'#f5f6f8', cardBg:'#ffffff', cardBorder:'#cfd4da', cardHoverBg:'#f3f4f6', placeholderBorder:'#c9ced5', sidebarBg:'#ffffff', sidebarBorder:'#d3d8de', sidebarHover:'#eef0f3'},
-    azul:  {bg:'#e7edf5', bgPanel:'#f2f6fb', cardBg:'#ffffff', cardBorder:'#d3ddea', cardHoverBg:'#eaf1f8', placeholderBorder:'#cfdaea', sidebarBg:'#dde7f2', sidebarBorder:'#c9d6e8', sidebarHover:'#e7edf5'},
-    verde: {bg:'#e9f3ef', bgPanel:'#f3faf7', cardBg:'#ffffff', cardBorder:'#d2e5dd', cardHoverBg:'#eef7f3', placeholderBorder:'#cde2d9', sidebarBg:'#ddefe7', sidebarBorder:'#c7ddd2', sidebarHover:'#e9f3ef'},
-    lilas: {bg:'#f0edf7', bgPanel:'#f8f5fc', cardBg:'#ffffff', cardBorder:'#ded6ee', cardHoverBg:'#f4f0fa', placeholderBorder:'#dad0ec', sidebarBg:'#e7e0f3', sidebarBorder:'#d4c9e9', sidebarHover:'#f0edf7'},
-    areia: {bg:'#f3efe9', bgPanel:'#faf7f2', cardBg:'#ffffff', cardBorder:'#e3dccf', cardHoverBg:'#f6f2ec', placeholderBorder:'#ded5c5', sidebarBg:'#ede5d8', sidebarBorder:'#ded2bd', sidebarHover:'#f3efe9'}
+    atual: {bg:'#dde1e6', bgPanel:'#f5f6f8', cardBg:'#f1f2f5', cardBorder:'#cfd4da', cardHoverBg:'#f3f4f6', placeholderBorder:'#c9ced5', sidebarBg:'#ffffff', sidebarBorder:'#d3d8de', sidebarHover:'#eef0f3'},
+    azul:  {bg:'#e7edf5', bgPanel:'#f2f6fb', cardBg:'#f1f4f9', cardBorder:'#d3ddea', cardHoverBg:'#eaf1f8', placeholderBorder:'#cfdaea', sidebarBg:'#dde7f2', sidebarBorder:'#c9d6e8', sidebarHover:'#e7edf5'},
+    verde: {bg:'#e9f3ef', bgPanel:'#f3faf7', cardBg:'#f1f6f3', cardBorder:'#d2e5dd', cardHoverBg:'#eef7f3', placeholderBorder:'#cde2d9', sidebarBg:'#ddefe7', sidebarBorder:'#c7ddd2', sidebarHover:'#e9f3ef'},
+    lilas: {bg:'#f0edf7', bgPanel:'#f8f5fc', cardBg:'#f5f2f9', cardBorder:'#ded6ee', cardHoverBg:'#f4f0fa', placeholderBorder:'#dad0ec', sidebarBg:'#e7e0f3', sidebarBorder:'#d4c9e9', sidebarHover:'#f0edf7'},
+    areia: {bg:'#f3efe9', bgPanel:'#faf7f2', cardBg:'#f7f4ef', cardBorder:'#e3dccf', cardHoverBg:'#f6f2ec', placeholderBorder:'#ded5c5', sidebarBg:'#ede5d8', sidebarBorder:'#ded2bd', sidebarHover:'#f3efe9'}
   };
   // 28/08/2026: nível de iluminação (0-100) — clareia (0) ou escurece (100) a paleta de cor
   // escolhida acima; 50 (padrão) = paleta exatamente como já vinha sendo aplicada, sem nenhuma
@@ -2921,13 +3084,17 @@
   var BG_LEVEL_KEY_DARK = 'fp-bg-level-dark';
   var BG_LEVEL_KEY_LIGHT = 'fp-bg-level-light';
   var BG_LEVEL_DEFAULT = 50;
-  var BG_LEVEL_DEFAULT_LIGHT = 40; // 15/11/2026: tema claro abre com o fundo em 40 por padrão (pedido do usuário); 50 continua sendo o ponto neutro da escala
+  var BG_LEVEL_DEFAULT_LIGHT = 55; // 18/11/2026: claro abre em 55
+  var BG_LEVEL_DEFAULT_DARK = 40; // 18/11/2026: escuro abre em 40
+  // migração única: aplica os novos padrões uma vez, descartando escolhas antigas de cor/nível
+  try{ if(localStorage.getItem('fp-bg-defaults-v') !== '2'){ ['fp-bg-theme-dark','fp-bg-theme-light','fp-bg-level-dark','fp-bg-level-light'].forEach(function(k){ localStorage.removeItem(k); }); localStorage.setItem('fp-bg-defaults-v','2'); } }catch(e){}
+  var _unusedDefaultLight = 40; // 15/11/2026: tema claro abre com o fundo em 40 por padrão (pedido do usuário); 50 continua sendo o ponto neutro da escala
   var BG_LEVEL_MAX_DARK_MIX = 0.6; // acima de 50, nunca mistura mais que 60% preto — "mais escuro", não necessariamente preto
   var BG_LEVEL_MAX_LIGHT_MIX_DARKTHEME = 0.3; // no tema escuro, abaixo de 50 nunca mistura mais que 30% branco (clareia o roxo/azul/etc. levemente, sem lavar pra branco)
   var currentPaletteName = {dark: BG_THEME_DEFAULT_DARK, light: BG_THEME_DEFAULT_LIGHT};
   function getBgLevel(isLight){
     var key = isLight ? BG_LEVEL_KEY_LIGHT : BG_LEVEL_KEY_DARK;
-    var v = isLight ? BG_LEVEL_DEFAULT_LIGHT : BG_LEVEL_DEFAULT;
+    var v = isLight ? BG_LEVEL_DEFAULT_LIGHT : BG_LEVEL_DEFAULT_DARK;
     try{
       var raw = localStorage.getItem(key);
       if(raw !== null){
@@ -3630,55 +3797,92 @@
     }).join('');
   }
 
-  // ---------- FERRAMENTAS MAIS USADAS (calculado a partir dos favoritos) ----------
-
-  var USAGE_COLORS = ['#e4172c', '#f59e0b', '#22c55e', '#3b82f6', '#a855f7', '#94a3b8'];
-
-  // Distribuição ilustrativa usada apenas quando não há favoritos salvos ainda,
-  // para o painel nunca aparecer vazio/quebrado (não é dado real de uso).
-  var ILLUSTRATIVE_USAGE = [
-    {label:'Guia de Dispensação', pct:68},
-    {label:'Medicamentos Intercambiáveis', pct:20},
-    {label:'Cálculo de Doses', pct:8},
-    {label:'Validador de Receitas', pct:4}
+  // ---------- USO DAS FERRAMENTAS (18/11/2026) ----------
+  // Distribuição real do tempo de uso por ferramenta (assets/tempo-uso.js grava os segundos
+  // por dia em fp_tempo_uso_v1). Mostra as 12 ferramentas, no período Hoje ou Semana.
+  var USAGE_TOOLS = [
+    {k:'guia',        a:'Guia',        n:'Guia de Dispensação',              c:'var(--red)',       h:'farmadesk/'},
+    {k:'medinter',    a:'Substituição', n:'Substituição de Medicamentos',     c:'var(--c-cyan)',    h:'medinter/'},
+    {k:'calc',        a:'Doses', n:'Cálculo de Doses',                 c:'var(--c-magenta)', h:'dosespediatricas/'},
+    {k:'validador',   a:'Receitas', n:'Conferência de Receitas',          c:'var(--c-green)',   h:'receitas/'},
+    {k:'consulta',    a:'Controlados', n:'Medicamentos de Controle Especial',c:'var(--c-blue)',    h:'consultacontrolados/'},
+    {k:'checklist',   a:'Checklist', n:'Checklist de Rotina',              c:'var(--c-amber)',   h:'checklist/'},
+    {k:'interacoes',  a:'Interações', n:'Interações Medicamentosas',        c:'var(--c-teal)',    h:'interacoes/'},
+    {k:'exames',      a:'Exames', n:'Exames Laboratoriais',             c:'var(--c-purple)',  h:'exames/'},
+    {k:'consultorio', a:'Consultório', n:'Consultório Farmacêutico',         c:'var(--c-indigo)',  h:'consultorio/'},
+    {k:'bulario',     a:'Bulário', n:'Bulário Farmacêutico',             c:'var(--c-orange)',  h:'bulario/'},
+    {k:'desafio',     a:'Desafio', n:'Desafio Clínico',                  c:'var(--c-lime)',    h:'desafio/'},
+    {k:'dicionario',  a:'Dicionário', n:'Dicionário Farmacêutico',          c:'var(--c-sky)',     h:'dicionario/'}
   ];
-
-  // Distribuição de "Suas ferramentas mais utilizadas" (rosca) — pedido do usuário: a métrica deve
-  // refletir TEMPO DE USO de cada ferramenta, não cliques/favoritos. Este app ainda não possui
-  // nenhuma infraestrutura real de rastreamento de tempo (o localStorage só guarda
-  // 'fp_favoritos_hub' e 'fp_notas_rotina' — não há contador de cliques nem duração de sessão
-  // por página/ferramenta). Implementar um pipeline real de tempo-de-uso entre páginas está fora
-  // do escopo desta correção. Por isso os valores abaixo são uma distribuição ILUSTRATIVA/estimada
-  // de tempo de uso (fixa, não derivada de favoritos/cliques), deixando claro que não representa
-  // medição real até que tal infraestrutura exista.
+  function usageSecondsByTool(period){
+    var data = loadTempoUsoData();
+    var now = new Date();
+    var days = [];
+    if(period === 'week'){
+      var monday = mondayOf(now);
+      for(var i=0;i<7;i++){ var d = new Date(monday); d.setDate(monday.getDate()+i); if(d > now) break; days.push(dateKeyFor(d)); }
+    }else{ days.push(dateKeyFor(now)); }
+    var out = {};
+    days.forEach(function(key){
+      var day = data[key] || {};
+      Object.keys(day).forEach(function(t){ out[t] = (out[t] || 0) + (day[t] || 0); });
+    });
+    return out;
+  }
+  function formatToolTime(sec){
+    if(sec < 60) return sec > 0 ? '<1 min' : '0 min';
+    var m = Math.round(sec / 60);
+    if(m < 60) return m + ' min';
+    return Math.floor(m/60) + 'h' + String(m % 60).padStart(2,'0');
+  }
   function renderUsageBreakdown(){
     var wrap = document.getElementById('usage-donut-wrap');
-    var entries = ILLUSTRATIVE_USAGE.map(function(e){ return {label:e.label, count:e.pct}; });
-    var total = entries.reduce(function(s,e){ return s + e.count; }, 0);
+    var donut = document.getElementById('usage-donut');
+    if(!wrap) return;
+    var period = (typeof usagePeriod !== 'undefined' && usagePeriod) ? usagePeriod : 'day';
+    var secs = usageSecondsByTool(period);
+    var rows = USAGE_TOOLS.map(function(t, i){ return {t:t, s:Math.round(secs[t.k] || 0), i:i}; });
+    var total = rows.reduce(function(a, r){ return a + r.s; }, 0);
+    rows.sort(function(x, y){ return (y.s - x.s) || (x.i - y.i); });
+    var max = rows[0] ? rows[0].s : 0;
 
-    var cumulative = 0;
-    var gradientParts = [];
-    var legendHtml = '';
-    entries.forEach(function(entry, i){
-      var color = USAGE_COLORS[i % USAGE_COLORS.length];
-      var pct = Math.round((entry.count / total) * 100);
-      var start = cumulative;
-      cumulative += pct;
-      gradientParts.push(color + ' ' + start + '% ' + cumulative + '%');
-      legendHtml +=
-        '<div class="usage-row-top">'+
-          '<span class="usage-dot" style="background:'+color+';"></span>'+
-          '<span class="usage-name">'+entry.label+' <strong>('+pct+'%)</strong></span>'+
-        '</div>';
+    // rosca em SVG (segmentos proporcionais; anel neutro quando ainda não há registro)
+    var R = 42, C = 2 * Math.PI * R, offset = 0, segs = '';
+    rows.forEach(function(r){
+      if(!r.s) return;
+      var len = r.s / total * C;
+      segs += '<circle cx="50" cy="50" r="'+R+'" fill="none" stroke="'+r.t.c+'" stroke-width="12" stroke-dasharray="'+Math.max(len-1.2,0.6).toFixed(2)+' '+C.toFixed(2)+'" stroke-dashoffset="'+(-offset).toFixed(2)+'" transform="rotate(-90 50 50)"><title>'+r.t.n+': '+formatToolTime(r.s)+'</title></circle>';
+      offset += len;
     });
-    if(cumulative < 100 && gradientParts.length){
-      gradientParts[gradientParts.length - 1] = gradientParts[gradientParts.length - 1].replace(/\d+%$/, '100%');
+    var used = rows.filter(function(r){ return r.s > 0; }).length;
+    if(donut){
+      donut.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="'+R+'" fill="none" class="dash-donut-track" stroke-width="12"/>'+segs+'</svg>'+
+        '<div class="dash-donut-center"><strong>'+used+'</strong><span>de 12</span></div>';
+      donut.title = used + ' de 12 ferramentas usadas ' + (period === 'week' ? 'nesta semana' : 'hoje');
     }
-
+    // gráfico de colunas: uma coluna por ferramenta, sempre na ordem do menu
+    var byOrder = rows.slice().sort(function(x, y){ return x.i - y.i; });
+    var maxMin = max / 60;
+    var step = maxMin <= 5 ? 1 : maxMin <= 15 ? 5 : maxMin <= 60 ? 15 : maxMin <= 180 ? 30 : 60;
+    var top = Math.max(step * Math.ceil(maxMin / step), step);
+    var ticks = '';
+    for(var v = 0; v <= top + 0.001; v += top / 3){
+      var y = (v / top) * 100;
+      ticks += '<div class="dash-chart-tick" style="bottom:'+y.toFixed(2)+'%"><span>'+(v >= 60 ? (Math.floor(v/60)+'h'+(Math.round(v%60) ? String(Math.round(v%60)).padStart(2,'0') : '')) : Math.round(v)+'m')+'</span></div>';
+    }
+    var cols = byOrder.map(function(r){
+      var h = top ? (r.s / 60) / top * 100 : 0;
+      var pct = total ? Math.round(r.s / total * 100) : 0;
+      return '<a class="dash-col'+(r.s ? '' : ' is-zero')+'" href="'+r.t.h+'" style="--tc:'+r.t.c+'" title="'+r.t.n+': '+formatToolTime(r.s)+(r.s ? ' ('+pct+'%)' : '')+'">'+
+        '<span class="dash-col-bar" style="height:'+(r.s ? Math.max(h, 2.5) : 0).toFixed(2)+'%">'+(r.s ? '<em>'+formatToolTime(r.s).replace(' min','m')+'</em>' : '')+'</span>'+
+        '<span class="dash-col-label"><i></i>'+r.t.a+'</span>'+
+      '</a>';
+    }).join('');
     wrap.innerHTML =
-      '<div class="usage-donut-row">'+
-        '<div class="usage-donut" style="background:conic-gradient('+gradientParts.join(', ')+');"></div>'+
-        '<div class="usage-legend">'+legendHtml+'</div>'+
+      '<div class="dash-chart'+(total ? '' : ' is-empty')+'">'+
+        '<div class="dash-chart-plot">'+ticks+'<div class="dash-chart-cols">'+cols+'</div>'+
+          (total ? '' : '<p class="dash-chart-empty">Ainda sem registros '+(period === 'week' ? 'nesta semana' : 'hoje')+'.<br>O tempo é contado automaticamente enquanto você usa cada ferramenta.</p>')+
+        '</div>'+
       '</div>';
   }
 
@@ -3728,14 +3932,21 @@
   }
   function setUsageDelta(deltaEl, deltaTextEl, current, previous, suffix){
     if(!deltaEl || !deltaTextEl) return;
+    var ico = document.getElementById('usage-time-delta-ico');
+    deltaEl.classList.remove('is-up','is-down','is-none');
     if(!previous || previous < 30){
-      deltaEl.classList.add('is-down');
-      deltaTextEl.textContent = 'ainda sem histórico suficiente';
+      deltaEl.classList.add('is-none');
+      if(ico) ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12.5"/><line x1="12" y1="16" x2="12" y2="16"/></svg>';
+      deltaTextEl.textContent = 'ainda sem histórico para comparar';
       return;
     }
-    deltaEl.classList.remove('is-down');
     var pct = Math.round(((current - previous) / previous) * 100);
-    deltaTextEl.textContent = (pct >= 0 ? '+' : '') + pct + '% ' + suffix;
+    var up = pct >= 0;
+    deltaEl.classList.add(up ? 'is-up' : 'is-down');
+    if(ico) ico.innerHTML = up
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>';
+    deltaTextEl.textContent = (up ? '+' : '') + pct + '% ' + suffix;
   }
 
   function setUsagePeriod(period){
@@ -3747,6 +3958,7 @@
     if(btnDay) btnDay.classList.toggle('active', period === 'day');
     if(btnWeek) btnWeek.classList.toggle('active', period === 'week');
     renderUsageTimeCard();
+    renderUsageBreakdown();
   }
   window.setUsagePeriod = setUsagePeriod;
 
@@ -3763,19 +3975,19 @@
     if(usagePeriod === 'day'){
       var todaySeconds = sumDaySeconds(data, dateKeyFor(now));
       valueEl.textContent = formatDuration(todaySeconds);
-      labelEl.textContent = 'tempo usando as ferramentas hoje';
+      labelEl.textContent = 'de uso das ferramentas hoje';
       var yesterday = new Date(now); yesterday.setDate(now.getDate() - 1);
       setUsageDelta(deltaEl, deltaTextEl, todaySeconds, sumDaySeconds(data, dateKeyFor(yesterday)), 'em relação a ontem');
     }else{
       var weekSeconds = sumWeekSeconds(data, now);
       valueEl.textContent = formatDuration(weekSeconds);
-      labelEl.textContent = 'tempo usando as ferramentas nesta semana';
+      labelEl.textContent = 'de uso das ferramentas nesta semana';
       var lastWeekRef = new Date(now); lastWeekRef.setDate(now.getDate() - 7);
       setUsageDelta(deltaEl, deltaTextEl, weekSeconds, sumWeekSeconds(data, lastWeekRef), 'em relação à semana passada');
     }
   }
   window.addEventListener('storage', function(e){
-    if(e.key === TEMPO_USO_KEY) renderUsageTimeCard();
+    if(e.key === TEMPO_USO_KEY){ renderUsageTimeCard(); renderUsageBreakdown(); }
   });
 
   // ---------- NOTAS DE ROTINA ----------

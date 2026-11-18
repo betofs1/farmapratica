@@ -1770,6 +1770,7 @@
 </style>
 </head>
 <body>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 
 <header class="top">
   <div class="top-row">
@@ -2032,6 +2033,7 @@
 // ---------- TEMA ----------
 function toggleTheme(){
   document.body.classList.toggle('light');
+  try{ localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
 }
 
 let APP_DATA = { systems: [], conditions: [] };
@@ -4425,5 +4427,6 @@ backToTopBtn.addEventListener('click', () => {
 </script>
 
 <script src="../assets/tempo-uso.js" data-tool="guia"></script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{var l=localStorage.getItem('farmapratica-theme')==='light';if(document.body.classList.contains('light')!==l&&typeof toggleTheme==='function'){toggleTheme();}}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
 </body>
 </html>

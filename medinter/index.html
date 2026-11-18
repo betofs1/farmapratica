@@ -441,7 +441,7 @@
 </head>
 
 <body>
-<script>try{ if(localStorage.getItem('theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
+<script>try{ if(localStorage.getItem('farmapratica-theme')==='light'){ document.body.classList.add('light'); } }catch(e){}</script>
 <div class="topbar-app">
   <a href="../" class="topbar-home-mobile" title="Voltar para a página inicial do FarmaPrática" aria-label="Voltar para a página inicial do FarmaPrática">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
@@ -1467,7 +1467,7 @@ function cardHTML(m) {
 <script>
 function toggleTheme(){
   document.body.classList.toggle('light');
-  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  localStorage.setItem('farmapratica-theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
 // 20/10/2026: a ferramenta agora inicia em modo escuro por padrão. A
 // preferência salva em localStorage('theme') é lida de volta logo após a
@@ -1532,5 +1532,6 @@ function updateDBUI(state){
   if(tbo && window.MutationObserver) new MutationObserver(agendar).observe(tbo, { childList:true, subtree:true, characterData:true });
 })();
 </script>
+<script>/* 18/11/2026: tema compartilhado entre ferramentas */(function(){function s(){try{var l=localStorage.getItem('farmapratica-theme')==='light';if(document.body.classList.contains('light')!==l&&typeof toggleTheme==='function'){toggleTheme();}}catch(e){}}window.addEventListener('pageshow',s);window.addEventListener('storage',function(e){if(e.key==='farmapratica-theme')s();});})();</script>
 </body>
 </html>
