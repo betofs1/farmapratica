@@ -2324,6 +2324,84 @@
   }
 
   /* =====================================================================
+     18/11/2026 — Botões de ferramentas estáveis em QUALQUER resolução.
+     Problemas corrigidos: (1) entre ~1100 e ~1440px a grade de 6 colunas
+     ocupava só 69% da área e os cards ficavam pequenos (115–145px), com
+     título em 3 linhas, descrição cortada e ícones em alturas diferentes;
+     (2) entre 641 e 1100px a grade caía para 2 colunas e os cards viravam
+     quadrados gigantes (320–480px); (3) a posição do ícone variava conforme
+     o título tinha 1, 2 ou 3 linhas.
+     Solução: colunas por faixa de largura (6 → 4 → 3 → 4 compacto → 3) com
+     largura máxima fixa, e conteúdo dimensionado em unidades do próprio card
+     (cqi), com caixas de altura fixa para título e descrição — todos os cards
+     ficam idênticos e o conteúdo escala junto com o card, sem degraus.
+     Para reverter, apague este bloco inteiro.
+     ===================================================================== */
+  .tools-hub-grid{
+    grid-template-columns:repeat(6, minmax(0,1fr));
+    width:100%;
+    max-width:min(1320px, calc(100% - 2 * var(--sidebar-width-collapsed) - 32px));
+    gap:clamp(12px, 1.15vw, 18px);
+  }
+  @media (max-width:1199.98px){
+    .tools-hub-grid{grid-template-columns:repeat(4, minmax(0,1fr)); max-width:min(900px, calc(100% - 2 * var(--sidebar-width-collapsed) - 32px)); gap:14px;}
+  }
+  @media (max-width:1100px){
+    .tools-hub-grid{max-width:min(900px, 100%);}
+  }
+  @media (max-width:900px){
+    .tools-hub-grid{grid-template-columns:repeat(3, minmax(0,1fr)); max-width:min(700px, 100%); gap:14px;}
+  }
+  @media (max-width:640px){
+    .tools-hub-grid{grid-template-columns:repeat(4, minmax(0,1fr)); max-width:100%; gap:8px;}
+  }
+  @media (max-width:440px){
+    .tools-hub-grid{grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px;}
+  }
+
+  /* Conteúdo proporcional ao card (faixa padrão: card >= 160px) */
+  .tools-hub-card-body{justify-content:center; gap:3.4cqi; padding:7cqi 5cqi 6cqi;}
+  .tools-hub-icon{width:min(23cqi, 50px); height:min(23cqi, 50px); border-radius:min(6.5cqi, 14px);}
+  .tools-hub-icon svg{width:min(11cqi, 24px); height:min(11cqi, 24px);}
+  .tools-hub-card h3{
+    font-size:clamp(10px, 6.6cqi, 16px); line-height:1.2;
+    width:100%; height:2.4em; min-height:0; overflow:hidden; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    text-wrap:balance; overflow-wrap:normal;
+  }
+  .tools-hub-card p{
+    font-size:clamp(8.5px, 5.5cqi, 12.5px); line-height:1.3;
+    width:100%; height:2.6em; min-height:0; flex:none;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    text-wrap:balance;
+  }
+  .tools-hub-arrow{display:flex; width:min(13cqi, 28px); height:min(13cqi, 28px); margin-top:0;}
+  .tools-hub-arrow svg{width:min(7cqi, 15px); height:min(7cqi, 15px);}
+  .tools-hub-soon-badge{
+    top:max(6px, 5.5cqi); right:max(6px, 5.5cqi);
+    font-size:clamp(6.5px, 4.3cqi, 9.5px); padding:.32em .7em; border-radius:.6em; line-height:1.2;
+  }
+
+  /* Card estreito (< 160px): sem a seta; título pode usar até 3 linhas */
+  @container (max-width:159.98px){
+    .tools-hub-card-body{gap:3cqi; padding:6cqi 4.5cqi 5cqi;}
+    .tools-hub-icon{width:24cqi; height:24cqi; border-radius:7cqi;}
+    .tools-hub-icon svg{width:12cqi; height:12cqi;}
+    .tools-hub-card h3{font-size:max(9px, 7.6cqi); line-height:1.15; height:3.45em;}
+    .tools-hub-card p{display:-webkit-box; font-size:max(8px, 6.2cqi); line-height:1.25; height:2.5em;}
+    .tools-hub-arrow{display:none;}
+  }
+  /* Card de celular (< 110px): só ícone + título */
+  @container (max-width:109.98px){
+    .tools-hub-card-body{gap:4cqi; padding:7cqi 4cqi 5cqi;}
+    .tools-hub-icon{width:30cqi; height:30cqi; border-radius:9cqi;}
+    .tools-hub-icon svg{width:15cqi; height:15cqi;}
+    .tools-hub-card h3{font-size:max(8.5px, 9.6cqi); line-height:1.15; height:3.45em;}
+    .tools-hub-card p{display:none;}
+    .tools-hub-soon-badge{top:4px; right:4px; font-size:6px; padding:2px 4px;}
+  }
+
+  /* =====================================================================
      18/11/2026 — Painel pessoal redesenhado (Favoritos, Notas, Uso das
      ferramentas), banner, atalhos e rodapé. Visual único nos dois temas.
      ===================================================================== */
